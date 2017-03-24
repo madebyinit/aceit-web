@@ -1,7 +1,9 @@
 @import "common/common";
 
+div,input,button,span{
+  outline: 0;
+}
 .app {
   height: 100%;
-  background-color: $lightBgColor;
 }
 
