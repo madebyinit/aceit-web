@@ -4,4 +4,5 @@ class <%= upCaseName %>Controller {
   }
 }
 
+<%= upCaseName %>Controller.$inject = [];
 export default <%= upCaseName %>Controller;
