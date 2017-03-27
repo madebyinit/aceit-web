@@ -1,17 +1,22 @@
 var path    = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
   devtool: 'source-map',
   entry: {},
   module: {
     loaders: [
+      {test: /^raw.*$/, loader: 'file-loader'},
        { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' }
     ]
+  },
+  resolve: {
+    modulesDirectories: ['node_modules', 'bower_components']
   },
   plugins: [
     // Injects bundles in your index.html instead of wiring all manually.

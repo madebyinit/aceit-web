@@ -30,10 +30,6 @@ describe('Home', () => {
         $scope: $rootScope.$new()
       });
     });
-
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
-    });
   });
 
   describe('View', () => {
