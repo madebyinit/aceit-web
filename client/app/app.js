@@ -4,13 +4,16 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import AppController from './app.controller';
-import auth0 from 'auth0-js';
+import 'script!auth0.js/build/auth0.js';
+import 'angular-jwt';
 import 'normalize.css';
 
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    'auth0.auth0',
+    'angular-jwt'
   ])
   .config(($locationProvider) => {
     "ngInject";
