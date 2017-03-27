@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100%;
   background-image: url('http://c1.staticflickr.com/8/7529/15915100635_fdd8bc8554_k.jpg');
-  .login-form {
+  .authentication-form{
     width: 30%;
     height: 50%;
     background-color: rgba(0, 0, 0, 0.55);
@@ -41,5 +41,53 @@
       text-transform: uppercase;
       background-color: #53ace0;
     }
+    .login-button {
+      color: white;
+      font-size: 17px;
+      position: relative;
+      top: 30px;
+      span{
+        text-decoration: underline;
+        color: #53ace0;
+        font-weight: 700;
+      }
+    }
+  }
+  .signup-form.ng-leave{
+    animation: 0.25s fadeout ease;
+  }
+  .signup-form.ng-enter{
+    animation: 0.25s comeFromTheRightSide ease;
+  }
+  .login-form.ng-enter{
+    animation: 0.25s comeFromTheSky ease;
+  }
+  .login-form.ng-leave{
+    animation: 0.25s fadeout ease;
+  }
+}
+
+@keyframes fadeout {
+  from {opacity: 1}
+  to {opacity: 0}
+}
+@keyframes comeFromTheSky {
+  from {
+    top: 20%;
+    opacity: 0
+  }
+  to {
+    top: 50%;
+    opacity: 1
+  }
+}
+@keyframes comeFromTheRightSide {
+  from {
+    right: 50%;
+    opacity: 0
+  }
+  to {
+    right: 0;
+    opacity: 1
   }
 }

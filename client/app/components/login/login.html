@@ -1,9 +1,16 @@
 <div class="login-page">
-  <div class="login-form">
+  <div class="authentication-form signup-form" ng-if="$ctrl.showLogin">
     <div class="form-title">Sign Up</div>
-    <input type="text" class="form-input user-name" placeholder="Username">
-    <input type="text" class="form-input email" placeholder="E-mail">
-    <input type="text" class="form-input password" placeholder="Password">
-    <button class="sign-up-button" ng-click="$ctrl.changeState('home')">Jump right in</button>
+    <input type="text" class="form-input email" ng-model="$ctrl.email" placeholder="E-mail">
+    <input type="password" class="form-input password" ng-model="$ctrl.password" placeholder="Password">
+    <button class="sign-up-button" ng-click="$ctrl.signUp()">Let's start</button>
+    <div class="login-button">Already have account? <span ng-click="$ctrl.showLogin = false">Login</span></div>
+  </div>
+  <div class="authentication-form login-form" ng-if="!$ctrl.showLogin">
+    <div class="form-title">Login</div>
+    <input type="text" class="form-input email" ng-model="$ctrl.emailLogin" placeholder="E-mail">
+    <input type="password" class="form-input password" ng-model="$ctrl.passwordLogin" placeholder="Password">
+    <button class="sign-up-button" ng-click="$ctrl.login()">Jump right in</button>
+    <div class="login-button">Don't Have account? <span ng-click="$ctrl.showLogin = true">Register NOW!!!</span></div>
   </div>
 </div>

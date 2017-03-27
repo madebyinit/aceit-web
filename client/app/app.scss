@@ -1,7 +1,15 @@
 @import "common/common";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+[ng-click]{
+  cursor: pointer;
+}
 div,input,button,span{
   outline: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 .app {
   height: 100%;

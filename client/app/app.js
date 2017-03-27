@@ -1,19 +1,24 @@
 import angular from 'angular';
+import angularAnimate from 'angular-animate';
+import angularAria from 'angular-aria';
+import angularMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import AppController from './app.controller';
-import 'script!auth0.js/build/auth0.js';
-import 'angular-jwt';
+import 'angularfire';
 import 'normalize.css';
+import 'angular-material/angular-material.scss';
 
 angular.module('app', [
     uiRouter,
     Common,
     Components,
-    'auth0.auth0',
-    'angular-jwt'
+    angularAnimate,
+    angularAria,
+    angularMaterial,
+    'firebase'
   ])
   .config(($locationProvider) => {
     "ngInject";
