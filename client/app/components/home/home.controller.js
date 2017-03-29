@@ -7,10 +7,8 @@ class HomeController {
 
   logout(){
     firebase.auth().signOut().then((res)=> {
-      debugger;
       this.$state.go('login');
     }).catch((error)=> {
-      debugger;
       console.log(error)
     });
   }
