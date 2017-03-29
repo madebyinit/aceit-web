@@ -1,0 +1,8 @@
+<div class="authentication-form login-form">
+    <div class="form-title">Login</div>
+    <input type="text" class="form-input email" ng-model="$ctrl.email" placeholder="E-mail">
+    <input type="password" class="form-input password" ng-model="$ctrl.password" placeholder="Password">
+    <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>click here!</span></a></div>
+    <button class="sign-up-button" ng-click="$ctrl.login()">Jump right in</button>
+    <div class="login-button">Don't have an account? <a ui-sref="loginView.register"><span>Register Now!</span></a></div>
+</div>

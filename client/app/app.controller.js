@@ -12,7 +12,7 @@ class AppController {
       if (user) {
         this.$state.go('home');
       } else {
-        this.$state.go('login');
+        this.$state.go('loginView.login');
       }
     });
   }
