@@ -1,4 +1,5 @@
 import angular from 'angular';
+import lodash from 'lodash';
 import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import angularMaterial from 'angular-material';

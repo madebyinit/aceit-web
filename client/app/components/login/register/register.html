@@ -1,7 +1,13 @@
 <div class="authentication-form signup-form">
     <div class="form-title">Sign Up</div>
-    <input type="text" class="form-input email" ng-model="$ctrl.email" placeholder="E-mail">
-    <input type="password" class="form-input password" ng-model="$ctrl.password" placeholder="Password">
+    <div class="input-style">
+        <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="E-mail">
+        <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
+    </div>
+    <div class="input-style">
+        <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="Password">
+        <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
+    </div>
     <button class="sign-up-button" ng-click="$ctrl.signUp()">Let's start</button>
     <div class="login-button">Already a member? <a ui-sref="loginView.login" ><span>Login</span></a></div>
 </div>
