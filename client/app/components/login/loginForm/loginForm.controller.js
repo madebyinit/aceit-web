@@ -7,11 +7,16 @@ class LoginFormController {
   }
 
   login(){
-    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((res)=>{
-      this.$state.transitionTo('home');
-    },(error)=>{
-      this.notificationsService.showToast(error.message);
-    })
+    if(this.email && this.password){
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((res)=>{
+        this.$state.transitionTo('home');
+      },(error)=>{
+        this.notificationsService.showToast(error.message);
+      })
+    }else{
+      this.validEmail = _.isEmpty(this.email) && 'Missing E-mail';
+      this.validPassword = _.isEmpty(this.password) && 'Missing Password';
+    }
   }
 }
 
