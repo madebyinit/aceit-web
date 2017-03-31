@@ -14,4 +14,15 @@ div,input,button,span{
 .app {
   height: 100%;
 }
+.progress-bar{
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  .md-bar {
+    background-color: rgb(83, 172, 224);
+  }
+  .md-container {
+    background-color: rgb(197, 220, 233);
+  }
+}
 

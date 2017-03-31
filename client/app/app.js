@@ -28,6 +28,4 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
-  .run(AppController)
-
   .component('app', AppComponent);

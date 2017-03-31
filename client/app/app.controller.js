@@ -1,8 +1,9 @@
 import firebase from 'firebase';
 
 class AppController {
-  constructor($state) {
+  constructor($state,$rootScope) {
     this.$state = $state;
+    this.$rootScope = $rootScope;
     this._initFireBase();
     this._startApp();
   }
@@ -11,6 +12,7 @@ class AppController {
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         this.$state.go('home');
+        // this.$state.reload();
       } else {
         this.$state.go('loginView.login');
       }
@@ -28,10 +30,10 @@ class AppController {
     firebase.initializeApp(config);
   }
 
-  static AppFactory($state) {
-    return new AppController($state);
+  static AppFactory($state,$rootScope) {
+    return new AppController($state,$rootScope);
   }
 }
 
-AppController.AppFactory.$inject = ['$state'];
+AppController.AppFactory.$inject = ['$state','$rootScope'];
 export default AppController.AppFactory;
