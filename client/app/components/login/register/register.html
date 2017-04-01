@@ -1,13 +1,15 @@
 <div class="authentication-form signup-form">
-    <div class="form-title">Sign Up</div>
-    <div class="input-style">
-        <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="E-mail">
-        <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
-    </div>
-    <div class="input-style">
-        <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="Password">
-        <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
-    </div>
-    <button class="sign-up-button" ng-click="$ctrl.signUp()">Let's start</button>
-    <div class="login-button">Already a member? <a ui-sref="loginView.login" ><span>Login</span></a></div>
+    <div class="form-title">{{::('login.sign_up' | translate)}}</div>
+    <form>
+        <div class="input-style">
+            <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
+            <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
+        </div>
+        <div class="input-style">
+            <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="{{::('login.password' | translate)}}">
+            <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
+        </div>
+        <button class="sign-up-button" ng-click="$ctrl.signUp()">{{::('login.lets_start' | translate)}}</button>
+    </form>
+    <div class="login-button">{{::('login.already_a_member' | translate)}} <a ui-sref="loginView.login" ><span>{{::('login.login' | translate)}}</span></a></div>
 </div>
