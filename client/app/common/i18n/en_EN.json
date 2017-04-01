@@ -1,0 +1,17 @@
+{
+  "login":{
+    "login":"login",
+    "dont_have_an_account":"Don't have an account?",
+    "register_now":"Register Now!",
+    "jump_right_in":"Jump right in",
+    "click_here":"click here!",
+    "email":"Email",
+    "password":"Password",
+    "reset_password":"Reset password",
+    "sign_up":"Sign Up",
+    "forgot_password":"Forgot password",
+    "lets_start":"Let's start",
+    "already_a_member":"Already a member?",
+    "remember_your_password":"Remember your password?"
+  }
+}

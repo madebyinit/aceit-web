@@ -1,14 +1,16 @@
 <div class="authentication-form login-form">
-    <div class="form-title">Login</div>
-    <div class="input-style">
-        <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="E-mail">
-        <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
-    </div>
-    <div class="input-style">
-    <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="Password">
-        <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
-    </div>
-    <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>click here!</span></a></div>
-    <button class="sign-up-button" ng-click="$ctrl.login()">Jump right in</button>
-    <div class="login-button">Don't have an account? <a ui-sref="loginView.register"><span>Register Now!</span></a></div>
+    <div class="form-title">{{::('login.login' | translate)}}</div>
+    <form>
+        <div class="input-style">
+            <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
+            <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
+        </div>
+        <div class="input-style">
+        <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="{{::('login.password' | translate)}}">
+            <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
+        </div>
+        <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>{{::('login.click_here' | translate)}}</span></a></div>
+        <button class="sign-up-button" ng-click="$ctrl.login()">{{::('login.jump_right_in' | translate)}}</button>
+    </form>
+    <div class="login-button">{{::('login.dont_have_an_account' | translate)}} <a ui-sref="loginView.register"><span>{{::('login.register_now' | translate)}}</span></a></div>
 </div>

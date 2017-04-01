@@ -14,7 +14,7 @@ class AppController {
         this.$state.go('home');
         // this.$state.reload();
       } else {
-        this.$state.go('loginView.login');
+        this.$state.reload();
       }
     });
   }
