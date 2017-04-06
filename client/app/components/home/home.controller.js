@@ -7,7 +7,7 @@ class HomeController {
 
   logout(){
     firebase.auth().signOut().then((res)=> {
-      this.$state.go('login');
+      this.$state.go('loginView.login');
     }).catch((error)=> {
       console.log(error)
     });
