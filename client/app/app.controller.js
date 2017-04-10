@@ -17,6 +17,7 @@ class AppController {
         this.$state.go('loginView.login');
       }
     });
+    // this.$state.reload();
   }
 
   _initFireBase(){

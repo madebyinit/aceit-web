@@ -13,5 +13,25 @@
     "lets_start":"Let's start",
     "already_a_member":"Already a member?",
     "remember_your_password":"Remember your password?"
+  },
+  "questionnaire":{
+    "questionnaire":"questionnaire",
+    "worried_about":"I am worried about reaching my goal.",
+    "trouble_focusing":"I have trouble focusing during an exam.",
+    "my_stomach":"My stomach gets upset.",
+    "so_nervous":"I am so nervous that I often can’t think straight.",
+    "concerned_disappointed":"I am concerned that others will be disappointed with my performance.",
+    "heart_beats":"My heart beats fast.",
+    "unexpected_questions":"Finding unexpected questions on a test causes me to panic.",
+    "about_doing_well":"I worry more about doing well on the test than I should.",
+    "neck_and_shoulders":"My neck and shoulders feel tense.",
+    "feel_nervous":"I feel nervous.",
+    "learn_material":"I don’t think I can learn all the material.",
+    "previous":"Previous",
+    "next":"next",
+    "always":"Always",
+    "never":"Never",
+    "remember_only_you":"Remember only you will see the results",
+    "what_specifically_happens":"Let’s find out what specifically happens to you before and when you are taking a “big test”. Click on the questionnaire and answer it as honestly as you can"
   }
 }

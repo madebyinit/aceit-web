@@ -1,0 +1,22 @@
+.step-element {
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  .step-element-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(206, 206, 206, 0.59);
+    border-radius: 50%;
+    display: inline-flex;
+    margin: 0 3%;
+    vertical-align: middle;
+    transition: all 0.25s ease;
+  }
+  .step-complete{
+    background-color: #84c6ff;
+  }
+  .current-step{
+    width: 25px;
+    height: 25px;
+  }
+}

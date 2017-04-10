@@ -1,0 +1,9 @@
+<div class="questionnaire-element">
+  <div class="questionnaire-title">{{'questionnaire.' + $ctrl.questionModel | translate}}</div>
+  <div class="questionnaire-slider">
+    <md-slider flex md-discrete class="questionnaire-slider-element" ng-change="$ctrl.elementChange($ctrl.answer)" ng-model="$ctrl.answer" step="1" min="1" max="5" aria-label="rating">
+    </md-slider>
+    <span class="always">{{:: ('questionnaire.always' | translate)}}</span>
+    <span class="never">{{:: ('questionnaire.never' | translate)}}</span>
+  </div>
+</div>
