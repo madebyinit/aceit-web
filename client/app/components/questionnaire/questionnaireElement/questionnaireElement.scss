@@ -1,0 +1,29 @@
+.questionnaire-element {
+  width: 100%;
+  height: auto;
+  background-color: #ECECEC;
+  text-align: center;
+  margin: auto;
+  padding: 40px;
+  box-sizing: border-box;
+  .questionnaire-slider{
+    width: 70%;
+    margin: 20px auto;
+    position: relative;
+  }
+  .questionnaire-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .always {
+    position: absolute;
+    right: -20px;
+  }
+  .never {
+    position: absolute;
+    left: -10px;
+  }
+  .md-track-ticks{
+    display: none;
+  }
+}
