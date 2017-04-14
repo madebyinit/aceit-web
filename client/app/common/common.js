@@ -1,13 +1,14 @@
 import angular from 'angular';
 import notificationsServiceModule from './notificationsService/notificationsService';
 import progressLinearServiceModule from './progressLinear/progressLinear';
-import textInputComponent from './uiElements/textInput/textInput';
+import connectionServiceModule from './connection/connection';
+import uiElementsModule from './uiElements/uiElements';
 
 let commonModule = angular.module('app.common', [
   notificationsServiceModule.name,
+  connectionServiceModule.name,
   progressLinearServiceModule.name
 ])
-  .component('textInput',textInputComponent)
 .name;
 
 export default commonModule;
