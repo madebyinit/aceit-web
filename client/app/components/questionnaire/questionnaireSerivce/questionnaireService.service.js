@@ -1,6 +1,8 @@
 class QuestionnaireService {
-  constructor($timeout) {
+  constructor($timeout,connection,$state) {
     this.$timeout = $timeout;
+    this.$state = $state;
+    this.connection = connection;
     this.steps = [
       {name:'worried_about',answer:null},
       {name:'trouble_focusing',answer:null},
@@ -16,14 +18,27 @@ class QuestionnaireService {
     ];
     this.stepIndex = 0;
     this.currentState = this.steps[this.stepIndex];
+    this._init();
+  }
+
+  _init(){
+    this.connection.getData('questionnaire').then((res)=>{
+      if(!_.isEmpty(res)){
+        this.$timeout(()=>{
+          _.map(this.steps,card=>_.assign(card, _.find(res, {name: card.name})));
+        },0);
+      }
+    })
   }
 
   nextStep(){
     if(this.stepIndex === (this.steps.length-1)){
-      console.log('Steps:',this.steps);
+      this.connection.saveData({questionnaire:this.steps});
+      this.$state.go('home');
     }else{
       this.stepIndex++;
       this.currentState = this.steps[this.stepIndex];
+      this.connection.saveData({questionnaire:this.steps});
     }
   }
 
@@ -33,5 +48,5 @@ class QuestionnaireService {
   }
 }
 
-QuestionnaireService.$inject = ['$timeout'];
+QuestionnaireService.$inject = ['$timeout','connection','$state'];
 export default QuestionnaireService;

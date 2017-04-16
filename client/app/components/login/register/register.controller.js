@@ -1,9 +1,10 @@
 import firebase from 'firebase';
 
 class RegisterController {
-  constructor($state,notificationsService) {
+  constructor($state,notificationsService,connection) {
     this.$state = $state;
     this.notificationsService = notificationsService;
+    this.connection = connection;
   }
 
   signUp(){
@@ -20,5 +21,5 @@ class RegisterController {
   }
 }
 
-RegisterController.$inject = ['$state','notificationsService'];
+RegisterController.$inject = ['$state','notificationsService','connection'];
 export default RegisterController;

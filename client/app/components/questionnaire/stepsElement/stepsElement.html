@@ -1,3 +1,3 @@
 <div class="step-element">
-    <div class="step-element-dot" ng-class="{'current-step':i.name === $ctrl.currentState,'step-complete':i.answer}" ng-repeat="i in $ctrl.steps"></div>
+    <div class="step-element-dot" ng-class="{'current-step':i.name === $ctrl.currentState,'step-complete':i.answer}" ng-repeat="i in $ctrl.steps track by $index"></div>
 </div>
