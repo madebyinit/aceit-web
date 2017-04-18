@@ -1,11 +1,12 @@
 {
   "login":{
-    "login":"login",
+    "login":"Login",
     "dont_have_an_account":"Don't have an account?",
     "register_now":"Register Now!",
     "jump_right_in":"Jump right in",
     "click_here":"click here!",
     "email":"Email",
+    "full_name":"Full name",
     "password":"Password",
     "reset_password":"Reset password",
     "sign_up":"Sign Up",

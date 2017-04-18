@@ -1,22 +1,22 @@
 import firebase from 'firebase';
 
 class ConnectionService {
-  constructor() {
+  constructor($rootScope) {
+    this.$rootScope = $rootScope;
     this.firebase = firebase;
     this.database = this.firebase.database();
-    this.userId = this.firebase.auth().currentUser.uid;
   }
 
   saveData(data){
-    return this.database.ref(this.userId).set(data);
+    return this.database.ref(this.$rootScope.user.uid).set(data);
   }
 
-  getData(obj){
-    return firebase.database().ref(this.userId).once('value').then((res)=>{
-      return res.val()[obj];
+  getData(){
+    return firebase.database().ref(this.$rootScope.user.uid).once('value').then((res)=>{
+      return res.val();
     });
   }
 }
 
-ConnectionService.$inject = [];
+ConnectionService.$inject = ['$rootScope'];
 export default ConnectionService;

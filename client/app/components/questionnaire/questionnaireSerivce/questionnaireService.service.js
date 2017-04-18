@@ -22,11 +22,13 @@ class QuestionnaireService {
   }
 
   _init(){
-    this.connection.getData('questionnaire').then((res)=>{
-      if(!_.isEmpty(res)){
-        this.$timeout(()=>{
-          _.map(this.steps,card=>_.assign(card, _.find(res, {name: card.name})));
-        },0);
+    this.connection.getData().then((res)=>{
+      if(_.get(res,'questionnaire')){
+        if(!_.isEmpty(res)){
+          this.$timeout(()=>{
+            _.map(this.steps,card=>_.assign(card, _.find(res, {name: card.name})));
+          },0);
+        }
       }
     })
   }

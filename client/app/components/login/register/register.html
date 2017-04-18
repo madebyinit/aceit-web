@@ -2,6 +2,10 @@
     <div class="form-title">{{::('login.sign_up' | translate)}}</div>
     <form>
         <div class="input-style">
+            <input type="text" class="form-input email" ng-model="$ctrl.fullName" ng-focus="$ctrl.validFullname = null" placeholder="{{::('login.full_name' | translate)}}">
+            <div class="error-message" ng-if="$ctrl.validFullname">{{$ctrl.validFullname}}</div>
+        </div>
+        <div class="input-style">
             <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
             <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
         </div>
