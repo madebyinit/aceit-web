@@ -1,5 +1,8 @@
+const CONNECTION = new WeakMap();
+
 class MainMenuController {
-  constructor($mdSidenav,$state) {
+  constructor($mdSidenav,$state,connection) {
+    CONNECTION.set(this, connection);
     this.$mdSidenav = $mdSidenav;
     this.$state = $state;
     this.toggleLeft = this._buildToggler('left');
@@ -14,5 +17,5 @@ class MainMenuController {
   }
 }
 
-MainMenuController.$inject = ['$mdSidenav','$state'];
+MainMenuController.$inject = ['$mdSidenav','$state','connection'];
 export default MainMenuController;
