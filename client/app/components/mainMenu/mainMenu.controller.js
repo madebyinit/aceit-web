@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 const CONNECTION = new WeakMap();
 
 class MainMenuController {
@@ -10,6 +11,14 @@ class MainMenuController {
 
   _buildToggler(componentId) {
     return ()=>this.$mdSidenav(componentId).toggle();
+  }
+
+  logout(){
+    firebase.auth().signOut().then((res)=> {
+      this.$state.go('loginView.login');
+    }).catch((error)=> {
+      console.log(error)
+    });
   }
 
   stateChange(state){
