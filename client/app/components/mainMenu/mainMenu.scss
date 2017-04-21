@@ -1,3 +1,5 @@
+@import "../../common/common";
+
 @mixin centering(){
   position: absolute;
   top: 50%;
@@ -22,14 +24,14 @@ md-input-container{
   .main-logo{
     width: 104.5px;
     height: 19.5px;
-    background-image: url('./img/aceit-logo.png');
+    background-image: url($cdnImage + '/aceit-logo.png');
     right: 6%;
     @include centering();
   }
   .open-menu{
     width: 20px;
     height: 20px;
-    background-image: url('./img/button.png');
+    background-image: url($cdnImage + '/button.png');
     background-size: 100%;
     @include centering();
     left: 6%;
