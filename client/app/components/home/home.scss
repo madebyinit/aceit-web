@@ -1,13 +1,49 @@
-.home-page-welcome {
-  text-align: center;
-  position: relative;
-  top: 150px;
-  font-size: 65px;
-}
-.logout-button {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 16px;
-  text-transform: uppercase;
+@import "../../common/common";
+
+.home-page{
+  background-color: #fff6eb;
+  height: 100%;
+  .home-header{
+    height: 50vh;
+    background-image: linear-gradient(to right, #20aecd, #208acd);
+    position: relative;
+    .home-header-image{
+      width: 100%;
+      height: 88%;
+      background: url('./img/top-comp-guy@2x.png') no-repeat 100% 100%;
+      background-size: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  .mid-section{
+    width: 70%;
+    margin: auto;
+    max-width: 1000px;
+    .first-vid-title{
+      @include title;
+      margin: 40px 0;
+    }
+    .arrow-down{
+      width: 30px;
+      height: 20px;
+      background: url('./img/icn-arrow-down@3x.png') no-repeat;
+      background-size: 100%;
+      margin: 100px auto;
+    }
+    .video-box{
+      width: 80%;
+      height: 400px;
+      margin: 40px auto;
+      box-shadow: 0 0 0 7px #fff6eb, 0 0 0 8px #dedede;
+      iframe{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .tools-title{
+      @include title;
+      margin-bottom: 20px;
+    }
+  }
 }

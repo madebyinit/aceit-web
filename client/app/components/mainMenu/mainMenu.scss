@@ -1,3 +1,9 @@
+@mixin centering(){
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .save-button{
     width: 100%;
     background-color: #3f51b5!important;
@@ -7,3 +13,26 @@
 md-input-container{
   width: 100%;
 }
+.main-menu-style {
+  height: 40px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.18);
+  position: absolute;
+  z-index: 999;
+  .main-logo{
+    width: 104.5px;
+    height: 19.5px;
+    background-image: url('./img/aceit-logo.png');
+    right: 6%;
+    @include centering();
+  }
+  .open-menu{
+    width: 20px;
+    height: 20px;
+    background-image: url('./img/button.png');
+    background-size: 100%;
+    @include centering();
+    left: 6%;
+  }
+}
+
