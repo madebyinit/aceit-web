@@ -1,0 +1,35 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Hello, {{$ctrl.fullName}}</h1>
+    <md-button ng-click="$ctrl.toggleLeft()" class="md-accent">
+      Close this Sidenav
+    </md-button>
+  </md-toolbar>
+
+  <md-content ng-if="!$ctrl.showSettings" layout-margin>
+    <md-list flex>
+      <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('home')">
+        Home Page
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-3-line" ng-click="null">
+        About
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('questionnaire')">
+        Questionnaire
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-3-line" ng-click="$ctrl.showSettings = true">
+        Settings
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <settings ng-if="$ctrl.showSettings"></settings>
+
+
+</md-sidenav>
+<md-button class="md-fab" ng-click="$ctrl.toggleLeft();$ctrl.showSettings = false" aria-label="Eat cake">
+  menu
+</md-button>
