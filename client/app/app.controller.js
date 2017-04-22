@@ -1,9 +1,11 @@
+import consts from './consts.js';
 import firebase from 'firebase';
 
 class AppController {
   constructor($state,$rootScope,notificationsService) {
     this.$state = $state;
     this.$rootScope = $rootScope;
+    this.$rootScope.imageCdn = consts.imageCdn;
     this.notificationsService = notificationsService;
     this._initFireBase();
     this._startApp();

@@ -10,7 +10,7 @@
     .home-header-image{
       width: 100%;
       height: 88%;
-      background: url($cdnImage + '/top-comp-guy@2x.png') no-repeat 100% 100%;
+      background: url($cdnImage + 'top-comp-guy@2x.png') no-repeat 100% 100%;
       background-size: 100%;
       position: absolute;
       bottom: 0;
@@ -27,7 +27,7 @@
     .arrow-down{
       width: 30px;
       height: 20px;
-      background: url($cdnImage + '/icn-arrow-down@3x.png') no-repeat;
+      background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
       background-size: 100%;
       margin: 100px auto;
     }
@@ -44,6 +44,115 @@
     .tools-title{
       @include title;
       margin-bottom: 20px;
+    }
+    .tools-section{
+      text-align: center;
+      .tool-set{
+        display: inline-flex;
+        margin: 20px 0;
+        .next-arrow{
+          background: url($cdnImage + 'icn-arrow-right@2x.png') no-repeat;
+          width: 20px;
+          height: 30px;
+          background-size: 80%;
+          position: relative;
+          top: 90px;
+          margin: 0 25px;
+        }
+        .title {
+          text-align: center;
+          margin-bottom: 20px;
+          color: $primaryColor;
+        }
+      }
+      .tools-text {
+        text-align: left;
+        color: $primaryColor;
+      }
+      .close-title {
+        margin: 40px 0;
+        position: relative;
+        .line {
+          height: 1px;
+          width: 100%;
+          @include topCenter;
+          background-color: #e6e6e6;
+        }
+        .title {
+          @include title;
+          font-size: 18px;
+          position: relative;
+          background-color: #fff6eb;
+          z-index: 9;
+          width: 55%;
+          margin: auto;
+        }
+      }
+    }
+  }
+  .lion-section{
+    height: 100vh;
+    width: 100%;
+    background: url($cdnImage + 'jungle-bg@2x.png') no-repeat fixed 100% 100%;
+    .stress {
+      margin-top: 15vh;
+    }
+    .section-style{
+      width: 50%;
+      margin: auto;
+      color: white;
+      text-align: center;
+      padding-top: 40px;
+      .title{
+        text-transform: uppercase;
+        font-size: 20px;
+      }
+      .video-box {
+        width: 450px;
+        margin: 20px auto;
+        height: 250px;
+        border: 1px solid white;
+        padding: 5px;
+        iframe{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .test-equals-lion {
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .para-text{
+        margin: 20px auto;
+        .marked{
+          font-weight: bold;
+        }
+        p{
+          margin: 0;
+        }
+      }
+    }
+  }
+  .last-section{
+    width: 50%;
+    margin: 60px auto;
+    text-align: center;
+    .title{
+      @include title();
+    }
+    p{
+      color: $primaryColor;
+    }
+    .lets-start {
+      width: 30%;
+      background-color: $primaryColor;
+      height: 40px;
+      border-radius: 3px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 30px;
     }
   }
 }
