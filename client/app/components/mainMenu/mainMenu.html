@@ -1,7 +1,7 @@
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
 
   <md-toolbar class="md-theme-indigo">
-    <h1 class="md-toolbar-tools">Hello, {{$ctrl.fullName}}</h1>
+    <h1 class="md-toolbar-tools">Howdy, {{::$ctrl.fullName}}</h1>
     <md-button ng-click="$ctrl.toggleLeft()" class="md-accent">
       Close this Sidenav
     </md-button>
@@ -23,6 +23,10 @@
       <md-divider></md-divider>
       <md-list-item class="md-3-line" ng-click="$ctrl.showSettings = true">
         Settings
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-3-line" ng-click="$ctrl.logout()">
+        Logout
       </md-list-item>
     </md-list>
   </md-content>

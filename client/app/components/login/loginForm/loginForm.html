@@ -1,6 +1,6 @@
 <div class="authentication-form login-form">
     <div class="form-title">{{::('login.login' | translate)}}</div>
-    <form>
+    <form ng-keyup="$event.keyCode == 13 && $ctrl.login()">
         <div class="input-style">
             <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
             <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>

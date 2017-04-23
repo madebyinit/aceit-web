@@ -26,7 +26,7 @@ class QuestionnaireService {
       if(_.get(res,'questionnaire')){
         if(!_.isEmpty(res)){
           this.$timeout(()=>{
-            _.map(this.steps,card=>_.assign(card, _.find(res, {name: card.name})));
+            _.map(this.steps,step=>_.assign(step, _.find(res.questionnaire, {name: step.name})));
           },0);
         }
       }

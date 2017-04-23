@@ -14,7 +14,12 @@ let homeModule = angular.module('home', [
   $stateProvider
     .state('home', {
       url: '/home',
-      component: 'home'
+      component: 'home',
+      resolve:{
+        result:($rootScope)=>{
+          return $rootScope.user;
+        }
+      }
     });
 })
 
