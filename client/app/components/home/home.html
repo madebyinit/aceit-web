@@ -1,5 +1,5 @@
 <main-menu></main-menu>
-<div class="home-page">
+<div class="home-page" id="home-page-id">
   <div class="home-header">
     <div class="home-header-image"></div>
   </div>
@@ -42,12 +42,14 @@
       </div>
     </div>
   </div>
-  <div class="lion-section">
+  <div class="lion-section" id="lion-section-view">
     <div class="section-style">
       <div class="title">{{'home.stress_come_from' | translate}}</div>
       <p>{{'home.suddenly_find_yourself' | translate}}</p>
-      <div class="video-box">
-        <iframe scrolling="no" allowTransparency="true" allowfullscreen frameborder="0" src="https://goanimate.com/player/embed/0Cs5XBW9h2G4"></iframe>
+      <div class="video-box lion-video" ng-class="{'lion-video-big':$ctrl.showLionVideo}">
+        <video class="lion-video" id="video1">
+          <source src="http://pwm.co.il/aceit/video/lion_vid.mp4" type="video/mp4">
+        </video>
       </div>
       <div class="test-equals-lion">{{'home.test_lion' | translate}}</div>
       <div class="para-text">
