@@ -16,25 +16,36 @@
       bottom: 0;
     }
   }
+  .flow-line {
+    width: 2px;
+    background-color: #e3e4e4;
+    margin: auto;
+  }
+  .first-line{
+    height: 40px;
+  }
+  .second-line {
+    height: 70px;
+  }
   .mid-section{
     width: 70%;
     margin: auto;
     max-width: 1000px;
     .first-vid-title{
       @include title;
-      margin: 40px 0;
+      margin: 10px 0;
     }
     .arrow-down{
       width: 30px;
       height: 20px;
       background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
       background-size: 100%;
-      margin: 100px auto;
+      margin: 30px auto;
     }
     .video-box{
       width: 80%;
       height: 400px;
-      margin: 40px auto;
+      margin: auto auto 7px;
       box-shadow: 0 0 0 7px #fff6eb, 0 0 0 8px #dedede;
       iframe{
         width: 100%;
@@ -155,7 +166,7 @@
   }
   .last-section{
     width: 50%;
-    margin: 60px auto;
+    margin: 20px auto 60px;
     text-align: center;
     .title{
       @include title();
