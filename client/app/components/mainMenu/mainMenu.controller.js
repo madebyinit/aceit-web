@@ -2,11 +2,17 @@ import firebase from 'firebase';
 const CONNECTION = new WeakMap();
 
 class MainMenuController {
-  constructor($mdSidenav,$state,connection) {
+  constructor($mdSidenav,$state,connection,firebaseService) {
     CONNECTION.set(this, connection);
     this.$mdSidenav = $mdSidenav;
+    this.firebaseService = firebaseService;
     this.$state = $state;
     this.toggleLeft = this._buildToggler('left');
+  }
+
+  $onInit(){
+    this.user = this.firebaseService.getUser();
+    this.fullName = this.user.displayName;
   }
 
   _buildToggler(componentId) {
@@ -14,11 +20,7 @@ class MainMenuController {
   }
 
   logout(){
-    firebase.auth().signOut().then((res)=> {
-      this.$state.go('loginView.login');
-    }).catch((error)=> {
-      console.log(error)
-    });
+    this.firebaseService.logout();
   }
 
   stateChange(state){
@@ -26,5 +28,5 @@ class MainMenuController {
   }
 }
 
-MainMenuController.$inject = ['$mdSidenav','$state','connection'];
+MainMenuController.$inject = ['$mdSidenav','$state','connection','firebaseService'];
 export default MainMenuController;

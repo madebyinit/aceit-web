@@ -12,10 +12,12 @@ class AppController {
   }
 
   _startApp(){
+    this.$state.go('loginView.login');
     firebase.auth().onAuthStateChanged((user)=> {
       if(user){
+        this.$rootScope.dataReady = true;
         this.$rootScope.user = user;
-        this.$state.go('home');
+        this.$state.go('home',{reload: true});
       } else {
         this.$state.go('loginView.login');
       }

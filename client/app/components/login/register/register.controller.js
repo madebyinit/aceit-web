@@ -9,7 +9,7 @@ class RegisterController {
   signUp(){
     if(this.email && this.password && this.fullName){
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((res)=>{
-        res.updateProfile({displayName: this.fullName}).then(()=>{
+        res.updateProfile({displayName: this.fullName}).then((user)=>{
           this.$state.transitionTo('home');
         });
       },(error)=>{

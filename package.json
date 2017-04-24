@@ -1,7 +1,7 @@
 {
-  "name": "ng6-starter",
+  "name": "aceit",
   "version": "0.0.1",
-  "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
+  "description": "aceit app",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
@@ -85,7 +85,7 @@
     "type": "git",
     "url": "https://github.com/angularclass/NG6-starter.git"
   },
-  "author": "AngularClass",
+  "author": "OrelO",
   "license": "Apache-2.0",
   "babel": {
     "plugins": [
