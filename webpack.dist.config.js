@@ -4,7 +4,7 @@ var config  = require('./webpack.config');
 
 config.output = {
   filename: '[name].bundle.js',
-  publicPath: 'https://aceitapp.s3.amazonaws.com/',
+  publicPath: 'http://app.aceitapp.net/',
   path: path.resolve(__dirname, 'dist')
 };
 
