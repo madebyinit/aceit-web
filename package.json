@@ -1,7 +1,7 @@
 {
   "name": "aceit",
   "version": "0.0.1",
-  "description": "aceit app",
+  "description": "Aceit app",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
