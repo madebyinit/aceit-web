@@ -3,6 +3,7 @@
 .home-page{
   background-color: #fff6eb;
   height: 100%;
+  background-image: url($cdnImage + 'bg-pattern.png');
   .home-header{
     height: 50vh;
     background-image: linear-gradient(to right, #20aecd, #208acd);
@@ -20,17 +21,12 @@
     width: 2px;
     background-color: #e3e4e4;
     margin: auto;
-  }
-  .first-line{
-    height: 40px;
-  }
-  .second-line {
-    height: 70px;
+    height: 30px;
   }
   .mid-section{
     width: 70%;
     margin: auto;
-    max-width: 1000px;
+    max-width: 760px;
     .first-vid-title{
       @include title;
       margin: 10px 0;
@@ -40,10 +36,10 @@
       height: 20px;
       background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
       background-size: 100%;
-      margin: 30px auto;
+      margin: 15px auto;
     }
     .video-box{
-      width: 80%;
+      width: 710px;
       height: 400px;
       margin: auto auto 7px;
       box-shadow: 0 0 0 7px #fff6eb, 0 0 0 8px #dedede;
@@ -67,7 +63,7 @@
           height: 30px;
           background-size: 80%;
           position: relative;
-          top: 90px;
+          top: 70px;
           margin: 0 25px;
         }
         .title {
@@ -91,7 +87,7 @@
         }
         .title {
           @include title;
-          font-size: 18px;
+          font-size: 17px;
           position: relative;
           background-color: #fff6eb;
           z-index: 9;
@@ -99,15 +95,24 @@
           margin: auto;
         }
       }
+      .tool{
+        img{
+          width: 100px;
+        }
+      }
     }
   }
   .lion-section{
     height: 100vh;
+    min-height: 840px;
     width: 100%;
     background: url($cdnImage + 'jungle-bg@2x.png') no-repeat fixed 100% 100%;
     overflow: scroll;
     .stress {
       margin-bottom: 30px;
+      img{
+        width: 140px;
+      }
     }
     .lion-video{
       transition: all 0.3s ease;
@@ -133,9 +138,10 @@
       color: white;
       text-align: center;
       padding-top: 40px;
+      min-width: 1000px;
       .title{
-        text-transform: uppercase;
-        font-size: 20px;
+        @include title();
+        color: white;
       }
       .video-box {
         width: 450px;
