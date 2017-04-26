@@ -1,4 +1,5 @@
 const CONSTS = {
-  imageCdn:'http://pwm.co.il/aceit/img/'
+  imageCdn:'http://cdn.aceitapp.net/img/',
+  videoCdn:'http://cdn.aceitapp.net/video/'
 };
 export default CONSTS;

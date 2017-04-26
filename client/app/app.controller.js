@@ -6,6 +6,7 @@ class AppController {
     this.$state = $state;
     this.$rootScope = $rootScope;
     this.$rootScope.imageCdn = consts.imageCdn;
+    this.$rootScope.videoCdn = consts.videoCdn;
     this.notificationsService = notificationsService;
     this._initFireBase();
     this._startApp();
