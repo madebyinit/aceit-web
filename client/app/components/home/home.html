@@ -52,7 +52,7 @@
       <p>{{'home.suddenly_find_yourself' | translate}}</p>
       <div class="video-box lion-video" ng-class="{'lion-video-big':$ctrl.showLionVideo}">
         <video class="lion-video" id="video1">
-          <source src="http://pwm.co.il/aceit/video/lion_vid.mp4" type="video/mp4">
+          <source src="{{$root.videoCdn}}lion_vid.mp4" type="video/mp4">
         </video>
       </div>
       <div class="test-equals-lion">{{'home.test_lion' | translate}}</div>
