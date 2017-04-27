@@ -1,0 +1,32 @@
+<main-menu></main-menu>
+<div class="physical">
+  <div class="physical-content">
+    <div class="physical-title">
+      Physical Tools
+    </div>
+    <div class="physical-sub-title">
+      <div class="main">These are the tools that will help you relax and feel in control</div>
+      <div class="second">Not every tool works for everyone - so try them and choose what works for you</div>
+    </div>
+    <div class="tools-menu">
+      <md-nav-bar
+              md-selected-nav-item="$ctrl.currentNavItem"
+              nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-click="$ctrl.goto('breathing')" name="breathing">
+          Breathing
+        </md-nav-item>
+        <md-nav-item md-nav-click="$ctrl.goto('neck')" name="neck">
+          Neck and Shoulders
+        </md-nav-item>
+        <md-nav-item md-nav-click="$ctrl.goto('imagery')" name="imagery">
+          Imagery
+        </md-nav-item>
+      </md-nav-bar>
+    </div>
+    <div ng-switch="$ctrl.currentNavItem">
+      <div class="switch-animate" ng-switch-when="breathing">1</div>
+      <div class="switch-animate" ng-switch-when="neck">2</div>
+      <imagery class="switch-animate" ng-switch-when="imagery"></imagery>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+@import "../../common/common";
+
+.physical{
+  width: 100%;
+  background-image: linear-gradient(to bottom, #20aecd, #f9bfc4);
+  height: auto;
+  .physical-content{
+    width: 900px;
+    padding-top: 40px;
+    margin: auto;
+    .physical-title{
+      @include title();
+      color: white;
+      margin: 30px auto;
+    }
+    .physical-sub-title{
+      .main{
+        @include title();
+        font-size: 24px;
+        color: $secondaryColor;
+      }
+      .second{
+        @include title();
+        font-size: 17px;
+        color: $secondaryColor;
+      }
+    }
+  }
+  .tools-menu{
+    margin-top: 30px;
+    .md-nav-item:first-of-type {
+      margin-left: 0!important;
+    }
+    .md-nav-bar{
+      height: 68px;
+      border-color: rgba(255, 255, 255, 0.12);
+      border-width: 0 0 3px;
+    }
+    .md-button.md-accent{
+      color: rgba(255, 255, 255, 0.31);
+      font-weight: bold;
+      padding: 22px 65px;
+      font-size: 22px;
+      margin: 0;
+    }
+    .md-active {
+      color: white!important;
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+    md-nav-bar md-nav-ink-bar {
+      color: rgb(255, 255, 255);
+      background: rgb(255, 255, 255);
+    }
+  }
+  .switch-animate{
+    display: block;
+    &.ng-enter{
+      animation: 0.25s animateEnter ease;
+    }
+    &.ng-leave{
+      animation: 0.25s animateLeave ease;
+    }
+  }
+}
+
+@keyframes animateEnter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animateLeave {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
