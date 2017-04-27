@@ -1,9 +1,8 @@
 @import "../../common/common";
 
 .home-page{
-  background-color: #fff6eb;
   height: 100%;
-  background-image: url($cdnImage + 'bg-pattern.png');
+  background: #fff6eb url($cdnImage + 'bg-pattern.png');
   .home-header{
     height: 50vh;
     background-image: linear-gradient(to right, #20aecd, #208acd);
@@ -75,6 +74,9 @@
       .tools-text {
         text-align: left;
         color: $primaryColor;
+        span{
+          font-weight: bold;
+        }
       }
       .close-title {
         margin: 40px 0;
@@ -89,10 +91,12 @@
           @include title;
           font-size: 17px;
           position: relative;
-          background-color: #fff6eb;
           z-index: 9;
           width: 55%;
           margin: auto;
+          background-image: url($cdnImage + 'bg-pattern.png');
+          background-color: #fff6eb;
+          background-size: 959px;
         }
       }
       .tool{
@@ -107,7 +111,6 @@
     min-height: 840px;
     width: 100%;
     background: url($cdnImage + 'jungle-bg@2x.png') no-repeat fixed 100% 100%;
-    overflow: scroll;
     .stress {
       margin-bottom: 30px;
       img{
@@ -132,6 +135,9 @@
       width: 100%;
       height: 100%;
     }
+    .remove-transform{
+      transform: none!important;
+    }
     .section-style{
       width: 50%;
       margin: auto;
@@ -139,6 +145,7 @@
       text-align: center;
       padding-top: 40px;
       min-width: 1000px;
+      @include topCenter(relative);
       .title{
         @include title();
         color: white;
@@ -181,11 +188,10 @@
       color: $primaryColor;
     }
     .lets-start {
-      width: 30%;
-      min-width: 300px;
+      min-width: 120px;
       background-color: $primaryColor;
-      height: 40px;
-      border-radius: 3px;
+      height: 120px;
+      border-radius: 50%;
       color: white;
       font-weight: bold;
       font-size: 16px;
