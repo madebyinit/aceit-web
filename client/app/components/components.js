@@ -4,6 +4,7 @@ import About from './about/about';
 import loginModule from './login/login';
 import mainMenuModule from './mainMenu/mainMenu';
 import questionnaireModule from './questionnaire/questionnaire';
+import concentrationModule from './concentration/concentration';
 import physicalModule from './physical/physical';
 
 let componentModule = angular.module('app.components', [
@@ -12,6 +13,7 @@ let componentModule = angular.module('app.components', [
   loginModule,
   mainMenuModule,
   questionnaireModule,
+  concentrationModule,
   physicalModule
 ])
 
