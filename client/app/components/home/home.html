@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="tools-text">
-        <p>{{'home.the_first_thing' | translate}}</p>
+        <p>{{'home.the_first_thing' | translate}} <span>{{'home.you_will_build' | translate}}</span>{{'home.calm_and_confidence' | translate}}</p>
         <p>{{'home.you_will_have'| translate}}</p>
       </div>
       <div class="close-title">
@@ -47,14 +47,14 @@
     </div>
   </div>
   <div class="lion-section" id="lion-section-view">
-    <div class="section-style">
+    <div class="section-style" ng-class="{'remove-transform':$ctrl.showLionVideo}">
       <div class="title">{{'home.stress_come_from' | translate}}</div>
-      <p>{{'home.suddenly_find_yourself' | translate}}</p>
       <div class="video-box lion-video" ng-class="{'lion-video-big':$ctrl.showLionVideo}">
         <video class="lion-video" id="video1">
           <source src="{{$root.videoCdn}}lion_vid.mp4" type="video/mp4">
         </video>
       </div>
+      <p>{{'home.suddenly_find_yourself' | translate}}</p>
       <div class="test-equals-lion">{{'home.test_lion' | translate}}</div>
       <div class="para-text">
         <p>{{'home.your_body_automatically' | translate}}</p>
