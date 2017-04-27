@@ -135,6 +135,14 @@ and (max-device-width: 450px) {
   }
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 @keyframes fadeout {
   from {

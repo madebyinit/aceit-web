@@ -58,5 +58,15 @@
     "options_for_survival":"You now have 3 options for survival:",
     "fight_the_lion":"You can fight the lion  /  You can run away from the lion  / You can freeze and hope the lion loses interest",
     "even_though_many":"Even though many years have passed since we worry about meeting  a lion, our bodies still function in the same way when we feel threatened. And because this TEST is so important, our bodies respond as if  the lion is after us."
+  },
+  "imagery":{
+    "visualizing":"Visualizing a 'good' and 'safe' place in your mind can be a powerful tool in managing stress.",
+    "deep_breaths":"Take 3 deep breaths as you picture this",
+    "hover_me":"Hover me",
+    "my_imagery":"My Imagery",
+    "relaxing_imagery":"Choose a safe and relaxing imagery that works for you",
+    "how_do_you":"How do you do this during the test?",
+    "chocolate_chip":"Close your eyes and imagine that you came home to the smell of chocolate chip cookies baking. You take them out of the oven and feel their warmth. You take a bite and the chocolate melts in your mouth.",
+    "island_paradise_listening":"Close your eyes and imagine you are on an island paradise listening to the local music, feeling the wind on your body and holding a delicious cold drink."
   }
 }
