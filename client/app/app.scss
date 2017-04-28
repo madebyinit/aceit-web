@@ -28,4 +28,8 @@ div,input,button,span,p,a{
   border-radius: 50%!important;
   white-space: normal!important;
   line-height: 17px!important;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2)!important;
+}
+.button-style[disabled] {
+  opacity: 0.3!important;
 }

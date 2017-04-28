@@ -4,7 +4,7 @@
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4);
   height: auto;
-  min-height: 1300px;
+  min-height: 1350px;
   .physical-content{
     width: 900px;
     padding-top: 40px;
@@ -66,6 +66,54 @@
     &.ng-leave{
       animation: 0.25s animateLeave ease;
     }
+  }
+  .line-element {
+    margin: 20px auto;
+    text-align: center;
+    .line{
+      width: 100%;
+      height: 1px;
+      background-color: $borderColor;
+    }
+    .line-element-title{
+      margin: 10px auto;
+      @include title;
+      font-size: 26px;
+      color: $borderColor;
+    }
+  }
+  .summary-button-container{
+    text-align: center;
+    margin-top: 40px;
+  }
+  .button-style{
+    transition: all 0.3s ease;
+  }
+  .button-style:not([disabled]):hover{
+    background: white;
+    transform: scale(1.03);
+    opacity: 0.8;
+  }
+  .summary-button-style{
+    background-color: white;
+    color: $secondaryColor;
+    font-weight: bold;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    img{
+      width: 25px;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+  .arrow-down{
+    width: 30px;
+    height: 20px;
+    background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
+    background-size: 100%;
+    margin: 25px auto 10px;
   }
 }
 

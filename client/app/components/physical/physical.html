@@ -1,12 +1,10 @@
 <main-menu></main-menu>
 <div class="physical">
   <div class="physical-content">
-    <div class="physical-title">
-      Physical Tools
-    </div>
+    <div class="physical-title">{{'physical.physical_tools' | translate}}</div>
     <div class="physical-sub-title">
-      <div class="main">These are the tools that will help you relax and feel in control</div>
-      <div class="second">Not every tool works for everyone - so try them and choose what works for you</div>
+      <div class="main">{{'physical.help_you_relax' | translate}}</div>
+      <div class="second">{{'physical.works_for_everyone' | translate}}</div>
     </div>
     <div class="tools-menu">
       <md-nav-bar
@@ -24,7 +22,7 @@
       </md-nav-bar>
     </div>
     <div class="switch-container" ng-switch="$ctrl.currentNavItem">
-      <div class="switch-animate" ng-switch-when="breathing">1</div>
+      <breathing class="switch-animate" ng-switch-when="breathing"></breathing>
       <neck-and-shoulders class="switch-animate" ng-switch-when="neck"></neck-and-shoulders>
       <imagery class="switch-animate" ng-switch-when="imagery"></imagery>
     </div>

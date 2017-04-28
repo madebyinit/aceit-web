@@ -80,44 +80,23 @@
       }
     }
   }
-  .during-the-test {
-    margin: 20px auto;
-    text-align: center;
-    .line{
-      width: 100%;
-      height: 1px;
-      background-color: $borderColor;
-    }
-    .during-the-test-title{
-      margin: 10px auto;
-      @include title;
-      font-size: 26px;
-      color: $borderColor;
-    }
-  }
   .last-section{
     text-align: center;
     .choose-a-safe{
       color: $borderColor;
     }
-    .arrow-down{
-      width: 30px;
-      height: 20px;
-      background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
-      background-size: 100%;
-      margin: 25px auto 10px;
-    }
-    .my-imagery {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background-image: linear-gradient(to top, #299eb8, #0e7086);
+    .button-section{
       margin-bottom: 30px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      white-space: normal;
-      line-height: 21px;
+      position: relative;
+      .my-imagery {
+        background-image: linear-gradient(to top, #299eb8, #0e7086);
+        color: white;
+        font-weight: bold;
+      }
+      .summary-button-style{
+        position: absolute;
+        left: 50px;
+      }
     }
   }
 }

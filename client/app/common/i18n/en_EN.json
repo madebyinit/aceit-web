@@ -59,6 +59,11 @@
     "fight_the_lion":"You can fight the lion  /  You can run away from the lion  / You can freeze and hope the lion loses interest",
     "even_though_many":"Even though many years have passed since we worry about meeting  a lion, our bodies still function in the same way when we feel threatened. And because this TEST is so important, our bodies respond as if  the lion is after us."
   },
+  "physical":{
+    "physical_tools":"Physical Tools",
+    "help_you_relax":"These are the tools that will help you relax and feel in control",
+    "works_for_everyone":"Not every tool works for everyone - so try them and choose what works for you"
+  },
   "imagery":{
     "visualizing":"Visualizing a 'good' and 'safe' place in your mind can be a powerful tool in managing stress.",
     "deep_breaths":"Take 3 deep breaths as you picture this",
@@ -73,5 +78,14 @@
     "my_summary":"My Summary",
     "another_effective":"Another effective exercise to release stress is to bring your shoulders up to your ears and then let them fall.",
     "then_move_your":"Then move your head in a circle to the left 3 times and then to the right 3 times."
+  },
+  "breathing":{
+    "breathe_deeply":"The key to deep breathing is to breathe deeply from the belly, getting as much fresh air as possible in your lungs. The more oxygen you get, the less tense, short of breath, and anxious you feel.",
+    "dramatically":"Research shows that deep breathing can reduce a high pulse dramatically!",
+    "deep_breathing":"The most effective tool is deep breathing.",
+    "here_is_how":"Here is how it is done:",
+    "inhale":"Inhale through your nose to the count of 3 as the shape expands",
+    "exhale":"Exhale though your mouth to the count of 6 as it contracts",
+    "especially_during":"You, like most people, especially during the test, are physically stressed. This is when your heart pounds, you sweat and your stomach feels tight."
   }
 }
