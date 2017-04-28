@@ -1,0 +1,51 @@
+@import "../../../common/common";
+
+.neck-and-shoulders{
+  width: 90%;
+  margin: auto;
+  .neck-and-shoulders-section {
+    height: 170px;
+    color: white;
+    border-bottom: 1px solid;
+    padding: 40px 0;
+    &:first-child{
+      margin-top: 30px;
+    }
+    .neck-and-shoulders-text {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      @include topCenter(relative);
+    }
+    .neck-and-shoulders-img {
+      display: inline-block;
+      width: 49%;
+      text-align: center;
+      .shoulders-img{
+        width: 320px;
+      }
+      .neck-img{
+        width: 220px;
+        padding-top: 15px;
+      }
+    }
+  }
+  .summary-button-container{
+    text-align: center;
+    margin-top: 40px;
+    .button-style{
+      background-color: white;
+      color: $secondaryColor;
+      font-weight: bold;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+      img{
+        width: 25px;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import physicalComponent from './physical.component';
 import imageryComponent from './imagery/imagery';
+import neckAndShouldersComponent from './neckAndShoulders/neckAndShoulders';
 
 let physicalModule = angular.module('physical', [
   uiRouter
@@ -20,6 +21,7 @@ let physicalModule = angular.module('physical', [
   })
 
 .component('physical', physicalComponent)
+.component('neckAndShoulders', neckAndShouldersComponent)
 .component('imagery', imageryComponent)
 
 .name;

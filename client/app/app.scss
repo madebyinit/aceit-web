@@ -22,4 +22,10 @@ div,input,button,span,p,a{
     background-color: rgb(197, 220, 233);
   }
 }
-
+.button-style {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%!important;
+  white-space: normal!important;
+  line-height: 17px!important;
+}
