@@ -28,23 +28,11 @@
         width: 220px;
         padding-top: 15px;
       }
-    }
-  }
-  .summary-button-container{
-    text-align: center;
-    margin-top: 40px;
-    .button-style{
-      background-color: white;
-      color: $secondaryColor;
-      font-weight: bold;
-      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-      img{
-        width: 25px;
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        margin: auto;
+      .clock{
+        margin-top: 20px;
+        img{
+          vertical-align: middle;
+        }
       }
     }
   }
