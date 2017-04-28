@@ -4,6 +4,7 @@
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4);
   height: auto;
+  min-height: 1300px;
   .physical-content{
     width: 900px;
     padding-top: 40px;
@@ -52,8 +53,13 @@
       background: rgb(255, 255, 255);
     }
   }
+  .switch-container{
+    position: relative;
+  }
   .switch-animate{
     display: block;
+    position: absolute;
+    width: 100%;
     &.ng-enter{
       animation: 0.25s animateEnter ease;
     }

@@ -9,7 +9,7 @@ class AppController {
     this.$rootScope.videoCdn = consts.videoCdn;
     this.notificationsService = notificationsService;
     this._initFireBase();
-    this._startApp();
+    // this._startApp();
   }
 
   _startApp(){
