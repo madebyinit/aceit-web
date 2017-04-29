@@ -1,16 +1,24 @@
 import firebase from 'firebase';
 
 class ConnectionService {
-  constructor($rootScope,firebaseService) {
-    this.$rootScope = $rootScope;
+  constructor(firebaseService,stateChangeService) {
     this.firebase = firebase;
+    this.stateChangeService = stateChangeService;
     this.firebaseService = firebaseService;
     this.database = this.firebase.database();
-    this.user = this.firebaseService.getUser();
+    this.user = this.stateChangeService.getUserData();
+    this.userPromise = {};
   }
 
-  saveData(data){
-    return this.database.ref(this.user.uid).set(data);
+  getUserPromise(){
+    if(_.isEmpty(this.userPromise)){
+      this.userPromise = this.getData();
+    }
+    return this.userPromise;
+  }
+
+  saveData(data,path){
+    return this.database.ref(`${this.user.uid}/${path}`).set(data);
   }
 
   getData(){
@@ -20,5 +28,5 @@ class ConnectionService {
   }
 }
 
-ConnectionService.$inject = ['$rootScope','firebaseService'];
+ConnectionService.$inject = ['firebaseService','stateChangeService'];
 export default ConnectionService;

@@ -35,12 +35,12 @@ class QuestionnaireService {
 
   nextStep(){
     if(this.stepIndex === (this.steps.length-1)){
-      this.connection.saveData({questionnaire:this.steps});
+      this.connection.saveData(this.steps,'questionnaire');
       this.$state.go('home');
     }else{
       this.stepIndex++;
       this.currentState = this.steps[this.stepIndex];
-      this.connection.saveData({questionnaire:this.steps});
+      this.connection.saveData(this.steps,'questionnaire');
     }
   }
 
