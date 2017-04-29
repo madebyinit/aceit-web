@@ -61,10 +61,12 @@ class HomeController {
       if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
         that.$timeout(()=>{
           that.showLionVideo = true;
+          document.getElementsByTagName('body')[0].style.overflow = 'hidden';
           myVideo.play();
           that.$timeout(()=>{
             this.$document.unbind('scroll');
             that.showLionVideo = false;
+            document.getElementsByTagName('body')[0].style.overflow = '';
           },4500)
         },0);
       }
