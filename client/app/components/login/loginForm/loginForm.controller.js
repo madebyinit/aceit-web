@@ -1,8 +1,9 @@
 import firebase from 'firebase';
 
 class LoginFormController {
-  constructor($state,notificationsService,progressLinear) {
+  constructor($state,notificationsService,progressLinear,stateChangeService) {
     this.$state = $state;
+    this.stateChangeService = stateChangeService;
     this.notificationsService = notificationsService;
     this.progressLinear = progressLinear;
   }
@@ -11,6 +12,7 @@ class LoginFormController {
     if(this.email && this.password){
       this.progressLinear.showProgress();
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((res)=>{
+        this.stateChangeService.saveUserData(res);
         this.progressLinear.hideProgress();
         this.$state.transitionTo('home');
       },(error)=>{
@@ -24,5 +26,5 @@ class LoginFormController {
   }
 }
 
-LoginFormController.$inject = ['$state','notificationsService','progressLinear'];
+LoginFormController.$inject = ['$state','notificationsService','progressLinear','stateChangeService'];
 export default LoginFormController;

@@ -1,5 +1,5 @@
 <div class="dialog-element" ng-if="$ctrl.showDialog">
-    <div class="close-dialog" ng-click="$ctrl.showDialog = false"><img ng-src="{{$root.imageCdn}}close.png"></div>
+    <div class="close-dialog" ng-if="!$ctrl.hideExit" ng-click="$ctrl.showDialog = false"><img ng-src="{{$root.imageCdn}}close.png"></div>
     <div class="dialog-element-body">
         <div class="dialog-header">{{:: ($ctrl.headerTitle | translate)}}</div>
         <div class="dialog-input">

@@ -73,6 +73,18 @@
     <div class="title">{{'home.stressed_is_normal' | translate}}</div>
     <p>{{'home.take_advantage_of' | translate}}</p>
     <div class="flow-line first-line"></div>
-    <md-button class="lets-start">{{'home.lets_do_it' | translate}}</md-button>
+    <a ui-sref="questionnaire">
+      <md-button class="lets-start">{{'home.lets_do_it' | translate}}</md-button>
+    </a>
   </div>
 </div>
+<dialog-element
+        show-dialog="$ctrl.showWelcomeDialog"
+        is-disabled-input="true"
+        hide-exit="true"
+        return-value="$ctrl.saveWord(val)"
+        header-title="Welcome to Ace it"
+        button-text="Save & close"
+        input-title="Can you tell us what's your name?"
+        input-placeholder="Type your full name here please :)"
+></dialog-element>

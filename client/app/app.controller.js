@@ -2,27 +2,19 @@ import consts from './consts.js';
 import firebase from 'firebase';
 
 class AppController {
-  constructor($state,$rootScope,notificationsService) {
+  constructor($state,$rootScope,notificationsService,$transitions,stateChangeService) {
     this.$state = $state;
     this.$rootScope = $rootScope;
     this.$rootScope.imageCdn = consts.imageCdn;
     this.$rootScope.videoCdn = consts.videoCdn;
     this.notificationsService = notificationsService;
+    this.stateChangeService = stateChangeService;
     this._initFireBase();
     this._startApp();
   }
 
   _startApp(){
-    this.$state.go('loginView.login');
-    firebase.auth().onAuthStateChanged((user)=> {
-      if(user){
-        this.$rootScope.dataReady = true;
-        this.$rootScope.user = user;
-        this.$state.go('home',{reload: true});
-      } else {
-        this.$state.go('loginView.login');
-      }
-    });
+    this.stateChangeService.stateChange();
   }
 
   _initFireBase(){
@@ -36,10 +28,10 @@ class AppController {
     firebase.initializeApp(config);
   }
 
-  static AppFactory($state,$rootScope,notificationsService) {
-    return new AppController($state,$rootScope,notificationsService);
+  static AppFactory($state,$rootScope,notificationsService,$transitions,stateChangeService) {
+    return new AppController($state,$rootScope,notificationsService,$transitions,stateChangeService);
   }
 }
 
-AppController.AppFactory.$inject = ['$state','$rootScope','notificationsService'];
+AppController.AppFactory.$inject = ['$state','$rootScope','notificationsService','$transitions','stateChangeService'];
 export default AppController.AppFactory;

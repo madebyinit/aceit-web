@@ -1,17 +1,55 @@
 class HomeController {
-  constructor($translate,firebaseService,$document,$timeout) {
+  constructor($translate,$document,$timeout,connection) {
     this.$translate = $translate;
     this.$document = $document;
-    this.user = firebaseService.getUser();
     this.$timeout = $timeout;
-    this.userTitle = this.$translate.instant('home.you_getting_ready',{user:this.user.displayName});
+    this.connection = connection;
   }
 
   $onInit(){
+    this.getUserData();
     this.showLionVideo = false;
     angular.element(document).ready(()=>{
       this._scroll();
     });
+  }
+
+  getUserData(){
+    this.connection.getUserPromise().then((res)=>{
+      this.user = res;
+      this._userInit();
+    })
+  }
+
+  saveWord(name){
+    this.connection.saveData(name,'name').then((res)=>{
+      this._closeWelcomeDialog();
+      this.getUserData();
+    },(error)=>{
+      console.log(error);
+    })
+  }
+
+  _userInit(){
+    if(_.get(this.user,'name')){
+      this.$timeout(()=>{
+        this.userTitle = this.$translate.instant('home.you_getting_ready',{user:_.get(this.user,'name')});
+      },0);
+    }else{
+      this.$timeout(()=>{
+        this._showWelcomeDialog();
+      },0);
+    }
+  }
+
+  _closeWelcomeDialog(){
+    this.showWelcomeDialog = false;
+    document.getElementsByTagName('body')[0].style.overflow = '';
+  }
+
+  _showWelcomeDialog(){
+    this.showWelcomeDialog = true;
+    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
   }
 
   _scroll(){
@@ -34,5 +72,5 @@ class HomeController {
   }
 
 }
-HomeController.$inject = ['$translate','firebaseService','$document','$timeout'];
+HomeController.$inject = ['$translate','$document','$timeout','connection'];
 export default HomeController;
