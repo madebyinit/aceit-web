@@ -1,0 +1,113 @@
+@import "../../common";
+
+.dialog-element{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.41);
+  top:0;
+  left: 0;
+  z-index: 500;
+  .dialog-element-body {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 600;
+    text-align: center;
+    overflow: hidden;
+    background: white url($cdnImage + 'bg-pattern.png');
+  }
+  &.ng-enter{
+    animation: 0.3s fadein ease;
+    .dialog-element-body, .close-dialog{
+      animation-delay: 2s;
+      animation: 0.3s growUp ease;
+    }
+  }
+  &.ng-leave{
+    animation: 0.3s fadeOut ease;
+    .dialog-element-body, .close-dialog{
+      animation: 0.3s growDown ease;
+    }
+  }
+  .dialog-header {
+    height: 100px;
+    background-color: rgba(119, 226, 247, 0.32);
+    line-height: 100px;
+    @include title;
+    color: $secondaryColor;
+    font-size: 23px;
+  }
+  .save-and-close-button{
+    padding: 25px;
+    background-image: linear-gradient(to top, #299eb8, #0e7086);
+    color: white;
+  }
+  .close-dialog {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-25%);
+    right: 0;
+    left: 500px;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+    img{
+      vertical-align: -webkit-baseline-middle;
+      width: 15px;
+    }
+  }
+  .dialog-input {
+    padding: 100px 0 80px;
+    .dialog-input-title {
+      margin-bottom: 10px;
+      color: $primaryColor;
+    }
+    input {
+      width: 300px;
+      height: 35px;
+      border-radius: 3px;
+      border: 1px solid #c5c5c5;
+      text-align: center;
+      color: $secondaryColor;
+      &::-webkit-input-placeholder {
+        color: #c5c5c5;
+      }
+    }
+  }
+}
+
+dialog-element{
+  display: block;
+}
+
+@keyframes growUp {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes growDown {
+  from {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+}

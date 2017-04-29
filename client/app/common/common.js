@@ -9,7 +9,8 @@ let commonModule = angular.module('app.common', [
   notificationsServiceModule.name,
   connectionServiceModule.name,
   firebaseServiceModule.name,
-  progressLinearServiceModule.name
+  progressLinearServiceModule.name,
+  uiElementsModule
 ])
 .name;
 
