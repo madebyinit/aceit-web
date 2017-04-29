@@ -93,20 +93,6 @@
     transform: scale(1.03);
     opacity: 0.8;
   }
-  .summary-button-style{
-    background-color: white;
-    color: $secondaryColor;
-    font-weight: bold;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-    img{
-      width: 25px;
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-  }
   .arrow-down{
     width: 30px;
     height: 20px;

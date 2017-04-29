@@ -13,8 +13,8 @@ let componentModule = angular.module('app.components', [
   loginModule,
   mainMenuModule,
   questionnaireModule,
-  concentrationModule,
-  physicalModule
+  physicalModule,
+  concentrationModule
 ])
 
 .name;

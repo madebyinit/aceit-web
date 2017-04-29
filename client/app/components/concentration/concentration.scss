@@ -6,14 +6,13 @@
   background-image: linear-gradient(to bottom, #20aecd, #f6d796);
   .concentration-content {
     width: 900px;
-    height: 1000px;
+    height: auto;
     margin: auto;
     padding-top: 40px;
     .concentration-title {
       @include title;
       color: white;
-      margin-top: 30px;
-      margin: auto;
+      margin: 30px auto;
     }
     .concentration-sub-title {
       margin-top: 10px;
@@ -36,20 +35,35 @@
 
     }
     .target {
-      height: 52.5px;
+      height: 70px;
       display: block;
-      width: 52.5px;
+      width: 70px;
       margin: 20px auto;
     }
-    .concentration-video {
-      width: 80%;
-      height: 400px;
-      background-color: white;
+    .line-var {
+      height: 25px;
+      width: 1px;
       margin: auto;
-
+      background-color: $lineColor;
+    }
+    .concentration-video {
+      width: 720px;
+      height: 400px;
+      background-color: transparent;
+      margin: auto;
+      position: relative;
+      border: 1px solid $lineColor;
+      iframe{
+        @include topCenter;
+        width: 710px;
+        height: 390px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
     }
     .bottom-title {
-      margin: 20px;
+      margin: 20px auto;
       .concentration-sub-title {
         margin: 10px;
       }
@@ -62,26 +76,41 @@
       border-radius: 10px;
     }
     .concentration-instruction{
-      font-size: 13px;
+      font-size: 16px;
       color: #0e7086;
-      display: inline-flex;
-      .arrow{
-        border: solid #0e7086;
-        border-width: 0px 2px 2px 0;
+      width: 80%;
+      margin: auto;
+      &>div{
         display: inline-block;
-        height: 20px;
-        width: 20px;
-        -webkit-transform: rotate(-45deg);
+      }
+      p{
+        margin: 5px;
+      }
+      .arrow{
+        background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
+        height: 30px;
+        width: 30px;
+        background-size: 100%;
+        transform: rotate(-90deg);
       }
       .concentration-step1{
-        position: absolute;
-        left:0;
+        padding-right: 50px;
       }
       .concentration-step2{
-        position: absolute;
-        left: 100px;
+        padding-left: 30px;
       }
     }
 
+  }
+  .button-section{
+    width: 80%;
+    margin: 30px auto 0;
+    padding-bottom: 40px;
+  }
+  .info {
+    position: absolute;
+    right: 0;
+    left: 130px;
+    margin: auto;
   }
 }

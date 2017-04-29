@@ -1,18 +1,22 @@
-import firebase from 'firebase';
 const CONNECTION = new WeakMap();
 
 class MainMenuController {
-  constructor($mdSidenav,$state,connection,firebaseService,stateChangeService) {
+  constructor($mdSidenav,$state,connection,stateChangeService) {
     CONNECTION.set(this, connection);
     this.$mdSidenav = $mdSidenav;
-    this.firebaseService = firebaseService;
     this.stateChangeService = stateChangeService;
     this.$state = $state;
     this.toggleLeft = this._buildToggler('left');
   }
 
   $onInit(){
+    this._getUser();
+  }
 
+  _getUser(){
+    CONNECTION.get(this).getUserPromise().then((res)=>{
+      this.user = res;
+    })
   }
 
   _buildToggler(componentId) {
@@ -28,5 +32,5 @@ class MainMenuController {
   }
 }
 
-MainMenuController.$inject = ['$mdSidenav','$state','connection','firebaseService','stateChangeService'];
+MainMenuController.$inject = ['$mdSidenav','$state','connection','stateChangeService'];
 export default MainMenuController;
