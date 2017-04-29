@@ -1,4 +1,5 @@
 {
+  "save_close":"Save & close",
   "login":{
     "login":"Login",
     "dont_have_an_account":"Don't have an account?",
@@ -68,6 +69,9 @@
     "visualizing":"Visualizing a 'good' and 'safe' place in your mind can be a powerful tool in managing stress.",
     "deep_breaths":"Take 3 deep breaths as you picture this",
     "hover_me":"Hover me",
+    "your_title":"Type your title of your imagery",
+    "my_imagery_word":"My imagery word is:",
+    "your_imagery":"Choose your imagery",
     "my_imagery":"My Imagery",
     "relaxing_imagery":"Choose a safe and relaxing imagery that works for you",
     "how_do_you":"How do you do this during the test?",
@@ -87,5 +91,24 @@
     "inhale":"Inhale through your nose to the count of 3 as the shape expands",
     "exhale":"Exhale though your mouth to the count of 6 as it contracts",
     "especially_during":"You, like most people, especially during the test, are physically stressed. This is when your heart pounds, you sweat and your stomach feels tight."
+  },
+  "concentration":{
+    "concentration_tool":"Concentration Tool",
+    "staying_focused":"staying focused",
+    "yourself":"Then you choose a word to say to yourself",
+    "bring":"that will bring you back to the task at hand",
+    "wandering":"when your mind is wandering",
+    "aware":"First you must become aware",
+    "word":"My word",
+    "word_is":"My word is:",
+    "your_word_here":"Type your word here",
+    "choose_word":"choose your word",
+    "during":"How do you do this during the test?",
+    "rising_through":"and rising through your body?",
+    "previous_question":"You can’t stop thinking about the previous question you didn’t know.",
+    "panic":"And then when you go to the next question you still carry that panic with you?",
+    "beginning":"you don’t know the answer and you start to feel a beginning of panic starting in your stomach",
+    "negative_thoughts":"Sometimes your negative thoughts can cause problems with",
+    "difficult":"Has it ever happened to you when you are taking a test that you get to a difficult question,"
   }
 }

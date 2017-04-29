@@ -22,6 +22,43 @@ div,input,button,span,p,a{
     background-color: rgb(197, 220, 233);
   }
 }
+.button-section{
+  margin-bottom: 30px;
+  position: relative;
+  text-align: center;
+  .my-imagery {
+    background-image: linear-gradient(to top, #299eb8, #0e7086);
+    color: white;
+    font-weight: bold;
+  }
+  .summary-button-style{
+    position: absolute;
+    left: 50px;
+  }
+}
+.imagery-word-bind{
+  img{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+.summary-button-style{
+  background-color: white;
+  color: $secondaryColor;
+  font-weight: bold;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  img{
+    width: 25px;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
 .button-style {
   width: 100px;
   height: 100px;

@@ -79,8 +79,12 @@
       border: 1px solid #c5c5c5;
       text-align: center;
       color: $secondaryColor;
+      transition: all 0.3s ease;
       &::-webkit-input-placeholder {
         color: #c5c5c5;
+      }
+      &:focus{
+        border-color: $primaryColor;
       }
     }
   }

@@ -1,0 +1,116 @@
+@import "../../common/common";
+
+.concentration {
+  min-height: 1000px;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #20aecd, #f6d796);
+  .concentration-content {
+    width: 900px;
+    height: auto;
+    margin: auto;
+    padding-top: 40px;
+    .concentration-title {
+      @include title;
+      color: white;
+      margin: 30px auto;
+    }
+    .concentration-sub-title {
+      margin-top: 10px;
+      text-align: center;
+      span {
+        @include title;
+        color: #0e7086;
+        font-size: 18.5px;
+      }
+    }
+    .blurry {
+      filter: blur(1.2px);
+    }
+    .concentration-description {
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 15px;
+      line-height: 16px;
+
+    }
+    .target {
+      height: 70px;
+      display: block;
+      width: 70px;
+      margin: 20px auto;
+    }
+    .line-var {
+      height: 25px;
+      width: 1px;
+      margin: auto;
+      background-color: $lineColor;
+    }
+    .concentration-video {
+      width: 720px;
+      height: 400px;
+      background-color: transparent;
+      margin: auto;
+      position: relative;
+      border: 1px solid $lineColor;
+      iframe{
+        @include topCenter;
+        width: 710px;
+        height: 390px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+    .bottom-title {
+      margin: 20px auto;
+      .concentration-sub-title {
+        margin: 10px;
+      }
+    }
+    .line {
+      height: 2px;
+      background-color: #0e7086;
+      width: 80%;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .concentration-instruction{
+      font-size: 16px;
+      color: #0e7086;
+      width: 80%;
+      margin: auto;
+      &>div{
+        display: inline-block;
+      }
+      p{
+        margin: 5px;
+      }
+      .arrow{
+        background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
+        height: 30px;
+        width: 30px;
+        background-size: 100%;
+        transform: rotate(-90deg);
+      }
+      .concentration-step1{
+        padding-right: 50px;
+      }
+      .concentration-step2{
+        padding-left: 30px;
+      }
+    }
+
+  }
+  .button-section{
+    width: 80%;
+    margin: 30px auto 0;
+    padding-bottom: 40px;
+  }
+  .info {
+    position: absolute;
+    right: 0;
+    left: 130px;
+    margin: auto;
+  }
+}
