@@ -6,6 +6,15 @@ let summaryModule = angular.module('summary', [
   uiRouter
 ])
 
+  .config(($stateProvider) => {
+    "ngInject";
+    $stateProvider
+      .state('summary', {
+        component: 'summary',
+        url:'/summary'
+      });
+  })
+
 .component('summary', summaryComponent)
 
 .name;

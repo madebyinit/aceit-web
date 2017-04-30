@@ -4,17 +4,18 @@ class QuestionnaireService {
     this.$state = $state;
     this.connection = connection;
     this.steps = [
-      {name:'worried_about',answer:null},
-      {name:'trouble_focusing',answer:null},
-      {name:'my_stomach',answer:null},
-      {name:'so_nervous',answer:null},
-      {name:'concerned_disappointed',answer:null},
-      {name:'heart_beats',answer:null},
-      {name:'unexpected_questions',answer:null},
-      {name:'about_doing_well',answer:null},
-      {name:'neck_and_shoulders',answer:null},
-      {name:'feel_nervous',answer:null},
-      {name:'learn_material',answer:null}
+      {name:'worried_about',answer:null,category:'positive'},
+      {name:'trouble_focusing',answer:null,category:'concentration'},
+      {name:'my_stomach',answer:null,category:'physical'},
+      {name:'so_nervous',answer:null,category:'concentration'},
+      {name:'concerned_disappointed',answer:null,category:'positive'},
+      {name:'heart_beats',answer:null,category:'physical'},
+      {name:'unexpected_questions',answer:null,category:'concentration'},
+      {name:'body',answer:null,category:'physical'},
+      {name:'concerned_material',answer:null,category:'positive'},
+      {name:'distracted',answer:null,category:'concentration'},
+      {name:'learn_material',answer:null,category:'positive'},
+      {name:'sleeping',answer:null,category:'physical'}
     ];
     this.stepIndex = 0;
     this.currentState = this.steps[this.stepIndex];
@@ -36,7 +37,7 @@ class QuestionnaireService {
   nextStep(){
     if(this.stepIndex === (this.steps.length-1)){
       this.connection.saveData(this.steps,'questionnaire');
-      this.$state.go('home');
+      this.$state.go('summary');
     }else{
       this.stepIndex++;
       this.currentState = this.steps[this.stepIndex];
