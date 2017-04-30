@@ -10,6 +10,15 @@ class StateChangeService {
     });
   }
 
+  appInit(){
+    let user = this.getUserData();
+    if(_.get(user,'uid')){
+      this.$state.go('home');
+    }else{
+      this.$state.go('loginView.login');
+    }
+  }
+
   _checkUserLogin(data){
     let user = this.getUserData();
     if(_.get(user,'uid')){

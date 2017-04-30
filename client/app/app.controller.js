@@ -14,6 +14,7 @@ class AppController {
   }
 
   _startApp(){
+    this.stateChangeService.appInit();
     this.stateChangeService.stateChange();
   }
 
