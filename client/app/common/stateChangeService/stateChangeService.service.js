@@ -15,7 +15,7 @@ class StateChangeService {
     if(_.isEmpty(_.get(user,'uid'))){
       this.$state.go('loginView.login')
     }else{
-      this.$state.go('home');
+      // this.$state.go('home');
     }
   }
 

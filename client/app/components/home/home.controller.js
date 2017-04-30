@@ -44,12 +44,10 @@ class HomeController {
 
   _closeWelcomeDialog(){
     this.showWelcomeDialog = false;
-    document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
   _showWelcomeDialog(){
     this.showWelcomeDialog = true;
-    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
   }
 
   _scroll(){
