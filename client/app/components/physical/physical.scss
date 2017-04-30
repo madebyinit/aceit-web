@@ -4,7 +4,6 @@
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4);
   height: auto;
-  min-height: 1350px;
   .physical-content{
     width: 900px;
     padding-top: 40px;
@@ -58,7 +57,7 @@
   }
   .switch-animate{
     display: block;
-    position: absolute;
+    position: relative;
     width: 100%;
     &.ng-enter{
       animation: 0.25s animateEnter ease;
@@ -85,6 +84,7 @@
   .summary-button-container{
     text-align: center;
     margin-top: 40px;
+    padding-bottom: 30px;
   }
   .button-style{
     transition: all 0.3s ease;

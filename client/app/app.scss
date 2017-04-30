@@ -23,9 +23,9 @@ div,input,button,span,p,a{
   }
 }
 .button-section{
-  margin-bottom: 30px;
   position: relative;
   text-align: center;
+  padding-bottom: 30px;
   .my-imagery {
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
@@ -46,8 +46,8 @@ div,input,button,span,p,a{
   }
 }
 .summary-button-style{
-  background-color: white;
-  color: $secondaryColor;
+  background-color: white!important;
+  color: $secondaryColor!important;
   font-weight: bold;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   img{
