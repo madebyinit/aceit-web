@@ -5,31 +5,25 @@ class StateChangeService {
   }
 
   stateChange(){
-    this.$transitions.onSuccess({},(data)=>{
+    this.$transitions.onSuccess({ to: true, from: true },(data)=>{
       this._checkUserLogin(data);
     });
   }
 
   appInit(){
     let user = this.getUserData();
-    if(_.get(user,'uid')){
-      this.$state.go('home');
+    if(_.isEmpty(_.get(user,'uid'))){
+      this.$state.go('loginView.login')
     }else{
-      this.$state.go('loginView.login');
+      this.$state.go('home');
     }
   }
 
   _checkUserLogin(data){
     let user = this.getUserData();
-    if(_.get(user,'uid')){
-      this._userLastState(data);
-    }else{
+    if(_.isEmpty(_.get(user,'uid'))){
       this.$state.go('loginView.login');
     }
-  }
-
-  _userLastState(data){
-    this.$state.go(_.get(data, 'router.globals.current.name'));
   }
 
   saveUserData(res){
