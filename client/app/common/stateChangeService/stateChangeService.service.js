@@ -13,10 +13,19 @@ class StateChangeService {
   appInit(){
     let user = this.getUserData();
     if(_.isEmpty(_.get(user,'uid'))){
-      this.$state.go('loginView.login')
+      this.$state.go('loginView.login');
     }else{
-      // this.$state.go('home');
+      this._userFs(user);
     }
+  }
+
+  _userFs(user){
+      FS.identify(_.get(user,'uid'), {
+        displayName: _.get(user,'email'),
+        email:_.get(user,'email'),
+        // this is an example of a _real number custom variable
+        lifetimeSpend_real: 14
+      });
   }
 
   _checkUserLogin(data){
