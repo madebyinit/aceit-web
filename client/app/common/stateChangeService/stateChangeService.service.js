@@ -15,17 +15,24 @@ class StateChangeService {
     if(_.isEmpty(_.get(user,'uid'))){
       this.$state.go('loginView.login');
     }else{
-      this._userFs(user);
+      if(window.location.hostname.indexOf('localhost') === -1){
+        this._userFs(user);
+      }
     }
   }
 
   _userFs(user){
-      FS.identify(_.get(user,'uid'), {
-        displayName: _.get(user,'email'),
-        email:_.get(user,'email'),
-        // this is an example of a _real number custom variable
-        lifetimeSpend_real: 14
-      });
+    FS.identify(_.get(user,'uid'), {
+      email:_.get(user,'email'),
+    });
+    Rollbar.configure({
+      payload: {
+        person: {
+          id: _.get(user,'uid'),
+          email:_.get(user,'email')
+        }
+      }
+    });
   }
 
   _checkUserLogin(data){
