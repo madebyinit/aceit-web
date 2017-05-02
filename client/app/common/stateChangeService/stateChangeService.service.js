@@ -1,12 +1,25 @@
 class StateChangeService {
-  constructor($transitions,$state) {
+  constructor($transitions,$state,$location) {
     this.$transitions = $transitions;
     this.$state = $state;
+    this.$location = $location;
   }
 
   stateChange(){
     this.$transitions.onSuccess({ to: true, from: true },(data)=>{
       this._checkUserLogin(data);
+      this._segmentTrack();
+    });
+  }
+
+  _segmentTrack(){
+    let user = this.getUserData();
+    analytics.page({
+      path: this.$location.path(),
+      url: this.$location.absUrl()
+    });
+    analytics.identify(_.get(user,'uid'), {
+      email: _.get(user,'email')
     });
   }
 
@@ -57,5 +70,5 @@ class StateChangeService {
   }
 }
 
-StateChangeService.$inject = ['$transitions','$state'];
+StateChangeService.$inject = ['$transitions','$state','$location'];
 export default StateChangeService;
