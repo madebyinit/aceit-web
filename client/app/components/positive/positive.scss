@@ -13,3 +13,11 @@
     margin-right: 20px;
   }
 }
+pink-elephant{
+  display: block;
+  &.ng-leave{
+    position: absolute;
+    width: 100%;
+    animation: 0.35s fadeout ease;
+  }
+}

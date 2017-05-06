@@ -23,3 +23,10 @@ body {
    top: 50%;
    transform: translateY(-50%);
 }
+
+@mixin container(){
+   max-width: 900px;
+   margin: auto;
+   padding-top: 50px;
+   text-align: center;
+}
