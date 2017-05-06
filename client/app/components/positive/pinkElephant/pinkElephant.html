@@ -1,0 +1,17 @@
+<div class="pink-elephant" ng-class="{'pink-elephant-bg':$ctrl.pink}">
+    <div class="pink-elephant-container">
+        <div class="positive-thinking-title">
+            <img ng-src="{{$root.imageCdn + 'icn-positive-thinking.png'}}">
+            <span>{{:: 'positive.positive_thinking' | translate}}</span>
+        </div>
+        <div class="first-part" ng-if="!$ctrl.pink">
+            <div class="positive-thinking-sub-title">{{:: 'positive.pink_elephant.happens' | translate}}</div>
+            <md-button class="button-style pink-button" ng-click="$ctrl.pink = true">{{:: 'positive.pink_elephant.ummmm' | translate}}</md-button>
+        </div>
+        <div class="second-part" ng-if="$ctrl.pink">
+            <div class="positive-thinking-sub-title">{{:: 'positive.pink_elephant.told' | translate}}</div>
+            <div class="obviously">{{:: 'positive.pink_elephant.obviously' | translate}}</div>
+            <md-button class="button-style pink-button" ng-click="$ctrl.changeView({bol:true})">{{:: 'positive.pink_elephant.cool' | translate}}</md-button>
+        </div>
+    </div>
+</div>

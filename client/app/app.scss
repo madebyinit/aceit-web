@@ -71,3 +71,10 @@ div,input,button,span,p,a{
 .button-style[disabled] {
   opacity: 0.3!important;
 }
+
+.img-loder{
+  background-image: url($cdnImage + 'elephant-bg-pink.png');
+}
+.img-loder2{
+  background-image: url($cdnImage + 'elephant-bg.png');
+}
