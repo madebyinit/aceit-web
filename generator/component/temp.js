@@ -6,6 +6,18 @@ let <%= name %>Module = angular.module('<%= name %>', [
   uiRouter
 ])
 
+  .config(($stateProvider, $urlRouterProvider) => {
+    "ngInject";
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('<%= name %>', {
+        url: '/<%= name %>',
+        component: '<%= name %>'
+      });
+  })
+
 .component('<%= name %>', <%= name %>Component)
 
 .name;

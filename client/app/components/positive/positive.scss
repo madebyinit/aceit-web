@@ -1,0 +1,15 @@
+@import "../../common/common";
+
+.positive-thinking-title{
+  span,img{
+    vertical-align: middle;
+  }
+  span{
+    @include title;
+    color: white;
+  }
+  img{
+    width: 70px;
+    margin-right: 20px;
+  }
+}

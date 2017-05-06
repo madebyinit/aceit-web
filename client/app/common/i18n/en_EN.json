@@ -111,5 +111,15 @@
     "beginning":"you don’t know the answer and you start to feel a beginning of panic starting in your stomach",
     "negative_thoughts":"Sometimes your negative thoughts can cause problems with",
     "difficult":"Has it ever happened to you when you are taking a test that you get to a difficult question,"
+  },
+  "positive":{
+    "positive_thinking":"Positive Thinking",
+    "pink_elephant":{
+      "ummmm":"ummmm ...",
+      "told":"But I told you NOT to :)",
+      "cool":"Cool! Got it",
+      "obviously":"Obviously you see in your head a pink elephant",
+      "happens":"If I tell you don’t think about a pink elephant, what happens?"
+    }
   }
 }

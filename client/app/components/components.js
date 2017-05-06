@@ -7,6 +7,7 @@ import questionnaireModule from './questionnaire/questionnaire';
 import concentrationModule from './concentration/concentration';
 import physicalModule from './physical/physical';
 import summaryModule from './summary/summary';
+import positiveModule from './positive/positive';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -16,7 +17,8 @@ let componentModule = angular.module('app.components', [
   questionnaireModule,
   physicalModule,
   concentrationModule,
-  summaryModule
+  summaryModule,
+  positiveModule
 ])
 
 .name;
