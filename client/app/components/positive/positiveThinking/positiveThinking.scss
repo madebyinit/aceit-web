@@ -1,5 +1,95 @@
+@import "../../../common/common";
+
 .positive-thinking {
   width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(to bottom, #20aecd, #d295e8);
+  height: auto;
+  background-image: linear-gradient(to bottom, #20aecd, #d295e8 50%);
+  .positive-thinking-container{
+    @include container;
+    .sub-title-positive-thinking{
+      @include title;
+      color: $secondaryColor;
+      font-size: 26px;
+      margin: 40px 0;
+    }
+    .text-part {
+      white-space: pre-line;
+      text-align: left;
+      color: white;
+    }
+    .icons-set{
+      margin: 40px 0;
+      .icon {
+        width: 25%;
+        color: white;
+        img {
+          width: 90px;
+        }
+        div{
+          margin-top: 10px;
+        }
+      }
+      .emotion{
+        color: $secondaryColor;
+      }
+      &>div{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .white-arrow{
+        width: 32px;
+        height: 32px;
+        background: url($cdnImage + 'next.png') no-repeat;
+      }
+    }
+    .loop{
+      @include title;
+      color: $secondaryColor;
+      font-size: 26px;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+      padding: 10px;
+      margin: 40px 0;
+    }
+    .thoughts{
+      color: $secondaryColor;
+      margin-bottom: 20px;
+    }
+    .line {
+      height: 30px;
+      width: 1px;
+      background-color: $lineColor;
+      margin: auto;
+    }
+    .video-box {
+      width: 900px;
+      height: 505px;
+      border: 1px solid $lineColor;
+      iframe{
+        width: 100%;
+        height: 100%;
+        padding: 7px;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .button-section{
+    margin-top: 20px;
+    .my-imagery{
+      span{
+        white-space: pre-line;
+      }
+    }
+  }
+  .believe{
+    @include title;
+    color: white;
+    white-space: pre-line;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 10px;
+  }
+  .spacer {
+    height: 20px;
+  }
 }

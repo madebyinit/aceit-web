@@ -120,6 +120,15 @@
       "cool":"Cool! Got it",
       "obviously":"Obviously you see in your head a pink elephant",
       "happens":"If I tell you don’t think about a pink elephant, what happens?"
+    },
+    "thinking":{
+      "negative":"What happens if I stay with the negative thought...",
+      "little_voice":"My \nlittle \nvoice",
+      "believe":"If you believe you will do well on the test \n you will have a better chance of succeeding!",
+      "break":"So what can you do to break out of this negative loop?",
+      "thoughts":"The first thing is to become aware of your negative thoughts and this is not an easy thing to do.",
+      "apply":"So let’s apply this to you. If you think to yourself that you don’t test well or you’ll never be able to learn all the material, you create the emotions that go with that – the fear;\n the pressure, the panic - and then obviously you won’t perform at your peak because your mindset is so negative.",
+      "enough":"“What if I don’t do well enough on the test?” \n This thought creates a picture in our mind that creates an emotion – fear, panic, pressure and the fear, panic and pressure create a behavior  -  bad performance on the test."
     }
   }
 }

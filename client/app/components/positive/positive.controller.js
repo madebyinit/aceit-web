@@ -1,6 +1,5 @@
 class PositiveController {
   constructor() {
-    this.name = 'positive';
   }
 
   $onInit(){

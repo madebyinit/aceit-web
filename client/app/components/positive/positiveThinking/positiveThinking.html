@@ -1,3 +1,53 @@
 <div class="positive-thinking">
-
+    <div class="positive-thinking-container">
+        <div class="positive-thinking-title">
+            <img ng-src="{{$root.imageCdn + 'icn-positive-thinking.png'}}">
+            <span>{{:: 'positive.positive_thinking' | translate}}</span>
+        </div>
+        <div class="sub-title-positive-thinking">{{:: 'positive.thinking.negative' | translate}}</div>
+        <div class="text-part">
+            {{:: 'positive.thinking.enough' | translate}}
+        </div>
+        <div class="icons-set">
+            <div class="icon">
+                <img ng-src="{{$root.imageCdn + 'icn-thought.png'}}">
+                <div>Thought</div>
+            </div>
+            <div class="white-arrow"></div>
+            <div class="icon emotion">
+                <img ng-src="{{$root.imageCdn + 'icn-emotion.png'}}">
+                <div>Emotion</div>
+            </div>
+            <div class="white-arrow"></div>
+            <div class="icon">
+                <img ng-src="{{$root.imageCdn + 'icn-behavior.png'}}">
+                <div>Behavior</div>
+            </div>
+        </div>
+        <div class="text-part">
+            {{:: 'positive.thinking.apply' | translate}}
+        </div>
+        <div class="loop">{{:: 'positive.thinking.break' | translate}}</div>
+        <div class="thoughts">{{:: 'positive.thinking.thoughts' | translate}}</div>
+        <div class="line"></div>
+        <div class="video-box">
+            <iframe scrolling="no" allowTransparency="true" allowfullscreen frameborder="0" src="https://goanimate.com/player/embed/0m9ePEXvsJjg"></iframe>
+        </div>
+        <div class="line"></div>
+        <div class="button-section">
+            <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
+                <span ng-if="!$ctrl.imageryWord">{{'positive.thinking.little_voice' | translate}}</span>
+                <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
+                    {{$ctrl.imageryWord}}
+                    <img ng-src="{{$root.imageCdn}}edit.png">
+                </div>
+            </md-button>
+            <md-button class="button-style summary-button-style" ng-disabled="true">
+                <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
+                <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
+            </md-button>
+        </div>
+        <div class="believe">{{:: 'positive.thinking.believe' | translate}}</div>
+        <div class="spacer"></div>
+    </div>
 </div>
