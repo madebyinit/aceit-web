@@ -35,7 +35,7 @@
         </div>
         <div class="line"></div>
         <div class="button-section">
-            <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
+            <md-button class="button-style my-imagery" ng-click="$ctrl.showSticky = true">
                 <span ng-if="!$ctrl.imageryWord">{{'positive.thinking.little_voice' | translate}}</span>
                 <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
                     {{$ctrl.imageryWord}}
@@ -51,3 +51,4 @@
         <div class="spacer"></div>
     </div>
 </div>
+<sticky-note ng-if="$ctrl.showSticky" close-dialog="$ctrl.closeDialog()"></sticky-note>

@@ -1,0 +1,26 @@
+<div class="dialog-element sticky-note">
+  <div class="close-dialog" ng-if="!$ctrl.hideExit" ng-click="$ctrl.closeDialog()"><img ng-src="{{$root.imageCdn}}close.png"></div>
+  <div class="dialog-element-body">
+    <div class="dialog-header">{{:: ($ctrl.sticky.title | translate)}}</div>
+    <div class="dialog-text-body" ng-if="$ctrl.sticky.body">
+      {{$ctrl.sticky.body | translate}}
+    </div>
+    <div class="dialog-input" ng-if="$ctrl.inputTitle">
+      <div class="dialog-input-title">{{:: ($ctrl.sticky.inputTitle | translate)}}</div>
+      <input type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.sticky.inputPlaceholder | translate)}}">
+    </div>
+    <md-button class="button-style save-and-close-button" ng-if="$ctrl.inputTitle" ng-click="$ctrl.returnValueFn($ctrl.bindValue)" ng-disabled="!($ctrl.isDisabledInput && $ctrl.bindValue)">{{:: ($ctrl.sticky.buttonText | translate)}}</md-button>
+  </div>
+  <div class="body-styler">
+    <div class="default-sticky-notes left-note">
+      <div class="text">{{:: 'positive.sticky_note.lucky' | translate}}</div>
+      <md-button class="button-style">{{:: 'positive.sticky_note.positive' | translate}}</md-button>
+      <img ng-src="{{$root.imageCdn + 'arrow-green-left.png'}}" alt="" class="left-arrow">
+    </div>
+    <div class="default-sticky-notes right-note">
+      <div class="text">{{:: 'positive.sticky_note.material' | translate}}</div>
+      <md-button class="button-style">{{:: 'positive.sticky_note.positive' | translate}}</md-button>
+      <img ng-src="{{$root.imageCdn + 'arrow-green-right.png'}}" alt="" class="right-arrow">
+    </div>
+  </div>
+</div>

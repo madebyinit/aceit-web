@@ -1,0 +1,63 @@
+@import "../../../../common/common";
+@import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
+
+.sticky-note{
+  .close-dialog{
+    z-index: 999999;
+  }
+  .default-sticky-notes{
+    width: 190px;
+    height: 200px;
+    background: url($cdnImage + 'yellow-note.png') no-repeat;
+    background-size:100%;
+    position: absolute;
+    .text{
+      font-family: 'Kalam', cursive;
+      font-weight: bold;
+      width: 70%;
+      margin: 40px auto;
+    }
+    .button-style{
+      background-image: linear-gradient(to bottom, #22c353, #15ac43);
+      color: white;
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      left: -40px;
+      bottom: -20px;
+    }
+    .left-arrow {
+      position: absolute;
+      left: 150px;
+    }
+    .right-arrow {
+      left: -200px;
+      top: -30px;
+      position: absolute;
+    }
+  }
+  .left-note {
+    left: -300px;
+    top: 100px;
+  }
+  .right-note {
+    right: -230px;
+    bottom: 0;
+  }
+  .body-styler {
+    width: 500px;
+    height: 500px;
+    left: 0;
+    right: 0;
+    @include topCenter;
+    margin: auto;
+    z-index: 999;
+  }
+  .dialog-text-body {
+    width: 70%;
+    margin: 40px auto;
+    white-space: pre-line;
+    font-size: 18px;
+    color: $secondaryColor;
+  }
+}

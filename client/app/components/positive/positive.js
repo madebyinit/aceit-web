@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 import positiveComponent from './positive.component';
 import pinkElephantComponent from './pinkElephant/pinkElephant';
 import positiveThinkingComponent from './positiveThinking/positiveThinking.component';
+import stickyNoteComponent from './positiveThinking/stickyNote/stickyNote.component';
 
 let positiveModule = angular.module('positive', [
   uiRouter
@@ -23,6 +24,7 @@ let positiveModule = angular.module('positive', [
 .component('positive', positiveComponent)
 .component('positiveThinking', positiveThinkingComponent)
 .component('pinkElephant', pinkElephantComponent)
+.component('stickyNote', stickyNoteComponent)
 
 .name;
 
