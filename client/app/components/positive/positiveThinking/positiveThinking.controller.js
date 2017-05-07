@@ -3,6 +3,9 @@ class PositiveThinkingController {
     this.name = 'positiveThinking';
   }
 
+  $onInit(){
+  }
+
   closeDialog(){
     this.showSticky = false;
   }

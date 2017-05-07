@@ -135,7 +135,13 @@
       "positive":"turn to \n positive",
       "track":"Track your little voice",
       "negative":"Look at these negative thoughts, \n click on them to replace them \n with positive thoughts.",
-      "material":"I usually know the \n material but just \n don't score well"
+      "material":"I usually know the \n material but just \n don't score well",
+      "performance":"This app will help \n me reach my peak \n performance!",
+      "people":"Many people have \n done well on this \n test, I can too!",
+      "type_negative":"Type your negative thoughts",
+      "use_it":"Use it",
+      "save":"save",
+      "negative_thoughts":"Now write your own negative thoughts. \n Once you’ve become aware of your negative \n thoughts, the next step is to replace the negative \n thought to something more realistic and positive"
     }
   }
 }

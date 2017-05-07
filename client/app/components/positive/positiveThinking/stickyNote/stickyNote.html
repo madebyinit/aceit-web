@@ -5,22 +5,26 @@
     <div class="dialog-text-body" ng-if="$ctrl.sticky.body">
       {{$ctrl.sticky.body | translate}}
     </div>
-    <div class="dialog-input" ng-if="$ctrl.inputTitle">
-      <div class="dialog-input-title">{{:: ($ctrl.sticky.inputTitle | translate)}}</div>
-      <input type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.sticky.inputPlaceholder | translate)}}">
+    <div class="dialog-input" ng-if="$ctrl.sticky.inputPlaceholder">
+      <div class="arrow-down"></div>
+      <input type="text" ng-model="$ctrl.negativeThoughts" placeholder="{{($ctrl.sticky.inputPlaceholder | translate)}}">
     </div>
-    <md-button class="button-style save-and-close-button" ng-if="$ctrl.inputTitle" ng-click="$ctrl.returnValueFn($ctrl.bindValue)" ng-disabled="!($ctrl.isDisabledInput && $ctrl.bindValue)">{{:: ($ctrl.sticky.buttonText | translate)}}</md-button>
+    <md-button class="button-style save-and-close-button" ng-if="$ctrl.sticky.buttonText" ng-click="$ctrl.addNegativeThoughts()" ng-disabled="!$ctrl.negativeThoughts">{{($ctrl.sticky.buttonText | translate)}}</md-button>
   </div>
-  <div class="body-styler">
-    <div class="default-sticky-notes left-note">
-      <div class="text">{{:: 'positive.sticky_note.lucky' | translate}}</div>
-      <md-button class="button-style">{{:: 'positive.sticky_note.positive' | translate}}</md-button>
-      <img ng-src="{{$root.imageCdn + 'arrow-green-left.png'}}" alt="" class="left-arrow">
-    </div>
-    <div class="default-sticky-notes right-note">
-      <div class="text">{{:: 'positive.sticky_note.material' | translate}}</div>
-      <md-button class="button-style">{{:: 'positive.sticky_note.positive' | translate}}</md-button>
-      <img ng-src="{{$root.imageCdn + 'arrow-green-right.png'}}" alt="" class="right-arrow">
+  <div class="body-styler" ng-style="{'z-index':$ctrl.completeSticky && '500'}">
+    <default-sticky ng-if="!$ctrl.completeSticky" finished-sticky="$ctrl.completeStickyDefault(bol)"></default-sticky>
+    <div class="sticky-loop">
+      <div class="default-sticky-notes" ng-repeat="stick in $ctrl.stickyList track by $index">
+        <div class="trash" ng-click="$ctrl.deleteStick(stick)"></div>
+        <textarea class="text text-area-sticky" ng-style="{'color':stick.positive && '#15ac43'}" disabled="positive">{{stick.stick}}</textarea>
+        <md-button class="button-style" ng-hide="positive || stick.positive" ng-click="positive = true">{{:: 'positive.sticky_note.positive' | translate}}</md-button>
+        <div class="check-note" ng-if="stick.positive"></div>
+        <div class="positive-sticky-notes" ng-if="positive">
+          <div class="trash" ng-click="$parent.positive = false"></div>
+          <textarea class="text text-area-sticky" ng-model="positiveSticky" placeholder="Write your positive thoughts"></textarea>
+          <md-button class="button-style" ng-click="$ctrl.updateSticky(stick,positiveSticky);$parent.positive = false">{{:: 'positive.sticky_note.save' | translate}}</md-button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
