@@ -93,3 +93,34 @@
     height: 20px;
   }
 }
+sticky-note{
+  display: block;
+  &.ng-enter{
+    animation: 0.35s blurFadeIn ease;
+  }
+  &.ng-leave{
+    animation: 0.35s blurFadeOut ease;
+  }
+}
+
+@keyframes blurFadeIn {
+  from {
+    filter: blur(30px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blurFadeOut {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    filter: blur(30px);
+    opacity: 0;
+  }
+}
