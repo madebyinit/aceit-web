@@ -65,7 +65,7 @@ class HomeController {
             this.$document.unbind('scroll');
             that.showLionVideo = false;
             document.getElementsByTagName('body')[0].style.overflow = '';
-          },4500)
+          },4800)
         },0);
       }
     });
