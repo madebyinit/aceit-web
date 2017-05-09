@@ -7,16 +7,20 @@ class SummaryController {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
-    this.userSum = {positive:0,concentration:0,physical:0};
   }
 
   $onInit(){
     this._getUserData();
   }
 
+  stateGo(name){
+    this.$state.go(name);
+  }
+
   _getUserData(){
     this.progressLinear.showProgress();
     this.connection.getData().then((res)=>{
+      this.userSum = {positive:0,concentration:0,physical:0};
       if(_.get(res,'questionnaire')){
         this.user = res;
         this.sumUserQuestionnaire();
@@ -33,7 +37,6 @@ class SummaryController {
       this.userSum[value.category] += value.answer;
     });
     this.progressLinear.hideProgress();
-    console.log(this.userSum);
   }
 }
 
