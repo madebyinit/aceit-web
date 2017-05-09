@@ -143,5 +143,15 @@
       "save":"save",
       "negative_thoughts":"Now write your own negative thoughts. \n Once you’ve become aware of your negative \n thoughts, the next step is to replace the negative \n thought to something more realistic and positive"
     }
+  },
+  "summary":{
+    "focus":"your answers show us you should focus on",
+    "my_summary":"My Summary",
+    "my_routine":"My routine",
+    "physical_tools":"Physical Tools",
+    "take_me":"take me there",
+    "positive_thinking":"Positive Thinking",
+    "concentration_tools":"Concentration Tools",
+    "optional":"Another tool (optional) that might be relevant for you"
   }
 }
