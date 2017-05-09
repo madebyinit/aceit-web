@@ -31,7 +31,9 @@
         <div class="thoughts">{{:: 'positive.thinking.thoughts' | translate}}</div>
         <div class="line"></div>
         <div class="video-box">
-            <iframe scrolling="no" allowTransparency="true" allowfullscreen frameborder="0" src="https://goanimate.com/player/embed/0m9ePEXvsJjg"></iframe>
+            <video controls>
+                <source ng-src="{{$root.videoCdn}}ps.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="line"></div>
         <div class="button-section">
