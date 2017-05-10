@@ -8,8 +8,32 @@ div,input,button,span,p,a{
   outline: 0;
   font-family: 'Montserrat', sans-serif;
 }
+video::-internal-media-controls-download-button {
+  display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+  width: calc(100% + 30px);
+}
 .app {
   height: 100%;
+}
+.tooltip-style {
+  font-size: 16px!important;
+  max-width: 270px;
+  white-space: pre-line!important;
+  height: auto!important;
+  padding: 15px!important;
+  background-image: linear-gradient(to top, #f2f4f7, #feffff);
+  border: solid 1px #ced0da;
+  color: #0e7086!important;
+  .bold{
+    font-weight: bold;
+  }
 }
 .progress-bar{
   position: absolute;

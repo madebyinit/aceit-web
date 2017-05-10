@@ -1,7 +1,8 @@
 class ImageryController {
-  constructor(connection,$timeout) {
+  constructor(connection,$timeout,$state) {
     this.connection = connection;
     this.$timeout = $timeout;
+    this.$state = $state;
   }
 
   $onInit(){
@@ -18,6 +19,10 @@ class ImageryController {
     })
   }
 
+  goSummary(){
+    this.$state.go('summary');
+  }
+
   saveWord(val){
     this.connection.saveData(val,'imagery').then((res)=>{
       this.showDialog = false;
@@ -28,5 +33,5 @@ class ImageryController {
   }
 }
 
-ImageryController.$inject = ['connection','$timeout'];
+ImageryController.$inject = ['connection','$timeout','$state'];
 export default ImageryController;

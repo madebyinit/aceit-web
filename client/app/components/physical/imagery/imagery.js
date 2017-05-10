@@ -4,7 +4,9 @@ import './imagery.scss';
 
 let ImageryComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    stepsComplete:'=?'
+  },
   template,
   controller
 };

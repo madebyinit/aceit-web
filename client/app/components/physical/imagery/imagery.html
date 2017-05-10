@@ -36,6 +36,19 @@
         <div class="choose-a-safe">{{'imagery.relaxing_imagery' | translate}}</div>
         <div class="arrow-down"></div>
     </div>
+    <div class="button-section">
+        <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
+            <span ng-if="!$ctrl.imageryWord">{{'imagery.my_imagery' | translate}}</span>
+            <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
+                {{$ctrl.imageryWord}}
+                <img ng-src="{{$root.imageCdn}}edit.png">
+            </div>
+        </md-button>
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">
+            <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
+            <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
+        </md-button>
+    </div>
 </div>
 <dialog-element
         show-dialog="$ctrl.showDialog"
