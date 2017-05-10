@@ -1,10 +1,12 @@
 const STICKY_NOTES = 'stickyNotes';
+const MAX_NOTES = 6;
 
 class StickyNoteController {
-  constructor(connection,$timeout,progressLinear) {
+  constructor(connection,$timeout,progressLinear,notificationsService) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.progressLinear = progressLinear;
+    this.notificationsService = notificationsService;
     this.name = 'stickyNote';
     this.sticky = {title:'positive.sticky_note.track',body:'positive.sticky_note.negative'};
     this.stickyList = [];
@@ -46,15 +48,21 @@ class StickyNoteController {
     let index = _.indexOf(this.stickyList,_.find(this.stickyList,{stick:obj.stick}));
     this.stickyList.splice(index,1,{stick:newVal,positive:true});
     this.connection.saveData(this.stickyList,STICKY_NOTES).then((res)=>{
-      debugger;
     })
   }
 
   addNegativeThoughts(){
-    this.stickyList.push({stick:this.negativeThoughts,positive:false});
-    this.negativeThoughts = '';
+    if(this.stickyList.length < MAX_NOTES){
+      this.stickyList.push({stick:this.negativeThoughts,positive:false});
+      this.negativeThoughts = '';
+    }else{
+      this.errorMessage = 'Max sticky note';
+      this.$timeout(()=>{
+        this.errorMessage = '';
+      },3000)
+    }
   }
 }
 
-StickyNoteController.$inject = ['connection','$timeout','progressLinear'];
+StickyNoteController.$inject = ['connection','$timeout','progressLinear','notificationsService'];
 export default StickyNoteController;
