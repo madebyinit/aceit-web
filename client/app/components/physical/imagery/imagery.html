@@ -15,13 +15,13 @@
         </div>
         <div class="tool-text puppy-text">
             <div class="close-your-eyes-text">{{'imagery.chocolate_chip' | translate}}</div>
-            <div class="deep-breaths-text"><{{'imagery.deep_breaths' | translate}}</div>
+            <div class="deep-breaths-text">< {{'imagery.deep_breaths' | translate}}</div>
         </div>
     </div>
     <div class="imagery-tool smell">
         <div class="tool-text">
             <div class="close-your-eyes-text">{{'imagery.chocolate_chip' | translate}}</div>
-            <div class="deep-breaths-text">{{'imagery.deep_breaths' | translate}}></div>
+            <div class="deep-breaths-text">{{'imagery.deep_breaths' | translate}} ></div>
         </div>
         <div class="tool-img smell-img">
             <div class="hover-me-text">{{'imagery.hover_me' | translate}}</div>
@@ -35,19 +35,6 @@
     <div class="last-section">
         <div class="choose-a-safe">{{'imagery.relaxing_imagery' | translate}}</div>
         <div class="arrow-down"></div>
-        <div class="button-section">
-            <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
-                <span ng-if="!$ctrl.imageryWord">{{'imagery.my_imagery' | translate}}</span>
-                <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
-                    {{$ctrl.imageryWord}}
-                    <img ng-src="{{$root.imageCdn}}edit.png">
-                </div>
-            </md-button>
-            <md-button class="button-style summary-button-style" ng-disabled="true">
-                <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
-                <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
-            </md-button>
-        </div>
     </div>
 </div>
 <dialog-element

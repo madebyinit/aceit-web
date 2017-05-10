@@ -1,7 +1,8 @@
 class ConcentrationController {
-  constructor(connection,$timeout) {
+  constructor(connection,$timeout,$state) {
     this.connection = connection;
     this.$timeout = $timeout;
+    this.$state = $state;
   }
 
   $onInit(){
@@ -9,13 +10,36 @@ class ConcentrationController {
   }
 
   _getWord(){
-    this.connection.getData().then((res)=>{
+    this.connection.getUserPromise().then((res)=>{
+      this.user = res;
+      this._checkStateComplete();
       if(_.get(res,'concentration')){
         this.$timeout(()=>{
           this.concentrationWord = _.get(res,'concentration');
         },0);
       }
     })
+  }
+
+  _checkStateComplete(){
+    if(_.get(this.user,'concentrationComplete')){
+      this.$timeout(()=>{
+        this.concentrationComplete = true;
+      },0)
+    }else{
+      this._saveStateComplete();
+    }
+  }
+
+  goToSummary(){
+    this.$state.go('summary');
+  }
+
+  _saveStateComplete(){
+    this.$timeout(()=>{
+      this.concentrationComplete = true;
+      this.connection.saveData(this.concentrationComplete,'concentrationComplete');
+    },);
   }
 
   saveWord(val){
@@ -28,5 +52,5 @@ class ConcentrationController {
   }
 }
 
-ConcentrationController.$inject = ['connection','$timeout'];
+ConcentrationController.$inject = ['connection','$timeout','$state'];
 export default ConcentrationController;

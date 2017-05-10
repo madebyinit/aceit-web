@@ -44,7 +44,7 @@
                     <img ng-src="{{::$root.imageCdn}}edit.png">
                 </div>
             </md-button>
-            <md-button class="button-style summary-button-style" ng-disabled="true">
+            <md-button class="button-style summary-button-style" ng-click="$ctrl.goToSummary()" ng-disabled="!$ctrl.positiveComplete">
                 <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
                 <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
             </md-button>
