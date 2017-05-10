@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
 
 .sticky-note{
+  overflow: scroll;
   .close-dialog{
     z-index: 999999;
   }
@@ -142,12 +143,12 @@
         }
       .default-sticky-notes{
         &:nth-child(1) {
-          top: -180px;
-          left: -90px;
+          top: 0;
+          left: -220px;
           transform: rotate(-5deg);
         }
         &:nth-child(2) {
-          top: -180px;
+          top: 0;
           right: -290px;
           transform: rotate(5deg);
         }
@@ -163,8 +164,13 @@
         }
         &:nth-child(5) {
           right: -390px;
-          top: 50px;
+          top: 200px;
           transform: rotate(-5deg);
+        }
+        &:nth-child(6) {
+          right: -170px;
+          top: 460px;
+          transform: rotate(2deg);
         }
       }
     }
@@ -203,6 +209,37 @@
         animation: 0.5s fadein ease;
       }
     }
+    .error-message {
+      color: #bd1c1c;
+      &.ng-enter{
+        animation: 0.3s errorEnter ease;
+      }
+      &.ng-leave{
+        animation: 0.3s errorLeave ease;
+      }
+    }
+  }
+}
+
+@keyframes errorEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
 
