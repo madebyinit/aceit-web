@@ -19,10 +19,10 @@ class SummaryController {
 
   _getUserData(){
     this.progressLinear.showProgress();
-    this.connection.getData().then((res)=>{
+    this.connection.getUserPromise().then((res)=>{
+      this.user = res;
       this.userSum = {positive:0,concentration:0,physical:0};
       if(_.get(res,'questionnaire')){
-        this.user = res;
         this.sumUserQuestionnaire();
       }else{
         this.$state.go('questionnaire');
