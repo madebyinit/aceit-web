@@ -40,7 +40,11 @@
       </div>
     </div>
     <div class="button-section">
-      <img class="info" ng-src="{{$root.imageCdn}}btn-info.png"/>
+      <div class="info">
+        <img ng-src="{{$root.imageCdn}}btn-info.png"/>
+        <md-tooltip class="tooltip-style" md-direction="top">The word could be something like
+          <span class="bold">c'mon, let's go, focus, I'm ready ...</span></md-tooltip>
+      </div>
       <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
         <span ng-if="!$ctrl.concentrationWord">{{'concentration.word' | translate}}</span>
         <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
