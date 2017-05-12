@@ -12,7 +12,7 @@ let dialogElementComponent = {
     inputTitle:'@?',
     isDisabledInput:'<?',
     returnValue:'&?',
-    bindValue:'=?'
+    bindValue:'<?'
   },
   template,
   controller
