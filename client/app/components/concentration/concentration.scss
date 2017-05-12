@@ -17,10 +17,11 @@
     .concentration-sub-title {
       margin-top: 10px;
       text-align: center;
+
       span {
         @include title;
         color: #0e7086;
-        font-size: 18.5px;
+        font-size: 22px;
       }
     }
     .blurry {
@@ -31,7 +32,7 @@
       font-size: 18px;
       text-align: center;
       margin-top: 15px;
-      line-height: 16px;
+      white-space: pre;
 
     }
     .target {
@@ -65,7 +66,11 @@
     .bottom-title {
       margin: 20px auto;
       .concentration-sub-title {
-        margin: 10px;
+        border-top: 2px solid #0e7086;
+        border-bottom: 2px solid #0e7086;
+        padding: 15px 0;
+        width: 80%;
+        margin: auto;
       }
     }
     .line {
@@ -87,7 +92,7 @@
         margin: 5px;
       }
       .arrow{
-        background: url($cdnImage + 'icn-arrow-down@3x.png') no-repeat;
+        background: url($cdnImage + 'down-arrow.png') no-repeat;
         height: 30px;
         width: 30px;
         background-size: 100%;
