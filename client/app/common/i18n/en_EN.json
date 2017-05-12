@@ -104,16 +104,14 @@
     "wandering":"when your mind is wandering",
     "aware":"First you must become aware",
     "word":"My word",
+    "focus":"c'mon, let's go, focus, I'm ready ...",
+    "word_could":"The word could be something like",
     "word_is":"My word is:",
     "your_word_here":"Type your word here",
     "choose_word":"choose your word",
     "during":"How do you do this during the test?",
-    "rising_through":"and rising through your body?",
-    "previous_question":"You can’t stop thinking about the previous question you didn’t know.",
-    "panic":"And then when you go to the next question you still carry that panic with you?",
-    "beginning":"you don’t know the answer and you start to feel a beginning of panic starting in your stomach",
     "negative_thoughts":"Sometimes your negative thoughts can cause problems with",
-    "difficult":"Has it ever happened to you when you are taking a test that you get to a difficult question,"
+    "happened":"Has it ever happened to you when you are taking a test that you get to a difficult question, \n you don’t know the answer and you start to feel a beginning of panic starting in your stomach \n and rising through your body? \n And then when you go to the next question you still carry that panic with you? \n You can’t stop thinking about the previous question you didn’t know."
   },
   "positive":{
     "positive_thinking":"Positive Thinking",

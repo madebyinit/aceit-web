@@ -1,60 +1,52 @@
 <main-menu></main-menu>
 <div class="concentration">
   <div class="concentration-content">
-    <div class="concentration-title">{{'concentration.concentration_tool' | translate}}</div>
+    <div class="concentration-title">{{::'concentration.concentration_tool' | translate}}</div>
     <div class="concentration-sub-title">
-      <span>{{'concentration.negative_thoughts' | translate}}</span>
-      <span class="blurry">{{'concentration.staying_focused' | translate}}</span>
+      <span>{{::'concentration.negative_thoughts' | translate}}</span>
+      <span class="blurry">{{::'concentration.staying_focused' | translate}}</span>
     </div>
-    <div class="concentration-description">
-      <p>{{'concentration.difficult' | translate}}</p>
-      <p>{{'concentration.beginning' | translate}}</p>
-      <p>{{'concentration.rising_through' | translate}}</p>
-      <p>{{'concentration.panic' | translate}}</p>
-      <p>{{'concentration.previous_question' | translate}}</p>
-    </div>
-    <img ng-src="{{$root.imageCdn}}icn-target.png" class="target">
+    <div class="concentration-description">{{::'concentration.happened' | translate}}</div>
+    <img ng-src="{{::$root.imageCdn}}icn-target.png" class="target">
     <div class="line-var"></div>
     <div class="concentration-video">
       <video controls>
-        <source ng-src="{{$root.videoCdn}}concentration.mp4" type="video/mp4">
+        <source ng-src="{{::$root.videoCdn}}concentration.mp4" type="video/mp4">
       </video>
     </div>
     <div class="line-var"></div>
     <div class="bottom-title">
-      <div class="line"></div>
       <div class="concentration-sub-title">
-        <span>{{'concentration.during' | translate}}</span>
+        <span>{{::'concentration.during' | translate}}</span>
       </div>
-      <div class="line"></div>
     </div>
     <div class="concentration-instruction">
       <div class="concentration-step1">
-        <p>{{'concentration.aware' | translate}}</p>
-        <p>{{'concentration.wandering' | translate}}</p>
+        <p>{{::'concentration.aware' | translate}}</p>
+        <p>{{::'concentration.wandering' | translate}}</p>
       </div>
       <div class="arrow"></div>
       <div class="concentration-step2">
-        <p>{{'concentration.yourself' | translate}}</p>
-        <p>{{'concentration.bring' | translate}}</p>
+        <p>{{::'concentration.yourself' | translate}}</p>
+        <p>{{::'concentration.bring' | translate}}</p>
       </div>
     </div>
     <div class="button-section">
       <div class="info">
-        <img ng-src="{{$root.imageCdn}}btn-info.png"/>
-        <md-tooltip class="tooltip-style" md-direction="top">The word could be something like
-          <span class="bold">c'mon, let's go, focus, I'm ready ...</span></md-tooltip>
+        <img ng-src="{{::$root.imageCdn}}btn-info.png"/>
+        <md-tooltip class="tooltip-style" md-direction="top">{{::'concentration.word_could' | translate}}
+          <span class="bold">{{::'concentration.focus' | translate}}</span></md-tooltip>
       </div>
       <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
         <span ng-if="!$ctrl.concentrationWord">{{'concentration.word' | translate}}</span>
         <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
           {{$ctrl.concentrationWord}}
-          <img ng-src="{{$root.imageCdn}}edit.png">
+          <img ng-src="{{::$root.imageCdn}}edit.png">
         </div>
       </md-button>
       <md-button class="button-style summary-button-style" ng-click="$ctrl.goToSummary()" ng-disabled="!$ctrl.concentrationComplete">
-        <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
-        <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
+        <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
+        <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
       </md-button>
     </div>
   </div>
