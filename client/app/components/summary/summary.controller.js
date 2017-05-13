@@ -10,6 +10,7 @@ class SummaryController {
   }
 
   $onInit(){
+    this.progressLinear.showProgress();
     this._getUserData();
   }
 
@@ -18,25 +19,30 @@ class SummaryController {
   }
 
   _getUserData(){
-    this.progressLinear.showProgress();
     this.connection.getUserPromise().then((res)=>{
       this.user = res;
       this.userSum = {positive:0,concentration:0,physical:0};
       if(_.get(res,'questionnaire')){
         this.sumUserQuestionnaire();
+        this.routineDisabled();
       }else{
         this.$state.go('questionnaire');
       }
+      this.progressLinear.hideProgress();
     },(error)=>{
       console.log(error);
+      this.progressLinear.hideProgress();
     })
+  }
+
+  routineDisabled(){
+    this.enableRoutineButton = false
   }
 
   sumUserQuestionnaire(){
     _.forEach(_.get(this.user,'questionnaire'),(value)=>{
       this.userSum[value.category] += value.answer;
     });
-    this.progressLinear.hideProgress();
   }
 }
 

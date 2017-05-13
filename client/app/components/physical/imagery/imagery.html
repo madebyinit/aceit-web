@@ -1,52 +1,52 @@
 <div class="imagery">
-    <div class="imagery-title">{{'imagery.visualizing' | translate}}</div>
+    <div class="imagery-title">{{::'imagery.visualizing' | translate}}</div>
     <div class="imagery-tool paradise">
         <div class="tool-text">
-            <div class="close-your-eyes-text">{{'imagery.island_paradise_listening' | translate}}</div>
-            <div class="deep-breaths-text">{{'imagery.deep_breaths' | translate}} <span class="arrow">></span></div>
+            <div class="close-your-eyes-text">{{::'imagery.island_paradise_listening' | translate}}</div>
+            <div class="deep-breaths-text">{{::'imagery.deep_breaths' | translate}} <span class="arrow">></span></div>
         </div>
         <div class="tool-img paradise-img">
-            <div class="hover-me-text">{{'imagery.hover_me' | translate}}</div>
+            <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
         </div>
     </div>
     <div class="imagery-tool puppy">
         <div class="tool-img puppy-img">
-            <div class="hover-me-text">{{'imagery.hover_me' | translate}}</div>
+            <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
         </div>
         <div class="tool-text puppy-text">
-            <div class="close-your-eyes-text">{{'imagery.chocolate_chip' | translate}}</div>
-            <div class="deep-breaths-text">< {{'imagery.deep_breaths' | translate}}</div>
+            <div class="close-your-eyes-text">{{::'imagery.chocolate_chip' | translate}}</div>
+            <div class="deep-breaths-text">< {{::'imagery.deep_breaths' | translate}}</div>
         </div>
     </div>
     <div class="imagery-tool smell">
         <div class="tool-text">
-            <div class="close-your-eyes-text">{{'imagery.chocolate_chip' | translate}}</div>
-            <div class="deep-breaths-text">{{'imagery.deep_breaths' | translate}} ></div>
+            <div class="close-your-eyes-text">{{::'imagery.chocolate_chip' | translate}}</div>
+            <div class="deep-breaths-text">{{::'imagery.deep_breaths' | translate}} ></div>
         </div>
         <div class="tool-img smell-img">
-            <div class="hover-me-text">{{'imagery.hover_me' | translate}}</div>
+            <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
         </div>
     </div>
     <div class="line-element">
         <div class="line"></div>
-        <div class="line-element-title">{{'imagery.how_do_you' | translate}}</div>
+        <div class="line-element-title">{{::'imagery.how_do_you' | translate}}</div>
         <div class="line"></div>
     </div>
     <div class="last-section">
-        <div class="choose-a-safe">{{'imagery.relaxing_imagery' | translate}}</div>
+        <div class="choose-a-safe">{{::'imagery.relaxing_imagery' | translate}}</div>
         <div class="arrow-down"></div>
     </div>
     <div class="button-section">
         <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
-            <span ng-if="!$ctrl.imageryWord">{{'imagery.my_imagery' | translate}}</span>
+            <span ng-if="!$ctrl.imageryWord">{{::'imagery.my_imagery' | translate}}</span>
             <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
                 {{$ctrl.imageryWord}}
-                <img ng-src="{{$root.imageCdn}}edit.png">
+                <img ng-src="{{::$root.imageCdn}}edit.png">
             </div>
         </md-button>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">
-            <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
-            <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
+            <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
+            <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
         </md-button>
     </div>
 </div>
