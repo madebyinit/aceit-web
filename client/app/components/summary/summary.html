@@ -6,83 +6,16 @@
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     <div class="sub-title">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
-    <div class="required-cards">
-      <div class="summary-card physical-card" ng-class="{'physical-done':$ctrl.user.physicalComplete}" ng-if="$ctrl.userSum.physical >= 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.physical_tools' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('physical')" ng-if="!$ctrl.user.imagery">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.imagery">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('physical')">
-            <div class="imagery-word-bind">
-              {{::$ctrl.user.imagery}}
-            </div>
-          </md-button>
-        </div>
-      </div>
-      <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive >= 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.positive_thinking' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('positive')" ng-if="!$ctrl.user.stickyNotes">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.stickyNotes">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('positive')">
-            <div class="imagery-word-bind">
-              {{::'positive.thinking.little_voice' | translate}}
-            </div>
-          </md-button>
-        </div>
-      </div>
-      <div class="summary-card concentration-card" ng-class="{'concentration-done':$ctrl.user.concentrationComplete}" ng-if="$ctrl.userSum.concentration >= 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.concentration_tools' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('concentration')" ng-if="!$ctrl.user.concentration">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.concentration">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('concentration')">
-            <div class="imagery-word-bind">
-              {{::$ctrl.user.concentration}}
-            </div>
-          </md-button>
-        </div>
-      </div>
-    </div>
+    <required-cards></required-cards>
     <div class="optional-cards-title" ng-if="$ctrl.userSum.physical < 10 || $ctrl.userSum.positive < 10 || $ctrl.userSum.concentration < 10">{{:: 'summary.optional' | translate}}</div>
-    <div class="required-cards">
-      <div class="summary-card physical-card" ng-class="{'physical-done':$ctrl.user.physicalComplete}" ng-if="$ctrl.userSum.physical < 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.physical_tools' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('physical')" ng-if="!$ctrl.user.imagery">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.imagery">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('physical')">
-            <div class="imagery-word-bind">
-              {{::$ctrl.user.imagery}}
-            </div>
-          </md-button>
-        </div>
-      </div>
-      <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive < 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.positive_thinking' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('positive')" ng-if="!$ctrl.user.stickyNotes">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.stickyNotes">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('positive')">
-            <div class="imagery-word-bind">
-              {{::'positive.thinking.little_voice' | translate}}
-            </div>
-          </md-button>
-        </div>
-      </div>
-      <div class="summary-card concentration-card" ng-class="{'concentration-done':$ctrl.user.concentrationComplete}" ng-if="$ctrl.userSum.concentration < 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.concentration_tools' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('concentration')" ng-if="!$ctrl.user.concentration">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.concentration">
-          <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('concentration')">
-            <div class="imagery-word-bind">
-              {{::$ctrl.user.concentration}}
-            </div>
-          </md-button>
-        </div>
-      </div>
+    <optional-cards></optional-cards>
+    <div class="button-container">
+      <md-tooltip class="tooltip-style" style="padding: 0" md-direction="top" ng-if="!$ctrl.enableRoutineButton">
+        {{::'summary.routine' | translate}}
+      </md-tooltip>
+      <md-button class="button-style routine-button" ng-disabled="!$ctrl.enableRoutineButton">
+        {{:: 'summary.my_routine' | translate}}
+      </md-button>
     </div>
-    <md-button class="button-style routine-button">{{:: 'summary.my_routine' | translate}}</md-button>
   </div>
 </div>

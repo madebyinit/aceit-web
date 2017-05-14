@@ -28,8 +28,8 @@
     </div>
     <div class="summary-button-container" ng-if="$ctrl.currentNavItem !== 'imagery'">
       <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.allStepsComplete">
-        <div>{{'neck_and_shoulders.my_summary' | translate}}</div>
-        <img ng-src="{{$root.imageCdn}}icn-back-arrow.png" />
+        <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
+        <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
       </md-button>
     </div>
   </div>

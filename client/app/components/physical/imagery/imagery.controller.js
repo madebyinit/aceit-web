@@ -24,6 +24,7 @@ class ImageryController {
   }
 
   saveWord(val){
+    this.imageryWord = val;
     this.connection.saveData(val,'imagery').then((res)=>{
       this.showDialog = false;
       this._getWord();

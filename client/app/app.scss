@@ -22,14 +22,15 @@ video::-webkit-media-controls-panel {
 .app {
   height: 100%;
 }
-.tooltip-style {
+.md-tooltip {
   font-size: 16px!important;
   max-width: 270px;
-  white-space: pre-line!important;
+  white-space: normal!important;
   height: auto!important;
   padding: 15px!important;
   background-image: linear-gradient(to top, #f2f4f7, #feffff);
   border: solid 1px #ced0da;
+  text-align: center!important;
   color: #0e7086!important;
   .bold{
     font-weight: bold;
