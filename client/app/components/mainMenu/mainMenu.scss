@@ -38,3 +38,39 @@ md-input-container{
   }
 }
 
+.side-main-menu{
+  background-color: #eaf5f9;
+  box-shadow: 5px 0 0 4px rgba(0, 0, 0, 0.09)!important;
+  md-content{
+    background-color: #eaf5f9!important;
+    margin: 0;
+    md-list{
+      margin: 0!important;
+      md-divider{
+        border-top-width: 2px;
+        background: #0e7086;
+      }
+    }
+  }
+  .md-3-line{
+    .md-list-item-inner{
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase!important;
+      color: #0e7086;
+      font-size: 22px;
+    }
+  }
+  .md-button:not([disabled]):hover {
+    background-color: rgba(255, 255, 255, 0.54);
+  }
+  .close-menu {
+    text-align: right;
+    height: 65px;
+    img{
+      width: 35px;
+      position: relative;
+      right: 15px;
+      top: 15px;
+    }
+  }
+}
