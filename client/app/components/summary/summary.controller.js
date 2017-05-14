@@ -3,10 +3,11 @@ const CONCENTRATION = 'concentration';
 const PHYSICAL = 'physical';
 
 class SummaryController {
-  constructor(connection,$state,progressLinear) {
+  constructor(connection,$state,progressLinear,$timeout) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
+    this.$timeout = $timeout;
   }
 
   $onInit(){
@@ -36,7 +37,15 @@ class SummaryController {
   }
 
   routineDisabled(){
-    this.enableRoutineButton = false
+    let that = this;
+    this.enableRoutineButton = true;
+    _.forEach(this.userSum,(value,key)=>{
+      if(value >= 10 && !_.get(that.user,`${key}Complete`)){
+        this.$timeout(()=>{
+          this.enableRoutineButton = false;
+        },0);
+      }
+    });
   }
 
   sumUserQuestionnaire(){
@@ -46,5 +55,5 @@ class SummaryController {
   }
 }
 
-SummaryController.$inject = ['connection','$state','progressLinear'];
+SummaryController.$inject = ['connection','$state','progressLinear','$timeout'];
 export default SummaryController;
