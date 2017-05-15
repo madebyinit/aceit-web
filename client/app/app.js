@@ -25,7 +25,7 @@ angular.module('app', [
     'firebase'
   ])
   .run(runController)
-  .config(($locationProvider,$translateProvider) => {
+  .config(($locationProvider,$translateProvider,$stateProvider,$urlRouterProvider) => {
     "ngInject";
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
@@ -36,6 +36,7 @@ angular.module('app', [
       'whats_app': 'Hvordan gor det'
     });
     $translateProvider.preferredLanguage('en');
+    $urlRouterProvider.otherwise('home');
   })
 
   .component('app', AppComponent);

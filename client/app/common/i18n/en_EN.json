@@ -160,5 +160,17 @@
     "concentration_tools":"Concentration Tools",
     "optional":"Another tool (optional) that might be relevant for you",
     "routine":"You have to go over your tools to see your routine"
+  },
+  "main_menu":{
+    "home_page":"Home Page",
+    "contact_us":"Contact Us",
+    "questionnaire":"My Questionnaire",
+    "summary":"My Summary",
+    "routines":"My Routines",
+    "concentration":"Concentration Tool",
+    "physical":"Physical Tools",
+    "positive":"Positive Thinking",
+    "main":"Main",
+    "logout":"Logout"
   }
 }

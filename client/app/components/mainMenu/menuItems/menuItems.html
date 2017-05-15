@@ -1,0 +1,56 @@
+<md-sidenav class="md-sidenav-left side-main-menu" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+    <div class="close-menu">
+        <img ng-click="$ctrl.toggleLeft()" ng-src="{{::$root.imageCdn}}icn-close-menu.svg">
+    </div>
+    <md-content layout-margin>
+        <md-list flex>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'home'}" ng-click="$ctrl.stateChange('home')">
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-welcome-menu.svg"></div><span>{{::'main_menu.home_page' | translate}}</span>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'questionnaire'}" ng-click="$ctrl.stateChange('questionnaire')">
+                <div class="menu-icon"><img class="questionnaire-icon" ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"></div><span>{{::'main_menu.questionnaire' | translate}}</span>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.openSummary = !$ctrl.openSummary">
+                <div class="menu-icon"><img class="main-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.summary' | translate}}</span>
+                <div class="open-summary-list" ng-class="{'rotate-icon':$ctrl.openSummary}"><img ng-src="{{::$root.imageCdn}}icn-dropdown-menu.svg"></div>
+            </md-list-item>
+            <div class="sub-menu" ng-if="$ctrl.openSummary">
+                <md-divider></md-divider>
+                <md-list-item class="md-3-line concentration-icon" ng-class="{'state-select':$ctrl.$state.current.name === 'summary'}" ng-click="$ctrl.stateChange('summary')">
+                    <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.main' | translate}}</span>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-3-line concentration-icon" ng-class="{'state-select':$ctrl.$state.current.name === 'concentration'}" ng-click="$ctrl.stateChange('concentration')">
+                    <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}concentration-icon-blue.png"></div><span>{{::'main_menu.concentration' | translate}}</span>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-3-line physical-icon" ng-class="{'state-select':$ctrl.$state.current.name === 'physical'}" ng-click="$ctrl.stateChange('physical')">
+                    <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}physical-icon-blue.png"></div><span>{{::'main_menu.physical' | translate}}</span>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-3-line positive-icon" ng-class="{'state-select':$ctrl.$state.current.name === 'positive'}" ng-click="$ctrl.stateChange('positive')">
+                    <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}positive-thinking-icon-blue.png"></div><span>{{::'main_menu.positive' | translate}}</span>
+                </md-list-item>
+            </div>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('concentration')">
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-contact-menu.svg"></div><span>{{::'main_menu.contact_us' | translate}}</span>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line">
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.logout()">
+                <div class="menu-icon"><img class="close-icon" ng-src="{{::$root.imageCdn}}icn-side-menu-close.svg"></div><span>{{::'main_menu.logout' | translate}}</span>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+    </md-content>
+</md-sidenav>
