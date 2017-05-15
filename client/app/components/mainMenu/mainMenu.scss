@@ -54,10 +54,40 @@ md-input-container{
   }
   .md-3-line{
     .md-list-item-inner{
-      font-family: 'Oswald', sans-serif;
       text-transform: uppercase!important;
       color: #0e7086;
       font-size: 22px;
+      .menu-icon {
+        width: 40px;
+        margin-left: 10px;
+        position: relative;
+        img {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 40px;
+        }
+        .questionnaire-icon {
+          width: 30px!important;
+          padding-left: 5px;
+        }
+        .summary-icon {
+          width: 32px!important;
+          padding-left: 5px;
+        }
+      }
+      span{
+        font-family: 'Oswald', sans-serif;
+        margin-left: 20px;
+      }
+    }
+    .open-summary-list {
+      position: absolute;
+      right: 30px;
+      transition: all 0.3s ease;
+    }
+    .rotate-icon{
+      transform: rotate(180deg);
     }
   }
   .md-button:not([disabled]):hover {
@@ -72,5 +102,68 @@ md-input-container{
       right: 15px;
       top: 15px;
     }
+  }
+  .sub-menu{
+    overflow: hidden;
+    height: 360px;
+    background-color: #c9e1e8;
+    &.ng-enter{
+      animation: 0.65s sizeUp ease;
+      .main-icon{
+        position: relative;
+        animation: 0.25s slideFromLeft ease-out;
+      }
+      .concentration-icon{
+        position: relative;
+        animation: 0.45s slideFromLeft ease-out;
+      }
+      .physical-icon{
+        position: relative;
+        animation: 0.65s slideFromLeft ease-out;
+      }
+      .positive-icon{
+        position: relative;
+        animation: 0.85s slideFromLeft ease-out;
+      }
+    }
+    &.ng-leave{
+      animation: 0.35s sizeDown ease;
+    }
+    .md-list-item-inner{
+      padding-left: 35px;
+      font-size: 20px;
+    }
+  }
+  .state-select{
+    background-color: white!important;
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    left: -300px;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes sizeUp {
+  from {
+    height: 0;
+  }
+  to {
+    height: 360px;
+  }
+}
+
+@keyframes sizeDown {
+  from {
+    height: 360px;
+  }
+  to {
+    height: 0;
   }
 }

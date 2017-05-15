@@ -8,6 +8,7 @@ import concentrationModule from './concentration/concentration';
 import physicalModule from './physical/physical';
 import summaryModule from './summary/summary';
 import positiveModule from './positive/positive';
+import routineModule from './routine/routine';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -18,7 +19,8 @@ let componentModule = angular.module('app.components', [
   physicalModule,
   concentrationModule,
   summaryModule,
-  positiveModule
+  positiveModule,
+  routineModule
 ])
 
 .name;
