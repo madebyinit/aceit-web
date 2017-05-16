@@ -1,8 +1,17 @@
 class RoutineController {
-  constructor() {
+  constructor(connection) {
     this.name = 'routine';
+    this.connection = connection;
+  }
+
+  $onInit(){
+    this._saveStateComplete();
+  }
+
+  _saveStateComplete(){
+    this.connection.saveData(true,'routineComplete');
   }
 }
 
-RoutineController.$inject = [];
+RoutineController.$inject = ['connection'];
 export default RoutineController;

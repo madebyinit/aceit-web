@@ -9,16 +9,20 @@
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-welcome-menu.svg"></div><span>{{::'main_menu.home_page' | translate}}</span>
             </md-list-item>
             <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'questionnaire'}" ng-click="$ctrl.stateChange('questionnaire')">
+            <md-list-item class="md-3-line" ng-if="$ctrl.user.questionnaireComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'questionnaire'}" ng-click="$ctrl.stateChange('questionnaire')">
                 <div class="menu-icon"><img class="questionnaire-icon" ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"></div><span>{{::'main_menu.questionnaire' | translate}}</span>
             </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-click="$ctrl.openSummary = !$ctrl.openSummary">
+            <md-divider ng-if="$ctrl.user.questionnaireComplete"></md-divider>
+            <md-list-item class="md-3-line" ng-if="$ctrl.showSummary" ng-class="{'state-select':$ctrl.$state.current.name === 'summary'}" ng-click="$ctrl.stateChange('summary')">
+                <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.summary' | translate}}</span>
+            </md-list-item>
+            <md-divider ng-if="$ctrl.showSummary"></md-divider>
+            <md-list-item class="md-3-line" ng-if="$ctrl.showFullSummary" ng-click="$ctrl.openSummary = !$ctrl.openSummary">
                 <div class="menu-icon"><img class="main-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.summary' | translate}}</span>
                 <div class="open-summary-list" ng-class="{'rotate-icon':$ctrl.openSummary}"><img ng-src="{{::$root.imageCdn}}icn-dropdown-menu.svg"></div>
             </md-list-item>
-            <div class="sub-menu" ng-if="$ctrl.openSummary">
-                <md-divider></md-divider>
+            <md-divider ng-if="$ctrl.showFullSummary"></md-divider>
+            <div class="sub-menu" ng-if="$ctrl.openSummary && $ctrl.showFullSummary">
                 <md-list-item class="md-3-line concentration-icon" ng-class="{'state-select':$ctrl.$state.current.name === 'summary'}" ng-click="$ctrl.stateChange('summary')">
                     <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.main' | translate}}</span>
                 </md-list-item>
@@ -35,15 +39,15 @@
                     <div class="menu-icon"><img class="summary-icon" ng-src="{{::$root.imageCdn}}positive-thinking-icon-blue.png"></div><span>{{::'main_menu.positive' | translate}}</span>
                 </md-list-item>
             </div>
-            <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
+            <md-divider ng-if="$ctrl.openSummary && $ctrl.showFullSummary"></md-divider>
+            <md-list-item class="md-3-line" ng-if="$ctrl.user.routineComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
             </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('concentration')">
+            <md-divider ng-if="$ctrl.user.routineComplete"></md-divider>
+            <md-list-item class="md-3-line" ng-if="false">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-contact-menu.svg"></div><span>{{::'main_menu.contact_us' | translate}}</span>
             </md-list-item>
-            <md-divider></md-divider>
+            <md-divider ng-if="false"></md-divider>
             <md-list-item class="md-3-line">
             </md-list-item>
             <md-divider></md-divider>
