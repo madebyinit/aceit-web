@@ -16,6 +16,7 @@ class MainMenuController {
   _getUser(){
     CONNECTION.get(this).getUserPromise().then((res)=>{
       this.user = res;
+      this._checkSummaryComplete();
     })
   }
 
@@ -29,6 +30,14 @@ class MainMenuController {
 
   stateChange(state){
     this.$state.go(state);
+  }
+
+  _checkSummaryComplete(){
+    if(this.user.positiveComplete && this.user.physicalComplete && this.user.concentrationComplete){
+      this.showFullSummary = true;
+    }else if(this.user.summaryComplete){
+      this.showSummary = true;
+    }
   }
 }
 

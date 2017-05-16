@@ -13,6 +13,7 @@ class SummaryController {
   $onInit(){
     this.progressLinear.showProgress();
     this._getUserData();
+    this.connection.saveData(true,'summaryComplete');
   }
 
   stateGo(name){

@@ -1,8 +1,17 @@
 class QuestionnaireController {
-  constructor(questionnaireService,notificationsService) {
+  constructor(questionnaireService,notificationsService,connection) {
     this.questionnaireService = questionnaireService;
     this.notificationsService = notificationsService;
+    this.connection = connection;
     this.steps = this.questionnaireService.steps;
+  }
+
+  $onInit(){
+    this._saveStateComplete();
+  }
+
+  _saveStateComplete(){
+    this.connection.saveData(true,'questionnaireComplete');
   }
 
   answerHelper(answer){
@@ -22,5 +31,5 @@ class QuestionnaireController {
   }
 }
 
-QuestionnaireController.$inject = ['questionnaireService','notificationsService'];
+QuestionnaireController.$inject = ['questionnaireService','notificationsService','connection'];
 export default QuestionnaireController;
