@@ -1,0 +1,103 @@
+@import "../../../../common/common";
+
+.control{
+  position: relative;
+  .suggested{
+    background: url($cdnImage + 'icn-suggested.svg') no-repeat;
+    width: 145px;
+    height: 135px;
+    position: absolute;
+    bottom: 80px;
+    left: -40px;
+    background-size: 100%;
+    .button-text {
+      text-align: center;
+      position: relative;
+      top: 45px;
+      text-transform: uppercase;
+      font-size: 15px;
+      color: $secondaryColor;
+      font-weight: bold;
+    }
+  }
+  .control-panel{
+    background: url($cdnImage + 'myroutine-bg2.svg') no-repeat;
+    width: 797px;
+    height: 797px;
+    padding-bottom: 50px;
+    margin: auto;
+    position: relative;
+    .text{
+      color: white;
+      font-size: 28px;
+      position: absolute;
+      div:first-child{
+        font-weight: bold;
+      }
+    }
+    .control-title {
+      @include title;
+      color: $secondaryColor;
+      position: absolute;
+      top: 360px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-size: 41px;
+      width: 160px;
+      line-height: 41px;
+      text-align: center;
+    }
+    .step1 {
+      width: 320px;
+      height: 210px;
+      position: absolute;
+      left: 30px;
+      right: 0;
+      margin: auto;
+      top: 30px;
+      .text {
+        width: 95px;
+        right: 70px;
+        top: 55px;
+      }
+    }
+    .step2 {
+      width: 220px;
+      height: 280px;
+      right: 30px;
+      position: absolute;
+      top: 250px;
+      .text{
+        width: 100px;
+        right: 15px;
+        top: 100px;
+      }
+    }
+    .step4 {
+      width: 220px;
+      height: 280px;
+      left: 30px;
+      position: absolute;
+      top: 250px;
+      .text{
+        right: 45px;
+        width: 100px;
+        top: 100px;
+      }
+    }
+    .step3 {
+      width: 320px;
+      height: 210px;
+      position: absolute;
+      left: 30px;
+      right: 0;
+      margin: auto;
+      bottom: 90px;
+      .text{
+        left: 150px;
+        top: 70px;
+      }
+    }
+  }
+}
