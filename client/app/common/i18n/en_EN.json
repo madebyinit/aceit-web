@@ -174,6 +174,13 @@
     "logout":"Logout"
   },
   "routine":{
+    "lion":{
+      "works":"But this only works if you PRACTICE it.",
+      "friend":"Make the lion your friend",
+      "perform":"Stress is good and will help you perform at your best!",
+      "stressed":"So now, every time you begin to get stressed, either while studying or taking the test, STOP and do your routine.",
+      "important":"The reason routines are so important is they prevent you from panicking because you have a plan - you are doing something that helps you manage the stress and focus on the present."
+    },
     "my_routine":"My Routine",
     "apply":"How does this apply to you?",
     "competition":"Let’s look at what professional athletes do to manage the stress of competition:",

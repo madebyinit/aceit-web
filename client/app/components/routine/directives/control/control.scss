@@ -21,7 +21,7 @@
     }
   }
   .control-panel{
-    background: url($cdnImage + 'myroutine-bg2.svg') no-repeat;
+    background: url($cdnImage + 'myroutine.svg') no-repeat;
     width: 797px;
     height: 797px;
     padding-bottom: 50px;
@@ -29,7 +29,7 @@
     position: relative;
     .text{
       color: white;
-      font-size: 28px;
+      font-size: 26px;
       position: absolute;
       div:first-child{
         font-weight: bold;
@@ -65,12 +65,12 @@
     .step2 {
       width: 220px;
       height: 280px;
-      right: 30px;
+      right: 25px;
       position: absolute;
       top: 250px;
       .text{
         width: 100px;
-        right: 15px;
+        right: 5px;
         top: 100px;
       }
     }
@@ -81,7 +81,7 @@
       position: absolute;
       top: 250px;
       .text{
-        right: 45px;
+        right: 35px;
         width: 100px;
         top: 100px;
       }
