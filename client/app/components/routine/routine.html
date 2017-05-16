@@ -1,3 +1,9 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
+<main-menu></main-menu>
+<div class="routine">
+  <div class="routine-container">
+    <div class="routine-title">
+      <img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"><span>{{::'routine.my_routine'|translate}}</span>
+    </div>
+    <basketball-section></basketball-section>
+  </div>
 </div>
