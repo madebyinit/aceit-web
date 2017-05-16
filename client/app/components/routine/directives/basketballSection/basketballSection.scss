@@ -1,0 +1,36 @@
+@import "../../../../common/common";
+
+.basketball-section{
+  margin-top: 30px;
+  text-align: center;
+  color: $secondaryColor;
+  font-size: 20px;
+  .video-box {
+    width: 700px;
+    height: 401px;
+    margin: 30px auto;
+    border: 1px solid $secondaryColor;
+    position: relative;
+    video{
+      height: 387px;
+      width: 687px;
+      @include topCenter();
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+  }
+  .apply-line {
+    margin: 30px 0;
+    @include title;
+    color: $secondaryColor;
+    border-top: 2px solid $secondaryColor;
+    border-bottom: 2px solid $secondaryColor;
+    padding: 10px;
+    font-size: 26px;
+  }
+  .happens {
+    padding-bottom: 20px;
+    text-align: left;
+  }
+}

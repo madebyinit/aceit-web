@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routineComponent from './routine.component';
+import basketballSectionComponent from './directives/basketballSection/basketballSection';
 
 let routineModule = angular.module('routine', [
   uiRouter
@@ -19,6 +20,7 @@ let routineModule = angular.module('routine', [
   })
 
 .component('routine', routineComponent)
+.directive('basketballSection', basketballSectionComponent)
 
 .name;
 
