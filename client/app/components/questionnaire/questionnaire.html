@@ -1,15 +1,17 @@
 <main-menu></main-menu>
-<div class="questionnaire">
-    <steps-element steps="$ctrl.steps" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
-    <div class="questionnaire-info">
-        <div class="title">{{:: ('questionnaire.questionnaire' | translate)}}</div>
-        <div class="title questionnaire-number">({{$ctrl.questionnaireService.stepIndex+1}}/{{$ctrl.questionnaireService.steps.length}})</div>
-        <div class="description">{{:: ('questionnaire.what_specifically_happens' | translate)}}</div>
-        <div class="rememeber">{{:: ('questionnaire.remember_only_you' | translate)}}</div>
+<div class="questionnaire-body">
+    <div class="questionnaire">
+        <steps-element steps="$ctrl.steps" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
+        <div class="questionnaire-info">
+            <div class="title"><img ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"><span>{{:: ('questionnaire.questionnaire' | translate)}}</span></div>
+            <div class="title questionnaire-number">({{$ctrl.questionnaireService.stepIndex+1}}/{{$ctrl.questionnaireService.steps.length}})</div>
+            <div class="description">{{:: ('questionnaire.what_specifically_happens' | translate)}}</div>
+            <div class="rememeber">{{:: ('questionnaire.remember_only_you' | translate)}}</div>
+        </div>
+        <questionnaire-element
+                question-model="{{$ctrl.questionnaireService.currentState.name}}"
+                answer="$ctrl.questionnaireService.currentState.answer"
+                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
+        <md-button class="progress-buttons" ng-click="$ctrl.backStep()">{{:: ('questionnaire.previous' | translate)}}</md-button><md-button class="progress-buttons next-button" ng-click="$ctrl.nextStep()">{{:: ('questionnaire.next' | translate)}}</md-button>
     </div>
-    <questionnaire-element
-            question-model="{{$ctrl.questionnaireService.currentState.name}}"
-            answer="$ctrl.questionnaireService.currentState.answer"
-            answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
-    <md-button class="progress-buttons" ng-click="$ctrl.backStep()">{{:: ('questionnaire.previous' | translate)}}</md-button><md-button class="progress-buttons next-button" ng-click="$ctrl.nextStep()">{{:: ('questionnaire.next' | translate)}}</md-button>
 </div>
