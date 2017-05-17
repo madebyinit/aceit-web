@@ -42,7 +42,7 @@
 }
 
 .questionnaire-body {
+  min-height: 700px;
   height: 100vh;
-  overflow: hidden;
   background: linear-gradient(to top, rgba(252, 244, 234, 0.5), rgba(210, 246, 246, 0.5)), url($cdnImage + 'q-bg.png');
 }
