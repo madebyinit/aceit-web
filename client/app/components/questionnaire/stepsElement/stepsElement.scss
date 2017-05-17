@@ -1,3 +1,5 @@
+@import "../../../common/common";
+
 .step-element {
   height: 20px;
   width: 100%;
@@ -5,7 +7,7 @@
   .step-element-dot {
     width: 10px;
     height: 10px;
-    background-color: rgba(206, 206, 206, 0.59);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     display: inline-flex;
     margin: 0 3%;
@@ -13,7 +15,7 @@
     transition: all 0.25s ease;
   }
   .step-complete{
-    background-color: #84c6ff;
+    background-color: $secondaryColor;
   }
   .current-step{
     width: 25px;
