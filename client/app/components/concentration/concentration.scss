@@ -13,6 +13,14 @@
       @include title;
       color: white;
       margin: 30px auto;
+      img{
+        width: 70px;
+        vertical-align: middle;
+        margin-right: 20px;
+      }
+      span{
+        vertical-align: middle;
+      }
     }
     .concentration-sub-title {
       margin-top: 10px;
