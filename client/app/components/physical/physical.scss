@@ -12,6 +12,14 @@
       @include title();
       color: white;
       margin: 30px auto;
+      img{
+        width: 70px;
+        vertical-align: middle;
+        margin-right: 25px;
+      }
+      span{
+        vertical-align: middle;
+      }
     }
     .physical-sub-title{
       .main{
