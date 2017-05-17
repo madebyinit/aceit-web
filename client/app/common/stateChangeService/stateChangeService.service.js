@@ -51,7 +51,9 @@ class StateChangeService {
   _checkUserLogin(data){
     let user = this.getUserData();
     if(_.isEmpty(_.get(user,'uid'))){
-      this.$state.go('loginView.login');
+      if(this.$state.current.name !== 'loginView.login' && this.$state.current.name !== 'loginView.forgotPassword'){
+        this.$state.go('loginView.login');
+      }
     }
   }
 

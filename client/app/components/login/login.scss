@@ -1,19 +1,36 @@
+@import "../../common/common";
+
 .login-page{
   height: 100vh;
   width: 100%;
-  background-image: url('http://c1.staticflickr.com/8/7529/15915100635_fdd8bc8554_k.jpg');
+  background-image: url($cdnImage + 'bg-signup.png');
+  background-size: 100%;
+  .form-container {
+    position: relative;
+    top: 40%;
+    transform: translateY(-40%);
+  }
+  .login-logo{
+    background: url($cdnImage + 'signup-logo.png') no-repeat;
+    width: 400px;
+    height: 120px;
+    background-size: 100%;
+    margin: auto;
+    position: relative;
+    top: 100px;
+  }
   .authentication-form{
-    height: auto;
+    height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(255, 255, 255, 0.55);
     position: absolute;
     text-align: center;
     border-radius: 3px;
     padding: 30px;
     box-sizing: border-box;
     .form-title {
-      color: white;
-      text-transform: uppercase;
+      @include title;
+      color: $secondaryColor;
       font-size: 52px;
       text-align: center;
       margin-bottom: 40px;
@@ -27,7 +44,7 @@
       border-radius: 3px;
       font-size: 18px;
       text-transform: uppercase;
-      background-color: #53ace0;
+      background-color: $secondaryColor;
       box-shadow: inset 0px -7px 0px -3px rgba(0, 0, 0, 0.23);
     }
     .login-button {
@@ -42,14 +59,13 @@
     }
   }
   .forgot-password-title {
-    color: white;
+    color: $secondaryColor;
     font-size: 13px;
     text-align: left;
     width: 80%;
-    margin: auto;
     position: relative;
     left: 5px;
-    margin-bottom: 20px;
+    margin: auto auto 20px;
     span{
       color: #53ace0;
       font-weight: bold;
@@ -59,11 +75,10 @@
   }
   .login-view{
     width: 30%;
-    height: 50%;
+    height: 100%;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    left: 0;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
