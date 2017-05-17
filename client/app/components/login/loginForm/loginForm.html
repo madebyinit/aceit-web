@@ -1,15 +1,17 @@
 <div class="authentication-form login-form">
-    <div class="form-title">{{::('login.login' | translate)}}</div>
-    <form ng-keyup="$event.keyCode == 13 && $ctrl.login()">
-        <div class="input-style">
-            <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
-            <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
-        </div>
-        <div class="input-style">
-        <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="{{::('login.password' | translate)}}">
-            <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
-        </div>
-        <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>{{::('login.click_here' | translate)}}</span></a></div>
-        <md-button class="sign-up-button" ng-click="$ctrl.login()">{{::('login.jump_right_in' | translate)}}</md-button>
-    </form>
+    <div class="form-container">
+        <div class="form-title">{{::('login.login' | translate)}}</div>
+        <form ng-keyup="$event.keyCode == 13 && $ctrl.login()">
+            <div class="input-style">
+                <input type="text" class="form-input email" ng-model="$ctrl.email" ng-focus="$ctrl.validEmail = null" placeholder="{{::('login.email' | translate)}}">
+                <div class="error-message" ng-if="$ctrl.validEmail">{{$ctrl.validEmail}}</div>
+            </div>
+            <div class="input-style">
+                <input type="password" class="form-input password" ng-model="$ctrl.password" ng-focus="$ctrl.validPassword = null" placeholder="{{::('login.password' | translate)}}">
+                <div class="error-message" ng-if="$ctrl.validPassword">{{$ctrl.validPassword}}</div>
+            </div>
+            <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>{{::('login.click_here' | translate)}}</span></a></div>
+            <md-button class="sign-up-button" ng-click="$ctrl.login()">{{::('login.jump_right_in' | translate)}}</md-button>
+        </form>
+    </div>
 </div>
