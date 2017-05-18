@@ -11,18 +11,6 @@
             </md-button>
         </div>
     </div>
-    <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive < 10">
-        <div class="card-icon"></div>
-        <div class="card-title">{{:: 'summary.positive_thinking' | translate}}</div>
-        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('positive')" ng-if="!$ctrl.user.stickyNotes">{{:: 'summary.take_me' | translate}}</md-button>
-        <div class="button-section" ng-if="$ctrl.user.stickyNotes">
-            <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('positive')">
-                <div class="imagery-word-bind">
-                    {{::'positive.thinking.little_voice' | translate}}
-                </div>
-            </md-button>
-        </div>
-    </div>
     <div class="summary-card concentration-card" ng-class="{'concentration-done':$ctrl.user.concentrationComplete}" ng-if="$ctrl.userSum.concentration < 10">
         <div class="card-icon"></div>
         <div class="card-title">{{:: 'summary.concentration_tools' | translate}}</div>
@@ -31,6 +19,18 @@
             <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('concentration')">
                 <div class="imagery-word-bind">
                     {{::$ctrl.user.concentration}}
+                </div>
+            </md-button>
+        </div>
+    </div>
+    <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive < 10">
+        <div class="card-icon"></div>
+        <div class="card-title">{{:: 'summary.positive_thinking' | translate}}</div>
+        <md-button class="button-style card-button" ng-click="$ctrl.stateGo('positive')" ng-if="!$ctrl.user.stickyNotes">{{:: 'summary.take_me' | translate}}</md-button>
+        <div class="button-section" ng-if="$ctrl.user.stickyNotes">
+            <md-button class="button-style my-imagery" ng-click="$ctrl.stateGo('positive')">
+                <div class="imagery-word-bind">
+                    {{::'positive.thinking.little_voice' | translate}}
                 </div>
             </md-button>
         </div>

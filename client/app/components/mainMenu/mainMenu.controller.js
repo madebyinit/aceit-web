@@ -11,11 +11,6 @@ class MainMenuController {
 
   $onInit(){
     this._getUser();
-    angular.element(document).ready(()=> {
-      this.$mdSidenav('left').onClose(()=> {
-        document.getElementsByTagName('body')[0].style.overflow = '';
-      });
-    });
   }
 
   _getUser(){
@@ -35,6 +30,9 @@ class MainMenuController {
     this.$mdSidenav('left').open().then(()=>{
       document.getElementsByTagName('body')[0].style.overflow = 'hidden';
       });
+    this.$mdSidenav('left').onClose(()=> {
+      document.getElementsByTagName('body')[0].style.overflow = '';
+    });
   }
 
   logout(){
@@ -43,6 +41,7 @@ class MainMenuController {
 
   stateChange(state){
     this.$state.go(state);
+    document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
   _checkSummaryComplete(){

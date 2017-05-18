@@ -26,8 +26,10 @@ class ImageryController {
   saveWord(val){
     this.imageryWord = val;
     this.connection.saveData(val,'imagery').then((res)=>{
-      this.showDialog = false;
-      this._getWord();
+      this.$timeout(()=>{
+        this.showDialog = false;
+        this._getWord();
+      },0);
     },(error)=>{
       console.log(error);
     })

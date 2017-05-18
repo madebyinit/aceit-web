@@ -7,6 +7,10 @@
     div:first-child{
       margin-bottom: 30px;
     }
+    div:last-child{
+      text-align: center;
+      padding: 20px 0;
+    }
     span{
       font-weight: bold;
     }
@@ -16,6 +20,9 @@
     color: $secondaryColor;
     padding: 30px 0;
     font-size: 26px;
+  }
+  .lion-title-end{
+    padding: 30px 0 90px;
   }
   .lion-section-video{
     width: 700px;

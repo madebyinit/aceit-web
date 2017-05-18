@@ -19,7 +19,7 @@
             <md-divider ng-if="$ctrl.showSummary"></md-divider>
             <md-list-item class="md-3-line" ng-if="$ctrl.showFullSummary" ng-click="$ctrl.openSummary = !$ctrl.openSummary">
                 <div class="menu-icon"><img class="main-icon" ng-src="{{::$root.imageCdn}}icn-my-summary-menu.svg"></div><span>{{::'main_menu.summary' | translate}}</span>
-                <div class="open-summary-list" ng-class="{'rotate-icon':$ctrl.openSummary}"><img ng-src="{{::$root.imageCdn}}icn-dropdown-menu.svg"></div>
+                <div class="open-summary-list" ng-class="{'rotate-icon':$ctrl.openSummary}" ng-click="$ctrl.openSummary = !$ctrl.openSummary"><img ng-src="{{::$root.imageCdn}}icn-dropdown-menu.svg"></div>
             </md-list-item>
             <md-divider ng-if="$ctrl.showFullSummary"></md-divider>
             <div class="sub-menu" ng-if="$ctrl.openSummary && $ctrl.showFullSummary">
