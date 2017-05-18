@@ -72,6 +72,9 @@
         box-sizing: border-box;
       }
     }
+    .summary-button-container{
+      margin-top: 30px;
+    }
   }
   .button-section{
     margin-top: 20px;
@@ -83,7 +86,7 @@
   }
   .believe{
     @include title;
-    color: white;
+    color: $secondaryColor;
     white-space: pre-line;
     border-top: 1px solid;
     border-bottom: 1px solid;

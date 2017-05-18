@@ -14,6 +14,10 @@ class HomeController {
     });
   }
 
+  $onDestroy(){
+    this.$document.unbind('scroll');
+  }
+
   getUserData(){
     this.connection.getUserPromise().then((res)=>{
       this.user = res;

@@ -102,9 +102,7 @@ img{
   opacity: 0.3!important;
 }
 
-.img-loder{
-  background-image: url($cdnImage + 'elephant-bg-pink.png');
-}
-.img-loder2{
-  background-image: url($cdnImage + 'elephant-bg.png');
+body::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content:url($cdnImage + 'elephant-bg-pink.png') url($cdnImage + 'elephant-bg.png') url($cdnImage + 'bg-signup.png') url($cdnImage + 'top-comp-guy@2x.png') url($cdnImage + 'bg-routine.png');
 }

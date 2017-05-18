@@ -44,12 +44,14 @@
                     <img ng-src="{{::$root.imageCdn}}edit.png">
                 </div>
             </md-button>
+        </div>
+        <div class="believe">{{::'positive.thinking.believe' | translate}}</div>
+        <div class="summary-button-container">
             <md-button class="button-style summary-button-style" ng-click="$ctrl.goToSummary()" ng-disabled="!$ctrl.positiveComplete">
                 <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
                 <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
             </md-button>
         </div>
-        <div class="believe">{{::'positive.thinking.believe' | translate}}</div>
         <div class="spacer"></div>
     </div>
 </div>
