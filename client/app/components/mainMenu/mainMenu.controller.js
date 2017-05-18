@@ -1,16 +1,21 @@
 const CONNECTION = new WeakMap();
 
 class MainMenuController {
-  constructor($mdSidenav,$state,connection,stateChangeService) {
+  constructor($mdSidenav,$state,connection,stateChangeService,$log) {
     CONNECTION.set(this, connection);
     this.$mdSidenav = $mdSidenav;
     this.stateChangeService = stateChangeService;
     this.$state = $state;
-    this.toggleLeft = this._buildToggler('left');
+    this.$log = $log;
   }
 
   $onInit(){
     this._getUser();
+    angular.element(document).ready(()=> {
+      this.$mdSidenav('left').onClose(()=> {
+        document.getElementsByTagName('body')[0].style.overflow = '';
+      });
+    });
   }
 
   _getUser(){
@@ -20,8 +25,16 @@ class MainMenuController {
     })
   }
 
-  _buildToggler(componentId) {
-    return ()=>this.$mdSidenav(componentId).toggle();
+  closeMenu() {
+    this.$mdSidenav('left').close().then(()=>{
+      document.getElementsByTagName('body')[0].style.overflow = '';
+    });
+  }
+
+  openMenu(){
+    this.$mdSidenav('left').open().then(()=>{
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+      });
   }
 
   logout(){
@@ -41,5 +54,5 @@ class MainMenuController {
   }
 }
 
-MainMenuController.$inject = ['$mdSidenav','$state','connection','stateChangeService'];
+MainMenuController.$inject = ['$mdSidenav','$state','connection','stateChangeService','$log'];
 export default MainMenuController;
