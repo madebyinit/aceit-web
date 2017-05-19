@@ -9,8 +9,6 @@ let <%= name %>Module = angular.module('<%= name %>', [
   .config(($stateProvider, $urlRouterProvider) => {
     "ngInject";
 
-    $urlRouterProvider.otherwise('/');
-
     $stateProvider
       .state('<%= name %>', {
         url: '/<%= name %>',

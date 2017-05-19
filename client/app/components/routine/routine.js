@@ -10,10 +10,8 @@ let routineModule = angular.module('routine', [
   uiRouter
 ])
 
-  .config(($stateProvider, $urlRouterProvider) => {
+  .config(($stateProvider) => {
     "ngInject";
-
-    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('routine', {

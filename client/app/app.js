@@ -38,5 +38,4 @@ angular.module('app', [
     $translateProvider.preferredLanguage('en');
     $urlRouterProvider.otherwise('home');
   })
-
   .component('app', AppComponent);

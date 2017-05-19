@@ -10,7 +10,7 @@ body {
 }
 
 @mixin title(){
-   font-family: 'Oswald', sans-serif;
+   font-family: 'Oswald', sans-serif!important;
    color: $primaryColor;
    font-size: 32px;
    font-weight: bold;
