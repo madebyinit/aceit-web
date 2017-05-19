@@ -1,0 +1,49 @@
+@import "../../common/common";
+
+.mobile-page{
+  background:url($cdnImage + 'bg-pattern.png'), #fff6eb;
+  text-align: center;
+  .desk-image{
+    background: url($cdnImage + 'top-mobile.png') no-repeat;
+    width: 1000px;
+    height: 220px;
+    background-size: 100%;
+    background-position-x: -308px;
+    background-position-y: 10px;
+  }
+  .text-block{
+    @include title;
+    color: $secondaryColor;
+    border: 1px solid #e3e4e4;
+    padding: 5px;
+    .small{
+      font-size: 20px;
+    }
+    div{
+      @include title;
+      color: $secondaryColor;
+    }
+  }
+  .text-block-first{
+    width: 190px;
+    margin: auto;
+  }
+  .text-block-second{
+    width: 350px;
+    margin: auto;
+  }
+  .text-block-last{
+    width: 320px;
+    margin: auto;
+  }
+  .line{
+    height: 50px;
+    width:1px;
+    margin: auto;
+    background-color: #e3e4e4;
+  }
+  .pc-icon {
+    width: 75px;
+    padding-bottom: 50px;
+  }
+}

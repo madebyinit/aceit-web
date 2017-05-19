@@ -9,6 +9,7 @@ import physicalModule from './physical/physical';
 import summaryModule from './summary/summary';
 import positiveModule from './positive/positive';
 import routineModule from './routine/routine';
+import mobileModule from './mobile/mobile';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -20,7 +21,8 @@ let componentModule = angular.module('app.components', [
   concentrationModule,
   summaryModule,
   positiveModule,
-  routineModule
+  routineModule,
+  mobileModule
 ])
 
 .name;
