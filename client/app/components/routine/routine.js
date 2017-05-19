@@ -4,6 +4,7 @@ import routineComponent from './routine.component';
 import basketballSectionComponent from './directives/basketballSection/basketballSection';
 import controlComponent from './directives/control/control';
 import lionSectionComponent from './directives/lionSection/lionSection';
+import routineDialogComponent from './directives/routineDialog/routineDialog.component';
 
 let routineModule = angular.module('routine', [
   uiRouter
@@ -25,6 +26,7 @@ let routineModule = angular.module('routine', [
 .directive('basketballSection', basketballSectionComponent)
 .directive('lionSection', lionSectionComponent)
 .component('control', controlComponent)
+.component('routineDialog', routineDialogComponent)
 
 .name;
 
