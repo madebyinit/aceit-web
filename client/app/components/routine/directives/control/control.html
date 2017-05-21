@@ -1,21 +1,26 @@
 <div class="control">
     <div class="control-panel">
-        <div class="control-title">My Routine</div>
-        <div class="step1">
-            <div class="text"><div>Close</div> <div>Your eyes</div></div>
+        <div class="control-title">{{::'routine.my_routine'|translate}}</div>
+        <div class="step1" ng-click="$ctrl.editStep('one')">
+            <div class="text">{{$ctrl.steps.one | translate}}</div>
         </div>
-        <div class="step2">
-            <div class="text"><div>Take</div> <div>a deep breath</div></div>
+        <div class="step2" ng-click="$ctrl.editStep('two')">
+            <div class="text">{{$ctrl.steps.two | translate}}</div>
         </div>
-        <div class="step3">
-            <div class="text"><div>Choose</div> <div>from</div></div>
+        <div class="step3" ng-click="$ctrl.editStep('three')">
+            <div class="text">{{$ctrl.steps.three | translate}}</div>
         </div>
         <div class="step4">
-            <div class="text"><div>Move</div> <div>to next question</div></div>
+            <div class="text">{{::'routine.next_question'|translate}}</div>
         </div>
     </div>
-    <div class="suggested">
-        <div class="button-text">Suggested Routine</div>
+    <div class="suggested" ng-click="$ctrl.suggestedRoutine()">
+        <div class="suggested-icon"></div>
+        <div class="button-text">{{::'routine.suggested_routine'|translate}}</div>
     </div>
-    <routine-dialog></routine-dialog>
+    <routine-dialog ng-if="$ctrl.openDialog"
+                    close-dialog="$ctrl.closeDialog()"
+                    step="{{$ctrl.stepSelect}}"
+                    type="{{$ctrl.routineType}}"
+                    return-data="$ctrl.saveData(obj,step)"></routine-dialog>
 </div>

@@ -5,9 +5,11 @@ import basketballSectionComponent from './directives/basketballSection/basketbal
 import controlComponent from './directives/control/control';
 import lionSectionComponent from './directives/lionSection/lionSection';
 import routineDialogComponent from './directives/routineDialog/routineDialog.component';
+import routineService from './routineService/routineService';
 
 let routineModule = angular.module('routine', [
-  uiRouter
+  uiRouter,
+  routineService.name
 ])
 
   .config(($stateProvider) => {

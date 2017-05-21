@@ -174,6 +174,11 @@
     "logout":"Logout"
   },
   "routine":{
+    "close_eyes":"Close your eyes",
+    "deep_breath":"Take a deep breath",
+    "choose":"Choose from",
+    "suggested_routine":"Suggested Routine",
+    "next_question":"Move to next question",
     "lion":{
       "works":"But this only works if you PRACTICE it.",
       "friend":"Make the lion your friend",
