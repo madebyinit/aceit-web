@@ -10,7 +10,7 @@ class ControlController {
   $onInit(){
     this.routineType = '';
     this.steps = {};
-    this.userSum = {positive:0,concentration:0,physical:10};
+    this.userSum = {positive:0,concentration:10,physical:10};
     this.connection.getUserPromise().then((res)=>{
       if(_.get(res,'questionnaire')){
         this.user = res;
@@ -33,6 +33,18 @@ class ControlController {
           this.steps = consts.defaultPhysical;
           this._saveSteps();
         },0)
+      },
+      [consts.CONCENTRATION_TYPE]:()=>{
+        this.$timeout(()=>{
+          this.steps = consts.defaultConcentration;
+          this._saveSteps();
+        },0)
+      },
+      [consts.CONCENTRATION_PHYSICAL_TYPE]:()=>{
+        this.$timeout(()=>{
+          this.steps = consts.defaultConcentrationPhysical;
+          this._saveSteps();
+        },0)
       }
     };
     defaultSteps[this.routineType]();
@@ -50,10 +62,28 @@ class ControlController {
 
   _setPhysicalConcentration(){
     this.routineType = consts.CONCENTRATION_PHYSICAL_TYPE;
+    if(_.get(this.user,'routine')){
+      this.$timeout(()=>{
+        this.steps = _.get(this.user,'routine');
+      },0);
+    }else{
+      this.$timeout(()=>{
+        this.steps = consts.defaultConcentrationPhysical;
+      },0);
+    }
   }
 
   _setConcentration(){
     this.routineType = consts.CONCENTRATION_TYPE;
+    if(_.get(this.user,'routine')){
+      this.$timeout(()=>{
+        this.steps = _.get(this.user,'routine');
+      },0);
+    }else{
+      this.$timeout(()=>{
+        this.steps = consts.concentrationPhysical;
+      },0);
+    }
   }
 
   _setPhysical(){
