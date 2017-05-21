@@ -4,7 +4,13 @@ import './routineDialog.scss';
 
 let routineDialogComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    showDialog:'=?',
+    returnData:'&?',
+    step:'@?',
+    closeDialog:'&?',
+    type:'@?'
+  },
   template,
   controller
 };

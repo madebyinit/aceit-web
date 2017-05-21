@@ -3,13 +3,18 @@
 .control{
   position: relative;
   .suggested{
-    background: url($cdnImage + 'icn-suggested.svg') no-repeat;
     width: 145px;
     height: 135px;
     position: absolute;
     bottom: 80px;
     left: -40px;
-    background-size: 100%;
+    .suggested-icon{
+      background: url($cdnImage + 'icn-suggested.svg') no-repeat;
+      height: inherit;
+      position: absolute;
+      width: inherit;
+      background-size: 100%;
+    }
     .button-text {
       text-align: center;
       position: relative;
@@ -19,6 +24,9 @@
       color: $secondaryColor;
       font-weight: bold;
     }
+  }
+  .suggested:hover .suggested-icon{
+    animation: spin 2s infinite linear;
   }
   .control-panel{
     background: url($cdnImage + 'myroutine.svg') no-repeat;
@@ -98,7 +106,17 @@
       .text{
         top: 60px;
         right: 90px;
+        width: 100px;
       }
     }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -53,6 +53,9 @@
           }
         }
       }
+      .text-bind{
+        padding-top: 65px;
+      }
     }
     .first-option{
       width: 100%;
@@ -105,6 +108,7 @@
     border: 2px solid white;
     padding: 10px;
     border-radius: 50%;
+    z-index: 99;
     img {
       width: inherit;
       height: inherit;
