@@ -6,8 +6,10 @@ let questionnaireElementComponent = {
   restrict: 'E',
   bindings: {
     questionModel:'@?',
+    number:'@?',
     answerReturn:'&',
-    answer:'<?'
+    answer:'<?',
+    disabledStep:'<?'
   },
   template,
   controller

@@ -1,0 +1,12 @@
+<div class="select-element">
+    <span class="always">{{:: ('questionnaire.always' | translate)}}</span>
+    <div class="range-element">
+        <div class="dot"
+             ng-repeat="item in $ctrl.starsArray"
+             ng-class="item.class"
+             ng-click="$ctrl.setRating($index + 1)"
+             ng-mouseover="$ctrl.setMouseOverRating($index + 1)"
+             ng-mouseleave="$ctrl.setMouseOverRating($ctrl.rating)"></div>
+    </div>
+    <span class="never">{{:: ('questionnaire.never' | translate)}}</span>
+</div>

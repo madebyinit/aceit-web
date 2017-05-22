@@ -1,17 +1,34 @@
 <main-menu></main-menu>
 <div class="questionnaire-body">
     <div class="questionnaire">
-        <steps-element steps="$ctrl.steps" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
         <div class="questionnaire-info">
             <div class="title"><img ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"><span>{{:: ('questionnaire.questionnaire' | translate)}}</span></div>
-            <div class="title questionnaire-number">({{$ctrl.questionnaireService.stepIndex+1}}/{{$ctrl.questionnaireService.steps.length}})</div>
+            <steps-element steps="$ctrl.steps" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
             <div class="description">{{:: ('questionnaire.what_specifically_happens' | translate)}}</div>
-            <div class="rememeber">{{:: ('questionnaire.remember_only_you' | translate)}}</div>
         </div>
         <questionnaire-element
+                disabled-step="true"
+                class="small-q"
+                ng-if="$ctrl.questionnaireService.stepIndex !== 0"
+                question-model="{{$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].name}}"
+                number="{{$ctrl.questionnaireService.stepIndex}}"
+                answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].answer"
+                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
+        <questionnaire-element
                 question-model="{{$ctrl.questionnaireService.currentState.name}}"
+                number="{{$ctrl.questionnaireService.stepIndex+1}}"
                 answer="$ctrl.questionnaireService.currentState.answer"
                 answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
-        <md-button class="progress-buttons" ng-click="$ctrl.backStep()">{{:: ('questionnaire.previous' | translate)}}</md-button><md-button class="progress-buttons next-button" ng-click="$ctrl.nextStep()">{{:: ('questionnaire.next' | translate)}}</md-button>
+        <questionnaire-element
+                disabled-step="true"
+                class="bigger-q"
+                ng-if="$ctrl.questionnaireService.steps.length-1 > $ctrl.questionnaireService.stepIndex"
+                question-model="{{$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex+1].name}}"
+                number="{{$ctrl.questionnaireService.stepIndex+2}}"
+                answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex+1].answer"
+                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">
+            <div>{{::'to_my_summary' | translate}}</div>
+        </md-button>
     </div>
 </div>
