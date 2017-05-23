@@ -6,7 +6,7 @@ let <%= name %>Module = angular.module('<%= name %>', [
   uiRouter
 ])
 
-  .config(($stateProvider, $urlRouterProvider) => {
+  .config(($stateProvider) => {
     "ngInject";
 
     $stateProvider
