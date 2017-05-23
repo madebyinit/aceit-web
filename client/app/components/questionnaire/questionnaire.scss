@@ -63,9 +63,17 @@
 
 .small-q.ng-enter{
   display: block;
-  animation: 0.8s fadein ease;
+  animation: 0.4s fadein ease;
+}
+.bigger-q.ng-enter{
+  display: block;
+  animation: 0.4s fadein ease;
+}
+.small-q.ng-leave{
+  display: block;
+  animation: 0.4s fadeout ease;
 }
 .bigger-q.ng-leave{
   display: block;
-  animation: 0.8s fadeout ease;
+  animation: 0.4s fadeout ease;
 }

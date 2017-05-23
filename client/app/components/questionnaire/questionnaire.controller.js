@@ -7,6 +7,7 @@ class QuestionnaireController {
   }
 
   $onInit(){
+    this.questionnaireService.resetSteps();
     this._saveStateComplete();
   }
 
@@ -25,6 +26,10 @@ class QuestionnaireController {
     }else{
       this.notificationsService.showToast('Error Missing');
     }
+  }
+
+  stepClick(step){
+    this.questionnaireService.editCurrentStep(step);
   }
 
   backStep(){

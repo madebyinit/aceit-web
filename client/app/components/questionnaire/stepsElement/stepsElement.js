@@ -5,7 +5,8 @@ let stepsElementComponent = {
   restrict: 'E',
   bindings: {
     steps:'=',
-    currentState:'='
+    currentState:'=',
+    stepClick:'&?'
   },
   template,
 };
