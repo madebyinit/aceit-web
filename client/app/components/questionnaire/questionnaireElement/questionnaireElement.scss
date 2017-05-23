@@ -1,11 +1,12 @@
 .questionnaire-element {
-  width: 100%;
+  width: 800px;
   height: auto;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   text-align: center;
   margin: auto;
-  padding: 40px;
+  padding: 20px;
   box-sizing: border-box;
+  border-radius: 150px;
   .questionnaire-slider{
     width: 70%;
     margin: 20px auto;
@@ -18,12 +19,24 @@
   .always {
     position: absolute;
     right: -20px;
+    top:9px;
   }
   .never {
     position: absolute;
     left: -10px;
+    top:9px;
   }
   .md-track-ticks{
     display: none;
   }
+  .questionnaire-number{
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+.disabled {
+  background-color: transparent;
+  opacity: 0.5;
+  pointer-events: none;
 }

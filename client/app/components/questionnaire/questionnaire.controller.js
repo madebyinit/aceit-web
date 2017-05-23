@@ -16,6 +16,7 @@ class QuestionnaireController {
 
   answerHelper(answer){
     this.questionnaireService.steps[this.questionnaireService.stepIndex].answer = answer;
+    this.questionnaireService.nextStep();
   }
 
   nextStep(){

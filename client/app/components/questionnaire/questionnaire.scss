@@ -4,15 +4,17 @@
   width: 70%;
   margin: auto;
   position: relative;
-  top: 15vh;
+  top: 50px;
   color: $secondaryColor;
+  text-align: center;
   .questionnaire-info{
     text-align: center;
-    margin: 40px auto;
+    margin:auto;
     width: 80%;
     .title {
       @include title;
       color: $secondaryColor;
+      margin-bottom: 20px;
       span{
         @include title;
         color: $secondaryColor;
@@ -25,7 +27,8 @@
       }
     }
     .description{
-      margin: 30px;
+      margin: 30px auto;
+      width: 620px;
     }
     .rememeber{
       font-weight: bold;
@@ -44,5 +47,25 @@
 .questionnaire-body {
   min-height: 700px;
   height: 100vh;
-  background: linear-gradient(to top, rgba(252, 244, 234, 0.5), rgba(210, 246, 246, 0.5)), url($cdnImage + 'q-bg.png');
+  background: linear-gradient(to bottom, #ded1c4, #9ed6d2);
+}
+.questionnaire-body::before {
+  content: "";
+  background: url($cdnImage + 'q-bg.png');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.small-q.ng-enter{
+  display: block;
+  animation: 0.8s fadein ease;
+}
+.bigger-q.ng-leave{
+  display: block;
+  animation: 0.8s fadeout ease;
 }
