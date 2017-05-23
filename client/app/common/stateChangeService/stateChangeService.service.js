@@ -36,6 +36,7 @@ class StateChangeService {
 
   _userFs(user){
     FS.identify(_.get(user,'uid'), {
+      displayName: _.get(user,'email'),
       email:_.get(user,'email'),
     });
     Rollbar.configure({
