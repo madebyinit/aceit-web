@@ -3,7 +3,7 @@
     <div class="questionnaire">
         <div class="questionnaire-info">
             <div class="title"><img ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"><span>{{:: ('questionnaire.questionnaire' | translate)}}</span></div>
-            <steps-element steps="$ctrl.steps" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
+            <steps-element steps="$ctrl.steps" step-click="$ctrl.stepClick(step)" current-state="$ctrl.questionnaireService.currentState.name"></steps-element>
             <div class="description">{{:: ('questionnaire.what_specifically_happens' | translate)}}</div>
         </div>
         <questionnaire-element
@@ -12,6 +12,7 @@
                 ng-if="$ctrl.questionnaireService.stepIndex !== 0"
                 question-model="{{$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].name}}"
                 number="{{$ctrl.questionnaireService.stepIndex}}"
+                ng-click="$ctrl.backStep()"
                 answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].answer"
                 answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
         <questionnaire-element
@@ -27,8 +28,8 @@
                 number="{{$ctrl.questionnaireService.stepIndex+2}}"
                 answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex+1].answer"
                 answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
-        <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">
-            <div>{{::'to_my_summary' | translate}}</div>
-        </md-button>
+        <!--<md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">-->
+            <!--<div>{{::'to_my_summary' | translate}}</div>-->
+        <!--</md-button>-->
     </div>
 </div>

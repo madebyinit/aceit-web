@@ -34,6 +34,11 @@ class QuestionnaireService {
     })
   }
 
+  resetSteps(){
+    this.stepIndex = 0;
+    this.currentState = this.steps[this.stepIndex];
+  }
+
   nextStep(){
     if(this.stepIndex === (this.steps.length-1)){
       this.connection.saveData(this.steps,'questionnaire');
@@ -47,6 +52,11 @@ class QuestionnaireService {
 
   backStep(){
     this.stepIndex--;
+    this.currentState = this.steps[this.stepIndex];
+  }
+
+  editCurrentStep(step){
+    this.stepIndex = step;
     this.currentState = this.steps[this.stepIndex];
   }
 }
