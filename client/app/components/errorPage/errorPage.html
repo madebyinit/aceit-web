@@ -1,0 +1,14 @@
+<main-menu></main-menu>
+<div class="error-page">
+    <div class="header">
+        <div class="header-image"></div>
+    </div>
+    <div class="contact-section">
+        <div class="line"></div>
+        <div class="oops">{{::'error_page.oops' | translate}}</div>
+        <div class="missing">{{::'error_page.missing' | translate}}</div>
+        <div class="line"></div>
+        <img ng-src="{{::$root.imageCdn}}plugin.svg">
+        <div class="check">{{::'error_page.check' | translate}} <a ui-sref="home">{{::'error_page.click' | translate}}</a></div>
+    </div>
+</div>

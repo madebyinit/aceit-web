@@ -199,5 +199,11 @@
     "yes":"yes we are.",
     "currently":"but this app currently \n doesn't support mobile",
     "desktop":"check out the app \n on a desktop computer"
+  },
+  "error_page":{
+    "oops":"Oooppps...",
+    "missing":"something is missing here",
+    "check":"Check the link address or",
+    "click":"Click here"
   }
 }

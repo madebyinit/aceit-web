@@ -36,6 +36,6 @@ angular.module('app', [
       'whats_app': 'Hvordan gor det'
     });
     $translateProvider.preferredLanguage('en');
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('/404');
   })
   .component('app', AppComponent);

@@ -10,6 +10,7 @@ import summaryModule from './summary/summary';
 import positiveModule from './positive/positive';
 import routineModule from './routine/routine';
 import mobileModule from './mobile/mobile';
+import errorPageModule from './errorPage/errorPage';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -22,7 +23,8 @@ let componentModule = angular.module('app.components', [
   summaryModule,
   positiveModule,
   routineModule,
-  mobileModule
+  mobileModule,
+  errorPageModule
 ])
 
 .name;

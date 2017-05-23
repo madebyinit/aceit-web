@@ -1,0 +1,54 @@
+@import "../../common/common";
+
+.error-page{
+  height: 100vh;
+  min-height: 700px;
+  background: #fff6eb url($cdnImage + 'bg-pattern.png');
+  .header{
+    height: 50vh;
+    background-image: linear-gradient(to top, #20aecd, #208acd);
+    position: relative;
+    .header-image{
+      width: 100%;
+      height: 88%;
+      background: url($cdnImage + 'top-comp-404.png') no-repeat 100% 100%;
+      background-size: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  .contact-section {
+    width: 600px;
+    margin: auto;
+    text-align: center;
+    @include title;
+    color: $secondaryColor;
+    &>div{
+      margin: 10px;
+    }
+    &>img{
+      position: relative;
+      right: 12px;
+      top: -7px;
+    }
+    .line{
+      width: 2px;
+      background-color: #e3e4e4;
+      margin: auto;
+      height: 30px;
+    }
+    .missing{
+      font-size: 24px;
+    }
+    .check{
+      margin-top: 30px;
+      padding-bottom: 40px;
+      font-size: 24px;
+      a{
+        color: $secondaryColor;
+        font-family: 'Oswald', sans-serif;
+      }
+    }
+  }
+}
+
