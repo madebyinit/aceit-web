@@ -5,7 +5,8 @@
   </div>
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
-    <div class="sub-title">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
+    <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
+    <div class="sub-title jordan" ng-if="$ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10">{{:: 'summary.jordan' | translate}}</div>
     <required-cards></required-cards>
     <div class="optional-cards-title" ng-if="$ctrl.userSum.physical < 10 || $ctrl.userSum.positive < 10 || $ctrl.userSum.concentration < 10">{{:: 'summary.optional' | translate}}</div>
     <optional-cards></optional-cards>
