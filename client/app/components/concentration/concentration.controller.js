@@ -6,7 +6,12 @@ class ConcentrationController {
   }
 
   $onInit(){
+    this._startVideo();
     this._getWord();
+  }
+
+  _startVideo(){
+    document.getElementById('concentration-video-id').play();
   }
 
   _getWord(){
