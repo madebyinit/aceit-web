@@ -24,14 +24,14 @@
                 <div>{{::'positive.thinking.behavior' | translate}}</div>
             </div>
         </div>
-        <div class="text-part">
+        <div class="text-part" id="pos-video-start">
             {{:: 'positive.thinking.apply' | translate}}
         </div>
         <div class="loop">{{:: 'positive.thinking.break' | translate}}</div>
         <div class="thoughts">{{:: 'positive.thinking.thoughts' | translate}}</div>
         <div class="line"></div>
         <div class="video-box">
-            <video controls>
+            <video id="pos-video" controls>
                 <source ng-src="{{::$root.videoCdn}}ps.mp4" type="video/mp4">
             </video>
         </div>

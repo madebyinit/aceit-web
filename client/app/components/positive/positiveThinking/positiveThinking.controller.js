@@ -1,13 +1,29 @@
 class PositiveThinkingController {
-  constructor(connection,$timeout,$state) {
+  constructor(connection,$timeout,$state,$document) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
+    this.$document = $document;
   }
 
   $onInit(){
     this.positiveComplete = false;
     this._getUserData();
+    angular.element(document).ready(()=>{
+      this._playVideo();
+    })
+  }
+
+  _playVideo(){
+    let doc = angular.element(this.$document)[0].body;
+    let videoY = this.$document[0].getElementById('pos-video-start').offsetTop;
+    let myVideo = this.$document[0].getElementById('pos-video');
+    this.$document.bind("scroll",()=> {
+      if((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100){
+        myVideo.play();
+        this.$document.unbind('scroll');
+      }
+    });
   }
 
   _getUserData(){
@@ -38,5 +54,5 @@ class PositiveThinkingController {
   }
 }
 
-PositiveThinkingController.$inject = ['connection','$timeout','$state'];
+PositiveThinkingController.$inject = ['connection','$timeout','$state','$document'];
 export default PositiveThinkingController;
