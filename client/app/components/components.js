@@ -11,6 +11,7 @@ import positiveModule from './positive/positive';
 import routineModule from './routine/routine';
 import mobileModule from './mobile/mobile';
 import errorPageModule from './errorPage/errorPage';
+import staticPageModule from './staticPage/staticPage';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -24,7 +25,8 @@ let componentModule = angular.module('app.components', [
   positiveModule,
   routineModule,
   mobileModule,
-  errorPageModule
+  errorPageModule,
+  staticPageModule
 ])
 
 .name;

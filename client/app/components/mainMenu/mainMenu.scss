@@ -137,6 +137,20 @@ md-input-container{
   .state-select{
     background-color: white!important;
   }
+  .terms {
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    text-decoration: underline;
+    color: $secondaryColor;
+    &>span{
+      margin-right: 20px;
+    }
+  }
 }
 
 @keyframes slideFromLeft {
