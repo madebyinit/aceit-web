@@ -1,7 +1,7 @@
 import angular from 'angular';
 import connectionService from './connection.service';
 
-let connectionServiceModule = angular.module('connectionService', [])
+let connectionServiceModule = angular.module('connection', [])
 
   .service('connection', connectionService);
 

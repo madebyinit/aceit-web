@@ -1,9 +1,10 @@
 class HomeController {
-  constructor($translate,$document,$timeout,connection) {
+  constructor($translate,$document,$timeout,connection,connectServices) {
     this.$translate = $translate;
     this.$document = $document;
     this.$timeout = $timeout;
     this.connection = connection;
+    this.connectServices = connectServices;
   }
 
   $onInit(){
@@ -97,5 +98,5 @@ class HomeController {
   }
 
 }
-HomeController.$inject = ['$translate','$document','$timeout','connection'];
+HomeController.$inject = ['$translate','$document','$timeout','connection','connectServices'];
 export default HomeController;

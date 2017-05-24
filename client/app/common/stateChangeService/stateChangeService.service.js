@@ -9,6 +9,7 @@ class StateChangeService {
     this.$transitions.onSuccess({ to: true, from: true },(data)=>{
       this._checkUserLogin(data);
       this._segmentTrack();
+      window.Intercom("update");
     });
   }
 
