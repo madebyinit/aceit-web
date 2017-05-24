@@ -5,12 +5,12 @@
   </div>
   <div class="mid-section">
     <div class="flow-line"></div>
-    <div class="first-vid-title">{{:: $ctrl.userTitle}}</div>
+    <div class="first-vid-title" id="first-video">{{:: $ctrl.userTitle}}</div>
     <div class="flow-line"></div>
     <div class="arrow-down"></div>
     <div class="flow-line"></div>
     <div class="video-box">
-      <video controls>
+      <video id="video0" controls>
         <source ng-src="{{::$root.videoCdn}}the-big-test.mp4" type="video/mp4">
       </video>
     </div>

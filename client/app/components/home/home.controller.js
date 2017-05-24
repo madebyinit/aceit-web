@@ -9,6 +9,8 @@ class HomeController {
   $onInit(){
     this.getUserData();
     this.showLionVideo = false;
+    this.playedLionVideo = false;
+    this.playedFirstVideo = false;
     angular.element(document).ready(()=>{
       this._scroll();
     });
@@ -55,24 +57,43 @@ class HomeController {
   }
 
   _scroll(){
-    let that = this;
-    let lionSectionY = this.$document[0].getElementById('lion-section-view').offsetTop;
-    let myVideo = this.$document[0].getElementById('video1');
     let doc = angular.element(this.$document)[0].body;
     this.$document.bind("scroll",()=> {
-      if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
-        that.$timeout(()=>{
-          that.showLionVideo = true;
-          document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-          myVideo.play();
-          that.$timeout(()=>{
-            this.$document.unbind('scroll');
-            that.showLionVideo = false;
-            document.getElementsByTagName('body')[0].style.overflow = '';
-          },4800)
-        },0);
-      }
+      this._firstVideo(doc);
+      this._lionVideoPlay(doc);
     });
+  }
+
+  _firstVideo(doc){
+    let videoY = this.$document[0].getElementById('first-video').offsetTop;
+    let myVideo = this.$document[0].getElementById('video0');
+    if(!this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
+      myVideo.play();
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+      angular.element(myVideo).on('ended',()=>{
+        this.playedFirstVideo = true;
+        document.getElementsByTagName('body')[0].style.overflow = '';
+      })
+    }
+  }
+
+  _lionVideoPlay(doc){
+    let lionSectionY = this.$document[0].getElementById('lion-section-view').offsetTop;
+    let myVideo = this.$document[0].getElementById('video1');
+    if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
+      this.$timeout(()=>{
+        this.showLionVideo = true;
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+        myVideo.play();
+        angular.element(myVideo).on('ended',()=>{
+          this.$timeout(()=>{
+            this.$document.unbind('scroll');
+            this.showLionVideo = false;
+            document.getElementsByTagName('body')[0].style.overflow = '';
+          },0)
+        })
+      },0);
+    }
   }
 
 }
