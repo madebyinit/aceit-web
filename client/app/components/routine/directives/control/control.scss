@@ -2,6 +2,18 @@
 
 .control{
   position: relative;
+  margin-top: 80px;
+  .big-title {
+    text-align: center;
+    position: absolute;
+    top: -50px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    &>img {
+      width: 600px;
+    }
+  }
   .suggested{
     width: 145px;
     height: 135px;

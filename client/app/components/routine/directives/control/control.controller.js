@@ -30,19 +30,19 @@ class ControlController {
     let defaultSteps = {
       [consts.PHYSICAL_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = consts.defaultPhysical;
+          this.steps = _.cloneDeep(consts.defaultPhysical);
           this._saveSteps();
         },0)
       },
       [consts.CONCENTRATION_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = consts.defaultConcentration;
+          this.steps = _.cloneDeep(consts.defaultConcentration);
           this._saveSteps();
         },0)
       },
       [consts.CONCENTRATION_PHYSICAL_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = consts.defaultConcentrationPhysical;
+          this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
           this._saveSteps();
         },0)
       }
@@ -68,7 +68,7 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        this.steps = consts.defaultConcentrationPhysical;
+        this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
       },0);
     }
   }
@@ -94,7 +94,7 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        this.steps = consts.defaultPhysical;
+        this.steps = _.cloneDeep(consts.defaultPhysical);
       },0);
     }
   }
