@@ -5,6 +5,7 @@ import connectionServiceModule from './connection/connection';
 import uiElementsModule from './uiElements/uiElements';
 import firebaseServiceModule from './firebaseService/firebaseService';
 import stateChangeServiceModule from './stateChangeService/stateChangeService';
+import connectServicesModule from './connectServices/connectServices';
 
 let commonModule = angular.module('app.common', [
   notificationsServiceModule.name,
@@ -12,7 +13,8 @@ let commonModule = angular.module('app.common', [
   firebaseServiceModule.name,
   progressLinearServiceModule.name,
   uiElementsModule,
-  stateChangeServiceModule.name
+  stateChangeServiceModule.name,
+  connectServicesModule.name
 ])
 .name;
 

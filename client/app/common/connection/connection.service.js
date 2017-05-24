@@ -10,6 +10,10 @@ class ConnectionService {
     this.userPromise = {};
   }
 
+  getUserLocalData(){
+    return JSON.parse(localStorage.getItem('aceitUser'));
+  }
+
   getUserPromise(){
     if(_.isEmpty(this.userPromise)){
       this.userPromise = this.getData();
