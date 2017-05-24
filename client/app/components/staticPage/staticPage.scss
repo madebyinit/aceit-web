@@ -1,0 +1,23 @@
+@import "../../common/common";
+
+.static-page {
+  background: #fff6eb url($cdnImage + 'bg-pattern.png');
+  privacy,terms {
+    display: block;
+    width: 700px;
+    margin: auto;
+    padding-top: 40px;
+    font-family: 'Oswald', sans-serif!important;
+  }
+  .title{
+    font-family: "Oswald", sans-serif !important;
+    color: $secondaryColor!important;
+    font-size: 32px!important;
+    font-weight: bold!important;
+    text-align: center!important;
+    text-transform: uppercase!important;
+  }
+  a{
+    color: $primaryColor;
+  }
+}
