@@ -10,7 +10,7 @@ class ControlController {
   $onInit(){
     this.routineType = '';
     this.steps = {};
-    this.userSum = {positive:0,concentration:10,physical:10};
+    this.userSum = {positive:0,concentration:0,physical:0};
     this.connection.getUserPromise().then((res)=>{
       if(_.get(res,'questionnaire')){
         this.user = res;
@@ -20,9 +20,9 @@ class ControlController {
   }
 
   _sumUserQuestionnaire(){
-    // _.forEach(_.get(this.user,'questionnaire'),(value)=>{
-    //   this.userSum[value.category] += value.answer;
-    // });
+    _.forEach(_.get(this.user,'questionnaire'),(value)=>{
+      this.userSum[value.category] += value.answer;
+    });
     this._buildRoutine();
   }
 

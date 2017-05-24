@@ -23,7 +23,7 @@
             </md-button>
         </div>
     </div>
-    <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive < 10">
+    <div class="summary-card positive-card" ng-class="{'positive-done':$ctrl.user.positiveComplete}" ng-if="$ctrl.userSum.positive < 6">
         <div class="card-icon"></div>
         <div class="card-title">{{:: 'summary.positive_thinking' | translate}}</div>
         <md-button class="button-style card-button" ng-click="$ctrl.stateGo('positive')" ng-if="!$ctrl.user.stickyNotes">{{:: 'summary.take_me' | translate}}</md-button>
