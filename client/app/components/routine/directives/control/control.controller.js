@@ -33,10 +33,7 @@ class ControlController {
   }
 
   _physicalBind(){
-    if(_.get(this.user,'imagery')){
-      this.steps = _.cloneDeep(consts.defaultPhysical);
-      this.steps.three = `Think of ${_.get(this.user,'imagery')}`;
-    }else{
+    if(_.get(this.user,'imagery')) {
       this.steps = _.cloneDeep(consts.defaultPhysical);
     }
   }
@@ -55,9 +52,6 @@ class ControlController {
       this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
       if(_.get(this.user,'concentration')){
         this.steps.three = `Say ${_.get(this.user,'concentration')}`;
-      }
-      if(_.get(this.user,'imagery')){
-        this.steps.two = `Think of ${_.get(this.user,'imagery')}`;
       }
     }else{
       this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
