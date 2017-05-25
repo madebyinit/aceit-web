@@ -70,11 +70,7 @@ class HomeController {
     let myVideo = this.$document[0].getElementById('video0');
     if(!this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
       myVideo.play();
-      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-      angular.element(myVideo).on('ended',()=>{
-        this.playedFirstVideo = true;
-        document.getElementsByTagName('body')[0].style.overflow = '';
-      })
+      this.playedFirstVideo = true;
     }
   }
 
