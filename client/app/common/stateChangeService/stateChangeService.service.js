@@ -1,8 +1,11 @@
+import firebase from 'firebase';
+
 class StateChangeService {
   constructor($transitions,$state,$location) {
     this.$transitions = $transitions;
     this.$state = $state;
     this.$location = $location;
+    this.firebase = firebase;
   }
 
   stateChange(){
