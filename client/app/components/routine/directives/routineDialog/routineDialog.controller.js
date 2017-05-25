@@ -90,7 +90,9 @@ class RoutineDialogController {
       },
       'two':()=>{
         if(_.get(this.user,'imagery')){
-          this.optionOne = `Think of ${_.get(this.user,'imagery')}`;
+          this.inputTitle = 'Enter Imagery word';
+          this.inputPlaceholder = 'Type your imagery word';
+          this.inputValue = _.get(this.user,'imagery');
           this.optionTwo = 'Rotate Neck & Shoulders';
           this.optionThree = 'Take a deep breath';
         }else{
@@ -102,7 +104,8 @@ class RoutineDialogController {
       },
       'three':()=>{
         if(_.get(this.user,'concentration')){
-          this.optionOne = `Say ${_.get(this.user,'concentration')}`;
+          this._powerWord();
+          this.inputValue = _.get(this.user,'concentration');
         }else{
           this._powerWord();
         }
@@ -123,6 +126,14 @@ class RoutineDialogController {
     }else if(this.type === consts.CONCENTRATION_TYPE  && this.step === 'three'){
       this.connection.saveData(this.inputValue,'concentration');
       this.inputValue = `Say ${this.inputValue}`;
+    }else{
+      if(this.step === 'two'){
+        this.connection.saveData(this.inputValue,'imagery');
+        this.inputValue = `Think of ${this.inputValue}`;
+      }else if(this.step === 'three'){
+        this.connection.saveData(this.inputValue,'concentration');
+        this.inputValue = `Say ${this.inputValue}`;
+      }
     }
     this.returnData({obj:this.inputValue,step:this.step});
     this.inputValue = '';
