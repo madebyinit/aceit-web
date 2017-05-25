@@ -36,6 +36,7 @@ class MainMenuController {
   }
 
   logout(){
+    document.getElementsByTagName('body')[0].style.overflow = '';
     this.stateChangeService.logoutUser();
   }
 
