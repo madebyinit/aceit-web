@@ -70,7 +70,11 @@ class StateChangeService {
 
   logoutUser(){
     localStorage.clear('aceitUser');
-    this.$state.go('loginView.login');
+    this.firebase.auth().signOut().then((res)=> {
+      this.$state.go('loginView.login');
+    }).catch((error)=> {
+      console.log(error);
+    });
   }
 }
 
