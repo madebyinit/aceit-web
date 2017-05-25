@@ -1,8 +1,9 @@
 class ConcentrationController {
-  constructor(connection,$timeout,$state) {
+  constructor(connection,$timeout,$state,$document) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
+    this.$document = $document;
   }
 
   $onInit(){
@@ -11,7 +12,14 @@ class ConcentrationController {
   }
 
   _startVideo(){
-    document.getElementById('concentration-video-id').play();
+    let doc = angular.element(this.$document)[0].body;
+    let lionSectionY = this.$document[0].getElementById('target-id').offsetTop;
+    this.$document.bind("scroll",()=> {
+      if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
+        document.getElementById('concentration-video-id').play();
+        this.$document.unbind('scroll');
+      }
+    });
   }
 
   _getWord(){
@@ -59,5 +67,5 @@ class ConcentrationController {
   }
 }
 
-ConcentrationController.$inject = ['connection','$timeout','$state'];
+ConcentrationController.$inject = ['connection','$timeout','$state','$document'];
 export default ConcentrationController;
