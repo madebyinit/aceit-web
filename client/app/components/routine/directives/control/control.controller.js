@@ -89,7 +89,7 @@ class ControlController {
   }
 
   _buildRoutine(){
-    if((_.get(this.userSum,'concentration') + _.get(this.userSum,'physical')) >= 20){
+    if(_.get(this.userSum,'concentration') >= 10 && _.get(this.userSum,'physical') >= 10){
       this._setPhysicalConcentration();
     }else if(_.get(this.userSum,'concentration') >= 10){
       this._setConcentration();
