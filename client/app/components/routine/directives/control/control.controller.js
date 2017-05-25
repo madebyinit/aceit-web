@@ -48,6 +48,20 @@ class ControlController {
     }
   }
 
+  _concentrationPhysicalBind(){
+    if(_.get(this.user,'concentration') || _.get(this.user,'imagery')){
+      this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
+      if(_.get(this.user,'concentration')){
+        this.steps.three = `Say ${_.get(this.user,'concentration')}`;
+      }
+      if(_.get(this.user,'imagery')){
+        this.steps.two = `Think of ${_.get(this.user,'imagery')}`;
+      }
+    }else{
+      this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
+    }
+  }
+
   suggestedRoutine(){
     let defaultSteps = {
       [consts.PHYSICAL_TYPE]:()=>{
@@ -64,7 +78,7 @@ class ControlController {
       },
       [consts.CONCENTRATION_PHYSICAL_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
+          this._concentrationPhysicalBind();
           this._saveSteps();
         },0)
       }
@@ -90,7 +104,7 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        this.steps = _.cloneDeep(consts.defaultConcentrationPhysical);
+        this._concentrationPhysicalBind();
       },0);
     }
   }
