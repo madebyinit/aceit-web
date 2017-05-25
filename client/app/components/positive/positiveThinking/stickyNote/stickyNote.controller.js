@@ -42,6 +42,7 @@ class StickyNoteController {
 
   deleteStick(obj){
     _.remove(this.stickyList,{stick:obj.stick});
+    this.connection.saveData(this.stickyList,STICKY_NOTES);
   }
 
   updateSticky(obj,newVal){
