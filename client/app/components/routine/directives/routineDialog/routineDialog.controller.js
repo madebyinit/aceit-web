@@ -122,17 +122,33 @@ class RoutineDialogController {
   updateInput(){
     if(this.type === consts.PHYSICAL_TYPE && this.step === 'three'){
       this.connection.saveData(this.inputValue,'imagery');
-      this.inputValue = `Think of ${this.inputValue}`;
+      if(this.inputValue){
+        this.inputValue = `Think of ${this.inputValue}`;
+      }else{
+        this.inputValue = `Choose from`;
+      }
     }else if(this.type === consts.CONCENTRATION_TYPE  && this.step === 'three'){
       this.connection.saveData(this.inputValue,'concentration');
-      this.inputValue = `Say ${this.inputValue}`;
+      if(this.inputValue){
+        this.inputValue = `Say ${this.inputValue}`;
+      }else{
+        this.inputValue = `Enter power word`;
+      }
     }else{
       if(this.step === 'two'){
         this.connection.saveData(this.inputValue,'imagery');
-        this.inputValue = `Think of ${this.inputValue}`;
+        if(this.inputValue){
+          this.inputValue = `Think of ${this.inputValue}`;
+        }else{
+          this.inputValue = `Choose from`;
+        }
       }else if(this.step === 'three'){
         this.connection.saveData(this.inputValue,'concentration');
-        this.inputValue = `Say ${this.inputValue}`;
+        if(this.inputValue){
+          this.inputValue = `Say ${this.inputValue}`;
+        }else{
+          this.inputValue = `Enter power word`;
+        }
       }
     }
     this.returnData({obj:this.inputValue,step:this.step});
