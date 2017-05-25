@@ -94,7 +94,12 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        this.steps = _.cloneDeep(consts.defaultPhysical);
+        if(_.get(this.user,'imagery')){
+          this.steps = _.cloneDeep(consts.defaultPhysical);
+          this.steps.three = `Think of ${_.get(this.user,'imagery')}`;
+        }else{
+          this.steps = _.cloneDeep(consts.defaultPhysical);
+        }
       },0);
     }
   }

@@ -49,7 +49,9 @@ class RoutineDialogController {
       },
       'three':()=>{
         if(_.get(this.user,'imagery')){
-          this.optionOne = `Think of ${_.get(this.user,'imagery')}`;
+          this.inputTitle = 'Enter Imagery word';
+          this.inputPlaceholder = 'Type your imagery word';
+          this.inputValue = _.get(this.user,'imagery');
           this.optionTwo = 'Rotate Neck & Shoulders';
         }else{
           this.inputTitle = 'Enter Imagery word';
@@ -116,6 +118,7 @@ class RoutineDialogController {
   updateInput(){
     if(this.type === consts.PHYSICAL_TYPE){
       this.connection.saveData(this.inputValue,'imagery');
+      this.inputValue = `Think of ${this.inputValue}`;
     }else if(this.type === consts.CONCENTRATION_TYPE){
       this.connection.saveData(this.inputValue,'concentration');
     }

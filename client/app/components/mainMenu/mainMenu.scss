@@ -138,15 +138,16 @@ md-input-container{
     background-color: white!important;
   }
   .terms {
-    position: absolute;
-    bottom: 15px;
+    position: relative;
+    top: 20px;
+    padding-bottom: 20px;
     text-align: center;
     margin: auto;
     left: 0;
     right: 0;
     font-size: 14px;
     text-decoration: underline;
-    color: $secondaryColor;
+    color: #0e7086;
     &>span{
       margin-right: 20px;
     }

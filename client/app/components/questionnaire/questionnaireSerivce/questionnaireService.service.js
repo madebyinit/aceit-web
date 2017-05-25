@@ -48,6 +48,7 @@ class QuestionnaireService {
       this.currentState = this.steps[this.stepIndex];
       this.connection.saveData(this.steps,'questionnaire');
     }
+    this.connection.saveData(null,'routine');
   }
 
   backStep(){
