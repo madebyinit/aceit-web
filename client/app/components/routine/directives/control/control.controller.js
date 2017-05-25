@@ -10,7 +10,7 @@ class ControlController {
   $onInit(){
     this.routineType = '';
     this.steps = {};
-    this.userSum = {positive:0,concentration:0,physical:0};
+    this.userSum = _.cloneDeep(consts.sum);
     this._getUsersData();
   }
 
@@ -24,9 +24,11 @@ class ControlController {
   }
 
   _sumUserQuestionnaire(){
+    let sum = _.cloneDeep(consts.sum);
     _.forEach(_.get(this.user,'questionnaire'),(value)=>{
-      this.userSum[value.category] += value.answer;
+      sum[value.category] += value.answer;
     });
+    this.userSum = sum;
     this._buildRoutine();
   }
 
