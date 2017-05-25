@@ -6,10 +6,10 @@
             <div class="text">{{$ctrl.steps.one | translate}}</div>
         </div>
         <div class="step2" ng-click="$ctrl.editStep('two')">
-            <div class="text">{{$ctrl.steps.two | translate}}</div>
+            <div class="text">{{$ctrl.steps.two | translate}}<img ng-if="$ctrl.steps.two === 'Choose from'" ng-src="{{::$root.imageCdn}}icn-dropdown.svg"></div>
         </div>
         <div class="step3" ng-click="$ctrl.editStep('three')">
-            <div class="text">{{$ctrl.steps.three | translate}}</div>
+            <div class="text">{{$ctrl.steps.three | translate}}<img ng-if="$ctrl.steps.three === 'Choose from'" ng-src="{{::$root.imageCdn}}icn-dropdown.svg"></div>
         </div>
         <div class="step4">
             <div class="text">{{::'routine.next_question'|translate}}</div>
