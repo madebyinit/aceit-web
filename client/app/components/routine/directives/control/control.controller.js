@@ -11,6 +11,10 @@ class ControlController {
     this.routineType = '';
     this.steps = {};
     this.userSum = {positive:0,concentration:0,physical:0};
+    this._getUsersData();
+  }
+
+  _getUsersData(){
     this.connection.getUserPromise().then((res)=>{
       if(_.get(res,'questionnaire')){
         this.user = res;
@@ -26,17 +30,35 @@ class ControlController {
     this._buildRoutine();
   }
 
+  _physicalBind(){
+    if(_.get(this.user,'imagery')){
+      this.steps = _.cloneDeep(consts.defaultPhysical);
+      this.steps.three = `Think of ${_.get(this.user,'imagery')}`;
+    }else{
+      this.steps = _.cloneDeep(consts.defaultPhysical);
+    }
+  }
+
+  _concentrationBind(){
+    if(_.get(this.user,'concentration')){
+      this.steps = _.cloneDeep(consts.defaultConcentration);
+      this.steps.three = `Say ${_.get(this.user,'concentration')}`;
+    }else{
+      this.steps = _.cloneDeep(consts.defaultConcentration);
+    }
+  }
+
   suggestedRoutine(){
     let defaultSteps = {
       [consts.PHYSICAL_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = _.cloneDeep(consts.defaultPhysical);
+          this._physicalBind();
           this._saveSteps();
         },0)
       },
       [consts.CONCENTRATION_TYPE]:()=>{
         this.$timeout(()=>{
-          this.steps = _.cloneDeep(consts.defaultConcentration);
+          this._concentrationBind();
           this._saveSteps();
         },0)
       },
@@ -81,7 +103,7 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        this.steps = consts.concentrationPhysical;
+        this._concentrationBind();
       },0);
     }
   }
@@ -94,12 +116,7 @@ class ControlController {
       },0);
     }else{
       this.$timeout(()=>{
-        if(_.get(this.user,'imagery')){
-          this.steps = _.cloneDeep(consts.defaultPhysical);
-          this.steps.three = `Think of ${_.get(this.user,'imagery')}`;
-        }else{
-          this.steps = _.cloneDeep(consts.defaultPhysical);
-        }
+        this._physicalBind();
       },0);
     }
   }
@@ -111,7 +128,7 @@ class ControlController {
 
   _saveSteps(){
     this.connection.saveData(this.steps,'routine').then(()=>{
-      console.log('Routine saved')
+      this._getUsersData();
     })
   }
 

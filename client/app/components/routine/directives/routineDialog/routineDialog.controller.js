@@ -73,7 +73,8 @@ class RoutineDialogController {
       },
       'three':()=>{
         if(_.get(this.user,'concentration')){
-          this.optionOne = `Say ${_.get(this.user,'concentration')}`;
+          this._powerWord();
+          this.inputValue = _.get(this.user,'concentration');
         }else{
           this._powerWord();
         }
@@ -116,13 +117,15 @@ class RoutineDialogController {
   }
 
   updateInput(){
-    if(this.type === consts.PHYSICAL_TYPE){
+    if(this.type === consts.PHYSICAL_TYPE && this.step === 'three'){
       this.connection.saveData(this.inputValue,'imagery');
       this.inputValue = `Think of ${this.inputValue}`;
-    }else if(this.type === consts.CONCENTRATION_TYPE){
+    }else if(this.type === consts.CONCENTRATION_TYPE  && this.step === 'three'){
       this.connection.saveData(this.inputValue,'concentration');
+      this.inputValue = `Say ${this.inputValue}`;
     }
     this.returnData({obj:this.inputValue,step:this.step});
+    this.inputValue = '';
     this.closeDialog();
   }
 }
