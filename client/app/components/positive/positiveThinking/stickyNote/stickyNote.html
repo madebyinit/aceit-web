@@ -13,7 +13,7 @@
     <div class="error-message" ng-if="$ctrl.errorMessage">{{::$ctrl.errorMessage}}</div>
   </div>
   <div class="body-styler" ng-style="{'z-index':$ctrl.completeSticky && '500'}">
-    <default-sticky ng-if="!$ctrl.completeSticky" finished-sticky="$ctrl.completeStickyDefault(bol)"></default-sticky>
+    <default-sticky ng-if="!$ctrl.completeSticky" return-sticky="$ctrl.addDefaultItem(name)" finished-sticky="$ctrl.completeStickyDefault(bol)"></default-sticky>
     <div class="sticky-loop">
       <div class="default-sticky-notes" ng-repeat="stick in $ctrl.stickyList track by $index">
         <div class="trash" ng-click="$ctrl.deleteStick(stick)"></div>
