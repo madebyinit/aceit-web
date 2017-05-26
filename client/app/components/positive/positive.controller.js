@@ -1,14 +1,13 @@
 class PositiveController {
-  constructor() {
+  constructor($state) {
+    this.$state = $state;
   }
 
   $onInit(){
+    this.$state.go('positive.elephant');
   }
 
-  changeView(bol){
-    this.viewInit = bol;
-  }
 }
 
-PositiveController.$inject = [];
+PositiveController.$inject = ['$state'];
 export default PositiveController;

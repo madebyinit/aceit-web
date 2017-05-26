@@ -19,15 +19,21 @@ let positiveModule = angular.module('positive', [
       .state('positive', {
         url: '/positive',
         component: 'positive'
+      })
+      .state('positive.elephant', {
+        component: 'pinkElephant'
+      })
+      .state('positive.thinking', {
+        component: 'positiveThinking'
       });
   })
 
-.component('positive', positiveComponent)
-.component('positiveThinking', positiveThinkingComponent)
-.component('pinkElephant', pinkElephantComponent)
-.component('stickyNote', stickyNoteComponent)
-.component('defaultSticky', defaultStickyComponent)
+  .component('positive', positiveComponent)
+  .component('positiveThinking', positiveThinkingComponent)
+  .component('pinkElephant', pinkElephantComponent)
+  .component('stickyNote', stickyNoteComponent)
+  .component('defaultSticky', defaultStickyComponent)
 
-.name;
+  .name;
 
 export default positiveModule;
