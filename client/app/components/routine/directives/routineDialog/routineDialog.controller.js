@@ -25,12 +25,12 @@ class RoutineDialogController {
   }
 
   _setStepOne(){
-    this.inputTitle = 'Step one text';
+    this.inputTitle = 'Step one';
     this.inputPlaceholder = 'Enter your step 1';
   }
 
   _setStepTwo(){
-    this.inputTitle = 'Step Two text';
+    this.inputTitle = 'Step Two';
     this.inputPlaceholder = 'Enter your step 2';
   }
 

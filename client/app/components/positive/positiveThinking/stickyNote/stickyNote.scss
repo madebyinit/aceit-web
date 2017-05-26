@@ -30,6 +30,7 @@
       height: 80px;
       outline: 0;
       resize: none;
+      white-space: normal;
     }
     .button-style{
       background-image: linear-gradient(to bottom, #22c353, #15ac43);
@@ -81,6 +82,7 @@
       height: 80px;
       outline: 0;
       resize: none;
+      white-space:normal;
     }
     .button-style{
       background-image: linear-gradient(to bottom, #22c353, #15ac43);
@@ -146,13 +148,13 @@
         }
       .default-sticky-notes{
         &:nth-child(1) {
-          top: 0;
-          left: -220px;
+          top: 100px;
+          left: -300px;
           transform: rotate(-5deg);
         }
         &:nth-child(2) {
-          top: 0;
-          right: -290px;
+          bottom: 0;
+          right: -230px;
           transform: rotate(5deg);
         }
         &:nth-child(3) {
@@ -166,13 +168,13 @@
           transform: rotate(7deg);
         }
         &:nth-child(5) {
-          right: -390px;
-          top: 200px;
+          right: -290px;
+          top: 20px;
           transform: rotate(-5deg);
         }
         &:nth-child(6) {
-          right: -170px;
-          top: 460px;
+          right: -40px;
+          bottom: -210px;
           transform: rotate(2deg);
         }
       }

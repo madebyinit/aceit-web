@@ -6,7 +6,9 @@ let defaultStickyComponent = {
   restrict: 'E',
   controller,
   bindings:{
-    finishedSticky:'&?'
+    finishedSticky:'&?',
+    returnSticky:'&?',
+    defaultDone:'<?'
   },
   template
 };

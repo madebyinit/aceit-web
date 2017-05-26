@@ -2,11 +2,12 @@ const STICKY_NOTES = 'stickyNotes';
 const MAX_NOTES = 6;
 
 class StickyNoteController {
-  constructor(connection,$timeout,progressLinear,notificationsService) {
+  constructor(connection,$timeout,progressLinear,notificationsService,$translate) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.progressLinear = progressLinear;
     this.notificationsService = notificationsService;
+    this.$translate = $translate;
     this.name = 'stickyNote';
     this.sticky = {title:'positive.sticky_note.track',body:'positive.sticky_note.negative'};
     this.stickyList = [];
@@ -18,7 +19,7 @@ class StickyNoteController {
     this.connection.getUserPromise().then((res)=>{
       if(_.get(res,STICKY_NOTES)){
         this.$timeout(()=>{
-          this.completeStickyDefault();
+          this._stickyComplete();
           this.stickyList = _.get(res,STICKY_NOTES);
           this.progressLinear.hideProgress();
         },0);
@@ -30,6 +31,16 @@ class StickyNoteController {
     document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
+  _stickyComplete(){
+    this.completeSticky = true;
+    this.sticky = {
+      title:'positive.sticky_note.track',
+      body:'positive.sticky_note.negative_thoughts',
+      inputPlaceholder:'positive.sticky_note.type_negative',
+      buttonText:'positive.sticky_note.use_it'
+    };
+  }
+
   completeStickyDefault(bol){
     this.completeSticky = true;
     this.sticky = {
@@ -38,6 +49,15 @@ class StickyNoteController {
       inputPlaceholder:'positive.sticky_note.type_negative',
       buttonText:'positive.sticky_note.use_it'
     };
+    this.connection.saveData(this.stickyList,STICKY_NOTES);
+  }
+
+  addDefaultItem(name){
+    if(name === 'luckySticky'){
+      this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.people'),positive:true});
+    }else if(name === 'materialSticky'){
+      this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.performance'),positive:true});
+    }
   }
 
   deleteStick(obj){
@@ -55,6 +75,7 @@ class StickyNoteController {
   addNegativeThoughts(){
     if(this.stickyList.length < MAX_NOTES){
       this.stickyList.push({stick:this.negativeThoughts,positive:false});
+      this.connection.saveData(this.stickyList,STICKY_NOTES);
       this.negativeThoughts = '';
     }else{
       this.errorMessage = 'Max sticky note';
@@ -65,5 +86,5 @@ class StickyNoteController {
   }
 }
 
-StickyNoteController.$inject = ['connection','$timeout','progressLinear','notificationsService'];
+StickyNoteController.$inject = ['connection','$timeout','progressLinear','notificationsService','$translate'];
 export default StickyNoteController;
