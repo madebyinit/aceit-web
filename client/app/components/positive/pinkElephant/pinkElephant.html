@@ -11,7 +11,7 @@
         <div class="second-part" ng-if="$ctrl.pink">
             <div class="positive-thinking-sub-title">{{::'positive.pink_elephant.told' | translate}}</div>
             <div class="obviously">{{::'positive.pink_elephant.obviously' | translate}}</div>
-            <md-button class="button-style pink-button" ng-click="$ctrl.changeView({bol:true})">{{::'positive.pink_elephant.cool' | translate}}</md-button>
+            <a ui-sref="positive.thinking"><md-button class="button-style pink-button">{{::'positive.pink_elephant.cool' | translate}}</md-button></a>
         </div>
     </div>
 </div>
