@@ -32,6 +32,7 @@ class PhysicalController {
     }else if(step === 'neck'){
       this.goto('imagery');
     }
+    window.scrollTo(0,0);
   }
 
   goto(name){
