@@ -45,20 +45,9 @@
 }
 
 .questionnaire-body {
-  min-height: 700px;
+  min-height: 900px;
   height: 100vh;
-  background: linear-gradient(to bottom, #ded2c4, #84cbd6);
-}
-.questionnaire-body::before {
-  content: "";
-  background: url($cdnImage + 'q-bg.png');
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: 0;
+  background:linear-gradient(to bottom, rgba(222, 210, 196, 0.5), rgba(132, 203, 214, 0.5)), url($cdnImage + 'q-bg.png');
 }
 
 .small-q.ng-enter{
