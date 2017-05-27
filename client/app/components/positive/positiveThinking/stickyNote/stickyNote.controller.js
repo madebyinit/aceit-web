@@ -49,15 +49,9 @@ class StickyNoteController {
       inputPlaceholder:'positive.sticky_note.type_negative',
       buttonText:'positive.sticky_note.use_it'
     };
+    this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.people'),positive:true});
+    this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.performance'),positive:true});
     this.connection.saveData(this.stickyList,STICKY_NOTES);
-  }
-
-  addDefaultItem(name){
-    if(name === 'luckySticky'){
-      this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.people'),positive:true});
-    }else if(name === 'materialSticky'){
-      this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.performance'),positive:true});
-    }
   }
 
   deleteStick(obj){
