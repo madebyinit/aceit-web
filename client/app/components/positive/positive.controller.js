@@ -4,7 +4,7 @@ class PositiveController {
   }
 
   $onInit(){
-    this.$state.go('positive.thinking');
+    this.$state.go('positive.elephant');
   }
 
 }
