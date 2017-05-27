@@ -7,7 +7,7 @@ let consts = {
   PHYSICAL_TYPE:'physical_type',
   CONCENTRATION_PHYSICAL_TYPE:'concentration_physical_type',
   POSITIVE_TYPE:'positive_type',
-  sum:{positive:10,concentration:0,physical:0}
+  sum:{positive:0,concentration:0,physical:0}
 };
 
 export default consts
