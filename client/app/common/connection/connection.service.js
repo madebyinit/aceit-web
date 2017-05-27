@@ -1,12 +1,11 @@
 import firebase from 'firebase';
 
 class ConnectionService {
-  constructor(firebaseService,stateChangeService) {
+  constructor(firebaseService) {
     this.firebase = firebase;
-    this.stateChangeService = stateChangeService;
     this.firebaseService = firebaseService;
     this.database = this.firebase.database();
-    this.user = this.stateChangeService.getUserData();
+    this.user = JSON.parse(localStorage.getItem('aceitUser'));
     this.userPromise = {};
   }
 
@@ -32,5 +31,5 @@ class ConnectionService {
   }
 }
 
-ConnectionService.$inject = ['firebaseService','stateChangeService'];
+ConnectionService.$inject = ['firebaseService'];
 export default ConnectionService;

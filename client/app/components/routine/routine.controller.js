@@ -6,18 +6,23 @@ class RoutineController {
   }
 
   $onInit(){
-    this._saveStateComplete();
     angular.element(document).ready(()=> {
-      this._startLionVideo();
-    })
+      this.connection.getUserPromise().then((res)=>{
+        document.getElementById('lol-lion').volume = 0.5;
+        this.user = res;
+        this._startLionVideo();
+      });
+    });
+    this._saveStateComplete();
   }
 
   _startLionVideo(){
     let doc = angular.element(this.$document)[0].body;
     let lionSectionY = this.$document[0].getElementById('lion-section-id').offsetTop;
     this.$document.bind("scroll",()=> {
-      if((doc.scrollTop-lionSectionY) > -300 && (doc.scrollTop-lionSectionY) < 300){
+      if(!_.get(this.user,'lolLionWatched') && (doc.scrollTop-lionSectionY) > -300 && (doc.scrollTop-lionSectionY) < 300){
         document.getElementById('lol-lion').play();
+        this.connection.saveData(true,'lolLionWatched');
         this.$document.unbind('scroll');
       }
     });
