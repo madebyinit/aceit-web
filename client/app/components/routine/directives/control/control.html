@@ -9,7 +9,7 @@
             <div class="text">{{$ctrl.steps.two | translate}}<img ng-if="$ctrl.steps.two === 'Choose from'" ng-src="{{::$root.imageCdn}}icn-dropdown.svg"></div>
         </div>
         <div class="step3" ng-click="$ctrl.editStep('three')">
-            <div class="text">{{$ctrl.steps.three | translate}}<img ng-if="$ctrl.steps.three === 'Choose from'" ng-src="{{::$root.imageCdn}}icn-dropdown.svg"></div>
+            <div class="text">{{$ctrl.steps.three | translate}}<img ng-if="$ctrl.steps.three === 'Choose from' || $ctrl.steps.three === 'Choose positive thought'" ng-src="{{::$root.imageCdn}}icn-dropdown.svg"></div>
         </div>
         <div class="step4">
             <div class="text">{{::'routine.next_question'|translate}}</div>
