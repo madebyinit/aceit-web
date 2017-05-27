@@ -58,6 +58,15 @@ class ControlController {
     }
   }
 
+  _positiveBind(){
+    if(_.get(this.user,'positiveWord')){
+      this.steps = _.cloneDeep(consts.defaultPositive);
+      this.steps.three = _.get(this.user,'positiveWord');
+    }else{
+      this.steps = _.cloneDeep(consts.defaultPositive);
+    }
+  }
+
   suggestedRoutine(){
     let defaultSteps = {
       [consts.PHYSICAL_TYPE]:()=>{
@@ -77,6 +86,12 @@ class ControlController {
           this._concentrationPhysicalBind();
           this._saveSteps();
         },0)
+      },
+      [consts.POSITIVE_TYPE]:()=>{
+        this.$timeout(()=>{
+          this._positiveBind();
+          this._saveSteps();
+        },0)
       }
     };
     defaultSteps[this.routineType]();
@@ -89,6 +104,11 @@ class ControlController {
       this._setConcentration();
     }else if(_.get(this.userSum,'physical') >= 10){
       this._setPhysical();
+    }else if(_.get(this.userSum,'positive') >= 10){
+      this._setPositive();
+    }
+    else{
+      this._setConcentration();
     }
   }
 
@@ -127,6 +147,19 @@ class ControlController {
     }else{
       this.$timeout(()=>{
         this._physicalBind();
+      },0);
+    }
+  }
+
+  _setPositive(){
+    this.routineType = consts.POSITIVE_TYPE;
+    if(_.get(this.user,'routine')){
+      this.$timeout(()=>{
+        this.steps = _.get(this.user,'routine');
+      },0);
+    }else{
+      this.$timeout(()=>{
+        this._positiveBind();
       },0);
     }
   }

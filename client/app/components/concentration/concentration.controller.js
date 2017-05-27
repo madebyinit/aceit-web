@@ -57,7 +57,6 @@ class ConcentrationController {
   }
 
   saveWord(val){
-    debugger;
     this.concentrationWord = val;
     this.connection.saveData(val,'concentration').then((res)=>{
       this.showDialog = false;

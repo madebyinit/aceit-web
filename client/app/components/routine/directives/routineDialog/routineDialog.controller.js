@@ -19,7 +19,8 @@ class RoutineDialogController {
     let cases = {
       [consts.CONCENTRATION_TYPE]:()=>this._concentrationSteps(),
       [consts.PHYSICAL_TYPE]:()=>this._physicalSteps(),
-      [consts.CONCENTRATION_PHYSICAL_TYPE]:()=>this._concentrationPhysicalSteps()
+      [consts.CONCENTRATION_PHYSICAL_TYPE]:()=>this._concentrationPhysicalSteps(),
+      [consts.POSITIVE_TYPE]:()=>this._positiveSteps()
     };
     cases[this.type]();
   }
@@ -37,6 +38,32 @@ class RoutineDialogController {
   _powerWord(){
     this.inputTitle = 'Enter power word';
     this.inputPlaceholder = 'Type your power word';
+  }
+
+  _positiveSteps(){
+    let steps = {
+      'one':()=>{
+        this._setStepOne();
+      },
+      'two':()=>{
+        this._setStepTwo();
+      },
+      'three':()=>{
+        if(_.get(this.user,'positiveWord')){
+          this.inputTitle = 'Make your own positive thought';
+          this.inputPlaceholder = 'Type your positive thought';
+          this.inputValue = _.get(this.user,'positiveWord');
+          this.optionTwo = 'I can do it';
+          this.optionThree = 'I`m prepared';
+        }else{
+          this.inputTitle = 'Make your own positive thought';
+          this.inputPlaceholder = 'Type your positive thought';
+          this.optionTwo = 'I can do it';
+          this.optionThree = 'I`m prepared';
+        }
+      }
+    };
+    steps[this.step]();
   }
 
   _physicalSteps(){
@@ -134,7 +161,13 @@ class RoutineDialogController {
       }else{
         this.inputValue = `Enter power word`;
       }
-    }else{
+    }else if(this.type === consts.POSITIVE_TYPE && this.step === 'three'){
+      this.connection.saveData(this.inputValue,'positiveWord');
+      if(!this.inputValue){
+        this.inputValue = `Choose positive thought`;
+      }
+    }
+    else{
       if(this.step === 'two'){
         this.connection.saveData(this.inputValue,'imagery');
         if(this.inputValue){
