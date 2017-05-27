@@ -15,9 +15,11 @@ class selectElementController {
   _watchData(){
     this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
       if(newVal){
-        this.rating = newVal;
-        this.starsArray = this.getStarsArray();
-        this.validateStars(newVal);
+        this.$timeout(()=> {
+          this.rating = newVal;
+          this.starsArray = this.getStarsArray();
+          this.validateStars(newVal);
+        },200);
       }
     });
   }
@@ -47,7 +49,7 @@ class selectElementController {
       this.rating = 0;
       this.validateStars(this.rating);
       this.setMouseOverRating(0);
-    });
+    },0);
   };
 
   setMouseOverRating(rating) {
