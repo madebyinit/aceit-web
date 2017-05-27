@@ -29,6 +29,7 @@ class StateChangeService {
 
   appInit(){
     let user = this.getUserData();
+    this._intercomBoot(user);
     if(_.isEmpty(_.get(user,'uid'))){
       this.$state.go('loginView.login');
     }else{
@@ -36,6 +37,16 @@ class StateChangeService {
         this._userFs(user);
       }
     }
+  }
+
+  _intercomBoot(user){
+    let time = + new Date();
+    window.Intercom("boot", {
+      app_id: "dy8do0p0",
+      name: _.get(user,'email'),
+      email: _.get(user,'email'),
+      created_at: time
+    });
   }
 
   _userFs(user){

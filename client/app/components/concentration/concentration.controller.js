@@ -7,7 +7,6 @@ class ConcentrationController {
   }
 
   $onInit(){
-    this._startVideo();
     this._getWord();
   }
 
@@ -15,8 +14,9 @@ class ConcentrationController {
     let doc = angular.element(this.$document)[0].body;
     let lionSectionY = this.$document[0].getElementById('target-id').offsetTop;
     this.$document.bind("scroll",()=> {
-      if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
+      if(!_.get(this.user,'concentrationWatched') && ((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100)){
         document.getElementById('concentration-video-id').play();
+        this.connection.saveData(true,'concentrationWatched');
         this.$document.unbind('scroll');
       }
     });
@@ -25,6 +25,7 @@ class ConcentrationController {
   _getWord(){
     this.connection.getUserPromise().then((res)=>{
       this.user = res;
+      this._startVideo();
       this._checkStateComplete();
       if(_.get(res,'concentration')){
         this.$timeout(()=>{

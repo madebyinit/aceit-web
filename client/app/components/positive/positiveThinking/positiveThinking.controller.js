@@ -9,9 +9,6 @@ class PositiveThinkingController {
   $onInit(){
     this.positiveComplete = false;
     this._getUserData();
-    angular.element(document).ready(()=>{
-      this._playVideo();
-    })
   }
 
   _playVideo(){
@@ -19,8 +16,9 @@ class PositiveThinkingController {
     let videoY = this.$document[0].getElementById('pos-video-start').offsetTop;
     let myVideo = this.$document[0].getElementById('pos-video');
     this.$document.bind("scroll",()=> {
-      if((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100){
+      if(!_.get(this.user,'positiveWatched') && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
         myVideo.play();
+        this.connection.saveData(true,'positiveWatched');
         this.$document.unbind('scroll');
       }
     });
@@ -28,6 +26,7 @@ class PositiveThinkingController {
 
   _getUserData(){
     this.connection.getUserPromise().then((res)=>{
+      this.user = res;
       if(_.get(res,'positiveComplete')){
         this.$timeout(()=>{
           this.positiveComplete = true;
@@ -35,6 +34,9 @@ class PositiveThinkingController {
       }else{
         this._saveStateComplete();
       }
+      angular.element(document).ready(()=>{
+        this._playVideo();
+      })
     })
   }
 

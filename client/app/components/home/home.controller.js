@@ -1,10 +1,9 @@
 class HomeController {
-  constructor($translate,$document,$timeout,connection,connectServices) {
+  constructor($translate,$document,$timeout,connection) {
     this.$translate = $translate;
     this.$document = $document;
     this.$timeout = $timeout;
     this.connection = connection;
-    this.connectServices = connectServices;
   }
 
   $onInit(){
@@ -68,16 +67,17 @@ class HomeController {
   _firstVideo(doc){
     let videoY = this.$document[0].getElementById('first-video').offsetTop;
     let myVideo = this.$document[0].getElementById('video0');
-    if(!this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
+    if(!_.get(this.user,'firstVideoWatched') && !this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
       myVideo.play();
       this.playedFirstVideo = true;
+      this.connection.saveData(true,'firstVideoWatched');
     }
   }
 
   _lionVideoPlay(doc){
     let lionSectionY = this.$document[0].getElementById('lion-section-view').offsetTop;
     let myVideo = this.$document[0].getElementById('video1');
-    if((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100){
+    if(!_.get(this.user,'firstLionWatched') && ((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100)){
       this.$timeout(()=>{
         this.showLionVideo = true;
         document.getElementsByTagName('body')[0].style.overflow = 'hidden';
@@ -88,11 +88,12 @@ class HomeController {
             this.showLionVideo = false;
             document.getElementsByTagName('body')[0].style.overflow = '';
           },0)
-        })
+        });
+        this.connection.saveData(true,'firstLionWatched');
       },0);
     }
   }
 
 }
-HomeController.$inject = ['$translate','$document','$timeout','connection','connectServices'];
+HomeController.$inject = ['$translate','$document','$timeout','connection'];
 export default HomeController;
