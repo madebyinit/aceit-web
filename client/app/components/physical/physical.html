@@ -31,6 +31,9 @@
         <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
         <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
       </md-button>
+      <md-button class="button-style next-step-button" ng-click="$ctrl.moveToNextStep($ctrl.currentNavItem)">
+        <img ng-src="{{::$root.imageCdn}}left-arrow.svg" />
+      </md-button>
     </div>
   </div>
 </div>

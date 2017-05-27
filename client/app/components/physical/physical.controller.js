@@ -9,7 +9,7 @@ class PhysicalController {
     this.allStepsComplete = false;
     this._checkToolComplete();
     this.checkList = [];
-    this.goto('imagery');
+    this.goto('breathing');
   }
 
   goSummary(){
@@ -24,6 +24,14 @@ class PhysicalController {
         },0)
       }
     })
+  }
+
+  moveToNextStep(step){
+    if(step === 'breathing'){
+      this.goto('neck');
+    }else if(step === 'neck'){
+      this.goto('imagery');
+    }
   }
 
   goto(name){
