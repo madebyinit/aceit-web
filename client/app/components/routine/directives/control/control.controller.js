@@ -106,8 +106,7 @@ class ControlController {
       this._setPhysical();
     }else if(_.get(this.userSum,'positive') >= 10){
       this._setPositive();
-    }
-    else{
+    } else{
       this._setConcentration();
     }
   }

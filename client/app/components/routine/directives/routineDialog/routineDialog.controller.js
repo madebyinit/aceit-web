@@ -50,13 +50,13 @@ class RoutineDialogController {
       },
       'three':()=>{
         if(_.get(this.user,'positiveWord')){
-          this.inputTitle = 'Make your own positive thought';
+          this.inputTitle = 'Add your own positive thought';
           this.inputPlaceholder = 'Type your positive thought';
           this.inputValue = _.get(this.user,'positiveWord');
           this.optionTwo = 'I can do it';
           this.optionThree = 'I`m prepared';
         }else{
-          this.inputTitle = 'Make your own positive thought';
+          this.inputTitle = 'Add your own positive thought';
           this.inputPlaceholder = 'Type your positive thought';
           this.optionTwo = 'I can do it';
           this.optionThree = 'I`m prepared';
