@@ -2,6 +2,6 @@
   <div class="questionnaire-number">{{$ctrl.number}}</div>
   <div class="questionnaire-title">{{'questionnaire.' + $ctrl.questionModel | translate}}</div>
   <div class="questionnaire-slider">
-    <select-element on-rating="$ctrl.elementChange(rating)" answer="$ctrl.answer"></select-element>
+    <select-element on-rating="$ctrl.elementChange(rating)" main-quest="$ctrl.mainQuest" answer="$ctrl.answer"></select-element>
   </div>
 </div>

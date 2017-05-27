@@ -9,7 +9,8 @@ let questionnaireElementComponent = {
     number:'@?',
     answerReturn:'&',
     answer:'<?',
-    disabledStep:'<?'
+    disabledStep:'<?',
+    mainQuest:'<?'
   },
   template,
   controller
