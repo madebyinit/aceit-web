@@ -6,7 +6,8 @@ let selectElementComponent = {
   restrict: 'E',
   bindings: {
     onRating:'&?',
-    answer:'<?'
+    answer:'<?',
+    mainQuest:'<?'
   },
   template,
   controller

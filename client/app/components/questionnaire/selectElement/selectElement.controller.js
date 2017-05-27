@@ -7,17 +7,16 @@ class selectElementController {
   $onInit(){
     this._watchData();
     this.maxRating = 5;
-    if (this.readOnly === undefined) {
-      this.readOnly = false;
-    }
-    this.starsArray = this.getStarsArray();
+    this.rating = 0;
     this.validateStars(this.rating);
+    this.starsArray = this.getStarsArray();
   }
 
   _watchData(){
     this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
       if(newVal){
         this.rating = newVal;
+        this.starsArray = this.getStarsArray();
         this.validateStars(newVal);
       }
     });
@@ -45,6 +44,9 @@ class selectElementController {
       this.onRating({
         rating: this.rating
       });
+      this.rating = 0;
+      this.validateStars(this.rating);
+      this.setMouseOverRating(0);
     });
   };
 
