@@ -13,6 +13,7 @@ class StateChangeService {
       this._checkUserLogin(data);
       this._segmentTrack();
       window.Intercom("update");
+      this._saveLastState(data);
     });
   }
 
@@ -33,9 +34,17 @@ class StateChangeService {
     if(_.isEmpty(_.get(user,'uid'))){
       this.$state.go('loginView.login');
     }else{
+      this._goToLastState();
       if(window.location.hostname.indexOf('localhost') === -1){
         this._userFs(user);
       }
+    }
+  }
+
+  _goToLastState(){
+    let state = localStorage.getItem('aceitState');
+    if(state){
+      this.$state.go(state);
     }
   }
 
@@ -71,6 +80,11 @@ class StateChangeService {
         this.$state.go('loginView.login');
       }
     }
+  }
+
+  _saveLastState(data){
+    console.log(_.get(data, 'router.globals.current.name'));
+    localStorage.setItem('aceitState',_.get(data, 'router.globals.current.name'));
   }
 
   saveUserData(res){
