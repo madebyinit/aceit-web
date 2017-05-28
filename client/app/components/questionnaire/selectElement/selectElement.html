@@ -2,7 +2,7 @@
     <span class="always">{{:: ('questionnaire.always' | translate)}}</span>
     <div class="range-element">
         <div class="dot"
-             ng-repeat="item in $ctrl.starsArray"
+             ng-repeat="item in $ctrl.starsArray track by $index"
              ng-class="item.class"
              ng-click="$ctrl.setRating($index + 1)"
              ng-mouseover="$ctrl.setMouseOverRating($index + 1)"

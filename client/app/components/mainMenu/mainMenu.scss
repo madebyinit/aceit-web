@@ -22,11 +22,12 @@ md-input-container{
   position: absolute;
   z-index: 50;
   .main-logo{
+    background: url($cdnImage + 'logo_white.png') no-repeat;
     width: 104.5px;
-    height: 19.5px;
-    background-image: url($cdnImage + 'aceit-logo.png');
+    height: 58px;
     right: 6%;
     @include centering();
+    background-size: 100%;
   }
   .open-menu{
     background: url($cdnImage + 'icn-menu.png') no-repeat;
