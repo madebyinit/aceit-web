@@ -21,16 +21,18 @@ class HomeController {
   }
 
   getUserData(){
-    this.connection.getUserPromise().then((res)=>{
-      this.user = res;
-      this._userInit();
+    this.connection.getData().then((res)=>{
+      this.$timeout(()=>{
+        this.user = res;
+        this._userInit();
+      },0);
     })
   }
 
   saveWord(name){
     this.connection.saveData(name,'name').then((res)=>{
-      this._closeWelcomeDialog();
       this.getUserData();
+      this._closeWelcomeDialog();
     },(error)=>{
       console.log(error);
     })
@@ -49,11 +51,15 @@ class HomeController {
   }
 
   _closeWelcomeDialog(){
-    this.showWelcomeDialog = false;
+    this.$timeout(()=>{
+      this.showWelcomeDialog = false;
+    },0)
   }
 
   _showWelcomeDialog(){
-    this.showWelcomeDialog = true;
+    this.$timeout(()=>{
+      this.showWelcomeDialog = true;
+    },0)
   }
 
   _scroll(){
