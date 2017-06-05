@@ -42,7 +42,9 @@ class QuestionnaireService {
   nextStep(){
     if(this.stepIndex === (this.steps.length-1)){
       this.connection.saveData(this.steps,'questionnaire');
-      this.$state.go('summary');
+      this.$timeout(()=>{
+        this.$state.go('summary');
+      },0);
     }else{
       this.stepIndex++;
       this.currentState = this.steps[this.stepIndex];

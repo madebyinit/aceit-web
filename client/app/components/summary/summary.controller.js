@@ -21,7 +21,7 @@ class SummaryController {
   }
 
   _getUserData(){
-    this.connection.getUserPromise().then((res)=>{
+    this.connection.getData().then((res)=>{
       this.user = res;
       this.userSum = {positive:0,concentration:0,physical:0};
       if(_.get(res,'questionnaire')){

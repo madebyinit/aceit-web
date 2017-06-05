@@ -4,7 +4,8 @@
   height: 100vh;
   width: 100%;
   background-image: url($cdnImage + 'bg-signup.png');
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   .form-container {
     position: relative;
     top: 40%;

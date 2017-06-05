@@ -46,9 +46,9 @@ class MainMenuController {
   }
 
   _checkSummaryComplete(){
-    if(this.user.positiveComplete && this.user.physicalComplete && this.user.concentrationComplete){
+    if(_.get(this.user,'positiveComplete') && _.get(this.user,'physicalComplete') && _.get(this.user,'concentrationComplete')){
       this.showFullSummary = true;
-    }else if(this.user.summaryComplete){
+    }else if(_.get(this.user,'summaryComplete')){
       this.showSummary = true;
     }
   }
