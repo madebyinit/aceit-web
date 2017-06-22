@@ -195,17 +195,41 @@
     }
   }
   .dialog-element-body{
-    .dialog-input{
-      padding: 0;
-      .arrow-down{
-        height: 55px;
-        width: 25px;
-        background: url($cdnImage + 'arrow-blue.png') no-repeat;
-        background-size: 80%;
-        margin: auto;
+    .sticky-note-input-container{
+      position: relative;
+      .dialog-input{
+        padding: 0;
+        input {
+          width: 300px;
+          height: 35px;
+          border-radius: 3px;
+          border: 1px solid #c5c5c5;
+          text-align: center;
+          color: $secondaryColor;
+          transition: all 0.3s ease;
+          &::-webkit-input-placeholder {
+            color: #c5c5c5;
+          }
+          &:focus{
+            border-color: $primaryColor;
+          }
+        }
+        .arrow-down{
+          height: 55px;
+          width: 25px;
+          background: url($cdnImage + 'arrow-blue.png') no-repeat;
+          background-size: 80%;
+          margin: auto;
+        }
+        &.ng-enter{
+          animation: 0.5s fadein ease;
+        }
       }
-      &.ng-enter{
-        animation: 0.5s fadein ease;
+      .add-button-style{
+        position: absolute;
+        width: 35px;
+        right: 53px;
+        top: 57px;
       }
     }
     .save-and-close-button{

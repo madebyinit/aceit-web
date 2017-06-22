@@ -49,6 +49,10 @@
   height: 100vh;
   background:linear-gradient(to bottom, rgba(222, 210, 196, 0.5), rgba(132, 203, 214, 0.5)), url($cdnImage + 'q-bg.png');
 }
+.make-space {
+  margin-top: 185px;
+  display: block;
+}
 
 .small-q.ng-enter{
   display: block;

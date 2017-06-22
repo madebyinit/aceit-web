@@ -37,7 +37,7 @@ class StickyNoteController {
       title:'positive.sticky_note.track',
       body:'positive.sticky_note.negative_thoughts',
       inputPlaceholder:'positive.sticky_note.type_negative',
-      buttonText:'positive.sticky_note.use_it'
+      buttonText:'save_close'
     };
   }
 
@@ -47,7 +47,7 @@ class StickyNoteController {
       title:'positive.sticky_note.track',
       body:'positive.sticky_note.negative_thoughts',
       inputPlaceholder:'positive.sticky_note.type_negative',
-      buttonText:'positive.sticky_note.use_it'
+      buttonText:'save_close'
     };
     this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.people'),positive:true});
     this.stickyList.push({stick:this.$translate.instant('positive.sticky_note.performance'),positive:true});
