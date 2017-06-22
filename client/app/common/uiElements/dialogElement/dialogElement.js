@@ -10,6 +10,7 @@ let dialogElementComponent = {
     buttonText:'@?',
     inputPlaceholder:'@?',
     inputTitle:'@?',
+    hideExit:'<?',
     isDisabledInput:'<?',
     returnValue:'&?',
     bindValue:'<?'
