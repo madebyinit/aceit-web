@@ -10,6 +10,12 @@ input,button,span,p,a{
   outline: 0;
   font-family: 'Montserrat', sans-serif;
 }
+button > div {
+  font-size: 14px;
+}
+div,p{
+  font-size: 18px;
+}
 video::-internal-media-controls-download-button {
   display:none;
 }
