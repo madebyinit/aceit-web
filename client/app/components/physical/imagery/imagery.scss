@@ -36,7 +36,7 @@
       .deep-breaths-text {
         position: absolute;
         right: 30px;
-        bottom: 40px;
+        bottom: 10px;
       }
     }
     .smell-img{
@@ -83,6 +83,9 @@
   }
   .smell{
     border-bottom: none;
+    .close-your-eyes-text{
+      width: 550px!important;
+    }
   }
   .last-section{
     text-align: center;
