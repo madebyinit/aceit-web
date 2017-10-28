@@ -1,5 +1,5 @@
 const CONSTS = {
-  imageCdn:'http://cdn.aceitapp.net/img/',
-  videoCdn:'http://cdn.aceitapp.net/video/'
+  imageCdn:'https://cdn.aceit-app.com/img/',
+  videoCdn:'https://cdn.aceit-app.com/video/',
 };
 export default CONSTS;
