@@ -2,8 +2,11 @@ $primaryColor: #20aecd;
 $secondaryColor: #0e7086;
 $borderColor: #4e696f;
 $lineColor: #e3e4e4;
-$cdnImage: 'https://cdn.aceit-app.com/img/';
+// $cdnImage: 'https://cdn.aceit-app.com/img/';
+$cdnImage: 'http://localhost:3000/img/';
 @import url('https://fonts.googleapis.com/css?family=Oswald:700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 
 body {
    height: 100%;

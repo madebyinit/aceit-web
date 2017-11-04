@@ -1,5 +1,8 @@
 @import "../../common/common";
 
+$gradient-color-1: #f4ddc2;
+$gradient-color-2: #9dd7d5;
+
 .login-page{
   height: 100vh;
   width: 100%;
@@ -13,13 +16,38 @@
   }
   .login-logo{
     background: url($cdnImage + 'logo_black.png') no-repeat;
-    width: 350px;
-    height: 170px;
-    background-size: 100%;
+    width: 25vw;
+    height: 12vw;
+    background-size: contain;
     margin: auto;
-    position: relative;
-    top: 0;
-  }
+    position: absolute;
+    top: 35%;
+    right:10%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    .login-logo-text{
+        font-size:1.8vw;
+        position:absolute;
+        bottom: -0.5vw;
+        color:white;
+        text-transform:uppercase;
+        font-family:Source Sans Pro;
+    }
+}
+.login-gradient-cover {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: gray;
+    mix-blend-mode: multiply;
+    background: -webkit-linear-gradient($gradient-color-1, $gradient-color-2 50%);
+    background: -o-linear-gradient($gradient-color-1, $gradient-color-2 50%);
+    background: -moz-linear-gradient($gradient-color-1, $gradient-color-2 50%);
+    background: linear-gradient($gradient-color-1, $gradient-color-2 80%);
+}
+
   .authentication-form{
     height: 100%;
     width: 100%;
@@ -27,7 +55,7 @@
     position: absolute;
     text-align: center;
     border-radius: 3px;
-    padding: 30px;
+    // padding: 30px;
     box-sizing: border-box;
     .form-title {
       @include title;
@@ -47,6 +75,15 @@
       text-transform: uppercase;
       background-color: $secondaryColor;
       box-shadow: inset 0px -7px 0px -3px rgba(0, 0, 0, 0.23);
+      font-weight:bold;
+      font-family:Source Sans Pro;
+      text-shadow: 1px 0 #ffffff;
+      letter-spacing: 1px;
+}
+
+
+
+
     }
     .login-button {
       color: white;
@@ -61,26 +98,43 @@
   }
   .forgot-password-title {
     color: $secondaryColor;
-    font-size: 13px;
-    text-align: left;
+    font-size: 14px;
+    text-align: center;
     width: 80%;
     position: relative;
     left: 5px;
-    margin: auto auto 20px;
+    margin: 20px auto;
+    font-family:Source Sans Pro;
+    a{
+        text-decoration:none;
+    }
     span{
       color: #53ace0;
       font-weight: bold;
-      text-decoration: underline;
+      // text-decoration: underline;
       text-transform: capitalize;
     }
   }
+  .check-website-title {
+      a {
+          text-decoration:none;
+      }
+    color: $secondaryColor;
+      font-weight:bold;
+      font-family:Source Sans Pro;
+      position:absolute;
+      bottom:5%;
+      left:0;
+      right:0;
+
+  }
   .login-view{
-    width: 30%;
+    width: 25%;
     height: 100%;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    left: 0;
+    left: 25%;
     top: 50%;
     transform: translateY(-50%);
       &.ng-leave{
@@ -90,23 +144,44 @@
         animation: 0.30s comeFromTheSky ease;
       }
     }
-}
 .input-style {
   width: 80%;
   height: 45px;
   margin: auto auto 40px;
   position: relative;
+          &:after {
+          position:absolute;
+          height:20px;
+          width:20px;
+          content: " ";
+          top:25%;
+          left:0;
+          margin-left:3%;
+          z-index:6;
+          background-size:contain;
+      }
+      &.email-wrapper:after {
+        background-image: url($cdnImage + 'icn-user.png');
+      }
+      &.password-wrapper:after {
+        background-size:inherit;
+        background-image: url($cdnImage + 'icn-password.png');
+      }
   .form-input {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 40px;
-    font-size: 16px;
-    text-indent: 13px;
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+      padding-left:25px;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 40px;
+      font-size: 16px;
+      text-indent: 13px;
+      font-family:Source Sans Pro;
     border: 0;
     border-radius: 3px;
     position: relative;
     z-index: 6;
-  }
   .error-message {
     position: absolute;
     bottom: -25px;
@@ -187,4 +262,5 @@ and (max-device-width: 450px) {
     right: 0;
     opacity: 1
   }
+}
 }
