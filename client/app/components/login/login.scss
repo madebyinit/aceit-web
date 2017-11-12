@@ -1,7 +1,5 @@
 @import "../../common/common";
 
-$gradient-color-1: #f4ddc2;
-$gradient-color-2: #9dd7d5;
 
 .login-page{
   height: 100vh;
@@ -15,7 +13,7 @@ $gradient-color-2: #9dd7d5;
     transform: translateY(-40%);
   }
   .login-logo{
-    background: url($cdnImage + 'logo_black.png') no-repeat;
+    background: url($cdnImage + 'signup-logo.png') no-repeat;
     width: 25vw;
     height: 12vw;
     background-size: contain;
@@ -42,10 +40,10 @@ $gradient-color-2: #9dd7d5;
     position: absolute;
     background-color: gray;
     mix-blend-mode: multiply;
-    background: -webkit-linear-gradient($gradient-color-1, $gradient-color-2 50%);
-    background: -o-linear-gradient($gradient-color-1, $gradient-color-2 50%);
-    background: -moz-linear-gradient($gradient-color-1, $gradient-color-2 50%);
-    background: linear-gradient($gradient-color-1, $gradient-color-2 80%);
+    background: -webkit-linear-gradient($background-gradient-color-1, $background-gradient-color-2 80%);
+    background: -o-linear-gradient($background-gradient-color-1, $background-gradient-color-2 80%);
+    background: -moz-linear-gradient($background-gradient-color-1, $background-gradient-color-2 80%);
+    background: linear-gradient($background-gradient-color-1, $background-gradient-color-2 80%);
 }
 
   .authentication-form{

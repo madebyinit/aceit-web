@@ -1,0 +1,21 @@
+@import "../../../common/common";
+.goaceit-header {
+
+    height:200px;
+    position:relative;
+    margin-bottom:30px;
+.header-lion {
+    background-image: url($cdnImage + 'lion.png');
+    background-size: cover;
+    height:-moz-calc(100% + #{$header-bar-height/2});
+    height:-webkit-calc(100% + #{$header-bar-height/2});
+    height:calc(100% + #{$header-bar-height/2});
+    width:15%;
+    position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    z-index: 1;
+    top: -$header-bar-height/2;
+}
+}
