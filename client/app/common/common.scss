@@ -18,6 +18,10 @@ body {
    height: 100%;
 }
 
+span {
+    font-family:inherit !important;
+}
+
 @mixin title(){
    font-family: 'Oswald', sans-serif!important;
    color: $primaryColor;

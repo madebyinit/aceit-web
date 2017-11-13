@@ -1,15 +1,14 @@
 @import "../../../common/common";
 .goaceit-header {
-    height:600px;
-    margin-bottom:30px;
+    margin:0 30px 30px 30px;
+    position:relative;
     .header-logo {
         position:relative;
         height:200px;
-
-
         .header-lion {
             background-image: url($cdnImage + 'lion.png');
             background-size: cover;
+            background-repeat:no-repeat;
             height:-moz-calc(100% + #{$header-bar-height/2});
             height:-webkit-calc(100% + #{$header-bar-height/2});
             height:calc(100% + #{$header-bar-height/2});
@@ -23,33 +22,43 @@
         }
     }
     .header-text {
+        max-width:800px;
+        margin:auto;
         font-family: Source Sans Pro;
         .header-text-pushdown {
             margin-bottom: 20px;
         }
     }
-    .drawer-wrapper{
-                @mixin drawer-icon($icon-file-name) {
+    .drawer-button-wrapper{
+                @mixin drawer-icon($icon-file-name, $direction:left) {
                 background-image: url($cdnImage + $icon-file-name);
+            background-repeat:no-repeat;
                 background-size:contain;
-                margin-top:40px;
+                margin: 30px auto 0 auto;
                 height:80px;
                 width:80px;
                 position:relative;
                 &:after {
                     content: ' ';
-                    left:-50px;
+                    #{$direction}:-50px;
                     background-image: url($cdnImage + 'arrow-protips.svg');
                     background-size:contain;
+            background-repeat:no-repeat;
                     height:30px;
                     width:44px;
                     position:absolute;
+                    @if $direction == 'right' {
+                        -ms-transform: rotateY(180deg); /* IE 9 */
+                        -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
+                        transform: rotateY(180deg);
+                    }
                 }
                 &:before {
                     content: 'Click Here ';
+                    font-weight:bold;
                     font-family: Kalam;
                     position: absolute;
-                    left: -92px;
+                    #{$direction}: -92px;
                     top: -25px;
                     height: 20px;
                     text-align: center;
@@ -57,34 +66,107 @@
                 }
             }
 
-        height:500px;
-        margin:20px;
+        margin:30px 0 200px;
         .drawer-text {
             font-size:18px;
             text-transform:uppercase;
             text-align:center;
+            margin:auto;
+            width:70%;
         }
         .biodot-wrapper{
-            height:40%; 
+            // height:40%; 
             display: flex;
             flex-direction: column;
             align-items: center;
 
         // }
             .biodot-icon {
-                @include drawer-icon('icn-biodot.png');
+                @include drawer-icon('icn-biodot.png', left);
             }
-            .focus-icon{
-            }
-            .sleep-icon{
-            }
+            
         }
         .focus-sleep-wrapper{
-            height:60%;
             display: flex;
             justify-content:space-around;
-            .focus-wrapper{} 
-            .sleep-wrapper{} 
+            flex-direction:column;
+            margin:auto;
+            max-width:800px;
+            .focus-sleep-text-wrapper,
+            .focus-sleep-icon-wrapper{
+                display:flex;
+            }
+            .focus-sleep-icon-wrapper {
+                justify-content:space-around;
+            }
+            .focus-wrapper{
+            
+            .focus-icon{
+                @include drawer-icon('icn-biodot.png', left);
+            }
+            } 
+            .sleep-wrapper{
+            
+            .sleep-icon{
+                @include drawer-icon('icn-sleep.png', right);
+            }
+            } 
         }
     }
+    .drawer-wrapper {
+        position:absolute;
+        width:100%;
+        max-width:800px;
+        height:500px;
+        top: 300px;
+        margin:auto;
+        left:0;
+        right:0;
+    .drawer-wrapper-inner {
+        top: -120px;
+        display:flex;
+        justify-content:center;
+        height:600px;
+        overflow-y:hidden;
+        position:relative;
+        // display:flex;
+        // justify-content:center;
+        // margin-left:50px;
+        @mixin drawer() {
+            height: 600px;
+            width: 600px;
+            top:530px;
+            background-color: #e8e8e8;
+            box-shadow: 0 0 7px #888888;
+            border: 12px solid white;
+            margin-top:30px;
+            position:absolute;
+        }
+        .biodot-drawer {
+            @include drawer();
+            -ms-transform: rotateZ(4deg); /* IE 9 */
+            -webkit-transform: rotateZ(4deg); /* Chrome, Safari, Opera */
+            transform: rotateZ(4deg);
+            z-index:0;
+        }
+        .focus-drawer {
+            @include drawer();
+            -ms-transform: rotateZ(-2deg); /* IE 9 */
+            -webkit-transform: rotateZ(-2deg); /* Chrome, Safari, Opera */
+            transform: rotateZ(-2deg);
+            z-index:1;
+            margin-left:35px;
+        }
+        .sleep-drawer {
+            @include drawer();
+            -ms-transform: rotateZ(2deg); /* IE 9 */
+            -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
+            transform: rotateZ(2deg);
+            z-index:2;
+            margin-top:40px;
+            margin-left:40px;
+        }
+
+    }
+}
 }
