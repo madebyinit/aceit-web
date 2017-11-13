@@ -1,21 +1,90 @@
 @import "../../../common/common";
 .goaceit-header {
-
-    height:200px;
-    position:relative;
+    height:600px;
     margin-bottom:30px;
-.header-lion {
-    background-image: url($cdnImage + 'lion.png');
-    background-size: cover;
-    height:-moz-calc(100% + #{$header-bar-height/2});
-    height:-webkit-calc(100% + #{$header-bar-height/2});
-    height:calc(100% + #{$header-bar-height/2});
-    width:15%;
-    position:absolute;
-    left:0;
-    right:0;
-    margin:auto;
-    z-index: 1;
-    top: -$header-bar-height/2;
-}
+    .header-logo {
+        position:relative;
+        height:200px;
+
+
+        .header-lion {
+            background-image: url($cdnImage + 'lion.png');
+            background-size: cover;
+            height:-moz-calc(100% + #{$header-bar-height/2});
+            height:-webkit-calc(100% + #{$header-bar-height/2});
+            height:calc(100% + #{$header-bar-height/2});
+            width:15%;
+            position:absolute;
+            left:0;
+            right:0;
+            margin:auto;
+            z-index: 1;
+            top: -$header-bar-height/2;
+        }
+    }
+    .header-text {
+        font-family: Source Sans Pro;
+        .header-text-pushdown {
+            margin-bottom: 20px;
+        }
+    }
+    .drawer-wrapper{
+                @mixin drawer-icon($icon-file-name) {
+                background-image: url($cdnImage + $icon-file-name);
+                background-size:contain;
+                margin-top:40px;
+                height:80px;
+                width:80px;
+                position:relative;
+                &:after {
+                    content: ' ';
+                    left:-50px;
+                    background-image: url($cdnImage + 'arrow-protips.svg');
+                    background-size:contain;
+                    height:30px;
+                    width:44px;
+                    position:absolute;
+                }
+                &:before {
+                    content: 'Click Here ';
+                    font-family: Kalam;
+                    position: absolute;
+                    left: -92px;
+                    top: -25px;
+                    height: 20px;
+                    text-align: center;
+                    width: 85px;        
+                }
+            }
+
+        height:500px;
+        margin:20px;
+        .drawer-text {
+            font-size:18px;
+            text-transform:uppercase;
+            text-align:center;
+        }
+        .biodot-wrapper{
+            height:40%; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        // }
+            .biodot-icon {
+                @include drawer-icon('icn-biodot.png');
+            }
+            .focus-icon{
+            }
+            .sleep-icon{
+            }
+        }
+        .focus-sleep-wrapper{
+            height:60%;
+            display: flex;
+            justify-content:space-around;
+            .focus-wrapper{} 
+            .sleep-wrapper{} 
+        }
+    }
 }

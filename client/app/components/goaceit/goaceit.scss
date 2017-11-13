@@ -1,5 +1,10 @@
 @import "../../common/common";
-
+$goaceit-text-color: #0e7086;
 .goaceit {
+    color: $goaceit-text-color;
     background: linear-gradient(to top, $background-gradient-color-1, $background-gradient-color-2 80%);
+    .goaceit-container {
+        width: 60%;
+        margin:auto;
+    }
 }
