@@ -3,7 +3,10 @@ import './goaceitHeader.scss';
 
 let goaceitHeaderComponent= {
   restrict: 'E',
-  template
+  template,
+  bindings: {
+      user: '='
+  }
   // controller
 };
 

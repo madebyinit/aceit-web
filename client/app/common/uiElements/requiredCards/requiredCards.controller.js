@@ -9,6 +9,9 @@ class requiredCardsController {
   $onInit(){
     this._getUserData();
     }
+  stateGo(name){
+    this.$state.go(name);
+  }
   _getUserData(){
     this.connection.getData().then((res)=>{
       this.user = res;

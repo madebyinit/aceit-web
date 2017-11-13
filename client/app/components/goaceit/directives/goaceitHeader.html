@@ -1,3 +1,42 @@
 <div class="goaceit-header">
-<div class="header-lion"></div>
+    <div class="header-logo">
+        <div class="header-lion"></div>
+    </div>
+    <div class="header-text">
+        <div ng-if="!$ctrl.user.goaceitVisited"> 
+            <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
+                manage the stress and reach your peak performance. While you’re
+                studying and doing practice tests, it’s important to use your tools and
+                master a routine you feel comfortable with so it becomes automatic.</div>
+            <strong>
+                If you are having negative thoughts, go back to the positive thinking page
+                and rethink them.</strong>
+        </div>
+        <div ng-if="$ctrl.user.goaceitVisited">
+            <div class="header-text-pushdown">
+                <div>
+                    You can practice your tools now and adjust your routine as needed.</div>
+                <span>If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong> and rethink them.
+            </div>
+            <strong>
+                While you are studying and doing practice tests, remember to use your
+                routine until it becomes automatic.
+            </strong>
+        </div>
+    </div>
+    <div class="drawer-wrapper">
+        <div class="biodot-wrapper">
+            <div class="drawer-text">On the ACEIT card, there is a little round ACEIT dot. Put it on your hand like this and see what color it shows.</div>
+            <div class="biodot-icon"></div>
+            </div>
+        <div class="focus-sleep-wrapper">
+            <div class="focus-wrapper">
+            <div class="drawer-text">Are you having a hard time focusing while you’re studying?</div>
+            </div>
+            <div class="sleep-wrapper">
+            <div class="drawer-text">Maybe you’re having a hard time falling asleep or staying asleep?</div>
+            </div>
+        </div>
+    <div>
+    </span>
 </div>
