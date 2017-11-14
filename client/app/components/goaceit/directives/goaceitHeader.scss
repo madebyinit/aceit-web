@@ -2,23 +2,39 @@
 .goaceit-header {
     margin:0 30px 30px 30px;
     position:relative;
+        @mixin add-bottom-shadow() {
+ &:after {
+                content: ' ';
+                position:absolute;
+                background-image: url($cdnImage + 'bottom-shadow.png');
+            background-repeat:no-repeat;
+                background-size:contain;
+                height:17px;
+                width:100%;
+                bottom:-5px;
+            }
+            
+        }
     .header-logo {
         position:relative;
-        height:200px;
+        height:350px;
         .header-lion {
+            @include add-bottom-shadow();
             background-image: url($cdnImage + 'lion.png');
             background-size: cover;
             background-repeat:no-repeat;
-            height:-moz-calc(100% + #{$header-bar-height/2});
-            height:-webkit-calc(100% + #{$header-bar-height/2});
-            height:calc(100% + #{$header-bar-height/2});
-            width:15%;
+            // height:-moz-calc(100% + #{$header-bar-height/2});
+            // height:-webkit-calc(100% + #{$header-bar-height/2});
+            // height:calc(100% + #{$header-bar-height/2});
+            height:100%;
+            // width:15%;
             position:absolute;
             left:0;
             right:0;
             margin:auto;
             z-index: 1;
             top: -$header-bar-height/2;
+            
         }
     }
     .header-text {
@@ -102,7 +118,7 @@
             .focus-wrapper{
             
             .focus-icon{
-                @include drawer-icon('icn-biodot.png', left);
+                @include drawer-icon('icn-focus.png', left);
             }
             } 
             .sleep-wrapper{
@@ -123,6 +139,7 @@
         left:0;
         right:0;
     .drawer-wrapper-inner {
+@include add-bottom-shadow();
         top: -120px;
         display:flex;
         justify-content:center;

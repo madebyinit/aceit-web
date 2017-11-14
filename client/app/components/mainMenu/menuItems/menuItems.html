@@ -43,6 +43,10 @@
             <md-list-item class="md-3-line" ng-if="$ctrl.user.routineComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
             </md-list-item>
+            <md-divider ng-if="$ctrl.user.goaceitVisited"></md-divider>
+            <md-list-item class="md-3-line" ng-if="$ctrl.user.goaceitVisited" ng-class="{'state-select':$ctrl.$state.current.name === 'goaceit'}" ng-click="$ctrl.stateChange('goaceit')">
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.goaceit' | translate}}</span>
+            </md-list-item>
             <md-divider ng-if="$ctrl.user.routineComplete"></md-divider>
             <md-list-item class="md-3-line" ng-if="false">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-contact-menu.svg"></div><span>{{::'main_menu.contact_us' | translate}}</span>
