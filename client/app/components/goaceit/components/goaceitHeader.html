@@ -144,8 +144,8 @@
                         <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable. <br />
                             <strong>Lie down in a dark room and listen to this audio tape</strong></p>
                         <div class="icon">
-                            <div id="play-audio">
-                                <div class="controller play"></div>
+                            <div id="play-audio" ng-click="$ctrl.toggleAudio()">
+                                <div class="controller play" ng-class="{'pause': $ctrl.audioPlaying, 'play': !$ctrl.audioPlaying} "></div>
                             </div>
                         </div>
                     </div>
