@@ -1,6 +1,8 @@
 <div class="goaceit-header">
     <div class="header-logo">
         <div class="header-lion"></div>
+        <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock"></img>
+        <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back"></img>
     </div>
     <div class="header-text">
         <div ng-if="!$ctrl.user.goaceitVisited">
