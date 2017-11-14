@@ -5,7 +5,7 @@
         <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back"></img>
     </div>
     <div class="header-text">
-        <div ng-if="!$ctrl.user.goaceitVisited"> 
+        <div ng-if="!$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
                 manage the stress and reach your peak performance. While you’re
                 studying and doing practice tests, it’s important to use your tools and
@@ -41,15 +41,16 @@
                     <div>Maybe you’re having</div>
                     <div>a hard time falling</div>
                     <div>asleep or staying asleep?</div>
-                    </div>
+                </div>
             </div>
             <div class="focus-sleep-icon-wrapper">
-            <div class="focus-wrapper">
-                <div class="focus-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['focus']}" ng-click="$ctrl.toggleDrawer('focus')"></div>
-            </div>
-            <div class="sleep-wrapper">
-                <div class="sleep-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['sleep']}" ng-click="$ctrl.toggleDrawer('sleep')"></div>
-            </div>
+                <div class="focus-wrapper">
+                    <div class="focus-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['focus']}" ng-click="$ctrl.toggleDrawer('focus')"></div>
+                </div>
+                <div class="sleep-wrapper">
+                    <div class="sleep-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['sleep']}" ng-click="$ctrl.toggleDrawer('sleep')"></div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -107,6 +108,38 @@
                         If you are having problems falling asleep or staying asleep because your mind is too active, try these exercises:
                     </strong>
                 </p>
+
+                <div class="tabs">
+
+                    <div class="tab">
+                        <h1>Breathing Exercise</h1>
+                    </div>
+
+                    <div class="tab inactive">
+                        <h1>Guided Imagery</h1>
+                    </div>
+
+                </div>
+
+                <div class="tab-content">
+                    <div class="container" id="breathing">
+                        <ul>
+                            <li>Put your tongue behind your upper front teeth</li>
+                            <li>Breathe in through your nose to the count of 4</li>
+                            <li>Hold your breath to the count of 7</li>
+                            <li>Blow out your breath forcefully to the count of 8</li>
+                        </ul>
+
+                        <div class="icon">
+                            <img src="{{::$root.imageCdn}}repeat3times.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="container inactive" id="guided">
+                        <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable.</p>
+                        <p>Lie down in a dark room and listen to this audio tape</p>
+                    </div>
+                </div>
 
             </div>
         </div>
