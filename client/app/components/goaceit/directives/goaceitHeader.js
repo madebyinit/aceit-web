@@ -5,7 +5,9 @@ let goaceitHeaderComponent= {
   restrict: 'E',
   template,
   bindings: {
-      user: '='
+      user: '=',
+      toggleDrawer: '&',
+      open: '='
   }
   // controller
 };
