@@ -260,6 +260,53 @@
                     z-index: 30;
                     margin-top: 40px;
                     margin-left: 40px;
+
+                    .tabs {
+                        margin-top: 50px;
+                        width: 100%;
+                        border-bottom: 2px solid #0e7086;
+                        .tab {
+                            width: 49%;
+                            display: inline-block;
+                            background-color: #bdd1d5;
+                            cursor: pointer;
+                            &.inactive {
+                                background: none;
+                                color: #bdd1d5;
+                            }
+                        }
+                    }
+
+                    .tab-content {
+                        .container {
+                            display: flex;
+                            ul {
+                                width: 350px;
+                                display: inline-block;
+                                li {
+                                    font-size: 0.9em;
+                                }
+                            }
+
+                            .icon {
+                                width: 200px;
+                                height: 180px;
+                                display: inline-block;
+                                img {
+                                    width: 160px;
+                                    height: auto;
+                                    margin-top: 25px;
+                                    vertical-align: bottom;
+                                    margin-left: -20px;
+                                }
+
+                            }
+
+                            &.inactive {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }

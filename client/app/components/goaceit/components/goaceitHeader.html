@@ -3,7 +3,7 @@
         <div class="header-lion"></div>
     </div>
     <div class="header-text">
-        <div ng-if="!$ctrl.user.goaceitVisited"> 
+        <div ng-if="!$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
                 manage the stress and reach your peak performance. While you’re
                 studying and doing practice tests, it’s important to use your tools and
@@ -39,15 +39,15 @@
                     <div>Maybe you’re having</div>
                     <div>a hard time falling</div>
                     <div>asleep or staying asleep?</div>
-                    </div>
+                </div>
             </div>
             <div class="focus-sleep-icon-wrapper">
-            <div class="focus-wrapper">
-                <div class="focus-icon"></div>
-            </div>
-            <div class="sleep-wrapper">
-                <div class="sleep-icon"></div>
-            </div>
+                <div class="focus-wrapper">
+                    <div class="focus-icon"></div>
+                </div>
+                <div class="sleep-wrapper">
+                    <div class="sleep-icon"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@
                 <h1>Aceit Dots</h1>
                 <p>
                     This ACEIT dot is based on the temperature in your hands. When you get stressed, the tiny blood vessels under the surface of your skin close down and the temperature drops. So when you are very stressed, your hands get cold and the ACEIT dot registers black.
-                    <strongvv>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strongvv>
+                    <strong>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strong>
                 </p>
                 <div class="stress-meter">
                     <div class="metric">Too Stressed</div>
@@ -105,6 +105,38 @@
                         If you are having problems falling asleep or staying asleep because your mind is too active, try these exercises:
                     </strong>
                 </p>
+
+                <div class="tabs">
+
+                    <div class="tab">
+                        <h1>Breathing Exercise</h1>
+                    </div>
+
+                    <div class="tab inactive">
+                        <h1>Guided Imagery</h1>
+                    </div>
+
+                </div>
+
+                <div class="tab-content">
+                    <div class="container" id="breathing">
+                        <ul>
+                            <li>Put your tongue behind your upper front teeth</li>
+                            <li>Breathe in through your nose to the count of 4</li>
+                            <li>Hold your breath to the count of 7</li>
+                            <li>Blow out your breath forcefully to the count of 8</li>
+                        </ul>
+
+                        <div class="icon">
+                            <img src="{{::$root.imageCdn}}repeat3times.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="container inactive" id="guided">
+                        <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable.</p>
+                        <p>Lie down in a dark room and listen to this audio tape</p>
+                    </div>
+                </div>
 
             </div>
         </div>
