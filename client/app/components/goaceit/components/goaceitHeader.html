@@ -109,18 +109,18 @@
 
                 <div class="tabs">
 
-                    <div class="tab">
+                    <div class="tab" ng-class="{'inactive' : $ctrl.activeTabIndex}" ng-click="$ctrl.toggleTab()">
                         <h1>Breathing Exercise</h1>
                     </div>
 
-                    <div class="tab inactive">
+                    <div class="tab" ng-class="{'inactive' : !$ctrl.activeTabIndex}" ng-click="$ctrl.toggleTab()">
                         <h1>Guided Imagery</h1>
                     </div>
 
                 </div>
 
                 <div class="tab-content">
-                    <div class="container" id="breathing">
+                    <div class="container" ng-class="{'inactive' : $ctrl.activeTabIndex}" id="breathing">
                         <ul>
                             <li>Put your tongue behind your upper front teeth</li>
                             <li>Breathe in through your nose to the count of 4</li>
@@ -133,7 +133,7 @@
                         </div>
                     </div>
 
-                    <div class="container inactive" id="guided">
+                    <div class="container" ng-class="{'inactive' : !$ctrl.activeTabIndex}" id="guided">
                         <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable.</p>
                         <p>Lie down in a dark room and listen to this audio tape</p>
                     </div>
