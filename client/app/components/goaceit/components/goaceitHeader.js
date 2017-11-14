@@ -6,7 +6,7 @@ let goaceitHeaderComponent= {
   restrict: 'E',
   template,
   bindings: {
-      open: '='
+      user: '='
   },
   controller
 };

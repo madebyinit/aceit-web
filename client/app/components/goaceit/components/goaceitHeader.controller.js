@@ -18,7 +18,7 @@ class GoaceitHeaderController {
     }
 
     toggleDrawer(drawer) {
-        console.log(drawer);
+        console.log(this.user);
         this.openDrawers[drawer] = !this.openDrawers[drawer];
     }
 
