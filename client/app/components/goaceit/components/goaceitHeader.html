@@ -1,11 +1,13 @@
 <div class="goaceit-header">
     <div class="header-logo">
         <div class="header-lion"></div>
-        <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock"></img>
-        <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back"></img>
+        <div ng-show="$ctrl.user.goaceitVisited">
+            <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
+            <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
+        </div>
     </div>
     <div class="header-text">
-        <div ng-if="!$ctrl.user.goaceitVisited">
+        <div ng-if="!$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
                 manage the stress and reach your peak performance. While you’re
                 studying and doing practice tests, it’s important to use your tools and
@@ -13,7 +15,7 @@
             <span>
                 If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong><span> and rethink them.</span>
         </div>
-        <div ng-if="$ctrl.user.goaceitVisited">
+        <div ng-if="$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">
                 <div>
                     You can practice your tools now and adjust your routine as needed.</div>
