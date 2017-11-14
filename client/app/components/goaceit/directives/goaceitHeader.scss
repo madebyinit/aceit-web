@@ -1,52 +1,68 @@
 @import "../../../common/common";
 .goaceit-header {
-    margin:0 30px 30px 30px;
-    position:relative;
+    margin: 0 30px 30px 30px;
+    position: relative;
+    @mixin add-bottom-shadow() {
+        &:after {
+            content: ' ';
+            position: absolute;
+            background-image: url($cdnImage + 'bottom-shadow.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 17px;
+            width: 100%;
+            bottom: -5px;
+        }
+
+    }
     .header-logo {
-        position:relative;
-        height:200px;
+        position: relative;
+        height: 350px;
         .header-lion {
+            @include add-bottom-shadow();
             background-image: url($cdnImage + 'lion.png');
             background-size: cover;
-            background-repeat:no-repeat;
-            height:-moz-calc(100% + #{$header-bar-height/2});
-            height:-webkit-calc(100% + #{$header-bar-height/2});
-            height:calc(100% + #{$header-bar-height/2});
-            width:15%;
-            position:absolute;
-            left:0;
-            right:0;
-            margin:auto;
+            background-repeat: no-repeat;
+            // height:-moz-calc(100% + #{$header-bar-height/2});
+            // height:-webkit-calc(100% + #{$header-bar-height/2});
+            // height:calc(100% + #{$header-bar-height/2});
+            height: 100%;
+            // width:15%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
             z-index: 1;
             top: -$header-bar-height/2;
+
         }
     }
     .header-text {
-        max-width:800px;
-        margin:auto;
+        max-width: 800px;
+        margin: auto;
         font-family: Source Sans Pro;
         .header-text-pushdown {
             margin-bottom: 20px;
         }
     }
-    .drawer-button-wrapper{
+    .drawer-button-wrapper {
         @mixin drawer-icon($icon-file-name, $direction:left) {
             background-image: url($cdnImage + $icon-file-name);
-            background-repeat:no-repeat;
-            background-size:contain;
+            background-repeat: no-repeat;
+            background-size: contain;
             margin: 30px auto 0 auto;
-            height:80px;
-            width:80px;
-            position:relative;
+            height: 80px;
+            width: 80px;
+            position: relative;
             &:after {
                 content: ' ';
-                #{$direction}:-50px;
+                #{$direction}: -50px;
                 background-image: url($cdnImage + 'arrow-protips.svg');
-                background-size:contain;
-                background-repeat:no-repeat;
-                height:30px;
-                width:44px;
-                position:absolute;
+                background-size: contain;
+                background-repeat: no-repeat;
+                height: 30px;
+                width: 44px;
+                position: absolute;
                 @if $direction == 'right' {
                     -ms-transform: rotateY(180deg); /* IE 9 */
                     -webkit-transform: rotateY(180deg); /* Chrome, Safari, Opera */
@@ -55,7 +71,7 @@
             }
             &:before {
                 content: 'Click Here ';
-                font-weight:bold;
+                font-weight: bold;
                 font-family: Kalam;
                 position: absolute;
                 #{$direction}: -92px;
@@ -66,15 +82,15 @@
             }
         }
 
-        margin:30px 0 200px;
+        margin: 30px 0 200px;
         .drawer-text {
-            font-size:18px;
-            text-transform:uppercase;
-            text-align:center;
-            margin:auto;
-            width:70%;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: auto;
+            width: 70%;
         }
-        .biodot-wrapper{
+        .biodot-wrapper {
             // height:40%; 
             display: flex;
             flex-direction: column;
@@ -86,49 +102,52 @@
             }
 
         }
-        .focus-sleep-wrapper{
+        .focus-sleep-wrapper {
             display: flex;
-            justify-content:space-around;
-            flex-direction:column;
-            margin:auto;
-            max-width:800px;
+            justify-content: space-around;
+            flex-direction: column;
+            margin: auto;
+            max-width: 800px;
+
             .focus-sleep-text-wrapper,
-            .focus-sleep-icon-wrapper{
-                display:flex;
+            .focus-sleep-icon-wrapper {
+                display: flex;
             }
             .focus-sleep-icon-wrapper {
-                justify-content:space-around;
-            }
-            .focus-wrapper{
+                justify-content: space-around;
+                .focus-wrapper {
 
-                .focus-icon{
-                    @include drawer-icon('icn-biodot.png', left);
+                    .focus-icon {
+                        @include drawer-icon('icn-focus.png', left);
+                    }
                 }
-            }
-            .sleep-wrapper{
+                .sleep-wrapper {
 
-                .sleep-icon{
-                    @include drawer-icon('icn-sleep.png', right);
+                    .sleep-icon {
+                        @include drawer-icon('icn-sleep.png', right);
+                    }
                 }
             }
         }
     }
     .drawer-wrapper {
-        position:absolute;
-        width:100%;
-        max-width:800px;
-        height:700px;
+        position: absolute;
+        width: 100%;
+        max-width: 800px;
+        height: 700px;
         top: 100px;
-        margin:auto;
-        left:0;
-        right:0;
+        margin: auto;
+        left: 0;
+        right: 0;
+
         .drawer-wrapper-inner {
+            @include add-bottom-shadow;
             top: -120px;
-            display:flex;
-            justify-content:center;
-            height:800px;
-            overflow-y:hidden;
-            position:relative;
+            display: flex;
+            justify-content: center;
+            height: 800px;
+            overflow-y: hidden;
+            position: relative;
             // display:flex;
             // justify-content:center;
             // margin-left:50px;
@@ -137,12 +156,12 @@
 
                 height: 800px;
                 width: 600px;
-                top:730px;
+                top: 730px;
                 background-color: #e8e8e8;
                 box-shadow: 0 0 7px #888888;
                 border: 12px solid white;
-                margin-top:30px;
-                position:absolute;
+                margin-top: 30px;
+                position: absolute;
                 transition: all 0.3s ease-out;
                 font-family: Source Sans Pro;
                 line-height: 1.2em;
@@ -186,7 +205,7 @@
                     -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
                     transform: rotateZ(2deg);
                     z-index: 10;
-                    margin-left:35px;
+                    margin-left: 35px;
 
                     .video-container {
                         width: 100%;
@@ -240,8 +259,8 @@
                     -webkit-transform: rotateZ(4deg); /* Chrome, Safari, Opera */
                     transform: rotateZ(4deg);
                     z-index: 30;
-                    margin-top:40px;
-                    margin-left:40px;
+                    margin-top: 40px;
+                    margin-left: 40px;
                 }
             }
         }

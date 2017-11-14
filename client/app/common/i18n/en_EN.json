@@ -166,7 +166,7 @@
     "routine":"You have to go over your tools to see your routine"
   },
   "main_menu":{
-    "home_page":"Home Page",
+    "home_page":"Introduction",
     "contact_us":"Contact Us",
     "questionnaire":"My Questionnaire",
     "summary":"My Summary",
@@ -175,6 +175,7 @@
     "physical":"Physical Tools",
     "positive":"Positive Thinking",
     "main":"Main",
+    "goaceit": "Go Ace It",
     "logout":"Logout"
   },
   "routine":{

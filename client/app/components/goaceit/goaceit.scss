@@ -4,7 +4,8 @@ $goaceit-text-color: #0e7086;
     color: $goaceit-text-color;
     background: linear-gradient(to top, $background-gradient-color-1, $background-gradient-color-2 80%);
     .goaceit-container {
-        width: 60%;
+        // width: 60%;
+        width:1000px;
         margin:auto;
     }
 }
