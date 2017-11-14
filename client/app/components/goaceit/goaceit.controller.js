@@ -5,11 +5,6 @@ class GoaceitController {
         this.name = 'goaceit';
         this.connection = connection;
 
-        this.open = {
-            focus: false,
-            biodot: false,
-            sleep: false
-        };
     }
 
     $onInit(){
@@ -17,11 +12,6 @@ class GoaceitController {
             this.user = res;
         });
         this.connection.saveData(true,'goaceitVisited');
-    }
-
-    toggleDrawer(drawer) {
-        console.log('hey');
-        this.open[drawer] = !this.open[drawer];
     }
 
 }

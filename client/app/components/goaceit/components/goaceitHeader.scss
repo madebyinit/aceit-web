@@ -47,6 +47,7 @@
     }
     .drawer-button-wrapper {
         @mixin drawer-icon($icon-file-name, $direction:left) {
+                cursor:pointer;
             background-image: url($cdnImage + $icon-file-name);
             background-repeat: no-repeat;
             background-size: contain;
@@ -99,6 +100,9 @@
             // }
             .biodot-icon {
                 @include drawer-icon('icn-biodot.png', left);
+                &.close-drawer {
+                    z-index: 100;
+                }
             }
 
         }
@@ -119,12 +123,18 @@
 
                     .focus-icon {
                         @include drawer-icon('icn-focus.png', left);
+                        &.close-drawer {
+                            z-index: 100;
+                        }
                     }
                 }
                 .sleep-wrapper {
 
                     .sleep-icon {
                         @include drawer-icon('icn-sleep.png', right);
+                        &.close-drawer {
+                            z-index: 100;
+                        }
                     }
                 }
             }

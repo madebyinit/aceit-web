@@ -26,7 +26,7 @@
     <div class="drawer-button-wrapper">
         <div class="biodot-wrapper">
             <div class="drawer-text">On the ACEIT card, there is a little round ACEIT dot. Put it on your hand like this and see what color it shows.</div>
-            <div class="biodot-icon"></div>
+            <div class="biodot-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['biodot']}" ng-click="$ctrl.toggleDrawer('biodot')"></div>
         </div>
         <div class="focus-sleep-wrapper">
             <div class="focus-sleep-text-wrapper">
@@ -43,10 +43,10 @@
             </div>
             <div class="focus-sleep-icon-wrapper">
             <div class="focus-wrapper">
-                <div class="focus-icon"></div>
+                <div class="focus-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['focus']}" ng-click="$ctrl.toggleDrawer('focus')"></div>
             </div>
             <div class="sleep-wrapper">
-                <div class="sleep-icon"></div>
+                <div class="sleep-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['sleep']}" ng-click="$ctrl.toggleDrawer('sleep')"></div>
             </div>
             </div>
         </div>
@@ -54,8 +54,8 @@
     <div class="drawer-wrapper">
         <div class="drawer-wrapper-inner">
 
-            <div class="focus-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers[focus]}">
-                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="toggleDrawer(focus)">
+            <div class="focus-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('focus')">
                 <h1>Stress &amp; Recovery</h1>
 
                 <p>
@@ -76,12 +76,12 @@
                     </video>
                 </div>
             </div>
-            <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers[biodot]}">
-                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="toggleDrawer(biodot)">
+            <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
                 <h1>Aceit Dots</h1>
                 <p>
                     This ACEIT dot is based on the temperature in your hands. When you get stressed, the tiny blood vessels under the surface of your skin close down and the temperature drops. So when you are very stressed, your hands get cold and the ACEIT dot registers black.
-                    <strongvv>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strongvv>
+                    <strong>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strong>
                 </p>
                 <div class="stress-meter">
                     <div class="metric">Too Stressed</div>
@@ -94,8 +94,8 @@
                 <p>Everyone is different and you have to find what works  for you.</p>
             </div>
 
-            <div class="sleep-drawer drawer open-drawer" ng-class="{'open-drawer': $ctrl.openDrawers[sleep]}">
-                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="toggleDrawer(sleep)">
+            <div class="sleep-drawer drawer " ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('sleep')">
                 <h1>Sleep</h1>
                 <p>
                     It is very important to get enough sleep especially while studying for the test. If you are sleep deprived, you cannot focus your attention optimally nor learn efficiently. While you sleep your brain is working to consolidate memory – you are learning while you sleep! Your brain is understanding how things fit together and how to summarize the data you’ve studied.
