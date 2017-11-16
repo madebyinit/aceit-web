@@ -1,10 +1,10 @@
 // import SummaryController from '../summary/summary.controller';
 
 class GoaceitHeaderController {
-    constructor(connection) {
+    constructor($rootScope) {
         this.name = 'goaceitHeader';
-        // this.connection = connection;
-
+        this.audiofile = $rootScope.videoCdn + 'sleep.mp3';
+        this.audio = new Audio(this.audiofile);
     }
 
     $onInit(){
@@ -15,6 +15,8 @@ class GoaceitHeaderController {
         };
 
         this.activeTabIndex = 0;
+
+        this.audioPlaying = false;
     }
 
     toggleDrawer(drawer) {
@@ -26,7 +28,12 @@ class GoaceitHeaderController {
         this.activeTabIndex = 1 - this.activeTabIndex;
     }
 
+    toggleAudio() {
+        console.log('AUDIO');
+        this.audio.paused ? this.audio.play() : this.audio.pause();
+        this.audioPlaying = !this.audioPlaying;
+    }
 }
 
-GoaceitHeaderController.$inject = ['connection'];
+GoaceitHeaderController.$inject = ['$rootScope'];
 export default GoaceitHeaderController;

@@ -1,11 +1,13 @@
 <div class="goaceit-header">
     <div class="header-logo">
         <div class="header-lion"></div>
-        <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock"></img>
-        <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back"></img>
+        <div ng-show="$ctrl.user.goaceitVisited">
+            <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
+            <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
+        </div>
     </div>
     <div class="header-text">
-        <div ng-if="!$ctrl.user.goaceitVisited">
+        <div ng-if="!$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
                 manage the stress and reach your peak performance. While you’re
                 studying and doing practice tests, it’s important to use your tools and
@@ -13,7 +15,7 @@
             <span>
                 If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong><span> and rethink them.</span>
         </div>
-        <div ng-if="$ctrl.user.goaceitVisited">
+        <div ng-if="$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">
                 <div>
                     You can practice your tools now and adjust your routine as needed.</div>
@@ -82,9 +84,14 @@
             <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
                 <h1>Aceit Dots</h1>
+                <div class="hand"></div>
                 <p>
-                    This ACEIT dot is based on the temperature in your hands. When you get stressed, the tiny blood vessels under the surface of your skin close down and the temperature drops. So when you are very stressed, your hands get cold and the ACEIT dot registers black.
-                    <strong>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strong>
+                    <span>This ACEIT dot is based on the temperature in your</span>
+                    <span>hands. When you get stressed, the tiny blood vessels</span>
+                    <span>under the surface of your skin close down and the</span>
+                    <span>temperature drops. So when you are very stressed, your</span>
+                    <span>hands get cold and the ACEIT dot registers black.</span>
+                    <span><strong>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strong></span>
                 </p>
                 <div class="stress-meter">
                     <div class="metric">Stressed</div>
@@ -111,11 +118,11 @@
 
                 <div class="tabs">
 
-                    <div class="tab" ng-class="{'inactive' : $ctrl.activeTabIndex}" ng-click="$ctrl.toggleTab()">
+                    <div class="tab" ng-class="{'inactive' : $ctrl.activeTabIndex}" ng-click="!$ctrl.activeTabIndex || $ctrl.toggleTab()">
                         <h1>Breathing Exercise</h1>
                     </div>
 
-                    <div class="tab" ng-class="{'inactive' : !$ctrl.activeTabIndex}" ng-click="$ctrl.toggleTab()">
+                    <div class="tab" ng-class="{'inactive' : !$ctrl.activeTabIndex}" ng-click="$ctrl.activeTabIndex || $ctrl.toggleTab()">
                         <h1>Guided Imagery</h1>
                     </div>
 
@@ -131,13 +138,18 @@
                         </ul>
 
                         <div class="icon">
-                            <img src="{{::$root.imageCdn}}repeat3times.png" alt="">
+                            <img src="{{::$root.imageCdn}}repeat4times.png" alt="">
                         </div>
                     </div>
 
                     <div class="container" ng-class="{'inactive' : !$ctrl.activeTabIndex}" id="guided">
-                        <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable.</p>
-                        <p>Lie down in a dark room and listen to this audio tape</p>
+                        <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable. <br />
+                            <strong>Lie down in a dark room and listen to this audio tape</strong></p>
+                        <div class="icon">
+                            <div id="play-audio" ng-click="$ctrl.toggleAudio()">
+                                <div class="controller play" ng-class="{'pause': $ctrl.audioPlaying, 'play': !$ctrl.audioPlaying} "></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
