@@ -4,6 +4,7 @@ class RoutineDialogController {
   constructor(connection,$timeout) {
     this.connection = connection;
     this.$timeout = $timeout;
+      this.hasInput = true;
   }
 
   $onInit(){

@@ -1,28 +1,34 @@
 <div class="routine-dialog">
-  <div class="close-routine-dialog" ng-click="$ctrl.closeDialog()"><img ng-src="{{::$root.imageCdn}}x.png"></div>
-  <div class="routine-dialog-container">
-    <div class="input-section">
-      <div class="form-section" ng-if="$ctrl.inputTitle">
-        <div class="dialog-input-title">{{:: ($ctrl.inputTitle | translate)}}</div>
-        <input type="text" ng-model="$ctrl.inputValue" ng-blur="$ctrl.updateInput()" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
-      </div>
-      <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionOne)" ng-if="$ctrl.optionOne">{{::$ctrl.optionOne}}</div>
+    <div class="close-routine-dialog" ng-click="$ctrl.closeDialog()"><img ng-src="{{::$root.imageCdn}}x.png"></div>
+    <div class="routine-dialog-container">
+        <div class="input-section">
+            <div class="form-section" ng-if="$ctrl.inputTitle">
+                <div class="dialog-input-title">{{:: ($ctrl.inputTitle | translate)}}</div>
+                <input type="text" ng-model="$ctrl.inputValue" ng-blur="$ctrl.updateInput()" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
+            </div>
+            <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionOne)" ng-if="$ctrl.optionOne">{{::$ctrl.optionOne}}</div>
+        </div>
+        <div class="or-divider first-divider" ng-if="$ctrl.optionOne">
+            <div class="line"></div>
+            <div class="or">Or</div>
+            <div class="line"></div>
+        </div>
+
+        <div class="or-divider first-divider" ng-if="$ctrl.optionTwo">
+            <div class="line"></div>
+            <div class="or">Or</div>
+            <div class="line"></div>
+        </div>
+        <div class="first-option" ng-if="$ctrl.optionTwo">
+            <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionTwo)">{{::$ctrl.optionTwo}}</div>
+        </div>
+        <div class="or-divider second-divider" ng-if="$ctrl.optionThree">
+            <div class="line"></div>
+            <div class="or">Or</div>
+            <div class="line"></div>
+        </div>
+        <div class="second-option" ng-if="$ctrl.optionThree">
+            <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionThree)">{{:: $ctrl.optionThree}}</div>
+        </div>
     </div>
-    <div class="or-divider first-divider" ng-if="$ctrl.optionTwo">
-      <div class="line"></div>
-      <div class="or">Or</div>
-      <div class="line"></div>
-    </div>
-    <div class="first-option" ng-if="$ctrl.optionTwo">
-      <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionTwo)">{{::$ctrl.optionTwo}}</div>
-    </div>
-    <div class="or-divider second-divider" ng-if="$ctrl.optionThree">
-      <div class="line"></div>
-      <div class="or">Or</div>
-      <div class="line"></div>
-    </div>
-    <div class="second-option" ng-if="$ctrl.optionThree">
-      <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionThree)">{{:: $ctrl.optionThree}}</div>
-    </div>
-  </div>
 </div>

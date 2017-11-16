@@ -6,25 +6,55 @@ class PhysicalController {
   }
 
   $onInit(){
-    this.allStepsComplete = false;
+    // this.allStepsComplete = false;
     this._checkToolComplete();
     this.checkList = [];
     this.goto('breathing');
   }
 
   goSummary(){
-    this.$state.go('summary');
+      if (this.allStepsComplete && !this.physicalComplete) {
+            this.showToolsDialog = true;
+      }
+      else {
+        this.$state.go('summary');
+      }
   }
 
   _checkToolComplete(){
     this.connection.getUserPromise().then((res)=>{
-      if(_.get(res,'physicalComplete')){
+      // if(_.get(res,'physicalComplete')){
         this.$timeout(()=>{
-          this.allStepsComplete = _.get(res,'physicalComplete');
+           this.physicalComplete = _.get(res,'physicalComplete') || false;
+            if (!this.physicalComplete) {
+                this._setToolsDialog();
+            }
+            this.allStepsComplete = this.physicalComplete;
         },0)
-      }
+      // }
     })
   }
+    _saveToolSelection(tool) {
+            this.physicalComplete = true;
+            this.allStepsComplete = true;
+            this.connection.saveData(this.physicalComplete,'physicalComplete');
+            this.connection.saveData(tool,'physicalSelectedTool');
+            this.showToolsDialog = false;
+            this.$state.go('summary');
+    }
+
+    _setToolsDialog() {
+        if(_.get(this.user,'concentration')){
+            this.optionOne = 'Breathing';
+            this.optionTwo = 'Imagery';
+            this.optionThree = 'Neck & Shoulders';
+        }
+        else {
+            this.optionOne = 'Imagery';
+            this.optionTwo = 'Neck & Shoulders';
+        }
+
+    }
 
   moveToNextStep(step){
     if(step === 'breathing'){
@@ -40,17 +70,18 @@ class PhysicalController {
     this._checkAllSteps(name);
   }
 
-  _checkAllSteps(name){
-    if(!this.allStepsComplete){
-      if(this.checkList.indexOf(name) === -1){
-        this.checkList.push(name)
-      }
-      if(this.checkList.length === 3){
-        this.allStepsComplete = true;
-        this.connection.saveData(this.allStepsComplete,'physicalComplete');
-      }
+    _checkAllSteps(name){
+        if(!this.allStepsComplete){
+            if(this.checkList.indexOf(name) === -1){
+                this.checkList.push(name);
+            }
+            if(this.checkList.length === 3){
+                this.allStepsComplete = true;
+
+            }
+
+        }
     }
-  }
 }
 
 PhysicalController.$inject = ['connection','$timeout','$state'];

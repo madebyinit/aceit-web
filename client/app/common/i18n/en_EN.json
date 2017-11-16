@@ -71,6 +71,10 @@
     "help_you_relax":"These are the tools that will help you relax and feel in control",
     "works_for_everyone":"Not every tool works for everyone - so try them and choose what works for you"
   },
+  "tools": {
+        "select_tools": "Select Your Tools",
+        "select_tools_you_connect": "Select the physical tool you connect to most"
+  },
   "imagery":{
     "visualizing":"Visualizing a 'good' and 'safe' place in your mind can be a powerful tool in managing stress.",
     "deep_breaths":"Take 3 deep breaths as you picture this",
@@ -179,6 +183,7 @@
     "logout":"Logout"
   },
   "routine":{
+    "go_ace_it": "Go Ace It",
     "close_eyes":"Close your eyes",
     "deep_breath":"Take a deep breath",
     "choose":"Choose from",

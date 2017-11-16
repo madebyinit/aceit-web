@@ -24,7 +24,7 @@
     <div class="switch-container" ng-switch="$ctrl.currentNavItem">
       <breathing class="switch-animate" ng-switch-when="breathing"></breathing>
       <neck-and-shoulders class="switch-animate" ng-switch-when="neck"></neck-and-shoulders>
-      <imagery class="switch-animate" ng-switch-when="imagery" steps-complete="$ctrl.allStepsComplete"></imagery>
+      <imagery class="switch-animate" ng-switch-when="imagery" physical-complete="$ctrl.physicalComplete" all-steps-complete="$ctrl.allStepsComplete" go-summary="$ctrl.goSummary" show-tools-dialog="$ctrl.showToolsDialog"></imagery>
     </div>
     <div class="summary-button-container" ng-if="$ctrl.currentNavItem !== 'imagery'">
       <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.allStepsComplete">
@@ -37,3 +37,14 @@
     </div>
   </div>
 </div>
+<tools-dialog
+        ng-if="$ctrl.showToolsDialog"
+        show-tools-dialog="$ctrl.showToolsDialog"
+        is-disabled-input="true"
+        bind-value="$ctrl.selectedTool"
+        return-value-fn="$ctrl._saveToolSelection"
+        header-title="tools.select_tools"
+        button-text="save_close"
+        input-title="tools.select_tools_you_connect"
+></tools-dialog>
+
