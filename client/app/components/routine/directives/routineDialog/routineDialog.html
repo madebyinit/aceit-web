@@ -4,16 +4,27 @@
         <div class="input-section">
             <div class="form-section" ng-if="$ctrl.inputTitle">
                 <div class="dialog-input-title">{{:: ($ctrl.inputTitle | translate)}}</div>
-                <input type="text" ng-model="$ctrl.inputValue" ng-blur="$ctrl.updateInput()" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
+                <input type="text" ng-model="$ctrl.inputValue" ng-blur="$ctrl.updateInput($ctrl.inputTypes.OVERRIDE_STEP)" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
             </div>
             <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionOne)" ng-if="$ctrl.optionOne">{{::$ctrl.optionOne}}</div>
         </div>
-        <div class="or-divider first-divider" ng-if="$ctrl.optionOne">
+        <div class="or-divider first-divider" ng-if="$ctrl.inputTitle2">
             <div class="line"></div>
             <div class="or">Or</div>
             <div class="line"></div>
         </div>
 
+        <div class="input-section" ng-if="$ctrl.inputTitle2">
+            <div class="form-section" ng-if="$ctrl.inputTitle2">
+                <div class="dialog-input-title">{{:: ($ctrl.inputTitle2 | translate)}}</div>
+                <input type="text" ng-model="$ctrl.inputValue2" ng-blur="$ctrl.updateInput($ctrl.inputTypes.WORD)" placeholder="{{:: ($ctrl.inputPlaceholder2 | translate)}}">
+            </div>
+            <div class="text-bind" ng-click="$ctrl.updateOnClick($ctrl.optionOne)" ng-if="$ctrl.optionOne">{{::$ctrl.optionOne}}</div>
+        </div>
+
+
+
+        
         <div class="or-divider first-divider" ng-if="$ctrl.optionTwo">
             <div class="line"></div>
             <div class="or">Or</div>
