@@ -15,7 +15,7 @@ class ConcentrationController {
     let doc = document.scrollingElement;
     let lionSectionY = this.$document[0].getElementById('target-id').offsetTop;
     this.$document.bind("scroll",()=> {
-      if(!_.get(this.user,'concentrationWatched') && ((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100)){
+      if(this.user && !_.get(this.user,'concentrationWatched') && ((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100)){
         document.getElementById('concentration-video-id').play();
         this.connection.saveData(true,'concentrationWatched');
         this.$document.unbind('scroll');

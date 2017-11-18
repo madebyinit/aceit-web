@@ -62,7 +62,6 @@ class ControlController {
     }
 
     _useSelectedPhysicalTool(stepNumber) {
-        debugger;
         let tool = _.get(this.user,'physicalSelectedTool');
         let imagery = _.get(this.user,'imagery');
         if (tool) {
