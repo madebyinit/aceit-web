@@ -1,4 +1,5 @@
 @import "../../../common/common";
+
 .goaceit-header {
     .header-invisible {
         visibility:hidden;
@@ -201,6 +202,8 @@
                 p {
                     padding: 0 1.5em;
                     font-size: 14px;
+                    line-height: 1.9;
+                    color: darken(#0e7086, 10%);
                 }
 
                 .close {
@@ -316,7 +319,7 @@
                     margin-left: 40px;
 
                     .tabs {
-                        margin-top: 50px;
+                        margin-top: 100px;
                         width: 100%;
                         border-bottom: 2px solid #0e7086;
                         .tab {
@@ -339,6 +342,7 @@
                                 display: inline-block;
                                 li {
                                     font-size: 0.9em;
+                                    margin-top: 8px;
                                 }
                             }
 
@@ -354,7 +358,7 @@
                                 img {
                                     width: 160px;
                                     height: auto;
-                                    margin-top: 25px;
+                                    margin-top: 45px;
                                     vertical-align: bottom;
                                     margin-left: -20px;
                                 }
@@ -366,7 +370,7 @@
                                     -webkit-border-radius: 50%;
                                     -moz-border-radius: 50%;
                                     border-radius: 50%;
-                                    margin: 30px auto 0 auto;
+                                    margin: 70px auto 0 auto;
                                     cursor: pointer;
                                     display: flex;
                                     position: relative;
