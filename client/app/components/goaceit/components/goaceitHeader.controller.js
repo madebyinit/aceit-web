@@ -19,8 +19,32 @@ class GoaceitHeaderController {
         this.audioPlaying = false;
     }
 
+    scrollTo(element, to, duration) {
+        let start = element.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+
+        let easeInOutQuad = function (t, b, c, d) {
+            t /= d/2;
+            if (t < 1) return c/2*t*t + b;
+            t--;
+            return -c/2 * (t*(t-2) - 1) + b;
+        };
+
+        let animateScroll = function(){
+            currentTime += increment;
+            let val = easeInOutQuad(currentTime, start, change, duration);
+            element.scrollTop = val;
+            if(currentTime < duration) {
+                setTimeout(animateScroll, increment);
+            }
+        };
+        animateScroll();
+    }
+
     toggleDrawer(drawer) {
-        console.log(this.user);
+        window.scrollTo(0, 200);
         this.openDrawers[drawer] = !this.openDrawers[drawer];
     }
 
@@ -29,7 +53,6 @@ class GoaceitHeaderController {
     }
 
     toggleAudio() {
-        console.log('AUDIO');
         this.audio.paused ? this.audio.play() : this.audio.pause();
         this.audioPlaying = !this.audioPlaying;
     }
