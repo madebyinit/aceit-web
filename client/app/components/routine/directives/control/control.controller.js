@@ -62,6 +62,7 @@ class ControlController {
     }
 
     _useSelectedPhysicalTool(stepNumber) {
+        debugger;
         let tool = _.get(this.user,'physicalSelectedTool');
         let imagery = _.get(this.user,'imagery');
         if (tool) {
@@ -75,6 +76,9 @@ class ControlController {
                 case 'Imagery':
                     if (!imagery) {
                         this.steps[stepNumber] = 'Enter imagery word';
+                    }
+                    else {
+                        this.steps[stepNumber] = `Think of ${imagery}`;
                     }
                     break;
 

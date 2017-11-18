@@ -11,7 +11,8 @@ class ConcentrationController {
   }
 
   _startVideo(){
-    let doc = angular.element(this.$document)[0].body;
+    // let doc = angular.element(this.$document)[0].body;
+    let doc = document.scrollingElement;
     let lionSectionY = this.$document[0].getElementById('target-id').offsetTop;
     this.$document.bind("scroll",()=> {
       if(!_.get(this.user,'concentrationWatched') && ((doc.scrollTop-lionSectionY) > -100 && (doc.scrollTop-lionSectionY) < 100)){
