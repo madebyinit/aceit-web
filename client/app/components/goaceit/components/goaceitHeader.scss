@@ -1,6 +1,9 @@
 @import "../../../common/common";
 
 .goaceit-header {
+    .header-invisible {
+        visibility:hidden;
+    }
     margin: 0 30px 30px 30px;
     position: relative;
     @mixin add-bottom-shadow() {
@@ -47,6 +50,7 @@
         }
     }
     .header-text {
+        min-height:120px;
         max-width: 800px;
         margin: auto;
         font-family: Source Sans Pro;

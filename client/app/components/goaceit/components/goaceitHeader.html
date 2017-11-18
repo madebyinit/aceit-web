@@ -1,13 +1,13 @@
 <div class="goaceit-header">
     <div class="header-logo">
         <div class="header-lion"></div>
-        <div ng-show="$ctrl.user.goaceitVisited">
+        <div ng-class="{'header-invisible' : !$ctrl.user}">
             <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
             <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
         </div>
     </div>
-    <div class="header-text">
-        <div ng-if="!$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
+    <div class="header-text" ng-class="{'header-invisible' : !$ctrl.user}">
+        <div ng-if="!$ctrl.user.goaceitVisited" >
             <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
                 manage the stress and reach your peak performance. While you’re
                 studying and doing practice tests, it’s important to use your tools and

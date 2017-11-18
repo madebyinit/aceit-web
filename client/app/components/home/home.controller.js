@@ -63,7 +63,8 @@ class HomeController {
   }
 
   _scroll(){
-    let doc = angular.element(this.$document)[0].body;
+    // let doc = angular.element(this.$document)[0].body;
+    let doc = document.scrollingElement;
     this.$document.bind("scroll",()=> {
       this._firstVideo(doc);
       this._lionVideoPlay(doc);
