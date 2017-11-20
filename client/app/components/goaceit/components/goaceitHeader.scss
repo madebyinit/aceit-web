@@ -354,7 +354,8 @@
                             .icon {
                                 width: 200px;
                                 height: 180px;
-                                display: inline-block;
+                                display:flex;
+                                position:relative;
                                 img {
                                     width: 160px;
                                     height: auto;
@@ -363,14 +364,27 @@
                                     margin-left: -20px;
                                 }
 
+                                #download-audio{
+                                    margin:5px;
+                                    width: 80px;
+                                    height: 80px;
+                                    background-image: url($cdnImage + 'ic-player-download.png');
+                                    background-size:cover;
+                                    background-repeat:no-repeat;
+                                    cursor:pointer;
+
+
+                                }
+
                                 #play-audio {
+                                    margin:5px;
                                     width: 80px;
                                     height: 80px;
                                     background-color: #70c6d8;
                                     -webkit-border-radius: 50%;
                                     -moz-border-radius: 50%;
                                     border-radius: 50%;
-                                    margin: 70px auto 0 auto;
+                                    // margin: 70px auto 0 auto;
                                     cursor: pointer;
                                     display: flex;
                                     position: relative;
@@ -388,21 +402,26 @@
                                         }
                                     }
 
-                                    &:after {
-                                        content: ' ';
-                                        left: -50px;
-                                        bottom: -20px;
-                                        background-image: url($cdnImage + 'arrow-protips.svg');
-                                        background-size: contain;
-                                        background-repeat: no-repeat;
-                                        height: 30px;
-                                        width: 44px;
-                                        position: absolute;
-                                        -ms-transform: rotateZ(-45deg); /* IE 9 */
-                                        -webkit-transform: rotateZ(-45deg); /* Chrome, Safari, Opera */
-                                        transform: rotateZ(-45deg);
-                                    }
                                 }
+                                &.icon-arrow {
+                                    align-items:center;
+                                    justify-content:center;
+                                &:after {
+                                    content: ' ';
+                                    left: 20px;
+                                    bottom: -10px;
+                                    background-image: url($cdnImage + 'arrow-protips.svg');
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    height: 45px;
+                                    width: 65px;
+                                    position: absolute;
+                                    -ms-transform: rotateZ(-45deg); /* IE 9 */
+                                    -webkit-transform: rotateZ(-45deg); /* Chrome, Safari, Opera */
+                                    transform: rotateZ(-45deg);
+                                }
+                            }
+
 
                             }
 

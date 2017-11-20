@@ -18,6 +18,14 @@ $menu-gradient-color-2: #36bad7;
 md-input-container{
   width: 100%;
 }
+.menu-transparent {
+    .main-menu-style {
+
+        position:absolute;
+  background-color: rgba(255, 255, 255, 0.18);
+  background:none;
+    }
+}
 .main-menu-style {
 z-index:0;
   height: $header-bar-height;

@@ -145,10 +145,11 @@
                     <div class="container" ng-class="{'inactive' : !$ctrl.activeTabIndex}" id="guided">
                         <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable. <br />
                             <strong>Lie down in a dark room and listen to this audio tape</strong></p>
-                        <div class="icon">
+                        <div class="icon icon-arrow">
                             <div id="play-audio" ng-click="$ctrl.toggleAudio()">
                                 <div class="controller play" ng-class="{'pause': $ctrl.audioPlaying, 'play': !$ctrl.audioPlaying} "></div>
                             </div>
+                            <a id="download-audio" href="{{::$root.videoCdn}}sleep.mp3" download></a>
                         </div>
                     </div>
                 </div>
