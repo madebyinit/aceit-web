@@ -16,7 +16,7 @@ class LoginFormController {
         this.stateChangeService.saveUserData(res);
           this.connection.setUser();
           this.connection.getData().then((userData)=>  {
-              if (userData.goaceitVisited) {
+              if (userData && userData.goaceitVisited) {
                 this.$state.transitionTo('goaceit');
               }
               else {
