@@ -1,3 +1,4 @@
+
 class GamesController {
   constructor($translate,$document,$timeout,$state,connection) {
     'ngInject';
@@ -9,12 +10,42 @@ class GamesController {
     this.firstStart = 0;
     this.$mdDialog = "";
 
+  
   }
 
   $onInit(){
     this.getUserData();
     this.playedFirstVideo = false;
     angular.element(document).ready(()=>{
+      
+      
+
+
+      var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
+ 
+  console.log(game)
+  function getGameResult() {
+    var result = game.sendMessage('getGameResult');
+    
+    result = JSON.parse(result);
+    
+    alert('duration = ' + result.duration);
+    alert('noOfMoves = ' + result.noOfMoves);
+    alert('instructionsClickCount = ' + result.instructionsClickCount);
+    alert('win = ' + result.win);
+    alert('firstMoveTime = ' + result.firstMoveTime);
+  }
+
+  function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    alert('duration = ' + duration);
+    alert('noOfMoves = ' + noOfMoves);
+    alert('instructionsClickCount = ' + instructionsClickCount);
+    alert('win = ' + win);
+    alert('firstMoveTime = ' + firstMoveTime);
+  }
+
+
+
     });
 
 
@@ -55,6 +86,26 @@ class GamesController {
   soundChange(){
   this.sound =  !this.sound;
   }
+    
+  // getGameResult() {
+  //   var result = game.sendMessage('getGameResult');
+    
+  //   result = JSON.parse(result);
+    
+  //   alert('duration = ' + result.duration);
+  //   alert('noOfMoves = ' + result.noOfMoves);
+  //   alert('instructionsClickCount = ' + result.instructionsClickCount);
+  //   alert('win = ' + result.win);
+  //   alert('firstMoveTime = ' + result.firstMoveTime);
+  // }
+  
+  // gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+  //   alert('duration = ' + duration);
+  //   alert('noOfMoves = ' + noOfMoves);
+  //   alert('instructionsClickCount = ' + instructionsClickCount);
+  //   alert('win = ' + win);
+  //   alert('firstMoveTime = ' + firstMoveTime);
+  // }
 }
 
 export default GamesController;
