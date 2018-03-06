@@ -1,0 +1,56 @@
+<main-menu></main-menu>
+<div>
+  <div>
+    <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
+      <span ng-if="!$ctrl.sound">MUTE</span>
+      <span ng-if="$ctrl.sound">UNMUTE</span>
+      <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
+        {{$ctrl.concentrationWord}}
+        <img ng-src="{{::$root.imageCdn}}edit.png">
+      </div>
+  </md-button>
+    <h2>GAME 1/5</h2>
+    <img>src=""</img>
+  </div>
+  <div>
+    <div>Time Left</div>
+    <div>________________</div>
+    <div>Timer</div>
+  </div>
+    <md-button class="button-style summary-button-style" ng-click="$ctrl.reloadPage('games')">
+      <span >RETRY</span>
+    </md-button>
+    <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialog = true">
+      <span ng-if="!$ctrl.concentrationWord">SKIP</span>
+      <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
+        {{$ctrl.concentrationWord}}
+        <img ng-src="{{::$root.imageCdn}}edit.png">
+      </div>
+    </md-button>
+
+<br/> <br/> <br/> 
+
+<div>SCREEN</div>
+
+<button ng-click="$ctrl.stateChange('home')"> TEST2</button>
+
+
+<dialog-element
+        show-dialog="$ctrl.showDialog"
+        is-disabled-input="false"
+        return-value="$ctrl.saveWord(val)"
+        header-title="Hey, there!"
+        button-text="I`LL TAKE IT!"
+        input-title="It`s hard to take you seriously if you skip all the games. Here`s another chanse!"
+></dialog-element>
+
+<dialog-element
+        show-dialog="$ctrl.showWelcomeDialog"
+        is-disabled-input="true"
+        hide-exit="true"
+        return-value="$ctrl.saveWord(val)"
+        header-title="Welcome to Ace it"
+        button-text="Save & close"
+        input-title="What's your nickname?"
+        input-placeholder="Type your nickname here :)"
+></dialog-element>

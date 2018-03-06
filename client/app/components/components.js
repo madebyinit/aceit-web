@@ -12,6 +12,8 @@ import routineModule from './routine/routine';
 import mobileModule from './mobile/mobile';
 import errorPageModule from './errorPage/errorPage';
 import staticPageModule from './staticPage/staticPage';
+import videoPageModule from './videoPage/videoPage';
+import gamesModule from './games/games';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -26,7 +28,9 @@ let componentModule = angular.module('app.components', [
   routineModule,
   mobileModule,
   errorPageModule,
-  staticPageModule
+  staticPageModule,
+  videoPageModule,
+  gamesModule
 ])
 
 .name;
