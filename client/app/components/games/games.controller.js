@@ -17,12 +17,15 @@ class GamesController {
     this.getUserData();
     this.playedFirstVideo = false;
     angular.element(document).ready(()=>{
-      
-      
+    //moserace
+    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
+    //mousetrap
+    var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
+    //parkinglot
+    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
+    //tower
+    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
 
-
-      var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
- 
   console.log(game)
   function getGameResult() {
     var result = game.sendMessage('getGameResult');
