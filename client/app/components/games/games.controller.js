@@ -1,6 +1,6 @@
 
 class GamesController {
-  constructor($translate,$document,$timeout,$state,connection) {
+  constructor($translate,$document,$timeout,$state,connection, $interval) {
     'ngInject';
     this.$translate = $translate;
     this.$document = $document;
@@ -9,9 +9,10 @@ class GamesController {
     this.connection = connection;
     this.firstStart = 0;
     this.$mdDialog = "";
-
-  
-  }
+    this.timeRemain = "0:00";
+    this.seconds = 300;
+    this.$interval = $interval;
+    }
 
   $onInit(){
     this.getUserData();
@@ -26,31 +27,48 @@ class GamesController {
     //tower
     // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
 
-  console.log(game)
-  function getGameResult() {
-    var result = game.sendMessage('getGameResult');
-    
-    result = JSON.parse(result);
-    
-    alert('duration = ' + result.duration);
-    alert('noOfMoves = ' + result.noOfMoves);
-    alert('instructionsClickCount = ' + result.instructionsClickCount);
-    alert('win = ' + result.win);
-    alert('firstMoveTime = ' + result.firstMoveTime);
-  }
+    console.log(game)
+    function getGameResult() {
+      var result = game.sendMessage('getGameResult');
+      
+      result = JSON.parse(result);
+      
+      alert('duration = ' + result.duration);
+      alert('noOfMoves = ' + result.noOfMoves);
+      alert('instructionsClickCount = ' + result.instructionsClickCount);
+      alert('win = ' + result.win);
+      alert('firstMoveTime = ' + result.firstMoveTime);
+    }
 
-  function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    alert('duration = ' + duration);
-    alert('noOfMoves = ' + noOfMoves);
-    alert('instructionsClickCount = ' + instructionsClickCount);
-    alert('win = ' + win);
-    alert('firstMoveTime = ' + firstMoveTime);
-  }
-
-
+    function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+      alert('duration = ' + duration);
+      alert('noOfMoves = ' + noOfMoves);
+      alert('instructionsClickCount = ' + instructionsClickCount);
+      alert('win = ' + win);
+      alert('firstMoveTime = ' + firstMoveTime);
+    }
 
     });
 
+    function startTimer(){
+      var minutes = Math.round((this.seconds - 30) / 60);
+      var remainingSeconds = this.seconds % 60;
+
+      if (remainingSeconds < 10){
+        remainingSeconds = "0" + remainingSeconds;
+      }
+
+      this.timeRemain = minutes + ":" + remainingSeconds;
+
+      if(this.seconds == 0){
+        this.$interval.cancel(countdownTimer);
+        this.timeRemain = "00:00"
+      }else{
+        this.seconds --;
+      }
+    }
+
+    var countdownTimer = this.$interval(startTimer.bind(this),1000);
 
   }
 
