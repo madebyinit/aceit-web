@@ -1,0 +1,74 @@
+.top-menu{
+
+}
+.game-wrap{
+  background: linear-gradient(to bottom, #111111 0%,#3d3d3d 100%);
+  min-height: calc( 100vh - 40px );
+  padding: 40px 0 0 0;
+  .game-inner{
+    max-width: 1600px;
+    padding: 0 100px;
+    box-sizing: border-box;
+    margin:0 auto;
+    overflow: hidden;
+    .game-buttons{
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0 0 0;
+      position: relative;
+      button{
+        font-size: 20px;
+        margin: 0;
+      }
+      .btn-wrap-1{
+        h2{
+          text-transform: uppercase;
+          color: #fff;
+          display: inline-block;
+          margin: 0 0 0 90px;
+        }
+      }
+      .btn-wrap-2{
+        button{
+          &:nth-child(2){
+            margin: 0 0 0 40px;
+          }
+        }
+      }
+      .time{
+        position: absolute;
+        left: 50%;
+        top: -19px;
+        background: #fff;
+        border-radius: 20px;
+        border: 10px solid #ffdc83;
+        padding: 10px 30px 0;
+        box-sizing: border-box;
+        transform: translate(-50%, 0);
+        text-align: center;
+        h2{
+          color: #004264;
+          border-bottom: 3px solid #004264;
+          text-transform: uppercase;
+          font-size: 30px;
+          margin: 0;
+        }
+        h3{
+          color: #004264;
+          text-transform: uppercase;
+          font-size: 70px;
+          line-height: 1;
+          margin: 0;
+        }
+      }
+    }
+  }
+  .main-game{
+    margin: 30px 0;
+    height: 760px;
+    width: 100%;
+    border-radius: 20px;
+    border: 10px solid #ffdc83;
+    box-sizing: border-box;
+  }
+}

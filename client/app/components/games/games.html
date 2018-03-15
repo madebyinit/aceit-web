@@ -1,42 +1,44 @@
-<main-menu></main-menu>
+<main-menu class="top-menu"></main-menu>
 <script src="mousetrap/js/mousetrap.js"></script>
-<div> 
-  <div>
-    <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
-      <span ng-if="!$ctrl.sound">MUTE</span>
-      <span ng-if="$ctrl.sound">UNMUTE</span>
-      <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
-        {{$ctrl.concentrationWord}}
-        <img ng-src="{{::$root.imageCdn}}edit.png">
+<div class="game-wrap">
+  <div class="game-inner">
+    <div class="game-buttons">
+      <div class="btn-wrap-1">
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
+          <span ng-if="!$ctrl.sound">MUTE</span>
+          <span ng-if="$ctrl.sound">UNMUTE</span>
+          <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
+            {{$ctrl.concentrationWord}}
+            <img ng-src="{{::$root.imageCdn}}edit.png">
+          </div>
+        </md-button>
+        <h2>GAME 1/5</h2>
       </div>
-  </md-button>
-    <h2>GAME 1/5</h2>
-    <img>src=""</img>
-  </div>
-  <div>
-    <div>Time Left</div>
-    <div>________________</div>
-    <div>{{$ctrl.timeRemain}}</div>
-  </div>
-    <!-- <md-button class="button-style summary-button-style" ng-click="$ctrl.reloadPage('games')"> -->
-    <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialogEnd = true">
-      <span >RETRY</span>
-    </md-button>
-    <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialog = true">
-      <span ng-if="!$ctrl.concentrationWord">SKIP</span>
-      <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
-        {{$ctrl.concentrationWord}}
-        <img ng-src="{{::$root.imageCdn}}edit.png">
+      <div class="time">
+        <h2>Time Left</h2>
+        <h3>{{$ctrl.timeRemain}}</h3>
       </div>
-    </md-button>
-
-<br/> <br/> <br/> 
-
-<div>
-  <div id="holder" style="width:600px;height:400px; border: 1px solid red"></div>
-   <!-- <a href="javascript:getGameResult()">Get Game Result</a>
-   <div id="holder1" style="width:600px;height:400px; border: 1px solid red"></div> -->
+      <div class="btn-wrap-2">
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialogEnd = true">
+          <span >RETRY</span>
+        </md-button>
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialog = true">
+          <span ng-if="!$ctrl.concentrationWord">SKIP</span>
+          <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
+            {{$ctrl.concentrationWord}}
+            <img ng-src="{{::$root.imageCdn}}edit.png">
+          </div>
+        </md-button>
+      </div>
+    </div>
+    <div class="main-game">
+      <div id="holder"></div>
+      <!-- <a href="javascript:getGameResult()">Get Game Result</a>
+      <div id="holder1" style="width:600px;height:400px; border: 1px solid red"></div> -->
+    </div>
+  </div>
 </div>
+
 
 
 <button ng-click="$ctrl.getGameResult()"> TEST</button>

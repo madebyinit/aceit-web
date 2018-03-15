@@ -9,8 +9,6 @@
   left: 0;
   z-index: 500;
   .dialog-element-game-body {
-    width: 500px;
-    height: 500px;
     border-radius: 0%;
     left: 0;
     right: 0;
@@ -20,22 +18,6 @@
     position: absolute;
     z-index: 600;
     text-align: center;
-    overflow: hidden;
-    background: white url($cdnImage + 'bg-pattern.png');
-  }
-
-  .dialog-header-game {
-    height: 100px;
-    background-color: rgba(119, 226, 247, 0.32);
-    line-height: 125px;
-    @include title;
-    color: $secondaryColor;
-    font-size: 23px;
-  }
-  .save-and-close-button{
-    padding: 25px;
-    background-image: linear-gradient(to top, #299eb8, #0e7086);
-    color: white;
   }
   .close-dialog-game {
     width: 30px;
@@ -54,16 +36,54 @@
       width: 15px;
     }
   }
-  .dialog-input-game {
-    padding: 100px 0 80px;
-    .dialog-game-input-title {
-      margin-bottom: 10px;
-      color: $primaryColor;
-    }
-
-  }
 }
 
 dialog-element{
   display: block;
+}
+.dialog-element-game-body{
+  width: 930px;
+  height: 570px;
+  box-sizing: border-box;
+  border: 10px solid #fff;
+  border-radius: 3px;
+  background: #000;
+  .dialog-header-game{
+
+  }
+  .dialog-game-input-title{
+    margin: 10px 0;
+  }
+  div{
+    color: #fff;
+    font-size: 30px;
+  }
+  .button-got{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+  }
+  .button-replay{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+    margin-left: -255px;
+    color: #fff !important;
+    background-color: #000 !important;
+    box-shadow: white 2px 0px 0px 3px, white -1px -1px 0px 3px !important;
+  }
+  .button-cool{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+  }
+  .dialog-subheader-game{
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
