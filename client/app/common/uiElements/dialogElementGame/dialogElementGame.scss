@@ -1,0 +1,69 @@
+@import "../../common";
+
+.dialog-element-game{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.41);
+  top:0;
+  left: 0;
+  z-index: 500;
+  .dialog-element-game-body {
+    width: 500px;
+    height: 500px;
+    border-radius: 0%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 600;
+    text-align: center;
+    overflow: hidden;
+    background: white url($cdnImage + 'bg-pattern.png');
+  }
+
+  .dialog-header-game {
+    height: 100px;
+    background-color: rgba(119, 226, 247, 0.32);
+    line-height: 125px;
+    @include title;
+    color: $secondaryColor;
+    font-size: 23px;
+  }
+  .save-and-close-button{
+    padding: 25px;
+    background-image: linear-gradient(to top, #299eb8, #0e7086);
+    color: white;
+  }
+  .close-dialog-game {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-25%);
+    right: 0;
+    left: 500px;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+    img{
+      vertical-align: -webkit-baseline-middle;
+      width: 15px;
+    }
+  }
+  .dialog-input-game {
+    padding: 100px 0 80px;
+    .dialog-game-input-title {
+      margin-bottom: 10px;
+      color: $primaryColor;
+    }
+
+  }
+}
+
+dialog-element{
+  display: block;
+}

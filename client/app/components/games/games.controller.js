@@ -17,38 +17,48 @@ class GamesController {
   $onInit(){
     this.getUserData();
     this.playedFirstVideo = false;
-    angular.element(document).ready(()=>{
-    //moserace
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "/mousetrap/js/mousetrap.js";
+    document.body.appendChild(script);
+
+    // // <script src="/mazerace/js/mazerace.js"></script>
+    // // <script src="/mousetrap/js/mousetrap.js"></script> 
+
+    // angular.element(document).ready(()=>{
+    // //moserace
     // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
-    //mousetrap
-    var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
-    //parkinglot
-    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
-    //tower
-    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
 
-    console.log(game)
-    function getGameResult() {
-      var result = game.sendMessage('getGameResult');
+    // //mousetrap
+    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
+    // //parkinglot
+    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
+    // //tower
+    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
+
+    // // console.log(game)
+    // // function getGameResult() {
+    // //   var result = game.sendMessage('getGameResult');
       
-      result = JSON.parse(result);
+    // //   result = JSON.parse(result);
       
-      alert('duration = ' + result.duration);
-      alert('noOfMoves = ' + result.noOfMoves);
-      alert('instructionsClickCount = ' + result.instructionsClickCount);
-      alert('win = ' + result.win);
-      alert('firstMoveTime = ' + result.firstMoveTime);
-    }
+    // //   alert('duration = ' + result.duration);
+    // //   alert('noOfMoves = ' + result.noOfMoves);
+    // //   alert('instructionsClickCount = ' + result.instructionsClickCount);
+    // //   alert('win = ' + result.win);
+    // //   alert('firstMoveTime = ' + result.firstMoveTime);
+    // // }
 
-    function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-      alert('duration = ' + duration);
-      alert('noOfMoves = ' + noOfMoves);
-      alert('instructionsClickCount = ' + instructionsClickCount);
-      alert('win = ' + win);
-      alert('firstMoveTime = ' + firstMoveTime);
-    }
+    // // function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    // //   alert('duration = ' + duration);
+    // //   alert('noOfMoves = ' + noOfMoves);
+    // //   alert('instructionsClickCount = ' + instructionsClickCount);
+    // //   alert('win = ' + win);
+    // //   alert('firstMoveTime = ' + firstMoveTime);
+    // // }
 
-    });
+    // });
 
     function startTimer(){
       var minutes = Math.round((this.seconds - 30) / 60);
@@ -108,25 +118,66 @@ class GamesController {
   this.sound =  !this.sound;
   }
     
-  // getGameResult() {
-  //   var result = game.sendMessage('getGameResult');
+  getGameResult() {
+    var result = game.sendMessage('getGameResult');
     
-  //   result = JSON.parse(result);
+    result = JSON.parse(result);
     
-  //   alert('duration = ' + result.duration);
-  //   alert('noOfMoves = ' + result.noOfMoves);
-  //   alert('instructionsClickCount = ' + result.instructionsClickCount);
-  //   alert('win = ' + result.win);
-  //   alert('firstMoveTime = ' + result.firstMoveTime);
-  // }
+    alert('duration = ' + result.duration);
+    alert('noOfMoves = ' + result.noOfMoves);
+    alert('instructionsClickCount = ' + result.instructionsClickCount);
+    alert('win = ' + result.win);
+    alert('firstMoveTime = ' + result.firstMoveTime);
+  }
   
-  // gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-  //   alert('duration = ' + duration);
-  //   alert('noOfMoves = ' + noOfMoves);
-  //   alert('instructionsClickCount = ' + instructionsClickCount);
-  //   alert('win = ' + win);
-  //   alert('firstMoveTime = ' + firstMoveTime);
-  // }
+  gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    alert('duration = ' + duration);
+    alert('noOfMoves = ' + noOfMoves);
+    alert('instructionsClickCount = ' + instructionsClickCount);
+    alert('win = ' + win);
+    alert('firstMoveTime = ' + firstMoveTime);
+  }
+
+  test(){
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!")
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "/mazerace/js/mazerace.js";
+    document.body.appendChild(script);
+
+    angular.element(document).ready(()=>{
+      //moserace
+    var  game = nogic.initialize(document.getElementById('holder1'), {language:'en', level:1});
+      //mousetrap
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
+      //parkinglot
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
+      //tower
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
+  
+    });
+  }
+
+  test2(){
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!")
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "/mousetrap/js/mousetrap.js";
+    document.body.appendChild(script);
+
+    angular.element(document).ready(()=>{
+      //moserace
+    var  game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
+      //mousetrap
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
+      //parkinglot
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
+      //tower
+      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
+  
+    });
+  }
+
 }
 
 export default GamesController;
