@@ -56,11 +56,11 @@ class GamesController {
       //moserace
       var  game1 = nogic1.initialize(document.getElementById('holder'), {language:'en', level:11});
       //mousetrap
-      var  game2 = nogic2.initialize(document.getElementById('holder1'), {language:'en', skipInstructions:'true'});
-      //parkinglot
-      var game = nogic3.initialize(document.getElementById('holder2'), {language:'en', level:5});
-      //tower
-      var game = nogic4.initialize(document.getElementById('holder3'), {language:'en', noOfRings:4});
+      // var  game2 = nogic2.initialize(document.getElementById('holder1'), {language:'en', skipInstructions:'true'});
+      // //parkinglot
+      // var game = nogic3.initialize(document.getElementById('holder2'), {language:'en', level:5});
+      // //tower
+      // var game = nogic4.initialize(document.getElementById('holder3'), {language:'en', noOfRings:4});
   
     });
 
