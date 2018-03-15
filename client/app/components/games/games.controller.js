@@ -12,53 +12,27 @@ class GamesController {
     this.timeRemain = "0:00";
     this.seconds = 300;
     this.$interval = $interval;
+    this.gameNumber = this.gameNumber; 
+
     }
 
   $onInit(){
     this.getUserData();
     this.playedFirstVideo = false;
+    this.gameNumber = 0; 
 
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "/mousetrap/js/mousetrap.js";
-    document.body.appendChild(script);
+    window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+  
+    
+          alert('duration = ' + duration);
+          alert('noOfMoves = ' + noOfMoves);
+          alert('instructionsClickCount = ' + instructionsClickCount);
+          alert('win = ' + win);
+          alert('firstMoveTime = ' + firstMoveTime);
 
-    // // <script src="/mazerace/js/mazerace.js"></script>
-    // // <script src="/mousetrap/js/mousetrap.js"></script> 
+          this.gameNumber ++;
 
-    // angular.element(document).ready(()=>{
-    // //moserace
-    // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
-
-    // //mousetrap
-    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
-    // //parkinglot
-    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
-    // //tower
-    // // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
-
-    // // console.log(game)
-    // // function getGameResult() {
-    // //   var result = game.sendMessage('getGameResult');
-      
-    // //   result = JSON.parse(result);
-      
-    // //   alert('duration = ' + result.duration);
-    // //   alert('noOfMoves = ' + result.noOfMoves);
-    // //   alert('instructionsClickCount = ' + result.instructionsClickCount);
-    // //   alert('win = ' + result.win);
-    // //   alert('firstMoveTime = ' + result.firstMoveTime);
-    // // }
-
-    // // function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    // //   alert('duration = ' + duration);
-    // //   alert('noOfMoves = ' + noOfMoves);
-    // //   alert('instructionsClickCount = ' + instructionsClickCount);
-    // //   alert('win = ' + win);
-    // //   alert('firstMoveTime = ' + firstMoveTime);
-    // // }
-
-    // });
+        }.bind(this);
 
     function startTimer(){
       var minutes = Math.round((this.seconds - 30) / 60);
@@ -77,6 +51,18 @@ class GamesController {
         this.seconds --;
       }
     }
+
+    angular.element(document).ready(()=>{
+      //moserace
+      var  game1 = nogic1.initialize(document.getElementById('holder'), {language:'en', level:11});
+      //mousetrap
+      var  game2 = nogic2.initialize(document.getElementById('holder1'), {language:'en', skipInstructions:'true'});
+      //parkinglot
+      var game = nogic3.initialize(document.getElementById('holder2'), {language:'en', level:5});
+      //tower
+      var game = nogic4.initialize(document.getElementById('holder3'), {language:'en', noOfRings:4});
+  
+    });
 
     var countdownTimer = this.$interval(startTimer.bind(this),1000);
 
@@ -139,45 +125,43 @@ class GamesController {
   }
 
   test(){
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!")
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "/mazerace/js/mazerace.js";
-    document.body.appendChild(script);
-
-    angular.element(document).ready(()=>{
-      //moserace
-    var  game = nogic.initialize(document.getElementById('holder1'), {language:'en', level:1});
-      //mousetrap
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
-      //parkinglot
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
-      //tower
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
+    this.gameNumber++;
+  }
   
-    });
+  test2() {
+    let c = document.getElementById('holder')
+    let p = c.parentElement;
+    p.replaceChild(c.cloneNode(true), c);
+    nogic1.initialize(document.getElementById('holder'), {language:'en', level:1});
+
   }
 
-  test2(){
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!")
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "/mousetrap/js/mousetrap.js";
-    document.body.appendChild(script);
+  gamesEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
 
-    angular.element(document).ready(()=>{
-      //moserace
-    var  game = nogic.initialize(document.getElementById('holder'), {language:'en', level:1});
-      //mousetrap
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
-      //parkinglot
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', level:5});
-      //tower
-      // var game = nogic.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
-  
-    });
+    console.log("$$$$$$$$$$$$$$$$$$$$")
+    alert('duration = ' + duration);
+    alert('noOfMoves = ' + noOfMoves);
+    alert('instructionsClickCount = ' + instructionsClickCount);
+    alert('win = ' + win);
+    alert('firstMoveTime = ' + firstMoveTime);
   }
+
 
 }
+// window.gameEnded = function(){console.log('GAME ENDED. Arguments:', arguments);}
+
+
+
+// window.getGameResult = function() {
+//       var result = game.sendMessage('getGameResult');
+      
+//       result = JSON.parse(result);
+      
+//       alert('duration = ' + result.duration);
+//       alert('noOfMoves = ' + result.noOfMoves);
+//       alert('instructionsClickCount = ' + result.instructionsClickCount);
+//       alert('win = ' + result.win);
+//       alert('firstMoveTime = ' + result.firstMoveTime);
+//     }
 
 export default GamesController;

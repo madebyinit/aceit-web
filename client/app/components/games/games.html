@@ -31,15 +31,23 @@
     </md-button>
 
 <br/> <br/> <br/> 
+<span>{{$ctrl.gameNumber}} TEST</span>
 
-<div>
-  <div id="holder" style="width:600px;height:400px; border: 1px solid red"></div>
-   <!-- <a href="javascript:getGameResult()">Get Game Result</a>
-   <div id="holder1" style="width:600px;height:400px; border: 1px solid red"></div> -->
+<div ng-switch="$ctrl.gameNumber">
+   <div ng-switch-when='0' id="holder"  style="width:600px;height:400px; border: 1px solid red"></div>
+   <div ng-switch-when='1' id="holder1" style="width:600px;height:400px; border: 1px solid red"></div>
+   <div ng-switch-when='2' id="holder2" style="width:600px;height:400px; border: 1px solid red"></div>
+   <div ng-switch-when='3' id="holder3" style="width:600px;height:400px; border: 1px solid red"></div> 
 </div>
 
+<!-- <div>
+    <div ng-if="!$ctrl.gameNumber " id="holder"  style="width:600px;height:400px; border: 1px solid red"></div>
+    <div ng-if="!$ctrl.gameNumber " id="holder1" style="width:600px;height:400px; border: 1px solid red"></div>
+    <div ng-if="$ctrl.gameNumber " id="holder2" style="width:600px;height:400px; border: 1px solid red"></div>
+    <div ng-if="$ctrl.gameNumber " id="holder3" style="width:600px;height:400px; border: 1px solid red"></div>
+</div> -->
 
-<button ng-click="$ctrl.getGameResult()"> TEST</button>
+
 <button ng-click="$ctrl.stateChange('home')"> TEST2</button>
 <button ng-click="$ctrl.test()"> TEST3</button>
 <button ng-click="$ctrl.test2()"> TEST4</button>
