@@ -13,7 +13,7 @@
             <input ng-if="$ctrl.isDisabledInput" type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
         </div>
         <md-button class="button-style button-got summary-button-style" ng-if="!$ctrl.ButtonCheck" ng-click="$ctrl.changeButton()">{{:: ($ctrl.buttonText | translate)}}</md-button>
-        <md-button class="button-style button-replay summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.changeButton()">{{:: ($ctrl.buttonText2 | translate)}}</md-button>
-        <md-button class="button-style button-cool summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.changeButton()">{{:: ($ctrl.buttonText3 | translate)}}</md-button>
+        <md-button class="button-style button-replay summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.returnValueFn($ctrl.bindValue)">{{:: ($ctrl.buttonText2 | translate)}}</md-button>
+        <md-button class="button-style button-cool summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.returnValueFn2($ctrl.bindValue2)">{{:: ($ctrl.buttonText3 | translate)}}</md-button>
     </div>
 </div>

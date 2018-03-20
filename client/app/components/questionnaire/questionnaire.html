@@ -15,7 +15,7 @@
                 ng-click="$ctrl.backStep()"
                 answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].answer"
                 answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
-        <questionnaire-element
+                <questionnaire-element
                 ng-class="{'make-space':$ctrl.questionnaireService.stepIndex === 0}"
                 question-model="{{$ctrl.questionnaireService.currentState.name}}"
                 number="{{$ctrl.questionnaireService.stepIndex+1}}"

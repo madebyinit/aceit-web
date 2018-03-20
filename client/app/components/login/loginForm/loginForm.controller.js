@@ -9,12 +9,14 @@ class LoginFormController {
   }
 
   login(){
+
     if(this.email && this.password){
       this.progressLinear.showProgress();
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((res)=>{
         this.stateChangeService.saveUserData(res);
         this.progressLinear.hideProgress();
-        this.$state.transitionTo('home');
+        this.$state.go('videoPage');
+        // this.$state.transitionTo('videoPage');
       },(error)=>{
         this.progressLinear.hideProgress();
         this.notificationsService.showToast(error.message);

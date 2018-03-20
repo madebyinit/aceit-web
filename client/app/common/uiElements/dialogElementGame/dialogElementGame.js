@@ -20,7 +20,9 @@ let dialogElementGameComponent = {
     hideExit:'<?',
     isDisabledInput:'<?',
     returnValue:'&?',
-    bindValue:'<?'
+    returnValue2:'&?',
+    bindValue:'<?',
+    bindValue2:'<?'
   },
   template,
   controller

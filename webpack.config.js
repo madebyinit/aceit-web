@@ -46,6 +46,8 @@ module.exports = {
     new Copy([{from: 'mazerace', to: 'mazerace'}]),
     new Copy([{from: 'mousetrap', to: 'mousetrap'}]),
     new Copy([{from: 'parkinglot', to: 'parkinglot'}]),
-    new Copy([{from: 'tower', to: 'tower'}])
+    new Copy([{from: 'tower', to: 'tower'}]),
+    new Copy([{from: 'audio', to: 'audio'}]),
+    new Copy([{from: 'video', to: 'video'}])
   ]
 };

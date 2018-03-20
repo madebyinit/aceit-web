@@ -12,28 +12,31 @@ class VideoPageController {
   $onInit(){
     this.getUserData();
     this.playedFirstVideo = false;
-    angular.element(document).ready(()=>{
-    });
-    let t1 = false;
     // let changePage = this.$state.go('home');
-   
     var myVideo = this.$document[0].getElementById('video0');
-    if (myVideo.requestFullscreen) {
-      myVideo.requestFullscreen();
-      document.addEventListener('fullscreenchange',this.CheckChangeScreen.bind(this));
-    } else if (myVideo.mozRequestFullScreen) {
-      myVideo.mozRequestFullScreen();
-      console.log("test")
-      document.addEventListener('mozfullscreenchange',this.CheckChangeScreen.bind(this));
-    } else if (myVideo.webkitRequestFullscreen) {
-     myVideo.webkitRequestFullscreen();
-     document.addEventListener('webkitfullscreenchange',this.CheckChangeScreen.bind(this));
-    }
 
+    let requestFull, eventName;
+    switch(true){
+      case myVideo.requestFullscreen !== undefined:
+      [requestFull, eventName] = [myVideo.requestFullscreen, 'fullscreenchange'];
+      break;
+
+      case myVideo.mozRequestFullScreen !== undefined:
+      [requestFull, eventName] = [myVideo.mozRequestFullScreen, 'mozfullscreenchange'];
+      break;
+
+      case myVideo.webkitRequestFullscreen !== undefined:
+      [requestFull, eventName] = [myVideo.webkitRequestFullscreen, 'webkitfullscreenchange'];
+      break;
+    }
+    requestFull.call(myVideo);
+    document.addEventListener(eventName, this.CheckChangeScreen.bind(this));
+    
   }
 
   CheckChangeScreen(){
     if(this.firstStart > 0){
+      this.firstStart = -1;
       this.$state.go('games');
     }
     this.firstStart++
@@ -45,6 +48,7 @@ class VideoPageController {
     var myVideo = this.$document[0].getElementById('video0');
     
     if (myVideo.ended == true){
+      this.firstStart = -1;
       this.$state.go('games');
     }
   }
