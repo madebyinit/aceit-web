@@ -1,5 +1,5 @@
 <main-menu class="top-menu"></main-menu>
-<!-- <div class="dialog-window" ng-if="$ctrl.showWindow">
+<div class="dialog-window" ng-if="$ctrl.showWindow">
     <div class="dialog-window-body">
     <div class="dialog-window-header" > 
         <md-button class="button-style save-and-close-button-header" ng-click="$ctrl.stateChange  ('videoPage')">Replay video</md-button>
@@ -22,7 +22,7 @@
         </div>
         <md-button class="button-style save-and-close-button" ng-click="$ctrl.closeModal()">SAVE & CLOSE </md-button>
     </div>
-</div> -->
+</div>
 <div class="game-wrap">
   <div class="game-inner">
     <div class="game-buttons">
@@ -57,19 +57,13 @@
         </md-button>
       </div>
     </div>
-    <div class="main-game" ng-switch="$ctrl.gameNumber">
-      <div ng-switch-when='1' id="holder2"  style="width:100%;height:100%; "></div>
-      <div ng-switch-when='2' id="holder1" style="width:100%;height:100%; "></div>
-      <div ng-switch-when='3' id="holder3" style="width:100%;height:100%; "></div>
-      <div ng-switch-when='4' id="holder" style="width:100%;height:100%; "></div> 
-      <div ng-switch-when='5' id="holder2" style="width:100%;height:100%; "></div> 
+    <style>#main-game-wrapper>div{width: 100%; height: 100%;}</style>
+    <div class="main-game" id="main-game-wrapper">
     </div>
   </div>
 </div> 
 
-<button ng-click="$ctrl.stateChange('home')"> TEST2</button>
-<button ng-click="$ctrl.test()"> TEST3</button>
-<button ng-click="$ctrl.test2()"> TEST4</button>
+<!-- <button ng-click="$ctrl.test2()"> TEST4</button> -->
 
 <dialog-element
         show-dialog="$ctrl.showDialog"

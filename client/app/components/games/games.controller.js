@@ -30,53 +30,44 @@ class GamesController {
 
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
   
-          alert('duration = ' + duration);
-          alert('noOfMoves = ' + noOfMoves);
-          alert('instructionsClickCount = ' + instructionsClickCount);
-          alert('win = ' + win);
-          alert('firstMoveTime = ' + firstMoveTime);
+          // alert('duration = ' + duration);
+          // alert('noOfMoves = ' + noOfMoves);
+          // alert('instructionsClickCount = ' + instructionsClickCount);
+          // alert('win = ' + win);
+          // alert('firstMoveTime = ' + firstMoveTime);
 
           this.gameNumber ++;
-          console.log("!!!!!!!!", this.gameNumber,"!!!!!!!!!!!!");
+
           switch (this.gameNumber) {
             case 2:
-              angular.element(document).ready(()=>{
-            var game = nogic3.initialize(document.getElementById('holder1'), {language:'en', level:5});
-             });
+            //moserace
+            this.createGame(nogic1, {language: 'en', level: 1});
             break;
       
             case 3:
-            angular.element(document).ready(()=>{
-            var game = nogic4.initialize(document.getElementById('holder3'), {language:'en', noOfRings:4});
-            });
+            //mousetrap
+            this.createGame(nogic2, {language:'en', skipInstructions:'true'});
             break;
       
             case 4:
-            angular.element(document).ready(()=>{
-            var game = nogic1.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
-            });
+            //tower
+            this.createGame(nogic4, {language:'en', noOfRings:4});
             break;
       
             case 5:
-            console.log(this.gameNumber);
-            angular.element(document).ready(()=>{
-              var game = nogic3.initialize(document.getElementById('holder2'), {language:'en', level:6});
-            });
+            //parkinglot
+            this.createGame(nogic3, {language:'en', level:6});
+            break;
+
+            case 6:
+            this.stateChange('home');
             break;
         }
 
         }.bind(this);
 
     angular.element(document).ready(()=>{
-      //moserace
-      // var  game1 = nogic1.initialize(document.getElementById('holder'), {language:'en', level:11});
-      //mousetrap
-      // var  game2 = nogic2.initialize(document.getElementById('holder1'), {language:'en', skipInstructions:'true'});
-      // //parkinglot
-      var game = nogic3.initialize(document.getElementById('holder2'), {language:'en', level:5});
-      // //tower
-      // var game = nogic4.initialize(document.getElementById('holder3'), {language:'en', noOfRings:4});
-  
+      this.createGame(nogic3, {language:'en', level:5})
     });
 
   }
@@ -149,52 +140,22 @@ class GamesController {
 
   this.sound =  !this.sound;
   }
-    
-  getGameResult() {
-    var result = game.sendMessage('getGameResult');
-    
-    result = JSON.parse(result);
-    
-    alert('duration = ' + result.duration);
-    alert('noOfMoves = ' + result.noOfMoves);
-    alert('instructionsClickCount = ' + result.instructionsClickCount);
-    alert('win = ' + result.win);
-    alert('firstMoveTime = ' + result.firstMoveTime);
-  }
-  
-  gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    alert('duration = ' + duration);
-    alert('noOfMoves = ' + noOfMoves);
-    alert('instructionsClickCount = ' + instructionsClickCount);
-    alert('win = ' + win);
-    alert('firstMoveTime = ' + firstMoveTime);
-  }
-
-  test(){
-    // this.gameNumber++;
-    document.getElementById("nogic").remove();
-  }
   
   test2() {
-    var textnode = document.createTextNode("Water MORE TEXT NEEDED");
-    let c = document.getElementById('holder2').childNodes[0];
-    // let p = c.parentElement;
-    // p.replaceChild(c.cloneNode(true), c);
-    // // document.getElementById('holder2').parentNode.removeChild(div);
-    c.replaceChild(textnode, c.childNodes[0]);
-    // nogic1.initialize(document.getElementById('holder2'), {language:'en', level:1});
-
+    this.createGame(nogic1, {language: 'en', level: 1});
   }
 
-  gamesEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-
-    alert('duration = ' + duration);
-    alert('noOfMoves = ' + noOfMoves);
-    alert('instructionsClickCount = ' + instructionsClickCount);
-    alert('win = ' + win);
-    alert('firstMoveTime = ' + firstMoveTime);
+  createGame(initializer, options) {
+    const wrapper = document.getElementById('main-game-wrapper');
+    const children = wrapper.childNodes;
+    for (let i = 0; i < children.length; i++) {
+      if (children[i].nodeType !== Node.ELEMENT_NODE) continue;
+      wrapper.removeChild(children[i]);      
+    }
+    const holder = document.createElement('div');
+    wrapper.appendChild(holder);
+    initializer.initialize(holder, options);    
   }
-
   _watchData(){
     this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
       if(newVal){
