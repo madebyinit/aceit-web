@@ -1,5 +1,5 @@
 class VideoPageController {
-  constructor($translate,$document,$timeout,$state,connection) {
+  constructor($translate,$document,$timeout,$state,connection, $scope) {
     'ngInject';
     this.$translate = $translate;
     this.$document = $document;
@@ -7,30 +7,32 @@ class VideoPageController {
     this.$state = $state;
     this.connection = connection;
     this.firstStart = 0;
+    this.eventName = '';
+    this.$scope = $scope;
+    this.CheckChangeScreen = this.CheckChangeScreen.bind(this);
   }
 
   $onInit(){
     this.getUserData();
-    this.playedFirstVideo = false;
-    // let changePage = this.$state.go('home');
-    var myVideo = this.$document[0].getElementById('video0');
-
-    let requestFull, eventName;
+    const myVideo = this.$document[0].getElementById('video0');
+    console.log(myVideo);
     switch(true){
-      case myVideo.requestFullscreen !== undefined:
-      [requestFull, eventName] = [myVideo.requestFullscreen, 'fullscreenchange'];
+      case !!myVideo.requestFullscreen:
+      this.eventName = 'fullscreenchange';
+      myVideo.requestFullscreen();
       break;
 
-      case myVideo.mozRequestFullScreen !== undefined:
-      [requestFull, eventName] = [myVideo.mozRequestFullScreen, 'mozfullscreenchange'];
+      case !!myVideo.mozRequestFullScreen:
+      this.eventName = 'mozfullscreenchange';
+      myVideo.mozRequestFullScreen();
       break;
 
-      case myVideo.webkitRequestFullscreen !== undefined:
-      [requestFull, eventName] = [myVideo.webkitRequestFullscreen, 'webkitfullscreenchange'];
+      case !!myVideo.webkitRequestFullscreen:
+      this.eventName = 'webkitfullscreenchange';
+      myVideo.webkitRequestFullscreen();
       break;
     }
-    requestFull.call(myVideo);
-    document.addEventListener(eventName, this.CheckChangeScreen.bind(this));
+    document.addEventListener(this.eventName, this.CheckChangeScreen);
     
   }
 
@@ -45,40 +47,38 @@ class VideoPageController {
 
   ClickAfterEndVideo(){
 
-    var myVideo = this.$document[0].getElementById('video0');
+    const myVideo = this.$document[0].getElementById('video0');
     
     if (myVideo.ended == true){
+      this.removeAllListeners();
       this.firstStart = -1;
       this.$state.go('games');
     }
   }
 
-  $onDestroy(){
+  removeAllListeners() {
     this.$document.unbind('scroll');
+    this.firstStart = 0;
+    this.eventName = '';
+    document.removeEventListener(this.eventName, this.CheckChangeScreen);
+  }
+
+  $onDestroy(){
+    this.removeAllListeners();
   }
 
   getUserData(){
     this.connection.getData().then((res)=>{
-      this.$timeout(()=>{
-        this.user = res;
-        this._userInit();
-      },0);
+      this.user = res;
+      this._userInit();
     })
   }
 
   _userInit(){
-    if(_.get(this.user,'name')){
-      this.$timeout(()=>{
-        this.userTitle = this.$translate.instant('home.you_getting_ready',{user:_.get(this.user,'name')});
-      },0);
-    }else{
-      this.$timeout(()=>{
-      },0);
+    if(this.user && this.user.name){
+      this.userTitle = this.$translate.instant('home.you_getting_ready',{user: this.user.name});
+      this.$scope.$apply();
     }
-  }
-
-  stateChange(state){
-    this.$state.go(state);
   }
 }
 export default VideoPageController;

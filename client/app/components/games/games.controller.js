@@ -1,6 +1,6 @@
 
 class GamesController {
-  constructor($translate,$document,$timeout,$state,connection, $interval,$scope) {
+  constructor($translate,$document,$timeout,$state,connection, $interval,$scope,$window) {
     'ngInject';
     this.$translate = $translate;
     this.$document = $document;
@@ -15,6 +15,8 @@ class GamesController {
     this.gameNumber = this.gameNumber; 
     this.showWindow = true;
     this.$scope = $scope;
+    this.window = $window;
+    this.startTimer = this.startTimer.bind(this);
     }
 
   $onInit(){
@@ -73,14 +75,15 @@ class GamesController {
   }
 
   $onDestroy(){
-    this.$document.unbind('scroll');
-    angular.element(document);
-    document.getElementById('backgroundMusic');
+    this.removeListeners();
+    // this.$document.unbind('scroll');
+    // document.getElementById('main-game-wrapper');
+    // document.getElementById('backgroundMusic');
   }
 
   closeModal(){
     this.showWindow = !this.showWindow;
-    var countdownTimer = this.$interval(this.startTimer.bind(this),1000);
+    this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
 
   startTimer(){
@@ -104,48 +107,51 @@ class GamesController {
 
   getUserData(){
     this.connection.getData().then((res)=>{
-      this.$timeout(()=>{
-        this.user = res;
-        this._userInit();
-      },0);
-    })
+      this.user = res;
+      this._userInit();
+    });
   }
 
   _userInit(){
-    if(_.get(this.user,'name')){
-      this.$timeout(()=>{
-        this.userTitle = this.$translate.instant('home.you_getting_ready',{user:_.get(this.user,'name')});
-      },0);
-    }else{
-      this.$timeout(()=>{
-      },0);
+    if(this.user.name){
+      this.userTitle = this.$translate.instant('home.you_getting_ready',{user:this.user.name});
+      this.$scope.$apply();
     }
   }
 
   reloadPage(state){
-    this.$state.reload(state);
+    this.removeListeners();
+    this.$state.reload();
+  }
+
+  removeListeners() {
+    this.$interval.cancel(this.countdownTimer);
+    this.showWindow = false;
+    this.soundChange();
+    const wrapper = document.getElementById('main-game-wrapper');
+    const children = wrapper.childNodes;
+    for (let i = 0; i < children.length; i++) {
+      wrapper.removeChild(children[i]);      
+    }
   }
 
   stateChange(state){
+    this.removeListeners();
     this.$state.go(state);
   }
 
   soundChange(){
-  var audio = document.getElementById("backgroundMusic"); 
+    const audio = document.getElementById("backgroundMusic"); 
 
-  if(this.sound == true){
-    audio.play(); 
-  }else{
-    audio.pause();
-  }
+    if(this.sound == true){
+      audio.play(); 
+    }else{
+      audio.pause();
+    }
 
-  this.sound =  !this.sound;
+    this.sound =  !this.sound;
   }
   
-  test2() {
-    this.createGame(nogic1, {language: 'en', level: 1});
-  }
-
   createGame(initializer, options) {
     const wrapper = document.getElementById('main-game-wrapper');
     const children = wrapper.childNodes;
@@ -157,16 +163,17 @@ class GamesController {
     wrapper.appendChild(holder);
     initializer.initialize(holder, options);    
   }
+  
   _watchData(){
-    this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
-      if(newVal){
-        this.$timeout(()=> {
-          this.rating = newVal;
-          this.starsArray = this.getStarsArray();
-          this.validateStars(newVal);
-        },200);
-      }
-    });
+    // this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
+    //   if(newVal){
+    //     this.$timeout(()=> {
+    //       this.rating = newVal;
+    //       this.starsArray = this.getStarsArray();
+    //       this.validateStars(newVal);
+    //     },200);
+    //   }
+    // });
   }
 
   getStarsArray() {
