@@ -1,12 +1,12 @@
 import template from './videoPage.html';
-import controller from './videoPage.controller';
+import VideoPageController from './videoPage.controller';
 import './videoPage.scss';
 
 let videoPageComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller: VideoPageController
 };
 
 export default videoPageComponent;
