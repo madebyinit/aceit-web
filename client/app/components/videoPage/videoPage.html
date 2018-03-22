@@ -1,21 +1,7 @@
 <!-- <main-menu></main-menu> -->
 
-<div class="home-page" id="home-page-id">
-    <div class="mid-section"> 
-    <div class="video-box">
-      <video id="video0" ng-click="$ctrl.ClickAfterEndVideo()" controls autoplay>
-        <source ng-src="/video/Video_before_starting_games.mp4" type="video/mp4" >
-      </video>
-    </div>
-  </div>
+<div class="video-page" id="video-page-id">
+    <video id="video0" ng-click="$ctrl.ClickAfterEndVideo()" controls autoplay>
+      <source ng-src="/video/Video_before_starting_games.mp4" type="video/mp4" >
+    </video>
 </div>
-<dialog-element
-        show-dialog="$ctrl.showWelcomeDialog"
-        is-disabled-input="true"
-        hide-exit="true"
-        return-value="$ctrl.saveWord(val)"
-        header-title="Welcome to Ace it"
-        button-text="Save & close"
-        input-title="What's your nickname?"
-        input-placeholder="Type your nickname here :)"
-></dialog-element>

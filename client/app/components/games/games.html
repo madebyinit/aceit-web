@@ -18,11 +18,13 @@
                 </div>
             </div>
           </div>
-          <div class="dialog-window-input-title"><strong>games</strong> </div>
+          <div class="dialog-window-input-title"><strong>games</strong></div>
         </div>
-        <md-button class="button-style save-and-close-button" ng-click="$ctrl.closeModal()">SAVE & CLOSE </md-button>
+        <md-button ng-if="!$ctrl.rating" class="button-style save-and-close-button-hide">SAVE & CLOSE </md-button>
+        <md-button ng-if="$ctrl.rating" class="button-style save-and-close-button" ng-click="$ctrl.closeModal()">SAVE & CLOSE </md-button>
     </div>
 </div>
+
 <div class="game-wrap">
   <div class="game-inner">
     <div class="game-buttons">
@@ -45,7 +47,7 @@
         <h3>{{$ctrl.timeRemain}}</h3>
       </div>
       <div class="btn-wrap-2">
-        <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialogEnd = true">
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.reloadPage('games')">
           <span >RETRY</span>
         </md-button>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialog = true">
@@ -63,8 +65,6 @@
   </div>
 </div> 
 
-<!-- <button ng-click="$ctrl.test2()"> TEST4</button> -->
-
 <dialog-element
         show-dialog="$ctrl.showDialog"
         is-disabled-button="false"
@@ -81,7 +81,7 @@
         show-dialog="$ctrl.showDialogEnd"
         is-disabled-input="false"
         return-value="$ctrl.reloadPage('games')"
-        return-value2="$ctrl.reloadPage('home')"
+        return-value2="$ctrl.stateChange('home')"
         header-title="GAME OVER"
         button-text="GOT IT!"
         button-text2="REPLAY GAMES"

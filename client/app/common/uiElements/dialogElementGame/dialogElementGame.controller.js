@@ -20,14 +20,11 @@ class dialogElementGameController {
   }
 
   returnValueFn(val){
-    console.log(val,"test")
     this.returnValue({val:val});
-    console.log(this.returnValue2);
   }
 
   returnValueFn2(val){
     this.returnValue2({val:val});
-    console.log(this.returnValue2);
 
   }
 

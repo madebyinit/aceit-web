@@ -9,7 +9,7 @@ class GamesController {
     this.connection = connection;
     this.firstStart = 0;
     this.$mdDialog = "";
-    this.timeRemain = "0:00";
+    this.timeRemain = "00:00";
     this.seconds = 300;
     this.$interval = $interval;
     this.gameNumber = this.gameNumber; 
@@ -60,7 +60,7 @@ class GamesController {
             break;
 
             case 6:
-            this.stateChange('home');
+            this.stateChange('summary');
             break;
         }
 
@@ -94,8 +94,9 @@ class GamesController {
     this.timeRemain = minutes + ":" + remainingSeconds;
 
     if(this.seconds == 0){
-      this.$interval.cancel(countdownTimer);
-      this.timeRemain = "00:00"
+      this.$interval.cancel(this.countdownTimer);
+      this.timeRemain = "00:00";
+      this.showDialogEnd = true;
     }else{
       this.seconds --;
     }
