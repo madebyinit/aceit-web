@@ -1,0 +1,89 @@
+@import "../../common";
+
+.dialog-element-game{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.41);
+  top:0;
+  left: 0;
+  z-index: 500;
+  .dialog-element-game-body {
+    border-radius: 0%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 600;
+    text-align: center;
+  }
+  .close-dialog-game {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-25%);
+    right: 0;
+    left: 500px;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+    img{
+      vertical-align: -webkit-baseline-middle;
+      width: 15px;
+    }
+  }
+}
+
+dialog-element{
+  display: block;
+}
+.dialog-element-game-body{
+  width: 930px;
+  height: 570px;
+  box-sizing: border-box;
+  border: 10px solid #fff;
+  border-radius: 3px;
+  background: #000;
+  .dialog-header-game{
+
+  }
+  .dialog-game-input-title{
+    margin: 10px 0;
+  }
+  div{
+    color: #fff;
+    font-size: 30px;
+  }
+  .button-got{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+  }
+  .button-replay{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+    margin-left: -255px;
+    color: #fff !important;
+    background-color: #000 !important;
+    box-shadow: white 2px 0px 0px 3px, white -1px -1px 0px 3px !important;
+  }
+  .button-cool{
+    position: absolute;
+    bottom: -60px;
+    transform: translate(-50%, 0);
+    border: 8px solid #000;
+  }
+  .dialog-subheader-game{
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

@@ -1,6 +1,7 @@
 var path    = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var Copy = require('copy-webpack-plugin');
 var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /^raw.*$/, loader: 'file-loader'},
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
+       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/, /mazerace/, /tower/, /parkinglot/, /mousetrap/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' },
@@ -41,6 +42,12 @@ module.exports = {
       minChunks: function (module, count) {
         return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
       }
-    })
+    }),
+    new Copy([{from: 'mazerace', to: 'mazerace'}]),
+    new Copy([{from: 'mousetrap', to: 'mousetrap'}]),
+    new Copy([{from: 'parkinglot', to: 'parkinglot'}]),
+    new Copy([{from: 'tower', to: 'tower'}]),
+    new Copy([{from: 'audio', to: 'audio'}]),
+    new Copy([{from: 'video', to: 'video'}])
   ]
 };

@@ -1,0 +1,19 @@
+<div class="dialog-element-game" ng-if="$ctrl.showDialog">
+    <div class="close-dialog-game" ng-if="!$ctrl.hideExit" ng-click="$ctrl.showDialog = false"><img ng-src="{{$root.imageCdn}}close.png"></div>
+    <div class="dialog-element-game-body">
+        <div class="dialog-subheader-game"><img src="mazerace/go-logo2.jpg" alt=""></div>
+        <div class="dialog-header-game"><img src="mazerace/go-logo.jpg" alt=""></div>
+        <div class="dialog-input-game">
+            <div ng-if="!$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle | translate)}}</div>
+            <div ng-if="!$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle2 | translate)}}</div>
+            <div ng-if="!$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
+            <div ng-if="!$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle4 | translate)}}</div>
+            <div ng-if="$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle5 | translate)}}</div>
+            <div ng-if="$ctrl.ButtonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle6 | translate)}}</div>
+            <input ng-if="$ctrl.isDisabledInput" type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
+        </div>
+        <md-button class="button-style button-got summary-button-style" ng-if="!$ctrl.ButtonCheck" ng-click="$ctrl.changeButton()">{{:: ($ctrl.buttonText | translate)}}</md-button>
+        <md-button class="button-style button-replay summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.returnValueFn($ctrl.bindValue)">{{:: ($ctrl.buttonText2 | translate)}}</md-button>
+        <md-button class="button-style button-cool summary-button-style" ng-if="$ctrl.ButtonCheck" ng-click="$ctrl.returnValueFn2($ctrl.bindValue2)">{{:: ($ctrl.buttonText3 | translate)}}</md-button>
+    </div>
+</div>

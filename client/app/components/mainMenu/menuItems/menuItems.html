@@ -9,6 +9,10 @@
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-welcome-menu.svg"></div><span>{{::'main_menu.home_page' | translate}}</span>
             </md-list-item>
             <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('games')">
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-welcome-menu.svg"></div><span>Games</span>
+            </md-list-item>
+            <md-divider></md-divider>
             <md-list-item class="md-3-line" ng-if="$ctrl.user.questionnaireComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'questionnaire'}" ng-click="$ctrl.stateChange('questionnaire')">
                 <div class="menu-icon"><img class="questionnaire-icon" ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"></div><span>{{::'main_menu.questionnaire' | translate}}</span>
             </md-list-item>
