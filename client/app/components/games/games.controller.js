@@ -192,6 +192,7 @@ class GamesController {
     if (this.readOnly) {
       return;
     }
+    console.log(rating);
     this.rating = rating;
     this.validateStars(this.rating);
   };

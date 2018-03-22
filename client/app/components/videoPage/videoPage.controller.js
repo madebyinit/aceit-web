@@ -32,7 +32,7 @@ class VideoPageController {
       myVideo.webkitRequestFullscreen();
       break;
     }
-    document.addEventListener(this.eventName, this.CheckChangeScreen);
+    // document.addEventListener(this.eventName, this.CheckChangeScreen);
     
   }
 
