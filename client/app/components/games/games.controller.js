@@ -20,11 +20,16 @@ class GamesController {
     }
 
   $onInit(){
-    this.getUserData();
-    this.playedFirstVideo = false;
     this.gameNumber = 1; 
-    this._watchData();
+    // this._watchData();
+
+    angular.element(document).ready(()=>{
+      // this.createGame(nogic3, {language:'en', level:5})
+      nogic3.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
+    });
+
     this.maxRating = 5;
+    this.getUserData();
     this.rating = 0;
     this.validateStars(this.rating);
     this.starsArray = this.getStarsArray();
@@ -68,9 +73,6 @@ class GamesController {
 
         }.bind(this);
 
-    angular.element(document).ready(()=>{
-      this.createGame(nogic3, {language:'en', level:5})
-    });
 
   }
 
