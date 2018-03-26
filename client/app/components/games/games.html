@@ -2,7 +2,7 @@
 
 <dialog-element-second
         show-window="$ctrl.showWindow"
-        button-text="REPLAY VIDEO"
+        button-text="REPLAY"
         button-text2="SAVE & CLOSE"
         button-text3="SAVE & CLOSE"
         return-value="$ctrl.stateChange('videoPage')"
@@ -20,7 +20,7 @@
             <source src="/audio/melodyloops-mp3.mp3" type="audio/mpeg">
           </audio>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
-          <span ng-if="!$ctrl.sound">MUTE</span>
+          <span ng-if="!$ctrl.sound">MUTE<img src="mazerace/mute-ico.png" alt=""></span>
           <span ng-if="$ctrl.sound">UNMUTE</span>
           <div class="imagery-word-bind" >
               <img ng-if="!$ctrl.sound" ng-src="">
@@ -30,15 +30,14 @@
         <h2>GAME {{$ctrl.gameNumber}}/5</h2>
       </div>
       <div class="time">
+        <div class="lion"><img src="mazerace/lion.png" alt=""></div>
         <h2>Time Left</h2>
         <h3>{{$ctrl.timeRemain}}</h3>
       </div>
       <div class="btn-wrap-2">
-        <md-button class="button-style summary-button-style" ng-if="$ctrl.gameNumber == 3" ng-click="$ctrl.restartMosetrap()">
+        <md-button class="button-style summary-button-style retry" ng-if="$ctrl.gameNumber == 3" ng-click="$ctrl.restartMosetrap()">
           <span >RETRY</span>
-          <div class="imagery-word-bind" >
-            <img ng-src="">
-          </div>
+          <img src="mazerace/retry-ico.png" alt="">
         </md-button>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.skipGame()">
           <span >SKIP</span>
