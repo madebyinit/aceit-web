@@ -160,3 +160,25 @@
     filter: blur(0);
   }
 }
+.summary-item{
+  position: relative;
+  z-index: 9;
+  height: 730px;
+  width: 900px;
+  padding: 75px 100px 110px 50px;
+  box-sizing: border-box;
+  img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 900px;
+    z-index: -1;
+  }
+  .summary-item-text{
+    overflow: auto;
+    height: 100%;
+    color: #3c6b82;
+    font-size: 22px;
+    line-height: 28px;
+  }
+}

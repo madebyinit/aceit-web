@@ -1,5 +1,5 @@
 (function(){var d2={c7:{c1:{}},J:{},display:{d0:{},font:{},P:{},c3:{},d1:{}},c5:{},c0:{},c6:{},_7:{},F:{n7:{}},Y:{},o:{c4:{},P:{},input:{},_7:{},Y:{}},H:{},c8:{}};
-var _8={_2:{C:{D:{},G:{}}}};window['nogic']=d2;var a8=document.getElementsByTagName('script');var r=a8[a8.length-1].src;
+var _8={_2:{C:{D:{},G:{}}}};window['nogic4']=d2;var a8=document.getElementsByTagName('script');var r=a8[a8.length-1].src;
 d2.o.g=function(canvas,k0,i6,j,o7,p0,a,f,o4,i4,j8,i1){d2.o.g.j6=this;this.a=a;if(this.a===null||this.a===undefined)this.a={};
 this.f=f;if(this.f===null||this.f===undefined)this.f={};canvas.width=canvas.clientWidth;canvas.height=canvas.clientHeight;
 this.canvas=canvas;this.p1=canvas.getContext('2d');canvas.setAttribute('tabIndex',0);this.k0=k0;this.i6=i6;
