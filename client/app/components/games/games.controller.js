@@ -25,7 +25,7 @@ class GamesController {
 
     angular.element(document).ready(()=>{
       // this.createGame(nogic3, {language:'en', level:5})
-      nogic3.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
+      nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
     });
 
     this.maxRating = 5;
