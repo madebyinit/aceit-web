@@ -21,11 +21,7 @@
           </audio>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
           <span ng-if="!$ctrl.sound">MUTE<img src="mazerace/mute-ico.png" alt=""></span>
-          <span ng-if="$ctrl.sound">UNMUTE</span>
-          <div class="imagery-word-bind" >
-              <img ng-if="!$ctrl.sound" ng-src="">
-              <img ng-if="$ctrl.sound" ng-src="">
-          </div>
+          <span ng-if="$ctrl.sound">UNMUTE<img src="mazerace/unmute-ico.png" alt=""></span>
         </md-button>
         <h2>GAME {{$ctrl.gameNumber}}/5</h2>
       </div>
