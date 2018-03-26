@@ -1,0 +1,25 @@
+<div class="dialog-window" ng-if="$ctrl.showWindow">
+    <div class="dialog-window-body">
+    <div class="dialog-window-header" > 
+        <md-button class="button-style save-and-close-button-header" ng-click="$ctrl.returnValueFn()">{{:: ($ctrl.buttonText | translate)}}</md-button>
+    </div>
+        <div class="dialog-window-input">
+          <div class="dialog-window-input-title"><strong>{{:: ($ctrl.inputTitle | translate)}}</strong></div>
+          <div class="select-element">
+            <div class="range-game-element">
+              <div class="dot-game"
+                  ng-repeat="item in $ctrl.starsArray track by $index"
+                  ng-class="item.class"
+                  ng-click="$ctrl.setRating($index + 1)"
+                  ng-mouseover="$ctrl.setMouseOverRating($index + 1)"
+                  ng-mouseleave="$ctrl.setMouseOverRating($ctrl.rating)">
+                <strong>{{$index+1}}</strong>
+                </div>
+            </div>
+          </div>
+          <div class="dialog-window-input-title"><strong>{{:: ($ctrl.inputTitle2 | translate)}}</strong></div>
+        </div>
+        <md-button ng-if="!$ctrl.rating" class="button-style save-and-close-button-hide" ng-click="$ctrl.returnValueFn2()">{{:: ($ctrl.buttonText2 | translate)}}</md-button>
+        <md-button ng-if="$ctrl.rating" class="button-style save-and-close-button" ng-click="$ctrl.returnValueFn3($ctrl.rating)">{{:: ($ctrl.buttonText3 | translate)}}</md-button>
+    </div>
+</div>

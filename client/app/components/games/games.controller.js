@@ -1,14 +1,12 @@
 
 class GamesController {
-  constructor($translate,$document,$timeout,$state,connection, $interval,$scope,$window) {
+  constructor($translate,$document,$state,connection, $interval,$scope,$window) {
     'ngInject';
     this.$translate = $translate;
     this.$document = $document;
-    this.$timeout = $timeout;
     this.$state = $state;
     this.connection = connection;
     this.firstStart = 0;
-    this.$mdDialog = "";
     this.timeRemain = "00:00";
     this.seconds = 300;
     this.$interval = $interval;
@@ -21,19 +19,12 @@ class GamesController {
 
   $onInit(){
     this.gameNumber = 1; 
-    // this._watchData();
 
     angular.element(document).ready(()=>{
-      // this.createGame(nogic3, {language:'en', level:5})
+      // this.createGame(nogic, {language:'en', level:5})
       nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
     });
-
-    this.maxRating = 5;
     this.getUserData();
-    this.rating = 0;
-    this.validateStars(this.rating);
-    this.starsArray = this.getStarsArray();
-
 
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
   
@@ -46,44 +37,25 @@ class GamesController {
           this.gameNumber ++;
 
           switch (this.gameNumber) {
-            case 2:
-            //moserace
-            this.createGame(nogic1, {language: 'en', level: 1});
-            break;
-      
-            case 3:
-            //mousetrap
-            this.createGame(nogic2, {language:'en', skipInstructions:'true'});
-            break;
-      
-            case 4:
             //tower
-            this.createGame(nogic4, {language:'en', noOfRings:4});
-            break;
-      
-            case 5:
+            case 2:  this.createGame(nogic4, {language:'en', noOfRings:4}); break;
+            //mousetrap
+            case 3: this.createGame(nogic2, {language:'en', skipInstructions:'true'}); break;
+            //moserace
+            case 4: this.createGame(nogic1, {language: 'en', level: 1}); break;
             //parkinglot
-            this.createGame(nogic3, {language:'en', level:6});
-            break;
-
-            case 6:
-            this.stateChange('summary');
-            break;
+            case 5: this.createGame(nogic, {language:'en', level:6});  break;
+            case 6: this.stateChange('summary'); break;
         }
 
         }.bind(this);
-
-
   }
 
   $onDestroy(){
     this.removeListeners();
-    // this.$document.unbind('scroll');
-    // document.getElementById('main-game-wrapper');
-    // document.getElementById('backgroundMusic');
   }
 
-  closeModal(){
+  closeModal(val){
     this.showWindow = !this.showWindow;
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
@@ -105,6 +77,30 @@ class GamesController {
     }else{
       this.seconds --;
     }
+   }
+
+   skipGame(){
+    this.gameNumber ++;
+
+    switch (this.gameNumber) {
+      //tower
+      case 2:  this.createGame(nogic4, {language:'en', noOfRings:4}); break;
+      //mousetrap
+      case 3: this.createGame(nogic2, {language:'en', skipInstructions:'true'}); break;
+      //moserace
+      case 4: this.createGame(nogic1, {language: 'en', level: 1}); break;
+      //parkinglot
+      case 5: this.createGame(nogic, {language:'en', level:6});  break;
+
+      case 6: if (this.seconds > 180){
+        this.showDialog = true;
+      }else{this.stateChange('summary');}
+      break;
+  }
+   }
+
+   restartMosetrap(){
+    this.createGame(nogic2, {language:'en', skipInstructions:'true'});
    }
 
   getUserData(){
@@ -166,59 +162,7 @@ class GamesController {
     initializer.initialize(holder, options);    
   }
   
-  _watchData(){
-    // this.watchChange = this.$scope.$watch(() => this.answer,(newVal) =>{
-    //   if(newVal){
-    //     this.$timeout(()=> {
-    //       this.rating = newVal;
-    //       this.starsArray = this.getStarsArray();
-    //       this.validateStars(newVal);
-    //     },200);
-    //   }
-    // });
-  }
 
-  getStarsArray() {
-    let starsArray = [];
-      for (let index = 0; index < this.maxRating; index++) {
-        let starItem = {
-          index: index,
-          class: 'star-off'
-        };
-        starsArray.push(starItem);
-      }
-      return starsArray;
-    };
-
-  setRating(rating) {
-    if (this.readOnly) {
-      return;
-    }
-    console.log(rating);
-    this.rating = rating;
-    this.validateStars(this.rating);
-  };
-
-  setMouseOverRating(rating) {
-    if (this.readOnly) {
-      return;
-    }
-    this.validateStars(rating);
-  };
-
-  validateStars(rating) {
-    if (!this.starsArray || this.starsArray.length === 0) {
-      return;
-    }
-    for (let index = 0; index < this.starsArray.length; index++) {
-      let starItem = this.starsArray[index];
-      if (index <= (rating - 1)) {
-        starItem.class = 'star-on';
-      } else {
-        starItem.class = 'star-off';
-      }
-    }
-  };
 
 }
 
