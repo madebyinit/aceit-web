@@ -38,11 +38,11 @@ class GamesController {
 
           switch (this.gameNumber) {
             //tower
-            case 2:  this.createGame(nogic4, {language:'en', noOfRings:4}); break;
+            case 2:  this.createGame(nogic, {language:'en', noOfRings:4}); break;
             //mousetrap
-            case 3: this.createGame(nogic2, {language:'en', skipInstructions:'true'}); break;
+            case 3: this.createGame(nogic, {language:'en', skipInstructions:'true'}); break;
             //moserace
-            case 4: this.createGame(nogic1, {language: 'en', level: 1}); break;
+            case 4: this.createGame(nogic, {language: 'en', level: 1}); break;
             //parkinglot
             case 5: this.createGame(nogic, {language:'en', level:6});  break;
             case 6: this.stateChange('summary'); break;
@@ -84,11 +84,11 @@ class GamesController {
 
     switch (this.gameNumber) {
       //tower
-      case 2:  this.createGame(nogic4, {language:'en', noOfRings:4}); break;
+      case 2:  this.createGame(nogic, {language:'en', noOfRings:4}); break;
       //mousetrap
-      case 3: this.createGame(nogic2, {language:'en', skipInstructions:'true'}); break;
+      case 3: this.createGame(nogic, {language:'en', skipInstructions:'true'}); break;
       //moserace
-      case 4: this.createGame(nogic1, {language: 'en', level: 1}); break;
+      case 4: this.createGame(nogic, {language: 'en', level: 1}); break;
       //parkinglot
       case 5: this.createGame(nogic, {language:'en', level:6});  break;
 

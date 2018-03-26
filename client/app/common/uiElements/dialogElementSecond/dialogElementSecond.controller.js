@@ -20,7 +20,7 @@ class dialogElementSecondController {
   }
 
   $onDestroy(){
-    this.watchChange();
+    document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
   returnValueFn(){

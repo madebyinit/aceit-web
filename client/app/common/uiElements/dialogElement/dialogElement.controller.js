@@ -15,7 +15,8 @@ class dialogElementController {
   }
 
   $onDestroy(){
-    this.watchChange();
+    // this.watchChange();
+    document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
   returnValueFn(val){
