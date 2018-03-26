@@ -1,5 +1,5 @@
 class VideoPageController {
-  constructor($translate,$document,$timeout,$state,connection, $scope) {
+  constructor($translate,$document,$timeout, $interval,$state,connection, $scope) {
     'ngInject';
     this.$translate = $translate;
     this.$document = $document;
@@ -10,9 +10,12 @@ class VideoPageController {
     this.eventName = '';
     this.$scope = $scope;
     this.CheckChangeScreen = this.CheckChangeScreen.bind(this);
+    this.$interval = $interval;
+ 
   }
 
   $onInit(){
+    this.seconds = 45;
     this.getUserData();
     const myVideo = this.$document[0].getElementById('video0');
     console.log(myVideo);
@@ -33,7 +36,17 @@ class VideoPageController {
       break;
     }
     // document.addEventListener(this.eventName, this.CheckChangeScreen);
-    
+    function startVideoTimer(){
+
+      if(this.seconds == 0){
+        this.$interval.cancel(this.countdownTimer);
+        this.$state.go('games');
+      }else{
+        this.seconds --;
+      }
+    }
+
+    this.countdownTimer = this.$interval(startVideoTimer.bind(this), 1000);
   }
 
   CheckChangeScreen(){

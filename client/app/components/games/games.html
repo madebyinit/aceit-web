@@ -1,29 +1,16 @@
 <main-menu class="top-menu"></main-menu>
-<div class="dialog-window" ng-if="$ctrl.showWindow">
-    <div class="dialog-window-body">
-    <div class="dialog-window-header" > 
-        <md-button class="button-style save-and-close-button-header" ng-click="$ctrl.stateChange  ('videoPage')">Replay video</md-button>
-    </div>
-        <div class="dialog-window-input">
-          <div class="dialog-window-input-title"><strong>I think i wiil succeed on</strong> </div>
-          <div class="select-element">
-            <div class="range-game-element">
-              <div class="dot-game"
-                  ng-repeat="item in $ctrl.starsArray track by $index"
-                  ng-class="item.class"
-                  ng-click="$ctrl.setRating($index + 1)"
-                  ng-mouseover="$ctrl.setMouseOverRating($index + 1)"
-                  ng-mouseleave="$ctrl.setMouseOverRating($ctrl.rating)">
-                <strong>{{$index+1}}</strong>
-                </div>
-            </div>
-          </div>
-          <div class="dialog-window-input-title"><strong>games</strong></div>
-        </div>
-        <md-button ng-if="!$ctrl.rating" class="button-style save-and-close-button-hide">SAVE & CLOSE </md-button>
-        <md-button ng-if="$ctrl.rating" class="button-style save-and-close-button" ng-click="$ctrl.closeModal()">SAVE & CLOSE </md-button>
-    </div>
-</div>
+
+<dialog-element-second
+        show-window="$ctrl.showWindow"
+        button-text="REPLAY VIDEO"
+        button-text2="SAVE & CLOSE"
+        button-text3="SAVE & CLOSE"
+        return-value="$ctrl.stateChange('videoPage')"
+        return-value2=""
+        return-value3="$ctrl.closeModal(val)"
+        input-title="I think i wiil succeed on"
+        input-title2='games'
+></dialog-element-second>
 
 <div class="game-wrap">
   <div class="game-inner">
@@ -35,9 +22,9 @@
         <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
           <span ng-if="!$ctrl.sound">MUTE</span>
           <span ng-if="$ctrl.sound">UNMUTE</span>
-          <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
-            {{$ctrl.concentrationWord}}
-            <img ng-src="{{::$root.imageCdn}}edit.png">
+          <div class="imagery-word-bind" >
+              <img ng-if="!$ctrl.sound" ng-src="">
+              <img ng-if="$ctrl.sound" ng-src="">
           </div>
         </md-button>
         <h2>GAME {{$ctrl.gameNumber}}/5</h2>
@@ -47,15 +34,14 @@
         <h3>{{$ctrl.timeRemain}}</h3>
       </div>
       <div class="btn-wrap-2">
-        <md-button class="button-style summary-button-style" ng-click="$ctrl.reloadPage('games')">
+        <md-button class="button-style summary-button-style" ng-if="$ctrl.gameNumber == 3" ng-click="$ctrl.restartMosetrap()">
           <span >RETRY</span>
-        </md-button>
-        <md-button class="button-style summary-button-style" ng-click="$ctrl.showDialog = true">
-          <span ng-if="!$ctrl.concentrationWord">SKIP</span>
-          <div class="imagery-word-bind" ng-if="$ctrl.concentrationWord">
-            {{$ctrl.concentrationWord}}
-            <img ng-src="{{::$root.imageCdn}}edit.png">
+          <div class="imagery-word-bind" >
+            <img ng-src="">
           </div>
+        </md-button>
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.skipGame()">
+          <span >SKIP</span>
         </md-button>
       </div>
     </div>
