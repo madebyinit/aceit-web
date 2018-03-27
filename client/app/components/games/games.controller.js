@@ -56,6 +56,8 @@ class GamesController {
   }
 
   closeModal(val){
+    const audio = document.getElementById("backgroundMusic"); 
+    audio.play(); 
     this.showWindow = !this.showWindow;
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }

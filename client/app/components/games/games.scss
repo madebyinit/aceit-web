@@ -4,11 +4,11 @@
 }
 
 .game-wrap{
-  background: linear-gradient(to bottom, #111111 0%,#3d3d3d 100%);
-  min-height: calc( 100vh - 40px );
-  padding: 40px 0 0 0;
+  background: linear-gradient(to bottom, #000000 0%,#3d3d3d 100%);
+  // min-height: calc( 100vh - 40px );
+  // padding: 40px 0 0 0;
   .game-inner{
-    max-width: 1600px;
+    max-width: 1900px;
     padding: 0 100px;
     box-sizing: border-box;
     margin:0 auto;

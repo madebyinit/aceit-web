@@ -1,4 +1,4 @@
-<main-menu class="top-menu"></main-menu>
+<!-- <main-menu class="top-menu"></main-menu> -->
 
 <dialog-element-second
         show-window="$ctrl.showWindow"
@@ -8,7 +8,7 @@
         return-value="$ctrl.stateChange('videoPage')"
         return-value2=""
         return-value3="$ctrl.closeModal(val)"
-        input-title="I think i wiil succeed on"
+        input-title="I think i will succeed on"
         input-title2='games'
 ></dialog-element-second>
 
@@ -16,7 +16,7 @@
   <div class="game-inner">
     <div class="game-buttons">
       <div class="btn-wrap-1">
-          <audio id="backgroundMusic" autoplay>
+          <audio id="backgroundMusic" loop>
             <source src="/audio/melodyloops-mp3.mp3" type="audio/mpeg">
           </audio>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.soundChange()" >
@@ -54,7 +54,7 @@
         button-text="I`LL TAKE IT!"
         input-title="It`s hard to take you seriously "
         input-title2='if you skip all the games.'
-        input-title3='Here`s another chanse!'
+        input-title3='Here`s another chance!'
 ></dialog-element>
 
 <dialog-element-game
