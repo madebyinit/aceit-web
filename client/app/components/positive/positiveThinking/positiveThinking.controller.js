@@ -12,11 +12,12 @@ class PositiveThinkingController {
   }
 
   _playVideo(){
-    let doc = angular.element(this.$document)[0].body;
+    // let doc = angular.element(this.$document)[0].body;
+    let doc = document.scrollingElement;
     let videoY = this.$document[0].getElementById('pos-video-start').offsetTop;
     let myVideo = this.$document[0].getElementById('pos-video');
     this.$document.bind("scroll",()=> {
-      if(!_.get(this.user,'positiveWatched') && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
+      if(this.user && !_.get(this.user,'positiveWatched') && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
         myVideo.play();
         this.connection.saveData(true,'positiveWatched');
         this.$document.unbind('scroll');

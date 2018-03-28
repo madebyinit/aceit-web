@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57" height="33">
+    <path fill="#FFF" fill-rule="evenodd" d="M38 32H2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2zm0-13H2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2zm0-13H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h36a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2z"/>
+    <text fill="#FFF" font-family="Oswald" font-size="13" font-weight="bold" transform="rotate(-90 44.486 -12.014)">
+        MENU
+    </text>
+</svg>

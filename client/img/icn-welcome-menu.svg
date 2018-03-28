@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="43" height="35">
+    <defs>
+        <filter id="a">
+            <feFlood flood-color="#0E7086" flood-opacity="1" result="floodOut"/>
+            <feComposite in="floodOut" in2="SourceGraphic" operator="atop" result="compOut"/>
+            <feBlend in="compOut" in2="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g fill="#FFF" filter="url(#a)">
+        <path fill-rule="evenodd" d="M39.039 34.074H3.607A3.13 3.13 0 0 1 .481 30.95v-2.083c0-.575.467-1.041 1.042-1.041h39.6c.575 0 1.042.466 1.042 1.041v2.083a3.129 3.129 0 0 1-3.126 3.124zm1.042-4.166H2.565v1.042c0 .575.467 1.041 1.042 1.041h35.432c.575 0 1.042-.466 1.042-1.041v-1.042zm-5.211-4.165H7.775a3.13 3.13 0 0 1-3.126-3.125V3.956A3.129 3.129 0 0 1 7.775.832H34.87a3.129 3.129 0 0 1 3.127 3.124v18.662a3.13 3.13 0 0 1-3.127 3.125zm1.043-21.787c0-.575-.467-1.041-1.043-1.041H7.775c-.575 0-1.042.466-1.042 1.041v18.662c0 .575.467 1.042 1.042 1.042H34.87c.576 0 1.043-.467 1.043-1.042V3.956z"/>
+        <text x="11" y="11.937" font-family="Source Sans Pro" font-size="10">
+            hello
+        </text>
+        <text x="9" y="21.937" font-family="Source Sans Pro" font-size="10">
+            world
+        </text>
+    </g>
+</svg>

@@ -1,6 +1,10 @@
 @import "../../common/common";
 
 .concentration {
+    p,
+    div{
+        font-size:inherit;
+    }
   min-height: 1000px;
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f6d796 60%);
@@ -93,6 +97,7 @@
       color: #0e7086;
       width: 80%;
       margin: auto;
+      text-align:center;
       &>div{
         display: inline-block;
       }

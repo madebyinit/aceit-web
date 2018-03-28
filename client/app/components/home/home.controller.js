@@ -63,7 +63,8 @@ class HomeController {
   }
 
   _scroll(){
-    let doc = angular.element(this.$document)[0].body;
+    // let doc = angular.element(this.$document)[0].body;
+    let doc = document.scrollingElement;
     this.$document.bind("scroll",()=> {
       this._firstVideo(doc);
       this._lionVideoPlay(doc);
@@ -73,7 +74,7 @@ class HomeController {
   _firstVideo(doc){
     let videoY = this.$document[0].getElementById('first-video').offsetTop;
     let myVideo = this.$document[0].getElementById('video0');
-    if(!_.get(this.user,'firstVideoWatched') && !this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
+    if(this.user && !_.get(this.user,'firstVideoWatched') && !this.playedFirstVideo && ((doc.scrollTop-videoY) > -100 && (doc.scrollTop-videoY) < 100)){
       myVideo.play();
       this.playedFirstVideo = true;
       this.connection.saveData(true,'firstVideoWatched');

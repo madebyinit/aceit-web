@@ -35,21 +35,21 @@
         <div class="arrow-down"></div>
     </div>
     <div class="button-section">
-        <md-button class="button-style my-imagery" ng-click="$ctrl.showDialog = true">
+        <md-button class="button-style my-imagery" ng-click="$ctrl.showImageryDialog = true">
             <span ng-if="!$ctrl.imageryWord">{{::'imagery.my_imagery' | translate}}</span>
             <div class="imagery-word-bind" ng-if="$ctrl.imageryWord">
                 {{$ctrl.imageryWord}}
                 <img ng-src="{{::$root.imageCdn}}edit.png">
             </div>
         </md-button>
-        <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">
+        <md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.allStepsComplete">
             <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
             <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
         </md-button>
     </div>
 </div>
 <dialog-element
-        show-dialog="$ctrl.showDialog"
+        show-dialog="$ctrl.showImageryDialog"
         is-disabled-input="true"
         bind-value="$ctrl.imageryWord"
         return-value="$ctrl.saveWord(val)"
@@ -58,3 +58,4 @@
         input-title="imagery.my_imagery_word"
         input-placeholder="imagery.your_title"
 ></dialog-element>
+

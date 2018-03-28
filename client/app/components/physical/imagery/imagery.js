@@ -5,7 +5,10 @@ import './imagery.scss';
 let ImageryComponent = {
   restrict: 'E',
   bindings: {
-    stepsComplete:'=?'
+    allStepsComplete:'=?',
+    physicalComplete:'=?',
+    goSummary: '=?',
+    showToolsDialog: '=?'
   },
   template,
   controller

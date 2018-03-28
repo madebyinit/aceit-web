@@ -11,13 +11,5 @@
     <required-cards></required-cards>
     <div class="optional-cards-title" ng-if="$ctrl.userSum.physical < 10 || $ctrl.userSum.positive < 10 || $ctrl.userSum.concentration < 10">{{:: 'summary.optional' | translate}}</div>
     <optional-cards></optional-cards>
-    <div class="button-container">
-      <md-tooltip class="tooltip-style" style="padding: 0" md-direction="top" ng-if="!$ctrl.enableRoutineButton">
-        {{::'summary.routine' | translate}}
-      </md-tooltip>
-      <md-button class="button-style routine-button" ng-click="$ctrl.stateGo('routine')" ng-disabled="!$ctrl.enableRoutineButton">
-        {{:: 'summary.my_routine' | translate}}
-      </md-button>
-    </div>
-  </div>
+      </div>
 </div>

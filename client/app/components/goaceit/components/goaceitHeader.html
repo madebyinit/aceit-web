@@ -1,0 +1,160 @@
+<div class="goaceit-header">
+    <div class="header-logo">
+        <div class="header-lion"></div>
+        <div ng-class="{'header-invisible' : !$ctrl.user}">
+            <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
+            <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
+        </div>
+    </div>
+    <div class="header-text" ng-class="{'header-invisible' : !$ctrl.user}">
+        <div ng-if="!$ctrl.user.goaceitVisited" >
+            <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
+                manage the stress and reach your peak performance. While you’re
+                studying and doing practice tests, it’s important to use your tools and
+                master a routine you feel comfortable with so it becomes automatic.</div>
+            <span>
+                If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong><span> and rethink them.</span>
+        </div>
+        <div ng-if="$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
+            <div class="header-text-pushdown">
+                <div>
+                    You can practice your tools now and adjust your routine as needed.</div>
+                <span>If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong><span> and rethink them.</span>
+            </div>
+            <strong>
+                While you are studying and doing practice tests, remember to use your
+                routine until it becomes automatic.
+            </strong>
+        </div>
+    </div>
+    <div class="drawer-button-wrapper">
+        <div class="biodot-wrapper">
+            <div class="drawer-text">On the ACEIT card, there is a little round ACEIT dot. Put it on your hand like this and see what color it shows.</div>
+            <div class="biodot-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['biodot']}" ng-click="$ctrl.toggleDrawer('biodot')"></div>
+        </div>
+        <div class="focus-sleep-wrapper">
+            <div class="focus-sleep-text-wrapper">
+                <div class="drawer-text">
+                    <div>Are you having</div>
+                    <div>a hard time focusing</div>
+                    <div>while you’re studying?</div>
+                </div>
+                <div class="drawer-text">
+                    <div>Maybe you’re having</div>
+                    <div>a hard time falling</div>
+                    <div>asleep or staying asleep?</div>
+                </div>
+            </div>
+            <div class="focus-sleep-icon-wrapper">
+                <div class="focus-wrapper">
+                    <div class="focus-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['focus']}" ng-click="$ctrl.toggleDrawer('focus')"></div>
+                </div>
+                <div class="sleep-wrapper">
+                    <div class="sleep-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['sleep']}" ng-click="$ctrl.toggleDrawer('sleep')"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="drawer-wrapper">
+        <div class="drawer-wrapper-inner">
+
+            <div class="focus-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('focus')">
+                <h1>Stress &amp; Recovery</h1>
+
+                <p>
+                    As you know there is a lot of material to learn and review for the test and you might think the more you study the better you will do. We have important news for you - this is not necessarily true.
+                </p>
+                <h3>MORE &ne; BETTER</h3>
+                <p>
+                    Think about the athlete who is training for the Olympics. As the date gets closer and closer, does the athlete train harder and harder? No. The athlete must pace himself and build in “down” time, both physically and mentally. For him to perform at his peak, he must be well rested and focused.
+                    This is important for you too.
+                </p>
+                <h3>THE 90 / 20 RULE</h3>
+                <p>
+                    Your brain can only focus for about 90 minutes at a time. Afterwards, you need a 20 minute break to renew your energy before you refocus on studying.
+                </p>
+                <div class="video-container">
+                    <video id="stress-video" controls>
+                        <source ng-src="{{::$root.videoCdn}}stress-and-recovery-.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
+                <h1>Aceit Dots</h1>
+                <div class="hand"></div>
+                <p>
+                    <span>This ACEIT dot is based on the temperature in your</span>
+                    <span>hands. When you get stressed, the tiny blood vessels</span>
+                    <span>under the surface of your skin close down and the</span>
+                    <span>temperature drops. So when you are very stressed, your</span>
+                    <span>hands get cold and the ACEIT dot registers black.</span>
+                    <span><strong>(Keep in mind that in cold weather or with air conditioning, the ACEIT dot will register black).</strong></span>
+                </p>
+                <div class="stress-meter">
+                    <div class="metric">Stressed</div>
+                    <div class="metric">In the Zone</div>
+                    <div class="metric">Relaxed</div>
+                </div>
+                <p>Keep the ACEIT dot on when you are studying and see what color it shows when you are really focused. That is your “zone” which you need to be in to reach your peak performance. When the color moves out of your zone to a different color, use your tools and your routine to get back into your zone. Or maybe it’s time to take a break. See what color registers when you are relaxed.</p>
+                <p>You can reattach the ACEIT dot to the card at any time. If you lose your ACEIT dot (as most people do), you can use the ACEIT square instead. Hold your thumb on the square for 10 seconds and see what color shows.</p>
+                <p>It is important to use the ACEIT dot or square when you take practice tests so you can become aware of when you are not in your zone. Then you must use your routine in order to once again reach your peak performance.</p>
+                <p>Everyone is different and you have to find what works  for you.</p>
+            </div>
+
+            <div class="sleep-drawer drawer " ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
+                <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('sleep')">
+                <h1>Sleep</h1>
+                <p>
+                    It is very important to get enough sleep especially while studying for the test. If you are sleep deprived, you cannot focus your attention optimally nor learn efficiently. While you sleep your brain is working to consolidate memory – you are learning while you sleep! Your brain is understanding how things fit together and how to summarize the data you’ve studied.
+                </p>
+                <p>
+                    <strong>
+                        If you are having problems falling asleep or staying asleep because your mind is too active, try these exercises:
+                    </strong>
+                </p>
+
+                <div class="tabs">
+
+                    <div class="tab" ng-class="{'inactive' : $ctrl.activeTabIndex}" ng-click="!$ctrl.activeTabIndex || $ctrl.toggleTab()">
+                        <h1>Breathing Exercise</h1>
+                    </div>
+
+                    <div class="tab" ng-class="{'inactive' : !$ctrl.activeTabIndex}" ng-click="$ctrl.activeTabIndex || $ctrl.toggleTab()">
+                        <h1>Guided Imagery</h1>
+                    </div>
+
+                </div>
+
+                <div class="tab-content">
+                    <div class="container" ng-class="{'inactive' : $ctrl.activeTabIndex}" id="breathing">
+                        <ul>
+                            <li>Put your tongue behind your upper front teeth</li>
+                            <li>Breathe in through your nose to the count of 4</li>
+                            <li>Hold your breath to the count of 7</li>
+                            <li>Blow out your breath forcefully to the count of 8</li>
+                        </ul>
+
+                        <div class="icon">
+                            <img src="{{::$root.imageCdn}}repeat4times.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="container" ng-class="{'inactive' : !$ctrl.activeTabIndex}" id="guided">
+                        <p>Sometimes you can’t shut down your thoughts. Guided Imagery can help you de-clutter your busy mind and help you relax and feel comfortable. <br />
+                            <strong>Lie down in a dark room and listen to this audio tape</strong></p>
+                        <div class="icon icon-arrow">
+                            <div id="play-audio" ng-click="$ctrl.toggleAudio()">
+                                <div class="controller play" ng-class="{'pause': $ctrl.audioPlaying, 'play': !$ctrl.audioPlaying} "></div>
+                            </div>
+                            <a id="download-audio" href="{{::$root.videoCdn}}sleep.mp3" download></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

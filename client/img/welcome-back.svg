@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="313.5" height="266.5">
+    <text fill="#FFF" font-family="Kalam" font-size="65" font-weight="bold" transform="rotate(20.438 -209.206 164.603)">
+        Welcome
+    </text>
+    <path fill="#FFF" fill-opacity=".102" fill-rule="evenodd" stroke="#FFF" stroke-width="5" d="M305.456 137.481C299.109 115.238 267.167 17.893 140.12 2.834c0 0-137.57-12.288-117.563 109.687 2.408 14.626 11.835 33.657 12.774 40.701.739 5.636-34.765 30.779-32.733 36.234 4.211 11.208 69.708 16.903 75.438 18.924 8.506 2.993 102.416 80.56 178.047 42.763 57.233-28.609 55.731-91.435 49.373-113.662z"/>
+    <text fill="#FFF" font-family="Kalam" font-size="65" font-weight="bold" transform="rotate(20.438 -425.34 232.154)">
+        Back!
+    </text>
+</svg>
