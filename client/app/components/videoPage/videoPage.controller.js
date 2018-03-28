@@ -18,7 +18,7 @@ class VideoPageController {
     this.seconds = 45;
     this.getUserData();
     const myVideo = this.$document[0].getElementById('video0');
-    console.log(myVideo);
+    myVideo.play();
     switch(true){
       case !!myVideo.requestFullscreen:
       this.eventName = 'fullscreenchange';

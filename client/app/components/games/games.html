@@ -31,7 +31,7 @@
         <h3>{{$ctrl.timeRemain}}</h3>
       </div>
       <div class="btn-wrap-2">
-        <md-button class="button-style summary-button-style retry" ng-if="$ctrl.gameNumber == 3" ng-click="$ctrl.restartMosetrap()">
+        <md-button class="button-style summary-button-style retry" ng-if="$ctrl.gameNumber == 3 && $ctrl.mousewin == false" ng-click="$ctrl.restartMosetrap()">
           <span >RETRY</span>
           <img src="mazerace/retry-ico.png" alt="">
         </md-button>
@@ -44,6 +44,7 @@
     </div>
   </div>
 </div> 
+<!-- <button ng-click="$ctrl.clearStorage()" >first start</button> -->
 
 <dialog-element
         show-dialog="$ctrl.showDialog"
@@ -57,8 +58,9 @@
         input-title3='Here`s another chance!'
 ></dialog-element>
 
-<dialog-element-game
+ <dialog-element-game
         show-dialog="$ctrl.showDialogEnd"
+        button-check="$ctrl.firstStart"
         is-disabled-input="false"
         return-value="$ctrl.reloadPage('games')"
         return-value2="$ctrl.stateChange('home')"

@@ -6,6 +6,7 @@ let dialogElementGameComponent = {
   restrict: 'E',
   bindings: {
     showDialog:'=?',
+    buttonCheck:'=?',
     headerTitle:'@?',
     buttonText:'@?',
     buttonText2:'@?',

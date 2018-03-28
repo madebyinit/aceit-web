@@ -6,7 +6,7 @@ class GamesController {
     this.$document = $document;
     this.$state = $state;
     this.connection = connection;
-    this.firstStart = 0;
+    this.firstStart = false; 
     this.timeRemain = "00:00";
     this.seconds = 300;
     this.$interval = $interval;
@@ -15,6 +15,7 @@ class GamesController {
     this.$scope = $scope;
     this.window = $window;
     this.startTimer = this.startTimer.bind(this);
+    this.mousewin = true;
     }
 
   $onInit(){
@@ -24,7 +25,15 @@ class GamesController {
       // this.createGame(nogic, {language:'en', level:5})
       nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
     });
-    this.getUserData();
+    // this.getUserData();
+    
+    if(localStorage.getItem('gamePage') == null){
+      console.log("FIRST START");
+      
+    }else{
+      console.log("SECOND START");
+      this.firstStart = true;
+    }
 
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
   
@@ -33,26 +42,38 @@ class GamesController {
           // alert('instructionsClickCount = ' + instructionsClickCount);
           // alert('win = ' + win);
           // alert('firstMoveTime = ' + firstMoveTime);
+          if (this.gameNumber == 3){this.mousewin = win}
 
-          this.gameNumber ++;
+          if (this.gameNumber == 3 && this.mousewin == false){
 
-          switch (this.gameNumber) {
-            //tower
-            case 2:  this.createGame(nogic2, {language:'en', noOfRings:4}); break;
-            //mousetrap
-            case 3: this.createGame(nogic3, {language:'en', skipInstructions:'true'}); break;
-            //moserace
-            case 4: this.createGame(nogic4, {language: 'en', level: 1}); break;
-            //parkinglot
-            case 5: this.createGame(nogic, {language:'en', level:6});  break;
-            case 6: this.stateChange('summary'); break;
-        }
+          }else{
+
+                this.gameNumber ++;
+
+                switch (this.gameNumber) {
+                  //tower
+                  case 2:  this.createGame(nogic2, {language:'en', noOfRings:4}); break;
+                  //mousetrap
+                  case 3: this.createGame(nogic3, {language:'en', skipInstructions:'true'}); break;
+                  //moserace
+                  case 4: this.createGame(nogic4, {language: 'en', level: 1}); break;
+                  //parkinglot
+                  case 5: this.createGame(nogic, {language:'en', level:6});  break;
+
+                  case 6: this.stateChange('summary'); localStorage.setItem('gamePage', location.pathname); break;
+                }
+              }
 
         }.bind(this);
   }
 
   $onDestroy(){
     this.removeListeners();
+  }
+
+  clearStorage(){
+    localStorage.removeItem('gamePage');
+    this.firstStart = false;
   }
 
   closeModal(val){
@@ -92,12 +113,10 @@ class GamesController {
       //moserace
       case 4: this.createGame(nogic4, {language: 'en', level: 1}); break;
       //parkinglot
-      case 5: this.createGame(nogic, {language:'en', level:6});  break;
+      case 5: if (this.seconds > 180){ this.showDialog = true; this.gameNumber = 5; }  
+              this.createGame(nogic, {language:'en', level:6});  break;
 
-      case 6: if (this.seconds > 180){
-        this.showDialog = true;
-        this.gameNumber --;
-      }else{this.stateChange('summary');}
+      case 6: this.stateChange('summary'); localStorage.setItem('gamePage', location.pathname);
       break;
   }
    }
@@ -106,21 +125,22 @@ class GamesController {
     this.createGame(nogic3, {language:'en', skipInstructions:'true'});
    }
 
-  getUserData(){
-    this.connection.getData().then((res)=>{
-      this.user = res;
-      this._userInit();
-    });
-  }
+  // getUserData(){
+  //   this.connection.getData().then((res)=>{
+  //     this.user = res;
+  //     this._userInit();
+  //   });
+  // }
 
-  _userInit(){
-    if(this.user.name){
-      this.userTitle = this.$translate.instant('home.you_getting_ready',{user:this.user.name});
-      this.$scope.$apply();
-    }
-  }
+  // _userInit(){
+  //   if(this.user.name){
+  //     this.userTitle = this.$translate.instant('home.you_getting_ready',{user:this.user.name});
+  //     this.$scope.$apply();
+  //   }
+  // }
 
   reloadPage(state){
+    localStorage.setItem('gamePage', location.pathname);
     this.removeListeners();
     this.$state.reload();
   }
@@ -137,19 +157,18 @@ class GamesController {
   }
 
   stateChange(state){
+    localStorage.setItem('gamePage', location.pathname);
     this.removeListeners();
     this.$state.go(state);
   }
 
   soundChange(){
     const audio = document.getElementById("backgroundMusic"); 
-
     if(this.sound == true){
       audio.play(); 
     }else{
       audio.pause();
     }
-
     this.sound =  !this.sound;
   }
   
@@ -164,9 +183,5 @@ class GamesController {
     wrapper.appendChild(holder);
     initializer.initialize(holder, options);    
   }
-  
-
-
 }
-
 export default GamesController;
