@@ -17,10 +17,11 @@ class RoutineController {
   }
 
   _startLionVideo(){
-    let doc = angular.element(this.$document)[0].body;
+    // let doc = angular.element(this.$document)[0].body;
+    let doc = document.scrollingElement;
     let lionSectionY = this.$document[0].getElementById('lion-section-id').offsetTop;
     this.$document.bind("scroll",()=> {
-      if(!_.get(this.user,'lolLionWatched') && (doc.scrollTop-lionSectionY) > -300 && (doc.scrollTop-lionSectionY) < 300){
+      if(this.user && !_.get(this.user,'lolLionWatched') && (doc.scrollTop-lionSectionY) > -300 && (doc.scrollTop-lionSectionY) < 300){
         document.getElementById('lol-lion').play();
         this.connection.saveData(true,'lolLionWatched');
         this.$document.unbind('scroll');

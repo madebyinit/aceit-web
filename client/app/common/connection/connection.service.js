@@ -5,8 +5,12 @@ class ConnectionService {
     this.firebase = firebase;
     this.firebaseService = firebaseService;
     this.database = this.firebase.database();
-    this.user = JSON.parse(localStorage.getItem('aceitUser'));
+    this.setUser();
     this.userPromise = {};
+  }
+
+  setUser() {
+    this.user = JSON.parse(localStorage.getItem('aceitUser'));
   }
 
   getUserLocalData(){

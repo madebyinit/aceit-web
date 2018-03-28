@@ -15,7 +15,8 @@
     "forgot_password":"Forgot password",
     "lets_start":"Let's start",
     "already_a_member":"Already a member?",
-    "remember_your_password":"Remember your password?"
+    "remember_your_password":"Remember your password?",
+    "our_website":"Our Site!"
   },
   "questionnaire":{
     "questionnaire":"questionnaire",
@@ -69,6 +70,10 @@
     "physical_tools":"Physical Tools",
     "help_you_relax":"These are the tools that will help you relax and feel in control",
     "works_for_everyone":"Not every tool works for everyone - so try them and choose what works for you"
+  },
+  "tools": {
+        "select_tools": "Select Your Tools",
+        "select_tools_you_connect": "Select the physical tool you connect to most"
   },
   "imagery":{
     "visualizing":"Visualizing a 'good' and 'safe' place in your mind can be a powerful tool in managing stress.",
@@ -165,7 +170,7 @@
     "routine":"You have to go over your tools to see your routine"
   },
   "main_menu":{
-    "home_page":"Home Page",
+    "home_page":"Introduction",
     "contact_us":"Contact Us",
     "questionnaire":"My Questionnaire",
     "summary":"My Summary",
@@ -174,9 +179,11 @@
     "physical":"Physical Tools",
     "positive":"Positive Thinking",
     "main":"Main",
+    "goaceit": "Go Ace It",
     "logout":"Logout"
   },
   "routine":{
+    "go_ace_it": "Go Ace It",
     "close_eyes":"Close your eyes",
     "deep_breath":"Take a deep breath",
     "choose":"Choose from",

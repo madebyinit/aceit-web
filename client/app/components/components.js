@@ -14,6 +14,8 @@ import errorPageModule from './errorPage/errorPage';
 import staticPageModule from './staticPage/staticPage';
 import videoPageModule from './videoPage/videoPage';
 import gamesModule from './games/games';
+import goaceitModule from './goaceit/goaceit';
+
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -30,7 +32,8 @@ let componentModule = angular.module('app.components', [
   errorPageModule,
   staticPageModule,
   videoPageModule,
-  gamesModule
+  gamesModule,
+  goaceitModule
 ])
 
 .name;

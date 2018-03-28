@@ -4,6 +4,7 @@ import physicalComponent from './physical.component';
 import imageryComponent from './imagery/imagery';
 import neckAndShouldersComponent from './neckAndShoulders/neckAndShoulders';
 import breathingComponent from './breathing/breathing';
+import toolsDialogComponent from './toolsDialog/toolsDialog.component.js';
 
 let physicalModule = angular.module('physical', [
   uiRouter
@@ -25,6 +26,7 @@ let physicalModule = angular.module('physical', [
 .component('breathing', breathingComponent)
 .component('neckAndShoulders', neckAndShouldersComponent)
 .component('imagery', imageryComponent)
+.component('toolsDialog',toolsDialogComponent)
 
 .name;
 

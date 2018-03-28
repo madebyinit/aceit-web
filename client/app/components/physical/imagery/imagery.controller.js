@@ -19,15 +19,17 @@ class ImageryController {
     })
   }
 
-  goSummary(){
-    this.$state.go('summary');
-  }
+  // goSummary(){
+  //     debugger;
+  //       this.showToolsDialog = true;
+  //   this.$state.go('summary');
+  // }
 
   saveWord(val){
     this.imageryWord = val;
     this.connection.saveData(val,'imagery').then((res)=>{
       this.$timeout(()=>{
-        this.showDialog = false;
+        this.showImageryDialog = false;
         this._getWord();
       },0);
     },(error)=>{

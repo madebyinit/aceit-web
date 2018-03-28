@@ -4,15 +4,19 @@
 }
 
 .game-wrap{
-  background: linear-gradient(to bottom, #111111 0%,#3d3d3d 100%);
-  min-height: calc( 100vh - 40px );
-  padding: 40px 0 0 0;
+  background: linear-gradient(to bottom, #000000 0%,#3d3d3d 100%);
+  // min-height: calc( 100vh - 40px );
+  // padding: 40px 0 0 0;
+  height: 100vh;
   .game-inner{
-    max-width: 1600px;
+    max-width: 1900px;
     padding: 0 100px;
     box-sizing: border-box;
     margin:0 auto;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     .game-buttons{
       display: flex;
       justify-content: space-between;
@@ -111,13 +115,13 @@
   }
   .main-game{
     margin: 30px 0;
-    height: 760px;
-    width: 100%;
     border-radius: 20px;
     border: 10px solid #ffdc83;
     box-sizing: border-box;
     position: relative;
     box-shadow: 0px 0px 40px 10px rgba(254, 219, 137, 0.4);
+    display: flex;
+    flex: 1;
   }
 }
 

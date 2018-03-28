@@ -2,7 +2,7 @@ class dialogElementGameController {
   constructor($timeout,$scope) {
     this.$timeout = $timeout;
     this.$scope = $scope;
-    this.ButtonCheck = false;
+    // this.buttonCheck = false;
   }
 
   $onInit(){

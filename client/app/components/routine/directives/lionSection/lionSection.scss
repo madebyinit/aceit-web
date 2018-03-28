@@ -22,7 +22,7 @@
     font-size: 26px;
   }
   .lion-title-end{
-    padding: 30px 0 90px;
+    padding: 30px 0 20px;
   }
   .lion-section-video{
     width: 700px;
@@ -35,9 +35,14 @@
       position: relative;
       top:5px;
       left:5px;
-    }
+  }
   }
   .button-container{
-    text-align: center;
+      text-align: center;
+      .goaceit-button{
+          background: linear-gradient(to top, #299eb8, #0e7086 60%);
+          color:white;
+      }
+
   }
-}
+    }

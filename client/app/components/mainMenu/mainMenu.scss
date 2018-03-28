@@ -1,5 +1,8 @@
 @import "../../common/common";
 
+$menu-gradient-color-1: #389cd7;
+$menu-gradient-color-2: #36bad7;
+
 @mixin centering(){
   position: absolute;
   top: 50%;
@@ -15,16 +18,30 @@
 md-input-container{
   width: 100%;
 }
-.main-menu-style {
-  height: 40px;
-  width: 100%;
+.menu-transparent {
+    .main-menu-style {
+
+        position:absolute;
   background-color: rgba(255, 255, 255, 0.18);
-  position: absolute;
-  z-index: 50;
+  background:none;
+    }
+}
+.main-menu-style {
+z-index:0;
+  height: $header-bar-height;
+  width: 100%;
+  // background-color: rgba(255, 255, 255, 0.18);
+    background: -webkit-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
+    background: -o-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
+    background: -moz-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
+    background: linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
+  position: relative;
+  // position: absolute;
+  // z-index: 50;
   .main-logo{
-    background: url($cdnImage + 'logo_white.png') no-repeat;
-    width: 104.5px;
-    height: 58px;
+    background: url($cdnImage + 'logo_new.png') no-repeat;
+    width: 90px;
+    height: 47px;
     right: 15px;
     @include centering();
     background-size: 100%;

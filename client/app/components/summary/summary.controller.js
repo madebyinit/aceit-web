@@ -11,50 +11,42 @@ class SummaryController {
   }
 
   $onInit(){
-    this.progressLinear.showProgress();
-    this._getUserData();
+    // this.progressLinear.showProgress();
     this.connection.saveData(true,'summaryComplete');
+    this._getUserData();
   }
 
   stateGo(name){
     this.$state.go(name);
   }
-
-  _getUserData(){
+_getUserData(){
     this.connection.getData().then((res)=>{
       this.user = res;
       this.userSum = {positive:0,concentration:0,physical:0};
       if(_.get(res,'questionnaire')){
         this.sumUserQuestionnaire();
-        this.routineDisabled();
+        // this.routineDisabled();
       }else{
         this.$state.go('questionnaire');
       }
+        if (this.progressLinear) {
       this.progressLinear.hideProgress();
+        }
     },(error)=>{
       console.log(error);
+        if (this.progressLinear) {
       this.progressLinear.hideProgress();
-    })
-  }
-
-  routineDisabled(){
-    let that = this;
-    this.enableRoutineButton = true;
-    _.forEach(this.userSum,(value,key)=>{
-      if(value >= 10 && !_.get(that.user,`${key}Complete`)){
-        this.$timeout(()=>{
-          this.enableRoutineButton = false;
-        },0);
-      }
+        }
     });
   }
+
 
   sumUserQuestionnaire(){
     _.forEach(_.get(this.user,'questionnaire'),(value)=>{
       this.userSum[value.category] += value.answer;
     });
   }
-}
 
+}
 SummaryController.$inject = ['connection','$state','progressLinear','$timeout'];
 export default SummaryController;
