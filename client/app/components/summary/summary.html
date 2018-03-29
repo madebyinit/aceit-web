@@ -5,7 +5,22 @@
   </div>
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
-    <div class="summary-item"><img src="mazerace/summary-bg.png" alt=""> <div class="summary-item-text">Test text  </div></div>
+    <div class="summary-item"><img src="mazerace/summary-bg.png" alt=""> 
+    <div class="summary-item-text">
+      <strong>{{::$ctrl.user.name}}, Our findings give an indication of the way you manage stress under pressure. In order to reach your peak performanse, focus on following:</strong></br>  
+      {{$ctrl.guess}}</br></br>
+      {{$ctrl.gameSuccComp}}</br></br>
+      {{$ctrl.slowStarter }}</br></br>
+      {{$ctrl.impulsivity}}</br></br>
+      {{$ctrl.panic}}</br></br>
+      {{$ctrl.negThink}}</br></br>
+      {{$ctrl.lowConfidence}}</br></br>
+      {{$ctrl.perfectionism}}</br></br>
+      {{$ctrl.badTimeMan}}</br></br>
+      {{$ctrl.frustration}}</br></br>
+      {{$ctrl.lackRicuz}}</br></br>
+      {{$ctrl.muteMusic}}      
+    </div></div>
     <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
     <div class="sub-title jordan" ng-if="$ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 6 && $ctrl.userSum.concentration < 10">{{:: 'summary.jordan' | translate}}</div>
     <required-cards></required-cards>
