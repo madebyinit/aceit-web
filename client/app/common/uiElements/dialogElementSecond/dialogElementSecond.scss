@@ -9,8 +9,8 @@
   left: 0;
   z-index: 500;
   .dialog-window-body {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     left: 0;
     right: 0;
@@ -33,6 +33,7 @@
     padding: 25px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
+    margin: 0;
   }
 
   .save-and-close-button-hide{
@@ -57,9 +58,9 @@
   }
 
   .dialog-window-input {
-    padding: 60px 0 20px;
+    padding: 10px 0 10px;
     .dialog-window-input-title {
-      margin-bottom: 30px;
+      margin-bottom: 0;
       color: #0e7086;
       font-size: 30px;
     }
@@ -69,10 +70,14 @@
 .select-element{
   .range-game-element {
     height: 39px;
-    width: 380px;
+    width: 300px;
     background-color: #0e7086;
     border-radius: 70px;
-    margin: 0 auto 30px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
   }
   .dot-game {
     width: 28px;
@@ -84,12 +89,7 @@
     margin: -15px 29px;
     cursor: pointer;
     line-height: 28px;
-    &:first-child{
-      margin: 4px 26px 4px 0;
-    }
-    &:last-child{
-      margin: 4px 0 4px 26px;
-    }
+    margin: 0;
   }
   .range-game-element > .star-on:nth-child(1) {
     background-color:  #94dc8a!important;
