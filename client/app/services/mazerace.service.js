@@ -1,6 +1,5 @@
 class MazeraceService {
     constructor(gameScoreValue){
-        'ngInject';
         this.gameScore = gameScoreValue;
     }
 
@@ -9,7 +8,6 @@ class MazeraceService {
     }
 
     end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-
         const result = {
             lowConfidence: 0,
             badTimeMan: 0,
@@ -21,6 +19,10 @@ class MazeraceService {
             panic: 0,
             frustration: 0
         };
+
+        if (win == true){
+          this.gameScore.gamesSuccessfullyCompleted += 1;
+        }
 
         if (win == true){
             // Successful Game Duration
@@ -128,6 +130,8 @@ class MazeraceService {
                 result.impulsivity +=10;
             }
 
+            this.gameScore.mazerace = Object.assign({}, result);
+
     }
 
     replay() {
@@ -135,4 +139,5 @@ class MazeraceService {
     }
 }
 
+MazeraceService.$inject = ['gameScoreValue'];
 module.exports = MazeraceService;

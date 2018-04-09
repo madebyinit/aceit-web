@@ -1,6 +1,5 @@
 class MouseGameService {
     constructor(gameScoreValue){
-        'ngInject';
         this.gameScore = gameScoreValue;
     }
 
@@ -20,6 +19,10 @@ class MouseGameService {
             panic: 0,
             frustration: 0
         };
+
+        if (win == true){
+            this.gameScore.gamesSuccessfullyCompleted += 1;
+        }
 
     // Successful Game Duration
 
@@ -43,6 +46,8 @@ class MouseGameService {
         result.impulsivity +=10;
     }
 
+    this.gameScore.mousetrap = Object.assign({}, result);
+
     }
 
     replay() {
@@ -50,4 +55,5 @@ class MouseGameService {
     }
 }
 
+MouseGameService.$inject = ['gameScoreValue'];
 module.exports = MouseGameService;

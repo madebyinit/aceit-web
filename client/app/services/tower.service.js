@@ -1,6 +1,5 @@
 class TowerService {
     constructor(gameScoreValue){
-        'ngInject';
         this.gameScore = gameScoreValue;
     }
 
@@ -20,6 +19,11 @@ class TowerService {
             panic: 0,
             frustration: 0
         };
+
+        if (win == true){
+            this.gameScore.gamesSuccessfullyCompleted += 1;
+        }
+        
     // Successful Game Duration
 
         if (duration > 80000 && duration <= 90000){ 
@@ -58,7 +62,7 @@ class TowerService {
             result.frustration+=10; 
         }
 
-    //   this.gameScore.tower = {...result};
+      this.gameScore.tower = Object.assign({}, result);
     }
 
     replay() {
@@ -66,4 +70,5 @@ class TowerService {
     }
 }
 
+TowerService.$inject = ['gameScoreValue'];
 module.exports = TowerService;

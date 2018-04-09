@@ -31,7 +31,7 @@
         <h3>{{$ctrl.timeRemain}}</h3>
       </div>
       <div class="btn-wrap-2">
-        <md-button class="button-style summary-button-style retry" ng-if="$ctrl.gameNumber == 3 && $ctrl.mousewin == false" ng-click="$ctrl.restartMosetrap()">
+        <md-button class="button-style summary-button-style retry" ng-if="!$ctrl.showMouseRetry " ng-click="$ctrl.restartMosetrap()">
           <span >RETRY</span>
           <img src="mazerace/retry-ico.png" alt="">
         </md-button>

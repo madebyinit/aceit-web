@@ -1,7 +1,7 @@
 class ParkingLotService {
-    constructor(gameScoreValue){
-        'ngInject';
+    constructor(gameScoreValue,estimationOfResults){
         this.gameScore = gameScoreValue;
+        this.estimationOfResults = estimationOfResults;
     }
 
     start() {
@@ -20,21 +20,25 @@ class ParkingLotService {
             panic: 0,
             frustration: 0
         };
-    
+
+        if (win == true){
+        this.gameScore.gamesSuccessfullyCompleted += 1;
+        }
+
         // No Initial Activity
         if (firstMoveTime > 1400 && firstMoveTime < 2400) {
-            result.lowConfidence +=3; 
-            result.negThink += 1; 
-            result.lackRicuz += 1; 
-            result.slowStarter += 5; 
-            result.panic += 3;
+            result.lowConfidence += this.estimationOfResults.parkinglot.NIA["15-24"].LC; 
+            result.negThink += this.estimationOfResults.parkinglot.NIA["15-24"].NT; 
+            result.lackRicuz += this.estimationOfResults.parkinglot.NIA["15-24"].LR; 
+            result.slowStarter += this.estimationOfResults.parkinglot.NIA["15-24"].SS; 
+            result.panic += this.estimationOfResults.parkinglot.NIA["15-24"].Panic;
         }
         else if (firstMoveTime > 2400) { 
-            result.lowConfidence +=5; 
-            result.negThink += 2; 
-            result.lackRicuz += 2; 
-            result.slowStarter += 10; 
-            result.panic += 10; 
+            result.lowConfidence += this.estimationOfResults.parkinglot.NIA["25+"].LC; 
+            result.negThink += this.estimationOfResults.parkinglot.NIA["25+"].NT; 
+            result.lackRicuz += this.estimationOfResults.parkinglot.NIA["25+"].LR; 
+            result.slowStarter += this.estimationOfResults.parkinglot.NIA["25+"].SS; 
+            result.panic += this.estimationOfResults.parkinglot.NIA["25+"].Panic;
         }
     
         // Successful Game Duration
@@ -103,8 +107,8 @@ class ParkingLotService {
             result.impulsivity +=10; 
             result.frustration+=10; 
         }
-        this.gameScore.parkingLot = {...result};
-        console.log(this.gameScore.parkingLot);
+        this.gameScore.parkinglot = {...result};
+        console.log(this.gameScore);
     }
 
     endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
@@ -119,6 +123,10 @@ class ParkingLotService {
             panic: 0,
             frustration: 0
         };
+
+        if (win == true){
+            this.gameScore.gamesSuccessfullyCompleted += 1;
+        }
 
         // Instruction Button
 
@@ -143,6 +151,8 @@ class ParkingLotService {
             result.lackRicuz+=4; 
             result.panic+=10; 
         }
+
+        this.gameScore.parkinglotLast = {...result};
     }
 
     replay() {
@@ -150,4 +160,5 @@ class ParkingLotService {
     }
 }
 
+ParkingLotService.$inject = ['gameScoreValue','estimationOfResults'];
 module.exports = ParkingLotService;

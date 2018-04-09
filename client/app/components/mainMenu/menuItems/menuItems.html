@@ -13,6 +13,10 @@
                 <div class="menu-icon"><img ng-src="mazerace/games-ico.png"></div><span>Games</span>
             </md-list-item>
             <md-divider></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('algorithm')">
+                <div class="menu-icon"><img ng-src="mazerace/games-ico.png"></div><span>Algorithm</span>
+            </md-list-item>
+            <md-divider></md-divider>
             <md-list-item class="md-3-line" ng-if="$ctrl.user.questionnaireComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'questionnaire'}" ng-click="$ctrl.stateChange('questionnaire')">
                 <div class="menu-icon"><img class="questionnaire-icon" ng-src="{{::$root.imageCdn}}icn-my-q-menu.svg"></div><span>{{::'main_menu.questionnaire' | translate}}</span>
             </md-list-item>

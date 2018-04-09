@@ -8,19 +8,23 @@
     <div class="summary-item"><img src="mazerace/summary-bg.png" alt=""> 
     <div class="summary-item-text">
       <strong>{{::$ctrl.user.name}}, Our findings give an indication of the way you manage stress under pressure. In order to reach your peak performanse, focus on following:</strong></br>  
-      {{$ctrl.guess}}</br></br>
-      {{$ctrl.gameSuccComp}}</br></br>
-      {{$ctrl.slowStarter }}</br></br>
-      {{$ctrl.impulsivity}}</br></br>
-      {{$ctrl.panic}}</br></br>
-      {{$ctrl.negThink}}</br></br>
-      {{$ctrl.lowConfidence}}</br></br>
-      {{$ctrl.perfectionism}}</br></br>
-      {{$ctrl.badTimeMan}}</br></br>
-      {{$ctrl.frustration}}</br></br>
-      {{$ctrl.lackRicuz}}</br></br>
-      {{$ctrl.muteMusic}}      
-    </div></div>
+      
+      <span ng-if="$ctrl.gameSummaryValue.selfAssessment != '' ">{{$ctrl.gameSummaryValue.selfAssessment}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.gamesSuccessfullyCompleted != '' ">{{$ctrl.gameSummaryValue.gamesSuccessfullyCompleted}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.slowStarter != '' ">{{$ctrl.gameSummaryValue.slowStarter }}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.impulsivity != '' ">{{$ctrl.gameSummaryValue.impulsivity}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.panic != '' ">{{$ctrl.gameSummaryValue.panic}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.negativeThinking}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.lowConfidence}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.perfectionism != '' ">{{$ctrl.gameSummaryValue.perfectionism}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.badTimeManagement != '' ">{{$ctrl.gameSummaryValue.badTimeManagement}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.frustration != '' ">{{$ctrl.gameSummaryValue.frustration}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.concentration != '' ">{{$ctrl.gameSummaryValue.concentration}}</span></br></br>
+      <span ng-if="$ctrl.gameSummaryValue.muteMusic != '' ">{{$ctrl.gameSummaryValue.muteMusic}}</span>      
+    </div>
+    </div>
+
+
     <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
     <div class="sub-title jordan" ng-if="$ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 6 && $ctrl.userSum.concentration < 10">{{:: 'summary.jordan' | translate}}</div>
     <required-cards></required-cards>

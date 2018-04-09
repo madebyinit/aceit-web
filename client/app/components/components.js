@@ -15,6 +15,8 @@ import staticPageModule from './staticPage/staticPage';
 import videoPageModule from './videoPage/videoPage';
 import gamesModule from './games/games';
 import goaceitModule from './goaceit/goaceit';
+import algorithmModule from './algorithm/algorithm';
+
 
 // services
 import GamesService from '../services/games.service';
@@ -22,7 +24,7 @@ import MazeraceService from '../services/mazerace.service';
 import MouseGameService from '../services/mouseGame.service';
 import TowerService from '../services/tower.service';
 import ParkingLotService from '../services/parkingLot.service';
-import HelperService from '../services/helper.service';
+import HelperService from '../../../services/helper.service';
 import SkipService from '../services/skip.service';
 
 let componentModule = angular
@@ -42,14 +44,50 @@ let componentModule = angular
   staticPageModule,
   videoPageModule,
   gamesModule,
-  goaceitModule
+  goaceitModule,
+  algorithmModule
 ])
-.value('gameScoreValue', {
-  'parkingLot': {},
-  'mazerace': {},
-  'mouseGame': {},
-  'tower': {}
+
+.value('orderOfGames', {
+  'gameSequence': [],
+  'level':[],
 })
+
+.value('estimationOfResults', {
+  'parkinglot': {},
+  'mazerace': {},
+  'mousetrap': {},
+  'tower': {},
+  'parkinglotLast': {}
+})
+
+.value('gameScoreValue', {
+  'parkinglot': {},
+  'mazerace': {},
+  'mousetrap': {},
+  'tower': {},
+  'parkinglotLast': {},
+  'muteMusic': Number,
+  'gamesSuccessfullyCompleted': Number,
+  'selfAssessment':Number
+})
+
+.value('gameSummaryValue', {
+  'selfAssessment': String,
+  'gamesSuccessfullyCompleted': String,
+  'slowStarter': String,
+  'impulsivity': String,
+  'panic': String,
+  'negativeThinking': String,
+  'lowConfidence': String,
+  'perfectionism': String,
+  'badTimeManagement': String,
+  'frustration': String,
+  'concentration': String,
+  'muteMusic': String
+})
+
+
 .service('helperService', HelperService)
 .service('gamesService', GamesService)
 .service('mazeraceService', MazeraceService)
