@@ -30,12 +30,6 @@ class HelperService {
          //Panic = panic
          //Frustration = F
          
-        //No Initial Activity
-            NIA : {
-                '15-24': {'LC': 3,'BTM': 0,'P': 0,'NT':1,'LR': 1,'I':0,'SS': 5,'Panic':0,'F':0},
-                '25+':   {'LC': 5,'BTM': 0,'P': 0,'NT':2,'LR': 1,'I':0,'SS':10,'Panic':0,'F':0}
-            },
-
          //Successful Game Duration
             SGD : {
                 '61-70':    {'LC': 1,'BTM': 2,'P': 0,'NT':1,'LR': 0,'I':0,'SS': 1,'Panic':0,'F':0},
@@ -59,14 +53,20 @@ class HelperService {
 
         //Instruction Button
             IB: {
-                '1': {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':5,'SS': 0,'Panic':0,'F':0},
+                '1': {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I': 5,'SS': 0,'Panic':0,'F':0},
                 '2+':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':10,'SS': 0,'Panic':0,'F':0}},
 
         //Total # of moves
             TM: {
-                '41-60':{'LR':5,'F':5},
-                '61+':{'LR':10,'F':10}},
+                '41-60':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 5,'I':0,'SS': 0,'Panic':0,'F': 5},
+                '61+':  {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR':10,'I':0,'SS': 0,'Panic':0,'F':10}},
+           
+        //No Initial Activity
+            NIA : {
+                '15-24': {'LC': 3,'BTM': 0,'P': 0,'NT':1,'LR': 1,'I':0,'SS': 5,'Panic':0,'F':0},
+                '25+':   {'LC': 5,'BTM': 0,'P': 0,'NT':2,'LR': 1,'I':0,'SS':10,'Panic':0,'F':0}
             }
+        },
 // _______
         this.estimationOfResults.tower={
         //Successful Game Duration
@@ -92,7 +92,10 @@ class HelperService {
                 '1': {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':5,'SS': 0,'Panic':0,'F':0},
                 '2+':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':10,'SS': 0,'Panic':0,'F':0}},
         //Total # of moves
-            TM: {'46-80':{'LR':5,'F':5},'81+':{'LR':10,'F':10}},
+             TM: {
+                '46-80':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 5,'I':0,'SS': 0,'Panic':0,'F': 5},
+                '81+':  {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR':10,'I':0,'SS': 0,'Panic':0,'F':10}},
+        
         }
 // _______
         this.estimationOfResults.mousetrap={
@@ -141,8 +144,8 @@ class HelperService {
                 '91-100':   {'LC': 8,'BTM':10,'P': 8,'NT': 8,'LR': 8,'I': 0,'SS':0,'Panic': 0,'F':0},
                 '101-115':  {'LC':10,'BTM':10,'P': 9,'NT': 9,'LR':10,'I': 0,'SS':0,'Panic': 0,'F':0},
                 '116+':     {'LC':10,'BTM':10,'P':10,'NT':10,'LR':10,'I': 0,'SS':0,'Panic': 0,'F':0}},
-        //Game Duration When Time is Up
-            GDETiU: {
+        //Current Game Duration When Time is Up
+            CGDETiU: {
                 '0-30':     {'LC': 0,'BTM':10,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic':0,'F':0},
                 '31-40':    {'LC': 0,'BTM': 9,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic':0,'F':0},
                 '41-50':    {'LC': 0,'BTM': 8,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic':0,'F':0},

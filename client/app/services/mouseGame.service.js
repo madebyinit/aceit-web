@@ -26,25 +26,75 @@ class MouseGameService {
 
     // Successful Game Duration
 
-    if (duration > 90000 && duration <= 100000){ 
-        result.badTimeMan+=2; 
-    }
-    else if (duration > 100000 && duration <= 115000){ 
-        result.badTimeMan+=4; 
-        result.perfectionism +=4; 
-    }
-    else if (duration > 116000){ 
-        result.badTimeMan+=10; 
-        result.perfectionism +=6; 
-    }
+        if (duration > 90000 && duration <= 100000){ 
+            // result.badTimeMan+=2; 
+            result.lowConfidence += this.estimationOfResults.parkinglot.SGD["91-100"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["91-100"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkinglot.SGD["91-100"].P; 
+            result.negThink +=      this.estimationOfResults.parkinglot.SGD["91-100"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkinglot.SGD["91-100"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkinglot.SGD["91-100"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkinglot.SGD["91-100"].SS; 
+            result.panic +=         this.estimationOfResults.parkinglot.SGD["91-100"].Panic;
+            result.frustration +=   this.estimationOfResults.parkinglot.SGD["91-100"].F;
+            
+        }
+        else if (duration > 100000 && duration <= 115000){ 
+            // result.badTimeMan+=4; 
+            // result.perfectionism +=4; 
+
+            result.lowConfidence += this.estimationOfResults.parkinglot.SGD["101-115"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["101-115"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkinglot.SGD["101-115"].P; 
+            result.negThink +=      this.estimationOfResults.parkinglot.SGD["101-115"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkinglot.SGD["101-115"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkinglot.SGD["101-115"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkinglot.SGD["101-115"].SS; 
+            result.panic +=         this.estimationOfResults.parkinglot.SGD["101-115"].Panic;
+            result.frustration +=   this.estimationOfResults.parkinglot.SGD["101-115"].F;
+        }
+        else if (duration > 116000){ 
+            // result.badTimeMan+=10; 
+            // result.perfectionism +=6; 
+
+            result.lowConfidence += this.estimationOfResults.parkinglot.SGD["116+"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["116+"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkinglot.SGD["116+"].P; 
+            result.negThink +=      this.estimationOfResults.parkinglot.SGD["116+"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkinglot.SGD["116+"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkinglot.SGD["116+"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkinglot.SGD["116+"].SS; 
+            result.panic +=         this.estimationOfResults.parkinglot.SGD["116+"].Panic;
+            result.frustration +=   this.estimationOfResults.parkinglot.SGD["116+"].F;
+        }
 
     // Instruction Button
+        if(instructionsClickCount === 1) {
+            // result.impulsivity +=5;
+            result.lowConfidence += this.estimationOfResults.parkinglot.IB["1"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["1"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkinglot.IB["1"].P; 
+            result.negThink +=      this.estimationOfResults.parkinglot.IB["1"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkinglot.IB["1"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkinglot.IB["1"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkinglot.IB["1"].SS; 
+            result.panic +=         this.estimationOfResults.parkinglot.IB["1"].Panic;
+            result.frustration +=   this.estimationOfResults.parkinglot.IB["1"].F;
+            
+            
 
-    if(instructionsClickCount === 1) {
-        result.impulsivity +=5;
-    } else if(instructionsClickCount >= 2) {
-        result.impulsivity +=10;
-    }
+        }else if(instructionsClickCount >= 2) {
+            // result.impulsivity +=10;
+            result.lowConfidence += this.estimationOfResults.parkinglot.IB["2+"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["2+"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkinglot.IB["2+"].P; 
+            result.negThink +=      this.estimationOfResults.parkinglot.IB["2+"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkinglot.IB["2+"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkinglot.IB["2+"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkinglot.IB["2+"].SS; 
+            result.panic +=         this.estimationOfResults.parkinglot.IB["2+"].Panic;
+            result.frustration +=   this.estimationOfResults.parkinglot.IB["2+"].F;
+        }
 
     this.gameScore.mousetrap = Object.assign({}, result);
 
