@@ -1,9 +1,6 @@
-
 class GamesController {
-  constructor($translate,$document,$state,connection, $interval,$scope,$window) {
-    'ngInject';
+  constructor($translate,$state,connection, $interval,$scope,$window, gamesService, parkingLotService, towerService,  mouseGameService,  mazeraceService,  skipService, gameScoreValue,orderOfGames,helperService) {
     this.$translate = $translate;
-    this.$document = $document;
     this.$state = $state;
     this.connection = connection;
     this.firstStart = false; 
@@ -15,80 +12,151 @@ class GamesController {
     this.gameNumber = this.gameNumber; 
     this.showWindow = true;
     this.$scope = $scope;
-    this.window = $window;
     this.startTimer = this.startTimer.bind(this);
     this.mousewin = true;
     this.result = [];
     this.gameSuccComp = 0;
-
-    }
+    this.gamesService = gamesService;
+    this.parkingLotService = parkingLotService;
+    this.towerService = towerService;
+    this.mouseGameService = mouseGameService;
+    this.mazeraceService = mazeraceService;
+    this.gameScoreValue = gameScoreValue;
+    this.skipService = skipService;
+    this.orderOfGames = orderOfGames;
+    this.helperService = helperService;
+    this.gameBeforeLastTime = 0;
+    this.gameBefore = '' ;
+    this.showMouseRetry = true;
+  }
 
   $onInit(){
-    this.gameNumber = 1; 
+    console.log(this.orderOfGames);
 
+    this.gameNumber = 1; 
     angular.element(document).ready(()=>{
-      // this.createGame(nogic, {language:'en', level:5})
-      nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:5});
+      nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:this.orderOfGames.level[0]});
     });
-    // this.getUserData();
-    
+
+    console.log(this.orderOfGames.gameSequence);
+    console.log(this.orderOfGames.level);
+    console.log(localStorage.getItem('gamePage'));
+
     if(localStorage.getItem('gamePage') == null){
       console.log("FIRST START");
+      this.firstStart = false;
+      this.helperService.gameSequence();
+      this.helperService.Results();
       
     }else{
       console.log("SECOND START");
       this.firstStart = true;
     }
 
-    localStorage.removeItem('lowConfidence');
-    localStorage.removeItem('badTimeMan');
-    localStorage.removeItem('perfectionism');
-    localStorage.removeItem('negThink');
-    localStorage.removeItem('lackRicuz');
-    localStorage.removeItem('impulsivity');
-    localStorage.removeItem('slowStarter');
-    localStorage.removeItem('panic');
-    localStorage.removeItem('frustration');
-    localStorage.removeItem('muteMusic');
-
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
           this.gameSecSum = (300 - this.seconds);
 
-          if (win == true){this.gameSuccComp ++}
+          if (win == true){this.gameSuccComp ++};
                     
-          // alert('duration = ' + firstMoveTime);
           // alert('duration = ' + duration);
           // alert('noOfMoves = ' + noOfMoves);
           // alert('instructionsClickCount = ' + instructionsClickCount);
           // alert('win = ' + win);
           // alert('firstMoveTime = ' + firstMoveTime);
 
-          if (this.gameNumber == 3){this.mousewin = win}
+          alert( 'duration = '+duration+' '+'firstMoveTime = '+firstMoveTime+' '+'noOfMoves = '+noOfMoves+' '+'instructionsClickCount = '+instructionsClickCount+' '+ 'win = ' + win + ' ')
 
-          if (this.gameNumber == 3 && this.mousewin == false){
+          if (this.orderOfGames.gameSequence[this.gameNumber-1] == 'mousetrap'){this.mousewin = win,  this.showMouseRetry = win};
 
+          if (this.orderOfGames.gameSequence[this.gameNumber-1] == 'mousetrap' && this.mousewin == false){
           }else{
+            this.showMouseRetry = true;
                 switch(this.gameNumber) {
-                  case 1: this.firstEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
-                  case 2: this.secondEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
-                  case 3: this.thirdEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
-                  case 4: this.fourthEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
-                  case 5: this.fifthEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 1: this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 2: this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 3: this.mouseGameService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 4: this.mazeraceService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 5: this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
                 }
 
                 this.gameNumber ++;
 
                 switch (this.gameNumber) {
                   //tower
-                  case 2:  this.createGame(nogic2, {language:'en', noOfRings:4}); break;
-                  //mousetrap
-                  case 3: this.createGame(nogic3, {language:'en', skipInstructions:'false'}); break;
-                  //moserace
-                  case 4: this.createGame(nogic4, {language: 'en', level: 1}); break;
-                  //parkinglot
-                  case 5: this.createGame(nogic, {language:'en', level:6});  break;
+                  case 2:  
+                  nogic.uninitialize();
+                  if (this.orderOfGames.gameSequence[1] == "tower"){
+                    this.gameBefore="tower"; 
+                    this.createGame(nogic2, {language:'en', noOfRings:this.orderOfGames.level[1]})};
 
-                  case 6: this.stateChange('home'); localStorage.setItem('gamePage', location.pathname); break;
+                  if (this.orderOfGames.gameSequence[1] == "mousetrap"){
+                    this.gameBefore="mousetrap";
+                    this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+                  if (this.orderOfGames.gameSequence[1] == "mazerace"){
+                    this.gameBefore="mazerace";
+                    this.createGame(nogic4, {language: 'en', level: this.orderOfGames.level[1]})};
+                  break;
+
+                  //mousetrap
+                  case 3: 
+                  switch(this.orderOfGames.gameSequence[1]) {
+                    case 1: nogic2.uninitialize(); break;
+                    case 2: nogic3.uninitialize(); break;
+                    case 3: nogic4.uninitialize(); break;
+                  }
+
+                  if (this.orderOfGames.gameSequence[2] == "tower"){
+                    this.gameBefore="tower"; 
+                    this.createGame(nogic2, {language:'en', noOfRings:this.orderOfGames.level[2]})
+                  };
+
+                  if (this.orderOfGames.gameSequence[2] == "mousetrap"){
+                    this.gameBefore="mousetrap";
+                    this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+                  if (this.orderOfGames.gameSequence[2] == "mazerace"){
+                    this.gameBefore="mazerace";
+                    this.createGame(nogic4, {language: 'en', level: this.orderOfGames.level[2]})};
+                  break;
+                  //moserace
+                  case 4: 
+                  switch(this.orderOfGames.gameSequence[2]) {
+                    case 1: nogic2.uninitialize(); break;
+                    case 2: nogic3.uninitialize(); break;
+                    case 3: nogic4.uninitialize(); break;
+                  }
+
+                  if (this.orderOfGames.gameSequence[3] == "tower"){
+                    this.gameBefore="tower"; 
+                    this.createGame(nogic2, {language:'en', noOfRings:this.orderOfGames.level[3]})
+                  };
+
+                  if (this.orderOfGames.gameSequence[3] == "mousetrap"){
+                    this.gameBefore="mousetrap";
+                    this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+                  if (this.orderOfGames.gameSequence[3] == "mazerace"){
+                    this.gameBefore="mazerace";
+                    this.createGame(nogic4, {language: 'en', level: this.orderOfGames.level[3]})};
+                  
+                  this.secondsleft = 300 - this.seconds - this.gameSecSum;
+                  this.gameSecSum += this.secondsleft; 
+                  this.gameBeforeLastTime = this.secondsleft;
+                  break;
+                  //parkinglot
+                  case 5: 
+                  switch(this.orderOfGames.gameSequence[3]) {
+                    case 1: nogic2.uninitialize(); break;
+                    case 2: nogic3.uninitialize(); break;
+                    case 3: nogic4.uninitialize(); break;
+                  }
+                  this.createGame(nogic, {language:'en', level:this.orderOfGames.level[4]});  break;
+
+                  case 6: 
+                  nogic.uninitialize();
+                  this.gamesService.gameStatistic();
+                  this.stateChange('home'); localStorage.setItem('gamePage', location.pathname); break;
                 }
               }
 
@@ -107,7 +175,7 @@ class GamesController {
   closeModal(val){
     const audio = document.getElementById("backgroundMusic"); 
     audio.play(); 
-    localStorage.setItem('guess',val); 
+    this.gameScoreValue.selfAssessment=val;
     this.showWindow = !this.showWindow;
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
@@ -125,158 +193,154 @@ class GamesController {
     if(this.seconds == 0){
       this.$interval.cancel(this.countdownTimer);
       this.timeRemain = "00:00";
+      console.log("END TIME",this.gameNumber );
+ 
+      switch (this.gameNumber){
+        case 1:
+          console.log("END TIME 1 GAME");
+          this.gamesService.EndTimeInGame("Game 1");
+        break;
+        case 2:
+          console.log("END TIME 2 GAME");
+          this.gamesService.EndTimeInGame("Game 2");
+        break;
+        case 3:
+          console.log("END TIME 3 GAME");
+          this.gamesService.EndTimeInGame("Game 3");
+        break;
+        case 5:
+          console.log("END TIME 5 GAME", this.gameSecSum);
+          this.gamesService.EndTimeInLastGame(this.gameSecSum);
+        break;
+      }
+
       this.showDialogEnd = true;
     }else{
       this.seconds --;
     }
    }
 
-   skipGame(){
+  skipGame(){
 
     switch (this.gameNumber) {
       case 1:
       this.secondsleft = 300 - this.seconds;
       this.gameSecSum += this.secondsleft;
-      console.log(this.secondsleft,"!!!!!!!!!!!!!!");
 
-        if (this.secondsleft <= 30){ console.log("TEST");  this.result[0] = [10,10,0,10,10,10,10,10,0]; }
-        else if (this.secondsleft > 30 && this.secondsleft <= 40){ this.result[0] = [10,8,0,10,0,9,8,9,0]; }
-        else if (this.secondsleft > 40 && this.secondsleft <= 50){ this.result[0] = [9,6,0,9,0,8,4,8,0]; }
-        else if (this.secondsleft > 50 && this.secondsleft <= 60){ this.result[0] = [7,0,0,7,0,0,3,0,0]; }
-        else if (this.secondsleft > 60 && this.secondsleft <= 70){ this.result[0] = [5,2,0,5,0,0,4,0,0]; }
-        else if (this.secondsleft > 70 && this.secondsleft <= 80){ this.result[0] = [6,6,2,6,0,0,7,0,0]; }
-        else if (this.secondsleft > 80 && this.secondsleft <= 90){ this.result[0] = [7,9,5,7,0,0,9,0,0]; }
-        else if (this.secondsleft > 90 && this.secondsleft <= 100){ this.result[0] = [8,10,10,8,0,0,10,0,0]; }
-        else if (this.secondsleft > 100 && this.secondsleft <= 115){ this.result[0] = [10,10,10,10,0,0,10,0,0]; }
-        else if (this.secondsleft > 116){ this.result[0] = [0,0,0,0,0,10,0,0,0]; }
-      
-      console.log(this.result[0]) ;
+      this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[0]);
       break;
       case 2:
         this.secondsleft = 300 - this.seconds - this.gameSecSum;
         this.gameSecSum +=this.secondsleft; 
-        console.log(this.secondsleft,"@@@@@@@@@@@@@@@");
 
-        if (this.secondsleft <= 30){  this.result[1] = [5,0,0,0,0,6,0,0,0]; }
-        else if (this.secondsleft > 30 && this.secondsleft <= 40){ this.result[1] = [4,0,0,0,0,2,0,0,0]; }
-        else if (this.secondsleft > 40 && this.secondsleft <= 50){ this.result[1] = [3,0,0,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 50 && this.secondsleft <= 60){ this.result[1] = [0,0,0,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 60 && this.secondsleft <= 70){ this.result[1] = [0,0,0,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 70 && this.secondsleft <= 80){ this.result[1] = [0,2,2,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 80 && this.secondsleft <= 90){ this.result[1] = [0,4,4,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 90 && this.secondsleft <= 100){ this.result[1] = [0,8,8,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 100 && this.secondsleft <= 115){ this.result[1] = [0,10,10,0,0,0,0,0,0]; }
-        else if (this.secondsleft > 116) { this.result[1] = [0,10,10,0,0,10,0,0,0]; }
-
-        console.log(this.result[1]) ;
+        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[1]);
       break;
       case 3:
         this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft; console.log(this.secondsleft,"#############");
+        this.gameSecSum +=this.secondsleft; 
 
-          if (this.secondsleft <= 30){  this.result[2] = [10,10,0,10,0,10,0,0,0]; }
-          else if (this.secondsleft > 30 && this.secondsleft <= 40){ this.result[2] = [8,6,0,8,0,8,0,0,0]; }
-          else if (this.secondsleft > 40 && this.secondsleft <= 90){ this.result[2] = [0,0,0,0,0,0,0,0,0]; }
-          else if (this.secondsleft > 90 && this.secondsleft <= 100){ this.result[2] = [0,3,1,0,0,0,0,0,0]; }
-          else if (this.secondsleft > 100 && this.secondsleft <= 115){ this.result[2] = [0,6,3,0,0,0,0,0,0]; }
-          else if (this.secondsleft > 116){ this.result[2] = [0,10,10,0,0,0,0,0,0]; }
-
-        console.log(this.result[2]) ;
+        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[2]);
       break;
       case 4:
         this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft; console.log(this.secondsleft,"$$$$$$$$$$$");
+        this.gameSecSum +=this.secondsleft; 
+        this.gameBeforeLastTime = this.secondsleft;
 
-          if (this.secondsleft <= 30){  this.result[3] = [10,10,0,10,10,10,0,10,0]; }
-          else if (this.secondsleft > 30 && this.secondsleft <= 40){ this.result[3] = [9,9,0,9,9,9,0,9,0]; }
-          else if (this.secondsleft > 40 && this.secondsleft <= 50){ this.result[3] = [8,7,0,8,8,0,0,8,0]; }
-          else if (this.secondsleft > 50 && this.secondsleft <= 60){ this.result[3] = [7,0,0,7,7,0,0,0,0]; }
-          else if (this.secondsleft > 60 && this.secondsleft <= 70){ this.result[3] = [6,0,0,6,6,0,0,0,0]; }
-          else if (this.secondsleft > 70 && this.secondsleft <= 80){ this.result[3] = [5,3,0,5,5,0,0,0,0]; }
-          else if (this.secondsleft > 80 && this.secondsleft <= 90){ this.result[3] = [7,7,3,4,4,0,0,0,0]; }
-          else if (this.secondsleft > 90 && this.secondsleft <= 100){ this.result[3] = [8,10,8,8,8,0,0,0,0]; }
-          else if (this.secondsleft > 100 && this.secondsleft <= 115){ this.result[3] = [10,10,9,10,10,0,0,0,0]; }
-          else if (this.secondsleft > 116){ this.result[3] = [10,10,10,10,10,0,0,0,0]; }
-
-        console.log(this.result[3]) ;
+        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[3]);
       break;
       case 5:
-      this.secondsleft = 300 - this.seconds - this.gameSecSum;
-      this.gameSecSum +=this.secondsleft; console.log(this.secondsleft,"%%%%%%%%%%%%");
+        this.secondsleft = 300 - this.seconds - this.gameSecSum;
+        this.gameSecSum +=this.secondsleft;
       break;
     }
 
     this.gameNumber ++;
-
     switch (this.gameNumber) {
       //tower
-      case 2:  this.createGame(nogic2, {language:'en', noOfRings:4}); break;
+      case 2:  
+      nogic.uninitialize();
+
+      if (this.orderOfGames.gameSequence[1] == "tower"){
+        this.gameBefore="tower"; 
+        this.createGame(nogic2, {language:'en', noOfRings:4})};
+
+      if (this.orderOfGames.gameSequence[1] == "mousetrap"){
+        this.gameBefore="mousetrap";
+        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+      if (this.orderOfGames.gameSequence[1] == "mazerace"){
+        this.gameBefore="mazerace";
+        this.createGame(nogic4, {language: 'en', level: 2})};
+      break;
       //mousetrap
-      case 3: this.createGame(nogic3, {language:'en', skipInstructions:'true'}); break;
+      case 3: 
+      switch(this.orderOfGames.gameSequence[1]) {
+        case 1: nogic2.uninitialize(); break;
+        case 2: nogic3.uninitialize(); break;
+        case 3: nogic4.uninitialize(); break;
+      }
+      this.showMouseRetry = true;
+      if (this.orderOfGames.gameSequence[2] == "tower"){
+        this.gameBefore="tower"; 
+        this.createGame(nogic2, {language:'en', noOfRings:4})
+      };
+
+      if (this.orderOfGames.gameSequence[2] == "mousetrap"){
+        this.gameBefore="mousetrap";
+        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+      if (this.orderOfGames.gameSequence[2] == "mazerace"){
+        this.gameBefore="mazerace";
+        this.createGame(nogic4, {language: 'en', level: 2})};
+      break;
       //moserace
-      case 4: this.createGame(nogic4, {language: 'en', level: 1}); break;
+      case 4: 
+      switch(this.orderOfGames.gameSequence[2]) {
+        case 1: nogic2.uninitialize(); break;
+        case 2: nogic3.uninitialize(); break;
+        case 3: nogic4.uninitialize(); break;
+      }
+      this.showMouseRetry = true;
+      if (this.orderOfGames.gameSequence[3] == "tower"){
+        this.gameBefore="tower"; 
+        this.createGame(nogic2, {language:'en', noOfRings:4})
+      };
+
+      if (this.orderOfGames.gameSequence[3] == "mousetrap"){
+        this.gameBefore="mousetrap";
+        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+      if (this.orderOfGames.gameSequence[3] == "mazerace"){
+        this.gameBefore="mazerace";
+        this.createGame(nogic4, {language: 'en', level: 2})};
+      break;
       //parkinglot
-      case 5: if (this.seconds > 180){ this.showDialog = true; this.gameNumber = 5; }  
-              this.createGame(nogic, {language:'en', level:6});  break;
+      case 5:
+      if (this.seconds > 180){ this.showDialog = true; this.gameNumber = 5; }   
+      this.showMouseRetry = true;
 
+      switch(this.orderOfGames.gameSequence[3]) {
+        case 1: nogic2.uninitialize(); break;
+        case 2: nogic3.uninitialize(); break;
+        case 3: nogic4.uninitialize(); break;
+      }
+
+      this.createGame(nogic, {language:'en', level:3});  break;
       case 6: 
-      let lowConfidence = 0;
-      let badTimeMan = 0;
-      let perfectionism = 0;
-      let negThink = 0;
-      let lackRicuz = 0;
-      let impulsivity = 0;
-      let slowStarter = 0;
-      let panic = 0;
-      let frustration = 0;
-
-      for (let i = 0; i < this.result.length; i++) { 
-      lowConfidence += this.result[i][0];
-      badTimeMan += this.result[i][1];
-      perfectionism += this.result[i][2];
-      negThink += this.result[i][3];
-      lackRicuz += this.result[i][4];
-      impulsivity += this.result[i][5];
-      slowStarter += this.result[i][6];
-      panic += this.result[i][7];
-      frustration += this.result[i][8];
-    }
-    localStorage.setItem('lowConfidence', lowConfidence);
-    localStorage.setItem('badTimeMan', badTimeMan);
-    localStorage.setItem('perfectionism', perfectionism);
-    localStorage.setItem('negThink', negThink);
-    localStorage.setItem('lackRicuz', lackRicuz);
-    localStorage.setItem('impulsivity', impulsivity);
-    localStorage.setItem('slowStarter', slowStarter);
-    localStorage.setItem('panic', panic);
-    localStorage.setItem('frustration', frustration);
-    localStorage.setItem('gamePage', location.pathname);
-    localStorage.setItem('gameSuccComp', this.gameSuccComp);
-
+      nogic.uninitialize();
+      this.gamesService.gameStatistic();
       this.stateChange('home'); 
       break;
+    }
+
   }
-   }
 
    restartMosetrap(){
+    nogic3.uninitialize();
     this.createGame(nogic3, {language:'en', skipInstructions:'true'});
    }
 
-  // getUserData(){
-  //   this.connection.getData().then((res)=>{
-  //     this.user = res;
-  //     this._userInit();
-  //   });
-  // }
-
-  // _userInit(){
-  //   if(this.user.name){
-  //     this.userTitle = this.$translate.instant('home.you_getting_ready',{user:this.user.name});
-  //     this.$scope.$apply();
-  //   }
-  // }
-
-  reloadPage(state){
+   reloadPage(state){
     localStorage.setItem('gamePage', location.pathname);
     this.removeListeners();
     this.$state.reload();
@@ -303,10 +367,10 @@ class GamesController {
     const audio = document.getElementById("backgroundMusic"); 
     if(this.sound == true){
       audio.play(); 
-      localStorage.removeItem('muteMusic');
+      this.gameScoreValue.muteMusic= 0;
     }else{
       audio.pause();
-      localStorage.setItem('muteMusic','mute');
+      this.gameScoreValue.muteMusic= 1;
     }
     this.sound =  !this.sound;
   }
@@ -323,217 +387,7 @@ class GamesController {
     initializer.initialize(holder, options);    
   }
 
-
-
-  firstEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime){
-
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
-
-    // No Initial Activity
-
-    if (firstMoveTime <= 1400){}
-    else if (firstMoveTime > 1400 && firstMoveTime < 2400){ lowConfidence +=3; negThink += 1; lackRicuz += 1; slowStarter += 5; panic += 3; }
-    else if (firstMoveTime > 2400){ lowConfidence +=5; negThink += 2; lackRicuz += 2; slowStarter += 10; panic += 10; }
-
-    
-    // Successful Game Duration
-
-    if (duration <= 60000){} 
-    else if (duration > 60000 && duration <= 70000){ lowConfidence +=1; badTimeMan+=2; negThink += 1; slowStarter += 1;}
-    else if (duration > 70000 && duration <= 80000){ lowConfidence +=1; badTimeMan+=5; perfectionism +=2; negThink += 2; lackRicuz += 2; slowStarter += 5; panic += 5; }
-    else if (duration > 80000 && duration <= 90000){ lowConfidence +=1; badTimeMan+=7; perfectionism +=5; negThink += 4; lackRicuz += 5; slowStarter += 7; panic += 5; }
-    else if (duration > 90000 && duration <= 100000){ lowConfidence +=2; badTimeMan+=4; perfectionism +=4; negThink += 5; lackRicuz += 7; slowStarter += 9; }
-    else if (duration > 100000 && duration <= 115000){ lowConfidence +=5; badTimeMan+=6; perfectionism +=6; negThink += 6; lackRicuz += 6; impulsivity +=6; slowStarter += 6; panic += 6; }
-    else if (duration > 116000){ lowConfidence +=8; badTimeMan+=10; perfectionism +=10; negThink += 8; lackRicuz += 10; slowStarter += 10; }
-
-
-    // Instruction Button
-
-    switch (instructionsClickCount) {
-      case 0:  break;
-      case 1: impulsivity +=5; break;
-      case instructionsClickCount >= 2: impulsivity +=10; break;
-    }
-
-    // Total # of moves
-
-    if (noOfMoves >= 0 && noOfMoves < 40){}
-    else if (noOfMoves >= 41 && noOfMoves < 61){ impulsivity +=5; frustration+=5; }
-    else if (noOfMoves >= 61){ impulsivity +=10; frustration+=10; }
-
-
-    this.result[0] = [lowConfidence,badTimeMan,perfectionism,negThink,lackRicuz,impulsivity,slowStarter,panic,frustration];
-    console.log(this.result[0]);
-  }
-
-  secondEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime){
-
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
-    
-    // Successful Game Duration
-
-      if (duration <= 80000){}
-      else if (duration > 80000 && duration <= 90000){ badTimeMan+=6; perfectionism +=6; }
-      else if (duration > 90000 && duration <= 100000){ badTimeMan+=8; perfectionism +=8; }
-      else if (duration > 100000 && duration <= 115000){ badTimeMan+=10; perfectionism +=10; }
-      else if (duration > 116000){ badTimeMan+=10; perfectionism +=10; }
-
-
-    // Instruction Button
-
-    switch (instructionsClickCount) {
-      case 0:  break;
-      case 1: impulsivity +=5; break;
-      case instructionsClickCount >= 2: impulsivity +=10; break;
-    }
-
-    // Total # of moves
-
-      if (noOfMoves > 0 && noOfMoves < 46){}
-      else if (noOfMoves >= 46 && noOfMoves < 81){ impulsivity +=5; frustration+=5; }
-      else if (noOfMoves >= 81){ impulsivity +=10; frustration+=10; }
-
-    this.result[1] = [lowConfidence,badTimeMan,perfectionism,negThink,lackRicuz,impulsivity,slowStarter,panic,frustration];
-    console.log(this.result[1]);
-  }
-
-  thirdEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime){
-
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
-    
-    // Successful Game Duration
-
-      if (duration <= 90000){}
-      else if (duration > 90000 && duration <= 100000){ badTimeMan+=2; }
-      else if (duration > 100000 && duration <= 115000){ badTimeMan+=4; perfectionism +=4; }
-      else if (duration > 116000){ badTimeMan+=10; perfectionism +=6; }
-
-    // Instruction Button
-
-    switch (instructionsClickCount) {
-      case 0:  break;
-      case 1: impulsivity +=5; break;
-      case instructionsClickCount >= 2: impulsivity +=10; break;
-    }
-
-    this.result[2] = [lowConfidence,badTimeMan,perfectionism,negThink,lackRicuz,impulsivity,slowStarter,panic,frustration];
-    console.log(this.result[2]);
-  }
-
-  fourthEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime){
-
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
-
-    if (win == true){
-    // Successful Game Duration
-      if (duration <= 60000){}
-      else if (duration > 60000 && duration <= 70000){ lowConfidence +=1; badTimeMan+=2; negThink += 1; slackRicuz += 2; }
-      else if (duration > 70000 && duration <= 80000){ lowConfidence +=3; badTimeMan+=5; perfectionism +=2; negThink += 3; lackRicuz += 3; }
-      else if (duration > 80000 && duration <= 90000){ lowConfidence +=5; badTimeMan+=7; perfectionism +=5; negThink += 5; lackRicuz += 5; }
-      else if (duration > 90000 && duration <= 100000){ lowConfidence +=7; badTimeMan+=9; perfectionism +=9; negThink += 7; lackRicuz += 7; }
-      else if (duration > 100000 && duration <= 115000){ lowConfidence +=10; badTimeMan+=10; perfectionism +=10; negThink += 10; lackRicuz += 10;  }
-      else if (duration > 116000){ lowConfidence +=10; badTimeMan+=10; perfectionism +=10; negThink += 10; lackRicuz += 10; }
-  }else{
-    // Game Duration When Time is Up
-      if (duration <= 30000){  badTimeMan+=10; }
-      else if (duration > 30000 && duration <= 40000){ badTimeMan+=9; }
-      else if (duration > 40000 && duration <= 50000){ badTimeMan+=8; }
-      else if (duration > 50000 && duration <= 60000){ badTimeMan+=7; }
-      else if (duration > 60000 && duration <= 70000){ lowConfidence +=4; badTimeMan+=7; negThink +=4; lackRicuz += 4; }
-      else if (duration > 70000 && duration <= 80000){ lowConfidence +=7; badTimeMan+=7; negThink +=7; lackRicuz +=7; }
-      else if (duration > 80000 && duration <= 90000){ lowConfidence +=9; badTimeMan+=9; negThink +=9; lackRicuz +=9; }
-      else if (duration > 90000 && duration <= 100000){ lowConfidence +=10; badTimeMan+=10; perfectionism +=5; negThink +=10; lackRicuz +=10; }
-      else if (duration > 100000 && duration <= 115000){ lowConfidence +=10; badTimeMan+=10; perfectionism +=10; negThink +=10; lackRicuz +=10; }
-      else if (duration > 116000){ lowConfidence +=10; badTimeMan+=10; perfectionism +=10; negThink +=10; lackRicuz +=10; }
-
-  }
-    // Instruction Button
-    switch (instructionsClickCount) {
-      case 0:  break;
-      case 1: impulsivity +=5; break;
-      case instructionsClickCount >= 2: impulsivity +=10; break;
-    }
-
-    this.result[3] = [lowConfidence,badTimeMan,perfectionism,negThink,lackRicuz,impulsivity,slowStarter,panic,frustration];
-    console.log(this.result[3]);
-  }
-
-
-  fifthEnd(duration, noOfMoves, instructionsClickCount, win, firstMoveTime){
-
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
-
-    // // Successful Game Duration
-    // switch (duration) {
-    //   case (duration <= 60000): break;
-    //   case (duration > 60000 && duration <= 70000): lowConfidence +=1; badTimeMan+=2; negThink += 1; slowStarter += 1; break;
-    //   case (duration > 70000 && duration <= 80000): lowConfidence +=1; badTimeMan+=5; perfectionism +=2; negThink += 2; lackRicuz += 2; slowStarter += 5; panic += 5; break;
-    //   case (duration > 80000 && duration <= 90000): lowConfidence +=1; badTimeMan+=7; perfectionism +=5; negThink += 4; lackRicuz += 5; slowStarter += 7; panic += 5; break;
-    //   case (duration > 90000 && duration <= 100000): lowConfidence +=2; badTimeMan+=4; perfectionism +=4; negThink += 5; lackRicuz += 7; slowStarter += 9; break;
-    //   case (duration > 100000 && duration <= 115000): lowConfidence +=5; badTimeMan+=6; perfectionism +=6; negThink += 6; lackRicuz += 6; impulsivity +=6; slowStarter += 6; panic += 6; break;
-    //   case duration > 116000: lowConfidence +=8; badTimeMan+=10; perfectionism +=10; negThink += 8; lackRicuz += 10; slowStarter += 10; break;
-    // }
-
-    // Instruction Button
-
-    switch (instructionsClickCount) {
-      case 0:  break;
-      case 1: impulsivity +=5; break;
-      case instructionsClickCount >= 2: impulsivity +=10; break;
-    }
-
-    // Total # of moves
-
-      if (noOfMoves >= 0 && noOfMoves < 15){}
-      else if (noOfMoves >= 15 && noOfMoves < 25){ lowConfidence +=3; negThink +=1; lackRicuz+=2; panic+=5; }
-      else if (noOfMoves >= 25){ lowConfidence +=10; negThink +=2; lackRicuz+=4; panic+=10; }
-
-
-    this.result[4] = [lowConfidence,badTimeMan,perfectionism,negThink,lackRicuz,impulsivity,slowStarter,panic,frustration];
-    console.log(this.result[4]);
-  }
-
-
-
 }
+
+GamesController.$inject = ['$translate', '$state', 'connection', '$interval', '$scope', '$window', 'gamesService', 'parkingLotService', 'towerService',  'mouseGameService',  'mazeraceService',  'skipService', 'gameScoreValue','orderOfGames','helperService'];
 export default GamesController;

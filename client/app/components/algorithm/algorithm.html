@@ -1,0 +1,59 @@
+<main-menu></main-menu>
+
+<div class="algorithm" >
+
+  <a class="myButton" ng-click="$ctrl.changeView('parkinglot')">Parkinglot</a>
+  <a class="myButton" ng-click="$ctrl.changeView('tower')">Tower</a>
+  <a class="myButton" ng-click="$ctrl.changeView('mousetrap')">MouseTrap</a>
+  <a class="myButton" ng-click="$ctrl.changeView('mazerace')">Mazerace</a>
+  <a class="myButton" ng-click="$ctrl.changeView('parkingLotLast')">Parkinglot Last</a>
+  <a class="myButton" ng-click="$ctrl.changeView('gameEnd')">If Time End</a>
+  <a class="myButton" ng-click="$ctrl.changeView(null)">Games mode </a>
+
+  <a class="myButtonSave" ng-click="$ctrl.saveData()">Save Data</a>
+
+    
+    <div ng-repeat="(name, metricData) in $ctrl.estimationOfResults[$ctrl.gameNowCheked]">
+      <h3>
+        {{ name | AlghorithmHeaderFilter}}
+      </h3>
+      <table>
+        <tr>
+            <th ng-repeat="listTopic in $ctrl.listTopics">{{listTopic}} </th>
+        </tr>
+        <tr ng-repeat="(key, values) in metricData">
+          <td>
+            {{key}}
+          </td>
+          <td ng-repeat="(index, value) in values">
+            <input type="text" ng-model="$ctrl.estimationOfResults[$ctrl.gameNowCheked][name][key][index]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeField(name, key, index, $event)">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div ng-if="$ctrl.showGame">
+      <h3>Games & Levels</h3>
+      <input ng-model="$ctrl.orderOfGames.level[0]" ng-change="$ctrl.changeGameLvl(0)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[0]}}</a>
+      <!-- <a class="myButton" ng-click="$ctrl.">-</a> -->
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[1]" ng-change="$ctrl.changeGameLvl(1)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[1]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('-',1)">-</a>
+    </br>        
+      <input ng-model="$ctrl.orderOfGames.level[2]" ng-change="$ctrl.changeGameLvl(2)"></input> 
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[2]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('+',2)">+</a>
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[3]" ng-change="$ctrl.changeGameLvl(3)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[3]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('+',3)">+</a>
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[4]" ng-change="$ctrl.changeGameLvl(4)"></input> 
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[4]}}</a>
+      <!-- <a class="myButton" ng-click="$ctrl.">+</a> -->
+    </br>
+    </div>
+    
+</div>

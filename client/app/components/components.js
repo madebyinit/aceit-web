@@ -15,9 +15,21 @@ import staticPageModule from './staticPage/staticPage';
 import videoPageModule from './videoPage/videoPage';
 import gamesModule from './games/games';
 import goaceitModule from './goaceit/goaceit';
+import algorithmModule from './algorithm/algorithm';
+import AlghorithmHeaderFilter from '../common/filter/alghorithmHeaderFilter';
 
 
-let componentModule = angular.module('app.components', [
+// services
+import GamesService from '../services/games.service';
+import MazeraceService from '../services/mazerace.service';
+import MouseGameService from '../services/mouseGame.service';
+import TowerService from '../services/tower.service';
+import ParkingLotService from '../services/parkingLot.service';
+import HelperService from '../../../services/helper.service';
+import SkipService from '../services/skip.service';
+
+let componentModule = angular
+.module('app.components', [
   Home,
   About,
   loginModule,
@@ -33,8 +45,59 @@ let componentModule = angular.module('app.components', [
   staticPageModule,
   videoPageModule,
   gamesModule,
-  goaceitModule
+  goaceitModule,
+  algorithmModule
 ])
+
+.value('orderOfGames', {
+  'gameSequence': [],
+  'level':[],
+})
+
+.value('estimationOfResults', {
+  'parkinglot': {},
+  'mazerace': {},
+  'mousetrap': {},
+  'tower': {},
+  'parkingLotLast': {},
+  'gameEnd' : {}
+})
+
+.value('gameScoreValue', {
+  'parkinglot': {},
+  'mazerace': {},
+  'mousetrap': {},
+  'tower': {},
+  'parkinglotLast': {},
+  'endTime':{},
+  'muteMusic': Number,
+  'gamesSuccessfullyCompleted': Number,
+  'selfAssessment':Number
+})
+
+.value('gameSummaryValue', {
+  'selfAssessment': String,
+  'gamesSuccessfullyCompleted': String,
+  'slowStarter': String,
+  'impulsivity': String,
+  'panic': String,
+  'negativeThinking': String,
+  'lowConfidence': String,
+  'perfectionism': String,
+  'badTimeManagement': String,
+  'frustration': String,
+  'concentration': String,
+  'muteMusic': String
+})
+
+.filter('AlghorithmHeaderFilter', AlghorithmHeaderFilter)
+.service('helperService', HelperService)
+.service('gamesService', GamesService)
+.service('mazeraceService', MazeraceService)
+.service('mouseGameService', MouseGameService)
+.service('towerService', TowerService)
+.service('parkingLotService', ParkingLotService)
+.service('skipService', SkipService)
 
 .name;
 
