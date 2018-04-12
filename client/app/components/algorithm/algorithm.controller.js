@@ -10,22 +10,21 @@ class AlgorithmController {
     this.estimationOfResults = estimationOfResults;
     this.helperService = helperService;
     this.listTopics = ["№","Low Confidence","Bad Time Man","Perfectionism","Neg Think","Lack Ricuz","Impulsivity","Slow Starter","Panic","Frustration"]
+    this.gameNowCheked = "parkinglot";
+    this.showGame = false;
   }
 
   $onInit(){
     console.log(this.estimationOfResults);
     this.getUserData();
     console.log(this.orderOfGames);
-    this.helperService.gameSequence();
-    this.helperService.Results();
+    
+    if (this.estimationOfResults.parkinglot = this.estimationOfResults.tower ){
+      console.log("TESTS")
+      this.helperService.gameSequence();
+      this.helperService.Results();
+    }
 
-    this.keyParkinglotTableName = Object.keys(this.estimationOfResults.parkinglot);
-
-    this.keyNIA = Object.keys(this.estimationOfResults.parkinglot.NIA);
-    this.keySGD = Object.keys(this.estimationOfResults.parkinglot.SGD);
-    this.keySkip = Object.keys(this.estimationOfResults.parkinglot.Skip);
-    this.keyIB = Object.keys(this.estimationOfResults.parkinglot.IB);
-    this.keyTM = Object.keys(this.estimationOfResults.parkinglot.TM);
   }
 
   removeAllListeners() {
@@ -41,6 +40,55 @@ class AlgorithmController {
       this.user = res;
       this._userInit();
     })
+  }
+
+  changeView(game) {
+    if (game == null){ 
+      this.showGame = true 
+    }else{ 
+      this.showGame = false
+    };
+
+    this.gameNowCheked = game;
+  }
+
+  changeField(name, key, index, ev) {
+    this.estimationOfResults[this.gameNowCheked][name][key][index] = parseInt(this.estimationOfResults[this.gameNowCheked][name][key][index]);
+  }
+
+  changeGameLvl(index, ev) {
+    console.log(this.orderOfGames.level[index]);
+    this.orderOfGames.level[index] = parseInt(this.orderOfGames.level[index]);
+    console.log(this.orderOfGames.level[index]);
+  }
+
+  changeGameOrder(sign,number){
+    let a;
+    let b;
+
+    if (sign == "-"){
+      console.log('TEST1');
+      a = this.orderOfGames.gameSequence[number];
+      b = this.orderOfGames.gameSequence[number+1];
+
+      this.orderOfGames.gameSequence[number] = b;
+      this.orderOfGames.gameSequence[number+1] = a;
+    }else{
+      console.log('TEST2');
+      a = this.orderOfGames.gameSequence[number];
+      b = this.orderOfGames.gameSequence[number-1];
+
+      this.orderOfGames.gameSequence[number] = b;
+      this.orderOfGames.gameSequence[number-1] = a;
+    }
+
+  }
+
+  saveData(){
+    console.log(this.estimationOfResults);
+    console.log(this.orderOfGames.gameSequence)
+    console.log(this.orderOfGames.level)
+    this.orderOfGames.gameSequence
   }
 
   _userInit(){

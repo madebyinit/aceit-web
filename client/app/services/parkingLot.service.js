@@ -25,9 +25,9 @@ class ParkingLotService {
         this.gameScore.gamesSuccessfullyCompleted += 1;
         }
         // {'LC':10,'BTM':10,'P': 0,'NT':10,'LR':10,'I':10,'SS':10,'Panic':10,'F':0}
-
+        console.log(firstMoveTime,"FIRST TIME");
         // No Initial Activity
-        if (firstMoveTime > 1400 && firstMoveTime < 2400) {
+        if (firstMoveTime > 14000 && firstMoveTime < 24000) {
             result.lowConfidence += this.estimationOfResults.parkinglot.NIA["15-24"].LC; 
             result.badTimeMan += this.estimationOfResults.parkinglot.NIA["15-24"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.NIA["15-24"].P; 
@@ -38,7 +38,7 @@ class ParkingLotService {
             result.panic += this.estimationOfResults.parkinglot.NIA["15-24"].Panic;
             result.frustration += this.estimationOfResults.parkinglot.NIA["15-24"].F;
         
-        }else if (firstMoveTime > 2400) { 
+        }else if (firstMoveTime > 24000) { 
 
             result.lowConfidence += this.estimationOfResults.parkinglot.NIA["25+"].LC; 
             result.badTimeMan += this.estimationOfResults.parkinglot.NIA["25+"].BTM; 
@@ -218,8 +218,18 @@ class ParkingLotService {
             result.panic +=         this.estimationOfResults.parkinglot.TM["61+"].Panic;
             result.frustration +=   this.estimationOfResults.parkinglot.TM["61+"].F;
         }
-        this.gameScore.parkinglot = {...result};
-        console.log(this.gameScore);
+        this.gameScore.parkinglot = Object.assign({}, result);
+        alert('parkinglot = '+this.gameScore.parkinglot.lowConfidence+' '+this.gameScore.parkinglot.badTimeMan+' '+this.gameScore.parkinglot.perfectionism+' '+this.gameScore.parkinglot.negThink+' '+this.gameScore.parkinglot.lackRicuz+' '+this.gameScore.parkinglot.impulsivity+' '+this.gameScore.parkinglot.slowStarter+' '+this.gameScore.parkinglot.panic+' '+this.gameScore.parkinglot.frustration);
+        // console.log(this.gameScore.parkinglot," WWWWWWWWWWW ", this.estimationOfResults.parkinglot);
+        // lowConfidence: 0,
+        // badTimeMan: 0,
+        // perfectionism: 0,
+        // negThink: 0,
+        // lackRicuz: 0,
+        // impulsivity: 0,
+        // slowStarter: 0,
+        // panic: 0,
+        // frustration: 0
     }
 
     endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
@@ -234,7 +244,8 @@ class ParkingLotService {
             panic: 0,
             frustration: 0
         };
-
+        console.log( noOfMoves)
+console.log(this.estimationOfResults.parkingLotLast);
         if (win == true){
             this.gameScore.gamesSuccessfullyCompleted += 1;
         }
@@ -242,66 +253,69 @@ class ParkingLotService {
         // Instruction Button
         if(instructionsClickCount === 1) {
             // result.impulsivity +=5;
-            result.lowConfidence += this.estimationOfResults.parkinglot.IB["1"].LC; 
-            result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["1"].BTM; 
-            result.perfectionism += this.estimationOfResults.parkinglot.IB["1"].P; 
-            result.negThink +=      this.estimationOfResults.parkinglot.IB["1"].NT; 
-            result.lackRicuz +=     this.estimationOfResults.parkinglot.IB["1"].LR; 
-            result.impulsivity +=   this.estimationOfResults.parkinglot.IB["1"].I; 
-            result.slowStarter +=   this.estimationOfResults.parkinglot.IB["1"].SS; 
-            result.panic +=         this.estimationOfResults.parkinglot.IB["1"].Panic;
-            result.frustration +=   this.estimationOfResults.parkinglot.IB["1"].F;
+            result.lowConfidence += this.estimationOfResults.parkingLotLast.IB["1"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkingLotLast.IB["1"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkingLotLast.IB["1"].P; 
+            result.negThink +=      this.estimationOfResults.parkingLotLast.IB["1"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkingLotLast.IB["1"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkingLotLast.IB["1"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkingLotLast.IB["1"].SS; 
+            result.panic +=         this.estimationOfResults.parkingLotLast.IB["1"].Panic;
+            result.frustration +=   this.estimationOfResults.parkingLotLast.IB["1"].F;
         
         }else if(instructionsClickCount >= 2) {
             // result.impulsivity +=10;
-            result.lowConfidence += this.estimationOfResults.parkinglot.IB["2+"].LC; 
-            result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["2+"].BTM; 
-            result.perfectionism += this.estimationOfResults.parkinglot.IB["2+"].P; 
-            result.negThink +=      this.estimationOfResults.parkinglot.IB["2+"].NT; 
-            result.lackRicuz +=     this.estimationOfResults.parkinglot.IB["2+"].LR; 
-            result.impulsivity +=   this.estimationOfResults.parkinglot.IB["2+"].I; 
-            result.slowStarter +=   this.estimationOfResults.parkinglot.IB["2+"].SS; 
-            result.panic +=         this.estimationOfResults.parkinglot.IB["2+"].Panic;
-            result.frustration +=   this.estimationOfResults.parkinglot.IB["2+"].F;
+            result.lowConfidence += this.estimationOfResults.parkingLotLast.IB["2+"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkingLotLast.IB["2+"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkingLotLast.IB["2+"].P; 
+            result.negThink +=      this.estimationOfResults.parkingLotLast.IB["2+"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkingLotLast.IB["2+"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkingLotLast.IB["2+"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkingLotLast.IB["2+"].SS; 
+            result.panic +=         this.estimationOfResults.parkingLotLast.IB["2+"].Panic;
+            result.frustration +=   this.estimationOfResults.parkingLotLast.IB["2+"].F;
         }
   
         // Total # of moves
   
-        if (noOfMoves >= 0 && noOfMoves < 15){}
-        else if (noOfMoves >= 15 && noOfMoves < 25){ 
+         if (noOfMoves >= 15 && noOfMoves < 25){ 
             // result.lowConfidence +=3; 
             // result.negThink +=1; 
             // result.lackRicuz+=2; 
             // result.panic+=5; 
-
-            result.lowConfidence += this.estimationOfResults.parkinglot.TM["15-25"].LC; 
-            result.badTimeMan +=    this.estimationOfResults.parkinglot.TM["15-25"].BTM; 
-            result.perfectionism += this.estimationOfResults.parkinglot.TM["15-25"].P; 
-            result.negThink +=      this.estimationOfResults.parkinglot.TM["15-25"].NT; 
-            result.lackRicuz +=     this.estimationOfResults.parkinglot.TM["15-25"].LR; 
-            result.impulsivity +=   this.estimationOfResults.parkinglot.TM["15-25"].I; 
-            result.slowStarter +=   this.estimationOfResults.parkinglot.TM["15-25"].SS; 
-            result.panic +=         this.estimationOfResults.parkinglot.TM["15-25"].Panic;
-            result.frustration +=   this.estimationOfResults.parkinglot.TM["15-25"].F;
+            console.log("FTE", noOfMoves)
+            result.lowConfidence += this.estimationOfResults.parkingLotLast.TM["15-25"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkingLotLast.TM["15-25"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkingLotLast.TM["15-25"].P; 
+            result.negThink +=      this.estimationOfResults.parkingLotLast.TM["15-25"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkingLotLast.TM["15-25"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkingLotLast.TM["15-25"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkingLotLast.TM["15-25"].SS; 
+            result.panic +=         this.estimationOfResults.parkingLotLast.TM["15-25"].Panic;
+            result.frustration +=   this.estimationOfResults.parkingLotLast.TM["15-25"].F;
         }
         else if (noOfMoves >= 25){ 
+            console.log("FTE222", noOfMoves)
             // result.lowConfidence +=10; 
             // result.negThink +=2; 
             // result.lackRicuz+=4; 
             // result.panic+=10; 
 
-            result.lowConfidence += this.estimationOfResults.parkinglot.TM["25+"].LC; 
-            result.badTimeMan +=    this.estimationOfResults.parkinglot.TM["25+"].BTM; 
-            result.perfectionism += this.estimationOfResults.parkinglot.TM["25+"].P; 
-            result.negThink +=      this.estimationOfResults.parkinglot.TM["25+"].NT; 
-            result.lackRicuz +=     this.estimationOfResults.parkinglot.TM["25+"].LR; 
-            result.impulsivity +=   this.estimationOfResults.parkinglot.TM["25+"].I; 
-            result.slowStarter +=   this.estimationOfResults.parkinglot.TM["25+"].SS; 
-            result.panic +=         this.estimationOfResults.parkinglot.TM["25+"].Panic;
-            result.frustration +=   this.estimationOfResults.parkinglot.TM["25+"].F;
+            result.lowConfidence += this.estimationOfResults.parkingLotLast.TM["25+"].LC; 
+            result.badTimeMan +=    this.estimationOfResults.parkingLotLast.TM["25+"].BTM; 
+            result.perfectionism += this.estimationOfResults.parkingLotLast.TM["25+"].P; 
+            result.negThink +=      this.estimationOfResults.parkingLotLast.TM["25+"].NT; 
+            result.lackRicuz +=     this.estimationOfResults.parkingLotLast.TM["25+"].LR; 
+            result.impulsivity +=   this.estimationOfResults.parkingLotLast.TM["25+"].I; 
+            result.slowStarter +=   this.estimationOfResults.parkingLotLast.TM["25+"].SS; 
+            result.panic +=         this.estimationOfResults.parkingLotLast.TM["25+"].Panic;
+            result.frustration +=   this.estimationOfResults.parkingLotLast.TM["25+"].F;
         }
 
-        this.gameScore.parkinglotLast = {...result};
+        this.gameScore.parkinglotLast = Object.assign({}, result);
+
+        alert('parkingLotLast = '+this.gameScore.parkinglotLast.lowConfidence+' '+this.gameScore.parkinglotLast.badTimeMan+' '+this.gameScore.parkinglotLast.perfectionism+' '+this.gameScore.parkinglotLast.negThink+' '+this.gameScore.parkinglotLast.lackRicuz+' '+this.gameScore.parkinglotLast.impulsivity+' '+this.gameScore.parkinglotLast.slowStarter+' '+this.gameScore.parkinglotLast.panic+' '+this.gameScore.parkinglotLast.frustration);
+
     }
 
     replay() {

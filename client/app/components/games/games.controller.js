@@ -31,19 +31,22 @@ class GamesController {
   }
 
   $onInit(){
+    console.log(this.orderOfGames);
 
     this.gameNumber = 1; 
     angular.element(document).ready(()=>{
       nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:this.orderOfGames.level[0]});
     });
 
-    this.helperService.gameSequence();
-    this.helperService.Results();
     console.log(this.orderOfGames.gameSequence);
     console.log(this.orderOfGames.level);
-    
+    console.log(localStorage.getItem('gamePage'));
+
     if(localStorage.getItem('gamePage') == null){
       console.log("FIRST START");
+      this.firstStart = false;
+      this.helperService.gameSequence();
+      this.helperService.Results();
       
     }else{
       console.log("SECOND START");
@@ -55,16 +58,16 @@ class GamesController {
 
           if (win == true){this.gameSuccComp ++};
                     
-          // alert('duration = ' + firstMoveTime);
           // alert('duration = ' + duration);
           // alert('noOfMoves = ' + noOfMoves);
           // alert('instructionsClickCount = ' + instructionsClickCount);
           // alert('win = ' + win);
           // alert('firstMoveTime = ' + firstMoveTime);
-          console.log(this.orderOfGames.gameSequence[this.gameNumber]);
+
+          alert( 'duration = '+duration+' '+'firstMoveTime = '+firstMoveTime+' '+'noOfMoves = '+noOfMoves+' '+'instructionsClickCount = '+instructionsClickCount+' '+ 'win = ' + win + ' ')
 
           if (this.orderOfGames.gameSequence[this.gameNumber-1] == 'mousetrap'){this.mousewin = win,  this.showMouseRetry = win};
-          
+
           if (this.orderOfGames.gameSequence[this.gameNumber-1] == 'mousetrap' && this.mousewin == false){
           }else{
             this.showMouseRetry = true;
@@ -190,6 +193,27 @@ class GamesController {
     if(this.seconds == 0){
       this.$interval.cancel(this.countdownTimer);
       this.timeRemain = "00:00";
+      console.log("END TIME",this.gameNumber );
+ 
+      switch (this.gameNumber){
+        case 1:
+          console.log("END TIME 1 GAME");
+          this.gamesService.EndTimeInGame("Game 1");
+        break;
+        case 2:
+          console.log("END TIME 2 GAME");
+          this.gamesService.EndTimeInGame("Game 2");
+        break;
+        case 3:
+          console.log("END TIME 3 GAME");
+          this.gamesService.EndTimeInGame("Game 3");
+        break;
+        case 5:
+          console.log("END TIME 5 GAME", this.gameSecSum);
+          this.gamesService.EndTimeInLastGame(this.gameSecSum);
+        break;
+      }
+
       this.showDialogEnd = true;
     }else{
       this.seconds --;

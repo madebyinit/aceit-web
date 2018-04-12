@@ -2,77 +2,58 @@
 
 <div class="algorithm" >
 
+  <a class="myButton" ng-click="$ctrl.changeView('parkinglot')">Parkinglot</a>
+  <a class="myButton" ng-click="$ctrl.changeView('tower')">Tower</a>
+  <a class="myButton" ng-click="$ctrl.changeView('mousetrap')">MouseTrap</a>
+  <a class="myButton" ng-click="$ctrl.changeView('mazerace')">Mazerace</a>
+  <a class="myButton" ng-click="$ctrl.changeView('parkingLotLast')">Parkinglot Last</a>
+  <a class="myButton" ng-click="$ctrl.changeView('gameEnd')">If Time End</a>
+  <a class="myButton" ng-click="$ctrl.changeView(null)">Games mode </a>
 
+  <a class="myButtonSave" ng-click="$ctrl.saveData()">Save Data</a>
 
-    <div ng-repeat="tablename in $ctrl.estimationOfResults.parkinglot">
-
-      <h3 ng-if= "$ctrl.keyParkinglotTableName[$index] === 'NIA'">No Initial Activity<h3>
-      <h3 ng-if= "$ctrl.keyParkinglotTableName[$index] === 'SGD'">Successful Game Duration<h3>
-      <h3 ng-if= "$ctrl.keyParkinglotTableName[$index] === 'Skip'">Skip<h3>
-      <h3 ng-if= "$ctrl.keyParkinglotTableName[$index] === 'IB'">Instruction Button<h3>
-      <h3 ng-if= "$ctrl.keyParkinglotTableName[$index] === 'TM'">Total # of moves<h3>
-
-
-      <table ng-if="$ctrl.keyParkinglotTableName[4] == $ctrl.keyParkinglotTableName[$index]">
-        <tr >
-          <th ng-repeat="listTopics in $ctrl.listTopics">{{listTopics}}</th>
+    
+    <div ng-repeat="(name, metricData) in $ctrl.estimationOfResults[$ctrl.gameNowCheked]">
+      <h3>
+        {{ name | AlghorithmHeaderFilter}}
+      </h3>
+      <table>
+        <tr>
+            <th ng-repeat="listTopic in $ctrl.listTopics">{{listTopic}} </th>
         </tr>
-        <tr ng-repeat="list in $ctrl.estimationOfResults.parkinglot[$ctrl.keyParkinglotTableName[$index]]">
-          <td >{{$ctrl.keyNIA[$index]}}</td>
-          <td ng-repeat="list in $ctrl.estimationOfResults.parkinglot.NIA[$ctrl.keyNIA[$index]]"><input type="text" value={{list}}></td>
+        <tr ng-repeat="(key, values) in metricData">
+          <td>
+            {{key}}
+          </td>
+          <td ng-repeat="(index, value) in values">
+            <input type="text" ng-model="$ctrl.estimationOfResults[$ctrl.gameNowCheked][name][key][index]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeField(name, key, index, $event)">
+          </td>
         </tr>
       </table>
-
-      <table ng-if="$ctrl.keyParkinglotTableName[0] == $ctrl.keyParkinglotTableName[$index]">
-          <tr >
-            <th ng-repeat="listTopics in $ctrl.listTopics">{{listTopics}}</th>
-          </tr>
-          <tr ng-repeat="list in $ctrl.estimationOfResults.parkinglot[$ctrl.keyParkinglotTableName[$index]]">
-            <td >{{$ctrl.keySGD[$index]}}</td>
-            <td ng-repeat="list in $ctrl.estimationOfResults.parkinglot.SGD[$ctrl.keySGD[$index]]"><input type="text" value={{list}}></td>
-          </tr>
-      </table>
-
-      <table ng-if="$ctrl.keyParkinglotTableName[1] == $ctrl.keyParkinglotTableName[$index]">
-          <tr >
-            <th ng-repeat="listTopics in $ctrl.listTopics">{{listTopics}}</th>
-          </tr>
-          <tr ng-repeat="list in $ctrl.estimationOfResults.parkinglot[$ctrl.keyParkinglotTableName[$index]]">
-            <td >{{$ctrl.keySkip[$index]}}</td>
-            <td ng-repeat="list in $ctrl.estimationOfResults.parkinglot.Skip[$ctrl.keySkip[$index]]"><input type="text" value={{list}}></td>
-          </tr>
-      </table>
-
-      <table ng-if="$ctrl.keyParkinglotTableName[2] == $ctrl.keyParkinglotTableName[$index]">
-          <tr >
-            <th ng-repeat="listTopics in $ctrl.listTopics">{{listTopics}}</th>
-          </tr>
-          <tr ng-repeat="list in $ctrl.estimationOfResults.parkinglot[$ctrl.keyParkinglotTableName[$index]]">
-            <td >{{$ctrl.keyIB[$index]}}</td>
-            <td ng-repeat="list in $ctrl.estimationOfResults.parkinglot.IB[$ctrl.keyIB[$index]]"><input type="text" value={{list}}></td>
-          </tr>
-      </table>
-
-      <table ng-if="$ctrl.keyParkinglotTableName[3] == $ctrl.keyParkinglotTableName[$index]">
-          <tr >
-            <th ng-repeat="listTopics in $ctrl.listTopics">{{listTopics}}</th>
-          </tr>
-          <tr ng-repeat="list in $ctrl.estimationOfResults.parkinglot[$ctrl.keyParkinglotTableName[$index]]">
-            <td >{{$ctrl.keyTM[$index]}}</td>
-            <td ng-repeat="list in $ctrl.estimationOfResults.parkinglot.TM[$ctrl.keyTM[$index]]"><input type="text" value={{list}}></td>
-          </tr>
-      </table>
-
     </div>
 
+    <div ng-if="$ctrl.showGame">
+      <h3>Games & Levels</h3>
+      <input ng-model="$ctrl.orderOfGames.level[0]" ng-change="$ctrl.changeGameLvl(0)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[0]}}</a>
+      <!-- <a class="myButton" ng-click="$ctrl.">-</a> -->
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[1]" ng-change="$ctrl.changeGameLvl(1)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[1]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('-',1)">-</a>
+    </br>        
+      <input ng-model="$ctrl.orderOfGames.level[2]" ng-change="$ctrl.changeGameLvl(2)"></input> 
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[2]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('+',2)">+</a>
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[3]" ng-change="$ctrl.changeGameLvl(3)"></input>
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[3]}}</a>
+      <a class="myButton" ng-click="$ctrl.changeGameOrder('+',3)">+</a>
+    </br>
+      <input ng-model="$ctrl.orderOfGames.level[4]" ng-change="$ctrl.changeGameLvl(4)"></input> 
+      <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[4]}}</a>
+      <!-- <a class="myButton" ng-click="$ctrl.">+</a> -->
+    </br>
+    </div>
+    
 </div>
-
-<!-- //Low Confidence = LC
-//Bad Time Man = BTM
-//Perfectionism = P
-//Neg Think = NT
-//Lack Ricuz = LR
-//Impulsivity = I
-//Slow Starter = SS
-//Panic = panic
-//Frustration = F -->

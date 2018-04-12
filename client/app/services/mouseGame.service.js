@@ -97,6 +97,7 @@ class MouseGameService {
         }
 
     this.gameScore.mousetrap = Object.assign({}, result);
+    alert('mousetrap = '+this.gameScore.mousetrap.lowConfidence+' '+this.gameScore.mousetrap.badTimeMan+' '+this.gameScore.mousetrap.perfectionism+' '+this.gameScore.mousetrap.negThink+' '+this.gameScore.mousetrap.lackRicuz+' '+this.gameScore.mousetrap.impulsivity+' '+this.gameScore.mousetrap.slowStarter+' '+this.gameScore.mousetrap.panic+' '+this.gameScore.mousetrap.frustration);
 
     }
 

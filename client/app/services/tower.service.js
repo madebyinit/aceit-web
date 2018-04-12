@@ -138,6 +138,8 @@ class TowerService {
         }
 
       this.gameScore.tower = Object.assign({}, result);
+      alert('tower = '+this.gameScore.tower.lowConfidence+' '+this.gameScore.tower.badTimeMan+' '+this.gameScore.tower.perfectionism+' '+this.gameScore.tower.negThink+' '+this.gameScore.tower.lackRicuz+' '+this.gameScore.tower.impulsivity+' '+this.gameScore.tower.slowStarter+' '+this.gameScore.tower.panic+' '+this.gameScore.tower.frustration);
+
     }
 
     replay() {

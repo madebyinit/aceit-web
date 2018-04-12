@@ -1,8 +1,139 @@
 class GamesService {
-    constructor(gameSummaryValue,gameScoreValue){
+    constructor(gameSummaryValue,gameScoreValue,estimationOfResults){
         this.gameScore = gameScoreValue;
         this.gameSummary = gameSummaryValue;
+        this.estimationOfResults = estimationOfResults;
     }
+
+    EndTimeInGame(Param) {
+      this.gameScore.endTime = [ 
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["LC"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["BTM"],  
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["P"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["NT"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["LR"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["I"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["SS"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["Panic"],
+        this.estimationOfResults.gameEnd.GSIWTiU[Param]["F"]
+      ]
+      alert(this.gameScore.endTime,"1-3 Game END");
+    }
+
+    EndTimeInLastGame(time) {
+      if ( time <= 30 ){
+        this.gameScore.endTime = [
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["LC"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["BTM"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["P"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["NT"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["LR"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["I"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["SS"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["Panic"],
+          this.estimationOfResults.gameEnd.TTtFNS["0-30"]["F"]]
+      }else if(30 > time && time <= 40){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["31-40"]["F"]]
+      }else if(40 > time && time <= 50){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["41-50"]["F"]]
+      }else if(50 > time && time <= 60){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["51-60"]["F"]]
+      }else if(60 > time && time  <= 70){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["61-70"]["F"]]
+      }else if(70 > time && time  <= 80){
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["71-80"]["F"]
+      }else if(80 > time && time  <= 90){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["81-90"]["F"]]
+      }else if(90 > time && time  <= 100){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["91-100"]["F"]]
+      }else if(100 > time && time  <= 115){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["101-115"]["F"]]
+      }else if( time > 116){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["LC"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["BTM"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["P"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["NT"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["LR"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["I"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["SS"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["Panic"],
+        this.estimationOfResults.gameEnd.TTtFNS["116+"]["F"]]
+      }
+     alert( this.gameScore.endTime, "5 Game END");
+    }
+
 
     gameStatistic() {
     let lowConfidence = 0;
@@ -16,16 +147,29 @@ class GamesService {
     let frustration = 0;
 
     if(this.gameScore.parkinglot !== {}) {
-      lowConfidence += this.gameScore.mazerace[0];
-      badTimeMan += this.gameScore.mazerace[1];
-      perfectionism += this.gameScore.mazerace[2];
-      negThink += this.gameScore.mazerace[3];   
-      lackRicuz += this.gameScore.mazerace[4];
-      impulsivity += this.gameScore.mazerace[5];
-      slowStarter += this.gameScore.mazerace[6];
-      panic += this.gameScore.mazerace[7];
-      frustration += this.gameScore.mazerace[8];
+      lowConfidence += this.gameScore.parkinglot[0];
+      badTimeMan += this.gameScore.parkinglot[1];
+      perfectionism += this.gameScore.parkinglot[2];
+      negThink += this.gameScore.parkinglot[3];   
+      lackRicuz += this.gameScore.parkinglot[4];
+      impulsivity += this.gameScore.parkinglot[5];
+      slowStarter += this.gameScore.parkinglot[6];
+      panic += this.gameScore.parkinglot[7];
+      frustration += this.gameScore.parkinglot[8];
     }
+
+    if(this.gameScore.parkinglotLast !== {}) {
+      lowConfidence += this.gameScore.parkinglotLast[0];
+      badTimeMan += this.gameScore.parkinglotLast[1];
+      perfectionism += this.gameScore.parkinglotLast[2];
+      negThink += this.gameScore.parkinglotLast[3];   
+      lackRicuz += this.gameScore.parkinglotLast[4];
+      impulsivity += this.gameScore.parkinglotLast[5];
+      slowStarter += this.gameScore.parkinglotLast[6];
+      panic += this.gameScore.parkinglotLast[7];
+      frustration += this.gameScore.parkinglotLast[8];
+    }
+
     if(this.gameScore.mazerace !== {}) {
         lowConfidence += this.gameScore.mazerace[0];
         badTimeMan += this.gameScore.mazerace[1];
@@ -38,26 +182,38 @@ class GamesService {
         frustration += this.gameScore.mazerace[8];
       }
       if(this.gameScore.mousetrap !== {}) {
-        lowConfidence += this.gameScore.mazerace[0];
-        badTimeMan += this.gameScore.mazerace[1];
-        perfectionism += this.gameScore.mazerace[2];
-        negThink += this.gameScore.mazerace[3];   
-        lackRicuz += this.gameScore.mazerace[4];
-        impulsivity += this.gameScore.mazerace[5];
-        slowStarter += this.gameScore.mazerace[6];
-        panic += this.gameScore.mazerace[7];
-        frustration += this.gameScore.mazerace[8];
+        lowConfidence += this.gameScore.mousetrap[0];
+        badTimeMan += this.gameScore.mousetrap[1];
+        perfectionism += this.gameScore.mousetrap[2];
+        negThink += this.gameScore.mousetrap[3];   
+        lackRicuz += this.gameScore.mousetrap[4];
+        impulsivity += this.gameScore.mousetrap[5];
+        slowStarter += this.gameScore.mousetrap[6];
+        panic += this.gameScore.mousetrap[7];
+        frustration += this.gameScore.mousetrap[8];
       }
       if(this.gameScore.tower !== {}) {
-        lowConfidence += this.gameScore.mazerace[0];
-        badTimeMan += this.gameScore.mazerace[1];
-        perfectionism += this.gameScore.mazerace[2];
-        negThink += this.gameScore.mazerace[3];   
-        lackRicuz += this.gameScore.mazerace[4];
-        impulsivity += this.gameScore.mazerace[5];
-        slowStarter += this.gameScore.mazerace[6];
-        panic += this.gameScore.mazerace[7];
-        frustration += this.gameScore.mazerace[8];
+        lowConfidence += this.gameScore.tower[0];
+        badTimeMan += this.gameScore.tower[1];
+        perfectionism += this.gameScore.tower[2];
+        negThink += this.gameScore.tower[3];   
+        lackRicuz += this.gameScore.tower[4];
+        impulsivity += this.gameScore.tower[5];
+        slowStarter += this.gameScore.tower[6];
+        panic += this.gameScore.tower[7];
+        frustration += this.gameScore.tower[8];
+      }
+
+      if(this.gameScore.endTime !== {}) {
+        lowConfidence += this.gameScore.endTime[0];
+        badTimeMan += this.gameScore.endTime[1];
+        perfectionism += this.gameScore.endTime[2];
+        negThink += this.gameScore.endTime[3];   
+        lackRicuz += this.gameScore.endTime[4];
+        impulsivity += this.gameScore.endTime[5];
+        slowStarter += this.gameScore.endTime[6];
+        panic += this.gameScore.endTime[7];
+        frustration += this.gameScore.endTime[8];
       }
 
         if (this.gameScore.selfAssessment = 0 ){this.gameSummary.selfAssessment ="You have a good sense of who you are and of your abilities to perform."}
@@ -103,5 +259,5 @@ class GamesService {
     }
 }
 
-GamesService.$inject = ['gameSummaryValue','gameScoreValue'];
+GamesService.$inject = ['gameSummaryValue','gameScoreValue','estimationOfResults'];
 module.exports = GamesService;

@@ -16,6 +16,7 @@ import videoPageModule from './videoPage/videoPage';
 import gamesModule from './games/games';
 import goaceitModule from './goaceit/goaceit';
 import algorithmModule from './algorithm/algorithm';
+import AlghorithmHeaderFilter from '../common/filter/alghorithmHeaderFilter';
 
 
 // services
@@ -58,7 +59,8 @@ let componentModule = angular
   'mazerace': {},
   'mousetrap': {},
   'tower': {},
-  'parkinglotLast': {}
+  'parkingLotLast': {},
+  'gameEnd' : {}
 })
 
 .value('gameScoreValue', {
@@ -67,6 +69,7 @@ let componentModule = angular
   'mousetrap': {},
   'tower': {},
   'parkinglotLast': {},
+  'endTime':{},
   'muteMusic': Number,
   'gamesSuccessfullyCompleted': Number,
   'selfAssessment':Number
@@ -87,7 +90,7 @@ let componentModule = angular
   'muteMusic': String
 })
 
-
+.filter('AlghorithmHeaderFilter', AlghorithmHeaderFilter)
 .service('helperService', HelperService)
 .service('gamesService', GamesService)
 .service('mazeraceService', MazeraceService)

@@ -128,7 +128,7 @@ class SkipService {
                 this.estimationOfResults[gameName].Skip["116+"].Panic,
                 this.estimationOfResults[gameName].Skip["116+"].F]; 
         }
-        console.log(this.gameScore,"SKIP RESULT");
+        alert("SKIP RESULT - "+ this.gameScore[gameName][0] +' '+ this.gameScore[gameName][1] +' '+this.gameScore[gameName][2] +' '+this.gameScore[gameName][3] +' '+this.gameScore[gameName][4] +' '+this.gameScore[gameName][5] +' '+this.gameScore[gameName][6] +' '+this.gameScore[gameName][7] +' '+this.gameScore[gameName][8]);
     }
 
 }

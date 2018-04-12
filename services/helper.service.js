@@ -7,12 +7,8 @@ class HelperService {
     gameSequence() {
 
         this.orderOfGames.gameSequence = ["parkinglot","tower","mousetrap","mazerace","parkinglot"];
-        // this.orderOfGames.gameSequence = ["parkinglot","mazerace","tower","mousetrap","parkinglot"];
-        // this.orderOfGames.gameSequence = ["parkinglot","mousetrap","tower","mazerace","parkinglot"];
         
         this.orderOfGames.level = [2,4,0,2,3];
-        // this.orderOfGames.level = [2,2,4,0,3];
-        // this.orderOfGames.level = [2,0,4,2,3];
 
     }
 
@@ -71,10 +67,10 @@ class HelperService {
         this.estimationOfResults.tower={
         //Successful Game Duration
             SGD : {
-                '81-90':    {'BTM': 6,'P': 6},
-                '91-100':   {'BTM': 8,'P': 8},
-                '101-115':  {'BTM':10,'P':10},
-                '116+':     {'BTM':10,'P':10}},
+                '81-90':    {'LC': 0,'BTM': 6,'P': 6,'NT': 0,'LR': 0,'I':0,'SS':0,'Panic':0,'F':0},
+                '91-100':   {'LC': 0,'BTM': 8,'P': 8,'NT': 0,'LR': 0,'I':0,'SS':0,'Panic':0,'F':0},
+                '101-115':  {'LC': 0,'BTM':10,'P':10,'NT': 0,'LR': 0,'I':0,'SS':0,'Panic':0,'F':0},
+                '116+':     {'LC': 0,'BTM':10,'P':10,'NT': 0,'LR': 0,'I':0,'SS':0,'Panic':0,'F':0}},
 
             Skip: {
                 '0-30':     {'LC': 5,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I':6,'SS':0,'Panic':0,'F':0},
@@ -92,9 +88,9 @@ class HelperService {
                 '1': {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':5,'SS': 0,'Panic':0,'F':0},
                 '2+':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':10,'SS': 0,'Panic':0,'F':0}},
         //Total # of moves
-             TM: {
-                '46-80':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 5,'I':0,'SS': 0,'Panic':0,'F': 5},
-                '81+':  {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR':10,'I':0,'SS': 0,'Panic':0,'F':10}},
+            TM: {
+                '41-80':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 5,'I':0,'SS': 0,'Panic':0,'F': 5},
+                '81+':  {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR':10,'I':0,'SS': 0,'Panic':0,'F':10}}
         
         }
 // _______
@@ -168,16 +164,45 @@ class HelperService {
             IB: {
                 '1': {'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':5,'SS': 0,'Panic':0,'F':0},
                 '2+':{'LC': 0,'BTM': 0,'P': 0,'NT':0,'LR': 0,'I':10,'SS': 0,'Panic':0,'F':0}},
+
         //Total # of moves
             TM: {
-                '15-25':{'LC': 3,'BTM': 2,'P': 0,'NT': 0,'LR': 2,'I': 0,'SS':0,'Panic': 5,'F':0},
-                '25+':  {'LC':10,'BTM': 2,'P': 0,'NT': 0,'LR': 4,'I': 0,'SS':0,'Panic':10,'F':0}},
+                '15-25':{'LC': 3,'BTM':0,'P':0,'NT':1,'LR':2,'I':0,'SS': 0,'Panic':0,'F': 5},
+                '25+':  {'LC':10,'BTM':0,'P':0,'NT':2,'LR':4,'I':0,'SS': 0,'Panic':0,'F':10}}
+                
+        }
+
+        this.estimationOfResults.gameEnd={
+
+            GSIWTiU:{
+                'Game 1' : {'LC':20,'BTM':20,'P':20,'NT':20,'LR':20,'I':0,'SS':20,'Panic':20,'F': 0},
+                'Game 2' : {'LC':10,'BTM':20,'P':20,'NT':10,'LR':10,'I':0,'SS':10,'Panic':10,'F': 0},
+                'Game 3' : {'LC': 0,'BTM':20,'P':20,'NT': 0,'LR': 0,'I':0,'SS': 0,'Panic': 0,'F': 0}},
+
+            TTtFNS : {
+                '0-30':     {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '31-40':    {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 3,'F':0},
+                '41-50':    {'LC': 0,'BTM': 0,'P': 0,'NT': 3,'LR': 3,'I': 0,'SS':0,'Panic': 6,'F':0},
+                '51-60':    {'LC': 0,'BTM': 0,'P': 0,'NT': 5,'LR': 5,'I': 0,'SS':0,'Panic':10,'F':0},
+                '61-70':    {'LC': 1,'BTM': 0,'P': 0,'NT': 7,'LR': 7,'I': 0,'SS':0,'Panic':10,'F':0},
+                '71-80':    {'LC': 3,'BTM': 0,'P': 0,'NT': 8,'LR': 8,'I': 0,'SS':0,'Panic':10,'F':0},
+                '81-90':    {'LC': 5,'BTM': 0,'P': 0,'NT': 9,'LR': 9,'I': 0,'SS':0,'Panic':10,'F':0},
+                '91-100':   {'LC': 7,'BTM': 0,'P': 0,'NT':10,'LR':10,'I': 0,'SS':0,'Panic':10,'F':0},
+                '101-115':  {'LC':10,'BTM': 0,'P': 0,'NT':10,'LR':10,'I': 0,'SS':0,'Panic':10,'F':0},
+                '116+':     {'LC':10,'BTM': 0,'P': 0,'NT':10,'LR':10,'I': 0,'SS':0,'Panic':10,'F':0}},
+            
+            TTfLG : {
+                '0-10':  {'LC': 0,'BTM':20,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '11-20': {'LC': 0,'BTM':15,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '21-30': {'LC': 0,'BTM':10,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '31-40': {'LC': 0,'BTM': 5,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '41-50': {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
+                '51+':   {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0}},
+            }
         }
 
     }
 
-
-}
 
 HelperService.$inject = ['orderOfGames','estimationOfResults'];
 module.exports = HelperService;
