@@ -38,18 +38,18 @@ class LoginFormController {
   }
 
   loadAlgorithm(){
-    firebase.auth().signInWithEmailAndPassword("QArea@gmail.com", "123456").then((res)=>{
-      let data = JSON.stringify(res);
-      console.log("TEST", JSON.parse(data)["uid"]);
-      // this.connection.saveData(name,'name').then((res)=>{
-      //   this.getUserData();
-      //   this._closeWelcomeDialog();
-      // },(error)=>{
-      //   console.log(error);
-      // })
-    },(error)=>{
-      console.log(error);
-    });
+    // firebase.auth().signInWithEmailAndPassword("QArea@gmail.com", "123456").then((res)=>{
+    //   let data = JSON.stringify(res);
+    //   console.log("TEST", JSON.parse(data)["uid"]);
+    //   // this.connection.saveData(name,'name').then((res)=>{
+    //   //   this.getUserData();
+    //   //   this._closeWelcomeDialog();
+    //   // },(error)=>{
+    //   //   console.log(error);
+    //   // })
+    // },(error)=>{
+    //   console.log(error);
+    // });
   }
 
 }

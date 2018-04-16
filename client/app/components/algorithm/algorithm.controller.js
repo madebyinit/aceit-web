@@ -38,6 +38,18 @@ class AlgorithmController {
   getUserData(){
     this.connection.getData().then((res)=>{
       this.user = res;
+
+      this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
+      this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
+       this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+        this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+         this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+          this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+          // console.log(this.user.estimationOfResults.timeLastGame);
+          //  this.estimationOfResults.timeLastGame = this.user.estimationOfResults.timeLastGame;
+
+     this.orderOfGames.gameSequence = this.user.gameSequence ;
+     this.orderOfGames.level = this.user.level;
       this._userInit();
     })
   }
@@ -85,10 +97,15 @@ class AlgorithmController {
   }
 
   saveData(){
-    console.log(this.estimationOfResults);
-    console.log(this.orderOfGames.gameSequence)
-    console.log(this.orderOfGames.level)
-    this.orderOfGames.gameSequence
+    // console.log(this.estimationOfResults,"TESTTSTSTTS");
+    // console.log(this.orderOfGames.gameSequence);
+    // console.log(this.orderOfGames.level);
+    // this.orderOfGames.gameSequence;
+     console.log(this.estimationOfResults.timeLastGame)
+    this.connection.saveData(this.orderOfGames.gameSequence,'gameSequence');
+    this.connection.saveData(this.orderOfGames.level,'level');
+    this.connection.saveData(this.estimationOfResults,'estimationOfResults');
+
   }
 
   _userInit(){

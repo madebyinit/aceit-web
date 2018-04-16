@@ -7,7 +7,8 @@ class SkipService {
     GameSkip(secondsleft,gameName) {
        
 
-        if (secondsleft <= 30){ console.log("TEST",this.gameScore[gameName]);  
+
+        if (secondsleft <= 30){  
             this.gameScore[gameName] = [
                 this.estimationOfResults[gameName].Skip["0-30"].LC,
                 this.estimationOfResults[gameName].Skip["0-30"].BTM,

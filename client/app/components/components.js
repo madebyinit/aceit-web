@@ -60,7 +60,8 @@ let componentModule = angular
   'mousetrap': {},
   'tower': {},
   'parkingLotLast': {},
-  'gameEnd' : {}
+  'gameEnd' : {},
+  'timeLastGame' : {}
 })
 
 .value('gameScoreValue', {
@@ -70,6 +71,7 @@ let componentModule = angular
   'tower': {},
   'parkinglotLast': {},
   'endTime':{},
+  'timeLastGame':{} ,
   'muteMusic': Number,
   'gamesSuccessfullyCompleted': Number,
   'selfAssessment':Number
