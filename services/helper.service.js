@@ -199,7 +199,29 @@ class HelperService {
                 '41-50': {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0},
                 '51+':   {'LC': 0,'BTM': 0,'P': 0,'NT': 0,'LR': 0,'I': 0,'SS':0,'Panic': 0,'F':0}},
             }
+
+        this.estimationOfResults.GP={
+            GSD:300,
+            TtDSOGP:120,
+            UPDI:{
+                '1':{'UPDI':'NIA',  'Feedback':false,'IUA':true},
+                '2':{'UPDI':'NSGDA',  'Feedback':false,'IUA':true},  
+                '3':{'UPDI':'Skip',  'Feedback':false,'IUA':true},  
+                '4':{'UPDI':'CGDWTiU',  'Feedback':false,'IUA':true},  
+                '5':{'UPDI':'IB',  'Feedback':false,'IUA':true},  
+                '6':{'UPDI':'NoM',  'Feedback':false,'IUA':true},  
+                '7':{'UPDI':'TTfLG',  'Feedback':false,'IUA':true},  
+                '8':{'UPDI':'TTtFNS',  'Feedback':false,'IUA':true},  
+                '9':{'UPDI':'SA',  'Feedback':true,'IUA':false},  
+                '10':{'UPDI':'GSC', 'Feedback':true,'IUA':false},  
+                '11':{'UPDI':'MM', 'Feedback':true,'IUA':false},  
+                '12':{'UPDI':'CGSWTiU', 'Feedback':false,'IUA':true},  
+            },
+
+            
         }
+        }
+
 
     }
 

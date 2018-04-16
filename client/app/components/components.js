@@ -52,6 +52,7 @@ let componentModule = angular
 .value('orderOfGames', {
   'gameSequence': [],
   'level':[],
+  'UPDItoMeasure':[]
 })
 
 .value('estimationOfResults', {
@@ -61,7 +62,7 @@ let componentModule = angular
   'tower': {},
   'parkingLotLast': {},
   'gameEnd' : {},
-  'timeLastGame' : {}
+  'GP' : {}
 })
 
 .value('gameScoreValue', {
@@ -71,7 +72,7 @@ let componentModule = angular
   'tower': {},
   'parkinglotLast': {},
   'endTime':{},
-  'timeLastGame':{} ,
+  'GP':{} ,
   'muteMusic': Number,
   'gamesSuccessfullyCompleted': Number,
   'selfAssessment':Number

@@ -82,8 +82,7 @@ class GamesController {
     if(localStorage.getItem('gamePage') == null){
       console.log("FIRST START");
       this.firstStart = false;
-      // this.helperService.gameSequence();
-      // this.helperService.Results();
+
       
     }else if(localStorage.getItem('gamePageSecond') == null){
 
@@ -228,7 +227,7 @@ class GamesController {
          this.estimationOfResults.tower = this.user.estimationOfResults.tower;
           this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
            this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
-            // this.estimationOfResults.timeLastGame = this.user.estimationOfResults.timeLastGame;
+
 
       this.orderOfGames.gameSequence = this.user.gameSequence ;
       this.orderOfGames.level = this.user.level;
@@ -258,6 +257,12 @@ class GamesController {
     this.gameScoreValue.selfAssessment=val;
     this.showWindow = !this.showWindow;
     this.countdownTimer = this.$interval(this.startTimer, 1000);
+  }
+
+  randomInteger(min, max) {
+    var rand = min - 0.5 + Math.random() * (max - min + 1)
+    rand = Math.round(rand);
+    return rand;
   }
 
   startTimer(){

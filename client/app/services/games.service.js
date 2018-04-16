@@ -286,19 +286,6 @@ class GamesService {
         frustration += this.gameScore.endTime[8];
       }
 
-      if(this.gameScore.timeLastGame !== {}) {
-        lowConfidence += this.gameScore.timeLastGame[0];
-        badTimeMan += this.gameScore.timeLastGame[1];
-        perfectionism += this.gameScore.timeLastGame[2];
-        negThink += this.gameScore.timeLastGame[3];   
-        lackRicuz += this.gameScore.timeLastGame[4];
-        impulsivity += this.gameScore.timeLastGame[5];
-        slowStarter += this.gameScore.timeLastGame[6];
-        panic += this.gameScore.timeLastGame[7];
-        frustration += this.gameScore.timeLastGame[8];
-      }
-      
-
         if (this.gameScore.selfAssessment = 0 ){this.gameSummary.selfAssessment ="You have a good sense of who you are and of your abilities to perform."}
         else if(2 >= this.gameScore.selfAssessment < 5 ){this.gameSummary.selfAssessment="You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative."}
 
