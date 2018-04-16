@@ -5,7 +5,77 @@ class GamesService {
         this.estimationOfResults = estimationOfResults;
     }
 
+    TotalTimeFOrLastGame(time) {
+      if ( time <= 10 ){
+        this.gameScore.endTime = [
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["LC"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["BTM"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["P"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["NT"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["LR"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["I"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["SS"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["Panic"],
+          this.estimationOfResults.gameEnd.TTfLG["0-10"]["F"]]
+      }else if(10 > time && time <= 20){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["LC"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["BTM"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["P"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["NT"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["LR"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["I"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["SS"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["Panic"],
+        this.estimationOfResults.gameEnd.TTfLG["11-20"]["F"]]
+      }else if(20 > time && time <= 30){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["LC"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["BTM"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["P"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["NT"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["LR"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["I"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["SS"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["Panic"],
+        this.estimationOfResults.gameEnd.TTfLG["21-30"]["F"]]
+      }else if(30 > time && time <= 40){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["LC"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["BTM"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["P"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["NT"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["LR"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["I"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["SS"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["Panic"],
+        this.estimationOfResults.gameEnd.TTfLG["31-40"]["F"]]
+      }else if(40 > time && time  <= 50){
+        this.gameScore.endTime = [
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["LC"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["BTM"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["P"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["NT"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["LR"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["I"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["SS"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["Panic"],
+        this.estimationOfResults.gameEnd.TTfLG["41-50"]["F"]]
+      }else if(time > 50){
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["LC"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["BTM"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["P"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["NT"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["LR"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["I"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["SS"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["Panic"],
+        this.estimationOfResults.gameEnd.TTfLG["50+"]["F"]
+      }
+    }
+
     EndTimeInGame(Param) {
+      console.log("TEST");
       this.gameScore.endTime = [ 
         this.estimationOfResults.gameEnd.GSIWTiU[Param]["LC"],
         this.estimationOfResults.gameEnd.GSIWTiU[Param]["BTM"],  
@@ -215,6 +285,19 @@ class GamesService {
         panic += this.gameScore.endTime[7];
         frustration += this.gameScore.endTime[8];
       }
+
+      if(this.gameScore.timeLastGame !== {}) {
+        lowConfidence += this.gameScore.timeLastGame[0];
+        badTimeMan += this.gameScore.timeLastGame[1];
+        perfectionism += this.gameScore.timeLastGame[2];
+        negThink += this.gameScore.timeLastGame[3];   
+        lackRicuz += this.gameScore.timeLastGame[4];
+        impulsivity += this.gameScore.timeLastGame[5];
+        slowStarter += this.gameScore.timeLastGame[6];
+        panic += this.gameScore.timeLastGame[7];
+        frustration += this.gameScore.timeLastGame[8];
+      }
+      
 
         if (this.gameScore.selfAssessment = 0 ){this.gameSummary.selfAssessment ="You have a good sense of who you are and of your abilities to perform."}
         else if(2 >= this.gameScore.selfAssessment < 5 ){this.gameSummary.selfAssessment="You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative."}

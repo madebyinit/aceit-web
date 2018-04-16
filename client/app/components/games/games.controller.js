@@ -1,5 +1,5 @@
 class GamesController {
-  constructor($translate,$state,connection, $interval,$scope,$window, gamesService, parkingLotService, towerService,  mouseGameService,  mazeraceService,  skipService, gameScoreValue,orderOfGames,helperService) {
+  constructor($translate,$state,connection, $interval,$scope,$window, gamesService, parkingLotService, towerService,  mouseGameService,  mazeraceService,  skipService, gameScoreValue,orderOfGames,helperService,estimationOfResults) {
     this.$translate = $translate;
     this.$state = $state;
     this.connection = connection;
@@ -9,7 +9,7 @@ class GamesController {
     this.secondsleft = 0;
     this.gameSecSum = 0; 
     this.$interval = $interval;
-    this.gameNumber = this.gameNumber; 
+    this.gameNumber = 0; 
     this.showWindow = true;
     this.$scope = $scope;
     this.startTimer = this.startTimer.bind(this);
@@ -28,15 +28,52 @@ class GamesController {
     this.gameBeforeLastTime = 0;
     this.gameBefore = '' ;
     this.showMouseRetry = true;
+    this.estimationOfResults = estimationOfResults;
+
   }
 
   $onInit(){
+
+    this.$scope.$on( "$locationChangeStart", function(event, next, current) {
+      //if you want to interrupt going to another location.
+      // alert("TEST");
+      event.preventDefault(); 
+      // if (this.gameNumber == 6){
+      // event.preventDefault(); 
+      // }
+     });
+
+    //  this.$scope.$on( "$routeChangeStart", function(event, next, current) {
+    //   //if you want to interrupt going to another location.
+    //   alert("TEST1");
+    //   event.preventDefault(); 
+    //  });
+
+    //  this.$scope.$on( "$locationChangeSuccess", function(event, next, current) {
+    //   //if you want to interrupt going to another location.
+    //   alert("TEST2");
+    //   if (this.gameNumber == 6){
+    //     event.preventDefault(); 
+
+    //     }
+
+    //   event.preventDefault(); 
+    //  });
+
+    //  this.$scope.$on( "$routeChangeSuccess", function(event, next, current) {
+    //   //if you want to interrupt going to another location.
+    //   alert("TEST3");
+    //   event.preventDefault(); 
+    //  });
+
     console.log(this.orderOfGames);
 
     this.gameNumber = 1; 
     angular.element(document).ready(()=>{
       nogic.initialize(document.getElementById('main-game-wrapper'), {language:'en', level:this.orderOfGames.level[0]});
     });
+
+    this.getUserData();
 
     console.log(this.orderOfGames.gameSequence);
     console.log(this.orderOfGames.level);
@@ -45,17 +82,25 @@ class GamesController {
     if(localStorage.getItem('gamePage') == null){
       console.log("FIRST START");
       this.firstStart = false;
-      this.helperService.gameSequence();
-      this.helperService.Results();
+      // this.helperService.gameSequence();
+      // this.helperService.Results();
       
-    }else{
+    }else if(localStorage.getItem('gamePageSecond') == null){
+
       console.log("SECOND START");
       this.firstStart = true;
+
+    }else{
+      console.log("THIRD START");
+      const audio = document.getElementById("backgroundMusic"); 
+      audio.play(); 
+      this.showWindow = false;
+      this.countdownTimer = this.$interval(this.startTimer, 1000);
     }
 
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
           this.gameSecSum = (300 - this.seconds);
-
+          if(localStorage.getItem('gamePageSecond') == null){
           if (win == true){this.gameSuccComp ++};
                     
           // alert('duration = ' + duration);
@@ -76,7 +121,10 @@ class GamesController {
                   case 2: this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
                   case 3: this.mouseGameService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
                   case 4: this.mazeraceService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
-                  case 5: this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); break;
+                  case 5: 
+                  this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime); 
+                  this.parkingLotService.TotalTimeFOrLastGame(this.secondsleft);
+                  break;
                 }
 
                 this.gameNumber ++;
@@ -156,11 +204,43 @@ class GamesController {
                   case 6: 
                   nogic.uninitialize();
                   this.gamesService.gameStatistic();
-                  this.stateChange('home'); localStorage.setItem('gamePage', location.pathname); break;
+                  this.stateChange('home'); 
+                  if (localStorage.getItem('gamePage') == null){
+                    localStorage.setItem('gamePage', location.pathname);
+                  }else{
+                    localStorage.setItem('gamePageSecond', location.pathname);
+                  } 
+                  break;
                 }
               }
-
+            }
         }.bind(this);
+        
+  }
+
+  getUserData(){
+    this.connection.getData().then((res)=>{
+      this.user = res;
+      console.log(this.user,"TESTDATA");
+      this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
+       this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
+        this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+         this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+          this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+           this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+            // this.estimationOfResults.timeLastGame = this.user.estimationOfResults.timeLastGame;
+
+      this.orderOfGames.gameSequence = this.user.gameSequence ;
+      this.orderOfGames.level = this.user.level;
+      this._userInit();
+    })
+  }
+
+  _userInit(){
+    if(this.user && this.user.name){
+      this.userTitle = this.$translate.instant('home.you_getting_ready',{user: this.user.name});
+      this.$scope.$apply();
+    }
   }
 
   $onDestroy(){
@@ -222,117 +302,117 @@ class GamesController {
 
   skipGame(){
 
-    switch (this.gameNumber) {
-      case 1:
-      this.secondsleft = 300 - this.seconds;
-      this.gameSecSum += this.secondsleft;
+      switch (this.gameNumber) {
+        case 1:
+        this.secondsleft = 300 - this.seconds;
+        this.gameSecSum += this.secondsleft;
 
-      this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[0]);
-      break;
-      case 2:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft; 
+        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[0]);
+        break;
+        case 2:
+          this.secondsleft = 300 - this.seconds - this.gameSecSum;
+          this.gameSecSum +=this.secondsleft; 
 
-        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[1]);
-      break;
-      case 3:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft; 
+          this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[1]);
+        break;
+        case 3:
+          this.secondsleft = 300 - this.seconds - this.gameSecSum;
+          this.gameSecSum +=this.secondsleft; 
 
-        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[2]);
-      break;
-      case 4:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft; 
-        this.gameBeforeLastTime = this.secondsleft;
+          this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[2]);
+        break;
+        case 4:
+          this.secondsleft = 300 - this.seconds - this.gameSecSum;
+          this.gameSecSum +=this.secondsleft; 
+          this.gameBeforeLastTime = this.secondsleft;
 
-        this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[3]);
-      break;
-      case 5:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
-        this.gameSecSum +=this.secondsleft;
-      break;
-    }
-
-    this.gameNumber ++;
-    switch (this.gameNumber) {
-      //tower
-      case 2:  
-      nogic.uninitialize();
-
-      if (this.orderOfGames.gameSequence[1] == "tower"){
-        this.gameBefore="tower"; 
-        this.createGame(nogic2, {language:'en', noOfRings:4})};
-
-      if (this.orderOfGames.gameSequence[1] == "mousetrap"){
-        this.gameBefore="mousetrap";
-        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
-
-      if (this.orderOfGames.gameSequence[1] == "mazerace"){
-        this.gameBefore="mazerace";
-        this.createGame(nogic4, {language: 'en', level: 2})};
-      break;
-      //mousetrap
-      case 3: 
-      switch(this.orderOfGames.gameSequence[1]) {
-        case 1: nogic2.uninitialize(); break;
-        case 2: nogic3.uninitialize(); break;
-        case 3: nogic4.uninitialize(); break;
-      }
-      this.showMouseRetry = true;
-      if (this.orderOfGames.gameSequence[2] == "tower"){
-        this.gameBefore="tower"; 
-        this.createGame(nogic2, {language:'en', noOfRings:4})
-      };
-
-      if (this.orderOfGames.gameSequence[2] == "mousetrap"){
-        this.gameBefore="mousetrap";
-        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
-
-      if (this.orderOfGames.gameSequence[2] == "mazerace"){
-        this.gameBefore="mazerace";
-        this.createGame(nogic4, {language: 'en', level: 2})};
-      break;
-      //moserace
-      case 4: 
-      switch(this.orderOfGames.gameSequence[2]) {
-        case 1: nogic2.uninitialize(); break;
-        case 2: nogic3.uninitialize(); break;
-        case 3: nogic4.uninitialize(); break;
-      }
-      this.showMouseRetry = true;
-      if (this.orderOfGames.gameSequence[3] == "tower"){
-        this.gameBefore="tower"; 
-        this.createGame(nogic2, {language:'en', noOfRings:4})
-      };
-
-      if (this.orderOfGames.gameSequence[3] == "mousetrap"){
-        this.gameBefore="mousetrap";
-        this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
-
-      if (this.orderOfGames.gameSequence[3] == "mazerace"){
-        this.gameBefore="mazerace";
-        this.createGame(nogic4, {language: 'en', level: 2})};
-      break;
-      //parkinglot
-      case 5:
-      if (this.seconds > 180){ this.showDialog = true; this.gameNumber = 5; }   
-      this.showMouseRetry = true;
-
-      switch(this.orderOfGames.gameSequence[3]) {
-        case 1: nogic2.uninitialize(); break;
-        case 2: nogic3.uninitialize(); break;
-        case 3: nogic4.uninitialize(); break;
+          this.skipService.GameSkip(this.secondsleft,this.orderOfGames.gameSequence[3]);
+        break;
+        case 5:
+          this.secondsleft = 300 - this.seconds - this.gameSecSum;
+          this.gameSecSum +=this.secondsleft;
+        break;
       }
 
-      this.createGame(nogic, {language:'en', level:3});  break;
-      case 6: 
-      nogic.uninitialize();
-      this.gamesService.gameStatistic();
-      this.stateChange('home'); 
-      break;
-    }
+      this.gameNumber ++;
+      switch (this.gameNumber) {
+        //tower
+        case 2:  
+        nogic.uninitialize();
 
+        if (this.orderOfGames.gameSequence[1] == "tower"){
+          this.gameBefore="tower"; 
+          this.createGame(nogic2, {language:'en', noOfRings:4})};
+
+        if (this.orderOfGames.gameSequence[1] == "mousetrap"){
+          this.gameBefore="mousetrap";
+          this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+        if (this.orderOfGames.gameSequence[1] == "mazerace"){
+          this.gameBefore="mazerace";
+          this.createGame(nogic4, {language: 'en', level: 2})};
+        break;
+        //mousetrap
+        case 3: 
+        switch(this.orderOfGames.gameSequence[1]) {
+          case 1: nogic2.uninitialize(); break;
+          case 2: nogic3.uninitialize(); break;
+          case 3: nogic4.uninitialize(); break;
+        }
+        this.showMouseRetry = true;
+        if (this.orderOfGames.gameSequence[2] == "tower"){
+          this.gameBefore="tower"; 
+          this.createGame(nogic2, {language:'en', noOfRings:4})
+        };
+
+        if (this.orderOfGames.gameSequence[2] == "mousetrap"){
+          this.gameBefore="mousetrap";
+          this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+        if (this.orderOfGames.gameSequence[2] == "mazerace"){
+          this.gameBefore="mazerace";
+          this.createGame(nogic4, {language: 'en', level: 2})};
+        break;
+        //moserace
+        case 4: 
+        switch(this.orderOfGames.gameSequence[2]) {
+          case 1: nogic2.uninitialize(); break;
+          case 2: nogic3.uninitialize(); break;
+          case 3: nogic4.uninitialize(); break;
+        }
+        this.showMouseRetry = true;
+        if (this.orderOfGames.gameSequence[3] == "tower"){
+          this.gameBefore="tower"; 
+          this.createGame(nogic2, {language:'en', noOfRings:4})
+        };
+
+        if (this.orderOfGames.gameSequence[3] == "mousetrap"){
+          this.gameBefore="mousetrap";
+          this.createGame(nogic3, {language:'en', skipInstructions:'false'})};
+
+        if (this.orderOfGames.gameSequence[3] == "mazerace"){
+          this.gameBefore="mazerace";
+          this.createGame(nogic4, {language: 'en', level: 2})};
+        break;
+        //parkinglot
+        case 5:
+        if (this.seconds > 180){ this.showDialog = true; this.gameNumber = 5; }   
+        this.showMouseRetry = true;
+
+        switch(this.orderOfGames.gameSequence[3]) {
+          case 1: nogic2.uninitialize(); break;
+          case 2: nogic3.uninitialize(); break;
+          case 3: nogic4.uninitialize(); break;
+        }
+
+        this.createGame(nogic, {language:'en', level:3});  break;
+        case 6: 
+        nogic.uninitialize();
+        this.gamesService.gameStatistic();
+        this.stateChange('home'); 
+        break;
+      }
+    
   }
 
    restartMosetrap(){
@@ -341,7 +421,11 @@ class GamesController {
    }
 
    reloadPage(state){
-    localStorage.setItem('gamePage', location.pathname);
+    if (localStorage.getItem('gamePage') == null){
+      localStorage.setItem('gamePage', location.pathname);
+    }else{
+      localStorage.setItem('gamePageSecond', location.pathname);
+    }
     this.removeListeners();
     this.$state.reload();
   }
@@ -358,7 +442,11 @@ class GamesController {
   }
 
   stateChange(state){
-    localStorage.setItem('gamePage', location.pathname);
+    if (localStorage.getItem('gamePage') == null){
+      localStorage.setItem('gamePage', location.pathname);
+    }else{
+      localStorage.setItem('gamePageSecond', location.pathname);
+    }
     this.removeListeners();
     this.$state.go(state);
   }
@@ -389,5 +477,5 @@ class GamesController {
 
 }
 
-GamesController.$inject = ['$translate', '$state', 'connection', '$interval', '$scope', '$window', 'gamesService', 'parkingLotService', 'towerService',  'mouseGameService',  'mazeraceService',  'skipService', 'gameScoreValue','orderOfGames','helperService'];
+GamesController.$inject = ['$translate', '$state', 'connection', '$interval', '$scope', '$window', 'gamesService', 'parkingLotService', 'towerService',  'mouseGameService',  'mazeraceService',  'skipService', 'gameScoreValue','orderOfGames','helperService','estimationOfResults'];
 export default GamesController;
