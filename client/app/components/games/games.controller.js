@@ -100,7 +100,7 @@ class GamesController {
 
     window.gameEnded = function(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
           this.gameSecSum = (300 - this.seconds);
-          if(localStorage.getItem('gamePageSecond') == null){
+
           if (win == true){this.gameSuccComp ++};
                     
           // alert('duration = ' + duration);
@@ -213,7 +213,7 @@ class GamesController {
                   break;
                 }
               }
-            }
+            
         }.bind(this);
         
   }
