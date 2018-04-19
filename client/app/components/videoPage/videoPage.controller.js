@@ -16,7 +16,6 @@ class VideoPageController {
 
   $onInit(){
     this.seconds = 45;
-    this.getUserData();
     const myVideo = this.$document[0].getElementById('video0');
     myVideo.play();
     switch(true){
@@ -35,13 +34,13 @@ class VideoPageController {
       myVideo.webkitRequestFullscreen();
       break;
     }
-    // document.addEventListener(this.eventName, this.CheckChangeScreen);
+
     function startVideoTimer(){
 
-      if(this.seconds == 0){
+      if(this.seconds === 0){
         this.$interval.cancel(this.countdownTimer);
         this.$state.go('games');
-      }else{
+      } else{
         this.seconds --;
       }
     }
@@ -54,7 +53,7 @@ class VideoPageController {
       this.firstStart = -1;
       this.$state.go('games');
     }
-    this.firstStart++
+    this.firstStart++;
   }
 
 
@@ -62,7 +61,7 @@ class VideoPageController {
 
     const myVideo = this.$document[0].getElementById('video0');
     
-    if (myVideo.ended == true){
+    if (myVideo.ended){
       this.removeAllListeners();
       this.firstStart = -1;
       this.$state.go('games');
@@ -73,25 +72,11 @@ class VideoPageController {
     this.$document.unbind('scroll');
     this.firstStart = 0;
     this.eventName = '';
-    document.removeEventListener(this.eventName, this.CheckChangeScreen);
+    this.$document.removeEventListener(this.eventName, this.CheckChangeScreen);
   }
 
   $onDestroy(){
     this.removeAllListeners();
   }
-
-  getUserData(){
-    this.connection.getData().then((res)=>{
-      this.user = res;
-      this._userInit();
-    })
-  }
-
-  _userInit(){
-    if(this.user && this.user.name){
-      this.userTitle = this.$translate.instant('home.you_getting_ready',{user: this.user.name});
-      this.$scope.$apply();
-    }
-  }
 }
-export default VideoPageController;
+module.exports = VideoPageController;

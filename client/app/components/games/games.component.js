@@ -2,12 +2,12 @@ import template from './games.html';
 import controller from './games.controller';
 import './games.scss';
 
-let gamesComponent = {
+const gamesComponent = {
   restrict: 'E',
   bindings: {},
   sound: false,
   template,
-  controller
+  controller,
 };
 
 export default gamesComponent;

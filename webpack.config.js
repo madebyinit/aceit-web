@@ -10,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /^raw.*$/, loader: 'file-loader'},
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/, /mazerace/, /tower/, /parkinglot/, /mousetrap/, /services/], loader: 'ng-annotate!babel' },
+       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/, /mazerace/, /tower/, /parkinglot/, /mousetrap/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' },
@@ -43,7 +43,6 @@ module.exports = {
         return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
       }
     }),
-    new Copy([{from: 'services', to: 'services'}]),
     new Copy([{from: 'mazerace', to: 'mazerace'}]),
     new Copy([{from: 'mousetrap', to: 'mousetrap'}]),
     new Copy([{from: 'parkinglot', to: 'parkinglot'}]),
