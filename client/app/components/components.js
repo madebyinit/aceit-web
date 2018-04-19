@@ -25,83 +25,83 @@ import MazeraceService from '../services/mazerace.service';
 import MouseGameService from '../services/mouseGame.service';
 import TowerService from '../services/tower.service';
 import ParkingLotService from '../services/parkingLot.service';
-import HelperService from '../../../services/helper.service';
+import HelperService from '../services/helper.service';
 import SkipService from '../services/skip.service';
 
-let componentModule = angular
-.module('app.components', [
-  Home,
-  About,
-  loginModule,
-  mainMenuModule,
-  questionnaireModule,
-  physicalModule,
-  concentrationModule,
-  summaryModule,
-  positiveModule,
-  routineModule,
-  mobileModule,
-  errorPageModule,
-  staticPageModule,
-  videoPageModule,
-  gamesModule,
-  goaceitModule,
-  algorithmModule
-])
+const componentModule = angular
+  .module('app.components', [
+    Home,
+    About,
+    loginModule,
+    mainMenuModule,
+    questionnaireModule,
+    physicalModule,
+    concentrationModule,
+    summaryModule,
+    positiveModule,
+    routineModule,
+    mobileModule,
+    errorPageModule,
+    staticPageModule,
+    videoPageModule,
+    gamesModule,
+    goaceitModule,
+    algorithmModule,
+  ])
 
-.value('orderOfGames', {
-  'gameSequence': [],
-  'level':[],
-  'UPDItoMeasure':[]
-})
+  .value('orderOfGames', {
+    gameSequence: [],
+    level: [],
+    UPDItoMeasure: [],
+  })
 
-.value('estimationOfResults', {
-  'parkinglot': {},
-  'mazerace': {},
-  'mousetrap': {},
-  'tower': {},
-  'parkingLotLast': {},
-  'gameEnd' : {},
-  'GP' : {}
-})
+  .value('estimationOfResults', {
+    parkinglot: {},
+    mazerace: {},
+    mousetrap: {},
+    tower: {},
+    parkingLotLast: {},
+    gameEnd: {},
+    GP: {},
+  })
 
-.value('gameScoreValue', {
-  'parkinglot': {},
-  'mazerace': {},
-  'mousetrap': {},
-  'tower': {},
-  'parkinglotLast': {},
-  'endTime':{},
-  'GP':{} ,
-  'muteMusic': Number,
-  'gamesSuccessfullyCompleted': Number,
-  'selfAssessment':Number
-})
+  .value('gameScoreValue', {
+    parkinglot: {},
+    mazerace: {},
+    mousetrap: {},
+    tower: {},
+    parkinglotLast: {},
+    endTime: {},
+    GP: {},
+    muteMusic: Number,
+    gamesSuccessfullyCompleted: Number,
+    selfAssessment: Number,
+  })
 
-.value('gameSummaryValue', {
-  'selfAssessment': String,
-  'gamesSuccessfullyCompleted': String,
-  'slowStarter': String,
-  'impulsivity': String,
-  'panic': String,
-  'negativeThinking': String,
-  'lowConfidence': String,
-  'perfectionism': String,
-  'badTimeManagement': String,
-  'frustration': String,
-  'concentration': String,
-  'muteMusic': String
-})
+  .value('gameSummaryValue', {
+    selfAssessment: String,
+    gamesSuccessfullyCompleted: String,
+    slowStarter: String,
+    impulsivity: String,
+    panic: String,
+    negativeThinking: String,
+    lowConfidence: String,
+    perfectionism: String,
+    badTimeManagement: String,
+    frustration: String,
+    concentration: String,
+    muteMusic: String,
+  })
 
-.filter('AlghorithmHeaderFilter', AlghorithmHeaderFilter)
-.service('helperService', HelperService)
-.service('gamesService', GamesService)
-.service('mazeraceService', MazeraceService)
-.service('mouseGameService', MouseGameService)
-.service('towerService', TowerService)
-.service('parkingLotService', ParkingLotService)
-.service('skipService', SkipService)
+  .filter('AlghorithmHeaderFilter', AlghorithmHeaderFilter)
+  .service('helperService', HelperService)
+  .service('gamesService', GamesService)
+  .service('mazeraceService', MazeraceService)
+  .service('mouseGameService', MouseGameService)
+  .service('towerService', TowerService)
+  .service('parkingLotService', ParkingLotService)
+  .service('skipService', SkipService)
 
-.name;
+  .name;
 
 export default componentModule;

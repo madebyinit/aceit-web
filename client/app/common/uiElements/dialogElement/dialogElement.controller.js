@@ -1,28 +1,28 @@
 class dialogElementController {
-  constructor($timeout,$scope) {
+  constructor($timeout, $scope) {
     this.$timeout = $timeout;
     this.$scope = $scope;
   }
 
-  $onInit(){
-    this.watchChange = this.$scope.$watch(() => this.showDialog,(newVal) =>{
-      if(newVal){
+  $onInit() {
+    this.watchChange = this.$scope.$watch(() => this.showDialog, (newVal) => {
+      if (newVal) {
         document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-      }else if(newVal === false){
+      } else if (newVal === false) {
         document.getElementsByTagName('body')[0].style.overflow = '';
       }
     });
   }
 
-  $onDestroy(){
+  $onDestroy() {
     // this.watchChange();
     document.getElementsByTagName('body')[0].style.overflow = '';
   }
 
-  returnValueFn(val){
-    this.returnValue({val:val});
+  returnValueFn(val) {
+    this.returnValue({ val });
   }
 }
 
-dialogElementController.$inject = ['$timeout','$scope'];
+dialogElementController.$inject = ['$timeout', '$scope'];
 export default dialogElementController;

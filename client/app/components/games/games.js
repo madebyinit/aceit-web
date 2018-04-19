@@ -2,27 +2,27 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import gamesComponent from './games.component';
 
-let gamesModule = angular.module('games', [
-  uiRouter
+const gamesModule = angular.module('games', [
+  uiRouter,
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
-  "ngInject";
+  .config(($stateProvider, $urlRouterProvider) => {
+    'ngInject';
 
-  $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 
-  $stateProvider
-    .state('games', {
-      url: '/games',
-      component: 'games',
-      data:{
-        authenticate:true
-      }
-    });
-})
+    $stateProvider
+      .state('games', {
+        url: '/games',
+        component: 'games',
+        data: {
+          authenticate: true,
+        },
+      });
+  })
 
-.component('games', gamesComponent)
-  
-.name;
+  .component('games', gamesComponent)
+
+  .name;
 
 export default gamesModule;

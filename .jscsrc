@@ -1,0 +1,8 @@
+{
+    "preset": "google",
+    "maxErrors": 50,
+    "maximumLineLength": 180,
+    "disallowMultipleVarDecl": false,
+    "disallowSpacesInAnonymousFunctionExpression": null,
+    "jsDoc": null
+}

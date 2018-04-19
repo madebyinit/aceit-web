@@ -20,15 +20,14 @@ class TowerService {
             frustration: 0
         };
 
-        if (win == true){
+        if (win){
             this.gameScore.gamesSuccessfullyCompleted += 1;
         }
         
     // Successful Game Duration
 
         if (duration > 80000 && duration <= 90000){ 
-            // result.badTimeMan+=6; 
-            // result.perfectionism +=6; 
+
             result.lowConfidence += this.estimationOfResults.parkinglot.SGD["81-90"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["81-90"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.SGD["81-90"].P; 
@@ -40,8 +39,7 @@ class TowerService {
             result.frustration +=   this.estimationOfResults.parkinglot.SGD["81-90"].F;
         }
         else if (duration > 90000 && duration <= 100000){ 
-            // result.badTimeMan+=8; 
-            // result.perfectionism +=8; 
+
             result.lowConfidence += this.estimationOfResults.parkinglot.SGD["91-100"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["91-100"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.SGD["91-100"].P; 
@@ -53,8 +51,7 @@ class TowerService {
             result.frustration +=   this.estimationOfResults.parkinglot.SGD["91-100"].F;
         }
         else if (duration > 100000 && duration <= 115000){ 
-            // result.badTimeMan+=10; 
-            // result.perfectionism +=10; 
+
             result.lowConfidence += this.estimationOfResults.parkinglot.SGD["101-115"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["101-115"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.SGD["101-115"].P; 
@@ -66,8 +63,7 @@ class TowerService {
             result.frustration +=   this.estimationOfResults.parkinglot.SGD["101-115"].F;
         }
         else if (duration > 116000){ 
-            // result.badTimeMan+=10; 
-            // result.perfectionism +=10; 
+
             result.lowConfidence += this.estimationOfResults.parkinglot.SGD["116+"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.SGD["116+"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.SGD["116+"].P; 
@@ -82,7 +78,7 @@ class TowerService {
 
         // Instruction Button
         if(instructionsClickCount === 1) {
-            // result.impulsivity +=5;
+
             result.lowConfidence += this.estimationOfResults.parkinglot.IB["1"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["1"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.IB["1"].P; 
@@ -96,7 +92,7 @@ class TowerService {
             
 
         }else if(instructionsClickCount >= 2) {
-            // result.impulsivity +=10;
+
             result.lowConfidence += this.estimationOfResults.parkinglot.IB["2+"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.IB["2+"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.IB["2+"].P; 
@@ -111,8 +107,7 @@ class TowerService {
     // Total # of moves
 
         if (noOfMoves >= 46 && noOfMoves < 81){ 
-            // result.impulsivity +=5; 
-            // result.frustration+=5; 
+
             result.lowConfidence += this.estimationOfResults.parkinglot.TM["46-80"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.TM["46-80"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.TM["46-80"].P; 
@@ -124,8 +119,7 @@ class TowerService {
             result.frustration +=   this.estimationOfResults.parkinglot.TM["46-80"].F;
         }
         else if (noOfMoves >= 81){ 
-            // result.impulsivity +=10; 
-            // result.frustration+=10; 
+ 
             result.lowConfidence += this.estimationOfResults.parkinglot.TM["81+"].LC; 
             result.badTimeMan +=    this.estimationOfResults.parkinglot.TM["81+"].BTM; 
             result.perfectionism += this.estimationOfResults.parkinglot.TM["81+"].P; 
@@ -138,7 +132,7 @@ class TowerService {
         }
 
       this.gameScore.tower = Object.assign({}, result);
-      alert('tower = '+this.gameScore.tower.lowConfidence+' '+this.gameScore.tower.badTimeMan+' '+this.gameScore.tower.perfectionism+' '+this.gameScore.tower.negThink+' '+this.gameScore.tower.lackRicuz+' '+this.gameScore.tower.impulsivity+' '+this.gameScore.tower.slowStarter+' '+this.gameScore.tower.panic+' '+this.gameScore.tower.frustration);
+        alert('tower = '+this.gameScore.tower.lowConfidence+' '+this.gameScore.tower.badTimeMan+' '+this.gameScore.tower.perfectionism+' '+this.gameScore.tower.negThink+' '+this.gameScore.tower.lackRicuz+' '+this.gameScore.tower.impulsivity+' '+this.gameScore.tower.slowStarter+' '+this.gameScore.tower.panic+' '+this.gameScore.tower.frustration);
 
     }
 

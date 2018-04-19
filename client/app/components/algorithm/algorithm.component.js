@@ -2,11 +2,11 @@ import template from './algorithm.html';
 import AlgorithmController from './algorithm.controller';
 import './algorithm.scss';
 
-let algorithmComponent = {
+const algorithmComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller: AlgorithmController
+  controller: AlgorithmController,
 };
 
 export default algorithmComponent;

@@ -1,0 +1,37 @@
+{
+  "node": true,
+  "browser": true,
+  "esnext": true,
+  "bitwise": false,
+  "curly": false,
+  "eqeqeq": true,
+  "eqnull": true,
+  "immed": true,
+  "latedef": "nofunc",
+  "newcap": true,
+  "noarg": true,
+  "undef": true,
+  "strict": false,
+  "trailing": false,
+  "smarttabs": true,
+  "jquery": true,
+  "validthis": true,
+  "globals": {
+
+  },
+  "predef": [
+    "jasmine",
+    "describe",
+    "xdescribe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "xit",
+    "it",
+    "inject",
+    "expect",
+    "spyOn"
+  ]
+}

@@ -1,6 +1,7 @@
 class AlgorithmController {
-  constructor($translate,$document,$timeout, $interval,connection, $scope,orderOfGames,estimationOfResults,helperService) {
+  constructor($translate, $document, $timeout, $interval, connection, $scope, orderOfGames, estimationOfResults, helperService) {
     'ngInject';
+
     this.$translate = $translate;
     this.$document = $document;
     this.$timeout = $timeout;
@@ -9,57 +10,55 @@ class AlgorithmController {
     this.orderOfGames = orderOfGames;
     this.estimationOfResults = estimationOfResults;
     this.helperService = helperService;
-    this.listTopics = ["№","Low Confidence","Bad Time Man","Perfectionism","Neg Think","Lack Ricuz","Impulsivity","Slow Starter","Panic","Frustration"]
-    this.gameNowCheked = "parkinglot";
+    this.listTopics = ['№', 'Low Confidence', 'Bad Time Man', 'Perfectionism', 'Neg Think', 'Lack Ricuz', 'Impulsivity', 'Slow Starter', 'Panic', 'Frustration'];
+    this.gameNowCheked = 'parkinglot';
     this.showGame = false;
   }
 
-  $onInit(){
+  $onInit() {
     console.log(this.estimationOfResults);
     this.getUserData();
     console.log(this.orderOfGames);
-    
-    if (this.estimationOfResults.parkinglot = this.estimationOfResults.tower ){
-      console.log("TESTS")
+
+    if (this.estimationOfResults.parkinglot === this.estimationOfResults.tower) {
+      console.log('TESTS');
       this.helperService.gameSequence();
       this.helperService.Results();
     }
-
   }
 
-  removeAllListeners() {
+  // removeAllListeners() {
 
-  }
+  // }
 
-  $onDestroy(){
-    this.removeAllListeners();
-  }
+  // $onDestroy() {
+  //   this.removeAllListeners();
+  // }
 
-  getUserData(){
-    this.connection.getData().then((res)=>{
+  getUserData() {
+    this.connection.getData().then((res) => {
       this.user = res;
 
       this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
       this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
-       this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
-        this.estimationOfResults.tower = this.user.estimationOfResults.tower;
-         this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
-          this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
-          // console.log(this.user.estimationOfResults.timeLastGame);
-          //  this.estimationOfResults.timeLastGame = this.user.estimationOfResults.timeLastGame;
+      this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+      this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+      this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+      this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
 
-     this.orderOfGames.gameSequence = this.user.gameSequence ;
-     this.orderOfGames.level = this.user.level;
+
+      this.orderOfGames.gameSequence = this.user.gameSequence;
+      this.orderOfGames.level = this.user.level;
       this._userInit();
-    })
+    });
   }
 
   changeView(game) {
-    if (game == null){ 
-      this.showGame = true 
-    }else{ 
-      this.showGame = false
-    };
+    if (game == null) {
+      this.showGame = true;
+    } else {
+      this.showGame = false;
+    }
 
     this.gameNowCheked = game;
   }
@@ -74,43 +73,41 @@ class AlgorithmController {
     console.log(this.orderOfGames.level[index]);
   }
 
-  changeGameOrder(sign,number){
+  changeGameOrder(sign, number) {
     let a;
     let b;
 
-    if (sign == "-"){
+    if (sign === '-') {
       console.log('TEST1');
       a = this.orderOfGames.gameSequence[number];
-      b = this.orderOfGames.gameSequence[number+1];
+      b = this.orderOfGames.gameSequence[number + 1];
 
       this.orderOfGames.gameSequence[number] = b;
-      this.orderOfGames.gameSequence[number+1] = a;
-    }else{
+      this.orderOfGames.gameSequence[number + 1] = a;
+    } else {
       console.log('TEST2');
       a = this.orderOfGames.gameSequence[number];
-      b = this.orderOfGames.gameSequence[number-1];
+      b = this.orderOfGames.gameSequence[number - 1];
 
       this.orderOfGames.gameSequence[number] = b;
-      this.orderOfGames.gameSequence[number-1] = a;
+      this.orderOfGames.gameSequence[number - 1] = a;
     }
-
   }
 
-  saveData(){
+  saveData() {
     // console.log(this.estimationOfResults,"TESTTSTSTTS");
     // console.log(this.orderOfGames.gameSequence);
     // console.log(this.orderOfGames.level);
     // this.orderOfGames.gameSequence;
-     console.log(this.estimationOfResults.timeLastGame)
-    this.connection.saveData(this.orderOfGames.gameSequence,'gameSequence');
-    this.connection.saveData(this.orderOfGames.level,'level');
-    this.connection.saveData(this.estimationOfResults,'estimationOfResults');
 
+    this.connection.saveData(this.orderOfGames.gameSequence, 'gameSequence');
+    this.connection.saveData(this.orderOfGames.level, 'level');
+    this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
   }
 
-  _userInit(){
-    if(this.user && this.user.name){
-      this.userTitle = this.$translate.instant('home.you_getting_ready',{user: this.user.name});
+  _userInit() {
+    if (this.user && this.user.name) {
+      this.userTitle = this.$translate.instant('home.you_getting_ready', { user: this.user.name });
       this.$scope.$apply();
     }
   }
