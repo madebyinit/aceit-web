@@ -40,6 +40,12 @@ class GamesController {
       event.preventDefault();
     });
 
+    if (this.estimationOfResults.GP.GSD === undefined) {
+      console.log("test setset");
+      this.helperService.gameSequence();
+      this.helperService.Results();
+      this.seconds = this.estimationOfResults.GP.GSD;
+    }
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
       this.firstStart = false;

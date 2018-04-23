@@ -22,8 +22,7 @@ class AlgorithmController {
     this.getUserData();
     console.log(this.orderOfGames);
 
-    if (this.estimationOfResults.parkinglot === this.estimationOfResults.tower) {
-      console.log('TESTS');
+    if (this.estimationOfResults.GP.GSD === undefined) {
       this.helperService.gameSequence();
       this.helperService.Results();
     }
