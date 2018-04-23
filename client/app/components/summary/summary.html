@@ -9,18 +9,18 @@
     <div class="summary-item-text">
       <strong>{{::$ctrl.user.name}}, Our findings give an indication of the way you manage stress under pressure. In order to reach your peak performanse, focus on following:</strong></br>  
       
-      <span ng-if="$ctrl.gameSummaryValue.selfAssessment != '' ">{{$ctrl.gameSummaryValue.selfAssessment}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.gamesSuccessfullyCompleted != '' ">{{$ctrl.gameSummaryValue.gamesSuccessfullyCompleted}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.slowStarter != '' ">{{$ctrl.gameSummaryValue.slowStarter }}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.impulsivity != '' ">{{$ctrl.gameSummaryValue.impulsivity}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.panic != '' ">{{$ctrl.gameSummaryValue.panic}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.negativeThinking}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.lowConfidence}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.perfectionism != '' ">{{$ctrl.gameSummaryValue.perfectionism}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.badTimeManagement != '' ">{{$ctrl.gameSummaryValue.badTimeManagement}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.frustration != '' ">{{$ctrl.gameSummaryValue.frustration}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.concentration != '' ">{{$ctrl.gameSummaryValue.concentration}}</span></br></br>
-      <span ng-if="$ctrl.gameSummaryValue.muteMusic != '' ">{{$ctrl.gameSummaryValue.muteMusic}}</span>      
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.selfAssessment != '' ">{{$ctrl.gameSummaryValue.selfAssessment}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.gamesSuccessfullyCompleted != '' ">{{$ctrl.gameSummaryValue.gamesSuccessfullyCompleted}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.slowStarter != '' ">{{$ctrl.gameSummaryValue.slowStarter }}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.impulsivity != '' ">{{$ctrl.gameSummaryValue.impulsivity}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.panic != '' ">{{$ctrl.gameSummaryValue.panic}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.negativeThinking}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.lowConfidence}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.perfectionism != '' ">{{$ctrl.gameSummaryValue.perfectionism}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.badTimeManagement != '' ">{{$ctrl.gameSummaryValue.badTimeManagement}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.frustration != '' ">{{$ctrl.gameSummaryValue.frustration}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.concentration != '' ">{{$ctrl.gameSummaryValue.concentration}}</div>
+      <div class="condition" ng-if="$ctrl.gameSummaryValue.muteMusic != '' ">{{$ctrl.gameSummaryValue.muteMusic}}</div>      
     </div>
     </div>
 

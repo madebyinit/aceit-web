@@ -171,7 +171,7 @@ class ParkingLotService {
     if (win) {
       this.gameScore.gamesSuccessfullyCompleted += 1;
     }
- 
+
     // Instruction Button
     if (instructionsClickCount === 1) {
       result.lowConfidence += this.estimationOfResults.parkingLotLast.IB['1'].LC;
@@ -218,10 +218,8 @@ class ParkingLotService {
       result.panic += this.estimationOfResults.parkingLotLast.TM['25+'].Panic;
       result.frustration += this.estimationOfResults.parkingLotLast.TM['25+'].F;
     }
-
     this.gameScore.parkinglotLast = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
-
-    alert('parkingLotLast = ', this.gameScore.parkinglotLast);
+    alert(`parkingLotLast = ${this.gameScore.parkinglotLast}`);
   }
 }
 
