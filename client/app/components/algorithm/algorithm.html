@@ -54,6 +54,51 @@
       <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[4]}}</a>
       <!-- <a class="myButton" ng-click="$ctrl.">+</a> -->
     </br>
+      <h3> Time for Game </h3>
+      <input ng-model="$ctrl.estimationOfResults.GP.GSD" ></input>
+      <a class="myButtonGame" >Games Session Duration (in seconds)</a>
+    </br>
+    <h3>Time for popup</h3>
+        <input ng-model="$ctrl.estimationOfResults.GP.TtDSOGP" ></input>
+      <a class="myButtonGame" >Time to display start over games popup</a>
+  </br>
+    <h3>User Behavior Attributes</h3>
+    <table>
+      <tr>
+          <th ng-repeat="listTopicsOfBehavior in $ctrl.listTopicsOfBehavior">{{listTopicsOfBehavior}} </th>
+      </tr>
+      <tr ng-repeat="(key, value) in $ctrl.estimationOfResults.GP.UBA">
+        <td>
+          {{$index + 1}}
+        </td>
+        <td>
+          {{key}}
+        </td>
+        <td>
+          <a class="myButtonGame" ng-click="$ctrl.changeFeedback(key)">{{value | AlghorithmHeaderFilter}}</a>
+        </td>
+      </tr>
+    </table>
+    <h3>UPDI</h3>
+    <table>
+      <tr>
+          <th ng-repeat="listTopicsOfUPDI in $ctrl.listTopicsOfUPDI">{{listTopicsOfUPDI}} </th>
+      </tr>
+      <tr ng-repeat="(key, value) in $ctrl.estimationOfResults.GP.UPDI">
+        <td>
+          {{$index + 1}}
+        </td>
+        <td>
+          {{key | AlghorithmHeaderFilter}}
+        </td>
+        <td>
+          <a class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'Feedback')">{{value.Feedback | AlghorithmHeaderFilter}}</a>
+        </td>
+        <td>
+            <a class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'IUA')">{{value.IUA | AlghorithmHeaderFilter}}</a>
+        </td>
+      </tr>
+    </table>
     </div>
     
 </div>

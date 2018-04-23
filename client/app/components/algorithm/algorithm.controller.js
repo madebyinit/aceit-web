@@ -11,6 +11,8 @@ class AlgorithmController {
     this.estimationOfResults = estimationOfResults;
     this.helperService = helperService;
     this.listTopics = ['№', 'Low Confidence', 'Bad Time Man', 'Perfectionism', 'Neg Think', 'Lack Ricuz', 'Impulsivity', 'Slow Starter', 'Panic', 'Frustration'];
+    this.listTopicsOfBehavior = ['Number', 'Attribute Name', 'Feedback'];
+    this.listTopicsOfUPDI = ['ID', 'UPDI', 'Feedback', 'Impact User Attributes'];
     this.gameNowCheked = 'parkinglot';
     this.showGame = false;
   }
@@ -45,12 +47,20 @@ class AlgorithmController {
       this.estimationOfResults.tower = this.user.estimationOfResults.tower;
       this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
       this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+      this.estimationOfResults.GP = this.user.estimationOfResults.GP;
 
 
       this.orderOfGames.gameSequence = this.user.gameSequence;
       this.orderOfGames.level = this.user.level;
       this._userInit();
     });
+  }
+  changeFeedback(key) {
+    this.estimationOfResults.GP.UBA[key] = !this.estimationOfResults.GP.UBA[key];
+  }
+
+  changeUPDI(key, param) {
+    this.estimationOfResults.GP.UPDI[key][param] = !this.estimationOfResults.GP.UPDI[key][param];
   }
 
   changeView(game) {

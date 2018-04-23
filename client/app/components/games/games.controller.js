@@ -9,7 +9,8 @@ class GamesController {
     this.connection = connection;
     this.firstStart = false;
     this.timeRemain = '00:00';
-    this.seconds = 300;
+    this.estimationOfResults = estimationOfResults;
+    this.seconds = this.estimationOfResults.GP.GSD;
     this.secondsleft = 0;
     this.gameSecSum = 0;
     this.$interval = $interval;
@@ -32,7 +33,6 @@ class GamesController {
     this.gameBeforeLastTime = 0;
     this.gameBefore = '';
     this.showMouseRetry = true;
-    this.estimationOfResults = estimationOfResults;
   }
 
   $onInit() {
@@ -68,7 +68,7 @@ class GamesController {
     this.getUserData();
 
     window.gameEnded = (duration, noOfMoves, instructionsClickCount, win, firstMoveTime) => {
-      this.gameSecSum = (300 - this.seconds);
+      this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
 
       if (win) {
         this.gameSuccComp++;
@@ -125,7 +125,7 @@ class GamesController {
 
             this.gameSequence(3);
 
-            this.secondsleft = 300 - this.seconds - this.gameSecSum;
+            this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
             this.gameSecSum += this.secondsleft;
             this.gameBeforeLastTime = this.secondsleft;
             break;
@@ -239,32 +239,32 @@ class GamesController {
   skipGame() {
     switch (this.gameNumber) {
       case 1:
-        this.secondsleft = 300 - this.seconds;
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
         this.gameSecSum += this.secondsleft;
 
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0]);
         break;
       case 2:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
 
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1]);
         break;
       case 3:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
 
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2]);
         break;
       case 4:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
         this.gameBeforeLastTime = this.secondsleft;
 
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3]);
         break;
       case 5:
-        this.secondsleft = 300 - this.seconds - this.gameSecSum;
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
 
         this.parkingLotService.endLastGame(0, 0, 0, false, 0);
@@ -303,7 +303,10 @@ class GamesController {
         break;
         // parkinglot
       case 5:
-        if (this.seconds > 180) { this.showDialog = true; this.gameNumber = 5; }
+        if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP)) {
+          this.showDialog = true;
+          this.gameNumber = 5;
+        }
         this.showMouseRetry = true;
 
         this.uninitializeGames(3);
@@ -312,7 +315,7 @@ class GamesController {
       case 6:
 
         this.$window.nogic.uninitialize();
-        this.gamesService.TotalTimeFOrLastGame(300 - this.secondsleft);
+        this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.secondsleft);
         this.gamesService.gameStatistic();
         this.gameNumber = 5;
         this.stateChange('home');
