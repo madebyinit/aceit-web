@@ -59,9 +59,6 @@ class GamesController {
       this.showWindow = false;
       this.countdownTimer = this.$interval(this.startTimer, 1000);
       this.orderOfGames.level[0] = this.randomInteger(1, 10);
-      console.log(this.orderOfGames.level[0]);
-
-
       this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
     }
 
@@ -76,12 +73,11 @@ class GamesController {
       if (win) {
         this.gameSuccComp++;
       }
-
-      this.$window.alert(`duration = ${duration} ` + `firstMoveTime = ${firstMoveTime} ` + `noOfMoves = ${noOfMoves} ` + `instructionsClickCount = ${instructionsClickCount} ` + `win = ${win} `);
+      this.$window.alert(`duration = ${duration} firstMoveTime = ${firstMoveTime} noOfMoves = ${noOfMoves} instructionsClickCount = ${instructionsClickCount} win = ${win} `);
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win; this.showMouseRetry = win; }
 
-      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {} else {
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); } else {
         this.showMouseRetry = true;
         switch (this.gameNumber) {
           case 1:
@@ -113,94 +109,29 @@ class GamesController {
             if (localStorage.getItem('gamePageSecond') !== null) {
               this.orderOfGames.level[1] = this.randomInteger(1, 10);
             }
-            console.log(this.orderOfGames.level[1], 'WTF');
-            if (this.orderOfGames.gameSequence[1] === 'tower') {
-              this.gameBefore = 'tower';
-              this.createGame(this.$window.nogic2, { language: 'en', noOfRings: this.orderOfGames.level[1] });
-            }
 
-            if (this.orderOfGames.gameSequence[1] === 'mousetrap') {
-              this.gameBefore = 'mousetrap';
-              this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-            }
-
-            if (this.orderOfGames.gameSequence[1] === 'mazerace') {
-              this.gameBefore = 'mazerace';
-              this.createGame(this.$window.nogic4, { language: 'en', level: this.orderOfGames.level[1] });
-            }
+            this.gameSequence(1);
             break;
 
             // mousetrap
           case 3:
-            if (localStorage.getItem('gamePageSecond') !== null) {
-              this.orderOfGames.level[2] = this.randomInteger(1, 10);
-            }
-            switch (this.orderOfGames.gameSequence[1]) {
-              case 1: this.$window.nogic2.uninitialize(); break;
-              case 2: this.$window.nogic3.uninitialize(); break;
-              case 3: this.$window.nogic4.uninitialize(); break;
-              default:
-                break;
-            }
+            this.uninitializeGames(1);
 
-            if (this.orderOfGames.gameSequence[2] === 'tower') {
-              this.gameBefore = 'tower';
-              this.createGame(this.$window.nogic2, { language: 'en', noOfRings: this.orderOfGames.level[2] });
-            }
-
-            if (this.orderOfGames.gameSequence[2] === 'mousetrap') {
-              this.gameBefore = 'mousetrap';
-              this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-            }
-
-            if (this.orderOfGames.gameSequence[2] === 'mazerace') {
-              this.gameBefore = 'mazerace';
-              this.createGame(this.$window.nogic4, { language: 'en', level: this.orderOfGames.level[2] });
-            }
+            this.gameSequence(2);
             break;
             // moserace
           case 4:
-            if (localStorage.getItem('gamePageSecond') !== null) {
-              this.orderOfGames.level[3] = this.randomInteger(1, 10);
-            }
-            switch (this.orderOfGames.gameSequence[2]) {
-              case 1: this.$window.nogic2.uninitialize(); break;
-              case 2: this.$window.nogic3.uninitialize(); break;
-              case 3: this.$window.nogic4.uninitialize(); break;
-              default:
-                break;
-            }
+            this.uninitializeGames(2);
 
-            if (this.orderOfGames.gameSequence[3] === 'tower') {
-              this.gameBefore = 'tower';
-              this.createGame(this.$window.nogic2, { language: 'en', noOfRings: this.orderOfGames.level[3] });
-            }
+            this.gameSequence(3);
 
-            if (this.orderOfGames.gameSequence[3] === 'mousetrap') {
-              this.gameBefore = 'mousetrap';
-              this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-            }
-
-            if (this.orderOfGames.gameSequence[3] === 'mazerace') {
-              this.gameBefore = 'mazerace';
-              this.createGame(this.$window.nogic4, { language: 'en', level: this.orderOfGames.level[3] });
-            }
             this.secondsleft = 300 - this.seconds - this.gameSecSum;
             this.gameSecSum += this.secondsleft;
             this.gameBeforeLastTime = this.secondsleft;
             break;
             // parkinglot
           case 5:
-            if (localStorage.getItem('gamePageSecond') !== null) {
-              this.orderOfGames.level[4] = this.randomInteger(1, 10);
-            }
-            switch (this.orderOfGames.gameSequence[3]) {
-              case 1: this.$window.nogic2.uninitialize(); break;
-              case 2: this.$window.nogic3.uninitialize(); break;
-              case 3: this.$window.nogic4.uninitialize(); break;
-              default:
-                break;
-            }
+            this.uninitializeGames(3);
             this.createGame(this.$window.nogic, { language: 'en', level: this.orderOfGames.level[4] }); break;
 
           case 6:
@@ -208,9 +139,9 @@ class GamesController {
             this.gamesService.gameStatistic();
 
             if (localStorage.getItem('gamePage') == null) {
-              localStorage.setItem('gamePage', location.pathname);
+              localStorage.setItem('gamePage', true);
             } else {
-              localStorage.setItem('gamePageSecond', location.pathname);
+              localStorage.setItem('gamePageSecond', true);
             }
             this.stateChange('home');
             break;
@@ -281,23 +212,18 @@ class GamesController {
     if (this.seconds === 0) {
       this.$interval.cancel(this.countdownTimer);
       this.timeRemain = '00:00';
-      console.log('END TIME', this.gameNumber);
 
       switch (this.gameNumber) {
         case 1:
-          console.log('END TIME 1 GAME');
           this.gamesService.EndTimeInGame('Game 1');
           break;
         case 2:
-          console.log('END TIME 2 GAME');
           this.gamesService.EndTimeInGame('Game 2');
           break;
         case 3:
-          console.log('END TIME 3 GAME');
           this.gamesService.EndTimeInGame('Game 3');
           break;
         case 5:
-          console.log('END TIME 5 GAME', this.gameSecSum);
           this.gamesService.EndTimeInLastGame(this.gameSecSum);
           break;
         default:
@@ -355,97 +281,36 @@ class GamesController {
         if (localStorage.getItem('gamePageSecond') !== null) {
           this.orderOfGames.level[1] = this.randomInteger(1, 10);
         }
-        if (this.orderOfGames.gameSequence[1] === 'tower') {
-          this.gameBefore = 'tower';
-          this.createGame(this.$window.nogic2, { language: 'en', noOfRings: 4 });
-        }
 
-        if (this.orderOfGames.gameSequence[1] === 'mousetrap') {
-          this.gameBefore = 'mousetrap';
-          this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-        }
+        this.gameSequence(1);
 
-        if (this.orderOfGames.gameSequence[1] === 'mazerace') {
-          this.gameBefore = 'mazerace';
-          this.createGame(this.$window.nogic4, { language: 'en', level: 2 });
-        }
         break;
         // mousetrap
       case 3:
-        if (localStorage.getItem('gamePageSecond') !== null) {
-          this.orderOfGames.level[2] = this.randomInteger(1, 10);
-        }
-        switch (this.orderOfGames.gameSequence[1]) {
-          case 1: this.$window.nogic2.uninitialize(); break;
-          case 2: this.$window.nogic3.uninitialize(); break;
-          case 3: this.$window.nogic4.uninitialize(); break;
-          default:
-            break;
-        }
+        this.uninitializeGames(1);
+
         this.showMouseRetry = true;
-        if (this.orderOfGames.gameSequence[2] === 'tower') {
-          this.gameBefore = 'tower';
-          this.createGame(this.$window.nogic2, { language: 'en', noOfRings: 4 });
-        }
 
-        if (this.orderOfGames.gameSequence[2] === 'mousetrap') {
-          this.gameBefore = 'mousetrap';
-          this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-        }
-
-        if (this.orderOfGames.gameSequence[2] === 'mazerace') {
-          this.gameBefore = 'mazerace';
-          this.createGame(this.$window.nogic4, { language: 'en', level: 2 });
-        }
+        this.gameSequence(2);
         break;
         // moserace
       case 4:
-        if (localStorage.getItem('gamePageSecond') !== null) {
-          this.orderOfGames.level[3] = this.randomInteger(1, 10);
-        }
-        switch (this.orderOfGames.gameSequence[2]) {
-          case 1: this.$window.nogic2.uninitialize(); break;
-          case 2: this.$window.nogic3.uninitialize(); break;
-          case 3: this.$window.nogic4.uninitialize(); break;
-          default:
-            break;
-        }
+        this.uninitializeGames(2);
+
         this.showMouseRetry = true;
-        if (this.orderOfGames.gameSequence[3] === 'tower') {
-          this.gameBefore = 'tower';
-          this.createGame(this.$window.nogic2, { language: 'en', noOfRings: 4 });
-        }
 
-        if (this.orderOfGames.gameSequence[3] === 'mousetrap') {
-          this.gameBefore = 'mousetrap';
-          this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
-        }
-
-        if (this.orderOfGames.gameSequence[3] === 'mazerace') {
-          this.gameBefore = 'mazerace';
-          this.createGame(this.$window.nogic4, { language: 'en', level: 2 });
-        }
+        this.gameSequence(3);
         break;
         // parkinglot
       case 5:
-        if (localStorage.getItem('gamePageSecond') !== null) {
-          this.orderOfGames.level[4] = this.randomInteger(1, 10);
-        }
         if (this.seconds > 180) { this.showDialog = true; this.gameNumber = 5; }
         this.showMouseRetry = true;
 
-        switch (this.orderOfGames.gameSequence[3]) {
-          case 1: this.$window.nogic2.uninitialize(); break;
-          case 2: this.$window.nogic3.uninitialize(); break;
-          case 3: this.$window.nogic4.uninitialize(); break;
-          default:
-            break;
-        }
+        this.uninitializeGames(3);
 
         this.createGame(this.$window.nogic, { language: 'en', level: 3 }); break;
       case 6:
 
-        console.log(this.estimationOfResults.gameEnd);
         this.$window.nogic.uninitialize();
         this.gamesService.TotalTimeFOrLastGame(300 - this.secondsleft);
         this.gamesService.gameStatistic();
@@ -458,12 +323,42 @@ class GamesController {
     }
   }
 
+  uninitializeGames(numb) {
+    if (localStorage.getItem('gamePageSecond') !== null) {
+      this.orderOfGames.level[numb + 1] = this.randomInteger(1, 10);
+    }
+    switch (this.orderOfGames.gameSequence[numb]) {
+      case 'tower': this.$window.nogic2.uninitialize(); break;
+      case 'mousetrap': this.$window.nogic3.uninitialize(); break;
+      case 'mazerace': this.$window.nogic4.uninitialize(); break;
+      default:
+        break;
+    }
+  }
+
+  gameSequence(numb) {
+    if (this.orderOfGames.gameSequence[numb] === 'tower') {
+      this.gameBefore = 'tower';
+      this.createGame(this.$window.nogic2, { language: 'en', noOfRings: 4 });
+    }
+
+    if (this.orderOfGames.gameSequence[numb] === 'mousetrap') {
+      this.gameBefore = 'mousetrap';
+      this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'false' });
+    }
+
+    if (this.orderOfGames.gameSequence[numb] === 'mazerace') {
+      this.gameBefore = 'mazerace';
+      this.createGame(this.$window.nogic4, { language: 'en', level: 2 });
+    }
+  }
+
   restartMosetrap() {
     this.$window.nogic3.uninitialize();
     this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'true' });
   }
 
-  reloadPage(state) {
+  reloadPage() {
     if (localStorage.getItem('gamePage') == null) {
       localStorage.setItem('gamePage', location.pathname);
     } else {

@@ -219,7 +219,6 @@ class GamesService {
     let frustration = 0;
 
     if (this.gameScore.parkinglot !== {}) {
-
       lowConfidence += this.gameScore.parkinglot[0];
       badTimeMan += this.gameScore.parkinglot[1];
       perfectionism += this.gameScore.parkinglot[2];
