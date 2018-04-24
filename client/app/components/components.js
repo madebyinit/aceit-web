@@ -52,7 +52,7 @@ const componentModule = angular
   .value('orderOfGames', {
     gameSequence: [],
     level: [],
-    UPDItoMeasure: [],
+    UPDI: [],
   })
 
   .value('estimationOfResults', {

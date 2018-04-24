@@ -289,14 +289,16 @@ class GamesService {
       panic += this.gameScore.endTime[7];
       frustration += this.gameScore.endTime[8];
     }
-
-    if (this.gameScore.selfAssessment === 0) {
-      this.gameSummary.selfAssessment = 'You have a good sense of who you are and of your abilities to perform.';
-    } else if (this.gameScore.selfAssessment <= 2 && this.gameScore.selfAssessment < 5) { this.gameSummary.selfAssessment = 'You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative.'; }
-
-    if (this.gameScore.gamesSuccessfullyCompleted === 3) {
-      this.gameSummary.gamesSuccessfullyCompleted = 'You manage stress well.  In order to reach your peak performance, practice your routine in order to stay focused and positive.';
-    } else if (this.gameScore.gamesSuccessfullyCompleted <= 4 && this.gameScore.gamesSuccessfullyCompleted <= 5) { this.gameSummary.gamesSuccessfullyCompleted = 'Your ability to manage stress is commendable. You are confident, focused and work well within a time frame. You stay positive, are quick to see possibilities and solve problems accurately. Practice your routine in order to stay focused and positive.'; }
+    if (this.estimationOfResults.GP.UPDI.SA) {
+      if (this.gameScore.selfAssessment === 0) {
+        this.gameSummary.selfAssessment = 'You have a good sense of who you are and of your abilities to perform.';
+      } else if (this.gameScore.selfAssessment <= 2 && this.gameScore.selfAssessment < 5) { this.gameSummary.selfAssessment = 'You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative.'; }
+    }
+    if (this.estimationOfResults.GP.UPDI.GSC) {
+      if (this.gameScore.gamesSuccessfullyCompleted === 3) {
+        this.gameSummary.gamesSuccessfullyCompleted = 'You manage stress well.  In order to reach your peak performance, practice your routine in order to stay focused and positive.';
+      } else if (this.gameScore.gamesSuccessfullyCompleted <= 4 && this.gameScore.gamesSuccessfullyCompleted <= 5) { this.gameSummary.gamesSuccessfullyCompleted = 'Your ability to manage stress is commendable. You are confident, focused and work well within a time frame. You stay positive, are quick to see possibilities and solve problems accurately. Practice your routine in order to stay focused and positive.'; }
+    }
 
     if (this.estimationOfResults.GP.UBA['Low Confidence']) {
       if (lowConfidence < 5 && lowConfidence <= 10) {
@@ -357,10 +359,11 @@ class GamesService {
         this.gameSummary.concentration = 'Concentration during the test may be difficult for you when you’re feeling the pressure. It’s important to use your power word to get re-focused and to practice your routine. Check out the stress and recovery section.';
       } else if (lackRicuz >= 20) { this.gameSummary.concentration = 'It may be hard for you to be totally focused during the test. Use the concentration tools to bring your mind back. Check out the stress and recovery section.'; }
     }
-
-    if (this.gameScore.muteMusic === 1) {
-      this.gameSummary.muteMusic = 'Your brain processes information better in a quiet environment. Find a quiet place to study with as little background noise as possible.';
-    } else { this.gameSummary.muteMusic = ''; }
+    if (this.estimationOfResults.GP.UPDI.MM) {
+      if (this.gameScore.muteMusic === 1) {
+        this.gameSummary.muteMusic = 'Your brain processes information better in a quiet environment. Find a quiet place to study with as little background noise as possible.';
+      } else { this.gameSummary.muteMusic = ''; }
+    }
   }
 }
 
