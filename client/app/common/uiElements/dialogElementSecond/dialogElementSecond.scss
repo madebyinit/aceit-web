@@ -37,10 +37,13 @@
   }
 
   .save-and-close-button-hide{
-    padding: 25px;
+    padding: 10px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
     opacity: 0.2;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
   }
 
   .save-and-close-button-header{
@@ -62,7 +65,7 @@
     .dialog-window-input-title {
       margin-bottom: 0;
       color: #0e7086;
-      font-size: 30px;
+      font-size: 28px;
     }
   }
 }
@@ -73,7 +76,7 @@
     width: 300px;
     background-color: #0e7086;
     border-radius: 70px;
-    margin: 0 auto 10px;
+    margin: 12px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;

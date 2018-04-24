@@ -106,6 +106,10 @@
           position: absolute;
           left: -170px;
           top: -10px;
+          @media (max-width: 1500px) {
+            right: -170px;
+            left: auto;
+          }
           img{
             width: 150px;
           }
