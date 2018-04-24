@@ -248,6 +248,7 @@ class GamesController {
   }
 
   skipGame() {
+    this.showMazeRetry = true;
     switch (this.gameNumber) {
       case 1:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
