@@ -42,11 +42,11 @@ class GamesController {
     });
 
     if (this.estimationOfResults.GP.GSD === undefined) {
-      console.log('test setset');
       this.helperService.gameSequence();
       this.helperService.Results();
       this.seconds = this.estimationOfResults.GP.GSD;
     }
+
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
       this.firstStart = false;
@@ -71,7 +71,6 @@ class GamesController {
 
     this.gameNumber = 1;
 
-
     this.getUserData();
 
     window.gameEnded = (duration, noOfMoves, instructionsClickCount, win, firstMoveTime) => {
@@ -84,11 +83,11 @@ class GamesController {
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win; this.showMouseRetry = win; }
 
-      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; console.log('MAZEWIN'); }
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
 
-      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); }
-      else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) { console.log('stop'); console.log('loze MAZEWIN');}
-      else {
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); 
+      } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) { console.log('stop'); 
+      } else {
         this.showMouseRetry = true;
         switch (this.gameNumber) {
           case 1:
@@ -176,6 +175,7 @@ class GamesController {
 
       this.orderOfGames.gameSequence = this.user.gameSequence;
       this.orderOfGames.level = this.user.level;
+      this.orderOfGames.UPDI = this.user.UPDI;
       this._userInit();
     });
   }

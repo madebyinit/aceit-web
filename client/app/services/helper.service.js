@@ -8,6 +8,39 @@ class HelperService {
     this.orderOfGames.gameSequence = ['parkinglot', 'tower', 'mousetrap', 'mazerace', 'parkinglot'];
 
     this.orderOfGames.level = [2, 4, 0, 2, 3];
+
+    this.orderOfGames.UPDI = {
+      parkinglot: {
+        NIA: true,
+        SGD: true,
+        SG: true,
+        IB: true,
+        NoM: true,
+      },
+      tower: {
+        SGD: true,
+        SG: true,
+        IB: true,
+        NoM: true,
+      },
+      mousetrap: {
+        SGD: true,
+        SG: true,
+        IB: true,
+      },
+      mazerace: {
+        SGD: true,
+        SG: true,
+        CGDWTiU: true,
+        IB: true,
+      },
+      parkinglotLast: {
+        IB: true,
+        NoM: true,
+        TTtLGFS: true,
+        TTtFNS: true,
+      },
+    };
   }
 
   Results() {
@@ -432,14 +465,14 @@ class HelperService {
       GSD: 300,
       TtDSOGP: 120,
       UPDI: {
-        NIA: { Feedback: false, IUA: true },
-        SGD: { Feedback: false, IUA: true },
-        SG: { Feedback: false, IUA: true },
-        CGDWTiU: { Feedback: false, IUA: true },
-        IB: { Feedback: false, IUA: true },
-        NoM: { Feedback: false, IUA: true },
-        TTtLGFS: { Feedback: false, IUA: true },
-        TTtFNS: { Feedback: false, IUA: true },
+        // NIA: { Feedback: false, IUA: true },
+        // SGD: { Feedback: false, IUA: true },
+        // SG: { Feedback: false, IUA: true },
+        // CGDWTiU: { Feedback: false, IUA: true },
+        // IB: { Feedback: false, IUA: true },
+        // NoM: { Feedback: false, IUA: true },
+        // TTtLGFS: { Feedback: false, IUA: true },
+        // TTtFNS: { Feedback: false, IUA: true },
         SA: { Feedback: true, IUA: false },
         GSC: { Feedback: true, IUA: false },
         MM: { Feedback: true, IUA: false },
