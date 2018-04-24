@@ -35,6 +35,10 @@
           <span >RETRY</span>
           <img src="mazerace/retry-ico.png" alt="">
         </md-button>
+        <md-button class="button-style summary-button-style retry" ng-if="!$ctrl.showMazeRetry " ng-click="$ctrl.restartMazerace()">
+            <span >RETRY</span>
+            <img src="mazerace/retry-ico.png" alt="">
+          </md-button>
         <md-button class="button-style summary-button-style" ng-click="$ctrl.skipGame()">
           <span >SKIP</span>
         </md-button>
