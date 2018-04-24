@@ -36,7 +36,7 @@
       <h3>Games & Levels</h3>
       <input ng-model="$ctrl.orderOfGames.level[0]" ng-change="$ctrl.changeGameLvl(0)"></input>
       <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[0]}}</a>
-      <!-- <a class="myButton" ng-click="$ctrl.">-</a> -->
+      <!-- <a class="myButton" >-</a> -->
     </br>
       <input ng-model="$ctrl.orderOfGames.level[1]" ng-change="$ctrl.changeGameLvl(1)"></input>
       <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[1]}}</a>
@@ -52,8 +52,19 @@
     </br>
       <input ng-model="$ctrl.orderOfGames.level[4]" ng-change="$ctrl.changeGameLvl(4)"></input> 
       <a class="myButtonGame" >{{$ctrl.orderOfGames.gameSequence[4]}}</a>
-      <!-- <a class="myButton" ng-click="$ctrl.">+</a> -->
+      <!-- <a class="myButton" >+</a> -->
     </br>
+    </br>
+    <table>
+        <tr  ng-repeat="(key, values) in  $ctrl.orderOfGames.UPDI">
+          <td>{{key}}</td>
+          <td ng-repeat="(keys, value) in $ctrl.orderOfGames.UPDI[key]">         
+            {{keys | AlghorithmHeaderFilter}}
+          </br>
+            <a class="myButton" ng-click="$ctrl.changeUPDIinGame(key,keys)">{{value | AlghorithmHeaderFilter}}</a>
+          </td>
+        </tr>
+      </table>
       <h3> Time for Game </h3>
       <input ng-model="$ctrl.estimationOfResults.GP.GSD" ></input>
       <a class="myButtonGame" >Games Session Duration (in seconds)</a>
@@ -95,7 +106,7 @@
           <a class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'Feedback')">{{value.Feedback | AlghorithmHeaderFilter}}</a>
         </td>
         <td>
-            <a class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'IUA')">{{value.IUA | AlghorithmHeaderFilter}}</a>
+            {{value.IUA | AlghorithmHeaderFilter}}
         </td>
       </tr>
     </table>

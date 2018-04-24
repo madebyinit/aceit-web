@@ -18,14 +18,7 @@ class AlgorithmController {
   }
 
   $onInit() {
-    console.log(this.estimationOfResults);
     this.getUserData();
-    console.log(this.orderOfGames);
-
-    if (this.estimationOfResults.GP.GSD === undefined) {
-      this.helperService.gameSequence();
-      this.helperService.Results();
-    }
   }
 
   // removeAllListeners() {
@@ -51,6 +44,12 @@ class AlgorithmController {
 
       this.orderOfGames.gameSequence = this.user.gameSequence;
       this.orderOfGames.level = this.user.level;
+      this.orderOfGames.UPDI = this.user.UPDI;
+
+      if (this.estimationOfResults.GP.GSD === undefined) {
+        this.helperService.gameSequence();
+        this.helperService.Results();
+      }
       this._userInit();
     });
   }
@@ -60,6 +59,10 @@ class AlgorithmController {
 
   changeUPDI(key, param) {
     this.estimationOfResults.GP.UPDI[key][param] = !this.estimationOfResults.GP.UPDI[key][param];
+  }
+
+  changeUPDIinGame(key, keys) {
+    this.orderOfGames.UPDI[key][keys] = !this.orderOfGames.UPDI[key][keys];
   }
 
   changeView(game) {
@@ -77,9 +80,7 @@ class AlgorithmController {
   }
 
   changeGameLvl(index, ev) {
-    console.log(this.orderOfGames.level[index]);
     this.orderOfGames.level[index] = parseInt(this.orderOfGames.level[index]);
-    console.log(this.orderOfGames.level[index]);
   }
 
   changeGameOrder(sign, number) {
@@ -87,14 +88,12 @@ class AlgorithmController {
     let b;
 
     if (sign === '-') {
-      console.log('TEST1');
       a = this.orderOfGames.gameSequence[number];
       b = this.orderOfGames.gameSequence[number + 1];
 
       this.orderOfGames.gameSequence[number] = b;
       this.orderOfGames.gameSequence[number + 1] = a;
     } else {
-      console.log('TEST2');
       a = this.orderOfGames.gameSequence[number];
       b = this.orderOfGames.gameSequence[number - 1];
 
@@ -111,6 +110,7 @@ class AlgorithmController {
 
     this.connection.saveData(this.orderOfGames.gameSequence, 'gameSequence');
     this.connection.saveData(this.orderOfGames.level, 'level');
+    this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');
     this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
   }
 
