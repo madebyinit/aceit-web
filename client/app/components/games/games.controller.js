@@ -33,6 +33,7 @@ class GamesController {
     this.gameBeforeLastTime = 0;
     this.gameBefore = '';
     this.showMouseRetry = true;
+    this.showMazeRetry = true;
   }
 
   $onInit() {
@@ -41,7 +42,7 @@ class GamesController {
     });
 
     if (this.estimationOfResults.GP.GSD === undefined) {
-      console.log("test setset");
+      console.log('test setset');
       this.helperService.gameSequence();
       this.helperService.Results();
       this.seconds = this.estimationOfResults.GP.GSD;
@@ -83,7 +84,11 @@ class GamesController {
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win; this.showMouseRetry = win; }
 
-      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); } else {
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; console.log('MAZEWIN'); }
+
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); }
+      else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) { console.log('stop'); console.log('loze MAZEWIN');}
+      else {
         this.showMouseRetry = true;
         switch (this.gameNumber) {
           case 1:
@@ -365,6 +370,10 @@ class GamesController {
   restartMosetrap() {
     this.$window.nogic3.uninitialize();
     this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'true' });
+  }
+  restartMazerace() {
+    this.$window.nogic4.uninitialize();
+    this.createGame(this.$window.nogic4, { language: 'en', skipInstructions: 'true', level: 2 });
   }
 
   reloadPage() {
