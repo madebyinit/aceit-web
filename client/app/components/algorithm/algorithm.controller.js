@@ -15,10 +15,12 @@ class AlgorithmController {
     this.listTopicsOfUPDI = ['ID', 'UPDI', 'Feedback', 'Impact User Attributes'];
     this.gameNowCheked = 'parkinglot';
     this.showGame = false;
+    this.showFeedback = false;
   }
 
   $onInit() {
     this.getUserData();
+    this.helperService.feedbackSentences();
   }
 
   // removeAllListeners() {
@@ -32,24 +34,25 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-
-      this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
-      this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
-      this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
-      this.estimationOfResults.tower = this.user.estimationOfResults.tower;
-      this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
-      this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
-      this.estimationOfResults.GP = this.user.estimationOfResults.GP;
-
-
-      this.orderOfGames.gameSequence = this.user.gameSequence;
-      this.orderOfGames.level = this.user.level;
-      this.orderOfGames.UPDI = this.user.UPDI;
-
-      if (this.estimationOfResults.GP.GSD === undefined) {
+      if (this.user.estimationOfResults.GP.GSD === undefined) {
+        this.helperService.feedbackSentences();
         this.helperService.gameSequence();
         this.helperService.Results();
+      } else {
+        this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
+        this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
+        this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+        this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+        this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+        this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+        this.estimationOfResults.GP = this.user.estimationOfResults.GP;
+        this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
+
+        this.orderOfGames.gameSequence = this.user.gameSequence;
+        this.orderOfGames.level = this.user.level;
+        this.orderOfGames.UPDI = this.user.UPDI;
       }
+
       this._userInit();
     });
   }
@@ -66,6 +69,7 @@ class AlgorithmController {
   }
 
   changeView(game) {
+    this.showFeedback = false;
     if (game == null) {
       this.showGame = true;
     } else {
@@ -75,8 +79,23 @@ class AlgorithmController {
     this.gameNowCheked = game;
   }
 
+  changeToFeedback(game) {
+    this.showGame = false;
+    if (game == null) {
+      this.showFeedback = true;
+    } else {
+      this.showFeedback = false;
+    }
+
+    this.gameNowCheked = game;
+  }
+
   changeField(name, key, index, ev) {
     this.estimationOfResults[this.gameNowCheked][name][key][index] = parseInt(this.estimationOfResults[this.gameNowCheked][name][key][index]);
+  }
+
+  changeFeedbackField(keys, key, ev) {
+    this.estimationOfResults.Feedback[keys][key] = this.estimationOfResults.Feedback[keys][key];
   }
 
   changeGameLvl(index, ev) {

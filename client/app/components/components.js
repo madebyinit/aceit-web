@@ -63,6 +63,7 @@ const componentModule = angular
     parkingLotLast: {},
     gameEnd: {},
     GP: {},
+    Feedback: {},
   })
 
   .value('gameScoreValue', {

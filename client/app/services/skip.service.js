@@ -1,12 +1,12 @@
 class SkipService {
-  constructor(gameScoreValue, estimationOfResults, orderOfGames, helperService) {
+  constructor(gameScoreValue, orderOfGames, helperService) {
     this.gameScore = gameScoreValue;
-    this.estimationOfResults = estimationOfResults;
     this.orderOfGames = orderOfGames;
     this.helperService = helperService;
   }
 
-  GameSkip(secondsleft, gameName) {
+  GameSkip(secondsleft, gameName, estimationOfResults) {
+    this.estimationOfResults = estimationOfResults;
     if (this.orderOfGames.UPDI[gameName].SG) {
       if (secondsleft <= 30) {
         this.gameScore[gameName] = [
@@ -124,5 +124,5 @@ class SkipService {
   }
 }
 
-SkipService.$inject = ['gameScoreValue', 'estimationOfResults', 'orderOfGames', 'helperService'];
+SkipService.$inject = ['gameScoreValue', 'orderOfGames', 'helperService'];
 module.exports = SkipService;

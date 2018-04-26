@@ -37,15 +37,11 @@ class GamesController {
   }
 
   $onInit() {
+    this.gameScoreValue.selfAssessment = 0;
+    this.gameScoreValue.gamesSuccessfullyCompleted = 0;
     this.$scope.$on('$locationChangeStart', (event) => {
       event.preventDefault();
     });
-
-    if (this.estimationOfResults.GP.GSD === undefined) {
-      this.helperService.gameSequence();
-      this.helperService.Results();
-      this.seconds = this.estimationOfResults.GP.GSD;
-    }
 
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
@@ -166,16 +162,30 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
-      this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
-      this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
-      this.estimationOfResults.tower = this.user.estimationOfResults.tower;
-      this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
-      this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+      if (this.user.estimationOfResults.GP.GSD === undefined) {
+        this.helperService.gameSequence();
+        this.helperService.Results();
+        this.helperService.feedbackSentences();
+        this.seconds = this.estimationOfResults.GP.GSD;
+      } else {
+        this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
+        this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
+        this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+        this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+        this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+        this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+        this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
+        this.estimationOfResults.GP = this.user.estimationOfResults.GP;
 
-      this.orderOfGames.gameSequence = this.user.gameSequence;
-      this.orderOfGames.level = this.user.level;
-      this.orderOfGames.UPDI = this.user.UPDI;
+        this.orderOfGames.gameSequence = this.user.gameSequence;
+        this.orderOfGames.level = this.user.level;
+        this.orderOfGames.UPDI = this.user.UPDI;
+
+        this.seconds = this.user.estimationOfResults.GP.GSD;
+        console.log("WE FIND ESTIM", this.estimationOfResults);
+      }
+
+
       this._userInit();
     });
   }
@@ -254,26 +264,26 @@ class GamesController {
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
         this.gameSecSum += this.secondsleft;
 
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0]);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
         break;
       case 2:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
 
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1]);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1], this.estimationOfResults);
         break;
       case 3:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
 
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2]);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2], this.estimationOfResults);
         break;
       case 4:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
         this.gameBeforeLastTime = this.secondsleft;
 
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3]);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3], this.estimationOfResults);
         break;
       case 5:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;

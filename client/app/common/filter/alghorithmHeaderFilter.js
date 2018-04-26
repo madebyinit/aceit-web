@@ -13,7 +13,7 @@ export default () => (input) => {
     case 'GSIWTiU':
       return 'Game Sequence ID When Time is Up';
     case 'TTtFNS':
-      return 'Total Time to Finish NOT Successfully';
+      return 'Total Time to Finish Last Game NOT Successfully';
     case 'TTfLG':
       return 'Total Time for Last Game';
     case true:
@@ -36,6 +36,22 @@ export default () => (input) => {
       return 'Muted Music';
     case 'CGSWTiU':
       return 'Current Game Sequence When Time is Up';
+    case 'SS':
+      return 'Slow Starter';
+    case 'I':
+      return 'Impulsivity';
+    case 'NT':
+      return 'Negative Thinking';
+    case 'LC':
+      return 'Low Confidence ';
+    case 'P':
+      return 'Perfectionism';
+    case 'BTM':
+      return 'Bad Time Management';
+    case 'F':
+      return 'Frustration';
+    case 'C':
+      return 'Concentration';
 
     default:
       return input;
