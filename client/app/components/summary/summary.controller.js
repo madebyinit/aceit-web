@@ -9,6 +9,7 @@ class SummaryController {
     this.progressLinear = progressLinear;
     this.$timeout = $timeout;
     this.gameSummaryValue = gameSummaryValue;
+    this.userSum = {};
   }
 
   $onInit() {
@@ -48,7 +49,8 @@ class SummaryController {
   _getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      this.userSum = { positive: 0, concentration: 0, physical: 0 };
+      this.userSum = { positive: res.userSum.positive, concentration: res.userSum.concentration, physical: res.userSum.physical };
+      console.log(this.userSum);
       if (_.get(res, 'questionnaire')) {
         this.sumUserQuestionnaire();
         // this.routineDisabled();

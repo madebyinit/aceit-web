@@ -58,6 +58,15 @@ class HelperService {
 
       // Successful Game Duration
       SGD: {
+        '0-40': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '41-50': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '51-60': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '61-70': {
           LC: 1, BTM: 2, P: 0, NT: 1, LR: 0, I: 0, SS: 1, Panic: 0, F: 0,
         },
@@ -145,6 +154,21 @@ class HelperService {
     this.estimationOfResults.tower = {
       // Successful Game Duration
       SGD: {
+        '0-40': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '41-50': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '51-60': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '61-70': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '71-80': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '81-90': {
           LC: 0, BTM: 6, P: 6, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
         },
@@ -214,6 +238,24 @@ class HelperService {
     this.estimationOfResults.mousetrap = {
       // Successful Game Duration
       SGD: {
+        '0-40': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '41-50': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '51-60': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '61-70': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '71-80': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '81-90': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '91-100': {
           LC: 0, BTM: 2, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
         },
@@ -272,6 +314,15 @@ class HelperService {
     this.estimationOfResults.mazerace = {
       // Successful Game Duration
       SGD: {
+        '0-40': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '41-50': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
+        '51-60': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '61-70': {
           LC: 1, BTM: 2, P: 0, NT: 1, LR: 2, I: 0, SS: 0, Panic: 0, F: 0,
         },
@@ -465,14 +516,14 @@ class HelperService {
       GSD: 300,
       TtDSOGP: 120,
       UPDI: {
-        // NIA: { Feedback: false, IUA: true },
-        // SGD: { Feedback: false, IUA: true },
-        // SG: { Feedback: false, IUA: true },
-        // CGDWTiU: { Feedback: false, IUA: true },
-        // IB: { Feedback: false, IUA: true },
-        // NoM: { Feedback: false, IUA: true },
-        // TTtLGFS: { Feedback: false, IUA: true },
-        // TTtFNS: { Feedback: false, IUA: true },
+        NIA: { Feedback: false, IUA: true },
+        SGD: { Feedback: false, IUA: true },
+        SG: { Feedback: false, IUA: true },
+        CGDWTiU: { Feedback: false, IUA: true },
+        IB: { Feedback: false, IUA: true },
+        NoM: { Feedback: false, IUA: true },
+        TTtLGFS: { Feedback: false, IUA: true },
+        TTtFNS: { Feedback: false, IUA: true },
         SA: { Feedback: true, IUA: false },
         GSC: { Feedback: true, IUA: false },
         MM: { Feedback: true, IUA: false },
@@ -488,6 +539,63 @@ class HelperService {
         'Slow starter': true,
         Panic: true,
         Frustration: true,
+      },
+    };
+  }
+
+  feedbackSentences() {
+    console.log("FEEDBACK");
+    this.estimationOfResults.Feedback = {
+      F: {
+        '5-9': 'You may get frustrated and lose your cool when you find a question difficult. Stop, take a deep breath and do your routine. Focus on the physical tools in the app.',
+        '10+': 'You have a tendency to get frustrated and angry and when you find a question difficult. You must stop, do your routine and gain your composure. Focus on the physical tools in the app.',
+      },
+      SA: {
+        0: 'You have a good sense of who you are and of your abilities to perform.',
+        '2-4': 'You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative.',
+      },
+      GSC: {
+        3: 'You manage stress well.  In order to reach your peak performance, practice your routine in order to stay focused and positive.',
+        '4-5': 'Your ability to manage stress is commendable. You are confident, focused and work well within a time frame. You stay positive, are quick to see possibilities and solve problems accurately. Practice your routine in order to stay focused and positive.',
+      },
+      SS: {
+        '10-19': 'You have a tendency to start slowly. Before you begin the test, use your routine to get focused and into your zone so you start with confidence.',
+        '20+': ' You may get overwhelmed when beginning the test.  Try to get focused and into your zone before the test starts by using your routine.',
+      },
+      I: {
+        '10-19': 'Sometimes you begin a task, get confused and then read the instructions. Be sure to read and understand the instructions first.',
+        '20+': 'You have a tendency to jump right in and tackle the task at hand. It is crucial for you to take the time and READ THE INSTRUCTIONS  before you start to answer any question',
+      },
+      Panic: {
+        '5-10': 'When faced with a difficult question, you may get stressed out and not take the time to focus and attempt to solve it.',
+        '11+': 'You have a tendency to stress out when faced with a question that  is unfamiliar to you. ',
+      },
+      NT: {
+        '9-19': 'When you are stressed, your negative inner voice may tell you that you “can’t” whereas you probably “can.” ',
+        '20+': 'Your inner voice may be too self-critical and pessimistic which will prevent you from trusting your ability to perform. You may skip questions even though you know the answers. ',
+      },
+      LC: {
+        '5-10': ' If you see that you are getting overwhelmed and negative thoughts are appearing as the test gets closer, use the Positive Thinking tool in the app.',
+        '11-19': 'Be patient and trust that you have the ability. Spend time on the positive thinking tool in the app.',
+        '20+': 'You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.',
+      },
+      P: {
+        '11-19': 'It’s important for you to be careful and accurate and it is difficult for you to let go of a question you feel you can solve',
+        '20+': ' You are committed to carefully and accurately find solutions to difficult questions however, you may be spending too much time on a specific question.',
+      },
+      BTM: {
+        '5-10': 'You manage the time well. The more practice tests you take, keeping your eye on the clock, the more you will improve your performance.',
+        '11-19': 'You must focus on the big picture and always be aware of the time. Spending too much time on a hard question or skipping it too quickly is not effective. During the practice tests keep in mind the time factor.',
+        '20+': 'You need to make a plan ahead of time on how long you can spend on each question (or section) and then adjust according to how you’re doing. You always need to be aware of the time and to pace yourself. ',
+      },
+
+      C: {
+        '5-10': 'Your focus is good. During the test, use your power word if you lose concentration and need to refocus. Check out the stress and recovery section.',
+        '10-19': 'Concentration during the test may be difficult for you when you’re feeling the pressure. It’s important to use your power word to get re-focused and to practice your routine. Check out the stress and recovery section.',
+        '20+': 'It may be hard for you to be totally focused during the test. Use the concentration tools to bring your mind back. Check out the stress and recovery section.',
+      },
+      MM: {
+        true: 'Your brain processes information better in a quiet environment. Find a quiet place to study with as little background noise as possible.',
       },
     };
   }

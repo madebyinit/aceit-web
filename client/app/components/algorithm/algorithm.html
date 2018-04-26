@@ -9,6 +9,7 @@
   <a class="myButton" ng-click="$ctrl.changeView('parkingLotLast')">Parkinglot Last</a>
   <a class="myButton" ng-click="$ctrl.changeView('gameEnd')">If Time End</a>
   <a class="myButton" ng-click="$ctrl.changeView(null)">Games mode </a>
+  <a class="myButton" ng-click="$ctrl.changeToFeedback(null)">Feedback Sentences </a>
 
   <a class="myButtonSave" ng-click="$ctrl.saveData()">Save Data</a>
 
@@ -103,13 +104,29 @@
           {{key | AlghorithmHeaderFilter}}
         </td>
         <td>
-          <a class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'Feedback')">{{value.Feedback | AlghorithmHeaderFilter}}</a>
+          <a ng-if="key === 'SA' || key === 'MM' || key === 'GSC' " class="myButtonGame" ng-click="$ctrl.changeUPDI(key,'Feedback')">{{value.Feedback | AlghorithmHeaderFilter}}</a>
+          <a ng-if="key !== 'SA' && key !== 'MM' && key !== 'GSC' ">{{value.Feedback | AlghorithmHeaderFilter}}</a>
         </td>
         <td>
             {{value.IUA | AlghorithmHeaderFilter}}
         </td>
       </tr>
     </table>
+    </div>
+
+    <div ng-if="$ctrl.showFeedback">
+      <h3> Feedback Sentences </h3>
+      <table>
+        <tr  ng-repeat="(key, values) in  $ctrl.estimationOfResults.Feedback">
+          <td>{{key | AlghorithmHeaderFilter}}</td>
+          <td ng-repeat="(keys, value) in $ctrl.estimationOfResults.Feedback[key]">         
+            {{keys | AlghorithmHeaderFilter}}
+          </br>
+            <input class="input" type="text"  ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)">
+            <!-- value='{{value | AlghorithmHeaderFilter}}' -->
+          </td>
+        </tr>
+      </table>
     </div>
     
 </div>

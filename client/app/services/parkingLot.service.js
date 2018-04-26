@@ -17,7 +17,7 @@ class ParkingLotService {
       panic: 0,
       frustration: 0,
     };
-
+    console.log(win);
     if (win) {
       this.gameScore.gamesSuccessfullyCompleted += 1;
     }
@@ -47,7 +47,37 @@ class ParkingLotService {
     }
     if (this.orderOfGames.UPDI.parkinglot.SGD) {
     // Successful Game Duration
-      if (duration > 60000 && duration <= 70000) {
+      if (duration > 0 && duration <= 40000) {
+        result.lowConfidence += this.estimationOfResults.parkinglot.SGD['0-40'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.SGD['0-40'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.SGD['0-40'].P;
+        result.negThink += this.estimationOfResults.parkinglot.SGD['0-40'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.SGD['0-40'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.SGD['0-40'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.SGD['0-40'].SS;
+        result.panic += this.estimationOfResults.parkinglot.SGD['0-40'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.SGD['0-40'].F;
+      } else if (duration > 40000 && duration <= 50000) {
+        result.lowConfidence += this.estimationOfResults.parkinglot.SGD['41-50'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.SGD['41-50'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.SGD['41-50'].P;
+        result.negThink += this.estimationOfResults.parkinglot.SGD['41-50'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.SGD['41-50'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.SGD['41-50'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.SGD['41-50'].SS;
+        result.panic += this.estimationOfResults.parkinglot.SGD['41-50'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.SGD['41-50'].F;
+      } else if (duration > 50000 && duration <= 60000) {
+        result.lowConfidence += this.estimationOfResults.parkinglot.SGD['51-60'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.SGD['51-60'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.SGD['51-60'].P;
+        result.negThink += this.estimationOfResults.parkinglot.SGD['51-60'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.SGD['51-60'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.SGD['51-60'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.SGD['51-60'].SS;
+        result.panic += this.estimationOfResults.parkinglot.SGD['51-60'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.SGD['51-60'].F;
+      } else if (duration > 60000 && duration <= 70000) {
         result.lowConfidence += this.estimationOfResults.parkinglot.SGD['61-70'].LC;
         result.badTimeMan += this.estimationOfResults.parkinglot.SGD['61-70'].BTM;
         result.perfectionism += this.estimationOfResults.parkinglot.SGD['61-70'].P;
