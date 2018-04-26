@@ -162,11 +162,12 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      if (this.user.estimationOfResults.GP.GSD === undefined) {
+      if (this.user.estimationOfResults.Feedback === undefined) {
         this.helperService.gameSequence();
         this.helperService.Results();
         this.helperService.feedbackSentences();
         this.seconds = this.estimationOfResults.GP.GSD;
+        console.log(this.estimationOfResults);
       } else {
         this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
         this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
