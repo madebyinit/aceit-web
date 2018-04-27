@@ -49,7 +49,20 @@ class SummaryController {
   _getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      this.userSum = { positive: res.userSum.positive, concentration: res.userSum.concentration, physical: res.userSum.physical };
+      this.userSum = { positive: false, concentration: false, physical: false };
+
+      if (res.userSum.panic > 10 || res.userSum.negThink > 10 || res.userSum.lowConfidence > 10) {
+        this.positive = true;
+      }
+
+      if (res.userSum.lackRicuz > 10) {
+        this.concentration = true;
+      }
+
+      if (res.userSum.frustration > 10) {
+        this.physical = true;
+      }
+
       console.log(this.userSum);
       if (_.get(res, 'questionnaire')) {
         this.sumUserQuestionnaire();

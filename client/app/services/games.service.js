@@ -291,7 +291,17 @@ class GamesService {
       frustration += this.gameScore.endTime[8];
     }
 
-    this.userSum = { positive: negThink, concentration: lackRicuz, physical: panic };
+    this.userSum = { 
+      'lowConfidence': lowConfidence, 
+      'badTimeMan': badTimeMan, 
+      'perfectionism': perfectionism, 
+      'negThink': negThink, 
+      'lackRicuz': lackRicuz, 
+      'impulsivity': impulsivity,
+      'slowStarter': slowStarter,
+      'panic': panic,
+      'frustration': frustration,
+    };
 
     this.connection.saveData(this.userSum, 'userSum');
 
