@@ -7,15 +7,15 @@ import firebaseServiceModule from './firebaseService/firebaseService';
 import stateChangeServiceModule from './stateChangeService/stateChangeService';
 import connectServicesModule from './connectServices/connectServices';
 
-let commonModule = angular.module('app.common', [
+const commonModule = angular.module('app.common', [
   notificationsServiceModule.name,
   connectionServiceModule.name,
   firebaseServiceModule.name,
   progressLinearServiceModule.name,
   uiElementsModule,
   stateChangeServiceModule.name,
-  connectServicesModule.name
+  connectServicesModule.name,
 ])
-.name;
+  .name;
 
 export default commonModule;
