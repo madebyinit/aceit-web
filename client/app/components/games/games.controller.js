@@ -59,6 +59,7 @@ class GamesController {
       console.log('THIRD START');
       const audio = this.$document[0].getElementById('backgroundMusic');
       audio.play();
+      this.firstStart = true;
       this.showWindow = false;
       this.countdownTimer = this.$interval(this.startTimer, 1000);
       this.orderOfGames.level[0] = this.randomInteger(1, 10);
@@ -81,8 +82,10 @@ class GamesController {
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
 
-      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) { console.log('stop'); 
-      } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) { console.log('stop'); 
+      if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
+        console.log('stop');
+      } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
+        console.log('stop');
       } else {
         this.showMouseRetry = true;
         switch (this.gameNumber) {
@@ -111,7 +114,8 @@ class GamesController {
         switch (this.gameNumber) {
           // tower
           case 2:
-            this.$window.nogic.uninitialize();
+
+            this.uninitializeGames(0);
             if (localStorage.getItem('gamePageSecond') !== null) {
               this.orderOfGames.level[1] = this.randomInteger(1, 10);
             }
@@ -183,7 +187,7 @@ class GamesController {
         this.orderOfGames.UPDI = this.user.UPDI;
 
         this.seconds = this.user.estimationOfResults.GP.GSD;
-        console.log("WE FIND ESTIM", this.estimationOfResults);
+        console.log('WE FIND ESTIM', this.estimationOfResults);
       }
 
 
@@ -300,7 +304,7 @@ class GamesController {
     switch (this.gameNumber) {
       // tower
       case 2:
-        this.$window.nogic.uninitialize();
+        this.uninitializeGames(0);
         if (localStorage.getItem('gamePageSecond') !== null) {
           this.orderOfGames.level[1] = this.randomInteger(1, 10);
         }
@@ -337,7 +341,7 @@ class GamesController {
         this.createGame(this.$window.nogic, { language: 'en', level: 3 }); break;
       case 6:
 
-        this.$window.nogic.uninitialize();
+        this.uninitializeGames(5);
         this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.secondsleft);
         this.gamesService.gameStatistic();
         this.gameNumber = 5;
@@ -345,19 +349,6 @@ class GamesController {
         break;
       default:
         this.gameNumber = 5;
-        break;
-    }
-  }
-
-  uninitializeGames(numb) {
-    if (localStorage.getItem('gamePageSecond') !== null) {
-      this.orderOfGames.level[numb + 1] = this.randomInteger(1, 10);
-    }
-    switch (this.orderOfGames.gameSequence[numb]) {
-      case 'tower': this.$window.nogic2.uninitialize(); break;
-      case 'mousetrap': this.$window.nogic3.uninitialize(); break;
-      case 'mazerace': this.$window.nogic4.uninitialize(); break;
-      default:
         break;
     }
   }
@@ -394,8 +385,36 @@ class GamesController {
     } else {
       localStorage.setItem('gamePageSecond', location.pathname);
     }
+
+    this.uninitializeGames(this.gameNumber);
     this.removeListeners();
     this.$state.reload();
+  }
+
+  reloadPagePopup() {
+    if (localStorage.getItem('gamePage') == null) {
+      localStorage.setItem('gamePage', location.pathname);
+    } else {
+      localStorage.setItem('gamePageSecond', location.pathname);
+    }
+    this.uninitializeGames(this.gameNumber - 1);
+    this.removeListeners();
+    this.$state.reload();
+  }
+
+  uninitializeGames(numb) {
+    if (localStorage.getItem('gamePageSecond') !== null) {
+      this.orderOfGames.level[numb + 1] = this.randomInteger(1, 10);
+    }
+    if (numb === 5) { numb = 0; }
+    switch (this.orderOfGames.gameSequence[numb]) {
+      case 'parkinglot': this.$window.nogic.uninitialize(); break;
+      case 'tower': this.$window.nogic2.uninitialize(); break;
+      case 'mousetrap': this.$window.nogic3.uninitialize(); break;
+      case 'mazerace': this.$window.nogic4.uninitialize(); break;
+      default:
+        break;
+    }
   }
 
   removeListeners() {

@@ -295,11 +295,10 @@ class GamesService {
 
     this.connection.saveData(this.userSum, 'userSum');
 
-console.log(this.gameScore.selfAssessment, 'WTTA', this.gameScore.gamesSuccessfullyCompleted, 'WTTA', this.estimationOfResults.GP.UPDI.SA);
     if (this.estimationOfResults.GP.UPDI.SA) {
       if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
         this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0']; alert('User succeeded the same number of games  predicted'); // 'You have a good sense of who you are and of your abilities to perform.';
-      } else if (this.gameScore.selfAssessment > this.gameScore.gamesSuccessfullyCompleted) { alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
+      } else if (this.gameScore.selfAssessment < this.gameScore.gamesSuccessfullyCompleted) { alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
       } else if (this.gameScore.gamesSuccessfullyCompleted >= 2) { alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4']; } // 'You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative.'; }
     }
     if (this.estimationOfResults.GP.UPDI.GSC) {
