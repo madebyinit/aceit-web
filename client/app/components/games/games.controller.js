@@ -166,10 +166,11 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      if (this.user.estimationOfResults.Feedback === undefined) {
+      if (this.user.estimationOfResults.SuggestPoints === undefined) {
         this.helperService.gameSequence();
         this.helperService.Results();
         this.helperService.feedbackSentences();
+        this.helperService.SuggestedTools();
         this.seconds = this.estimationOfResults.GP.GSD;
         console.log(this.estimationOfResults);
       } else {
@@ -181,6 +182,7 @@ class GamesController {
         this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
         this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
         this.estimationOfResults.GP = this.user.estimationOfResults.GP;
+        this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;

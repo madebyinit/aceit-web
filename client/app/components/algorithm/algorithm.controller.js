@@ -34,10 +34,11 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.user.estimationOfResults.Feedback === undefined) {
+      if (this.user.estimationOfResults.SuggestPoints === undefined) {
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();
         this.helperService.Results();
+        this.helperService.SuggestedTools();
       } else {
         this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
         this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
@@ -47,12 +48,13 @@ class AlgorithmController {
         this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
         this.estimationOfResults.GP = this.user.estimationOfResults.GP;
         this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
+        this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;
         this.orderOfGames.UPDI = this.user.UPDI;
       }
-
+      console.log(this.estimationOfResults);
       this._userInit();
     });
   }

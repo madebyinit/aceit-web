@@ -21,7 +21,7 @@ class TowerService {
     if (win) {
       this.gameScore.gamesSuccessfullyCompleted += 1;
     }
-    console.log(this.estimationOfResults.tower, "TEST TOWER");
+    // console.log(this.estimationOfResults.tower, "TEST TOWER");
     // Successful Game Duration
     if (this.orderOfGames.UPDI.tower.SGD) {
       if (duration > 0 && duration <= 40000) {
