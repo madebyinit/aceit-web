@@ -66,6 +66,13 @@
           </td>
         </tr>
       </table>
+
+      <h3> Suggested Tool </h3>
+      <div ng-repeat="(key, value) in $ctrl.estimationOfResults.SuggestPoints">
+        <input ng-model="$ctrl.estimationOfResults.SuggestPoints[key]" ></input>
+        <a class="myButtonGame" >{{key}}</a>
+      </div>
+
       <h3> Time for Game </h3>
       <input ng-model="$ctrl.estimationOfResults.GP.GSD" ></input>
       <a class="myButtonGame" >Games Session Duration (in seconds)</a>

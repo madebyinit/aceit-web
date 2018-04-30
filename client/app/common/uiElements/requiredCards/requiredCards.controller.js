@@ -4,6 +4,9 @@ class requiredCardsController {
     this.$state = $state;
     this.progressLinear = progressLinear;
     this.$timeout = $timeout;
+    this.positive = false;
+    this.concentration = false;
+    this.physical = false;
   }
 
   $onInit() {
@@ -16,10 +19,24 @@ class requiredCardsController {
     this.connection.getData().then((res) => {
       this.user = res;
       this.userSum = { positive: 0, concentration: 0, physical: 0 };
+
+      if (res.userSum.panic > this.user.estimationOfResults.SuggestPoints.Panic || res.userSum.negThink > this.user.estimationOfResults.SuggestPoints['Negative Thinking'] || res.userSum.lowConfidence > this.user.estimationOfResults.SuggestPoints['Low Confidence']) {
+        this.positive = true;
+      }
+
+      if (res.userSum.lackRicuz > this.user.estimationOfResults.SuggestPoints.Concentration) {
+        this.concentration = true;
+      }
+
+      if (res.userSum.frustration > this.user.estimationOfResults.SuggestPoints.Frustration) {
+        this.physical = true;
+      }
+
+      console.log(this.userSum);
       if (_.get(res, 'questionnaire')) {
         this.sumUserQuestionnaire();
         this.routineDisabled();
-      } else{
+      } else {
         this.$state.go('questionnaire');
       }
       if (this.progressLinear) {

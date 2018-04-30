@@ -245,8 +245,8 @@ class MazeraceService {
         result.frustration += this.estimationOfResults.mazerace.IB['2+'].F;
       }
     }
-    this.gameScore.mazerace = Object.assign({}, result);
-    alert(`mazerace = ${this.gameScore.mazerace.lowConfidence} ${this.gameScore.mazerace.badTimeMan} ${this.gameScore.mazerace.perfectionism} ${this.gameScore.mazerace.negThink} ${this.gameScore.mazerace.lackRicuz} ${this.gameScore.mazerace.impulsivity} ${this.gameScore.mazerace.slowStarter} ${this.gameScore.mazerace.panic} ${this.gameScore.mazerace.frustration}`);
+    this.gameScore.mazerace = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
+    alert(`mazerace = ${this.gameScore.mazerace}`);
   }
 }
 

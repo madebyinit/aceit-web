@@ -140,8 +140,8 @@ class MouseGameService {
         result.frustration += this.estimationOfResults.mousetrap.IB['2+'].F;
       }
     }
-    this.gameScore.mousetrap = Object.assign({}, result);
-    alert(`mousetrap = ${this.gameScore.mousetrap.lowConfidence} ${this.gameScore.mousetrap.badTimeMan} ${this.gameScore.mousetrap.perfectionism} ${this.gameScore.mousetrap.negThink} ${this.gameScore.mousetrap.lackRicuz} ${this.gameScore.mousetrap.impulsivity} ${this.gameScore.mousetrap.slowStarter} ${this.gameScore.mousetrap.panic} ${this.gameScore.mousetrap.frustration}`);
+    this.gameScore.mousetrap = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
+    alert(`mousetrap = ${this.gameScore.mousetrap}`);
   }
 }
 

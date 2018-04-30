@@ -544,7 +544,7 @@ class HelperService {
   }
 
   feedbackSentences() {
-    console.log("FEEDBACK");
+    console.log('FEEDBACK');
     this.estimationOfResults.Feedback = {
       F: {
         '5-9': 'You may get frustrated and lose your cool when you find a question difficult. Stop, take a deep breath and do your routine. Focus on the physical tools in the app.',
@@ -597,6 +597,16 @@ class HelperService {
       MM: {
         true: 'Your brain processes information better in a quiet environment. Find a quiet place to study with as little background noise as possible.',
       },
+    };
+  }
+
+  SuggestedTools() {
+    this.estimationOfResults.SuggestPoints = {
+      Panic: 10,
+      'Negative Thinking': 10,
+      'Low Confidence': 10,
+      Concentration: 10,
+      Frustration: 10,
     };
   }
 }
