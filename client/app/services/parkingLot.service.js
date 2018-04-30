@@ -187,8 +187,8 @@ class ParkingLotService {
         result.frustration += this.estimationOfResults.parkinglot.TM['61+'].F;
       }
     }
-    this.gameScore.parkinglot = Object.assign({}, result);
-    alert(`parkinglot = ${this.gameScore.parkinglot.lowConfidence} ${this.gameScore.parkinglot.badTimeMan} ${this.gameScore.parkinglot.perfectionism} ${this.gameScore.parkinglot.negThink} ${this.gameScore.parkinglot.lackRicuz} ${this.gameScore.parkinglot.impulsivity} ${this.gameScore.parkinglot.slowStarter} ${this.gameScore.parkinglot.panic} ${this.gameScore.parkinglot.frustration}`);
+    this.gameScore.parkinglot = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
+    alert(`parkinglot = ${this.gameScore.parkinglot}`);
   }
 
   endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {

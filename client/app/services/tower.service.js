@@ -164,8 +164,8 @@ class TowerService {
         result.frustration += this.estimationOfResults.tower.TM['81+'].F;
       }
     }
-    this.gameScore.tower = Object.assign({}, result);
-    alert(`tower = ${this.gameScore.tower.lowConfidence} ${this.gameScore.tower.badTimeMan} ${this.gameScore.tower.perfectionism} ${this.gameScore.tower.negThink} ${this.gameScore.tower.lackRicuz} ${this.gameScore.tower.impulsivity} ${this.gameScore.tower.slowStarter} ${this.gameScore.tower.panic} ${this.gameScore.tower.frustration}`);
+    this.gameScore.tower = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
+    alert(`tower = ${this.gameScore.tower}`);
   }
 }
 

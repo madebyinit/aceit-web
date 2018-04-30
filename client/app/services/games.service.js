@@ -207,6 +207,7 @@ class GamesService {
     alert(this.gameScore.endTime, '5 Game END');
   }
 
+
   gameStatistic() {
     let lowConfidence = 0;
     let badTimeMan = 0;
@@ -219,16 +220,17 @@ class GamesService {
     let frustration = 0;
 
     if (this.gameScore.parkinglot !== {}) {
-      lowConfidence += this.gameScore.parkinglot.lowConfidence;
-      badTimeMan += this.gameScore.parkinglot.badTimeMan;
-      perfectionism += this.gameScore.parkinglot.perfectionism;
-      negThink += this.gameScore.parkinglot.negThink;
-      lackRicuz += this.gameScore.parkinglot.lackRicuz;
-      impulsivity += this.gameScore.parkinglot.impulsivity;
-      slowStarter += this.gameScore.parkinglot.slowStarter;
-      panic += this.gameScore.parkinglot.panic;
-      frustration += this.gameScore.parkinglot.frustration;
+      lowConfidence += this.gameScore.parkinglot[0];
+      badTimeMan += this.gameScore.parkinglot[1];
+      perfectionism += this.gameScore.parkinglot[2];
+      negThink += this.gameScore.parkinglot[3];
+      lackRicuz += this.gameScore.parkinglot[4];
+      impulsivity += this.gameScore.parkinglot[5];
+      slowStarter += this.gameScore.parkinglot[6];
+      panic += this.gameScore.parkinglot[7];
+      frustration += this.gameScore.parkinglot[8];
     }
+
     if (this.gameScore.parkinglotLast !== {}) {
       lowConfidence += this.gameScore.parkinglotLast[0];
       badTimeMan += this.gameScore.parkinglotLast[1];
@@ -240,40 +242,43 @@ class GamesService {
       panic += this.gameScore.parkinglotLast[7];
       frustration += this.gameScore.parkinglotLast[8];
     }
+
     if (this.gameScore.mazerace !== {}) {
-      lowConfidence += this.gameScore.mazerace.lowConfidence;
-      badTimeMan += this.gameScore.mazerace.badTimeMan;
-      perfectionism += this.gameScore.mazerace.perfectionism;
-      negThink += this.gameScore.mazerace.negThink;
-      lackRicuz += this.gameScore.mazerace.lackRicuz;
-      impulsivity += this.gameScore.mazerace.impulsivity;
-      slowStarter += this.gameScore.mazerace.slowStarter;
-      panic += this.gameScore.mazerace.panic;
-      frustration += this.gameScore.mazerace.frustration;
+      lowConfidence += this.gameScore.mazerace[0];
+      badTimeMan += this.gameScore.mazerace[1];
+      perfectionism += this.gameScore.mazerace[2];
+      negThink += this.gameScore.mazerace[3];
+      lackRicuz += this.gameScore.mazerace[4];
+      impulsivity += this.gameScore.mazerace[5];
+      slowStarter += this.gameScore.mazerace[6];
+      panic += this.gameScore.mazerace[7];
+      frustration += this.gameScore.mazerace[8];
     }
+
     if (this.gameScore.mousetrap !== {}) {
-      lowConfidence += this.gameScore.mousetrap.lowConfidence;
-      badTimeMan += this.gameScore.mousetrap.badTimeMan;
-      perfectionism += this.gameScore.mousetrap.perfectionism;
-      negThink += this.gameScore.mousetrap.negThink;
-      lackRicuz += this.gameScore.mousetrap.lackRicuz;
-      impulsivity += this.gameScore.mousetrap.impulsivity;
-      slowStarter += this.gameScore.mousetrap.slowStarter;
-      panic += this.gameScore.mousetrap.panic;
-      frustration += this.gameScore.mousetrap.frustration;
+      lowConfidence += this.gameScore.mousetrap[0];
+      badTimeMan += this.gameScore.mousetrap[1];
+      perfectionism += this.gameScore.mousetrap[2];
+      negThink += this.gameScore.mousetrap[3];
+      lackRicuz += this.gameScore.mousetrap[4];
+      impulsivity += this.gameScore.mousetrap[5];
+      slowStarter += this.gameScore.mousetrap[6];
+      panic += this.gameScore.mousetrap[7];
+      frustration += this.gameScore.mousetrap[8];
     }
+
     if (this.gameScore.tower !== {}) {
-      console.log(this.gameScore.tower.lowConfidence);
-      lowConfidence += this.gameScore.tower.lowConfidence;
-      badTimeMan += this.gameScore.tower.badTimeMan;
-      perfectionism += this.gameScore.tower.perfectionism;
-      negThink += this.gameScore.tower.negThink;
-      lackRicuz += this.gameScore.tower.lackRicuz;
-      impulsivity += this.gameScore.tower.impulsivity;
-      slowStarter += this.gameScore.tower.slowStarter;
-      panic += this.gameScore.tower.panic;
-      frustration += this.gameScore.tower.frustration;
+      lowConfidence += this.gameScore.tower[0];
+      badTimeMan += this.gameScore.tower[1];
+      perfectionism += this.gameScore.tower[2];
+      negThink += this.gameScore.tower[3];
+      lackRicuz += this.gameScore.tower[4];
+      impulsivity += this.gameScore.tower[5];
+      slowStarter += this.gameScore.tower[6];
+      panic += this.gameScore.tower[7];
+      frustration += this.gameScore.tower[8];
     }
+
     if (this.gameScore.endTime !== {}) {
       lowConfidence += this.gameScore.endTime[0];
       badTimeMan += this.gameScore.endTime[1];
