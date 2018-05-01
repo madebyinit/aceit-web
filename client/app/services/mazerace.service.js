@@ -114,7 +114,6 @@ class MazeraceService {
         }
       }
     } else if (this.orderOfGames.UPDI.mazerace.CGDWTiU) {
-      console.log(win, 'WIIIIN', this.estimationOfResults);
       // Game Duration When Time is Up
       if (duration <= 30000) {
         result.lowConfidence += this.estimationOfResults.mazerace.CGDETiU['0-30'].LC;
@@ -223,7 +222,17 @@ class MazeraceService {
     }
     if (this.orderOfGames.UPDI.mazerace.IB) {
     // Instruction Button
-      if (instructionsClickCount === 1) {
+      if (instructionsClickCount === 0) {
+        result.lowConfidence += this.estimationOfResults.mazerace.IB['0'].LC;
+        result.badTimeMan += this.estimationOfResults.mazerace.IB['0'].BTM;
+        result.perfectionism += this.estimationOfResults.mazerace.IB['0'].P;
+        result.negThink += this.estimationOfResults.mazerace.IB['0'].NT;
+        result.lackRicuz += this.estimationOfResults.mazerace.IB['0'].LR;
+        result.impulsivity += this.estimationOfResults.mazerace.IB['0'].I;
+        result.slowStarter += this.estimationOfResults.mazerace.IB['0'].SS;
+        result.panic += this.estimationOfResults.mazerace.IB['0'].Panic;
+        result.frustration += this.estimationOfResults.mazerace.IB['0'].F;
+      } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.mazerace.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.mazerace.IB['1'].BTM;
         result.perfectionism += this.estimationOfResults.mazerace.IB['1'].P;

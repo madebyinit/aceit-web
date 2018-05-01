@@ -118,7 +118,17 @@ class MouseGameService {
     }
     if (this.orderOfGames.UPDI.mousetrap.IB) {
     // Instruction Button
-      if (instructionsClickCount === 1) {
+      if (instructionsClickCount === 0) {
+        result.lowConfidence += this.estimationOfResults.mousetrap.IB['0'].LC;
+        result.badTimeMan += this.estimationOfResults.mousetrap.IB['0'].BTM;
+        result.perfectionism += this.estimationOfResults.mousetrap.IB['0'].P;
+        result.negThink += this.estimationOfResults.mousetrap.IB['0'].NT;
+        result.lackRicuz += this.estimationOfResults.mousetrap.IB['0'].LR;
+        result.impulsivity += this.estimationOfResults.mousetrap.IB['0'].I;
+        result.slowStarter += this.estimationOfResults.mousetrap.IB['0'].SS;
+        result.panic += this.estimationOfResults.mousetrap.IB['0'].Panic;
+        result.frustration += this.estimationOfResults.mousetrap.IB['0'].F;
+      } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.mousetrap.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.mousetrap.IB['1'].BTM;
         result.perfectionism += this.estimationOfResults.mousetrap.IB['1'].P;
