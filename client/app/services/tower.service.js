@@ -118,7 +118,17 @@ class TowerService {
     }
     if (this.orderOfGames.UPDI.tower.IB) {
     // Instruction Button
-      if (instructionsClickCount === 1) {
+      if (instructionsClickCount === 0) {
+        result.lowConfidence += this.estimationOfResults.tower.IB['0'].LC;
+        result.badTimeMan += this.estimationOfResults.tower.IB['0'].BTM;
+        result.perfectionism += this.estimationOfResults.tower.IB['0'].P;
+        result.negThink += this.estimationOfResults.tower.IB['0'].NT;
+        result.lackRicuz += this.estimationOfResults.tower.IB['0'].LR;
+        result.impulsivity += this.estimationOfResults.tower.IB['0'].I;
+        result.slowStarter += this.estimationOfResults.tower.IB['0'].SS;
+        result.panic += this.estimationOfResults.tower.IB['0'].Panic;
+        result.frustration += this.estimationOfResults.tower.IB['0'].F;
+      } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.tower.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.tower.IB['1'].BTM;
         result.perfectionism += this.estimationOfResults.tower.IB['1'].P;
@@ -142,7 +152,17 @@ class TowerService {
     }
     // Total # of moves
     if (this.orderOfGames.UPDI.tower.NoM) {
-      if (noOfMoves >= 46 && noOfMoves < 81) {
+      if (noOfMoves < 46) {
+        result.lowConfidence += this.estimationOfResults.tower.TM['1-45'].LC;
+        result.badTimeMan += this.estimationOfResults.tower.TM['1-45'].BTM;
+        result.perfectionism += this.estimationOfResults.tower.TM['1-45'].P;
+        result.negThink += this.estimationOfResults.tower.TM['1-45'].NT;
+        result.lackRicuz += this.estimationOfResults.tower.TM['1-45'].LR;
+        result.impulsivity += this.estimationOfResults.tower.TM['1-45'].I;
+        result.slowStarter += this.estimationOfResults.tower.TM['1-45'].SS;
+        result.panic += this.estimationOfResults.tower.TM['1-45'].Panic;
+        result.frustration += this.estimationOfResults.tower.TM['1-45'].F;
+      } else if (noOfMoves >= 46 && noOfMoves < 81) {
         result.lowConfidence += this.estimationOfResults.tower.TM['46-80'].LC;
         result.badTimeMan += this.estimationOfResults.tower.TM['46-80'].BTM;
         result.perfectionism += this.estimationOfResults.tower.TM['46-80'].P;

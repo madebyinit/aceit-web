@@ -141,7 +141,17 @@ class ParkingLotService {
     }
     if (this.orderOfGames.UPDI.parkinglot.IB) {
     // Instruction Button
-      if (instructionsClickCount === 1) {
+      if (instructionsClickCount === 0) {
+        result.lowConfidence += this.estimationOfResults.parkinglot.IB['0'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.IB['0'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.IB['0'].P;
+        result.negThink += this.estimationOfResults.parkinglot.IB['0'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.IB['0'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.IB['0'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.IB['0'].SS;
+        result.panic += this.estimationOfResults.parkinglot.IB['0'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.IB['0'].F;
+      } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.parkinglot.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.parkinglot.IB['1'].BTM;
         result.perfectionism += this.estimationOfResults.parkinglot.IB['1'].P;
@@ -165,7 +175,17 @@ class ParkingLotService {
     }
     if (this.orderOfGames.UPDI.parkinglot.NoM) {
     // Total # of moves
-      if (noOfMoves >= 41 && noOfMoves < 61) {
+      if (noOfMoves < 41) {
+        result.lowConfidence += this.estimationOfResults.parkinglot.TM['1-45'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.TM['1-45'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.TM['1-45'].P;
+        result.negThink += this.estimationOfResults.parkinglot.TM['1-45'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.TM['1-45'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.TM['1-45'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.TM['1-45'].SS;
+        result.panic += this.estimationOfResults.parkinglot.TM['1-45'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.TM['1-45'].F;
+      } else if (noOfMoves >= 41 && noOfMoves < 61) {
         result.lowConfidence += this.estimationOfResults.parkinglot.TM['41-60'].LC;
         result.badTimeMan += this.estimationOfResults.parkinglot.TM['41-60'].BTM;
         result.perfectionism += this.estimationOfResults.parkinglot.TM['41-60'].P;
@@ -209,7 +229,17 @@ class ParkingLotService {
     }
     if (this.orderOfGames.UPDI.parkinglotLast.IB) {
     // Instruction Button
-      if (instructionsClickCount === 1) {
+      if (instructionsClickCount === 0) {
+        result.lowConfidence += this.estimationOfResults.parkingLotLast.IB['0'].LC;
+        result.badTimeMan += this.estimationOfResults.parkingLotLast.IB['0'].BTM;
+        result.perfectionism += this.estimationOfResults.parkingLotLast.IB['0'].P;
+        result.negThink += this.estimationOfResults.parkingLotLast.IB['0'].NT;
+        result.lackRicuz += this.estimationOfResults.parkingLotLast.IB['0'].LR;
+        result.impulsivity += this.estimationOfResults.parkingLotLast.IB['0'].I;
+        result.slowStarter += this.estimationOfResults.parkingLotLast.IB['0'].SS;
+        result.panic += this.estimationOfResults.parkingLotLast.IB['0'].Panic;
+        result.frustration += this.estimationOfResults.parkingLotLast.IB['0'].F;
+      } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.parkingLotLast.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.parkingLotLast.IB['1'].BTM;
         result.perfectionism += this.estimationOfResults.parkingLotLast.IB['1'].P;
@@ -233,7 +263,17 @@ class ParkingLotService {
     }
     if (this.orderOfGames.UPDI.parkinglotLast.NoM) {
     // Total # of moves
-      if (noOfMoves >= 15 && noOfMoves < 25) {
+      if (noOfMoves < 15) {
+        result.lowConfidence += this.estimationOfResults.parkingLotLast.TM['0-15'].LC;
+        result.badTimeMan += this.estimationOfResults.parkingLotLast.TM['0-15'].BTM;
+        result.perfectionism += this.estimationOfResults.parkingLotLast.TM['0-15'].P;
+        result.negThink += this.estimationOfResults.parkingLotLast.TM['0-15'].NT;
+        result.lackRicuz += this.estimationOfResults.parkingLotLast.TM['0-15'].LR;
+        result.impulsivity += this.estimationOfResults.parkingLotLast.TM['0-15'].I;
+        result.slowStarter += this.estimationOfResults.parkingLotLast.TM['0-15'].SS;
+        result.panic += this.estimationOfResults.parkingLotLast.TM['0-15'].Panic;
+        result.frustration += this.estimationOfResults.parkingLotLast.TM['0-15'].F;
+      } else if (noOfMoves >= 15 && noOfMoves < 25) {
         result.lowConfidence += this.estimationOfResults.parkingLotLast.TM['15-25'].LC;
         result.badTimeMan += this.estimationOfResults.parkingLotLast.TM['15-25'].BTM;
         result.perfectionism += this.estimationOfResults.parkingLotLast.TM['15-25'].P;

@@ -166,7 +166,7 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      if (this.user.estimationOfResults.SuggestPoints === undefined) {
+      if (this.user.estimationOfResults.parkingLotLast.IB['0'] === undefined) {
         this.helperService.gameSequence();
         this.helperService.Results();
         this.helperService.feedbackSentences();

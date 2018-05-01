@@ -122,6 +122,9 @@ class HelperService {
 
       // Instruction Button
       IB: {
+        0: {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
         },
@@ -132,6 +135,9 @@ class HelperService {
 
       // Total # of moves
       TM: {
+        '0-40': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '41-60': {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 5, I: 0, SS: 0, Panic: 0, F: 5,
         },
@@ -142,6 +148,9 @@ class HelperService {
 
       // No Initial Activity
       NIA: {
+        '0-14': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '15-24': {
           LC: 3, BTM: 0, P: 0, NT: 1, LR: 1, I: 0, SS: 5, Panic: 0, F: 0,
         },
@@ -217,6 +226,9 @@ class HelperService {
       },
       // Instruction Button
       IB: {
+        0: {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
         },
@@ -226,7 +238,10 @@ class HelperService {
       },
       // Total # of moves
       TM: {
-        '41-80': {
+        '1-45': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 5, I: 0, SS: 0, Panic: 0, F: 5,
+        },
+        '46-80': {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 5, I: 0, SS: 0, Panic: 0, F: 5,
         },
         '81+': {
@@ -301,6 +316,9 @@ class HelperService {
       },
       // Instruction Button
       IB: {
+        0: {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
         },
@@ -410,6 +428,9 @@ class HelperService {
       },
       // Instruction Button
       IB: {
+        0: {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
         },
@@ -423,6 +444,9 @@ class HelperService {
     this.estimationOfResults.parkingLotLast = {
       // Instruction Button
       IB: {
+        0: {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
+        },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
         },
@@ -433,6 +457,9 @@ class HelperService {
 
       // Total # of moves
       TM: {
+        '0-15': {
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
+        },
         '15-25': {
           LC: 3, BTM: 0, P: 0, NT: 1, LR: 2, I: 0, SS: 0, Panic: 0, F: 5,
         },

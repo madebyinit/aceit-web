@@ -27,7 +27,7 @@ export default () => (input) => {
     case 'NoM':
       return 'Number of Moves';
     case 'TTtLGFS':
-      return 'Total Time till Last Game Finished Successfully';
+      return 'Total Time for Last Game ';
     case 'SA':
       return 'Self Assessment';
     case 'GSC':
