@@ -25,10 +25,12 @@
         </md-button>
         <h2>GAME {{$ctrl.gameNumber}}/5</h2>
       </div>
-      <div class="time">
+      <div class="time-wrap">
         <div class="lion"><img src="mazerace/lion.png" alt=""></div>
-        <h2>Time Left</h2>
-        <h3>{{$ctrl.timeRemain}}</h3>
+        <div class="time">
+          <h2>Time Left</h2>
+          <h3>{{$ctrl.timeRemain}}</h3>
+        </div>
       </div>
       <div class="btn-wrap-2">
         <md-button class="button-style summary-button-style retry" ng-if="!$ctrl.showMouseRetry " ng-click="$ctrl.restartMosetrap()">

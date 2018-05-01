@@ -27,14 +27,20 @@
         margin: 0;
       }
       .btn-wrap-1{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 270px;
+        width: 100%;
         h2{
           text-transform: uppercase;
           color: #fff;
           display: inline-block;
-          margin: 0 0 0 90px;
+          margin: 0;
         }
         button{
           padding: 30px 0 0 0;
+          min-width: 100px;
           img{
             position: static;
             display: block;
@@ -59,7 +65,7 @@
         }
       }
 
-      .time{
+      .time-wrap{
         position: absolute;
         left: 50%;
         top: -19px;
@@ -107,8 +113,7 @@
           left: -170px;
           top: -10px;
           @media (max-width: 1500px) {
-            right: -170px;
-            left: auto;
+
           }
           img{
             width: 150px;
@@ -129,5 +134,14 @@
   }
 }
 @media all and (max-width: 1500px) {
-
+  .game-wrap .game-inner .game-buttons .btn-wrap-1{
+    max-width: 240px;
+  }
+  .game-wrap .game-inner .game-buttons .time-wrap .lion img{
+    width: 120px;
+  }
+  .game-wrap .game-inner .game-buttons .time-wrap .lion {
+    left: -137px;
+    top: 17px;
+  }
 }
