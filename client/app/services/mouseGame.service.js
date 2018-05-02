@@ -128,6 +128,7 @@ class MouseGameService {
         result.slowStarter += this.estimationOfResults.mousetrap.IB['0'].SS;
         result.panic += this.estimationOfResults.mousetrap.IB['0'].Panic;
         result.frustration += this.estimationOfResults.mousetrap.IB['0'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.mousetrap.IB['0'].LC} badTimeMan = ${this.estimationOfResults.mousetrap.IB['0'].BTM} perfectionism = ${this.estimationOfResults.mousetrap.IB['0'].P} negThink = ${this.estimationOfResults.mousetrap.IB['0'].NT} lackRicuz = ${this.estimationOfResults.mousetrap.IB['0'].LR} impulsivity = ${this.estimationOfResults.mousetrap.IB['0'].I} slowStarter = ${this.estimationOfResults.mousetrap.IB['0'].SS} panic = ${this.estimationOfResults.mousetrap.IB['0'].Panic} frustration = ${this.estimationOfResults.mousetrap.IB['0'].F}`);
       } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.mousetrap.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.mousetrap.IB['1'].BTM;
@@ -138,6 +139,7 @@ class MouseGameService {
         result.slowStarter += this.estimationOfResults.mousetrap.IB['1'].SS;
         result.panic += this.estimationOfResults.mousetrap.IB['1'].Panic;
         result.frustration += this.estimationOfResults.mousetrap.IB['1'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.mousetrap.IB['1'].LC} badTimeMan = ${this.estimationOfResults.mousetrap.IB['1'].BTM} perfectionism = ${this.estimationOfResults.mousetrap.IB['1'].P} negThink = ${this.estimationOfResults.mousetrap.IB['1'].NT} lackRicuz = ${this.estimationOfResults.mousetrap.IB['1'].LR} impulsivity = ${this.estimationOfResults.mousetrap.IB['1'].I} slowStarter = ${this.estimationOfResults.mousetrap.IB['1'].SS} panic = ${this.estimationOfResults.mousetrap.IB['1'].Panic} frustration = ${this.estimationOfResults.mousetrap.IB['1'].F}`);
       } else if (instructionsClickCount >= 2) {
         result.lowConfidence += this.estimationOfResults.mousetrap.IB['2+'].LC;
         result.badTimeMan += this.estimationOfResults.mousetrap.IB['2+'].BTM;
@@ -148,6 +150,7 @@ class MouseGameService {
         result.slowStarter += this.estimationOfResults.mousetrap.IB['2+'].SS;
         result.panic += this.estimationOfResults.mousetrap.IB['2+'].Panic;
         result.frustration += this.estimationOfResults.mousetrap.IB['2+'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.mousetrap.IB['2+'].LC} badTimeMan = ${this.estimationOfResults.mousetrap.IB['2+'].BTM} perfectionism = ${this.estimationOfResults.mousetrap.IB['2+'].P} negThink = ${this.estimationOfResults.mousetrap.IB['2+'].NT} lackRicuz = ${this.estimationOfResults.mousetrap.IB['2+'].LR} impulsivity = ${this.estimationOfResults.mousetrap.IB['2+'].I} slowStarter = ${this.estimationOfResults.mousetrap.IB['2+'].SS} panic = ${this.estimationOfResults.mousetrap.IB['2+'].Panic} frustration = ${this.estimationOfResults.mousetrap.IB['2+'].F}`);
       }
     }
     this.gameScore.mousetrap = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];

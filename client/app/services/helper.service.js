@@ -445,7 +445,7 @@ class HelperService {
       // Instruction Button
       IB: {
         0: {
-          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
+          LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 0, SS: 0, Panic: 0, F: 0,
         },
         1: {
           LC: 0, BTM: 0, P: 0, NT: 0, LR: 0, I: 5, SS: 0, Panic: 0, F: 0,
