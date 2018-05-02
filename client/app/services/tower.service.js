@@ -128,6 +128,7 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.IB['0'].SS;
         result.panic += this.estimationOfResults.tower.IB['0'].Panic;
         result.frustration += this.estimationOfResults.tower.IB['0'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.IB['0'].LC} badTimeMan = ${this.estimationOfResults.tower.IB['0'].BTM} perfectionism = ${this.estimationOfResults.tower.IB['0'].P} negThink = ${this.estimationOfResults.tower.IB['0'].NT} lackRicuz = ${this.estimationOfResults.tower.IB['0'].LR} impulsivity = ${this.estimationOfResults.tower.IB['0'].I} slowStarter = ${this.estimationOfResults.tower.IB['0'].SS} panic = ${this.estimationOfResults.tower.IB['0'].Panic} frustration = ${this.estimationOfResults.tower.IB['0'].F}`);
       } else if (instructionsClickCount === 1) {
         result.lowConfidence += this.estimationOfResults.tower.IB['1'].LC;
         result.badTimeMan += this.estimationOfResults.tower.IB['1'].BTM;
@@ -138,6 +139,7 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.IB['1'].SS;
         result.panic += this.estimationOfResults.tower.IB['1'].Panic;
         result.frustration += this.estimationOfResults.tower.IB['1'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.IB['1'].LC} badTimeMan = ${this.estimationOfResults.tower.IB['1'].BTM} perfectionism = ${this.estimationOfResults.tower.IB['1'].P} negThink = ${this.estimationOfResults.tower.IB['1'].NT} lackRicuz = ${this.estimationOfResults.tower.IB['1'].LR} impulsivity = ${this.estimationOfResults.tower.IB['1'].I} slowStarter = ${this.estimationOfResults.tower.IB['1'].SS} panic = ${this.estimationOfResults.tower.IB['1'].Panic} frustration = ${this.estimationOfResults.tower.IB['1'].F}`);
       } else if (instructionsClickCount >= 2) {
         result.lowConfidence += this.estimationOfResults.tower.IB['2+'].LC;
         result.badTimeMan += this.estimationOfResults.tower.IB['2+'].BTM;
@@ -148,6 +150,7 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.IB['2+'].SS;
         result.panic += this.estimationOfResults.tower.IB['2+'].Panic;
         result.frustration += this.estimationOfResults.tower.IB['2+'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.IB['2+'].LC} badTimeMan = ${this.estimationOfResults.tower.IB['2+'].BTM} perfectionism = ${this.estimationOfResults.tower.IB['2+'].P} negThink = ${this.estimationOfResults.tower.IB['2+'].NT} lackRicuz = ${this.estimationOfResults.tower.IB['2+'].LR} impulsivity = ${this.estimationOfResults.tower.IB['2+'].I} slowStarter = ${this.estimationOfResults.tower.IB['2+'].SS} panic = ${this.estimationOfResults.tower.IB['2+'].Panic} frustration = ${this.estimationOfResults.tower.IB['2+'].F}`);
       }
     }
     // Total # of moves
@@ -162,6 +165,7 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.TM['1-45'].SS;
         result.panic += this.estimationOfResults.tower.TM['1-45'].Panic;
         result.frustration += this.estimationOfResults.tower.TM['1-45'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.TM['1-45'].LC} badTimeMan = ${this.estimationOfResults.tower.TM['1-45'].BTM} perfectionism = ${this.estimationOfResults.tower.TM['1-45'].P} negThink = ${this.estimationOfResults.tower.TM['1-45'].NT} lackRicuz = ${this.estimationOfResults.tower.TM['1-45'].LR} impulsivity = ${this.estimationOfResults.tower.TM['1-45'].I} slowStarter = ${this.estimationOfResults.tower.TM['1-45'].SS} panic = ${this.estimationOfResults.tower.TM['1-45'].Panic} frustration = ${this.estimationOfResults.tower.TM['1-45'].F}`);
       } else if (noOfMoves >= 46 && noOfMoves < 81) {
         result.lowConfidence += this.estimationOfResults.tower.TM['46-80'].LC;
         result.badTimeMan += this.estimationOfResults.tower.TM['46-80'].BTM;
@@ -172,6 +176,7 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.TM['46-80'].SS;
         result.panic += this.estimationOfResults.tower.TM['46-80'].Panic;
         result.frustration += this.estimationOfResults.tower.TM['46-80'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.TM['46-80'].LC} badTimeMan = ${this.estimationOfResults.tower.TM['46-80'].BTM} perfectionism = ${this.estimationOfResults.tower.TM['46-80'].P} negThink = ${this.estimationOfResults.tower.TM['46-80'].NT} lackRicuz = ${this.estimationOfResults.tower.TM['46-80'].LR} impulsivity = ${this.estimationOfResults.tower.TM['46-80'].I} slowStarter = ${this.estimationOfResults.tower.TM['46-80'].SS} panic = ${this.estimationOfResults.tower.TM['46-80'].Panic} frustration = ${this.estimationOfResults.tower.TM['46-80'].F}`);
       } else if (noOfMoves >= 81) {
         result.lowConfidence += this.estimationOfResults.tower.TM['81+'].LC;
         result.badTimeMan += this.estimationOfResults.tower.TM['81+'].BTM;
@@ -182,6 +187,8 @@ class TowerService {
         result.slowStarter += this.estimationOfResults.tower.TM['81+'].SS;
         result.panic += this.estimationOfResults.tower.TM['81+'].Panic;
         result.frustration += this.estimationOfResults.tower.TM['81+'].F;
+        alert(`${'instructions lowConfidence ='}${this.estimationOfResults.tower.TM['81+'].LC} badTimeMan = ${this.estimationOfResults.tower.TM['81+'].BTM} perfectionism = ${this.estimationOfResults.tower.TM['81+'].P} negThink = ${this.estimationOfResults.tower.TM['81+'].NT} lackRicuz = ${this.estimationOfResults.tower.TM['81+'].LR} impulsivity = ${this.estimationOfResults.tower.TM['81+'].I} slowStarter = ${this.estimationOfResults.tower.TM['81+'].SS} panic = ${this.estimationOfResults.tower.TM['81+'].Panic} frustration = ${this.estimationOfResults.tower.TM['81+'].F}`);
+
       }
     }
     this.gameScore.tower = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];

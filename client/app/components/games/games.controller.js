@@ -73,6 +73,8 @@ class GamesController {
     window.gameEnded = (duration, noOfMoves, instructionsClickCount, win, firstMoveTime) => {
       this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
 
+      if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; console.log("tower true");}
+
       if (win) {
         this.gameSuccComp++;
       }
@@ -251,8 +253,11 @@ class GamesController {
         case 3:
           this.gamesService.EndTimeInGame('Game 3');
           break;
+        case 4:
+          this.gamesService.TotalTimeFOrFourthGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+          break;
         case 5:
-          this.gamesService.EndTimeInLastGame(this.gameSecSum);
+          this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
           break;
         default:
           break;
@@ -295,7 +300,6 @@ class GamesController {
       case 5:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-
         this.parkingLotService.endLastGame(0, 0, 0, false, 0);
         break;
       default:

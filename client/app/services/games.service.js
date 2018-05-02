@@ -74,9 +74,149 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTfLG['51+'].Panic,
         this.estimationOfResults.gameEnd.TTfLG['51+'].F];
     }
+    console.log(this.gameScore.endTime, 'Total Time FOr Last Game');
     alert(this.gameScore.endTime, 'Total Time FOr Last Game');
   }
-
+  TotalTimeFOrFourthGame(time) {
+    console.log(time, 'TotalTimeFOrFourthGame');
+    // Game Duration When Time is Up
+    if (time <= 30) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].P,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].I,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['0-30'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 30 && time <= 40) {
+      // result.badTimeMan+=9;
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].P,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].I,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['31-40'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 40 && time <= 50) {
+      // result.badTimeMan+=8;
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].P,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].I,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['41-50'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 50 && time <= 60) {
+      // result.badTimeMan+=7;
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].P,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].I,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['51-60'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 60 && time <= 70) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].P,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].I,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['61-70'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 70 && time <= 80) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].P,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].I,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['71-80'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 80 && time <= 90) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].P,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].I,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['81-90'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 90 && time <= 100) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].P,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].I,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['91-100'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 100 && time <= 115) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].P,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].I,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['101-115'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    } else if (time > 116) {
+      this.gameScore.endTime = [
+        this.estimationOfResults.mazerace.CGDETiU['116+'].LC,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].BTM,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].P,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].NT,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].LR,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].I,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].SS,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].Panic,
+        this.estimationOfResults.mazerace.CGDETiU['116+'].F,
+      ];
+      alert(this.gameScore.endTime, '4 Game END');
+    }
+    console.log(this.gameScore.endTime, '4 Game END');
+    
+  }
   EndTimeInGame(Param) {
     this.gameScore.endTime = [
       this.estimationOfResults.gameEnd.GSIWTiU[Param].LC,
@@ -88,11 +228,12 @@ class GamesService {
       this.estimationOfResults.gameEnd.GSIWTiU[Param].SS,
       this.estimationOfResults.gameEnd.GSIWTiU[Param].Panic,
       this.estimationOfResults.gameEnd.GSIWTiU[Param].F];
-
+    console.log(this.gameScore.endTime, '1-3 Game END');
     alert(this.gameScore.endTime, '1-3 Game END');
   }
 
   EndTimeInLastGame(time) {
+    console.log(time, 'EndTimeInLastGame');
     if (time <= 30) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['0-30'].LC,
@@ -204,6 +345,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['116+'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['116+'].F];
     }
+    console.log(this.gameScore.endTime, '5 Game END');
     alert(this.gameScore.endTime, '5 Game END');
   }
 
@@ -291,16 +433,16 @@ class GamesService {
       frustration += this.gameScore.endTime[8];
     }
 
-    this.userSum = { 
-      'lowConfidence': lowConfidence, 
-      'badTimeMan': badTimeMan, 
-      'perfectionism': perfectionism, 
-      'negThink': negThink, 
-      'lackRicuz': lackRicuz, 
-      'impulsivity': impulsivity,
-      'slowStarter': slowStarter,
-      'panic': panic,
-      'frustration': frustration,
+    this.userSum = {
+      lowConfidence,
+      badTimeMan,
+      perfectionism,
+      negThink,
+      lackRicuz,
+      impulsivity,
+      slowStarter,
+      panic,
+      frustration,
     };
 
     this.connection.saveData(this.userSum, 'userSum');
@@ -308,7 +450,8 @@ class GamesService {
     if (this.estimationOfResults.GP.UPDI.SA) {
       if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
         this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0']; alert('User succeeded the same number of games  predicted'); // 'You have a good sense of who you are and of your abilities to perform.';
-      } else if (this.gameScore.selfAssessment < this.gameScore.gamesSuccessfullyCompleted) { alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
+      } else if (this.gameScore.selfAssessment < this.gameScore.gamesSuccessfullyCompleted) {
+        alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
       } else if (this.gameScore.gamesSuccessfullyCompleted >= 2) { alert('User succeeded 2  games or more than predicted'); this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4']; } // 'You may have some self-limiting beliefs causing you to doubt your abilities. It is important t for you to study hard, be prepared and then believe and trust yourself. Focus on your goals and become aware of the “little voice” in your head that may be overly negative.'; }
     }
     if (this.estimationOfResults.GP.UPDI.GSC) {
