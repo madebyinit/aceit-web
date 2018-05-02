@@ -73,6 +73,8 @@ class GamesController {
     window.gameEnded = (duration, noOfMoves, instructionsClickCount, win, firstMoveTime) => {
       this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
 
+      if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; console.log("tower true");}
+
       if (win) {
         this.gameSuccComp++;
       }
