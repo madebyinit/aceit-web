@@ -73,7 +73,13 @@
         <input ng-model="$ctrl.estimationOfResults.SuggestPoints[key]" ></input>
         <a class="myButtonGame" >{{key}}</a>
       </div>
-
+      <div>
+        <p>Concentration- Concentration Tool</p>
+        <p>Frustration - Physical Tool</p>
+        <p>Low Confidence - "Positive Thinking"</p>
+        <p> Negative Thinking - "Positive Thinking"</p>
+        <p>Panic - "Positive Thinking"</p>
+      </div>
       <h3> Time for Game </h3>
       <input ng-model="$ctrl.estimationOfResults.GP.GSD" ></input>
       <a class="myButtonGame" >Games Session Duration (in seconds)</a>
@@ -130,7 +136,8 @@
           <td ng-repeat="(keys, value) in $ctrl.estimationOfResults.Feedback[key]">         
             {{keys | AlghorithmHeaderFilter}}
           </br>
-            <input class="input" type="text"  ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)">
+            <!-- <input class="input" type="text"  ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)"> -->
+            <textarea rows="6" cols="40" ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)"></textarea>
             <!-- value='{{value | AlghorithmHeaderFilter}}' -->
           </td>
         </tr>
