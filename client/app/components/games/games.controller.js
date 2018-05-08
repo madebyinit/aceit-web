@@ -43,6 +43,32 @@ class GamesController {
       event.preventDefault();
     });
 
+    window.onkeydown = function () {
+      if (event.ctrlKey) {
+        if (event.preventDefault) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }
+      switch (event.keyCode) {
+        case 116: // F5 button
+          event.returnValue = false;
+          event.keyCode = 0;
+          return false;
+          break;
+        case 82: // R button
+          if (event.ctrlKey) {
+            event.returnValue = false;
+            event.keyCode = 0;
+            return false;
+          }
+          break;
+        default:
+          console.log('DEFAULT');
+          break;
+      }
+    };
+
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
       this.firstStart = false;
@@ -73,7 +99,7 @@ class GamesController {
     window.gameEnded = (duration, noOfMoves, instructionsClickCount, win, firstMoveTime) => {
       this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
 
-      if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; console.log("tower true");}
+      if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; console.log('tower true'); }
 
       if (win) {
         this.gameSuccComp++;
