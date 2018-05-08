@@ -181,16 +181,16 @@ class ParkingLotService {
     if (this.orderOfGames.UPDI.parkinglot.NoM) {
     // Total # of moves
       if (noOfMoves < 41) {
-        result.lowConfidence += this.estimationOfResults.parkinglot.TM['1-45'].LC;
-        result.badTimeMan += this.estimationOfResults.parkinglot.TM['1-45'].BTM;
-        result.perfectionism += this.estimationOfResults.parkinglot.TM['1-45'].P;
-        result.negThink += this.estimationOfResults.parkinglot.TM['1-45'].NT;
-        result.lackRicuz += this.estimationOfResults.parkinglot.TM['1-45'].LR;
-        result.impulsivity += this.estimationOfResults.parkinglot.TM['1-45'].I;
-        result.slowStarter += this.estimationOfResults.parkinglot.TM['1-45'].SS;
-        result.panic += this.estimationOfResults.parkinglot.TM['1-45'].Panic;
-        result.frustration += this.estimationOfResults.parkinglot.TM['1-45'].F;
-        alert(`${'noOfMoves lowConfidence ='}${this.estimationOfResults.parkinglot.TM['1-45'].LC} badTimeMan = ${this.estimationOfResults.parkinglot.TM['1-45'].BTM} perfectionism = ${this.estimationOfResults.parkinglot.TM['1-45'].P} negThink = ${this.estimationOfResults.parkinglot.TM['1-45'].NT} lackRicuz = ${this.estimationOfResults.parkinglot.TM['1-45'].LR} impulsivity = ${this.estimationOfResults.parkinglot.TM['1-45'].I} slowStarter = ${this.estimationOfResults.parkinglot.TM['1-45'].SS} panic = ${this.estimationOfResults.parkinglot.TM['1-45'].Panic} frustration = ${this.estimationOfResults.parkinglot.TM['1-45'].F}`);
+        result.lowConfidence += this.estimationOfResults.parkinglot.TM['0-40'].LC;
+        result.badTimeMan += this.estimationOfResults.parkinglot.TM['0-40'].BTM;
+        result.perfectionism += this.estimationOfResults.parkinglot.TM['0-40'].P;
+        result.negThink += this.estimationOfResults.parkinglot.TM['0-40'].NT;
+        result.lackRicuz += this.estimationOfResults.parkinglot.TM['0-40'].LR;
+        result.impulsivity += this.estimationOfResults.parkinglot.TM['0-40'].I;
+        result.slowStarter += this.estimationOfResults.parkinglot.TM['0-40'].SS;
+        result.panic += this.estimationOfResults.parkinglot.TM['0-40'].Panic;
+        result.frustration += this.estimationOfResults.parkinglot.TM['0-40'].F;
+        alert(`${'noOfMoves lowConfidence ='}${this.estimationOfResults.parkinglot.TM['0-40'].LC} badTimeMan = ${this.estimationOfResults.parkinglot.TM['0-40'].BTM} perfectionism = ${this.estimationOfResults.parkinglot.TM['0-40'].P} negThink = ${this.estimationOfResults.parkinglot.TM['0-40'].NT} lackRicuz = ${this.estimationOfResults.parkinglot.TM['0-40'].LR} impulsivity = ${this.estimationOfResults.parkinglot.TM['0-40'].I} slowStarter = ${this.estimationOfResults.parkinglot.TM['0-40'].SS} panic = ${this.estimationOfResults.parkinglot.TM['0-40'].Panic} frustration = ${this.estimationOfResults.parkinglot.TM['0-40'].F}`);
 
       } else if (noOfMoves >= 41 && noOfMoves < 61) {
         result.lowConfidence += this.estimationOfResults.parkinglot.TM['41-60'].LC;
