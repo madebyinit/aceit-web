@@ -1,9 +1,31 @@
 class GamesService {
-  constructor(gameSummaryValue, gameScoreValue, estimationOfResults, connection) {
+  constructor(
+    gameSummaryValue, gameScoreValue, estimationOfResults,
+    connection, $window, $document,
+  ) { // eslint-disable-line
     this.gameScore = gameScoreValue;
     this.gameSummary = gameSummaryValue;
     this.estimationOfResults = estimationOfResults;
     this.connection = connection;
+    this.window = $window;
+    this.document = $document;
+    this.gameStatus = {};
+  }
+
+  setGameStatus(data) {
+    this.gameStatus = data;
+  }
+
+  getGameResultparkinglot() {
+    let result = this.gameStatus.sendMessage('getGameResult');
+    result = JSON.parse(result);
+    const { alert } = this.window;
+
+    alert(`duration = ${result.duration}`);
+    alert(`noOfMoves = ${result.noOfMoves}`);
+    alert(`instructionsClickCount = ${result.instructionsClickCount}`);
+    alert(`win = ${result.win}`);
+    alert(`firstMoveTime = ${result.firstMoveTime}`);
   }
 
   TotalTimeFOrLastGame(time) {
@@ -215,7 +237,6 @@ class GamesService {
       alert(this.gameScore.endTime, '4 Game END');
     }
     console.log(this.gameScore.endTime, '4 Game END');
-    
   }
   EndTimeInGame(Param) {
     this.gameScore.endTime = [
@@ -527,5 +548,5 @@ class GamesService {
   }
 }
 
-GamesService.$inject = ['gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'connection'];
+GamesService.$inject = ['gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'connection', '$window', '$document'];
 module.exports = GamesService;

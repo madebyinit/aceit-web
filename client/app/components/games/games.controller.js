@@ -73,13 +73,15 @@ class GamesController {
       console.log('FIRST START');
       this.firstStart = false;
       angular.element(this.$document[0]).ready(() => {
-        this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+        const data = this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+        this.gamesService.setGameStatus(data);
       });
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
       this.firstStart = true;
       angular.element(this.$document[0]).ready(() => {
-        this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+        const data = this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+        this.gamesService.setGameStatus(data);
       });
     } else {
       console.log('THIRD START');
@@ -89,7 +91,8 @@ class GamesController {
       this.showWindow = false;
       this.countdownTimer = this.$interval(this.startTimer, 1000);
       this.orderOfGames.level[0] = this.randomInteger(1, 10);
-      this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+      const data = this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
+      this.gamesService.setGameStatus(data);
     }
 
     this.gameNumber = 1;
@@ -256,42 +259,44 @@ class GamesController {
   }
 
   startTimer() {
-    const minutes = Math.round((this.seconds - 30) / 60);
-    let remainingSeconds = this.seconds % 60;
+    if (this.seconds !== undefined) {
+      const minutes = Math.round((this.seconds - 30) / 60);
+      let remainingSeconds = this.seconds % 60;
 
-    if (remainingSeconds < 10) {
-      remainingSeconds = `0${remainingSeconds}`;
-    }
-
-    this.timeRemain = `${minutes}:${remainingSeconds}`;
-
-    if (this.seconds === 0) {
-      this.$interval.cancel(this.countdownTimer);
-      this.timeRemain = '00:00';
-
-      switch (this.gameNumber) {
-        case 1:
-          this.gamesService.EndTimeInGame('Game 1');
-          break;
-        case 2:
-          this.gamesService.EndTimeInGame('Game 2');
-          break;
-        case 3:
-          this.gamesService.EndTimeInGame('Game 3');
-          break;
-        case 4:
-          this.gamesService.TotalTimeFOrFourthGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-          break;
-        case 5:
-          this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-          break;
-        default:
-          break;
+      if (remainingSeconds < 10) {
+        remainingSeconds = `0${remainingSeconds}`;
       }
 
-      this.showDialogEnd = true;
-    } else {
-      this.seconds--;
+      this.timeRemain = `${minutes}:${remainingSeconds}`;
+
+      if (this.seconds === 0) {
+        this.$interval.cancel(this.countdownTimer);
+        this.timeRemain = '00:00';
+
+        switch (this.gameNumber) {
+          case 1:
+            this.gamesService.EndTimeInGame('Game 1');
+            break;
+          case 2:
+            this.gamesService.EndTimeInGame('Game 2');
+            break;
+          case 3:
+            this.gamesService.EndTimeInGame('Game 3');
+            break;
+          case 4:
+            this.gamesService.TotalTimeFOrFourthGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            break;
+          case 5:
+            this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            break;
+          default:
+            break;
+        }
+
+        this.showDialogEnd = true;
+      } else {
+        this.seconds--;
+      }
     }
   }
 
@@ -301,7 +306,7 @@ class GamesController {
       case 1:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
         this.gameSecSum += this.secondsleft;
-
+        this.gamesService.getGameResultparkinglot();
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
         break;
       case 2:
@@ -403,6 +408,7 @@ class GamesController {
   }
 
   restartMosetrap() {
+    // this.gamesService.getGameResultMazerace(this.$window.nogic3);
     this.$window.nogic3.uninitialize();
     this.createGame(this.$window.nogic3, { language: 'en', skipInstructions: 'true' });
   }
