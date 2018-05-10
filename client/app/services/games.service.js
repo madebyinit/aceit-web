@@ -19,13 +19,13 @@ class GamesService {
   getGameResultparkinglot() {
     let result = this.gameStatus.sendMessage('getGameResult');
     result = JSON.parse(result);
-    const { alert } = this.window;
+    // const { alert } = this.window;
 
-    alert(`duration = ${result.duration}`);
-    alert(`noOfMoves = ${result.noOfMoves}`);
-    alert(`instructionsClickCount = ${result.instructionsClickCount}`);
-    alert(`win = ${result.win}`);
-    alert(`firstMoveTime = ${result.firstMoveTime}`);
+    // alert(`duration = ${result.duration}`);
+    // alert(`noOfMoves = ${result.noOfMoves}`);
+    // alert(`instructionsClickCount = ${result.instructionsClickCount}`);
+    // alert(`win = ${result.win}`);
+    // alert(`firstMoveTime = ${result.firstMoveTime}`);
   }
 
   TotalTimeFOrLastGame(time) {
