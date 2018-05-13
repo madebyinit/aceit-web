@@ -2,6 +2,7 @@ class GamesService {
   constructor(
     gameSummaryValue, gameScoreValue, estimationOfResults,
     connection, $window, $document,
+    parkingLotService, towerService, mouseGameService, mazeraceService,
   ) { // eslint-disable-line
     this.gameScore = gameScoreValue;
     this.gameSummary = gameSummaryValue;
@@ -10,15 +11,46 @@ class GamesService {
     this.window = $window;
     this.document = $document;
     this.gameStatus = {};
+    this.lastGameCheck = false;
+    this.parkingLotService = parkingLotService;
+    this.towerService = towerService;
+    this.mouseGameService = mouseGameService;
+    this.mazeraceService = mazeraceService;
   }
 
   setGameStatus(data) {
     this.gameStatus = data;
   }
 
-  getGameResultparkinglot() {
+  setLastGame() {
+    this.lastGameCheck = !this.lastGameCheck;
+  }
+
+  getGameResult(gameName) {
+    console.log(gameName,"TEST");
     let result = this.gameStatus.sendMessage('getGameResult');
     result = JSON.parse(result);
+    switch (gameName) {
+      case 'parkinglot':
+        if (this.lastGameCheck) {
+          this.parkingLotService.endLastGame(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        } else {
+          this.parkingLotService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        }
+        break;
+      case 'tower':
+        this.towerService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        break;
+      case 'mazerace':
+        this.mazeraceService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        break;
+      case 'mousetrap':
+        this.mouseGameService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        break;
+      default:
+        break;
+    }
+
     // const { alert } = this.window;
 
     // alert(`duration = ${result.duration}`);
@@ -548,5 +580,5 @@ class GamesService {
   }
 }
 
-GamesService.$inject = ['gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'connection', '$window', '$document'];
+GamesService.$inject = ['gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'connection', '$window', '$document', 'parkingLotService', 'towerService', 'mouseGameService', 'mazeraceService'];
 module.exports = GamesService;
