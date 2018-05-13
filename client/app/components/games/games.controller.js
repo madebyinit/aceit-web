@@ -34,6 +34,8 @@ class GamesController {
     this.gameBefore = '';
     this.showMouseRetry = true;
     this.showMazeRetry = true;
+    this.duration = 0;
+    this.instructionsClick = 0;
   }
 
   $onInit() {
@@ -114,31 +116,40 @@ class GamesController {
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
+        this.duration += duration;
+        this.instructionsClick += instructionsClickCount;
         console.log('stop');
       } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
         console.log('stop');
+        this.duration += duration;
+        this.instructionsClick += instructionsClickCount;
       } else {
         this.showMouseRetry = true;
-        switch (this.gameNumber) {
-          case 1:
-            this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.duration += duration;
+        this.instructionsClick += instructionsClickCount;
+        switch (this.orderOfGames.gameSequence[this.gameNumber - 1]) {
+          case 'parkinglot':
+            if (this.gameNumber === 1) {
+              this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            } else {
+              this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+              this.gamesService.TotalTimeFOrLastGame(this.secondsleft);
+            }
             break;
-          case 2:
+          case 'tower':
             this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
             break;
-          case 3:
-            this.mouseGameService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          case 'mousetrap':
+            this.mouseGameService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
             break;
-          case 4:
-            this.mazeraceService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-            break;
-          case 5:
-            this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-            this.gamesService.TotalTimeFOrLastGame(this.secondsleft);
+          case 'mazerace':
+            this.mazeraceService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
             break;
           default:
             break;
         }
+        this.duration = 0;
+        this.instructionsClick = 0;
 
         this.gameNumber++;
 
@@ -191,6 +202,7 @@ class GamesController {
         }
       }
     };
+    console.log(this.orderOfGames.gameSequence);
   }
 
   getUserData() {
@@ -306,32 +318,35 @@ class GamesController {
       case 1:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResultparkinglot();
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
         break;
       case 2:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1], this.estimationOfResults);
         break;
       case 3:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2], this.estimationOfResults);
         break;
       case 4:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
         this.gameBeforeLastTime = this.secondsleft;
-
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3], this.estimationOfResults);
         break;
       case 5:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.parkingLotService.endLastGame(0, 0, 0, false, 0);
+        this.gamesService.setLastGame();
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+        // this.parkingLotService.endLastGame(0, 0, 0, false, 0);
+        this.gamesService.setLastGame();
         break;
       default:
         break;
@@ -498,7 +513,8 @@ class GamesController {
     }
     const holder = this.$document[0].createElement('div');
     wrapper.appendChild(holder);
-    initializer.initialize(holder, options);
+    const data = initializer.initialize(holder, options);
+    this.gamesService.setGameStatus(data);
   }
 }
 
