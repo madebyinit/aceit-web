@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { debug } from 'util';
 
 class LoginFormController {
   constructor($state, notificationsService, progressLinear, stateChangeService, connection) {

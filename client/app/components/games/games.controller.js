@@ -109,8 +109,7 @@ class GamesController {
       if (win) {
         this.gameSuccComp++;
       }
-      this.$window.alert(`duration = ${duration} firstMoveTime = ${firstMoveTime} noOfMoves = ${noOfMoves} instructionsClickCount = ${instructionsClickCount} win = ${win} `);
-
+      
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win; this.showMouseRetry = win; }
 
       if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
@@ -208,7 +207,7 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-
+      console.log(this.user);
       if (this.user.estimationOfResults.parkingLotLast.IB['0'] === undefined) {
         this.helperService.gameSequence();
         this.helperService.Results();
@@ -394,7 +393,7 @@ class GamesController {
       case 6:
 
         this.uninitializeGames(5);
-        this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.secondsleft);
+        this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
         this.gamesService.gameStatistic();
         this.gameNumber = 5;
         this.stateChange('home');

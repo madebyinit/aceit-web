@@ -38,7 +38,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['41-50'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['41-50'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['41-50'].F;
-
       } else if (secondsleft > 50 && secondsleft <= 60) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['51-60'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['51-60'].BTM;
@@ -49,7 +48,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['51-60'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['51-60'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['51-60'].F;
-
       } else if (secondsleft > 60 && secondsleft <= 70) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['61-70'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['61-70'].BTM;
@@ -60,7 +58,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['61-70'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['61-70'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['61-70'].F;
-
       } else if (secondsleft > 70 && secondsleft <= 80) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['71-80'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['71-80'].BTM;
@@ -71,7 +68,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['71-80'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['71-80'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['71-80'].F;
-
       } else if (secondsleft > 80 && secondsleft <= 90) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['81-90'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['81-90'].BTM;
@@ -82,7 +78,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['81-90'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['81-90'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['81-90'].F;
-
       } else if (secondsleft > 90 && secondsleft <= 100) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['91-100'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['91-100'].BTM;
@@ -93,7 +88,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['91-100'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['91-100'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['91-100'].F;
-
       } else if (secondsleft > 100 && secondsleft <= 115) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['101-115'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['101-115'].BTM;
@@ -104,7 +98,6 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['101-115'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['101-115'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['101-115'].F;
-
       } else if (secondsleft > 116) {
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['116+'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['116+'].BTM;
@@ -115,10 +108,9 @@ class SkipService {
         this.gameScore[gameName][6] += this.estimationOfResults[gameName].Skip['116+'].SS;
         this.gameScore[gameName][7] += this.estimationOfResults[gameName].Skip['116+'].Panic;
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['116+'].F;
-
       }
     }
-    alert(`SKIP RESULT - ${this.gameScore[gameName][0] } ${ this.gameScore[gameName][1] } ${ this.gameScore[gameName][2] } ${this.gameScore[gameName][3] } ${this.gameScore[gameName][4] } ${this.gameScore[gameName][5]} ${this.gameScore[gameName][6]} ${this.gameScore[gameName][7]} ${this.gameScore[gameName][8]}`);
+    alert(`SKIP RESULT - lowConfidence = ${this.gameScore[gameName][0]} badTimeMan = ${this.gameScore[gameName][1]} perfectionism =  ${this.gameScore[gameName][2]} negThink = ${this.gameScore[gameName][3]} lackRicuz =  ${this.gameScore[gameName][4]} impulsivity = ${this.gameScore[gameName][5]} slowStarter = ${this.gameScore[gameName][6]}  panic = ${this.gameScore[gameName][7]}  frustration = ${this.gameScore[gameName][8]}`);
   }
 }
 
