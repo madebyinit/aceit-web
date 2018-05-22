@@ -258,10 +258,8 @@ class GamesService {
         this.estimationOfResults.mazerace.CGDETiU['116+'].F,
       ];
     }
-    console.log( 'conf -',this.estimationOfResults.mazerace.CGDETiU['116+'].LC,'btm -',this.estimationOfResults.mazerace.CGDETiU['116+'].BTM,'Perf -',this.estimationOfResults.mazerace.CGDETiU['116+'].P, '4 Game END test');
 
     console.log(this.gameScore.endTime, '4 Game END');
-    console.log( 'conf -',this.gameScore.endTime[0],'btm -',this.gameScore.endTime[1],'Perf -',this.gameScore.endTime[2],'negthink -',this.gameScore.endTime[3],'Lackrick -',this.gameScore.endTime[4],'impuls -',this.gameScore.endTime[5],'Ss -',this.gameScore.endTime[6],this.gameScore.endTime[7],this.gameScore.endTime[8], '4 Game END test');
     alert(`Total Time FOr Last Game ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
   }
   EndTimeInGame(Param) {
@@ -586,6 +584,7 @@ class GamesService {
   mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
   mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
   parkinglotLast - lowConfidence ${this.gameScore.parkinglotLast[0]} badTimeMan ${this.gameScore.parkinglotLast[1]} perfectionism ${this.gameScore.parkinglotLast[2]} negThink ${this.gameScore.parkinglotLast[3]} lackRicuz ${this.gameScore.parkinglotLast[4]} impulsivity ${this.gameScore.parkinglotLast[5]} slowStarter ${this.gameScore.parkinglotLast[6]} panic ${this.gameScore.parkinglotLast[7]} frustration ${this.gameScore.parkinglotLast[8]} ${space}
+  endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
   Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
   selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
   }
