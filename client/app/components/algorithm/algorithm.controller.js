@@ -10,7 +10,8 @@ class AlgorithmController {
     this.orderOfGames = orderOfGames;
     this.estimationOfResults = estimationOfResults;
     this.helperService = helperService;
-    this.listTopics = ['№', 'Low Confidence', 'Bad Time Man', 'Perfectionism', 'Neg Think', 'Lack Ricuz', 'Impulsivity', 'Slow Starter', 'Panic', 'Frustration'];
+    // this.listTopics = ['№', 'Low Confidence', 'Bad Time Man', 'Perfectionism', 'Neg Think', 'Lack Ricuz', 'Impulsivity', 'Slow Starter', 'Panic', 'Frustration'];
+    this.listTopics = ['№', 'Bad Time Man', 'Frustration', 'Impulsivity', 'Low Confidence', 'Lack Ricuz', 'Neg Think', 'Perfectionism', 'Panic', 'Slow Starter'];
     this.listTopicsOfBehavior = ['Number', 'Attribute Name', 'Feedback'];
     this.listTopicsOfUPDI = ['ID', 'UPDI', 'Feedback', 'Impact User Attributes'];
     this.gameNowCheked = 'parkinglot';
