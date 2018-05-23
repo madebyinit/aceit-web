@@ -131,6 +131,9 @@
     box-shadow: 0px 0px 40px 10px rgba(254, 219, 137, 0.4);
     display: flex;
     flex: 1;
+    canvas{
+      display: block;
+    }
   }
 }
 @media all and (max-width: 1500px) {
