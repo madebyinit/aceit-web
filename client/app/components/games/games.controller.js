@@ -39,6 +39,21 @@ class GamesController {
   }
 
   $onInit() {
+    this.gameScoreValue = {
+      parkinglot: {},
+      mazerace: {},
+      mousetrap: {},
+      tower: {},
+      parkinglotLast: {},
+      endTime: {},
+      GP: {},
+      muteMusic: 0,
+      gamesSuccessfullyCompleted: Number,
+      selfAssessment: Number,
+    };
+
+    console.log(this.gameScoreValue, "TEST");
+
     this.gameScoreValue.selfAssessment = 0;
     this.gameScoreValue.gamesSuccessfullyCompleted = 0;
     this.$scope.$on('$locationChangeStart', (event) => {
@@ -286,19 +301,29 @@ class GamesController {
 
         switch (this.gameNumber) {
           case 1:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.EndTimeInGame('Game 1');
+            this.gamesService.gameStatistic();
             break;
           case 2:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.EndTimeInGame('Game 2');
+            this.gamesService.gameStatistic();
             break;
           case 3:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.EndTimeInGame('Game 3');
+            this.gamesService.gameStatistic();
             break;
           case 4:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.TotalTimeFOrFourthGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.gameStatistic();
             break;
           case 5:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.gameStatistic();
             break;
           default:
             break;
