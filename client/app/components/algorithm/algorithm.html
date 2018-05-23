@@ -133,8 +133,10 @@
       <table>
         <tr  ng-repeat="(key, values) in  $ctrl.estimationOfResults.Feedback">
           <td>{{key | AlghorithmHeaderFilter}}</td>
+          
           <td ng-repeat="(keys, value) in $ctrl.estimationOfResults.Feedback[key]">         
             {{keys | AlghorithmHeaderFilter}}
+            <!-- <input type="text" value="{{keys | AlghorithmHeaderFilter}}"> -->
           </br>
             <!-- <input class="input" type="text"  ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)"> -->
             <textarea rows="6" cols="40" ng-model="$ctrl.estimationOfResults.Feedback[key][keys]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeFeedbackField(key, keys, $event)"></textarea>
