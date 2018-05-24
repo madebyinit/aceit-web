@@ -46,7 +46,14 @@
         </md-button>
       </div>
     </div>
-    <div class="main-game" id="main-game-wrapper">
+    <!-- <div class="main-game" id="main-game-wrapper">
+    </div> -->
+<button ng-click="$ctrl.test()">duration in tower</button>
+    <div ng-switch="$ctrl.gameNumber+1" class="main-game">
+      <iframe id="parkinglot" ng-switch-when="1"  src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals"></iframe>
+      <iframe id="tower" ng-switch-when="1"  src="tower_e.htm" sandbox="allow-same-origin allow-scripts allow-modals"></iframe>
+      <iframe id="mazerace" ng-switch-when="1"  src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals"></iframe>
+      <iframe id="mousetrap" ng-switch-when="1"  src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals"></iframe>
     </div>
   </div>
 </div> 

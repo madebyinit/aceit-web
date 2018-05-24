@@ -36,6 +36,7 @@ class GamesController {
     this.showMazeRetry = true;
     this.duration = 0;
     this.instructionsClick = 0;
+    this.testcheck = true;
   }
 
   $onInit() {
@@ -544,6 +545,13 @@ class GamesController {
     const data = initializer.initialize(holder, options);
     this.gamesService.setGameStatus(data);
   }
+
+  test() {
+    document.getElementById('tower').contentWindow.getGameResult();
+    const check = document.getElementById('tower').contentWindow.duration;
+    console.log(check);
+  }
+
 }
 
 GamesController.$inject = ['$translate', '$state', 'connection', '$document', '$interval', '$scope', '$window', 'gamesService', 'parkingLotService', 'towerService', 'mouseGameService', 'mazeraceService', 'skipService', 'gameScoreValue', 'orderOfGames', 'helperService', 'estimationOfResults'];

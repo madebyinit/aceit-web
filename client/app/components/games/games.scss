@@ -9,12 +9,12 @@
   // padding: 40px 0 0 0;
   height: 100vh;
   .game-inner{
+    display: flex;
     max-width: 1900px;
     padding: 0 100px;
     box-sizing: border-box;
     margin:0 auto;
     overflow: hidden;
-    display: flex;
     flex-direction: column;
     height: 100vh;
     .game-buttons{
