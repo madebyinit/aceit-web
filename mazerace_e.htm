@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>A Maze Race</title>
+</head>
+<body>
+<div id="holder" style="width:100%;height:600px"></div>
+<script src="mazerace/js/mazerace.js"></script>
+<script>
+var game = nogic4.initialize(document.getElementById('holder'), {language:'en', level:1});
+
+function getGameResult() {
+	var result = game.sendMessage('getGameResult');
+	
+	result = JSON.parse(result);
+	
+	alert('duration = ' + result.duration);
+	alert('noOfMoves = ' + result.noOfMoves);
+	alert('instructionsClickCount = ' + result.instructionsClickCount);
+	alert('win = ' + result.win);
+	alert('firstMoveTime = ' + result.firstMoveTime);
+}
+
+function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+	alert('duration = ' + duration);
+	alert('noOfMoves = ' + noOfMoves);
+	alert('instructionsClickCount = ' + instructionsClickCount);
+	alert('win = ' + win);
+	alert('firstMoveTime = ' + firstMoveTime);
+}
+
+function killGame(){
+	var game = nogic4.uninitialize()
+}
+</script>
+<a href="javascript:getGameResult()">Get Game Result</a>
+
+<a href="javascript:killGame()">Kill game</a>
+</body>
+</html>
