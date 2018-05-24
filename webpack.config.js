@@ -10,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       {test: /^raw.*$/, loader: 'file-loader'},
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/, /mazerace/, /tower/, /parkinglot/, /mousetrap/], loader: 'ng-annotate!babel' },
+       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/, /mazerace/, /tower/, /parkinglot/, /mousetrap/, /tower_e.htm/, /parkinglot_e.htm/, /mousetrap_e.htm/, /mazerace_e.htm/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' },
@@ -48,6 +48,10 @@ module.exports = {
     new Copy([{from: 'parkinglot', to: 'parkinglot'}]),
     new Copy([{from: 'tower', to: 'tower'}]),
     new Copy([{from: 'audio', to: 'audio'}]),
-    new Copy([{from: 'video', to: 'video'}])
+    new Copy([{from: 'video', to: 'video'}]),
+    new Copy([{from: 'tower_e.htm', to: 'tower_e.htm'}]),
+    new Copy([{from: 'parkinglot_e.htm', to: 'parkinglot_e.htm'}]),
+    new Copy([{from: 'mousetrap_e.htm', to: 'mousetrap_e.htm'}]),
+    new Copy([{from: 'mazerace_e.htm', to: 'mazerace_e.htm'}])
   ]
 };

@@ -20,16 +20,16 @@ class LoginFormController {
           if (userData && userData.goaceitVisited) {
             this.$state.transitionTo('goaceit');
           } else {
-            this.$state.transitionTo('videoPage');
+            this.$state.transitionTo('games');
           }
         }, (error) => {
-          this.$state.transitionTo('videoPage');
+          this.$state.transitionTo('games');
         });
         this.progressLinear.hideProgress();
       }, (error) => {
         this.progressLinear.hideProgress();
         this.notificationsService.showToast(error.message);
-        this.$state.transitionTo('videoPage');
+        this.$state.transitionTo('games');
       });
     } else {
       this.validEmail = _.isEmpty(this.email) && 'Missing E-mail';
