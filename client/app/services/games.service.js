@@ -18,6 +18,14 @@ class GamesService {
     this.mazeraceService = mazeraceService;
   }
 
+  setMute(data) {
+    this.gameScore.muteMusic = data;
+  }
+
+  setSelfassestment(data) {
+    this.gameScore.selfAssessment = data;
+  }
+
   setGameStatus(data) {
     this.gameStatus = data;
   }
@@ -26,7 +34,7 @@ class GamesService {
     this.lastGameCheck = !this.lastGameCheck;
   }
 
-  getGameResult(gameName) {
+  getGameResult(gameName, duration) {
     let result = this.gameStatus.sendMessage('getGameResult');
     result = JSON.parse(result);
     switch (gameName) {
@@ -41,10 +49,10 @@ class GamesService {
         this.towerService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
         break;
       case 'mazerace':
-        this.mazeraceService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        this.mazeraceService.end(result.duration + duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
         break;
       case 'mousetrap':
-        this.mouseGameService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        this.mouseGameService.end(result.duration + duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
         break;
       default:
         break;
@@ -391,12 +399,11 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['116+'].F];
     }
     console.log(this.gameScore.endTime, '5 Game END');
-    alert(`Total Time FOr Last Game - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    alert(`Total Time FOr Last Game - ${time} lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
   }
 
 
   gameStatistic() {
-
     let lowConfidence = 0;
     let badTimeMan = 0;
     let perfectionism = 0;
@@ -479,19 +486,31 @@ class GamesService {
       frustration += this.gameScore.endTime[8];
     }
 
-    // this.userSum = [
-    //   lowConfidence,
-    //   badTimeMan,
-    //   perfectionism,
-    //   negThink,
-    //   lackRicuz,
-    //   impulsivity,
-    //   slowStarter,
-    //   panic,
-    //   frustration,
-    // ];
+    this.gameScore.summary = [
+      lowConfidence,
+      badTimeMan,
+      perfectionism,
+      negThink,
+      lackRicuz,
+      impulsivity,
+      slowStarter,
+      panic,
+      frustration];
 
-    // this.connection.saveData(this.userSum, 'userSum');
+    // this.connection.saveData(this.gameScore.summary, 'userSum');
+    this.gameSummary.selfAssessment = '';
+    this.gameSummary.gamesSuccessfullyCompleted = '';
+    this.gameSummary.lowConfidence = '';
+    this.gameSummary.badTimeMan = '';
+    this.gameSummary.perfectionism = '';
+    this.gameSummary.negativeThinking = '';
+    this.gameSummary.impulsivity = '';
+    this.gameSummary.slowStarter = '';
+    this.gameSummary.panic = '';
+    this.gameSummary.frustration = '';
+    this.gameSummary.concentration = '';
+    this.gameSummary.muteMusic = '';
+
 
     if (this.estimationOfResults.GP.UPDI.SA) {
       if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
@@ -574,7 +593,7 @@ class GamesService {
     if (this.estimationOfResults.GP.UPDI.MM) {
       if (this.gameScore.muteMusic === 1) {
         this.gameSummary.muteMusic = this.estimationOfResults.Feedback.MM.true; // 'Your brain processes information better in a quiet environment. Find a quiet place to study with as little background noise as possible.';
-      } else { this.gameSummary.muteMusic = ''; }
+      } else { this.gameSummary.muteMusic = ''; this.gameScore.muteMusic = 0; }
     }
 
     let space = '                                          ';

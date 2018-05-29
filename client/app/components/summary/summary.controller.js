@@ -3,13 +3,15 @@ const CONCENTRATION = 'concentration';
 const PHYSICAL = 'physical';
 
 class SummaryController {
-  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue) {
+  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
     this.$timeout = $timeout;
     this.gameSummaryValue = gameSummaryValue;
     this.userSum = {};
+    this.gameScoreValue = gameScoreValue;
+    this.estimationOfResults = estimationOfResults;
   }
 
   $onInit() {
@@ -71,7 +73,12 @@ class SummaryController {
     _.forEach(_.get(this.user, 'questionnaire'), (value) => {
       this.userSum[value.category] += value.answer;
     });
+    if (this.gameScoreValue.summary[4] > this.estimationOfResults.SuggestPoints.Concentration) { this.userSum.concentration = 100; }
+    if (this.gameScoreValue.summary[8] > this.estimationOfResults.SuggestPoints.Frustration) { this.userSum.physical = 100; }
+    if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.userSum.positive = 100; }
+    if (this.gameScoreValue.summary[3] > this.estimationOfResults.SuggestPoints['Negative Thinking']) { this.userSum.positive = 100; }
+    if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.userSum.positive = 100; }
   }
 }
-SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue'];
+SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults'];
 export default SummaryController;

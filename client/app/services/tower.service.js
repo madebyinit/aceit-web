@@ -6,6 +6,7 @@ class TowerService {
   }
 
   end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    console.log(this.gameScore.gamesSuccessfullyCompleted, 'hyt');
     const result = {
       lowConfidence: 0,
       badTimeMan: 0,

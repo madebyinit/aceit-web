@@ -6,6 +6,8 @@ class ParkingLotService {
   }
 
   end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    this.gameScore.gamesSuccessfullyCompleted = 0;
+    console.log(this.gameScore.gamesSuccessfullyCompleted, 'hyt');
     const result = {
       lowConfidence: 0,
       badTimeMan: 0,

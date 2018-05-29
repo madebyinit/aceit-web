@@ -37,6 +37,7 @@ class GamesController {
     this.duration = 0;
     this.instructionsClick = 0;
     this.testcheck = true;
+    this.classes = ['red', 'green', 'blue'];
   }
 
   $onInit() {
@@ -49,14 +50,10 @@ class GamesController {
       endTime: {},
       GP: {},
       muteMusic: 0,
-      gamesSuccessfullyCompleted: Number,
-      selfAssessment: Number,
+      gamesSuccessfullyCompleted: 0,
+      selfAssessment: 0,
     };
 
-    console.log(this.gameScoreValue, "TEST");
-
-    this.gameScoreValue.selfAssessment = 0;
-    this.gameScoreValue.gamesSuccessfullyCompleted = 0;
     this.$scope.$on('$locationChangeStart', (event) => {
       event.preventDefault();
     });
@@ -134,13 +131,18 @@ class GamesController {
         this.duration += duration;
         this.instructionsClick += instructionsClickCount;
         console.log('stop');
+        console.log(this.duration);
+
       } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
         console.log('stop');
         this.duration += duration;
+         console.log(this.duration);
         this.instructionsClick += instructionsClickCount;
       } else {
         this.showMouseRetry = true;
+        console.log(this.duration);
         this.duration += duration;
+        console.log(this.duration);
         this.instructionsClick += instructionsClickCount;
         switch (this.orderOfGames.gameSequence[this.gameNumber - 1]) {
           case 'parkinglot':
@@ -155,6 +157,7 @@ class GamesController {
             this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
             break;
           case 'mousetrap':
+          console.log(this.duration);
             this.mouseGameService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
             break;
           case 'mazerace':
@@ -275,6 +278,7 @@ class GamesController {
     const audio = this.$document[0].getElementById('backgroundMusic');
     audio.play();
     this.gameScoreValue.selfAssessment = val;
+    this.gamesService.setSelfassestment(val);
     this.showWindow = !this.showWindow;
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
@@ -299,6 +303,7 @@ class GamesController {
       if (this.seconds === 0) {
         this.$interval.cancel(this.countdownTimer);
         this.timeRemain = '00:00';
+        let timeLastGame = 0;
 
         switch (this.gameNumber) {
           case 1:
@@ -307,18 +312,21 @@ class GamesController {
             this.gamesService.gameStatistic();
             break;
           case 2:
-            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
             this.gamesService.EndTimeInGame('Game 2');
             this.gamesService.gameStatistic();
             break;
           case 3:
-            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
             this.gamesService.EndTimeInGame('Game 3');
             this.gamesService.gameStatistic();
             break;
           case 4:
-            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
-            this.gamesService.TotalTimeFOrFourthGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            console.log(this.duration, (this.estimationOfResults.GP.GSD - this.gameSecSum));
+            timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
+            console.log(timeLastGame);
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+            this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
             this.gamesService.gameStatistic();
             break;
           case 5:
@@ -525,9 +533,11 @@ class GamesController {
     if (this.sound === true) {
       audio.play();
       this.gameScoreValue.muteMusic = 0;
+      this.gamesService.setMute(0);
     } else {
       audio.pause();
       this.gameScoreValue.muteMusic = 1;
+      this.gamesService.setMute(1);
     }
     this.sound = !this.sound;
   }
@@ -546,12 +556,22 @@ class GamesController {
     this.gamesService.setGameStatus(data);
   }
 
-  test() {
-    document.getElementById('tower').contentWindow.getGameResult();
-    const check = document.getElementById('tower').contentWindow.duration;
-    console.log(check);
+  dropGame() {
+    const wrapper = this.$document[0].getElementById('tower');
+    wrapper.parentNode.removeChild(wrapper);
   }
 
+  test() {
+    // document.getElementById('tower').contentWindow.getGameResult();
+    // const check = document.getElementById('tower').contentWindow.duration;
+    // console.log(check);
+    document.getElementById('tower').contentWindow.firstTimeUser();
+    const check = document.getElementById('tower').contentWindow.secondUser;
+    console.log(check);
+  }
+  next() {
+    this.gameNumber +=1;
+  }
 }
 
 GamesController.$inject = ['$translate', '$state', 'connection', '$document', '$interval', '$scope', '$window', 'gamesService', 'parkingLotService', 'towerService', 'mouseGameService', 'mazeraceService', 'skipService', 'gameScoreValue', 'orderOfGames', 'helperService', 'estimationOfResults'];
