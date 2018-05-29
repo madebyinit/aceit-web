@@ -75,6 +75,7 @@ const componentModule = angular
     parkinglotLast: {},
     endTime: {},
     GP: {},
+    summary: {},
     muteMusic: Number,
     gamesSuccessfullyCompleted: Number,
     selfAssessment: Number,

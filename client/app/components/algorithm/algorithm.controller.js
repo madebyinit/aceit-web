@@ -22,6 +22,9 @@ class AlgorithmController {
   $onInit() {
     this.getUserData();
     this.helperService.feedbackSentences();
+    console.log(this.estimationOfResults.Feedback);
+    let test = Object.keys(this.estimationOfResults.Feedback);
+    console.log(test);
   }
 
   // removeAllListeners() {

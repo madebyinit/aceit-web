@@ -1,5 +1,5 @@
 class requiredCardsController {
-  constructor(connection, $state, progressLinear, $timeout) {
+  constructor(connection, $state, progressLinear, $timeout, gameScoreValue, estimationOfResults) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
@@ -7,10 +7,19 @@ class requiredCardsController {
     this.positive = false;
     this.concentration = false;
     this.physical = false;
+    this.gameScoreValue = gameScoreValue;
+    this.estimationOfResults = estimationOfResults;
   }
 
   $onInit() {
+    if (this.gameScoreValue.summary[4] > this.estimationOfResults.SuggestPoints.Concentration) { this.concentration = true; }
+    if (this.gameScoreValue.summary[8] > this.estimationOfResults.SuggestPoints.Frustration) { this.physical = true; }
+    if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.positive = true; }
+    if (this.gameScoreValue.summary[3] > this.estimationOfResults.SuggestPoints['Negative Thinking']) { this.positive = true; }
+    if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.positive = true; }
+    
     this._getUserData();
+    
   }
   stateGo(name) {
     this.$state.go(name);
@@ -18,21 +27,9 @@ class requiredCardsController {
   _getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
+
       this.userSum = { positive: 0, concentration: 0, physical: 0 };
 
-      if (res.userSum.panic > this.user.estimationOfResults.SuggestPoints.Panic || res.userSum.negThink > this.user.estimationOfResults.SuggestPoints['Negative Thinking'] || res.userSum.lowConfidence > this.user.estimationOfResults.SuggestPoints['Low Confidence']) {
-        this.positive = true;
-      }
-
-      if (res.userSum.lackRicuz > this.user.estimationOfResults.SuggestPoints.Concentration) {
-        this.concentration = true;
-      }
-
-      if (res.userSum.frustration > this.user.estimationOfResults.SuggestPoints.Frustration) {
-        this.physical = true;
-      }
-
-      console.log(this.userSum);
       if (_.get(res, 'questionnaire')) {
         this.sumUserQuestionnaire();
         this.routineDisabled();
@@ -74,5 +71,5 @@ class requiredCardsController {
   // }
 }
 
-requiredCardsController.$inject = ['connection', '$state', 'progressLinear', '$timeout'];
+requiredCardsController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameScoreValue', 'estimationOfResults'];
 export default requiredCardsController;
