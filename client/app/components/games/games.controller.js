@@ -470,11 +470,11 @@ class GamesController {
   }
 
   reloadPage() {
-    if (localStorage.getItem('gamePage') == null) {
-      localStorage.setItem('gamePage', location.pathname);
-    } else {
-      localStorage.setItem('gamePageSecond', location.pathname);
-    }
+    // if (localStorage.getItem('gamePage') == null) {
+    //   localStorage.setItem('gamePage', location.pathname);
+    // } else {
+    //   localStorage.setItem('gamePageSecond', location.pathname);
+    // }
 
     this.uninitializeGames(this.gameNumber);
     this.removeListeners();
