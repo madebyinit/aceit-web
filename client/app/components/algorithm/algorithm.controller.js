@@ -21,10 +21,7 @@ class AlgorithmController {
 
   $onInit() {
     this.getUserData();
-    this.helperService.feedbackSentences();
-    console.log(this.estimationOfResults.Feedback);
-    let test = Object.keys(this.estimationOfResults.Feedback);
-    console.log(test);
+
   }
 
   // removeAllListeners() {
@@ -39,6 +36,7 @@ class AlgorithmController {
     this.connection.getData().then((res) => {
       this.user = res;
       if (this.user.estimationOfResults.parkingLotLast.IB['0'] === undefined) {
+        this.helperService.feedbackCounter();
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();
         this.helperService.Results();
@@ -53,11 +51,13 @@ class AlgorithmController {
         this.estimationOfResults.GP = this.user.estimationOfResults.GP;
         this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
         this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
+        this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;
         this.orderOfGames.UPDI = this.user.UPDI;
       }
+      console.log(this.user.estimationOfResults, "TESTS");
       console.log(this.estimationOfResults);
       this._userInit();
     });
