@@ -509,7 +509,6 @@ class GamesService {
     this.gameSummary.concentration = '';
     this.gameSummary.muteMusic = '';
 
-
     if (this.estimationOfResults.GP.UPDI.SA) {
       if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
         this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0'];
