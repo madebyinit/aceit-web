@@ -54,6 +54,9 @@ class GamesController {
       selfAssessment: 0,
     };
 
+    this.gamesService.setgamesSuccessfullyCompleted(0);
+    this.gamesService.setSelfassestment(10);
+
     this.$scope.$on('$locationChangeStart', (event) => {
       event.preventDefault();
     });
@@ -150,7 +153,8 @@ class GamesController {
               this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
             } else {
               this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.TotalTimeFOrLastGame(this.secondsleft);
+              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
             }
             break;
           case 'tower':
@@ -227,8 +231,9 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
       console.log(this.user);
-      if (this.user.estimationOfResults.parkingLotLast.IB['0'] === undefined) {
+      if (this.estimationOfResults.feedbackCounter.LC === undefined) {
         this.helperService.gameSequence();
+        this.helperService.feedbackCounter();
         this.helperService.Results();
         this.helperService.feedbackSentences();
         this.helperService.SuggestedTools();
@@ -244,6 +249,7 @@ class GamesController {
         this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
         this.estimationOfResults.GP = this.user.estimationOfResults.GP;
         this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
+        this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;
@@ -332,6 +338,7 @@ class GamesController {
           case 5:
             this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
             this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
             this.gamesService.gameStatistic();
             break;
           default:
@@ -383,7 +390,7 @@ class GamesController {
         this.gamesService.setLastGame();
         this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
         // this.parkingLotService.endLastGame(0, 0, 0, false, 0);
-        this.gamesService.setLastGame();
+        // this.gamesService.setLastGame();
         break;
       default:
         break;
@@ -431,6 +438,7 @@ class GamesController {
       case 6:
 
         this.uninitializeGames(5);
+        this.gamesService.EndTimeInLastGame(this.secondsleft);
         this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
         this.gamesService.gameStatistic();
         this.gameNumber = 5;
