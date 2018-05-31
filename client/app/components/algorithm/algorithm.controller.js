@@ -35,7 +35,7 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.user.estimationOfResults.parkingLotLast.IB['0'] === undefined) {
+      if (this.estimationOfResults.feedbackCounter.LC === undefined) {
         this.helperService.feedbackCounter();
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();
