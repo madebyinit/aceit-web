@@ -6,6 +6,7 @@ class MouseGameService {
   }
 
   end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    console.log(duration, "MOUSE DURATION");
     const result = {
       lowConfidence: 0,
       badTimeMan: 0,
