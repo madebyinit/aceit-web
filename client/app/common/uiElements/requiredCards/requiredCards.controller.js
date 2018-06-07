@@ -12,13 +12,15 @@ class requiredCardsController {
   }
 
   $onInit() {
+    this._getUserData();
+
     if (this.gameScoreValue.summary[4] > this.estimationOfResults.SuggestPoints.Concentration) { this.concentration = true; }
     if (this.gameScoreValue.summary[8] > this.estimationOfResults.SuggestPoints.Frustration) { this.physical = true; }
     if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.positive = true; }
     if (this.gameScoreValue.summary[3] > this.estimationOfResults.SuggestPoints['Negative Thinking']) { this.positive = true; }
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.positive = true; }
     
-    this._getUserData();
+    
     
   }
   stateGo(name) {
@@ -49,11 +51,12 @@ class requiredCardsController {
 
   routineDisabled() {
     const that = this;
-    this.enableRoutineButton = true;
+    this.enableRoutineButton = false;
+
     _.forEach(this.userSum, (value, key) => {
       if (value >= 10 && !_.get(that.user, `${key}Complete`)) {
         this.$timeout(() => {
-          this.enableRoutineButton = false;
+          this.enableRoutineButton = true;
         }, 0);
       }
     });
