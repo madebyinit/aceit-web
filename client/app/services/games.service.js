@@ -512,9 +512,7 @@ class GamesService {
     if (this.estimationOfResults.GP.UPDI.SA) {
       if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
         this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0'];
-      } else if (this.gameScore.selfAssessment < this.gameScore.gamesSuccessfullyCompleted) {
-        this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
-      } else if (this.gameScore.gamesSuccessfullyCompleted >= 2) {
+      } else if ((this.gameScore.selfAssessment + 2) <= this.gameScore.gamesSuccessfullyCompleted) {
         this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
       }
     }

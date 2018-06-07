@@ -231,12 +231,13 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
       console.log(this.user);
-      if (this.estimationOfResults.feedbackCounter.LC === undefined) {
+      if (this.estimationOfResults.FeedbackPosition['1'] === undefined) {
         this.helperService.gameSequence();
         this.helperService.feedbackCounter();
         this.helperService.Results();
         this.helperService.feedbackSentences();
         this.helperService.SuggestedTools();
+        this.helperService.FeedbackChange();
         this.seconds = this.estimationOfResults.GP.GSD;
         console.log(this.estimationOfResults);
       } else {
@@ -250,6 +251,7 @@ class GamesController {
         this.estimationOfResults.GP = this.user.estimationOfResults.GP;
         this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
         this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
+        this.estimationOfResults.FeedbackPosition = this.user.estimationOfResults.FeedbackPosition;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;

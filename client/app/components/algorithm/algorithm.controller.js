@@ -21,7 +21,7 @@ class AlgorithmController {
 
   $onInit() {
     this.getUserData();
-
+    console.log(this.estimationOfResults.FeedbackPosition);
   }
 
   // removeAllListeners() {
@@ -35,12 +35,13 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.estimationOfResults.feedbackCounter.LC === undefined) {
+      if (this.estimationOfResults.FeedbackPosition['1'] === undefined) {
         this.helperService.feedbackCounter();
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();
         this.helperService.Results();
         this.helperService.SuggestedTools();
+        this.helperService.FeedbackChange();
       } else {
         this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
         this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
@@ -52,6 +53,7 @@ class AlgorithmController {
         this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
         this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
         this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
+        this.estimationOfResults.FeedbackPosition = this.user.estimationOfResults.FeedbackPosition;
 
         this.orderOfGames.gameSequence = this.user.gameSequence;
         this.orderOfGames.level = this.user.level;
@@ -62,6 +64,23 @@ class AlgorithmController {
       this._userInit();
     });
   }
+  
+  changeFeedbackposition(key, value, sign) {
+    console.log(key);
+
+    if (sign === '+' && key !== 0) {
+      const position = this.estimationOfResults.FeedbackPosition[key];
+      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[key - 1];
+      this.estimationOfResults.FeedbackPosition[key - 1] = position;
+    }
+
+    if (sign === '-' && key !== 11) {
+      const position = this.estimationOfResults.FeedbackPosition[key];
+      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[key + 1];
+      this.estimationOfResults.FeedbackPosition[key + 1] = position;
+    }
+  }
+
   changeFeedback(key) {
     this.estimationOfResults.GP.UBA[key] = !this.estimationOfResults.GP.UBA[key];
   }

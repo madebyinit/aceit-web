@@ -66,6 +66,7 @@ const componentModule = angular
     Feedback: {},
     SuggestPoints: {},
     feedbackCounter: {},
+    FeedbackPosition: {},
   })
 
   .value('gameScoreValue', {

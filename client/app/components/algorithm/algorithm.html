@@ -131,6 +131,15 @@
     <div ng-if="$ctrl.showFeedback">
       <h3> Feedback Sentences </h3>
       <table>
+          <tr  ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition">
+              <td> {{key}} </td>
+              <td >{{values}}</td>
+              <td class="myButton" ng-click="$ctrl.changeFeedbackposition(key, values, '+')">+</td>
+              <td class="myButton" ng-click="$ctrl.changeFeedbackposition(key, values, '-')">-</td>
+          </tr>
+      </table>
+      <br>
+      <table>
         <tr  ng-repeat="(key, values) in  $ctrl.estimationOfResults.Feedback">
           <td>{{key | AlghorithmHeaderFilter}}</td>
 
