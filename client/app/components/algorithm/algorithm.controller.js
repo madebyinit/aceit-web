@@ -21,7 +21,6 @@ class AlgorithmController {
 
   $onInit() {
     this.getUserData();
-    console.log(this.estimationOfResults.FeedbackPosition);
   }
 
   // removeAllListeners() {
@@ -59,14 +58,11 @@ class AlgorithmController {
         this.orderOfGames.level = this.user.level;
         this.orderOfGames.UPDI = this.user.UPDI;
       }
-      console.log(this.user.estimationOfResults, "TESTS");
-      console.log(this.estimationOfResults);
       this._userInit();
     });
   }
   
   changeFeedbackposition(key, value, sign) {
-    console.log(key);
 
     if (sign === '+' && key !== 0) {
       const position = this.estimationOfResults.FeedbackPosition[key];
