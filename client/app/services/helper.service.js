@@ -692,6 +692,23 @@ class HelperService {
       Frustration: 10,
     };
   }
+
+  FeedbackChange() {
+    this.estimationOfResults.FeedbackPosition = {
+      0: 'selfAssessment',
+      1: 'gamesSuccessfullyCompleted',
+      2: 'slowStarter',
+      3: 'impulsivity',
+      4: 'panic',
+      5: 'negativeThinking',
+      6: 'lowConfidence ',
+      7: 'perfectionism',
+      8: 'badTimeManagement',
+      9: 'frustration',
+      10: 'concentration',
+      11: 'muteMusic',
+    };
+  }
 }
 
 
