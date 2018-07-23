@@ -46,19 +46,20 @@
         </md-button>
       </div>
     </div>
-    <div class="main-game" id="main-game-wrapper">
+    <!-- <div class="main-game" id="main-game-wrapper">
+    </div> -->
+    <div  class="main-game" id="main-game-wrapper">
+      <iframe ng-class="{selected: $ctrl.showGame[0]}" id="{{$ctrl.orderOfGames.gameSequence[0]}}" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[0]}}"></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[1]}" id="{{$ctrl.orderOfGames.gameSequence[1]}}" src="tower_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[1]}}" ></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[2]}" id="{{$ctrl.orderOfGames.gameSequence[2]}}" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[2]}}" ></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[3]}" id="{{$ctrl.orderOfGames.gameSequence[3]}}" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[3]}}" ></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[4]}" id="{{$ctrl.orderOfGames.gameSequence[0]}}+Last" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[4]}}" ></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[5]}" id="{{$ctrl.orderOfGames.gameSequence[2]}}+1" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[5]}}" ></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[6]}" id="{{$ctrl.orderOfGames.gameSequence[3]}}+1" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[6]}}" ></iframe>
     </div>
-<!-- <button ng-click="$ctrl.test()">duration in tower</button>
-<button ng-click="$ctrl.next()">NextGame</button>
-<button ng-click="$ctrl.dropGame()">drop tower</button>
-    <div  class="main-game" >
-     <iframe ng-class="{selected: toggle}" id="parkinglot" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="900px"></iframe>
-      <iframe ng-class="{selected: !toggle}" id="tower" src="tower_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="900px" ></iframe>
-      <!-- <iframe  ng-class="{selected: !toggle}" id="mazerace" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="900px" ></iframe>
-      <iframe ng-class="{selected: toggle}" id="mousetrap" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="900px" ></iframe> -->
-     <!--  <iframe id="parkinglot" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="900px" ></iframe> -->
-    </div>
-    <!-- <div  ng-click="toggle=!toggle">toggle button</div> --> 
+    <div  ng-click="$ctrl.testChange()">toggle button</div> 
+
+    <div  ng-click="$ctrl.reloadGame('mousetrap')">RELOAD button</div> 
   </div>
 </div> 
 

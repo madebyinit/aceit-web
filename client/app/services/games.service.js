@@ -38,25 +38,23 @@ class GamesService {
     this.lastGameCheck = !this.lastGameCheck;
   }
 
-  getGameResult(gameName, duration) {
-    let result = this.gameStatus.sendMessage('getGameResult');
-    result = JSON.parse(result);
+  getGameResult(gameName, durationG, duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
     switch (gameName) {
       case 'parkinglot':
         if (this.lastGameCheck) {
-          this.parkingLotService.endLastGame(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+          this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         } else {
-          this.parkingLotService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+          this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         }
         break;
       case 'tower':
-        this.towerService.end(result.duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       case 'mazerace':
-        this.mazeraceService.end(result.duration + duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        this.mazeraceService.end(duration + durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       case 'mousetrap':
-        this.mouseGameService.end(result.duration + duration, result.noOfMoves, result.instructionsClickCount, result.win, result.firstMoveTime);
+        this.mouseGameService.end(duration + durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       default:
         break;
