@@ -11,7 +11,6 @@ class GamesService {
     this.window = $window;
     this.document = $document;
     this.gameStatus = {};
-    this.lastGameCheck = false;
     this.parkingLotService = parkingLotService;
     this.towerService = towerService;
     this.mouseGameService = mouseGameService;
@@ -34,18 +33,11 @@ class GamesService {
     this.gameStatus = data;
   }
 
-  setLastGame() {
-    this.lastGameCheck = !this.lastGameCheck;
-  }
-
   getGameResult(gameName, durationG, duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+    console.log(gameName);
     switch (gameName) {
       case 'parkinglot':
-        if (this.lastGameCheck) {
-          this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        } else {
-          this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        }
+        this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       case 'tower':
         this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
@@ -55,6 +47,9 @@ class GamesService {
         break;
       case 'mousetrap':
         this.mouseGameService.end(duration + durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        break;
+      case 'parkinglotLast':
+        this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       default:
         break;

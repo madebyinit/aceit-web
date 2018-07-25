@@ -16,7 +16,6 @@
     canvas.id = "tets";
     this.p2 = canvas.getContext('2d');
     canvas.setAttribute('tabIndex', 0);
-    canvas.setAttribute('id', 'mazerace-id');
     this.j8 = j8;
     this.i7 = i7;
     this.c9 = c9;

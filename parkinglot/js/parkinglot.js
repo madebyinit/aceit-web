@@ -12,8 +12,8 @@
     if (this.g === null || this.g === undefined) this.g = {};
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
-    canvas.id = "tets";
     this.canvas = canvas;
+    this.canvas.id = "tets";
     this.p2 = canvas.getContext('2d');
     canvas.setAttribute('tabIndex', 0);
     this.j8 = j8;
@@ -882,8 +882,6 @@
     a1['sendMessage'] = function (message, d) {
       return o2.W(message, d);
     };
-    console.log("TEST TESTESTESSET 22222222222");
-    localStorage.setItem('gameStart', true);
     return a1;
   };
   d4['uninitialize'] = function () { d4.d3.h.o2.d0['uninitializeStatic'](); };
