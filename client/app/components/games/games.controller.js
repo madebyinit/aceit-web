@@ -42,6 +42,7 @@ class GamesController {
     this.widthGame = ['100%', '0%', '0%', '0%', '0%', '0%', '0%'];
     this.gameData = [0, 0, 0, false, 0];
     this.checkInWichGame = true;
+    this.Mashtab = {};
   }
 
   $onInit() {
@@ -93,35 +94,56 @@ class GamesController {
 
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
+      this.setGamesLvl(true);
+      console.log(document.getElementById('parkinglot').contentWindow.lvl);
       this.firstStart = false;
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
+      this.setGamesLvl(true);
       this.firstStart = true;
     } else {
       console.log('THIRD START');
+      this.setGamesLvl(false);
       const audio = this.$document[0].getElementById('backgroundMusic');
       audio.play();
       this.firstStart = true;
       this.showWindow = false;
-      this.orderOfGames.level[0] = this.randomInteger(1, 10);
       // const data = this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
       // this.gamesService.setGameStatus(data);
       this.countdownTimer = this.$interval(this.startTimer, 1000);
     }
     const gameStart = localStorage.getItem('gameStart');
-    console.log(gameStart, 'TTTTTTTTTTTTTTTTTTTTTTT');
 
     this.gameNumber = 1;
 
     this.getUserData();
 
-    console.log(this.orderOfGames.gameSequence);
+  }
+
+  setGamesLvl (bolean) {
+    // this.orderOfGames.level[0]
+    // this.orderOfGames.gameSequence
+    
+    if (bolean) {
+      document.getElementById('parkinglot').contentWindow.lvl = 2;
+      document.getElementById('tower').contentWindow.lvl = 4;
+      document.getElementById('parkinglotLast').contentWindow.lvl = 3;
+    } else {
+      document.getElementById('parkinglot').contentWindow.lvl = this.randomInteger(1, 10);
+      document.getElementById('tower').contentWindow.lvl = this.randomInteger(1, 10);
+      document.getElementById('parkinglotLast').contentWindow.lvl = this.randomInteger(1, 10);
+    }
+  }
+
+  randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    rand = Math.round(rand);
+    return rand;
   }
 
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      console.log(this.user);
       if (this.estimationOfResults.FeedbackPosition['1'] === undefined) {
         this.helperService.gameSequence();
         this.helperService.feedbackCounter();
@@ -130,7 +152,6 @@ class GamesController {
         this.helperService.SuggestedTools();
         this.helperService.FeedbackChange();
         this.seconds = this.estimationOfResults.GP.GSD;
-        console.log(this.estimationOfResults);
       } else {
         this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
         this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
@@ -149,7 +170,6 @@ class GamesController {
         this.orderOfGames.UPDI = this.user.UPDI;
 
         this.seconds = this.user.estimationOfResults.GP.GSD;
-        console.log('WE FIND ESTIM', this.estimationOfResults);
       }
 
 
@@ -171,7 +191,7 @@ class GamesController {
   gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
     this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
 
-    if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; console.log('tower true'); }
+    if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; }
 
     if (win) {
       this.gameSuccComp++;
@@ -184,18 +204,12 @@ class GamesController {
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
       this.duration += duration;
       this.instructionsClick += instructionsClickCount;
-      console.log('stop');
-      console.log(this.duration);
     } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
-      console.log('stop');
       this.duration += duration;
-      console.log(this.duration);
       this.instructionsClick += instructionsClickCount;
     } else {
       this.showMouseRetry = true;
-      console.log(this.duration);
       this.duration += duration;
-      console.log(this.duration);
       this.instructionsClick += instructionsClickCount;
       switch (this.orderOfGames.gameSequence[this.gameNumber - 1]) {
         case 'parkinglot':
@@ -211,7 +225,6 @@ class GamesController {
           this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
           break;
         case 'mousetrap':
-          console.log(this.duration);
           this.mouseGameService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
           break;
         case 'mazerace':
@@ -228,9 +241,6 @@ class GamesController {
         // tower
         case 2:
           this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          if (localStorage.getItem('gamePageSecond') !== null) {
-            this.orderOfGames.level[1] = this.randomInteger(1, 10);
-          }
           break;
           // mousetrap
         case 3:
@@ -278,12 +288,6 @@ class GamesController {
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
 
-  randomInteger(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    rand = Math.round(rand);
-    return rand;
-  }
-
   startTimer() {
     this.gameData[0] = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
     if (this.gameNumber === 5) { this.starCheck = false; }
@@ -291,13 +295,6 @@ class GamesController {
     if (this.gameData[0] !== undefined && this.starCheck === true) {
       this.gameData[0] = 0;
     } else {
-      let Mashtab = this.$document[0].getElementById('main-game-wrapper').getClientRects();
-      console.log(Mashtab[0].height, Mashtab[0].width, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
-      
-      // console.log(this.$document[0].getElementById('tets').width);
-      // console.log(this.$document[0].getElementById('tets').height);
-
-
       this.checkEndGame(this.orderOfGames.gameSequence[this.gameNumber - 1]);
       if (this.seconds !== undefined) {
         const minutes = Math.round((this.seconds - 30) / 60);
@@ -331,9 +328,7 @@ class GamesController {
               this.gamesService.gameStatistic();
               break;
             case 4:
-              console.log(this.duration, (this.estimationOfResults.GP.GSD - this.gameSecSum));
               timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-              console.log(timeLastGame);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
               this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
               this.gamesService.gameStatistic();
@@ -358,7 +353,6 @@ class GamesController {
 
   skipGame() {
     this.showMazeRetry = true;
-      console.log(this.gameNumber, "TTTTTTTTTTTTTTTTTTTTTTTT");
 
     let duration = this.gameData[0];
     let noOfMoves = this.gameData[1];
@@ -366,7 +360,6 @@ class GamesController {
     let win = this.gameData[3];
     let firstMoveTime = this.gameData[4];
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'parkinglot' && this.gameNumber === 5) {
-      console.log("TESTQQQ")
       this.$document[0].getElementById('parkinglotLast').contentWindow.getGameResult();
 
       duration = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
@@ -379,7 +372,6 @@ class GamesController {
         duration = 0;
       }
     } else {
-      console.log("QQQQQQQQ")
       this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.getGameResult();
 
       duration = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.x;
@@ -604,9 +596,6 @@ class GamesController {
 
   restartMosetrap() {
     if (this.showGame[5] === false) {
-      this.$document[0].getElementById('mousetrap1').contentWindow.endGame();
-      this.$document[0].getElementById('mousetrap1').contentWindow.startGame();
-
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mousetrap') {
           this.showGame[index] = false;
@@ -616,9 +605,9 @@ class GamesController {
           this.widthGame[5] = '0%';
         }
       }
+      this.$document[0].getElementById('mousetrap1').contentWindow.endGame();
+      this.$document[0].getElementById('mousetrap1').contentWindow.startGame();
     } else {
-      this.$document[0].getElementById('mousetrap').contentWindow.endGame();
-      this.$document[0].getElementById('mousetrap').contentWindow.startGame();
 
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mousetrap') {
@@ -629,14 +618,13 @@ class GamesController {
           this.widthGame[5] = '100%';
         }
       }
+      this.$document[0].getElementById('mousetrap').contentWindow.endGame();
+      this.$document[0].getElementById('mousetrap').contentWindow.startGame();
     }
   }
 
   restartMazerace() {
     if (this.showGame[6] === false) {
-      this.$document[0].getElementById('mazerace1').contentWindow.endGame();
-      this.$document[0].getElementById('mazerace1').contentWindow.startGame();
-
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mazerace') {
           this.showGame[index] = false;
@@ -646,10 +634,9 @@ class GamesController {
           this.widthGame[6] = '0%';
         }
       }
+      this.$document[0].getElementById('mazerace1').contentWindow.endGame();
+      this.$document[0].getElementById('mazerace1').contentWindow.startGame();
     } else {
-      this.$document[0].getElementById('mazerace').contentWindow.endGame();
-      this.$document[0].getElementById('mazerace').contentWindow.startGame();
-
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mazerace') {
           this.showGame[index] = true;
@@ -659,6 +646,8 @@ class GamesController {
           this.widthGame[6] = '100%';
         }
       }
+      this.$document[0].getElementById('mazerace').contentWindow.endGame();
+      this.$document[0].getElementById('mazerace').contentWindow.startGame();
     }
   }
 
@@ -699,7 +688,6 @@ class GamesController {
 
   reqinGame(name) {
     if (this.gameNumber < 6) {
-      console.log(name);
       this.gameData[0] = this.$document[0].getElementById(name).contentWindow.x;
 
       if (this.gameData[0] !== undefined) {
