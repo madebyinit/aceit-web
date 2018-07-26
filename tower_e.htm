@@ -3,18 +3,78 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Tower of Hanoi</title>
+<style type="text/css">
+	body {
+		overflow:  hidden;
+	}
+
+	#holder { 
+		margin-top: -25px;
+		margin-left: -25px;
+		overflow:  hidden;
+	}
+
+	@media only screen and (max-width: 1800px) {
+			#holder { 
+			width:1700px; 
+			height:770px;
+		}
+	}
+	@media only screen and (max-width: 1600px) {
+			#holder { 
+			width:1475px; 
+			height:735px;
+		}
+	}
+	@media only screen and (max-width: 1440px) {
+			#holder { 
+			width:1225px; 
+			height:575px;
+		}
+	}
+	@media only screen and (max-width: 1300px) {
+			#holder { 
+			width:1155px; 
+			height:530px;
+		}
+	}
+	@media only screen and (max-width: 1200px) {
+			#holder { 
+			width:1080px; 
+			height:490px;
+		}
+	}
+	@media only screen and (max-width: 1000px) {
+			#holder { 
+			width:820px; 
+			height:460px;
+		}
+	}
+	@media only screen and (max-width: 400px) {
+		#holder { 
+		width:400px; 
+		height:300px;
+		}
+	}
+   </style>
 </head>
 <body>
-<div id="holder" style="width:600px;height:600px"></div>
+<div id="holder"> </div>
+<!-- <div id="holder" style="width:100% ;height:630px"></div> -->
 <script src="tower/js/tower.js"></script>
 <script>
-var game = nogic2.initialize(document.getElementById('holder'), {language:'en', noOfRings:6});
+var game = nogic2.initialize(document.getElementById('holder'), {language:'en', noOfRings:lvl});
 
 function getGameResult() {
 	var result = game.sendMessage('getGameResult');
 	
 	result = JSON.parse(result);
-	duration = result.duration;
+
+	x = result.duration;
+	y = result.noOfMoves;
+	z = result.instructionsClickCount;
+	w = result.win;
+	q = result.firstMoveTime;
 	// alert('duration = ' + result.duration);
 	// alert('noOfMoves = ' + result.noOfMoves);
 	// alert('instructionsClickCount = ' + result.instructionsClickCount);
@@ -32,13 +92,30 @@ var game = nogic2.initialize(document.getElementById('holder'), {language:'en', 
 }
 
 function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-	alert('duration = ' + duration);
-	alert('noOfMoves = ' + noOfMoves);
-	alert('instructionsClickCount = ' + instructionsClickCount);
-	alert('win = ' + win);
-	alert('firstMoveTime = ' + firstMoveTime);
+	// alert('duration = ' + duration);
+	// alert('noOfMoves = ' + noOfMoves);
+	// alert('instructionsClickCount = ' + instructionsClickCount);
+	// alert('win = ' + win);
+	// alert('firstMoveTime = ' + firstMoveTime);
+	x = duration;
+	y = noOfMoves;
+	z = instructionsClickCount;
+	w = win;
+	q = firstMoveTime;
+}
+
+function startGame(){
+	game = nogic2.initialize(document.getElementById('holder'), {language:'en', noOfRings:4});
+}
+
+function endGame(){
+
+nogic2.uninitialize();
+
+const wrapper = document.getElementById('tets').parentNode;
+wrapper.parentNode.removeChild(wrapper);
 }
 </script>
-<a href="javascript:getGameResult()">Get Game Result</a>
+<!-- <a href="javascript:getGameResult()">Get Game Result</a> -->
 </body>
 </html>
