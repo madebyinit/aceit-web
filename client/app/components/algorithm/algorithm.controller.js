@@ -61,19 +61,19 @@ class AlgorithmController {
       this._userInit();
     });
   }
-  
+
   changeFeedbackposition(key, value, sign) {
 
     if (sign === '+' && key !== 0) {
       const position = this.estimationOfResults.FeedbackPosition[key];
-      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[key - 1];
-      this.estimationOfResults.FeedbackPosition[key - 1] = position;
+      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[parseInt(key) - 1];
+      this.estimationOfResults.FeedbackPosition[parseInt(key) - 1] = position;
     }
 
     if (sign === '-' && key !== 11) {
       const position = this.estimationOfResults.FeedbackPosition[key];
-      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[key + 1];
-      this.estimationOfResults.FeedbackPosition[key + 1] = position;
+      this.estimationOfResults.FeedbackPosition[key] = this.estimationOfResults.FeedbackPosition[parseInt(key) + 1];
+      this.estimationOfResults.FeedbackPosition[parseInt(key) + 1] = position;
     }
   }
 
