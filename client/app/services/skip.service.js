@@ -110,7 +110,7 @@ class SkipService {
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['116+'].F;
       }
     }
-    alert(`SKIP RESULT - lowConfidence = ${this.gameScore[gameName][0]} badTimeMan = ${this.gameScore[gameName][1]} perfectionism =  ${this.gameScore[gameName][2]} negThink = ${this.gameScore[gameName][3]} lackRicuz =  ${this.gameScore[gameName][4]} impulsivity = ${this.gameScore[gameName][5]} slowStarter = ${this.gameScore[gameName][6]}  panic = ${this.gameScore[gameName][7]}  frustration = ${this.gameScore[gameName][8]}`);
+    alert(`SKIP RESULT - Bad Time Man = ${this.gameScore[gameName][0]} Frustration = ${this.gameScore[gameName][1]} Impulsivity =  ${this.gameScore[gameName][2]} Low Confidence = ${this.gameScore[gameName][3]} Lack Ricuz =  ${this.gameScore[gameName][4]} Neg Think = ${this.gameScore[gameName][5]} Perfectionism = ${this.gameScore[gameName][6]}  panic = ${this.gameScore[gameName][7]}  Slow Starter = ${this.gameScore[gameName][8]}`);
   }
 }
 
