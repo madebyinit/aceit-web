@@ -19,9 +19,6 @@ class requiredCardsController {
     if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.positive = true; }
     if (this.gameScoreValue.summary[3] > this.estimationOfResults.SuggestPoints['Negative Thinking']) { this.positive = true; }
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.positive = true; }
-    
-    
-    
   }
   stateGo(name) {
     this.$state.go(name);
@@ -54,7 +51,7 @@ class requiredCardsController {
     this.enableRoutineButton = false;
 
     _.forEach(this.userSum, (value, key) => {
-      if (value >= 10 && !_.get(that.user, `${key}Complete`)) {
+      if (value >= 10 && _.get(that.user, `${key}Complete`)) {
         this.$timeout(() => {
           this.enableRoutineButton = true;
         }, 0);
