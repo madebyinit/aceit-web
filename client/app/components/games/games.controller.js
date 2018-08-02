@@ -43,6 +43,7 @@ class GamesController {
     this.gameData = [0, 0, 0, false, 0];
     this.checkInWichGame = true;
     this.Mashtab = {};
+    this.secondsLeftForLastGame = 0;
   }
 
   $onInit() {
@@ -409,6 +410,7 @@ class GamesController {
         this.gameBeforeLastTime = this.secondsleft;
         const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
         this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
+        this.secondsLeftForLastGame = timeLastGame;
         this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[3], this.estimationOfResults);
         this.duration = 0;
@@ -428,7 +430,7 @@ class GamesController {
       case 'parkinglot':
         if (this.gameNumber === 6) {
           this.gamesService.EndTimeInLastGame(this.secondsleft);
-          this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
           this.gamesService.gameStatistic();
           this.gameNumber = 5;
           this.stateChange('home');
