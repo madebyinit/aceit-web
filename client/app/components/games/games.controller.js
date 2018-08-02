@@ -310,7 +310,6 @@ class GamesController {
           // moserace
         case 4:
           this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-
           this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
           this.gameSecSum += this.secondsleft;
           this.gameBeforeLastTime = this.secondsleft;
@@ -318,9 +317,11 @@ class GamesController {
           // parkinglot
         case 5:
           this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime);
+          this.secondsLeftForLastGame = this.seconds;
           break;
         case 6:
+          console.log('this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime)');
+          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
           this.gamesService.gameStatistic();
           if (localStorage.getItem('gamePage') == null) {
             localStorage.setItem('gamePage', true);
@@ -409,7 +410,6 @@ class GamesController {
         this.gameSecSum += this.secondsleft;
         this.gameBeforeLastTime = this.secondsleft;
         const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-        this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
         this.secondsLeftForLastGame = timeLastGame;
         this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[3], this.estimationOfResults);
