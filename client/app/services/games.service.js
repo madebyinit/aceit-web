@@ -64,7 +64,7 @@ class GamesService {
   }
 
   TotalTimeFOrLastGame(time) {
-    if (this.gameScore.endTime[0] === NaN && this.gameScore.endTime[0] === undefined) {
+    if (this.gameScore.endTime[0] === undefined) {
       this.gameScore.endTime[0] = 0;
       this.gameScore.endTime[1] = 0;
       this.gameScore.endTime[2] = 0;
