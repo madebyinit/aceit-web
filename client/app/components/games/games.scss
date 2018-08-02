@@ -4,20 +4,18 @@
   height: 100%;
 }
 
-.selected {  opacity: 0; display: flex; border:none;  }
+.selected {  opacity: 0; display: flex; border:none;  width: 0.5px;}
 
 .other {  
   opacity: 1; 
   display: flex; 
   border:none; 
-  position: absolute; 
-  left:0;
-  right:0;
-  top:0;
-  bottom:0; 
-
 }
 
+iframe{
+  border : none;
+  margin-right: -3px;
+}
 
 .game-wrap{
   background: linear-gradient(to bottom, #000000 0%,#3d3d3d 100%);
@@ -149,6 +147,11 @@
     flex: 1;
     canvas{
       display: block;
+      position: absolute; 
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
     }
   }
 
