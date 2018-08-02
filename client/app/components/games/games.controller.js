@@ -318,7 +318,7 @@ class GamesController {
           // parkinglot
         case 5:
           this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-
+          this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime);
           break;
         case 6:
           this.gamesService.gameStatistic();
