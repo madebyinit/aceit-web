@@ -64,6 +64,19 @@ class GamesService {
   }
 
   TotalTimeFOrLastGame(time) {
+    if (this.gameScore.endTime[0] === NaN && this.gameScore.endTime[0] === undefined) {
+      this.gameScore.endTime[0] = 0;
+      this.gameScore.endTime[1] = 0;
+      this.gameScore.endTime[2] = 0;
+      this.gameScore.endTime[3] = 0;
+      this.gameScore.endTime[4] = 0;
+      this.gameScore.endTime[5] = 0;
+      this.gameScore.endTime[6] = 0;
+      this.gameScore.endTime[7] = 0;
+      this.gameScore.endTime[8] = 0;
+    }
+
+
     if (time <= 10) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['0-10'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['0-10'].BTM;
@@ -428,7 +441,7 @@ class GamesService {
       panic += this.gameScore.parkinglotLast[7];
       frustration += this.gameScore.parkinglotLast[8];
     }
-    
+
     if (this.gameScore.mazerace.length !== undefined) {
       lowConfidence += this.gameScore.mazerace[0];
       badTimeMan += this.gameScore.mazerace[1];
@@ -440,7 +453,7 @@ class GamesService {
       panic += this.gameScore.mazerace[7];
       frustration += this.gameScore.mazerace[8];
     }
-    
+
     if (this.gameScore.mousetrap.length !== undefined) {
       lowConfidence += this.gameScore.mousetrap[0];
       badTimeMan += this.gameScore.mousetrap[1];
@@ -452,7 +465,7 @@ class GamesService {
       panic += this.gameScore.mousetrap[7];
       frustration += this.gameScore.mousetrap[8];
     }
-    
+
     if (this.gameScore.tower.length !== undefined) {
       lowConfidence += this.gameScore.tower[0];
       badTimeMan += this.gameScore.tower[1];
@@ -464,7 +477,7 @@ class GamesService {
       panic += this.gameScore.tower[7];
       frustration += this.gameScore.tower[8];
     }
-    
+
     if (this.gameScore.endTime.length !== undefined) {
       lowConfidence += this.gameScore.endTime[0];
       badTimeMan += this.gameScore.endTime[1];
@@ -583,9 +596,9 @@ class GamesService {
       } else { this.gameSummary.muteMusic = ''; this.gameScore.muteMusic = 0; }
     }
 
-    let space = '                                          ';
+    const space = '                                          ';
 
-  alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
+    alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
   tower - lowConfidence ${this.gameScore.tower[0]} badTimeMan ${this.gameScore.tower[1]} perfectionism ${this.gameScore.tower[2]} negThink ${this.gameScore.tower[3]} lackRicuz ${this.gameScore.tower[4]} impulsivity ${this.gameScore.tower[5]} slowStarter ${this.gameScore.tower[6]} panic ${this.gameScore.tower[7]} frustration ${this.gameScore.tower[8]} ${space}
   mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
   mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
