@@ -843,7 +843,12 @@
     canvas = document.createElement('canvas');
     canvas.style.width = '100%';
     canvas.style.height = '100%';
-    canvas.style.outline = 'none';
+    canvas.style.position = 'absolute';
+    canvas.style.left = '0';
+    canvas.style.top = '0';
+    canvas.style.right = '0';
+    canvas.style.bottom = '0';
+    canvas.style['border-radius'] = '10px';
     m7.appendChild(canvas);
     i5 = true;
     l7 = true;

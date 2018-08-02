@@ -92,6 +92,7 @@ class GamesController {
       }
     };
 
+
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
       this.setGamesLvl(true);
@@ -108,8 +109,6 @@ class GamesController {
       audio.play();
       this.firstStart = true;
       this.showWindow = false;
-      // const data = this.$window.nogic.initialize(this.$document[0].getElementById('main-game-wrapper'), { language: 'en', level: this.orderOfGames.level[0] });
-      // this.gamesService.setGameStatus(data);
       this.countdownTimer = this.$interval(this.startTimer, 1000);
     }
     const gameStart = localStorage.getItem('gameStart');
@@ -117,13 +116,75 @@ class GamesController {
     this.gameNumber = 1;
 
     this.getUserData();
-
   }
 
-  setGamesLvl (bolean) {
+  startTimer() {
+    this.gameData[0] = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
+    if (this.gameNumber === 5) { this.starCheck = false; }
+
+    if (this.gameData[0] !== undefined && this.starCheck === true) {
+      this.gameData[0] = 0;
+    } else {
+      this.checkEndGame(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+      if (this.seconds !== undefined) {
+        const minutes = Math.round((this.seconds - 30) / 60);
+        let remainingSeconds = this.seconds % 60;
+
+        if (remainingSeconds < 10) {
+          remainingSeconds = `0${remainingSeconds}`;
+        }
+
+        this.timeRemain = `${minutes}:${remainingSeconds}`;
+
+        if (this.seconds === 0) {
+          this.$interval.cancel(this.countdownTimer);
+          this.timeRemain = '00:00';
+          let timeLastGame = 0;
+
+          switch (this.gameNumber) {
+            case 1:
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+              this.gamesService.EndTimeInGame('Game 1');
+              this.gamesService.gameStatistic();
+              break;
+            case 2:
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              this.gamesService.EndTimeInGame('Game 2');
+              this.gamesService.gameStatistic();
+              break;
+            case 3:
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              this.gamesService.EndTimeInGame('Game 3');
+              this.gamesService.gameStatistic();
+              break;
+            case 4:
+              timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
+              this.gamesService.gameStatistic();
+              break;
+            case 5:
+              // this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+              this.gamesService.gameStatistic();
+              break;
+            default:
+              break;
+          }
+
+          this.showDialogEnd = true;
+        } else {
+          this.seconds--;
+        }
+      }
+    }
+  }
+
+  setGamesLvl(bolean) {
     // this.orderOfGames.level[0]
     // this.orderOfGames.gameSequence
-    
+
     if (bolean) {
       document.getElementById('parkinglot').contentWindow.lvl = 2;
       document.getElementById('tower').contentWindow.lvl = 4;
@@ -171,7 +232,6 @@ class GamesController {
 
         this.seconds = this.user.estimationOfResults.GP.GSD;
       }
-
 
       this._userInit();
     });
@@ -288,69 +348,6 @@ class GamesController {
     this.countdownTimer = this.$interval(this.startTimer, 1000);
   }
 
-  startTimer() {
-    this.gameData[0] = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
-    if (this.gameNumber === 5) { this.starCheck = false; }
-
-    if (this.gameData[0] !== undefined && this.starCheck === true) {
-      this.gameData[0] = 0;
-    } else {
-      this.checkEndGame(this.orderOfGames.gameSequence[this.gameNumber - 1]);
-      if (this.seconds !== undefined) {
-        const minutes = Math.round((this.seconds - 30) / 60);
-        let remainingSeconds = this.seconds % 60;
-
-        if (remainingSeconds < 10) {
-          remainingSeconds = `0${remainingSeconds}`;
-        }
-
-        this.timeRemain = `${minutes}:${remainingSeconds}`;
-
-        if (this.seconds === 0) {
-          this.$interval.cancel(this.countdownTimer);
-          this.timeRemain = '00:00';
-          let timeLastGame = 0;
-
-          switch (this.gameNumber) {
-            case 1:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
-              this.gamesService.EndTimeInGame('Game 1');
-              this.gamesService.gameStatistic();
-              break;
-            case 2:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
-              this.gamesService.EndTimeInGame('Game 2');
-              this.gamesService.gameStatistic();
-              break;
-            case 3:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
-              this.gamesService.EndTimeInGame('Game 3');
-              this.gamesService.gameStatistic();
-              break;
-            case 4:
-              timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
-              this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
-              this.gamesService.gameStatistic();
-              break;
-            case 5:
-              // this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
-              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.gameStatistic();
-              break;
-            default:
-              break;
-          }
-
-          this.showDialogEnd = true;
-        } else {
-          this.seconds--;
-        }
-      }
-    }
-  }
-
   skipGame() {
     this.showMazeRetry = true;
 
@@ -442,7 +439,7 @@ class GamesController {
           }
         }
         // parkinglotLast
- 
+
         break;
       // tower
       case 'tower':
@@ -488,7 +485,7 @@ class GamesController {
   }
 
   removeGame() {
-    for (let index = (this.gameNumber - 1); index < (this.orderOfGames.gameSequence.length-1); index++) {
+    for (let index = (this.gameNumber - 1); index < (this.orderOfGames.gameSequence.length - 1); index++) {
       this.$document[0].getElementById(this.orderOfGames.gameSequence[index]).contentWindow.endGame();
       let wrapper = this.$document[0].getElementById(this.orderOfGames.gameSequence[index]);
       wrapper.parentNode.removeChild(wrapper);
@@ -575,12 +572,6 @@ class GamesController {
     }
   }
 
-  testChange() {
-    // this.stateChange('home');
-    this.removeGame();
-    this.removeListeners();
-  }
-
   changeGame(number, name) {
     // dropgame
     if (this.gameNumber < 6) {
@@ -608,7 +599,6 @@ class GamesController {
       this.$document[0].getElementById('mousetrap1').contentWindow.endGame();
       this.$document[0].getElementById('mousetrap1').contentWindow.startGame();
     } else {
-
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mousetrap') {
           this.showGame[index] = true;
