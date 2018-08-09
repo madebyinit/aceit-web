@@ -8,8 +8,8 @@
             <md-list-item class="md-3-line" ng-class="{'state-select':$ctrl.$state.current.name === 'home'}" ng-click="$ctrl.stateChange('home')">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-welcome-menu.svg"></div><span>{{::'main_menu.home_page' | translate}}</span>
             </md-list-item>
-            <md-divider ng-if="$ctrl.user.goaceitVisited"></md-divider>
-            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('games')" ng-if="$ctrl.user.goaceitVisited">
+            <md-divider ng-if="$ctrl.user.goaceitOn"></md-divider>
+            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('games')" ng-if="$ctrl.user.goaceitOn">
                 <div class="menu-icon"><img ng-src="mazerace/games-ico.png"></div><span>Games</span>
             </md-list-item>
             <md-divider></md-divider>
@@ -51,8 +51,8 @@
             <md-list-item class="md-3-line" ng-if="$ctrl.user.routineComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
             </md-list-item>
-            <md-divider ng-if="$ctrl.user.goaceitVisited"></md-divider>
-            <md-list-item class="md-3-line" ng-if="$ctrl.user.goaceitVisited" ng-class="{'state-select':$ctrl.$state.current.name === 'goaceit'}" ng-click="$ctrl.stateChange('goaceit')">
+            <md-divider ng-if="$ctrl.user.goaceitOn"></md-divider>
+            <md-list-item class="md-3-line" ng-if="$ctrl.user.goaceitOn" ng-class="{'state-select':$ctrl.$state.current.name === 'goaceit'}" ng-click="$ctrl.stateChange('goaceit')">
                 <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-goaceit.png"></div><span>{{::'main_menu.goaceit' | translate}}</span>
             </md-list-item>
             <md-divider ng-if="$ctrl.user.routineComplete"></md-divider>

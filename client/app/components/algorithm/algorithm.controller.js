@@ -34,7 +34,7 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.estimationOfResults.FeedbackPosition['1'] === undefined) {
+      if (this.estimationOfResults.FeedbackPosition === undefined) {
         this.helperService.feedbackCounter();
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();
@@ -147,6 +147,7 @@ class AlgorithmController {
     this.connection.saveData(this.orderOfGames.level, 'level');
     this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');
     this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
+    console.log(this.estimationOfResults);
   }
 
   _userInit() {
