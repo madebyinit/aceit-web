@@ -11,7 +11,7 @@ class LionSectionController {
   aceitVisited() {
     this.connection.getData().then((res) => {
       this.user = res;
-      this.connection.saveData(true, 'goaceitVisited');
+      this.connection.saveData(true, 'goaceitOn');
       this.$state.go('goaceit');
     });
   }

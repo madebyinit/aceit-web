@@ -9,6 +9,16 @@ class SkipService {
     this.estimationOfResults = estimationOfResults;
     if (this.orderOfGames.UPDI[gameName].SG) {
       if (secondsleft <= 30) {
+        // console.log( `lowConfidence =${this.estimationOfResults[gameName].Skip['0-30'].LC} 
+        //               badTimeMan =${this.estimationOfResults[gameName].Skip['0-30'].BTM} 
+        //               perfectionism = ${this.estimationOfResults[gameName].Skip['0-30'].P} 
+        //               negThink = ${this.estimationOfResults[gameName].Skip['0-30'].NT} 
+        //               lackRicuz = ${this.estimationOfResults[gameName].Skip['0-30'].LR} 
+        //               impulsivity = ${this.estimationOfResults[gameName].Skip['0-30'].I} 
+        //               slowStarter = ${this.estimationOfResults[gameName].Skip['0-30'].SS}  
+        //               panic =  ${this.estimationOfResults[gameName].Skip['0-30'].Panic} 
+        //               frustration = ${this.estimationOfResults[gameName].Skip['0-30'].F} |`);
+       
         this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip['0-30'].LC;
         this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip['0-30'].BTM;
         this.gameScore[gameName][2] += this.estimationOfResults[gameName].Skip['0-30'].P;
@@ -110,7 +120,9 @@ class SkipService {
         this.gameScore[gameName][8] += this.estimationOfResults[gameName].Skip['116+'].F;
       }
     }
+    // SumFromGame = (`parkinglot Summ =  lowConfidence =${this.gameScore.parkinglotLast[0]} badTimeMan =${this.gameScore.parkinglotLast[1]} perfectionism = ${this.gameScore.parkinglotLast[2]} negThink = ${this.gameScore.parkinglotLast[3]} lackRicuz = ${this.gameScore.parkinglotLast[4]} impulsivity = ${this.gameScore.parkinglotLast[5]} slowStarter = ${this.gameScore.parkinglotLast[6]}  panic =  ${this.gameScore.parkinglotLast[7]} frustration = ${this.gameScore.parkinglotLast[8]} |`);
     alert(`SKIP RESULT - Bad Time Man = ${this.gameScore[gameName][0]} Frustration = ${this.gameScore[gameName][1]} Impulsivity =  ${this.gameScore[gameName][2]} Low Confidence = ${this.gameScore[gameName][3]} Lack Ricuz =  ${this.gameScore[gameName][4]} Neg Think = ${this.gameScore[gameName][5]} Perfectionism = ${this.gameScore[gameName][6]}  panic = ${this.gameScore[gameName][7]}  Slow Starter = ${this.gameScore[gameName][8]}`);
+    // alert(`SKIP RESULT - Bad Time Man = ${this.gameScore[gameName][0]} Frustration = ${this.gameScore[gameName][1]} Impulsivity =  ${this.gameScore[gameName][2]} Low Confidence = ${this.gameScore[gameName][3]} Lack Ricuz =  ${this.gameScore[gameName][4]} Neg Think = ${this.gameScore[gameName][5]} Perfectionism = ${this.gameScore[gameName][6]}  panic = ${this.gameScore[gameName][7]}  Slow Starter = ${this.gameScore[gameName][8]}`);
   }
 }
 

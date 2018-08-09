@@ -38,6 +38,7 @@ class MainMenuController {
 
   logout() {
     this.connection.saveData(false, 'goaceitVisited');
+    this.connection.saveData(false, 'goaceitOn');
     document.getElementsByTagName('body')[0].style.overflow = '';
     this.stateChangeService.logoutUser();
   }

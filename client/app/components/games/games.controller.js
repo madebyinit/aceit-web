@@ -44,6 +44,7 @@ class GamesController {
     this.checkInWichGame = true;
     this.Mashtab = {};
     this.secondsLeftForLastGame = 0;
+    this.winCheck = [false, false, false, false];
   }
 
   $onInit() {
@@ -102,7 +103,7 @@ class GamesController {
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
       this.setGamesLvl(true);
-      this.firstStart = true;
+      this.firstStart = false;
     } else {
       console.log('THIRD START');
       this.setGamesLvl(false);
@@ -142,30 +143,63 @@ class GamesController {
           this.timeRemain = '00:00';
           let timeLastGame = 0;
 
+          let duration = this.gameData[0];
+          let noOfMoves = this.gameData[1];
+          let instructionsClickCount = this.gameData[2];
+          let win = this.gameData[3];
+          let firstMoveTime = this.gameData[4];
+          if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'parkinglot' && this.gameNumber === 5) {
+            this.$document[0].getElementById('parkinglotLast').contentWindow.getGameResult();
+      
+            duration = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
+            if (duration !== undefined) {
+              noOfMoves = this.$document[0].getElementById('parkinglotLast').contentWindow.y;
+              instructionsClickCount = this.$document[0].getElementById('parkinglotLast').contentWindow.z;
+              win = this.$document[0].getElementById('parkinglotLast').contentWindow.w;
+              firstMoveTime = this.$document[0].getElementById('parkinglotLast').contentWindow.q;
+            } else {
+              duration = 0;
+            }
+          } else {
+            this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.getGameResult();
+      
+            duration = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.x;
+            if (duration !== undefined) {
+              noOfMoves = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.y;
+              instructionsClickCount = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.z;
+              win = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.w;
+              firstMoveTime = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.q;
+            } else {
+              duration = 0;
+            }
+          }
+
           switch (this.gameNumber) {
             case 1:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInGame('Game 1');
               this.gamesService.gameStatistic();
               break;
             case 2:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInGame('Game 2');
               this.gamesService.gameStatistic();
               break;
             case 3:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInGame('Game 3');
               this.gamesService.gameStatistic();
               break;
             case 4:
               timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration);
+              console.log(timeLastGame, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+              console.log(this.estimationOfResults.GP.GSD - this.gameSecSum);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
               this.gamesService.gameStatistic();
               break;
             case 5:
-              // this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1]);
+              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.gameStatistic();
@@ -206,7 +240,7 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.estimationOfResults.FeedbackPosition['1'] === undefined) {
+      if (this.estimationOfResults.FeedbackPosition === undefined) {
         this.helperService.gameSequence();
         this.helperService.feedbackCounter();
         this.helperService.Results();
@@ -263,12 +297,15 @@ class GamesController {
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
 
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
+      console.log(duration);
       this.duration += duration;
+      console.log(this.duration);
       this.instructionsClick += instructionsClickCount;
     } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
       this.duration += duration;
       this.instructionsClick += instructionsClickCount;
     } else {
+      this.winCheck[this.gameNumber - 1] = true;
       this.showMouseRetry = true;
       this.duration += duration;
       this.instructionsClick += instructionsClickCount;
@@ -450,7 +487,11 @@ class GamesController {
           this.orderOfGames.level[1] = this.randomInteger(1, 10);
         }
         if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          this.showDialog = true;
+          
+          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+            this.showDialog = true;
+          }
+
         }
         break;
         // mousetrap
@@ -458,7 +499,10 @@ class GamesController {
         this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
         this.showMouseRetry = true;
         if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          this.showDialog = true;
+          
+          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+            this.showDialog = true;
+          }
         }
         break;
         // moserace
@@ -466,7 +510,10 @@ class GamesController {
         this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
         this.showMazeRetry = true;
         if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          this.showDialog = true;
+          
+          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+            this.showDialog = true;
+          }
         }
         break;
       default:
@@ -690,6 +737,7 @@ class GamesController {
 
         this.gameEnded(this.gameData[0], this.gameData[1], this.gameData[2], this.gameData[3], this.gameData[4]);
 
+        this.$document[0].getElementById(name).contentWindow.x = undefined;
         this.gameData = [0, 0, 0, false, 0];
       } else {
         this.gameData[0] = 0;

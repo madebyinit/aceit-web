@@ -64,6 +64,8 @@ class GamesService {
   }
 
   TotalTimeFOrLastGame(time) {
+    console.log('TIME', time, 'TIME');
+
     if (this.gameScore.endTime[0] === undefined) {
       this.gameScore.endTime[0] = 0;
       this.gameScore.endTime[1] = 0;
@@ -87,7 +89,18 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['0-10'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['0-10'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['0-10'].F;
-    } else if (time < 10 && time <= 20) {
+      alert(`Total Time for Last Game ${time} - 
+             lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].LC} 
+             badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].BTM} 
+             perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].P} 
+             negThink = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].NT} 
+             lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].LR} 
+             impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].I} 
+             slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].SS} 
+             panic = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].Panic} 
+             frustration = ${this.estimationOfResults.gameEnd.TTfLG['0-10'].F}`);
+
+    } else if (time > 10 && time <= 20) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['11-20'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['11-20'].BTM;
       this.gameScore.endTime[2] += this.estimationOfResults.gameEnd.TTfLG['11-20'].P;
@@ -97,7 +110,18 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['11-20'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['11-20'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['11-20'].F;
-    } else if (time < 20 && time <= 30) {
+
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG['11-20'].F}`);
+    } else if (time > 20 && time <= 30) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['21-30'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['21-30'].BTM;
       this.gameScore.endTime[2] += this.estimationOfResults.gameEnd.TTfLG['21-30'].P;
@@ -107,7 +131,18 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['21-30'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['21-30'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['21-30'].F;
-    } else if (time < 30 && time <= 40) {
+
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG['21-30'].F}`);
+    } else if (time > 30 && time <= 40) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['31-40'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['31-40'].BTM;
       this.gameScore.endTime[2] += this.estimationOfResults.gameEnd.TTfLG['31-40'].P;
@@ -117,7 +152,18 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['31-40'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['31-40'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['31-40'].F;
-    } else if (time < 40 && time <= 50) {
+
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG['31-40'].F}`);
+    } else if (time > 40 && time <= 50) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['41-50'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['41-50'].BTM;
       this.gameScore.endTime[2] += this.estimationOfResults.gameEnd.TTfLG['41-50'].P;
@@ -127,6 +173,17 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['41-50'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['41-50'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['41-50'].F;
+
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG['41-50'].F}`);
     } else if (time > 50) {
       this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG['51+'].LC;
       this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG['51+'].BTM;
@@ -137,9 +194,20 @@ class GamesService {
       this.gameScore.endTime[6] += this.estimationOfResults.gameEnd.TTfLG['51+'].SS;
       this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG['51+'].Panic;
       this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG['51+'].F;
+
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG['51+'].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG['51+'].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG['51+'].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG['51+'].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG['51+'].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG['51+'].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG['51+'].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG['51+'].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG['51+'].F}`);
     }
     console.log(this.gameScore.endTime, 'Total Time FOr Last Game');
-    alert(`Total Time for Last Game ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    // alert(`Total Time for Last Game ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
 
     // alert(`${fromGame} ${space} ${instruct} ${space} ${moves} ${space} ${SumFromGame}`);
   }
@@ -302,7 +370,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['0-30'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['0-30'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['0-30'].F];
-    } else if (time < 30 && time <= 40) {
+    } else if (time > 30 && time <= 40) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['31-40'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['31-40'].BTM,
@@ -313,7 +381,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['31-40'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['31-40'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['31-40'].F];
-    } else if (time < 40 && time <= 50) {
+    } else if (time > 40 && time <= 50) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['41-50'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['41-50'].BTM,
@@ -324,7 +392,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['41-50'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['41-50'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['41-50'].F];
-    } else if (time < 50 && time <= 60) {
+    } else if (time > 50 && time <= 60) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['51-60'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['51-60'].BTM,
@@ -335,7 +403,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['51-60'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['51-60'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['51-60'].F];
-    } else if (time < 60 && time <= 70) {
+    } else if (time > 60 && time <= 70) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['61-70'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['61-70'].BTM,
@@ -346,7 +414,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['61-70'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['61-70'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['61-70'].F];
-    } else if (time < 70 && time <= 80) {
+    } else if (time > 70 && time <= 80) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['71-80'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['71-80'].BTM,
@@ -357,7 +425,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['71-80'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['71-80'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['71-80'].F];
-    } else if (time < 80 && time <= 90) {
+    } else if (time > 80 && time <= 90) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['81-90'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['81-90'].BTM,
@@ -368,7 +436,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['81-90'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['81-90'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['81-90'].F];
-    } else if (time < 90 && time <= 100) {
+    } else if (time > 90 && time <= 100) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['91-100'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['91-100'].BTM,
@@ -379,7 +447,7 @@ class GamesService {
         this.estimationOfResults.gameEnd.TTtFNS['91-100'].SS,
         this.estimationOfResults.gameEnd.TTtFNS['91-100'].Panic,
         this.estimationOfResults.gameEnd.TTtFNS['91-100'].F];
-    } else if (time < 100 && time <= 115) {
+    } else if (time > 100 && time <= 115) {
       this.gameScore.endTime = [
         this.estimationOfResults.gameEnd.TTtFNS['101-115'].LC,
         this.estimationOfResults.gameEnd.TTtFNS['101-115'].BTM,

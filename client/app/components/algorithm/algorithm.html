@@ -28,7 +28,8 @@
             {{key}}
           </td>
           <td ng-repeat="(index, value) in values">
-            <input type="text" ng-model="$ctrl.estimationOfResults[$ctrl.gameNowCheked][name][key][index]" ng-model-options="{debounce: 167}" ng-change="$ctrl.changeField(name, key, index, $event)">
+            <span>{{index}}</span>
+            <input type="text" ng-model="$ctrl.estimationOfResults[$ctrl.gameNowCheked][name][key][index]"  ng-change="$ctrl.changeField(name, key, index, $event)">
           </td>
         </tr>
       </table>
