@@ -46,32 +46,44 @@ class requiredCardsController {
     });
   }
 
+  // routineDisabled() {
+  //   const that = this;
+  //   this.enableRoutineButton = false;
+
+  //   if (this.positive >= 10 && _.get(that.user, `positiveComplete`)) {
+  //     this.$timeout(() => {
+  //       this.enableRoutineButton = true;
+  //     }, 0);
+  //   }
+
+  //   if (this.concentration >= 10 && _.get(that.user, `concentrationComplete`)) {
+  //     this.$timeout(() => {
+  //       this.enableRoutineButton = true;
+  //     }, 0);
+  //   }
+
+  //   if (this.physical >= 10 && _.get(that.user, `physicalComplete`)) {
+  //     this.$timeout(() => {
+  //       this.enableRoutineButton = true;
+  //     }, 0);
+  //   }
+
+  //   _.forEach(this.userSum, (value, key) => {
+  //     if (value >= 10 && _.get(that.user, `${key}Complete`)) {
+  //       this.$timeout(() => {
+  //         this.enableRoutineButton = true;
+  //       }, 0);
+  //     }
+  //   });
+  // }
+
   routineDisabled() {
     const that = this;
-    this.enableRoutineButton = false;
-
-    if (this.positive >= 10 && _.get(that.user, `positiveComplete`)) {
-      this.$timeout(() => {
-        this.enableRoutineButton = true;
-      }, 0);
-    }
-
-    if (this.concentration >= 10 && _.get(that.user, `concentrationComplete`)) {
-      this.$timeout(() => {
-        this.enableRoutineButton = true;
-      }, 0);
-    }
-
-    if (this.physical >= 10 && _.get(that.user, `physicalComplete`)) {
-      this.$timeout(() => {
-        this.enableRoutineButton = true;
-      }, 0);
-    }
-
+    this.enableRoutineButton = true;
     _.forEach(this.userSum, (value, key) => {
-      if (value >= 10 && _.get(that.user, `${key}Complete`)) {
+      if (value >= 10 && !_.get(that.user, `${key}Complete`)) {
         this.$timeout(() => {
-          this.enableRoutineButton = true;
+          this.enableRoutineButton = false;
         }, 0);
       }
     });
