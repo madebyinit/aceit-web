@@ -20,6 +20,7 @@ class LoginFormController {
           if (userData && userData.goaceitVisited) {
             this.$state.transitionTo('goaceit');
           } else {
+            console.log(userData,"!!!!!!!!!!!!@@@@@@@@@@@##########")
             this.$state.transitionTo('games');
           }
         }, (error) => {

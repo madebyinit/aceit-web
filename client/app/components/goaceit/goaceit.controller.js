@@ -15,7 +15,9 @@ class GoaceitController {
       if (this.user.goaceitVisited === false) {
         this.connection.saveData(true, 'goaceitVisited');
       }
+      console.log(this.user.goaceitVisited);
     });
+
   }
 }
 
