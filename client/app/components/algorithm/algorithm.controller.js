@@ -34,7 +34,7 @@ class AlgorithmController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.estimationOfResults.FeedbackPosition === undefined) {
+      if (this.user.estimationOfResults.GP.GSD === undefined) {
         this.helperService.feedbackCounter();
         this.helperService.feedbackSentences();
         this.helperService.gameSequence();

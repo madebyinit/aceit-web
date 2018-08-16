@@ -240,7 +240,7 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.estimationOfResults.FeedbackPosition === undefined) {
+      if (this.user.estimationOfResults.GP.GSD === undefined) {
         this.helperService.gameSequence();
         this.helperService.feedbackCounter();
         this.helperService.Results();
@@ -323,10 +323,10 @@ class GamesController {
           this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
           break;
         case 'mousetrap':
-          this.mouseGameService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mouseGameService.end(this.gameSecSum - this.seconds, noOfMoves, this.instructionsClick, win, firstMoveTime);
           break;
         case 'mazerace':
-          this.mazeraceService.end(this.duration, noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mazeraceService.end(this.gameSecSum - this.seconds, noOfMoves, this.instructionsClick, win, firstMoveTime);
           break;
         default:
           break;
