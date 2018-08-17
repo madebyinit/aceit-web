@@ -323,10 +323,10 @@ class GamesController {
           this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
           break;
         case 'mousetrap':
-          this.mouseGameService.end(this.gameSecSum - this.seconds, noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mouseGameService.end(((this.gameSecSum - this.seconds) * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
           break;
         case 'mazerace':
-          this.mazeraceService.end(this.gameSecSum - this.seconds, noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mazeraceService.end(((this.gameSecSum - this.seconds) * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
           break;
         default:
           break;
