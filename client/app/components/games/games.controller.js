@@ -76,24 +76,23 @@ class GamesController {
         }
       }
       switch (event.keyCode) {
-        case 116: // F5 button
+      case 116: // F5 button
+        event.returnValue = false;
+        event.keyCode = 0;
+        return false;
+        break;
+      case 82: // R button
+        if (event.ctrlKey) {
           event.returnValue = false;
           event.keyCode = 0;
           return false;
-          break;
-        case 82: // R button
-          if (event.ctrlKey) {
-            event.returnValue = false;
-            event.keyCode = 0;
-            return false;
-          }
-          break;
-        default:
-          console.log('DEFAULT');
-          break;
+        }
+        break;
+      default:
+        console.log('DEFAULT');
+        break;
       }
     };
-
 
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
@@ -150,7 +149,7 @@ class GamesController {
           let firstMoveTime = this.gameData[4];
           if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'parkinglot' && this.gameNumber === 5) {
             this.$document[0].getElementById('parkinglotLast').contentWindow.getGameResult();
-      
+
             duration = this.$document[0].getElementById('parkinglotLast').contentWindow.x;
             if (duration !== undefined) {
               noOfMoves = this.$document[0].getElementById('parkinglotLast').contentWindow.y;
@@ -162,7 +161,7 @@ class GamesController {
             }
           } else {
             this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.getGameResult();
-      
+
             duration = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.x;
             if (duration !== undefined) {
               noOfMoves = this.$document[0].getElementById(this.orderOfGames.gameSequence[this.gameNumber - 1]).contentWindow.y;
@@ -175,37 +174,37 @@ class GamesController {
           }
 
           switch (this.gameNumber) {
-            case 1:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 1');
-              this.gamesService.gameStatistic();
-              break;
-            case 2:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 2');
-              this.gamesService.gameStatistic();
-              break;
-            case 3:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 3');
-              this.gamesService.gameStatistic();
-              break;
-            case 4:
-              timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-              console.log(timeLastGame, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-              console.log(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
-              this.gamesService.gameStatistic();
-              break;
-            case 5:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.gameStatistic();
-              break;
-            default:
-              break;
+          case 1:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.gamesService.EndTimeInGame('Game 1');
+            this.gamesService.gameStatistic();
+            break;
+          case 2:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.gamesService.EndTimeInGame('Game 2');
+            this.gamesService.gameStatistic();
+            break;
+          case 3:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.gamesService.EndTimeInGame('Game 3');
+            this.gamesService.gameStatistic();
+            break;
+          case 4:
+            timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
+            console.log(timeLastGame, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            console.log(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
+            this.gamesService.gameStatistic();
+            break;
+          case 5:
+            this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+            this.gamesService.gameStatistic();
+            break;
+          default:
+            break;
           }
 
           this.showDialogEnd = true;
@@ -284,7 +283,8 @@ class GamesController {
   }
 
   gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    this.gameSecSum = (this.estimationOfResults.GP.GSD - this.seconds);
+    this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+    this.gameSecSum += this.secondsleft;
 
     if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; }
 
@@ -292,9 +292,11 @@ class GamesController {
       this.gameSuccComp++;
     }
 
-    if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win; this.showMouseRetry = win; }
+    if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win;
+      this.showMouseRetry = win; }
 
-    if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win; this.showMazeRetry = win; }
+    if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win;
+      this.showMazeRetry = win; }
 
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
       console.log(duration);
@@ -310,26 +312,26 @@ class GamesController {
       this.duration += duration;
       this.instructionsClick += instructionsClickCount;
       switch (this.orderOfGames.gameSequence[this.gameNumber - 1]) {
-        case 'parkinglot':
-          if (this.gameNumber === 1) {
-            this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-          } else {
-            this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-            // this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-            // this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-          }
-          break;
-        case 'tower':
-          this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-          break;
-        case 'mousetrap':
-          this.mouseGameService.end(((this.gameSecSum - this.seconds) * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
-          break;
-        case 'mazerace':
-          this.mazeraceService.end(((this.gameSecSum - this.seconds) * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
-          break;
-        default:
-          break;
+      case 'parkinglot':
+        if (this.gameNumber === 1) {
+          this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        } else {
+          this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          // this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+          this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
+        }
+        break;
+      case 'tower':
+        this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        break;
+      case 'mousetrap':
+        this.mouseGameService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
+        break;
+      case 'mazerace':
+        this.mazeraceService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
+        break;
+      default:
+        break;
       }
       this.duration = 0;
       this.instructionsClick = 0;
@@ -337,38 +339,38 @@ class GamesController {
 
       switch (this.gameNumber) {
         // tower
-        case 2:
-          this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          break;
-          // mousetrap
-        case 3:
-          this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          break;
-          // moserace
-        case 4:
-          this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-          this.gameSecSum += this.secondsleft;
-          this.gameBeforeLastTime = this.secondsleft;
-          break;
-          // parkinglot
-        case 5:
-          this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          this.secondsLeftForLastGame = this.seconds;
-          break;
-        case 6:
-          console.log('this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime)');
-          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
-          this.gamesService.gameStatistic();
-          if (localStorage.getItem('gamePage') == null) {
-            localStorage.setItem('gamePage', true);
-          } else {
-            localStorage.setItem('gamePageSecond', true);
-          }
-          this.stateChange('home');
-          break;
-        default:
-          break;
+      case 2:
+        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+        break;
+        // mousetrap
+      case 3:
+        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+        break;
+        // moserace
+      case 4:
+        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+        this.gameSecSum += this.secondsleft;
+        this.gameBeforeLastTime = this.secondsleft;
+        break;
+        // parkinglot
+      case 5:
+        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+        this.secondsLeftForLastGame = this.seconds;
+        break;
+      case 6:
+        console.log('this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime)');
+        this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
+        this.gamesService.gameStatistic();
+        if (localStorage.getItem('gamePage') == null) {
+          localStorage.setItem('gamePage', true);
+        } else {
+          localStorage.setItem('gamePageSecond', true);
+        }
+        this.stateChange('home');
+        break;
+      default:
+        break;
       }
     }
   }
@@ -422,106 +424,105 @@ class GamesController {
     }
 
     switch (this.gameNumber) {
-      case 1:
-        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
-        this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
-        break;
-      case 2:
-        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-        this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[1], this.estimationOfResults);
-        this.duration = 0;
-        break;
-      case 3:
-        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-        this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[2], this.estimationOfResults);
-        this.duration = 0;
-        break;
-      case 4:
-        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-        this.gameSecSum += this.secondsleft;
-        this.gameBeforeLastTime = this.secondsleft;
-        const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-        this.secondsLeftForLastGame = timeLastGame;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[3], this.estimationOfResults);
-        this.duration = 0;
-        break;
-      case 5:
-        this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-        this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult('parkinglotLast', this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        break;
-      default:
-        break;
+    case 1:
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
+      this.gameSecSum += this.secondsleft;
+      this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+      this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
+      break;
+    case 2:
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+      this.gameSecSum += this.secondsleft;
+      this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+      this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[1], this.estimationOfResults);
+      this.duration = 0;
+      break;
+    case 3:
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+      this.gameSecSum += this.secondsleft;
+      this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+      this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[2], this.estimationOfResults);
+      this.duration = 0;
+      break;
+    case 4:
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+      this.gameSecSum += this.secondsleft;
+      this.gameBeforeLastTime = this.secondsleft;
+      const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
+      this.secondsLeftForLastGame = timeLastGame;
+      this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+      this.skipService.GameSkip(this.secondsleft + (this.duration / 1000), this.orderOfGames.gameSequence[3], this.estimationOfResults);
+      this.duration = 0;
+      break;
+    case 5:
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+      this.gameSecSum += this.secondsleft;
+      this.gamesService.getGameResult('parkinglotLast', this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+      break;
+    default:
+      break;
     }
 
     this.gameNumber++;
 
     switch (this.orderOfGames.gameSequence[this.gameNumber - 2]) {
-      case 'parkinglot':
-        if (this.gameNumber === 6) {
-          this.gamesService.EndTimeInLastGame(this.secondsleft);
-          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
-          this.gamesService.gameStatistic();
-          this.gameNumber = 5;
-          this.stateChange('home');
-        } else {
-          this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-          if (localStorage.getItem('gamePageSecond') !== null) {
-            this.orderOfGames.level[1] = this.randomInteger(1, 10);
-          }
-        }
-        // parkinglotLast
-
-        break;
-      // tower
-      case 'tower':
+    case 'parkinglot':
+      if (this.gameNumber === 6) {
+        this.gamesService.EndTimeInLastGame(this.secondsleft);
+        this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
+        this.gamesService.gameStatistic();
+        this.gameNumber = 5;
+        this.stateChange('home');
+      } else {
         this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
         if (localStorage.getItem('gamePageSecond') !== null) {
           this.orderOfGames.level[1] = this.randomInteger(1, 10);
         }
-        if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          
-          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
-            this.showDialog = true;
-          }
+      }
+      // parkinglotLast
 
+      break;
+      // tower
+    case 'tower':
+      this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+      if (localStorage.getItem('gamePageSecond') !== null) {
+        this.orderOfGames.level[1] = this.randomInteger(1, 10);
+      }
+      if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
+
+        if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+          this.showDialog = true;
         }
-        break;
-        // mousetrap
-      case 'mousetrap':
-        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-        this.showMouseRetry = true;
-        if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          
-          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
-            this.showDialog = true;
-          }
+
+      }
+      break;
+      // mousetrap
+    case 'mousetrap':
+      this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+      this.showMouseRetry = true;
+      if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
+
+        if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+          this.showDialog = true;
         }
-        break;
-        // moserace
-      case 'mazerace':
-        this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
-        this.showMazeRetry = true;
-        if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
-          
-          if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
-            this.showDialog = true;
-          }
+      }
+      break;
+      // moserace
+    case 'mazerace':
+      this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
+      this.showMazeRetry = true;
+      if (this.seconds > (this.estimationOfResults.GP.GSD - this.estimationOfResults.GP.TtDSOGP) && this.gameNumber === 5) {
+
+        if (!this.winCheck[0] && !this.winCheck[1] && !this.winCheck[2] && !this.winCheck[3]) {
+          this.showDialog = true;
         }
-        break;
-      default:
-        this.gameNumber = 5;
-        break;
+      }
+      break;
+    default:
+      this.gameNumber = 5;
+      break;
     }
   }
-
 
   reloadPage() {
     // if (localStorage.getItem('gamePage') == null) {
@@ -692,38 +693,37 @@ class GamesController {
 
   checkEndGame(name) {
     switch (name) {
-      case 'parkinglot':
-        if (this.gameNumber > 1) { this.checkInWichGame = false; }
+    case 'parkinglot':
+      if (this.gameNumber > 1) { this.checkInWichGame = false; }
 
-        if (this.checkInWichGame) {
-          this.reqinGame(name);
-        } else {
-          this.reqinGame(`${name}Last`);
-        }
-        break;
-      case 'mousetrap':
-        this.checkInWichGame = !this.checkInWichGame;
-        if (this.checkInWichGame) {
-          this.reqinGame(name);
-        } else {
-          this.reqinGame(`${name}1`);
-        }
-        break;
-      case 'mazerace':
-        this.checkInWichGame = !this.checkInWichGame;
-        if (this.checkInWichGame) {
-          this.reqinGame(name);
-        } else {
-          this.reqinGame(`${name}1`);
-        }
-        break;
-
-      default:
+      if (this.checkInWichGame) {
         this.reqinGame(name);
-        break;
+      } else {
+        this.reqinGame(`${name}Last`);
+      }
+      break;
+    case 'mousetrap':
+      this.checkInWichGame = !this.checkInWichGame;
+      if (this.checkInWichGame) {
+        this.reqinGame(name);
+      } else {
+        this.reqinGame(`${name}1`);
+      }
+      break;
+    case 'mazerace':
+      this.checkInWichGame = !this.checkInWichGame;
+      if (this.checkInWichGame) {
+        this.reqinGame(name);
+      } else {
+        this.reqinGame(`${name}1`);
+      }
+      break;
+
+    default:
+      this.reqinGame(name);
+      break;
     }
   }
-
 
   reqinGame(name) {
     if (this.gameNumber < 6) {
