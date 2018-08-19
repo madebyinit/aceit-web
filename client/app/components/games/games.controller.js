@@ -239,33 +239,32 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.user.estimationOfResults === undefined || this.user.estimationOfResults === null) {
-        this.helperService.gameSequence();
-        this.helperService.feedbackCounter();
-        this.helperService.Results();
-        this.helperService.feedbackSentences();
-        this.helperService.SuggestedTools();
-        this.helperService.FeedbackChange();
-        this.seconds = this.estimationOfResults.GP.GSD;
-      } else {
-        this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
-        this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
-        this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
-        this.estimationOfResults.tower = this.user.estimationOfResults.tower;
-        this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
-        this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
-        this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
-        this.estimationOfResults.GP = this.user.estimationOfResults.GP;
-        this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
-        this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
-        this.estimationOfResults.FeedbackPosition = this.user.estimationOfResults.FeedbackPosition;
 
-        this.orderOfGames.gameSequence = this.user.gameSequence;
-        this.orderOfGames.level = this.user.level;
-        this.orderOfGames.UPDI = this.user.UPDI;
+      this.helperService.gameSequence();
+      this.helperService.feedbackCounter();
+      this.helperService.Results();
+      this.helperService.feedbackSentences();
+      this.helperService.SuggestedTools();
+      this.helperService.FeedbackChange();
+      this.seconds = this.estimationOfResults.GP.GSD;
 
-        this.seconds = this.user.estimationOfResults.GP.GSD;
-      }
+      this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
+      this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
+      this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
+      this.estimationOfResults.tower = this.user.estimationOfResults.tower;
+      this.estimationOfResults.parkingLotLast = this.user.estimationOfResults.parkingLotLast;
+      this.estimationOfResults.gameEnd = this.user.estimationOfResults.gameEnd;
+      this.estimationOfResults.Feedback = this.user.estimationOfResults.Feedback;
+      this.estimationOfResults.GP = this.user.estimationOfResults.GP;
+      this.estimationOfResults.SuggestPoints = this.user.estimationOfResults.SuggestPoints;
+      this.estimationOfResults.feedbackCounter = this.user.estimationOfResults.feedbackCounter;
+      this.estimationOfResults.FeedbackPosition = this.user.estimationOfResults.FeedbackPosition;
+
+      this.orderOfGames.gameSequence = this.user.gameSequence;
+      this.orderOfGames.level = this.user.level;
+      this.orderOfGames.UPDI = this.user.UPDI;
+
+      this.seconds = this.user.estimationOfResults.GP.GSD;
 
       this._userInit();
     });
