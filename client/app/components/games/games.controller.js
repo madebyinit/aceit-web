@@ -239,7 +239,7 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-      if (this.user.estimationOfResults.GP.GSD === undefined) {
+      if (this.user.estimationOfResults === undefined || this.user.estimationOfResults === null) {
         this.helperService.gameSequence();
         this.helperService.feedbackCounter();
         this.helperService.Results();
