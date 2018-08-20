@@ -142,7 +142,7 @@ class GamesService {
     } else if (time > 100 && time <= 115) {
       this.TotalTimeFOrFourthGameEndFunction('101-115', time);
     } else if (time > 116) {
-      this.TotalTimeFOrFourthGameEndFunction('116+');
+      this.TotalTimeFOrFourthGameEndFunction('116+', time);
     }
   }
 

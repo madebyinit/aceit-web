@@ -292,11 +292,11 @@ class GamesController {
     }
 
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win;
-      this.showMouseRetry = win; }
-
+      this.showMouseRetry = win;
+    }
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win;
-      this.showMazeRetry = win; }
-
+      this.showMazeRetry = win; 
+    }
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
       console.log(duration);
       this.duration += duration;
