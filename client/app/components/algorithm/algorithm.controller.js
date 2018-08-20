@@ -21,6 +21,11 @@ class AlgorithmController {
 
   $onInit() {
     this.getUserData();
+    if (!localStorage.getItem('SaveAlgorithm')) {
+      this.listTopics = ['№', 'Low Confidence', 'Bad Time Man', 'Perfectionism', 'Neg Think', 'Lack Ricuz', 'Impulsivity', 'Slow Starter', 'Panic', 'Frustration'];
+    } else {
+      this.listTopics = ['№', 'Bad Time Man', 'Frustration', 'Impulsivity', 'Low Confidence', 'Lack Ricuz', 'Neg Think', 'Perfectionism', 'Panic', 'Slow Starter'];
+    }
   }
 
   // removeAllListeners() {
@@ -143,6 +148,7 @@ class AlgorithmController {
   }
 
   saveData() {
+    localStorage.setItem('SaveAlgorithm', true);
     this.connection.saveData(this.orderOfGames.gameSequence, 'gameSequence');
     this.connection.saveData(this.orderOfGames.level, 'level');
     this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');

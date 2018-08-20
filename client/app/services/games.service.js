@@ -79,17 +79,17 @@ class GamesService {
     }
 
     if (time <= 10) {
-      this.TotalTimeFOrLastGameEndFunction('0-10',time);
+      this.TotalTimeFOrLastGameEndFunction('0-10', time);
     } else if (time > 10 && time <= 20) {
-      this.TotalTimeFOrLastGameEndFunction('11-20',time);
+      this.TotalTimeFOrLastGameEndFunction('11-20', time);
     } else if (time > 20 && time <= 30) {
-      this.TotalTimeFOrLastGameEndFunction('21-30',time);
+      this.TotalTimeFOrLastGameEndFunction('21-30', time);
     } else if (time > 30 && time <= 40) {
-      this.TotalTimeFOrLastGameEndFunction('31-40',time);
+      this.TotalTimeFOrLastGameEndFunction('31-40', time);
     } else if (time > 40 && time <= 50) {
-      this.TotalTimeFOrLastGameEndFunction('41-50',time);
+      this.TotalTimeFOrLastGameEndFunction('41-50', time);
     } else if (time > 50) {
-      this.TotalTimeFOrLastGameEndFunction('51+',time);
+      this.TotalTimeFOrLastGameEndFunction('51+', time);
     }
   }
 
