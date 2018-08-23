@@ -43,10 +43,18 @@ class GamesService {
         this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         break;
       case 'mazerace':
-        this.mazeraceService.end(duration + durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        if (duration) {
+          this.mazeraceService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        } else {
+          this.mazeraceService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        }
         break;
       case 'mousetrap':
-        this.mouseGameService.end(duration + durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        if (duration) {
+          this.mouseGameService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        } else {
+          this.mouseGameService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        }
         break;
       case 'parkinglotLast':
         this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);

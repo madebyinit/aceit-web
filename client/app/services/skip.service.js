@@ -6,30 +6,43 @@ class SkipService {
   }
 
   GameSkip(secondsleft, gameName, estimationOfResults) {
+    console.log(secondsleft, "seconds left", gameName);
     this.estimationOfResults = estimationOfResults;
     if (this.orderOfGames.UPDI[gameName].SG) {
-      this.GameSkipEndFunction('0-30', secondsleft, gameName);
-    } else if (secondsleft > 30 && secondsleft <= 40) {
-      this.GameSkipEndFunction('31-40', secondsleft, gameName);
-    } else if (secondsleft > 40 && secondsleft <= 50) {
-      this.GameSkipEndFunction('41-50', secondsleft, gameName);
-    } else if (secondsleft > 50 && secondsleft <= 60) {
-      this.GameSkipEndFunction('51-60', secondsleft, gameName);
-    } else if (secondsleft > 60 && secondsleft <= 70) {
-      this.GameSkipEndFunction('61-70', secondsleft, gameName);
-    } else if (secondsleft > 70 && secondsleft <= 80) {
-      this.GameSkipEndFunction('71-80', secondsleft, gameName);
-    } else if (secondsleft > 80 && secondsleft <= 90) {
-      this.GameSkipEndFunction('81-90', secondsleft, gameName);
-    } else if (secondsleft > 90 && secondsleft <= 100) {
-      this.GameSkipEndFunction('91-100', secondsleft, gameName);
-    } else if (secondsleft > 100 && secondsleft <= 115) {
-      this.GameSkipEndFunction('101-115', secondsleft, gameName);
-    } else if (secondsleft > 116) {
-      this.GameSkipEndFunction('116+', secondsleft, gameName);
+
+      if (secondsleft <= 30) {
+        this.GameSkipEndFunction('0-30', secondsleft, gameName);
+        console.log('0-30');
+      } else if (secondsleft > 30 && secondsleft <= 40) {
+        this.GameSkipEndFunction('31-40', secondsleft, gameName);
+        console.log('31-40');
+      } else if (secondsleft > 40 && secondsleft <= 50) {
+        this.GameSkipEndFunction('41-50', secondsleft, gameName);
+        console.log('41-50');
+      } else if (secondsleft > 50 && secondsleft <= 60) {
+        this.GameSkipEndFunction('51-60', secondsleft, gameName);
+        console.log('51-60');
+      } else if (secondsleft > 60 && secondsleft <= 70) {
+        this.GameSkipEndFunction('61-70', secondsleft, gameName);
+        console.log('61-70');
+      } else if (secondsleft > 70 && secondsleft <= 80) {
+        this.GameSkipEndFunction('71-80', secondsleft, gameName);
+        console.log('71-80');
+      } else if (secondsleft > 80 && secondsleft <= 90) {
+        this.GameSkipEndFunction('81-90', secondsleft, gameName);
+        console.log('81-90');
+      } else if (secondsleft > 90 && secondsleft <= 100) {
+        this.GameSkipEndFunction('91-100', secondsleft, gameName);
+        console.log('91-100');
+      } else if (secondsleft > 100 && secondsleft <= 115) {
+        this.GameSkipEndFunction('101-115', secondsleft, gameName);
+        console.log('101-115');
+      } else if (secondsleft > 116) {
+        this.GameSkipEndFunction('116+', secondsleft, gameName);
+        console.log('101-115');
+      }
     }
   }
-
   GameSkipEndFunction(key, secondsleft, gameName) {
     this.gameScore[gameName][0] += this.estimationOfResults[gameName].Skip[key].LC;
     this.gameScore[gameName][1] += this.estimationOfResults[gameName].Skip[key].BTM;
