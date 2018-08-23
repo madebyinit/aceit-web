@@ -96,15 +96,22 @@ class GamesController {
 
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
+      alert('FIRST START');
       this.setGamesLvl(true);
       console.log(document.getElementById('parkinglot').contentWindow.lvl);
       this.firstStart = false;
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
+      alert('SECOND START');
       this.setGamesLvl(true);
-      this.firstStart = false;
+      const audio = this.$document[0].getElementById('backgroundMusic');
+      audio.play();
+      this.firstStart = true;
+      this.showWindow = false;
+      this.countdownTimer = this.$interval(this.startTimer, 1000);
     } else {
       console.log('THIRD START');
+      alert('THIRD START');
       this.setGamesLvl(false);
       const audio = this.$document[0].getElementById('backgroundMusic');
       audio.play();
@@ -190,9 +197,7 @@ class GamesController {
               this.gamesService.gameStatistic();
               break;
             case 4:
-              timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
-              console.log(timeLastGame, "!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-              console.log(this.estimationOfResults.GP.GSD - this.gameSecSum);
+              timeLastGame = (this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
               this.gamesService.gameStatistic();
@@ -282,8 +287,6 @@ class GamesController {
   }
 
   gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
-    this.gameSecSum += this.secondsleft;
 
     if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; }
 
@@ -298,14 +301,15 @@ class GamesController {
       this.showMazeRetry = win; 
     }
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
-      console.log(duration);
       this.duration += duration;
-      console.log(this.duration);
       this.instructionsClick += instructionsClickCount;
     } else if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace' && this.mousewin === false) {
       this.duration += duration;
       this.instructionsClick += instructionsClickCount;
     } else {
+      this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
+      this.gameSecSum += this.secondsleft;
+
       this.winCheck[this.gameNumber - 1] = true;
       this.showMouseRetry = true;
       this.duration += duration;
@@ -358,7 +362,6 @@ class GamesController {
           this.secondsLeftForLastGame = this.seconds;
           break;
         case 6:
-          console.log('this.gamesService.TotalTimeFOrLastGame(this.gameBeforeLastTime)');
           this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
           this.gamesService.gameStatistic();
           if (localStorage.getItem('gamePage') == null) {
@@ -428,18 +431,19 @@ class GamesController {
         this.gameSecSum += this.secondsleft;
         this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
+        this.duration = 0;
         break;
       case 2:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], (this.secondsleft * 1000), duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1], this.estimationOfResults);
         this.duration = 0;
         break;
       case 3:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], (this.secondsleft * 1000), duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2], this.estimationOfResults);
         this.duration = 0;
         break;
@@ -449,7 +453,7 @@ class GamesController {
         this.gameBeforeLastTime = this.secondsleft;
         const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
         this.secondsLeftForLastGame = timeLastGame;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], (this.secondsleft * 1000), duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
         this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3], this.estimationOfResults);
         this.duration = 0;
         break;

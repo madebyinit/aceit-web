@@ -47,7 +47,7 @@ function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTi
 }
 
 function startGame(){
-	game = nogic4.initialize(document.getElementById('holder'), {language:'en', level:3});
+	game = nogic4.initialize(document.getElementById('holder'), {language:'en', skipInstructions: 'true', level:3});
 }
 
 function endGame(){
