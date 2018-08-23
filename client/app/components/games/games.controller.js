@@ -76,21 +76,22 @@ class GamesController {
         }
       }
       switch (event.keyCode) {
-      case 116: // F5 button
-        event.returnValue = false;
-        event.keyCode = 0;
-        return false;
-        break;
-      case 82: // R button
-        if (event.ctrlKey) {
+        case 116: // F5 button
           event.returnValue = false;
           event.keyCode = 0;
           return false;
-        }
-        break;
-      default:
-        console.log('DEFAULT');
-        break;
+          break;
+        case 82: // R button
+          if (event.ctrlKey) {
+            event.returnValue = false;
+            event.keyCode = 0;
+            return false;
+          }
+          break;
+        default:
+          console.log('DEFAULT');
+          // document.getElementById('mazerace').contentWindow.document.body.focus();
+          break;
       }
     };
 
@@ -679,6 +680,7 @@ class GamesController {
       }
       this.$document[0].getElementById('mazerace1').contentWindow.endGame();
       this.$document[0].getElementById('mazerace1').contentWindow.startGame();
+      // this.$document[0].getElementById('mazerace1').contentWindow.document.body.focus();
     } else {
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mazerace') {
@@ -691,6 +693,7 @@ class GamesController {
       }
       this.$document[0].getElementById('mazerace').contentWindow.endGame();
       this.$document[0].getElementById('mazerace').contentWindow.startGame();
+      // this.$document[0].getElementById('mazerace').contentWindow.document.body.focus();
     }
   }
 
