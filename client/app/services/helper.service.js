@@ -701,7 +701,7 @@ class HelperService {
       3: 'impulsivity',
       4: 'panic',
       5: 'negativeThinking',
-      6: 'lowConfidence ',
+      6: 'lowConfidence',
       7: 'perfectionism',
       8: 'badTimeManagement',
       9: 'frustration',

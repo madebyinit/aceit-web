@@ -353,11 +353,18 @@ class GamesService {
     }
 
     if (this.estimationOfResults.GP.UBA['Low Confidence']) {
+      
       if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
+        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@1", this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
       } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['11-19'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['11-19'][1]) {
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['11-19'];
-      } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) { this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+']; }// ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
+        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@2", this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
+      } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) {
+        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@3", this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
+        this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+'];
+        console.log(this.estimationOfResults.Feedback.LC['20+'], "!!!!!!!TEST!!!!!!!" ,this.gameSummary.lowConfidence);
+      } // ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
     }
 
     if (this.estimationOfResults.GP.UBA['Bad Time Management']) {
@@ -427,6 +434,7 @@ class GamesService {
   endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
   Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
   selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
+
   }
 }
 

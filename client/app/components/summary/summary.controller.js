@@ -15,6 +15,7 @@ class SummaryController {
   }
 
   $onInit() {
+    console.log(this.gameSummaryValue);
     if (this.gameSummaryValue.selfAssessment === String) { this.gameSummaryValue.selfAssessment = ''; }
 
     if (this.gameSummaryValue.gamesSuccessfullyCompleted === String) { this.gameSummaryValue.gamesSuccessfullyCompleted = ''; }
