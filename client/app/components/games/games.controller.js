@@ -322,7 +322,6 @@ class GamesController {
           } else {
             this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
             // this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-            this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
           }
           break;
         case 'tower':
@@ -395,11 +394,12 @@ class GamesController {
   skipGame() {
     this.showMazeRetry = true;
 
-    let duration = this.gameData[0];
-    let noOfMoves = this.gameData[1];
-    let instructionsClickCount = this.gameData[2];
-    let win = this.gameData[3];
-    let firstMoveTime = this.gameData[4];
+    let duration = 0;
+    let noOfMoves = 0;
+    let instructionsClickCount = 0;
+    let win = false;
+    let firstMoveTime = 0;
+
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'parkinglot' && this.gameNumber === 5) {
       this.$document[0].getElementById('parkinglotLast').contentWindow.getGameResult();
 
@@ -744,6 +744,11 @@ class GamesController {
         this.gameEnded(this.gameData[0], this.gameData[1], this.gameData[2], this.gameData[3], this.gameData[4]);
 
         this.$document[0].getElementById(name).contentWindow.x = undefined;
+        this.$document[0].getElementById(name).contentWindow.y = 0;
+        this.$document[0].getElementById(name).contentWindow.z = 0;
+        this.$document[0].getElementById(name).contentWindow.w = false;
+        this.$document[0].getElementById(name).contentWindow.q = false;
+
         this.gameData = [0, 0, 0, false, 0];
       } else {
         this.gameData[0] = 0;

@@ -10,7 +10,7 @@
       <strong>{{::$ctrl.user.name}}, our findings give an indication of the way you manage stress under pressure. In order to reach your peak performance, focus on following:</strong></br>  
       
       <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition">
-          <div class="condition" ng-if="$ctrl.gameSummaryValue[values] != '' ">{{$ctrl.gameSummaryValue[values]}}</div>
+          <div class="condition" ng-if="$ctrl.gameSummaryValue[values] != '' ">{{values}} - {{$ctrl.gameSummaryValue[values]}}</div>
       </div>
 
       <!-- <div class="condition" ng-if="$ctrl.gameSummaryValue.selfAssessment != '' ">{{$ctrl.gameSummaryValue.selfAssessment}}</div>
@@ -19,7 +19,9 @@
       <div class="condition" ng-if="$ctrl.gameSummaryValue.impulsivity != '' ">{{$ctrl.gameSummaryValue.impulsivity}}</div>
       <div class="condition" ng-if="$ctrl.gameSummaryValue.panic != '' ">{{$ctrl.gameSummaryValue.panic}}</div>
       <div class="condition" ng-if="$ctrl.gameSummaryValue.negativeThinking != '' ">{{$ctrl.gameSummaryValue.negativeThinking}}</div>
+
       <div class="condition" ng-if="$ctrl.gameSummaryValue.lowConfidence != '' ">{{$ctrl.gameSummaryValue.lowConfidence}}</div>
+
       <div class="condition" ng-if="$ctrl.gameSummaryValue.perfectionism != '' ">{{$ctrl.gameSummaryValue.perfectionism}}</div>
       <div class="condition" ng-if="$ctrl.gameSummaryValue.badTimeManagement != '' ">{{$ctrl.gameSummaryValue.badTimeManagement}}</div>
       <div class="condition" ng-if="$ctrl.gameSummaryValue.frustration != '' ">{{$ctrl.gameSummaryValue.frustration}}</div>
