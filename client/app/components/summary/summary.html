@@ -5,10 +5,20 @@
   </div>
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
+    <input placeholder="slowStarter" ng-model="$ctrl.testSummary.slowStarter" ></input>
+    <input placeholder="impulsivity" ng-model="$ctrl.testSummary.impulsivity"></input>
+    <input placeholder="panic" ng-model="$ctrl.testSummary.panic"></input>
+    <input placeholder="negativeThinking" ng-model="$ctrl.testSummary.negativeThinking"></input>
+    <input placeholder="lowConfidence" ng-model="$ctrl.testSummary.lowConfidence"></input>
+    <input placeholder="perfectionism" ng-model="$ctrl.testSummary.perfectionism"></input>
+    <input placeholder="badTimeManagement" ng-model="$ctrl.testSummary.badTimeManagement"></input>
+    <input placeholder="frustration" ng-model="$ctrl.testSummary.frustration"></input>
+    <input placeholder="concentration" ng-model="$ctrl.testSummary.concentration"></input>
+    </br>
+    <button ng-click="$ctrl.setTestParams()">set params</button>
     <div class="summary-item"><img src="mazerace/summary-bg.png" alt=""> 
     <div class="summary-item-text">
       <strong>{{::$ctrl.user.name}}, our findings give an indication of the way you manage stress under pressure. In order to reach your peak performance, focus on following:</strong></br>  
-      
       <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition">
           <div class="condition" ng-if="$ctrl.gameSummaryValue[values] != '' ">{{values}} - {{$ctrl.gameSummaryValue[values]}}</div>
       </div>

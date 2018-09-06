@@ -228,87 +228,111 @@ class GamesService {
   }
 
 
-  gameStatistic() {
-    let lowConfidence = 0;
-    let badTimeMan = 0;
-    let perfectionism = 0;
-    let negThink = 0;
-    let lackRicuz = 0;
-    let impulsivity = 0;
-    let slowStarter = 0;
-    let panic = 0;
-    let frustration = 0;
+  gameStatistic(lowConfidence = 0, badTimeMan = 0, perfectionism = 0, negThink = 0, lackRicuz = 0, impulsivity = 0, slowStarter = 0, panic = 0, frustration = 0) {
+    // let lowConfidence = 0;
+    // let badTimeMan = 0;
+    // let perfectionism = 0;
+    // let negThink = 0;
+    // let lackRicuz = 0;
+    // let impulsivity = 0;
+    // let slowStarter = 0;
+    // let panic = 0;
+    // let frustration = 0;
 
-    if (this.gameScore.parkinglot !== {}) {
-      lowConfidence += this.gameScore.parkinglot[0];
-      badTimeMan += this.gameScore.parkinglot[1];
-      perfectionism += this.gameScore.parkinglot[2];
-      negThink += this.gameScore.parkinglot[3];
-      lackRicuz += this.gameScore.parkinglot[4];
-      impulsivity += this.gameScore.parkinglot[5];
-      slowStarter += this.gameScore.parkinglot[6];
-      panic += this.gameScore.parkinglot[7];
-      frustration += this.gameScore.parkinglot[8];
-    }
+    console.log(
+      `let lowConfidence =  ${lowConfidence
+      }let badTimeMan = ${ badTimeMan
+      }let perfectionism = ${perfectionism
+      }let negThink = ${negThink
+      }let lackRicuz = ${lackRicuz
+      }let impulsivity = ${impulsivity
+      }let slowStarter = ${slowStarter
+      }let panic = ${panic
+      }let frustration = ${frustration}`);
 
-    if (this.gameScore.parkinglotLast.length !== undefined) {
-      lowConfidence += this.gameScore.parkinglotLast[0];
-      badTimeMan += this.gameScore.parkinglotLast[1];
-      perfectionism += this.gameScore.parkinglotLast[2];
-      negThink += this.gameScore.parkinglotLast[3];
-      lackRicuz += this.gameScore.parkinglotLast[4];
-      impulsivity += this.gameScore.parkinglotLast[5];
-      slowStarter += this.gameScore.parkinglotLast[6];
-      panic += this.gameScore.parkinglotLast[7];
-      frustration += this.gameScore.parkinglotLast[8];
-    }
+    if (lowConfidence > 0 || badTimeMan > 0 || perfectionism > 0 || negThink > 0 || 
+      lackRicuz > 0 || impulsivity > 0 || slowStarter > 0 || panic > 0 || frustration > 0) {
+      console.log('test');
+    } else {
+      if (this.gameScore.parkinglot !== {}) {
+        lowConfidence += this.gameScore.parkinglot[0];
+        badTimeMan += this.gameScore.parkinglot[1];
+        perfectionism += this.gameScore.parkinglot[2];
+        negThink += this.gameScore.parkinglot[3];
+        lackRicuz += this.gameScore.parkinglot[4];
+        impulsivity += this.gameScore.parkinglot[5];
+        slowStarter += this.gameScore.parkinglot[6];
+        panic += this.gameScore.parkinglot[7];
+        frustration += this.gameScore.parkinglot[8];
+      }
+  
+      if (this.gameScore.parkinglotLast.length !== undefined) {
+        lowConfidence += this.gameScore.parkinglotLast[0];
+        badTimeMan += this.gameScore.parkinglotLast[1];
+        perfectionism += this.gameScore.parkinglotLast[2];
+        negThink += this.gameScore.parkinglotLast[3];
+        lackRicuz += this.gameScore.parkinglotLast[4];
+        impulsivity += this.gameScore.parkinglotLast[5];
+        slowStarter += this.gameScore.parkinglotLast[6];
+        panic += this.gameScore.parkinglotLast[7];
+        frustration += this.gameScore.parkinglotLast[8];
+      }
+  
+      if (this.gameScore.mazerace.length !== undefined) {
+        lowConfidence += this.gameScore.mazerace[0];
+        badTimeMan += this.gameScore.mazerace[1];
+        perfectionism += this.gameScore.mazerace[2];
+        negThink += this.gameScore.mazerace[3];
+        lackRicuz += this.gameScore.mazerace[4];
+        impulsivity += this.gameScore.mazerace[5];
+        slowStarter += this.gameScore.mazerace[6];
+        panic += this.gameScore.mazerace[7];
+        frustration += this.gameScore.mazerace[8];
+      }
+  
+      if (this.gameScore.mousetrap.length !== undefined) {
+        lowConfidence += this.gameScore.mousetrap[0];
+        badTimeMan += this.gameScore.mousetrap[1];
+        perfectionism += this.gameScore.mousetrap[2];
+        negThink += this.gameScore.mousetrap[3];
+        lackRicuz += this.gameScore.mousetrap[4];
+        impulsivity += this.gameScore.mousetrap[5];
+        slowStarter += this.gameScore.mousetrap[6];
+        panic += this.gameScore.mousetrap[7];
+        frustration += this.gameScore.mousetrap[8];
+      }
+  
+      if (this.gameScore.tower.length !== undefined) {
+        lowConfidence += this.gameScore.tower[0];
+        badTimeMan += this.gameScore.tower[1];
+        perfectionism += this.gameScore.tower[2];
+        negThink += this.gameScore.tower[3];
+        lackRicuz += this.gameScore.tower[4];
+        impulsivity += this.gameScore.tower[5];
+        slowStarter += this.gameScore.tower[6];
+        panic += this.gameScore.tower[7];
+        frustration += this.gameScore.tower[8];
+      }
+  
+      if (this.gameScore.endTime.length !== undefined) {
+        lowConfidence += this.gameScore.endTime[0];
+        badTimeMan += this.gameScore.endTime[1];
+        perfectionism += this.gameScore.endTime[2];
+        negThink += this.gameScore.endTime[3];
+        lackRicuz += this.gameScore.endTime[4];
+        impulsivity += this.gameScore.endTime[5];
+        slowStarter += this.gameScore.endTime[6];
+        panic += this.gameScore.endTime[7];
+        frustration += this.gameScore.endTime[8];
+      }
 
-    if (this.gameScore.mazerace.length !== undefined) {
-      lowConfidence += this.gameScore.mazerace[0];
-      badTimeMan += this.gameScore.mazerace[1];
-      perfectionism += this.gameScore.mazerace[2];
-      negThink += this.gameScore.mazerace[3];
-      lackRicuz += this.gameScore.mazerace[4];
-      impulsivity += this.gameScore.mazerace[5];
-      slowStarter += this.gameScore.mazerace[6];
-      panic += this.gameScore.mazerace[7];
-      frustration += this.gameScore.mazerace[8];
-    }
-
-    if (this.gameScore.mousetrap.length !== undefined) {
-      lowConfidence += this.gameScore.mousetrap[0];
-      badTimeMan += this.gameScore.mousetrap[1];
-      perfectionism += this.gameScore.mousetrap[2];
-      negThink += this.gameScore.mousetrap[3];
-      lackRicuz += this.gameScore.mousetrap[4];
-      impulsivity += this.gameScore.mousetrap[5];
-      slowStarter += this.gameScore.mousetrap[6];
-      panic += this.gameScore.mousetrap[7];
-      frustration += this.gameScore.mousetrap[8];
-    }
-
-    if (this.gameScore.tower.length !== undefined) {
-      lowConfidence += this.gameScore.tower[0];
-      badTimeMan += this.gameScore.tower[1];
-      perfectionism += this.gameScore.tower[2];
-      negThink += this.gameScore.tower[3];
-      lackRicuz += this.gameScore.tower[4];
-      impulsivity += this.gameScore.tower[5];
-      slowStarter += this.gameScore.tower[6];
-      panic += this.gameScore.tower[7];
-      frustration += this.gameScore.tower[8];
-    }
-
-    if (this.gameScore.endTime.length !== undefined) {
-      lowConfidence += this.gameScore.endTime[0];
-      badTimeMan += this.gameScore.endTime[1];
-      perfectionism += this.gameScore.endTime[2];
-      negThink += this.gameScore.endTime[3];
-      lackRicuz += this.gameScore.endTime[4];
-      impulsivity += this.gameScore.endTime[5];
-      slowStarter += this.gameScore.endTime[6];
-      panic += this.gameScore.endTime[7];
-      frustration += this.gameScore.endTime[8];
+      if (this.estimationOfResults.GP.UPDI.SA) {
+        if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
+          this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0'];
+        } else if ((this.gameScore.selfAssessment + 2) <= this.gameScore.gamesSuccessfullyCompleted) {
+          this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
+        }
+      }
     }
 
     this.gameScore.summary = [
@@ -321,12 +345,12 @@ class GamesService {
       slowStarter,
       panic,
       frustration];
-
+      console.log(this.gameScore.summary);
     // this.connection.saveData(this.gameScore.summary, 'userSum');
     this.gameSummary.selfAssessment = '';
     this.gameSummary.gamesSuccessfullyCompleted = '';
     this.gameSummary.lowConfidence = '';
-    this.gameSummary.badTimeMan = '';
+    this.gameSummary.badTimeManagement = '';
     this.gameSummary.perfectionism = '';
     this.gameSummary.negativeThinking = '';
     this.gameSummary.impulsivity = '';
@@ -336,14 +360,9 @@ class GamesService {
     this.gameSummary.concentration = '';
     this.gameSummary.muteMusic = '';
 
-    if (this.estimationOfResults.GP.UPDI.SA) {
-      if (this.gameScore.selfAssessment === this.gameScore.gamesSuccessfullyCompleted && this.gameScore.selfAssessment !== 0) {
-        this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['0'];
-      } else if ((this.gameScore.selfAssessment + 2) <= this.gameScore.gamesSuccessfullyCompleted) {
-        this.gameSummary.selfAssessment = this.estimationOfResults.Feedback.SA['2-4'];
-      }
-    }
+
     //----------------------------------------------------------------------------------------
+
     if (this.estimationOfResults.GP.UPDI.GSC) {
       if (this.gameScore.gamesSuccessfullyCompleted >= this.estimationOfResults.feedbackCounter.GSC['3'][0] && this.gameScore.gamesSuccessfullyCompleted <= this.estimationOfResults.feedbackCounter.GSC['3'][1]) {
         this.gameSummary.gamesSuccessfullyCompleted = this.estimationOfResults.Feedback.GSC['3'];
@@ -352,8 +371,8 @@ class GamesService {
       }
     }
 
-    if (this.estimationOfResults.GP.UBA['Low Confidence']) {
-      
+
+    if (this.estimationOfResults.GP.UBA['Low Confidence']) {      
       if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
         console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@1", this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
@@ -369,11 +388,15 @@ class GamesService {
 
     if (this.estimationOfResults.GP.UBA['Bad Time Management']) {
       if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['5-10'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['5-10'][1]) {
-        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['11, 19'];
+        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['5-10'];
       } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['11-19'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['11-19'][1]) {
         this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['11-19'];
-      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) { this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+']; }
+      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) { 
+        console.log(this.estimationOfResults.feedbackCounter.BTM['20+'][0]);
+        console.log(this.estimationOfResults.feedbackCounter.BTM['20+'][1]);
+        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+']; }
     }
+
 
     if (this.estimationOfResults.GP.UBA.Perfectionism) {
       if (perfectionism >= this.estimationOfResults.feedbackCounter.P['11-19'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['11-19'][1]) {
@@ -381,11 +404,13 @@ class GamesService {
       } else if (perfectionism >= this.estimationOfResults.feedbackCounter.P['20+'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['20+'][1]) { this.gameSummary.perfectionism = this.estimationOfResults.Feedback.P['20+']; }
     }
 
+
     if (this.estimationOfResults.GP.UBA['Negative Thinking']) {
       if (negThink >= this.estimationOfResults.feedbackCounter.NT['9-19'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['9-19'][1]) {
         this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['9-19'];
       } else if (negThink >= this.estimationOfResults.feedbackCounter.NT['20+'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['20+'][0]) { this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['20+']; }
     }
+
 
     if (this.estimationOfResults.GP.UBA.Impulsivity) {
       if (impulsivity >= this.estimationOfResults.feedbackCounter.I['10-19'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['10-19'][1]) {
@@ -393,11 +418,13 @@ class GamesService {
       } else if (impulsivity >= this.estimationOfResults.feedbackCounter.I['20+'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['20+'][1]) { this.gameSummary.impulsivity = this.estimationOfResults.Feedback.I['20+']; }
     }
 
+
     if (this.estimationOfResults.GP.UBA['Slow starter']) {
       if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['10-19'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['10-19'][1]) {
         this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['10-19'];
       } else if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['20+'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['20+'][1]) { this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['20+']; }
     }
+
 
     if (this.estimationOfResults.GP.UBA.Panic) {
       if (panic >= this.estimationOfResults.feedbackCounter.Panic['5-10'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['5-10'][1]) {
@@ -405,11 +432,13 @@ class GamesService {
       } else if (panic >= this.estimationOfResults.feedbackCounter.Panic['11+'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['11+'][1]) { this.gameSummary.panic = this.estimationOfResults.Feedback.Panic['11+']; }
     }
 
+
     if (this.estimationOfResults.GP.UBA.Frustration) {
       if (frustration >= this.estimationOfResults.feedbackCounter.F['5-9'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['5-9'][1]) {
         this.gameSummary.frustration = this.estimationOfResults.Feedback.F['5-9'];
       } else if (frustration > this.estimationOfResults.feedbackCounter.F['10+'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['10+'][1]) { this.gameSummary.frustration = this.estimationOfResults.Feedback.F['10+']; }
     }
+
 
     if (this.estimationOfResults.GP.UBA['Lack of Concentration']) {
       if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['5-10'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['5-10'][1]) {
@@ -418,6 +447,8 @@ class GamesService {
         this.gameSummary.concentration = this.estimationOfResults.Feedback.C['10-19'];
       } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['20+'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['20+'][1]) { this.gameSummary.concentration = this.estimationOfResults.Feedback.C['20+']; }
     }
+
+ 
     if (this.estimationOfResults.GP.UPDI.MM) {
       if (this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[0] && this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[1]) {
         this.gameSummary.muteMusic = this.estimationOfResults.Feedback.MM.true;
