@@ -364,11 +364,11 @@ class GamesController {
         case 6:
           this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
           this.gamesService.gameStatistic();
-          if (localStorage.getItem('gamePage') == null) {
-            localStorage.setItem('gamePage', true);
-          } else {
-            localStorage.setItem('gamePageSecond', true);
-          }
+          // if (localStorage.getItem('gamePage') == null) {
+          //   localStorage.setItem('gamePage', true);
+          // } else {
+          //   localStorage.setItem('gamePageSecond', true);
+          // }
           this.stateChange('home');
           break;
         default:

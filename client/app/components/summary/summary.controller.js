@@ -3,7 +3,7 @@ const CONCENTRATION = 'concentration';
 const PHYSICAL = 'physical';
 
 class SummaryController {
-  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults) {
+  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults, gamesService) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
@@ -12,6 +12,18 @@ class SummaryController {
     this.userSum = {};
     this.gameScoreValue = gameScoreValue;
     this.estimationOfResults = estimationOfResults;
+    this.gamesService = gamesService;
+    this.testSummary = {
+      slowStarter: '0',
+      impulsivity: '0',
+      panic: '0',
+      negativeThinking: '0',
+      lowConfidence: '0',
+      perfectionism: '0',
+      badTimeManagement: '0',
+      frustration: '0',
+      concentration: '0',
+    };
   }
 
   $onInit() {
@@ -49,6 +61,25 @@ class SummaryController {
     this.$state.go(name);
   }
 
+  setTestParams() {
+    this.testSummary = {
+      slowStarter: parseInt(this.testSummary.slowStarter, 10),
+      impulsivity: parseInt(this.testSummary.impulsivity, 10),
+      panic: parseInt(this.testSummary.panic, 10),
+      negativeThinking: parseInt(this.testSummary.negativeThinking, 10),
+      lowConfidence: parseInt(this.testSummary.lowConfidence, 10),
+      perfectionism: parseInt(this.testSummary.perfectionism, 10),
+      badTimeManagement: parseInt(this.testSummary.badTimeManagement, 10),
+      frustration: parseInt(this.testSummary.frustration, 10),
+      concentration: parseInt(this.testSummary.concentration, 10),
+    };
+
+    this.gamesService.gameStatistic(this.testSummary.lowConfidence, this.testSummary.badTimeManagement, this.testSummary.perfectionism,
+                                    this.testSummary.negativeThinking, this.testSummary.concentration, this.testSummary.impulsivity,
+                                    this.testSummary.slowStarter, this.testSummary.panic, this.testSummary.frustration);
+                                    console.log("this.gamesService.gameStatistic Send Params");
+  }
+
   _getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
@@ -81,5 +112,5 @@ class SummaryController {
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.userSum.positive = 100; }
   }
 }
-SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults'];
+SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'gamesService'];
 export default SummaryController;
