@@ -13,7 +13,6 @@ class requiredCardsController {
 
   $onInit() {
     this._getUserData();
-
     if (this.gameScoreValue.summary[4] > this.estimationOfResults.SuggestPoints.Concentration) { this.concentration = true; }
     if (this.gameScoreValue.summary[8] > this.estimationOfResults.SuggestPoints.Frustration) { this.physical = true; }
     if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.positive = true; }
@@ -50,24 +49,6 @@ class requiredCardsController {
   //   const that = this;
   //   this.enableRoutineButton = false;
 
-  //   if (this.positive >= 10 && _.get(that.user, `positiveComplete`)) {
-  //     this.$timeout(() => {
-  //       this.enableRoutineButton = true;
-  //     }, 0);
-  //   }
-
-  //   if (this.concentration >= 10 && _.get(that.user, `concentrationComplete`)) {
-  //     this.$timeout(() => {
-  //       this.enableRoutineButton = true;
-  //     }, 0);
-  //   }
-
-  //   if (this.physical >= 10 && _.get(that.user, `physicalComplete`)) {
-  //     this.$timeout(() => {
-  //       this.enableRoutineButton = true;
-  //     }, 0);
-  //   }
-
   //   _.forEach(this.userSum, (value, key) => {
   //     if (value >= 10 && _.get(that.user, `${key}Complete`)) {
   //       this.$timeout(() => {
@@ -80,6 +61,25 @@ class requiredCardsController {
   routineDisabled() {
     const that = this;
     this.enableRoutineButton = true;
+
+    if (this.positive && !_.get(that.user, `positiveComplete`)) {
+      this.$timeout(() => {
+        this.enableRoutineButton = false;
+      }, 0);
+    }
+
+    if (this.concentration && !_.get(that.user, `concentrationComplete`)) {
+      this.$timeout(() => {
+        this.enableRoutineButton = false;
+      }, 0);
+    }
+
+    if (this.physical && !_.get(that.user, `physicalComplete`)) {
+      this.$timeout(() => {
+        this.enableRoutineButton = false;
+      }, 0);
+    }
+
     _.forEach(this.userSum, (value, key) => {
       if (value >= 10 && !_.get(that.user, `${key}Complete`)) {
         this.$timeout(() => {

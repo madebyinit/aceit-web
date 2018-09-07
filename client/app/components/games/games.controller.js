@@ -581,11 +581,14 @@ class GamesController {
   }
 
   stateChange(state) {
-    if (localStorage.getItem('gamePage') == null) {
-      localStorage.setItem('gamePage', location.pathname);
-    } else {
-      localStorage.setItem('gamePageSecond', location.pathname);
+    if (state !== 'videoPage') {
+      if (localStorage.getItem('gamePage') == null) {
+        localStorage.setItem('gamePage', location.pathname);
+      } else {
+        localStorage.setItem('gamePageSecond', location.pathname);
+      }
     }
+
     this.removeListeners();
     this.$state.go(state);
   }
