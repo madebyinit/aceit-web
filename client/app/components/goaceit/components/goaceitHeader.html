@@ -30,8 +30,15 @@
     </div>
     <div class="drawer-button-wrapper">
         <div class="biodot-wrapper">
-            <div class="drawer-text">On the ACEIT card, there is a little round ACEIT dot. Put it on your hand like this and see what color it shows.</div>
-            <div class="biodot-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['biodot']}" ng-click="$ctrl.toggleDrawer('biodot')"></div>
+            <!-- <div class="drawer-text">On the ACEIT card, there is a little round ACEIT dot. Put it on your hand like this and see what color it shows.</div>-->
+            <div class="drawer-text">
+                <div>"MONEY TIME"</div>
+                <div>THE DAY OF THE TEST</div>
+                 
+            </div>
+            <div class="biodot-icon" ng-class="{'close-drawer': !$ctrl.openDrawers['biodot']}" ng-click="$ctrl.toggleDrawer('biodot')">
+                <!-- <img src="mazerace/icn_stress.png" width="80px" alt=""> -->
+            </div>
         </div>
         <div class="focus-sleep-wrapper">
             <div class="focus-sleep-text-wrapper">
@@ -84,8 +91,25 @@
             </div>
             <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
-                <h1>Aceit Dots</h1>
-                <div class="hand"></div>
+                <h1>THE NIGHT BEFORE THE EXAM</h1>
+                <p>
+                    It’s important to come to the test refreshed and focused.
+                    Sometimes this is difficult as there are so many thoughts running through your mind.
+                </p>
+                <p>
+                        The night before the test, take 10 minutes (on a timer) and write down every thought 
+                        you have – whether related to the test or not. 
+                        This will empty your head of “noise” and allow you to relax and fall asleep. 
+                </p>
+                <h1>THE DAY OF THE EXAM</h1>
+                <div class="video-container">
+                    <video controls>
+                        <source ng-src="/video/The_day_of.mp4" type="video/mp4" >
+                    </video>
+                </div>
+
+
+                <!-- <div class="hand"></div>
                 <p>
                     <span>This ACEIT dot is based on the temperature in your</span>
                     <span>hands. When you get stressed, the tiny blood vessels</span>
@@ -102,7 +126,7 @@
                 <p>Keep the ACEIT dot on when you are studying and see what color it shows when you are really focused. That is your “zone” which you need to be in to reach your peak performance. When the color moves out of your zone to a different color, use your tools and your routine to get back into your zone. Or maybe it’s time to take a break. See what color registers when you are relaxed.</p>
                 <p>You can reattach the ACEIT dot to the card at any time. If you lose your ACEIT dot (as most people do), you can use the ACEIT square instead. Hold your thumb on the square for 10 seconds and see what color shows.</p>
                 <p>It is important to use the ACEIT dot or square when you take practice tests so you can become aware of when you are not in your zone. Then you must use your routine in order to once again reach your peak performance.</p>
-                <p>Everyone is different and you have to find what works  for you.</p>
+                <p>Everyone is different and you have to find what works  for you.</p> -->
             </div>
 
             <div class="sleep-drawer drawer " ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
