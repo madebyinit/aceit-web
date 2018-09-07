@@ -204,7 +204,7 @@ class GamesController {
               this.gamesService.gameStatistic();
               break;
             case 5:
-              this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+              this.gamesService.getGameResult('parkinglotLast', this.duration, duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.gameStatistic();
