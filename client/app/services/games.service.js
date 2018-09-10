@@ -408,7 +408,7 @@ class GamesService {
     if (this.estimationOfResults.GP.UBA['Negative Thinking']) {
       if (negThink >= this.estimationOfResults.feedbackCounter.NT['9-19'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['9-19'][1]) {
         this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['9-19'];
-      } else if (negThink >= this.estimationOfResults.feedbackCounter.NT['20+'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['20+'][0]) { this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['20+']; }
+      } else if (negThink >= this.estimationOfResults.feedbackCounter.NT['20+'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['20+'][1]) { this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['20+']; }
     }
 
 
@@ -436,7 +436,7 @@ class GamesService {
     if (this.estimationOfResults.GP.UBA.Frustration) {
       if (frustration >= this.estimationOfResults.feedbackCounter.F['5-9'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['5-9'][1]) {
         this.gameSummary.frustration = this.estimationOfResults.Feedback.F['5-9'];
-      } else if (frustration > this.estimationOfResults.feedbackCounter.F['10+'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['10+'][1]) { this.gameSummary.frustration = this.estimationOfResults.Feedback.F['10+']; }
+      } else if (frustration >= this.estimationOfResults.feedbackCounter.F['10+'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['10+'][1]) { this.gameSummary.frustration = this.estimationOfResults.Feedback.F['10+']; }
     }
 
 
