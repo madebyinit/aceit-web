@@ -5,7 +5,7 @@ class MazeraceService {
     this.orderOfGames = orderOfGames;
   }
 
-  end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+  end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin) {
     const result = {
       lowConfidence: 0,
       badTimeMan: 0,
@@ -170,7 +170,7 @@ class MazeraceService {
     const SumFromGame = (`mazerace Summ =  lowConfidence =${this.gameScore.mazerace[0]} badTimeMan =${this.gameScore.mazerace[1]} perfectionism = ${this.gameScore.mazerace[2]} negThink = ${this.gameScore.mazerace[3]} lackRicuz = ${this.gameScore.mazerace[4]} impulsivity = ${this.gameScore.mazerace[5]} slowStarter = ${this.gameScore.mazerace[6]}  panic =  ${this.gameScore.mazerace[7]} frustration = ${this.gameScore.mazerace[8]} |`);
     // const SumFromGame = (`mazerace Summ =  Bad Time Man =${this.gameScore.mazerace[0]} Frustration =${this.gameScore.mazerace[1]} Impulsivity = ${this.gameScore.mazerace[2]} Low Confidence = ${this.gameScore.mazerace[3]} Lack Ricuz = ${this.gameScore.mazerace[4]} Neg Think = ${this.gameScore.mazerace[5]} Perfectionism = ${this.gameScore.mazerace[6]}  Panic =  ${this.gameScore.mazerace[7]} Slow Starter = ${this.gameScore.mazerace[8]} |`);
 
-    if (duration !== undefined) { alert(`${fromGame} ${space} ${instruct} ${space} ${durationgame} ${space} ${SumFromGame}`); }
+    if (admin) { alert(`${fromGame} ${space} ${instruct} ${space} ${durationgame} ${space} ${SumFromGame}`); }
   }
 }
 
