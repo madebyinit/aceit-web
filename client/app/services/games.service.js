@@ -33,31 +33,31 @@ class GamesService {
     this.gameStatus = data;
   }
 
-  getGameResult(gameName, durationG, duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+  getGameResult(gameName, durationG, duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin) {
     console.log(gameName);
     switch (gameName) {
       case 'parkinglot':
-        this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         break;
       case 'tower':
-        this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         break;
       case 'mazerace':
         if (duration) {
-          this.mazeraceService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          this.mazeraceService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         } else {
-          this.mazeraceService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          this.mazeraceService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         }
         break;
       case 'mousetrap':
         if (duration) {
-          this.mouseGameService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          this.mouseGameService.end(durationG, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         } else {
-          this.mouseGameService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          this.mouseGameService.end(0, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         }
         break;
       case 'parkinglotLast':
-        this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
         break;
       default:
         break;
@@ -71,7 +71,7 @@ class GamesService {
     // alert(`firstMoveTime = ${result.firstMoveTime}`);
   }
 
-  TotalTimeFOrLastGame(time) {
+  TotalTimeFOrLastGame(time, admin) {
     console.log('TIME', time, 'TIME');
 
     if (this.gameScore.endTime[0] === undefined) {
@@ -87,21 +87,21 @@ class GamesService {
     }
 
     if (time <= 10) {
-      this.TotalTimeFOrLastGameEndFunction('0-10', time);
+      this.TotalTimeFOrLastGameEndFunction('0-10', time, admin);
     } else if (time > 10 && time <= 20) {
-      this.TotalTimeFOrLastGameEndFunction('11-20', time);
+      this.TotalTimeFOrLastGameEndFunction('11-20', time, admin);
     } else if (time > 20 && time <= 30) {
-      this.TotalTimeFOrLastGameEndFunction('21-30', time);
+      this.TotalTimeFOrLastGameEndFunction('21-30', time, admin);
     } else if (time > 30 && time <= 40) {
-      this.TotalTimeFOrLastGameEndFunction('31-40', time);
+      this.TotalTimeFOrLastGameEndFunction('31-40', time, admin);
     } else if (time > 40 && time <= 50) {
-      this.TotalTimeFOrLastGameEndFunction('41-50', time);
+      this.TotalTimeFOrLastGameEndFunction('41-50', time, admin);
     } else if (time > 50) {
-      this.TotalTimeFOrLastGameEndFunction('51+', time);
+      this.TotalTimeFOrLastGameEndFunction('51+', time, admin);
     }
   }
 
-  TotalTimeFOrLastGameEndFunction(key, time) {
+  TotalTimeFOrLastGameEndFunction(key, time, admin) {
     this.gameScore.endTime[0] += this.estimationOfResults.gameEnd.TTfLG[key].LC;
     this.gameScore.endTime[1] += this.estimationOfResults.gameEnd.TTfLG[key].BTM;
     this.gameScore.endTime[2] += this.estimationOfResults.gameEnd.TTfLG[key].P;
@@ -112,49 +112,46 @@ class GamesService {
     this.gameScore.endTime[7] += this.estimationOfResults.gameEnd.TTfLG[key].Panic;
     this.gameScore.endTime[8] += this.estimationOfResults.gameEnd.TTfLG[key].F;
 
-    alert(`Total Time for Last Game ${time} - 
-    lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG[key].LC} 
-    badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG[key].BTM} 
-    perfectionism = ${this.estimationOfResults.gameEnd.TTfLG[key].P} 
-    negThink = ${this.estimationOfResults.gameEnd.TTfLG[key].NT} 
-    lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG[key].LR} 
-    impulsivity = ${this.estimationOfResults.gameEnd.TTfLG[key].I} 
-    slowStarter = ${this.estimationOfResults.gameEnd.TTfLG[key].SS} 
-    panic = ${this.estimationOfResults.gameEnd.TTfLG[key].Panic} 
-    frustration = ${this.estimationOfResults.gameEnd.TTfLG[key].F}`);
-
-  console.log(this.gameScore.endTime, 'Total Time FOr Last Game');
-  // alert(`Total Time for Last Game ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
-
-  }
-
-  TotalTimeFOrFourthGame(time) {
-    console.log(time, 'TotalTimeFOrFourthGame');
-    // Game Duration When Time is Up
-    if (time <= 30) {
-      this.TotalTimeFOrFourthGameEndFunction('0-30', time);
-    } else if (time > 30 && time <= 40) {
-      this.TotalTimeFOrFourthGameEndFunction('31-40', time);
-    } else if (time > 40 && time <= 50) {
-      this.TotalTimeFOrFourthGameEndFunction('41-50', time);
-    } else if (time > 50 && time <= 60) {
-      this.TotalTimeFOrFourthGameEndFunction('51-60', time);
-    } else if (time > 60 && time <= 70) {
-      this.TotalTimeFOrFourthGameEndFunction('61-70', time);
-    } else if (time > 70 && time <= 80) {
-      this.TotalTimeFOrFourthGameEndFunction('71-80', time);
-    } else if (time > 80 && time <= 90) {
-      this.TotalTimeFOrFourthGameEndFunction('81-90', time);
-    } else if (time > 90 && time <= 100) {
-      this.TotalTimeFOrFourthGameEndFunction('91-100', time);
-    } else if (time > 100 && time <= 115) {
-      this.TotalTimeFOrFourthGameEndFunction('101-115', time);
-    } else if (time > 116) {
-      this.TotalTimeFOrFourthGameEndFunction('116+', time);
+    if (admin) {
+      alert(`Total Time for Last Game ${time} - 
+      lowConfidence = ${this.estimationOfResults.gameEnd.TTfLG[key].LC} 
+      badTimeMan = ${this.estimationOfResults.gameEnd.TTfLG[key].BTM} 
+      perfectionism = ${this.estimationOfResults.gameEnd.TTfLG[key].P} 
+      negThink = ${this.estimationOfResults.gameEnd.TTfLG[key].NT} 
+      lackRicuz = ${this.estimationOfResults.gameEnd.TTfLG[key].LR} 
+      impulsivity = ${this.estimationOfResults.gameEnd.TTfLG[key].I} 
+      slowStarter = ${this.estimationOfResults.gameEnd.TTfLG[key].SS} 
+      panic = ${this.estimationOfResults.gameEnd.TTfLG[key].Panic} 
+      frustration = ${this.estimationOfResults.gameEnd.TTfLG[key].F}`);
     }
   }
 
-  TotalTimeFOrFourthGameEndFunction(key, time) {
+  TotalTimeFOrFourthGame(time, admin) {
+    // Game Duration When Time is Up
+    if (time <= 30) {
+      this.TotalTimeFOrFourthGameEndFunction('0-30', time, admin);
+    } else if (time > 30 && time <= 40) {
+      this.TotalTimeFOrFourthGameEndFunction('31-40', time, admin);
+    } else if (time > 40 && time <= 50) {
+      this.TotalTimeFOrFourthGameEndFunction('41-50', time, admin);
+    } else if (time > 50 && time <= 60) {
+      this.TotalTimeFOrFourthGameEndFunction('51-60', time, admin);
+    } else if (time > 60 && time <= 70) {
+      this.TotalTimeFOrFourthGameEndFunction('61-70', time, admin);
+    } else if (time > 70 && time <= 80) {
+      this.TotalTimeFOrFourthGameEndFunction('71-80', time, admin);
+    } else if (time > 80 && time <= 90) {
+      this.TotalTimeFOrFourthGameEndFunction('81-90', time, admin);
+    } else if (time > 90 && time <= 100) {
+      this.TotalTimeFOrFourthGameEndFunction('91-100', time, admin);
+    } else if (time > 100 && time <= 115) {
+      this.TotalTimeFOrFourthGameEndFunction('101-115', time, admin);
+    } else if (time > 116) {
+      this.TotalTimeFOrFourthGameEndFunction('116+', time, admin);
+    }
+  }
+
+  TotalTimeFOrFourthGameEndFunction(key, time, admin) {
     this.gameScore.endTime = [
       this.estimationOfResults.mazerace.CGDETiU[key].LC,
       this.estimationOfResults.mazerace.CGDETiU[key].BTM,
@@ -166,12 +163,12 @@ class GamesService {
       this.estimationOfResults.mazerace.CGDETiU[key].Panic,
       this.estimationOfResults.mazerace.CGDETiU[key].F,
     ];
-
-    console.log(this.gameScore.endTime, '4 Game END');
-    alert(`TotalTimeFOrFourthGame ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    if (admin) {
+      alert(`TotalTimeFOrFourthGame ${time} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    }
   }
 
-  EndTimeInGame(Param) {
+  EndTimeInGame(Param, admin) {
     this.gameScore.endTime = [
       this.estimationOfResults.gameEnd.GSIWTiU[Param].LC,
       this.estimationOfResults.gameEnd.GSIWTiU[Param].BTM,
@@ -182,36 +179,36 @@ class GamesService {
       this.estimationOfResults.gameEnd.GSIWTiU[Param].SS,
       this.estimationOfResults.gameEnd.GSIWTiU[Param].Panic,
       this.estimationOfResults.gameEnd.GSIWTiU[Param].F];
-    console.log(this.gameScore.endTime, '1-3 Game END');
-    alert(`EndTimeInGame ${Param} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
-  }
-
-  EndTimeInLastGame(time) {
-    console.log(time, 'EndTimeInLastGame');
-    if (time <= 30) {
-      this.EndTimeInLastGameEndFunction('0-30', time);
-    } else if (time > 30 && time <= 40) {
-      this.EndTimeInLastGameEndFunction('31-40', time);
-    } else if (time > 40 && time <= 50) {
-      this.EndTimeInLastGameEndFunction('41-50', time);
-    } else if (time > 50 && time <= 60) {
-      this.EndTimeInLastGameEndFunction('51-60', time);
-    } else if (time > 60 && time <= 70) {
-      this.EndTimeInLastGameEndFunction('61-70', time);
-    } else if (time > 70 && time <= 80) {
-      this.EndTimeInLastGameEndFunction('71-80', time);
-    } else if (time > 80 && time <= 90) {
-      this.EndTimeInLastGameEndFunction('81-90', time);
-    } else if (time > 90 && time <= 100) {
-      this.EndTimeInLastGameEndFunction('91-100', time);
-    } else if (time > 100 && time <= 115) {
-      this.EndTimeInLastGameEndFunction('101-115', time);
-    } else if (time > 116) {
-      this.EndTimeInLastGameEndFunction('116+', time);
+    if (admin) {
+      alert(`EndTimeInGame ${Param} - lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
     }
   }
 
-  EndTimeInLastGameEndFunction(key, time) {
+  EndTimeInLastGame(time, admin) {
+    if (time <= 30) {
+      this.EndTimeInLastGameEndFunction('0-30', time, admin);
+    } else if (time > 30 && time <= 40) {
+      this.EndTimeInLastGameEndFunction('31-40', time, admin);
+    } else if (time > 40 && time <= 50) {
+      this.EndTimeInLastGameEndFunction('41-50', time, admin);
+    } else if (time > 50 && time <= 60) {
+      this.EndTimeInLastGameEndFunction('51-60', time, admin);
+    } else if (time > 60 && time <= 70) {
+      this.EndTimeInLastGameEndFunction('61-70', time, admin);
+    } else if (time > 70 && time <= 80) {
+      this.EndTimeInLastGameEndFunction('71-80', time, admin);
+    } else if (time > 80 && time <= 90) {
+      this.EndTimeInLastGameEndFunction('81-90', time, admin);
+    } else if (time > 90 && time <= 100) {
+      this.EndTimeInLastGameEndFunction('91-100', time, admin);
+    } else if (time > 100 && time <= 115) {
+      this.EndTimeInLastGameEndFunction('101-115', time, admin);
+    } else if (time > 116) {
+      this.EndTimeInLastGameEndFunction('116+', time, admin);
+    }
+  }
+
+  EndTimeInLastGameEndFunction(key, time, admin) {
     this.gameScore.endTime = [
       this.estimationOfResults.gameEnd.TTtFNS[key].LC,
       this.estimationOfResults.gameEnd.TTtFNS[key].BTM,
@@ -222,35 +219,24 @@ class GamesService {
       this.estimationOfResults.gameEnd.TTtFNS[key].SS,
       this.estimationOfResults.gameEnd.TTtFNS[key].Panic,
       this.estimationOfResults.gameEnd.TTtFNS[key].F];
-
-    console.log(this.gameScore.endTime, '5 Game END');
-    alert(`Total Time to Finish Last Game NOT Successfully - ${time} lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    if (admin) {
+      alert(`Total Time to Finish Last Game NOT Successfully - ${time} lowConfidence = ${this.gameScore.endTime[0]} badTimeMan = ${this.gameScore.endTime[1]} perfectionism = ${this.gameScore.endTime[2]} negThink = ${this.gameScore.endTime[3]} lackRicuz = ${this.gameScore.endTime[4]} impulsivity = ${this.gameScore.endTime[5]} slowStarter = ${this.gameScore.endTime[6]} panic = ${this.gameScore.endTime[7]} frustration = ${this.gameScore.endTime[8]}`);
+    }
   }
 
 
-  gameStatistic(lowConfidence = 0, badTimeMan = 0, perfectionism = 0, negThink = 0, lackRicuz = 0, impulsivity = 0, slowStarter = 0, panic = 0, frustration = 0) {
-    // let lowConfidence = 0;
-    // let badTimeMan = 0;
-    // let perfectionism = 0;
-    // let negThink = 0;
-    // let lackRicuz = 0;
-    // let impulsivity = 0;
-    // let slowStarter = 0;
-    // let panic = 0;
-    // let frustration = 0;
+  gameStatistic(lowConfidence = 0, badTimeMan = 0, perfectionism = 0, negThink = 0, lackRicuz = 0, impulsivity = 0, slowStarter = 0, panic = 0, frustration = 0, admin) {
+    console.log(`let lowConfidence =  ${lowConfidence
+    }let badTimeMan = ${badTimeMan
+    }let perfectionism = ${perfectionism
+    }let negThink = ${negThink
+    }let lackRicuz = ${lackRicuz
+    }let impulsivity = ${impulsivity
+    }let slowStarter = ${slowStarter
+    }let panic = ${panic
+    }let frustration = ${frustration}`);
 
-    console.log(
-      `let lowConfidence =  ${lowConfidence
-      }let badTimeMan = ${ badTimeMan
-      }let perfectionism = ${perfectionism
-      }let negThink = ${negThink
-      }let lackRicuz = ${lackRicuz
-      }let impulsivity = ${impulsivity
-      }let slowStarter = ${slowStarter
-      }let panic = ${panic
-      }let frustration = ${frustration}`);
-
-    if (lowConfidence > 0 || badTimeMan > 0 || perfectionism > 0 || negThink > 0 || 
+    if (lowConfidence > 0 || badTimeMan > 0 || perfectionism > 0 || negThink > 0 ||
       lackRicuz > 0 || impulsivity > 0 || slowStarter > 0 || panic > 0 || frustration > 0) {
       console.log('test');
     } else {
@@ -265,7 +251,7 @@ class GamesService {
         panic += this.gameScore.parkinglot[7];
         frustration += this.gameScore.parkinglot[8];
       }
-  
+
       if (this.gameScore.parkinglotLast.length !== undefined) {
         lowConfidence += this.gameScore.parkinglotLast[0];
         badTimeMan += this.gameScore.parkinglotLast[1];
@@ -277,7 +263,7 @@ class GamesService {
         panic += this.gameScore.parkinglotLast[7];
         frustration += this.gameScore.parkinglotLast[8];
       }
-  
+
       if (this.gameScore.mazerace.length !== undefined) {
         lowConfidence += this.gameScore.mazerace[0];
         badTimeMan += this.gameScore.mazerace[1];
@@ -289,7 +275,7 @@ class GamesService {
         panic += this.gameScore.mazerace[7];
         frustration += this.gameScore.mazerace[8];
       }
-  
+
       if (this.gameScore.mousetrap.length !== undefined) {
         lowConfidence += this.gameScore.mousetrap[0];
         badTimeMan += this.gameScore.mousetrap[1];
@@ -301,7 +287,7 @@ class GamesService {
         panic += this.gameScore.mousetrap[7];
         frustration += this.gameScore.mousetrap[8];
       }
-  
+
       if (this.gameScore.tower.length !== undefined) {
         lowConfidence += this.gameScore.tower[0];
         badTimeMan += this.gameScore.tower[1];
@@ -313,7 +299,7 @@ class GamesService {
         panic += this.gameScore.tower[7];
         frustration += this.gameScore.tower[8];
       }
-  
+
       if (this.gameScore.endTime.length !== undefined) {
         lowConfidence += this.gameScore.endTime[0];
         badTimeMan += this.gameScore.endTime[1];
@@ -345,7 +331,7 @@ class GamesService {
       slowStarter,
       panic,
       frustration];
-      console.log(this.gameScore.summary);
+
     // this.connection.saveData(this.gameScore.summary, 'userSum');
     this.gameSummary.selfAssessment = '';
     this.gameSummary.gamesSuccessfullyCompleted = '';
@@ -372,17 +358,17 @@ class GamesService {
     }
 
 
-    if (this.estimationOfResults.GP.UBA['Low Confidence']) {      
+    if (this.estimationOfResults.GP.UBA['Low Confidence']) {
       if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
-        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@1", this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
+        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@1', this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
       } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['11-19'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['11-19'][1]) {
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['11-19'];
-        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@2", this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
+        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@2', this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
       } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) {
-        console.log(lowConfidence, "@@@@@@@@@@@@@@@@@@@@@@3", this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
+        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@3', this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
         this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+'];
-        console.log(this.estimationOfResults.Feedback.LC['20+'], "!!!!!!!TEST!!!!!!!" ,this.gameSummary.lowConfidence);
+        console.log(this.estimationOfResults.Feedback.LC['20+'], '!!!!!!!TEST!!!!!!!', this.gameSummary.lowConfidence);
       } // ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
     }
 
@@ -391,10 +377,9 @@ class GamesService {
         this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['5-10'];
       } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['11-19'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['11-19'][1]) {
         this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['11-19'];
-      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) { 
-        console.log(this.estimationOfResults.feedbackCounter.BTM['20+'][0]);
-        console.log(this.estimationOfResults.feedbackCounter.BTM['20+'][1]);
-        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+']; }
+      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) {
+        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+'];
+      }
     }
 
 
@@ -448,7 +433,7 @@ class GamesService {
       } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['20+'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['20+'][1]) { this.gameSummary.concentration = this.estimationOfResults.Feedback.C['20+']; }
     }
 
- 
+
     if (this.estimationOfResults.GP.UPDI.MM) {
       if (this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[0] && this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[1]) {
         this.gameSummary.muteMusic = this.estimationOfResults.Feedback.MM.true;
@@ -456,16 +441,16 @@ class GamesService {
     }
 
     const space = '                                          ';
-
-    alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
-  tower - lowConfidence ${this.gameScore.tower[0]} badTimeMan ${this.gameScore.tower[1]} perfectionism ${this.gameScore.tower[2]} negThink ${this.gameScore.tower[3]} lackRicuz ${this.gameScore.tower[4]} impulsivity ${this.gameScore.tower[5]} slowStarter ${this.gameScore.tower[6]} panic ${this.gameScore.tower[7]} frustration ${this.gameScore.tower[8]} ${space}
-  mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
-  mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
-  parkinglotLast - lowConfidence ${this.gameScore.parkinglotLast[0]} badTimeMan ${this.gameScore.parkinglotLast[1]} perfectionism ${this.gameScore.parkinglotLast[2]} negThink ${this.gameScore.parkinglotLast[3]} lackRicuz ${this.gameScore.parkinglotLast[4]} impulsivity ${this.gameScore.parkinglotLast[5]} slowStarter ${this.gameScore.parkinglotLast[6]} panic ${this.gameScore.parkinglotLast[7]} frustration ${this.gameScore.parkinglotLast[8]} ${space}
-  endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
-  Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
-  selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
-
+    if (admin) {
+      alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
+      tower - lowConfidence ${this.gameScore.tower[0]} badTimeMan ${this.gameScore.tower[1]} perfectionism ${this.gameScore.tower[2]} negThink ${this.gameScore.tower[3]} lackRicuz ${this.gameScore.tower[4]} impulsivity ${this.gameScore.tower[5]} slowStarter ${this.gameScore.tower[6]} panic ${this.gameScore.tower[7]} frustration ${this.gameScore.tower[8]} ${space}
+      mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
+      mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
+      parkinglotLast - lowConfidence ${this.gameScore.parkinglotLast[0]} badTimeMan ${this.gameScore.parkinglotLast[1]} perfectionism ${this.gameScore.parkinglotLast[2]} negThink ${this.gameScore.parkinglotLast[3]} lackRicuz ${this.gameScore.parkinglotLast[4]} impulsivity ${this.gameScore.parkinglotLast[5]} slowStarter ${this.gameScore.parkinglotLast[6]} panic ${this.gameScore.parkinglotLast[7]} frustration ${this.gameScore.parkinglotLast[8]} ${space}
+      endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
+      Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
+      selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
+    }
   }
 }
 

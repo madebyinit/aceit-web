@@ -40,12 +40,12 @@ class AlgorithmController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      this.helperService.feedbackCounter();
-      this.helperService.feedbackSentences();
-      this.helperService.gameSequence();
-      this.helperService.Results();
-      this.helperService.SuggestedTools();
-      this.helperService.FeedbackChange();
+      // this.helperService.feedbackCounter();
+      // this.helperService.feedbackSentences();
+      // this.helperService.gameSequence();
+      // this.helperService.Results();
+      // this.helperService.SuggestedTools();
+      // this.helperService.FeedbackChange();
 
       this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
       this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;

@@ -6,6 +6,7 @@ class GamesController {
     this.$state = $state;
     this.$document = $document;
     this.$window = $window;
+    this.user = {};
     this.connection = connection;
     this.firstStart = false;
     this.timeRemain = '00:00';
@@ -98,14 +99,14 @@ class GamesController {
 
     if (localStorage.getItem('gamePage') == null) {
       console.log('FIRST START');
-      alert('FIRST START');
+      // alert('FIRST START');
       this.setGamesLvl(true);
       console.log(document.getElementById('parkinglot').contentWindow.lvl);
       this.firstStart = false;
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
       this.changeState = 'goaceit';
-      alert('SECOND START');
+      // alert('SECOND START');
       this.setGamesLvl(true);
       const audio = this.$document[0].getElementById('backgroundMusic');
       audio.play();
@@ -115,7 +116,7 @@ class GamesController {
     } else {
       console.log('THIRD START');
       this.changeState = 'goaceit';
-      alert('THIRD START');
+      // alert('THIRD START');
       this.setGamesLvl(false);
       const audio = this.$document[0].getElementById('backgroundMusic');
       audio.play();
@@ -187,33 +188,33 @@ class GamesController {
           switch (this.gameNumber) {
             case 1:
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 1');
-              this.gamesService.gameStatistic();
+              this.gamesService.EndTimeInGame('Game 1', this.user.admin);
+              this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 2:
               console.log(this.secondsleft, duration);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 2');
-              this.gamesService.gameStatistic();
+              this.gamesService.EndTimeInGame('Game 2', this.user.admin);
+              this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 3:
               console.log(this.secondsleft, duration);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInGame('Game 3');
-              this.gamesService.gameStatistic();
+              this.gamesService.EndTimeInGame('Game 3', this.user.admin);
+              this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 4:
               console.log(this.secondsleft);
               timeLastGame = (this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.TotalTimeFOrFourthGame(timeLastGame);
-              this.gamesService.gameStatistic();
+              this.gamesService.TotalTimeFOrFourthGame(timeLastGame, this.user.admin);
+              this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 5:
               this.gamesService.getGameResult('parkinglotLast', 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
-              this.gamesService.gameStatistic();
+              this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum, this.user.admin);
+              this.gamesService.TotalTimeFOrLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum, this.user.admin);
+              this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             default:
               break;
@@ -252,13 +253,21 @@ class GamesController {
     this.connection.getData().then((res) => {
       this.user = res;
 
-      this.helperService.gameSequence();
-      this.helperService.feedbackCounter();
-      this.helperService.Results();
-      this.helperService.feedbackSentences();
-      this.helperService.SuggestedTools();
-      this.helperService.FeedbackChange();
-      this.seconds = this.estimationOfResults.GP.GSD;
+      // this.helperService.gameSequence();
+      // this.helperService.feedbackCounter();
+      // this.helperService.Results();
+      // this.helperService.feedbackSentences();
+      // this.helperService.SuggestedTools();
+      // this.helperService.FeedbackChange();
+      // this.seconds = this.estimationOfResults.GP.GSD;
+
+      if (localStorage.getItem('gamePage') == null && this.user.admin) {
+        alert('FIRST START');
+      } else if (localStorage.getItem('gamePageSecond') == null && this.user.admin) {
+        alert('SECOND START');
+      }else if (this.user.admin) {
+        alert('THIRD START');
+      }
 
       this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
       this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
@@ -289,12 +298,16 @@ class GamesController {
     }
   }
 
+  adminAdd() {
+    this.connection.saveData(true, 'admin');
+  }
+
   $onDestroy() {
     this.removeListeners();
   }
 
   gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-
+    console.log(this.user.admin);
     if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; }
 
     if (win) {
@@ -324,20 +337,20 @@ class GamesController {
       switch (this.orderOfGames.gameSequence[this.gameNumber - 1]) {
         case 'parkinglot':
           if (this.gameNumber === 1) {
-            this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
           } else {
-            this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+            this.parkingLotService.endLastGame(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
             // this.gamesService.EndTimeInLastGame(this.estimationOfResults.GP.GSD - this.gameSecSum);
           }
           break;
         case 'tower':
-          this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime);
+          this.towerService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
           break;
         case 'mousetrap':
-          this.mouseGameService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mouseGameService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime, this.user.admin);
           break;
         case 'mazerace':
-          this.mazeraceService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime);
+          this.mazeraceService.end((this.secondsleft * 1000), noOfMoves, this.instructionsClick, win, firstMoveTime, this.user.admin);
           break;
         default:
           break;
@@ -368,8 +381,8 @@ class GamesController {
           this.secondsLeftForLastGame = this.seconds;
           break;
         case 6:
-          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
-          this.gamesService.gameStatistic();
+          this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame, this.user.admin);
+          this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
           // if (localStorage.getItem('gamePage') == null) {
           //   localStorage.setItem('gamePage', true);
           // } else {
@@ -436,22 +449,22 @@ class GamesController {
       case 1:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[0], this.estimationOfResults, this.user.admin);
         this.duration = 0;
         break;
       case 2:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1], this.estimationOfResults);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[1], this.estimationOfResults, this.user.admin);
         this.duration = 0;
         break;
       case 3:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2], this.estimationOfResults);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[2], this.estimationOfResults, this.user.admin);
         this.duration = 0;
         break;
       case 4:
@@ -460,14 +473,14 @@ class GamesController {
         this.gameBeforeLastTime = this.secondsleft;
         const timeLastGame = Math.ceil(this.duration / 1000) + (this.estimationOfResults.GP.GSD - this.gameSecSum);
         this.secondsLeftForLastGame = timeLastGame;
-        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
-        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3], this.estimationOfResults);
+        this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
+        this.skipService.GameSkip(this.secondsleft, this.orderOfGames.gameSequence[3], this.estimationOfResults, this.user.admin);
         this.duration = 0;
         break;
       case 5:
         this.secondsleft = this.estimationOfResults.GP.GSD - this.seconds - this.gameSecSum;
         this.gameSecSum += this.secondsleft;
-        this.gamesService.getGameResult('parkinglotLast', 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
+        this.gamesService.getGameResult('parkinglotLast', 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime, this.user.admin);
         break;
       default:
         break;
@@ -478,9 +491,9 @@ class GamesController {
     switch (this.orderOfGames.gameSequence[this.gameNumber - 2]) {
     case 'parkinglot':
       if (this.gameNumber === 6) {
-        this.gamesService.EndTimeInLastGame(this.secondsleft);
-        this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame);
-        this.gamesService.gameStatistic();
+        this.gamesService.EndTimeInLastGame(this.secondsleft, this.user.admin);
+        this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame, this.user.admin);
+        this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
         this.gameNumber = 5;
         this.stateChange(this.changeState);
       } else {
@@ -749,7 +762,6 @@ class GamesController {
         this.gameData[2] = this.$document[0].getElementById(name).contentWindow.z;
         this.gameData[3] = this.$document[0].getElementById(name).contentWindow.w;
         this.gameData[4] = this.$document[0].getElementById(name).contentWindow.q;
-
         this.gameEnded(this.gameData[0], this.gameData[1], this.gameData[2], this.gameData[3], this.gameData[4]);
 
         this.$document[0].getElementById(name).contentWindow.x = undefined;

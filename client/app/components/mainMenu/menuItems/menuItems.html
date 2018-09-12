@@ -13,7 +13,7 @@
                 <div class="menu-icon"><img ng-src="mazerace/games-ico.png"></div><span>Games</span>
             </md-list-item>
             <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-click="$ctrl.stateChange('algorithm')">
+            <md-list-item class="md-3-line" ng-if="$ctrl.user.admin" ng-click="$ctrl.stateChange('algorithm')">
                 <div class="menu-icon"><img ng-src="mazerace/games-ico.png"></div><span>Algorithm</span>
             </md-list-item>
             <md-divider></md-divider>

@@ -5,7 +5,7 @@ class TowerService {
     this.estimationOfResults = estimationOfResults;
   }
 
-  end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
+  end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin) {
     console.log(this.gameScore.gamesSuccessfullyCompleted, 'hyt');
     const result = {
       lowConfidence: 0,
@@ -210,7 +210,7 @@ class TowerService {
     // const SumFromGame = (`tower Summ =  Bad Time Man =${this.gameScore.tower[0]} Frustration =${this.gameScore.tower[1]} Impulsivity = ${this.gameScore.tower[2]} Low Confidence = ${this.gameScore.tower[3]} Lack Ricuz = ${this.gameScore.tower[4]} Neg Think = ${this.gameScore.tower[5]} Perfectionism = ${this.gameScore.tower[6]}  Panic =  ${this.gameScore.tower[7]} Slow Starter = ${this.gameScore.tower[8]} |`);
     const SumFromGame = (`Tower Summ =  lowConfidence =${this.gameScore.tower[0]} badTimeMan =${this.gameScore.tower[1]} perfectionism = ${this.gameScore.tower[2]} negThink = ${this.gameScore.tower[3]} lackRicuz = ${this.gameScore.tower[4]} impulsivity = ${this.gameScore.tower[5]} slowStarter = ${this.gameScore.tower[6]}  panic =  ${this.gameScore.tower[7]} frustration = ${this.gameScore.tower[8]} |`);
 
-    if (duration !== undefined){ alert(`${fromGame} ${space} ${instruct} ${space} ${moves} ${space} ${durationgame} ${space} ${SumFromGame}`); }
+    if (admin){ alert(`${fromGame} ${space} ${instruct} ${space} ${moves} ${space} ${durationgame} ${space} ${SumFromGame}`); }
     
   }
 }
