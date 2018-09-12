@@ -83,6 +83,7 @@ class SummaryController {
   _getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
+      this.gameSummaryValue = this.user.Summary;
       this.userSum = { positive: 0, concentration: 0, physical: 0 };
       if (_.get(res, 'questionnaire')) {
         this.sumUserQuestionnaire();

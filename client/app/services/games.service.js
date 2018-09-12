@@ -331,125 +331,132 @@ class GamesService {
       slowStarter,
       panic,
       frustration];
+      console.log(localStorage.getItem('Summary'));
+    if (localStorage.getItem('Summary') == null) {
+      // this.connection.saveData(this.gameScore.summary, 'userSum');
+      this.gameSummary.selfAssessment = '';
+      this.gameSummary.gamesSuccessfullyCompleted = '';
+      this.gameSummary.lowConfidence = '';
+      this.gameSummary.badTimeManagement = '';
+      this.gameSummary.perfectionism = '';
+      this.gameSummary.negativeThinking = '';
+      this.gameSummary.impulsivity = '';
+      this.gameSummary.slowStarter = '';
+      this.gameSummary.panic = '';
+      this.gameSummary.frustration = '';
+      this.gameSummary.concentration = '';
+      this.gameSummary.muteMusic = '';
 
-    // this.connection.saveData(this.gameScore.summary, 'userSum');
-    this.gameSummary.selfAssessment = '';
-    this.gameSummary.gamesSuccessfullyCompleted = '';
-    this.gameSummary.lowConfidence = '';
-    this.gameSummary.badTimeManagement = '';
-    this.gameSummary.perfectionism = '';
-    this.gameSummary.negativeThinking = '';
-    this.gameSummary.impulsivity = '';
-    this.gameSummary.slowStarter = '';
-    this.gameSummary.panic = '';
-    this.gameSummary.frustration = '';
-    this.gameSummary.concentration = '';
-    this.gameSummary.muteMusic = '';
 
+      //----------------------------------------------------------------------------------------
 
-    //----------------------------------------------------------------------------------------
-
-    if (this.estimationOfResults.GP.UPDI.GSC) {
-      if (this.gameScore.gamesSuccessfullyCompleted >= this.estimationOfResults.feedbackCounter.GSC['3'][0] && this.gameScore.gamesSuccessfullyCompleted <= this.estimationOfResults.feedbackCounter.GSC['3'][1]) {
-        this.gameSummary.gamesSuccessfullyCompleted = this.estimationOfResults.Feedback.GSC['3'];
-      } else if (this.gameScore.gamesSuccessfullyCompleted >= this.estimationOfResults.feedbackCounter.GSC['4-5'][0] && this.gameScore.gamesSuccessfullyCompleted <= this.estimationOfResults.feedbackCounter.GSC['4-5'][1]) {
-        this.gameSummary.gamesSuccessfullyCompleted = this.estimationOfResults.Feedback.GSC['4-5'];
+      if (this.estimationOfResults.GP.UPDI.GSC) {
+        if (this.gameScore.gamesSuccessfullyCompleted >= this.estimationOfResults.feedbackCounter.GSC['3'][0] && this.gameScore.gamesSuccessfullyCompleted <= this.estimationOfResults.feedbackCounter.GSC['3'][1]) {
+          this.gameSummary.gamesSuccessfullyCompleted = this.estimationOfResults.Feedback.GSC['3'];
+        } else if (this.gameScore.gamesSuccessfullyCompleted >= this.estimationOfResults.feedbackCounter.GSC['4-5'][0] && this.gameScore.gamesSuccessfullyCompleted <= this.estimationOfResults.feedbackCounter.GSC['4-5'][1]) {
+          this.gameSummary.gamesSuccessfullyCompleted = this.estimationOfResults.Feedback.GSC['4-5'];
+        }
       }
-    }
 
 
-    if (this.estimationOfResults.GP.UBA['Low Confidence']) {
-      if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
-        this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
-        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@1', this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
-      } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['11-19'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['11-19'][1]) {
-        this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['11-19'];
-        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@2', this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
-      } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) {
-        console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@3', this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
-        this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+'];
-        console.log(this.estimationOfResults.Feedback.LC['20+'], '!!!!!!!TEST!!!!!!!', this.gameSummary.lowConfidence);
-      } // ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
-    }
-
-    if (this.estimationOfResults.GP.UBA['Bad Time Management']) {
-      if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['5-10'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['5-10'][1]) {
-        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['5-10'];
-      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['11-19'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['11-19'][1]) {
-        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['11-19'];
-      } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) {
-        this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+'];
+      if (this.estimationOfResults.GP.UBA['Low Confidence']) {
+        if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
+          this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
+          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@1', this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
+        } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['11-19'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['11-19'][1]) {
+          this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['11-19'];
+          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@2', this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
+        } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) {
+          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@3', this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
+          this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+'];
+          console.log(this.estimationOfResults.Feedback.LC['20+'], '!!!!!!!TEST!!!!!!!', this.gameSummary.lowConfidence);
+        } // ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
       }
-    }
+
+      if (this.estimationOfResults.GP.UBA['Bad Time Management']) {
+        if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['5-10'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['5-10'][1]) {
+          this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['5-10'];
+        } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['11-19'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['11-19'][1]) {
+          this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['11-19'];
+        } else if (badTimeMan >= this.estimationOfResults.feedbackCounter.BTM['20+'][0] && badTimeMan <= this.estimationOfResults.feedbackCounter.BTM['20+'][1]) {
+          this.gameSummary.badTimeManagement = this.estimationOfResults.Feedback.BTM['20+'];
+        }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA.Perfectionism) {
-      if (perfectionism >= this.estimationOfResults.feedbackCounter.P['11-19'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['11-19'][1]) {
-        this.gameSummary.perfectionism = this.estimationOfResults.Feedback.P['11-19'];
-      } else if (perfectionism >= this.estimationOfResults.feedbackCounter.P['20+'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['20+'][1]) { this.gameSummary.perfectionism = this.estimationOfResults.Feedback.P['20+']; }
-    }
+      if (this.estimationOfResults.GP.UBA.Perfectionism) {
+        if (perfectionism >= this.estimationOfResults.feedbackCounter.P['11-19'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['11-19'][1]) {
+          this.gameSummary.perfectionism = this.estimationOfResults.Feedback.P['11-19'];
+        } else if (perfectionism >= this.estimationOfResults.feedbackCounter.P['20+'][0] && perfectionism <= this.estimationOfResults.feedbackCounter.P['20+'][1]) { this.gameSummary.perfectionism = this.estimationOfResults.Feedback.P['20+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA['Negative Thinking']) {
-      if (negThink >= this.estimationOfResults.feedbackCounter.NT['9-19'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['9-19'][1]) {
-        this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['9-19'];
-      } else if (negThink >= this.estimationOfResults.feedbackCounter.NT['20+'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['20+'][1]) { this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['20+']; }
-    }
+      if (this.estimationOfResults.GP.UBA['Negative Thinking']) {
+        if (negThink >= this.estimationOfResults.feedbackCounter.NT['9-19'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['9-19'][1]) {
+          this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['9-19'];
+        } else if (negThink >= this.estimationOfResults.feedbackCounter.NT['20+'][0] && negThink <= this.estimationOfResults.feedbackCounter.NT['20+'][1]) { this.gameSummary.negativeThinking = this.estimationOfResults.Feedback.NT['20+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA.Impulsivity) {
-      if (impulsivity >= this.estimationOfResults.feedbackCounter.I['10-19'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['10-19'][1]) {
-        this.gameSummary.impulsivity = this.estimationOfResults.Feedback.I['10-19'];
-      } else if (impulsivity >= this.estimationOfResults.feedbackCounter.I['20+'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['20+'][1]) { this.gameSummary.impulsivity = this.estimationOfResults.Feedback.I['20+']; }
-    }
+      if (this.estimationOfResults.GP.UBA.Impulsivity) {
+        if (impulsivity >= this.estimationOfResults.feedbackCounter.I['10-19'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['10-19'][1]) {
+          this.gameSummary.impulsivity = this.estimationOfResults.Feedback.I['10-19'];
+        } else if (impulsivity >= this.estimationOfResults.feedbackCounter.I['20+'][0] && impulsivity <= this.estimationOfResults.feedbackCounter.I['20+'][1]) { this.gameSummary.impulsivity = this.estimationOfResults.Feedback.I['20+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA['Slow starter']) {
-      if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['10-19'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['10-19'][1]) {
-        this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['10-19'];
-      } else if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['20+'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['20+'][1]) { this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['20+']; }
-    }
+      if (this.estimationOfResults.GP.UBA['Slow starter']) {
+        if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['10-19'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['10-19'][1]) {
+          this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['10-19'];
+        } else if (slowStarter >= this.estimationOfResults.feedbackCounter.SS['20+'][0] && slowStarter <= this.estimationOfResults.feedbackCounter.SS['20+'][1]) { this.gameSummary.slowStarter = this.estimationOfResults.Feedback.SS['20+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA.Panic) {
-      if (panic >= this.estimationOfResults.feedbackCounter.Panic['5-10'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['5-10'][1]) {
-        this.gameSummary.panic = this.estimationOfResults.Feedback.Panic['5-10'];
-      } else if (panic >= this.estimationOfResults.feedbackCounter.Panic['11+'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['11+'][1]) { this.gameSummary.panic = this.estimationOfResults.Feedback.Panic['11+']; }
-    }
+      if (this.estimationOfResults.GP.UBA.Panic) {
+        if (panic >= this.estimationOfResults.feedbackCounter.Panic['5-10'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['5-10'][1]) {
+          this.gameSummary.panic = this.estimationOfResults.Feedback.Panic['5-10'];
+        } else if (panic >= this.estimationOfResults.feedbackCounter.Panic['11+'][0] && panic <= this.estimationOfResults.feedbackCounter.Panic['11+'][1]) { this.gameSummary.panic = this.estimationOfResults.Feedback.Panic['11+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA.Frustration) {
-      if (frustration >= this.estimationOfResults.feedbackCounter.F['5-9'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['5-9'][1]) {
-        this.gameSummary.frustration = this.estimationOfResults.Feedback.F['5-9'];
-      } else if (frustration >= this.estimationOfResults.feedbackCounter.F['10+'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['10+'][1]) { this.gameSummary.frustration = this.estimationOfResults.Feedback.F['10+']; }
-    }
+      if (this.estimationOfResults.GP.UBA.Frustration) {
+        if (frustration >= this.estimationOfResults.feedbackCounter.F['5-9'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['5-9'][1]) {
+          this.gameSummary.frustration = this.estimationOfResults.Feedback.F['5-9'];
+        } else if (frustration >= this.estimationOfResults.feedbackCounter.F['10+'][0] && frustration <= this.estimationOfResults.feedbackCounter.F['10+'][1]) { this.gameSummary.frustration = this.estimationOfResults.Feedback.F['10+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UBA['Lack of Concentration']) {
-      if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['5-10'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['5-10'][1]) {
-        this.gameSummary.concentration = this.estimationOfResults.Feedback.C['5-10'];
-      } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['10-19'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['10-19'][1]) {
-        this.gameSummary.concentration = this.estimationOfResults.Feedback.C['10-19'];
-      } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['20+'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['20+'][1]) { this.gameSummary.concentration = this.estimationOfResults.Feedback.C['20+']; }
-    }
+      if (this.estimationOfResults.GP.UBA['Lack of Concentration']) {
+        if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['5-10'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['5-10'][1]) {
+          this.gameSummary.concentration = this.estimationOfResults.Feedback.C['5-10'];
+        } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['10-19'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['10-19'][1]) {
+          this.gameSummary.concentration = this.estimationOfResults.Feedback.C['10-19'];
+        } else if (lackRicuz >= this.estimationOfResults.feedbackCounter.C['20+'][0] && lackRicuz <= this.estimationOfResults.feedbackCounter.C['20+'][1]) { this.gameSummary.concentration = this.estimationOfResults.Feedback.C['20+']; }
+      }
 
 
-    if (this.estimationOfResults.GP.UPDI.MM) {
-      if (this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[0] && this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[1]) {
-        this.gameSummary.muteMusic = this.estimationOfResults.Feedback.MM.true;
-      } else { this.gameSummary.muteMusic = ''; this.gameScore.muteMusic = 0; }
-    }
+      if (this.estimationOfResults.GP.UPDI.MM) {
+        if (this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[0] && this.gameScore.muteMusic === this.estimationOfResults.feedbackCounter.MM.true[1]) {
+          this.gameSummary.muteMusic = this.estimationOfResults.Feedback.MM.true;
+        } else { this.gameSummary.muteMusic = ''; this.gameScore.muteMusic = 0; }
+      }
 
-    const space = '                                          ';
-    if (admin) {
-      alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
-      tower - lowConfidence ${this.gameScore.tower[0]} badTimeMan ${this.gameScore.tower[1]} perfectionism ${this.gameScore.tower[2]} negThink ${this.gameScore.tower[3]} lackRicuz ${this.gameScore.tower[4]} impulsivity ${this.gameScore.tower[5]} slowStarter ${this.gameScore.tower[6]} panic ${this.gameScore.tower[7]} frustration ${this.gameScore.tower[8]} ${space}
-      mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
-      mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
-      parkinglotLast - lowConfidence ${this.gameScore.parkinglotLast[0]} badTimeMan ${this.gameScore.parkinglotLast[1]} perfectionism ${this.gameScore.parkinglotLast[2]} negThink ${this.gameScore.parkinglotLast[3]} lackRicuz ${this.gameScore.parkinglotLast[4]} impulsivity ${this.gameScore.parkinglotLast[5]} slowStarter ${this.gameScore.parkinglotLast[6]} panic ${this.gameScore.parkinglotLast[7]} frustration ${this.gameScore.parkinglotLast[8]} ${space}
-      endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
-      Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
-      selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
+      const space = '                                          ';
+
+      this.connection.saveData(this.gameSummary, 'Summary');
+
+      if (admin) {
+        alert(`parkinglot -  lowConfidence ${this.gameScore.parkinglot[0]} badTimeMan ${this.gameScore.parkinglot[1]} perfectionism ${this.gameScore.parkinglot[2]} negThink ${this.gameScore.parkinglot[3]} lackRicuz ${this.gameScore.parkinglot[4]} impulsivity ${this.gameScore.parkinglot[5]} slowStarter ${this.gameScore.parkinglot[6]} panic ${this.gameScore.parkinglot[7]} frustration ${this.gameScore.parkinglot[8]} ${space}
+        tower - lowConfidence ${this.gameScore.tower[0]} badTimeMan ${this.gameScore.tower[1]} perfectionism ${this.gameScore.tower[2]} negThink ${this.gameScore.tower[3]} lackRicuz ${this.gameScore.tower[4]} impulsivity ${this.gameScore.tower[5]} slowStarter ${this.gameScore.tower[6]} panic ${this.gameScore.tower[7]} frustration ${this.gameScore.tower[8]} ${space}
+        mousetrap - lowConfidence ${this.gameScore.mousetrap[0]} badTimeMan ${this.gameScore.mousetrap[1]} perfectionism ${this.gameScore.mousetrap[2]} negThink ${this.gameScore.mousetrap[3]} lackRicuz ${this.gameScore.mousetrap[4]} impulsivity ${this.gameScore.mousetrap[5]} slowStarter ${this.gameScore.mousetrap[6]} panic ${this.gameScore.mousetrap[7]} frustration ${this.gameScore.mousetrap[8]} ${space}
+        mazerace - lowConfidence ${this.gameScore.mazerace[0]} badTimeMan ${this.gameScore.mazerace[1]} perfectionism ${this.gameScore.mazerace[2]} negThink ${this.gameScore.mazerace[3]} lackRicuz ${this.gameScore.mazerace[4]} impulsivity ${this.gameScore.mazerace[5]} slowStarter ${this.gameScore.mazerace[6]} panic ${this.gameScore.mazerace[7]} frustration ${this.gameScore.mazerace[8]} ${space}
+        parkinglotLast - lowConfidence ${this.gameScore.parkinglotLast[0]} badTimeMan ${this.gameScore.parkinglotLast[1]} perfectionism ${this.gameScore.parkinglotLast[2]} negThink ${this.gameScore.parkinglotLast[3]} lackRicuz ${this.gameScore.parkinglotLast[4]} impulsivity ${this.gameScore.parkinglotLast[5]} slowStarter ${this.gameScore.parkinglotLast[6]} panic ${this.gameScore.parkinglotLast[7]} frustration ${this.gameScore.parkinglotLast[8]} ${space}
+        endTime - lowConfidence ${this.gameScore.endTime[0]} badTimeMan ${this.gameScore.endTime[1]} perfectionism ${this.gameScore.endTime[2]} negThink ${this.gameScore.endTime[3]} lackRicuz ${this.gameScore.endTime[4]} impulsivity ${this.gameScore.endTime[5]} slowStarter ${this.gameScore.endTime[6]} panic ${this.gameScore.endTime[7]} frustration ${this.gameScore.endTime[8]} ${space}
+        Sum of points - lowConfidence ${lowConfidence} badTimeMan ${badTimeMan} perfectionism ${perfectionism} negThink ${negThink} lackRicuz ${lackRicuz} impulsivity ${impulsivity} slowStarter ${slowStarter} panic ${panic} frustration ${frustration} ${space}
+        selfAssessment- ${this.gameScore.selfAssessment} gamesSuccessfullyCompleted ${this.gameScore.gamesSuccessfullyCompleted} muteMusic ${this.gameScore.muteMusic}`);
+      }
+    } else {
+      console.log("end calculation");
     }
   }
 }
