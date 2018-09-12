@@ -37,6 +37,16 @@ class LoginFormController {
           this.connection.setUser();
           this.connection.getData().then((userData) => {
             if (userData && userData.goaceitVisited) {
+              if (userData.gamePage != 'undefined' && userData.gamePage != null) {
+                localStorage.setItem('gamePage', location.pathname);
+              }
+              if (userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
+                localStorage.setItem('gamePageSecond', location.pathname);
+              }
+              if (userData.Summary != 'undefined' && userData.Summary != null) {
+                localStorage.setItem('Summary', location.pathname);
+              }
+              
               this.connection.saveData(this.gameSequence, 'gameSequence');
               this.connection.saveData(this.level, 'level');
               this.connection.saveData(this.UPDI, 'UPDI');
@@ -46,20 +56,30 @@ class LoginFormController {
               if (this.email.toLowerCase() !== 'qarea@gmail.com') {
                 this.connection.saveData(false, 'admin');
               }
+              if (userData.gamePage != 'undefined' && userData.gamePage != null) {
+                localStorage.setItem('gamePage', location.pathname);
+              }
+              if (userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
+                localStorage.setItem('gamePageSecond', location.pathname);
+              }
+              if (userData.Summary != 'undefined' && userData.Summary != null) {
+                localStorage.setItem('Summary', location.pathname);
+              }
+
               this.connection.saveData(this.gameSequence, 'gameSequence');
               this.connection.saveData(this.level, 'level');
               this.connection.saveData(this.UPDI, 'UPDI');
               this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
-              this.$state.transitionTo('games');
+              this.$state.transitionTo('videoPage');
             }
           }, (error) => {
-            this.$state.transitionTo('games');
+            this.$state.transitionTo('videoPage');
           });
           this.progressLinear.hideProgress();
         }, (error) => {
           this.progressLinear.hideProgress();
           this.notificationsService.showToast(error.message);
-          this.$state.transitionTo('games');
+          this.$state.transitionTo('videoPage');
         });
       });
 

@@ -260,7 +260,9 @@ class GamesController {
       // this.helperService.SuggestedTools();
       // this.helperService.FeedbackChange();
       // this.seconds = this.estimationOfResults.GP.GSD;
-
+      // if (localStorage.getItem('Summary') == null) {
+      //   this.gameSummary = this.user.Summary;
+      // }
       if (localStorage.getItem('gamePage') == null && this.user.admin) {
         alert('FIRST START');
       } else if (localStorage.getItem('gamePageSecond') == null && this.user.admin) {
@@ -383,11 +385,6 @@ class GamesController {
         case 6:
           this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame, this.user.admin);
           this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
-          // if (localStorage.getItem('gamePage') == null) {
-          //   localStorage.setItem('gamePage', true);
-          // } else {
-          //   localStorage.setItem('gamePageSecond', true);
-          // }
           this.stateChange(this.changeState);
           break;
         default:
@@ -548,11 +545,6 @@ class GamesController {
   }
 
   reloadPage() {
-    // if (localStorage.getItem('gamePage') == null) {
-    //   localStorage.setItem('gamePage', location.pathname);
-    // } else {
-    //   localStorage.setItem('gamePageSecond', location.pathname);
-    // }
     this.removeListeners();
     this.$state.reload();
   }
@@ -580,8 +572,10 @@ class GamesController {
   reloadPagePopup() {
     if (localStorage.getItem('gamePage') == null) {
       localStorage.setItem('gamePage', location.pathname);
+      this.connection.saveData('gamePage', 'gamePage');
     } else {
       localStorage.setItem('gamePageSecond', location.pathname);
+      this.connection.saveData('gamePageSecond', 'gamePageSecond');
     }
     this.removeGame();
     this.removeListeners();
@@ -603,8 +597,10 @@ class GamesController {
     if (state !== 'videoPage') {
       if (localStorage.getItem('gamePage') == null) {
         localStorage.setItem('gamePage', location.pathname);
+        this.connection.saveData('gamePage', 'gamePage');
       } else {
         localStorage.setItem('gamePageSecond', location.pathname);
+        this.connection.saveData('gamePageSecond', 'gamePageSecond');
       }
     }
 

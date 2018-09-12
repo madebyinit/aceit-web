@@ -37,8 +37,13 @@ class MainMenuController {
   }
 
   logout() {
-    this.connection.saveData(false, 'goaceitVisited');
-    this.connection.saveData(false, 'goaceitOn');
+    if (this.user.admin) {
+      this.connection.saveData(false, 'goaceitVisited');
+      this.connection.saveData(false, 'goaceitOn');
+      this.connection.saveData('undefined', 'gamePage');
+      this.connection.saveData('undefined', 'gamePageSecond');
+      this.connection.saveData('undefined', 'Summary');
+    }
     document.getElementsByTagName('body')[0].style.overflow = '';
     this.stateChangeService.logoutUser();
   }
