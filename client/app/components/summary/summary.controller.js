@@ -89,7 +89,7 @@ class SummaryController {
         this.sumUserQuestionnaire();
         // this.routineDisabled();
       } else {
-        this.$state.go('questionnaire');
+        // this.$state.go('questionnaire');
       }
       if (this.progressLinear) {
         this.progressLinear.hideProgress();
