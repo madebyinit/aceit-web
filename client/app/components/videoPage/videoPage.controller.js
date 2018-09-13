@@ -74,7 +74,7 @@ class VideoPageController {
     this.$document.unbind('scroll');
     this.firstStart = 0;
     this.eventName = '';
-    this.$document.removeEventListener(this.eventName, this.CheckChangeScreen);
+    // this.$document.removeEventListener(this.eventName, this.CheckChangeScreen);
   }
 
   $onDestroy() {
