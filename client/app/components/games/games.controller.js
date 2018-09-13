@@ -50,6 +50,9 @@ class GamesController {
   }
 
   $onInit() {
+    this.getUserData();
+
+    console.log(this.orderOfGames, "GAME ORDERS");
     this.gameScoreValue = {
       parkinglot: {},
       mazerace: {},
@@ -127,8 +130,6 @@ class GamesController {
     const gameStart = localStorage.getItem('gameStart');
 
     this.gameNumber = 1;
-
-    this.getUserData();
   }
 
   startTimer() {
