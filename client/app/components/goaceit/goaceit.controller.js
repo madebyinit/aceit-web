@@ -7,15 +7,11 @@ class GoaceitController {
   }
 
   $onInit() {
-    
+    this.connection.saveData(true, 'goaceitVisited');
     this.connection.getData().then((res) => {
       this.user = res;
       console.log(this.user.goaceitVisited);
       // this.user.goaceitVisited = false;
-      if (this.user.goaceitVisited === false) {
-        this.connection.saveData(true, 'goaceitVisited');
-      }
-      console.log(this.user.goaceitVisited);
     });
 
   }
