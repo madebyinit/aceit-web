@@ -231,11 +231,11 @@ class GamesController {
   setGamesLvl(bolean) {
     // this.orderOfGames.level[0]
     // this.orderOfGames.gameSequence
-
+    console.log(this.orderOfGames.level, "ORDER GAMES");
     if (bolean) {
-      document.getElementById('parkinglot').contentWindow.lvl = 2;
-      document.getElementById('tower').contentWindow.lvl = 4;
-      document.getElementById('parkinglotLast').contentWindow.lvl = 3;
+      document.getElementById('parkinglot').contentWindow.lvl = this.orderOfGames.level[0];
+      document.getElementById('tower').contentWindow.lvl = this.orderOfGames.level[1];
+      document.getElementById('parkinglotLast').contentWindow.lvl = this.orderOfGames.level[4];
     } else {
       document.getElementById('parkinglot').contentWindow.lvl = this.randomInteger(1, 10);
       document.getElementById('tower').contentWindow.lvl = this.randomInteger(1, 10);
@@ -386,6 +386,9 @@ class GamesController {
           this.gamesService.TotalTimeFOrLastGame(this.secondsLeftForLastGame, this.user.admin);
           this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
           this.stateChange(this.changeState);
+          if (this.changeState == 'goaceit') {
+            this.connection.saveData(true, 'goaceitOn');
+          }
           break;
         default:
           break;
@@ -493,6 +496,9 @@ class GamesController {
         this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
         this.gameNumber = 5;
         this.stateChange(this.changeState);
+        if (this.changeState == 'goaceit') {
+          this.connection.saveData(true, 'goaceitOn');
+        }
       } else {
         this.changeGame(this.gameNumber - 1, this.orderOfGames.gameSequence[this.gameNumber - 2]);
         if (localStorage.getItem('gamePageSecond') !== null) {
