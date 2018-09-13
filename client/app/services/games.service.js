@@ -333,6 +333,7 @@ class GamesService {
       frustration];
       console.log(localStorage.getItem('Summary'));
     if (localStorage.getItem('Summary') == null) {
+      localStorage.setItem('Summary', location.pathname);
       // this.connection.saveData(this.gameScore.summary, 'userSum');
       this.gameSummary.selfAssessment = '';
       this.gameSummary.gamesSuccessfullyCompleted = '';

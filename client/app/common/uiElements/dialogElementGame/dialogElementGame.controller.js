@@ -1,7 +1,8 @@
 class dialogElementGameController {
-  constructor($timeout, $scope) {
+  constructor($timeout, $scope, connection) {
     this.$timeout = $timeout;
     this.$scope = $scope;
+    this.connection = connection;
     // this.buttonCheck = false;
   }
 
@@ -25,6 +26,9 @@ class dialogElementGameController {
   }
 
   returnValueFn2(val) {
+    if (val === 'goaceit') {
+      this.connection.saveData(true, 'goaceitOn');
+    }
     this.returnValue2({ val });
   }
 
@@ -33,5 +37,5 @@ class dialogElementGameController {
   }
 }
 
-dialogElementGameController.$inject = ['$timeout', '$scope'];
+dialogElementGameController.$inject = ['$timeout', '$scope', 'connection'];
 export default dialogElementGameController;

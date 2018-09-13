@@ -2,13 +2,13 @@ import firebase from 'firebase';
 import { debug } from 'util';
 
 class LoginFormController {
-  constructor($state, notificationsService, progressLinear, stateChangeService, connection) {
+  constructor($state, notificationsService, progressLinear, stateChangeService, connection, orderOfGames) {
     this.$state = $state;
     this.stateChangeService = stateChangeService;
     this.notificationsService = notificationsService;
     this.progressLinear = progressLinear;
     this.connection = connection;
-
+    this.orderOfGames = orderOfGames;
   }
 
   login() {
@@ -51,6 +51,11 @@ class LoginFormController {
               this.connection.saveData(this.level, 'level');
               this.connection.saveData(this.UPDI, 'UPDI');
               this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
+              this.orderOfGames = {
+                gameSequence: this.gameSequence,
+                level: this.level,
+                UPDI: this.UPDI,
+              };
               this.$state.transitionTo('goaceit');
             } else {
               if (this.email.toLowerCase() !== 'qarea@gmail.com') {
@@ -70,6 +75,11 @@ class LoginFormController {
               this.connection.saveData(this.level, 'level');
               this.connection.saveData(this.UPDI, 'UPDI');
               this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
+              this.orderOfGames = {
+                gameSequence: this.gameSequence,
+                level: this.level,
+                UPDI: this.UPDI,
+              };
               this.$state.transitionTo('videoPage');
             }
           }, (error) => {
@@ -91,5 +101,5 @@ class LoginFormController {
   }
 }
 
-LoginFormController.$inject = ['$state', 'notificationsService', 'progressLinear', 'stateChangeService', 'connection'];
+LoginFormController.$inject = ['$state', 'notificationsService', 'progressLinear', 'stateChangeService', 'connection', 'orderOfGames'];
 export default LoginFormController;
