@@ -246,7 +246,7 @@ class GamesController {
   getUserData() {
     this.connection.getData().then((res) => {
       this.user = res;
-
+      console.log(this.user);
       // this.helperService.gameSequence();
       // this.helperService.feedbackCounter();
       // this.helperService.Results();
