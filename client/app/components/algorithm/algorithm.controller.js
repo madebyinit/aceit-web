@@ -153,8 +153,6 @@ class AlgorithmController {
     this.connection.saveData(this.orderOfGames.level, 'level');
     this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');
     this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
-    console.log(this.estimationOfResults);
-    console.log(this.orderOfGames);
   }
 
   _userInit() {

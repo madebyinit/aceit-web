@@ -6,7 +6,6 @@ class ParkingLotService {
   }
 
   end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin) {
-    console.log(admin);
     const result = {
       lowConfidence: 0,
       badTimeMan: 0,
@@ -244,7 +243,6 @@ class ParkingLotService {
     this.gameScore.parkinglot = [result.lowConfidence, result.badTimeMan, result.perfectionism, result.negThink, result.lackRicuz, result.impulsivity, result.slowStarter, result.panic, result.frustration];
     const SumFromGame = (`parkinglot Summ =  lowConfidence =${this.gameScore.parkinglot[0]} badTimeMan =${this.gameScore.parkinglot[1]} perfectionism = ${this.gameScore.parkinglot[2]} negThink = ${this.gameScore.parkinglot[3]} lackRicuz = ${this.gameScore.parkinglot[4]} impulsivity = ${this.gameScore.parkinglot[5]} slowStarter = ${this.gameScore.parkinglot[6]}  panic =  ${this.gameScore.parkinglot[7]} frustration = ${this.gameScore.parkinglot[8]} |`);
     // const SumFromGame = (`parkingLot Summ =  Bad Time Man =${this.gameScore.parkinglot[0]} Frustration =${this.gameScore.parkinglot[1]} Impulsivity = ${this.gameScore.parkinglot[2]} Low Confidence = ${this.gameScore.parkinglot[3]} Lack Ricuz = ${this.gameScore.parkinglot[4]} Neg Think = ${this.gameScore.parkinglot[5]} Perfectionism = ${this.gameScore.parkinglot[6]}  Panic =  ${this.gameScore.parkinglot[7]} Slow Starter = ${this.gameScore.parkinglot[8]} |`);
-    console.log(admin);
     if (admin){ alert(`${fromGame} ${space} ${firstMove} ${space} ${instruct} ${space} ${moves} ${space} ${durationgame} ${space} ${SumFromGame}`); }
   }
 

@@ -52,7 +52,6 @@ class GamesController {
   $onInit() {
     this.getUserData();
 
-    console.log(this.orderOfGames, "GAME ORDERS");
     this.gameScoreValue = {
       parkinglot: {},
       mazerace: {},
@@ -95,7 +94,6 @@ class GamesController {
           break;
         default:
           console.log('DEFAULT');
-          // document.getElementById('mazerace').contentWindow.document.body.focus();
           break;
       }
     };
@@ -104,7 +102,6 @@ class GamesController {
       console.log('FIRST START');
       // alert('FIRST START');
       this.setGamesLvl(true);
-      console.log(document.getElementById('parkinglot').contentWindow.lvl);
       this.firstStart = false;
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
@@ -193,19 +190,16 @@ class GamesController {
               this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 2:
-              console.log(this.secondsleft, duration);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInGame('Game 2', this.user.admin);
               this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 3:
-              console.log(this.secondsleft, duration);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.EndTimeInGame('Game 3', this.user.admin);
               this.gamesService.gameStatistic(0, 0, 0, 0, 0, 0, 0, 0, 0, this.user.admin);
               break;
             case 4:
-              console.log(this.secondsleft);
               timeLastGame = (this.estimationOfResults.GP.GSD - this.gameSecSum);
               this.gamesService.getGameResult(this.orderOfGames.gameSequence[this.gameNumber - 1], 0, 0, noOfMoves, instructionsClickCount, win, firstMoveTime);
               this.gamesService.TotalTimeFOrFourthGame(timeLastGame, this.user.admin);
@@ -232,7 +226,6 @@ class GamesController {
   setGamesLvl(bolean) {
     // this.orderOfGames.level[0]
     // this.orderOfGames.gameSequence
-    console.log(this.orderOfGames.level, "ORDER GAMES");
     if (bolean) {
       document.getElementById('parkinglot').contentWindow.lvl = this.orderOfGames.level[0];
       document.getElementById('tower').contentWindow.lvl = this.orderOfGames.level[1];
@@ -310,7 +303,6 @@ class GamesController {
   }
 
   gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTime) {
-    console.log(this.user.admin);
     if (!win && this.orderOfGames.gameSequence[this.gameNumber - 1] === 'tower') { win = true; }
 
     if (win) {

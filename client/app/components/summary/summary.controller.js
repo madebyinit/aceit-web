@@ -27,7 +27,6 @@ class SummaryController {
   }
 
   $onInit() {
-    console.log(this.gameSummaryValue);
     if (this.gameSummaryValue.selfAssessment === String) { this.gameSummaryValue.selfAssessment = ''; }
 
     if (this.gameSummaryValue.gamesSuccessfullyCompleted === String) { this.gameSummaryValue.gamesSuccessfullyCompleted = ''; }
@@ -77,7 +76,6 @@ class SummaryController {
     this.gamesService.gameStatistic(this.testSummary.lowConfidence, this.testSummary.badTimeManagement, this.testSummary.perfectionism,
                                     this.testSummary.negativeThinking, this.testSummary.concentration, this.testSummary.impulsivity,
                                     this.testSummary.slowStarter, this.testSummary.panic, this.testSummary.frustration);
-                                    console.log("this.gamesService.gameStatistic Send Params");
   }
 
   _getUserData() {
@@ -89,7 +87,7 @@ class SummaryController {
         this.sumUserQuestionnaire();
         // this.routineDisabled();
       } else {
-        // this.$state.go('questionnaire');
+        this.$state.go('questionnaire');
       }
       if (this.progressLinear) {
         this.progressLinear.hideProgress();

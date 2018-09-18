@@ -571,7 +571,6 @@ class HelperService {
   }
 
   feedbackSentences() {
-    console.log('FEEDBACK');
     this.estimationOfResults.Feedback = {
       F: {
         '5-9': 'You may get frustrated and lose your cool when you find a question difficult. Stop, take a deep breath and do your routine. Focus on the physical tools in the app.',
@@ -627,7 +626,6 @@ class HelperService {
     };
   }
   feedbackCounter() {
-    console.log('FEEDBACK Counter');
     this.estimationOfResults.feedbackCounter = {
       F: {
         '5-9': [5, 9],
