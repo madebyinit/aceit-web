@@ -34,7 +34,6 @@ class GamesService {
   }
 
   getGameResult(gameName, durationG, duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin) {
-    console.log(gameName);
     switch (gameName) {
       case 'parkinglot':
         this.parkingLotService.end(duration, noOfMoves, instructionsClickCount, win, firstMoveTime, admin);
@@ -72,8 +71,6 @@ class GamesService {
   }
 
   TotalTimeFOrLastGame(time, admin) {
-    console.log('TIME', time, 'TIME');
-
     if (this.gameScore.endTime[0] === undefined) {
       this.gameScore.endTime[0] = 0;
       this.gameScore.endTime[1] = 0;
@@ -226,15 +223,15 @@ class GamesService {
 
 
   gameStatistic(lowConfidence = 0, badTimeMan = 0, perfectionism = 0, negThink = 0, lackRicuz = 0, impulsivity = 0, slowStarter = 0, panic = 0, frustration = 0, admin) {
-    console.log(`let lowConfidence =  ${lowConfidence
-    }let badTimeMan = ${badTimeMan
-    }let perfectionism = ${perfectionism
-    }let negThink = ${negThink
-    }let lackRicuz = ${lackRicuz
-    }let impulsivity = ${impulsivity
-    }let slowStarter = ${slowStarter
-    }let panic = ${panic
-    }let frustration = ${frustration}`);
+    // console.log(`let lowConfidence =  ${lowConfidence
+    // }let badTimeMan = ${badTimeMan
+    // }let perfectionism = ${perfectionism
+    // }let negThink = ${negThink
+    // }let lackRicuz = ${lackRicuz
+    // }let impulsivity = ${impulsivity
+    // }let slowStarter = ${slowStarter
+    // }let panic = ${panic
+    // }let frustration = ${frustration}`);
 
     if (lowConfidence > 0 || badTimeMan > 0 || perfectionism > 0 || negThink > 0 ||
       lackRicuz > 0 || impulsivity > 0 || slowStarter > 0 || panic > 0 || frustration > 0) {
@@ -331,7 +328,6 @@ class GamesService {
       slowStarter,
       panic,
       frustration];
-      console.log(localStorage.getItem('Summary'));
     if (localStorage.getItem('Summary') == null) {
       localStorage.setItem('Summary', location.pathname);
       // this.connection.saveData(this.gameScore.summary, 'userSum');
@@ -363,14 +359,10 @@ class GamesService {
       if (this.estimationOfResults.GP.UBA['Low Confidence']) {
         if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['5-10'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['5-10'][1]) {
           this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['5-10'];
-          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@1', this.estimationOfResults.feedbackCounter.LC['5-10'][0], this.estimationOfResults.feedbackCounter.LC['5-10'][1]);
         } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['11-19'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['11-19'][1]) {
           this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['11-19'];
-          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@2', this.estimationOfResults.feedbackCounter.LC['11-19'][0], this.estimationOfResults.feedbackCounter.LC['11-19'][1]);
         } else if (lowConfidence >= this.estimationOfResults.feedbackCounter.LC['20+'][0] && lowConfidence <= this.estimationOfResults.feedbackCounter.LC['20+'][1]) {
-          console.log(lowConfidence, '@@@@@@@@@@@@@@@@@@@@@@3', this.estimationOfResults.feedbackCounter.LC['20+'][0], this.estimationOfResults.feedbackCounter.LC['20+'][1]);
           this.gameSummary.lowConfidence = this.estimationOfResults.Feedback.LC['20+'];
-          console.log(this.estimationOfResults.Feedback.LC['20+'], '!!!!!!!TEST!!!!!!!', this.gameSummary.lowConfidence);
         } // ' You may start questioning yourself and losing confidence if you don’t succeed. It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.'; }
       }
 

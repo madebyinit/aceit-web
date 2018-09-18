@@ -2,17 +2,17 @@ import firebase from 'firebase';
 import { debug } from 'util';
 
 class LoginFormController {
-  constructor($state, notificationsService, progressLinear, stateChangeService, connection, orderOfGames) {
+  constructor($state, notificationsService, progressLinear, stateChangeService, connection, orderOfGames, helperService) {
     this.$state = $state;
     this.stateChangeService = stateChangeService;
     this.notificationsService = notificationsService;
     this.progressLinear = progressLinear;
     this.connection = connection;
     this.orderOfGames = orderOfGames;
+    this.helperService = helperService;
   }
 
   login() {
-    console.log(this.orderOfGames);
     if (this.email && this.password) {
       this.progressLinear.showProgress();
       this.estimationOfResults = {};
@@ -20,13 +20,23 @@ class LoginFormController {
       this.level = [];
       this.UPDI = {};
 
-      firebase.auth().signInWithEmailAndPassword('qarea@gmail.com', '123456').then((res) => {
+      firebase.auth().signInWithEmailAndPassword('ariel@goaceit.com', 'Aceit1515').then((res) => {
         firebase.database().ref(res.uid).once('value').then((result) => {
           const resu = result.val();
           this.estimationOfResults = resu.estimationOfResults;
           this.gameSequence = resu.gameSequence;
           this.level = resu.level;
           this.UPDI = resu.UPDI;
+          // this.helperService.gameSequence();
+          // this.helperService.feedbackCounter();
+          // this.helperService.Results();
+          // this.helperService.feedbackSentences();
+          // this.helperService.SuggestedTools();
+          // this.helperService.FeedbackChange();
+          // this.connection.saveData(this.orderOfGames.gameSequence, 'gameSequence');
+          // this.connection.saveData(this.orderOfGames.level, 'level');
+          // this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');
+          // this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
         });
         this.progressLinear.hideProgress();
       }, (error) => {
@@ -69,7 +79,7 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-              console.log(this.orderOfGames);
+              // console.log(this.orderOfGames);
               this.$state.transitionTo('videoPage');
 
               if (this.email.toLowerCase() !== 'qarea@gmail.com') {
@@ -105,5 +115,5 @@ class LoginFormController {
   }
 }
 
-LoginFormController.$inject = ['$state', 'notificationsService', 'progressLinear', 'stateChangeService', 'connection', 'orderOfGames'];
+LoginFormController.$inject = ['$state', 'notificationsService', 'progressLinear', 'stateChangeService', 'connection', 'orderOfGames', 'helperService'];
 export default LoginFormController;
