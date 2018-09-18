@@ -82,7 +82,7 @@ class LoginFormController {
               // console.log(this.orderOfGames);
               this.$state.transitionTo('videoPage');
 
-              if (this.email.toLowerCase() !== 'qarea@gmail.com') {
+              if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
               }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
