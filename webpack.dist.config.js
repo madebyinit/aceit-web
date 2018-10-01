@@ -1,12 +1,12 @@
-var webpack = require('webpack');
-var path    = require('path');
-var config  = require('./webpack.config');
+const webpack = require('webpack');
+const path = require('path');
+const config = require('./webpack.config');
 
 config.output = {
   filename: '[name].bundle.js',
   // publicPath: 'http://app.aceitapp.net/',
-  publicPath: 'https://aceit.qarea.org/',
-  path: path.resolve(__dirname, 'dist')
+  publicPath: 'https://www.aceit-app.com/',
+  path: path.resolve(__dirname, 'dist'),
 };
 
 config.plugins = config.plugins.concat([
@@ -20,8 +20,8 @@ config.plugins = config.plugins.concat([
       // and relies on global variables. Most of angular modules relies on
       // angular global variable, so we should keep it unchanged
       except: ['$super', '$', 'exports', 'require', 'angular']
-    }
-  })
+    },
+  }),
 ]);
 
 module.exports = config;
