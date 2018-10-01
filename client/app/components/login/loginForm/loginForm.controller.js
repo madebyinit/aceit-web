@@ -20,7 +20,7 @@ class LoginFormController {
       this.level = [];
       this.UPDI = {};
 
-      firebase.auth().signInWithEmailAndPassword('ariel@goaceit.com', 'Aceit1515').then((res) => {
+      firebase.auth().signInWithEmailAndPassword('adminlogin', 'adminPass').then((res) => {
         firebase.database().ref(res.uid).once('value').then((result) => {
           const resu = result.val();
           this.estimationOfResults = resu.estimationOfResults;
@@ -82,7 +82,7 @@ class LoginFormController {
               // console.log(this.orderOfGames);
               this.$state.transitionTo('videoPage');
 
-              if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
+              if (this.email.toLowerCase() !== 'adminLogin') {
                 this.connection.saveData(false, 'admin');
               }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
