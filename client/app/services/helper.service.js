@@ -568,6 +568,7 @@ class HelperService {
         Frustration: true,
       },
     };
+    console.log(this.estimationOfResults);
   }
 
   feedbackSentences() {

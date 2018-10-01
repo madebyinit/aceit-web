@@ -47,6 +47,7 @@ class GamesController {
     this.secondsLeftForLastGame = 0;
     this.winCheck = [false, false, false, false];
     this.changeState = 'home';
+    this.mouseButtonChecker = 0;
   }
 
   $onInit() {
@@ -310,10 +311,10 @@ class GamesController {
     }
 
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap') { this.mousewin = win;
-      this.showMouseRetry = win;
+      if (this.mouseButtonChecker < 2) { this.showMouseRetry = win; }
     }
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mazerace') { this.mousewin = win;
-      this.showMazeRetry = win; 
+      this.showMazeRetry = win;
     }
     if (this.orderOfGames.gameSequence[this.gameNumber - 1] === 'mousetrap' && this.mousewin === false) {
       this.duration += duration;
@@ -657,6 +658,8 @@ class GamesController {
   }
 
   restartMosetrap() {
+    this.mouseButtonChecker ++;
+
     if (this.showGame[5] === false) {
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mousetrap') {
@@ -682,6 +685,8 @@ class GamesController {
       this.$document[0].getElementById('mousetrap').contentWindow.endGame();
       this.$document[0].getElementById('mousetrap').contentWindow.startGame();
     }
+
+    if (this.mouseButtonChecker === 2) { this.showMouseRetry = true; }
   }
 
   restartMazerace() {
