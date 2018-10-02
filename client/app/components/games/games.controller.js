@@ -660,6 +660,8 @@ class GamesController {
   restartMosetrap() {
     this.mouseButtonChecker ++;
 
+    if (this.mouseButtonChecker === 2) { this.showMouseRetry = true; }
+
     if (this.showGame[5] === false) {
       for (let index = 0; index < this.orderOfGames.gameSequence.length; index++) {
         if (this.orderOfGames.gameSequence[this.index] === 'mousetrap') {
@@ -685,8 +687,6 @@ class GamesController {
       this.$document[0].getElementById('mousetrap').contentWindow.endGame();
       this.$document[0].getElementById('mousetrap').contentWindow.startGame();
     }
-
-    if (this.mouseButtonChecker === 2) { this.showMouseRetry = true; }
   }
 
   restartMazerace() {
