@@ -12,43 +12,34 @@ class VideoPageController {
     this.$scope = $scope;
     this.CheckChangeScreen = this.CheckChangeScreen.bind(this);
     this.$interval = $interval;
+    this.showDialogEnd = true;
   }
 
   $onInit() {
+    const myVideo = this.$document[0].getElementById('video0');
+    myVideo.pause();
+
+    if (localStorage.getItem('videoPageFirst')) {    
+      this.reloadPagePopup();
+    }
+
+    this.connection.saveData('videoPageFirst', 'videoPageFirst');
+  }
+
+  reloadPagePopup() {
+    this.showDialogEnd = false;
     this.seconds = 45;
     const myVideo = this.$document[0].getElementById('video0');
     myVideo.play();
-    switch (true) {
-      case !!myVideo.requestFullscreen:
-        this.eventName = 'fullscreenchange';
-        myVideo.requestFullscreen();
-        break;
 
-      case !!myVideo.mozRequestFullScreen:
-        this.eventName = 'mozfullscreenchange';
-        myVideo.mozRequestFullScreen();
-        break;
-
-      case !!myVideo.webkitRequestFullscreen:
-        this.eventName = 'webkitfullscreenchange';
-        myVideo.webkitRequestFullscreen();
-        break;
-      default:
-        this.eventName = 'webkitfullscreenchange';
-        myVideo.webkitRequestFullscreen();
-        break;
-    }
-
-    function startVideoTimer() {
+    this.countdownTimer = this.$interval(() => {
       if (this.seconds === 0) {
         this.$interval.cancel(this.countdownTimer);
         this.$state.go('games');
       } else {
         this.seconds--;
       }
-    }
-
-    this.countdownTimer = this.$interval(startVideoTimer.bind(this), 1000);
+    }, 1000);
   }
 
   CheckChangeScreen() {

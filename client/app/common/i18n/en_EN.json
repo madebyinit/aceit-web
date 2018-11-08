@@ -83,7 +83,7 @@
     "my_imagery_word":"My imagery word is:",
     "your_imagery":"Choose your imagery",
     "my_imagery":"My Imagery",
-    "relaxing_imagery":"Choose an imagery word that you can visualize to help you feel safe and relaxed.",
+    "relaxing_imagery":"Choose an imagery word that you can visualize to help you feel safe and relaxed and practice this technique at least once a day during the weeks before the test.",
     "how_do_you":"How do you do this during the test?",
     "puppy":"Close your eyes and imagine the cutest puppy who is waiting for you to play. Feel the softness of his fur and the sweetness of his breath as he slobbers on you.",
     "chocolate_chip":"Close your eyes and imagine that you come home to the smell of chocolate chip cookies baking. You take them out of the oven and feel their warmth. You take a bite and the chocolate melts in your mouth.",
@@ -93,6 +93,7 @@
     "repeat":"Repeat",
     "times":"times",
     "my_summary":"My Summary",
+    "PRACTICE_THIS_TECHNIQUE":"PRACTICE THIS TECHNIQUE AT LEAST ONCE A DAY DURING THE WEEKS BEFORE THE TEST.",
     "another_effective":"Another effective exercise to release stress is to bring your shoulders up to your ears and then let them fall.",
     "then_move_your":"Then move your head in a circle to the left 3 times and then to the right 3 times."
   },
@@ -100,6 +101,7 @@
     "breathe_deeply":"The key to deep breathing is to breathe deeply from the belly, getting as much fresh air as possible in your lungs. The more oxygen you get, the less tense, short of breath, and anxious you feel.",
     "dramatically":"Research shows that deep breathing can reduce a high pulse dramatically!",
     "deep_breathing":"The most effective tool is deep breathing.",
+    "PRACTICE_THIS_BREATHING":"PRACTICE THIS BREATHING TECHNIQUE AT LEAST ONCE A DAY FOR 2 MINUTES DURING THE WEEKS BEFORE THE TEST.",
     "here_is_how":"Here is how it is done:",
     "inhale":"Inhale through your nose to the count of 3 as the shape expands",
     "exhale":"Exhale though your mouth to the count of 6 as it contracts",
@@ -120,6 +122,8 @@
     "choose_word":"choose your word",
     "during":"How do you do this during the test?",
     "negative_thoughts":"Sometimes you have problems with",
+    "focuse_game":"CAN YOU STAY FOCUSED? PLAY THIS CONCENTRATION GAME.",
+    "after_focuse_game":"Did you have a hard time with the background noise? These noises may distract you on the day of the test. The more you play the game, the easier it is to block out the noise and the less it will bother you. Use your power word to get back in focus.",
     "happened":"Has it ever happened to you when you are taking a test that you get to a difficult question, \n you don’t know the answer and you start to feel a beginning of panic starting in your stomach \n and rising through your body? \n And then when you go to the next question you still carry that panic with you? \n You can’t stop thinking about the previous question you didn’t know."
   },
   "positive":{
@@ -137,7 +141,7 @@
       "behavior":"Behavior",
       "negative":"What happens if I stay with the negative thought...",
       "little_voice":"My \nlittle \nvoice",
-      "believe":"If you believe you will do well on the test \n you will have a better chance of succeeding!",
+      "believe":"WE RECOMMEND YOU DO THIS EXERCISE AT LEAST 3 TIMES PER WEEK. THE MORE YOU ARE AWARE OF YOUR NEGATIVE THOUGHTS, THE MORE YOU CAN CONTROL THEM.",
       "break":"So what can you do to break out of this negative loop?",
       "thoughts":"The first thing is to become aware of your negative thoughts and this is not an easy thing to do.",
       "apply":"So let’s apply this to you. If you think to yourself that you don’t test well or you’ll never be able to learn all the material, you create the emotions that go with that – the fear, the pressure, the panic - and then obviously you won’t perform at your peak because your mindset is so negative.",
@@ -179,11 +183,11 @@
     "physical":"Physical Tools",
     "positive":"Positive Thinking",
     "main":"Main",
-    "goaceit": "Go Ace It",
+    "goaceit": "MONEY TIME",
     "logout":"Logout"
   },
   "routine":{
-    "go_ace_it": "Go Ace It",
+    "go_ace_it": "MONEY TIME",
     "close_eyes":"Close your eyes",
     "deep_breath":"Take a deep breath",
     "choose":"Choose from",
@@ -191,9 +195,10 @@
     "next_question":"Move to next question",
     "power_word":"Enter power word",
     "lion":{
-      "works":"But this only works if you PRACTICE it.",
+      "works":"But this only works if you PRACTICE it. Be sure to use your routine on your practice tests.",
       "friend":"Make the lion your friend",
       "perform":"Stress is good and will help you perform at your best!",
+      "perform1":"GET READY FOR MONEY TIME",
       "stressed":"So now you’ve finished the journey and you’re ready to manage the stress and reach your peak performance. Come back and practice the tools until you master them. Every time you begin to get stressed, either while studying or taking the test, STOP and do your routine.",
       "important":"The reason routines are so important is they prevent you from panicking because you have a plan - you are doing something that helps you manage the stress and focus on the present."
     },

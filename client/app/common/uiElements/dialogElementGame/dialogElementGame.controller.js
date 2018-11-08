@@ -3,6 +3,7 @@ class dialogElementGameController {
     this.$timeout = $timeout;
     this.$scope = $scope;
     this.connection = connection;
+    this.headerCheck = true;
     // this.buttonCheck = false;
   }
 
@@ -14,6 +15,10 @@ class dialogElementGameController {
         document.getElementsByTagName('body')[0].style.overflow = '';
       }
     });
+
+    if (this.headerTitle === 'Welcome to Aceit' ) {
+      this.headerCheck = false;
+    }
   }
 
   $onDestroy() {

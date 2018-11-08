@@ -44,6 +44,16 @@
           <img ng-src="{{::$root.imageCdn}}edit.png">
         </div>
       </md-button>
+      <div class="concentration-sub-title">
+        <span>{{::'concentration.focuse_game' | translate}}</span>
+      </div>
+      <br/>
+      <iframe id="mousetrap" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="640" height="480" ></iframe>  
+      <br/>
+      <div class="concentration-sub-title">
+        <span>{{::'concentration.after_focuse_game' | translate}}</span>
+      </div>
+      <br/>
       <md-button class="button-style summary-button-style" ng-click="$ctrl.goToSummary()" ng-disabled="!$ctrl.concentrationComplete">
         <div>{{::'neck_and_shoulders.my_summary' | translate}}</div>
         <img ng-src="{{::$root.imageCdn}}icn-back-arrow.png" />
