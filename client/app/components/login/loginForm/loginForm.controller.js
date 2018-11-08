@@ -57,7 +57,9 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-
+              if (userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
+                localStorage.setItem('videoPageFirst', location.pathname);
+              }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
                 localStorage.setItem('gamePage', location.pathname);
               }
@@ -84,6 +86,9 @@ class LoginFormController {
 
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
+              }
+              if (userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
+                localStorage.setItem('videoPageFirst', location.pathname);
               }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
                 localStorage.setItem('gamePage', location.pathname);

@@ -265,7 +265,9 @@ class GamesController {
       }else if (this.user.admin) {
         alert('THIRD START');
       }
-
+      if (this.user.videoPageFirst != 'undefined' && this.user.videoPageFirst != null) {
+        localStorage.setItem('videoPageFirst', location.pathname);
+      }
       this.estimationOfResults.parkinglot = this.user.estimationOfResults.parkinglot;
       this.estimationOfResults.mazerace = this.user.estimationOfResults.mazerace;
       this.estimationOfResults.mousetrap = this.user.estimationOfResults.mousetrap;
