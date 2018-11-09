@@ -10,7 +10,7 @@ class VideoPageController {
     this.firstStart = 0;
     this.eventName = '';
     this.$scope = $scope;
-    this.CheckChangeScreen = this.CheckChangeScreen.bind(this);
+    this.checkChangeScreen = this.checkChangeScreen.bind(this);
     this.$interval = $interval;
     this.showDialogEnd = true;
   }
@@ -42,7 +42,7 @@ class VideoPageController {
     }, 1000);
   }
 
-  CheckChangeScreen() {
+  checkChangeScreen() {
     if (this.firstStart > 0) {
       this.firstStart = -1;
       this.$state.go('games');
@@ -65,7 +65,7 @@ class VideoPageController {
     this.$document.unbind('scroll');
     this.firstStart = 0;
     this.eventName = '';
-    // this.$document.removeEventListener(this.eventName, this.CheckChangeScreen);
+    // this.$document.removeEventListener(this.eventName, this.checkChangeScreen);
   }
 
   $onDestroy() {
