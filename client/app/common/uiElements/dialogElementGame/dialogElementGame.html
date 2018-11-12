@@ -8,8 +8,10 @@
             <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle | translate)}}</strong></div>
             <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle2 | translate)}}</strong></div>
             <br ng-if="!$ctrl.buttonCheck"> </br>
-            <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
-            <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle4 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && $ctrl.headerCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && $ctrl.headerCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle4 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && !$ctrl.headerCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle3 | translate)}}</strong></div>
+            <div ng-if="!$ctrl.buttonCheck && !$ctrl.headerCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle4 | translate)}}</strong></div>
             <div ng-if="$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle5 | translate)}}</strong></div>
             <div ng-if="$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle6 | translate)}}</strong></div>
             <input ng-if="$ctrl.isDisabledInput" type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
