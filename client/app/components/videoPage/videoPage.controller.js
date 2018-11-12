@@ -19,7 +19,7 @@ class VideoPageController {
     const myVideo = this.$document[0].getElementById('video0');
     myVideo.pause();
 
-    if (localStorage.getItem('videoPageFirst')) {    
+    if (localStorage.getItem('videoPageFirst')) {
       this.reloadPagePopup();
     }
 
