@@ -118,6 +118,19 @@
         padding-left: 5px;
       }
     }
+    .concentration-instruction1{
+      font-size: 18px;
+      color: #0e7086;
+      width: 100%;
+      margin: auto;
+      text-align:center;
+      &>div{
+        display: inline-block;
+      }
+      p{
+        margin: 5px;
+      }
+    }
 
   }
   .button-section{
