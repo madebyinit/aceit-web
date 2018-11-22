@@ -81,8 +81,11 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-              // console.log(this.orderOfGames);
-              this.$state.transitionTo('videoPage');
+              if (userData.videoPageFirst) {
+                this.$state.transitionTo(userData.lastPageOpen);
+              } else {
+                this.$state.transitionTo('videoPage');
+              }
 
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
@@ -99,7 +102,6 @@ class LoginFormController {
               if (userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
                 localStorage.setItem('gamePageSecond', location.pathname);
               }
-
             }
           }, (error) => {
             this.$state.transitionTo('videoPage');
@@ -111,8 +113,6 @@ class LoginFormController {
           this.$state.transitionTo('videoPage');
         });
       });
-
-
     } else {
       this.validEmail = _.isEmpty(this.email) && 'Missing E-mail';
       this.validPassword = _.isEmpty(this.password) && 'Missing Password';
