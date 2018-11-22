@@ -30,8 +30,6 @@ class HomeController {
     this.connection.getData().then((res) => {
       this.$timeout(() => {
         this.user = res;
-        // this.user.uid
-        console.log(this.user.uid);
         this._userInit();
       }, 0);
     });

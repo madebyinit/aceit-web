@@ -7,7 +7,7 @@
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     <div class="summary-item"><img src="mazerace/summary-bg.png" alt=""> 
     <div class="summary-item-text">
-      <strong>{{::$ctrl.user.name}}, our findings give an indication of the way you manage stress under pressure. In order to reach your peak performance, focus on following:</strong></br>  
+      <strong>{{::$ctrl.user.name}}, our findings give an indication of the way you manage stress under pressure. In order to reach your peak performance, focus on the following:</strong></br>  
       <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition">
           <div class="condition" ng-if="$ctrl.gameSummaryValue[values] != '' "> {{$ctrl.gameSummaryValue[values]}}</div>
       </div>
