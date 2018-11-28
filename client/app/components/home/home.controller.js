@@ -15,11 +15,6 @@ class HomeController {
     angular.element(document).ready(() => {
       this._scroll();
     });
-
-    if (localStorage.getItem('gamePage') !== null && localStorage.getItem('NameSet') == null) {
-      this.showWelcomeDialog = true;
-      localStorage.setItem('NameSet', 'true');
-    }
   }
 
   $onDestroy() {
