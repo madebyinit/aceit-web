@@ -15,9 +15,9 @@ class dialogElementGameController {
         document.getElementsByTagName('body')[0].style.overflow = '';
       }
     });
-
-    if (this.headerTitle === 'Welcome to Aceit' ) {
+    if (this.headerTitle === 'Welcome to Aceit') {
       this.headerCheck = false;
+      this.connection.saveData('videoPageFirst', 'videoPageFirst');
     }
   }
 

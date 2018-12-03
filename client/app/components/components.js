@@ -12,7 +12,6 @@ import routineModule from './routine/routine';
 import mobileModule from './mobile/mobile';
 import errorPageModule from './errorPage/errorPage';
 import staticPageModule from './staticPage/staticPage';
-import videoPageModule from './videoPage/videoPage';
 import gamesModule from './games/games';
 import goaceitModule from './goaceit/goaceit';
 import algorithmModule from './algorithm/algorithm';
@@ -43,7 +42,6 @@ const componentModule = angular
     mobileModule,
     errorPageModule,
     staticPageModule,
-    videoPageModule,
     gamesModule,
     goaceitModule,
     algorithmModule,
