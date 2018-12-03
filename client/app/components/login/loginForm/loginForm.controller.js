@@ -81,11 +81,8 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-              if (userData.videoPageFirst) {
-                this.$state.transitionTo(userData.lastPageOpen);
-              } else {
-                this.$state.transitionTo('games');
-              }
+
+              this.$state.transitionTo('games');
 
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
