@@ -16,7 +16,7 @@ class GamesController {
     this.gameSecSum = 0;
     this.$interval = $interval;
     this.gameNumber = 0;
-    this.showWindow = true;
+    this.showWindow = false;
     this.$scope = $scope;
     this.startTimer = this.startTimer.bind(this);
     this.mousewin = true;
@@ -48,10 +48,18 @@ class GamesController {
     this.winCheck = [false, false, false, false];
     this.changeState = 'home';
     this.mouseButtonChecker = 0;
+    this.videoPopupCheck = true;
+    this.BeforeVideoPopupCheck = true;
   }
 
   $onInit() {
     this.getUserData();
+
+    if (localStorage.getItem('videoPageFirst')) {
+      this.BeforeVideoPopupCheck = false;
+      this.videoPopupCheck = false;
+      this.showWindow = true;
+    }
 
     this.gameScoreValue = {
       parkinglot: {},
@@ -106,6 +114,7 @@ class GamesController {
       this.firstStart = false;
     } else if (localStorage.getItem('gamePageSecond') == null) {
       console.log('SECOND START');
+      this.videoPopupCheck = false;
       this.changeState = 'goaceit';
       // alert('SECOND START');
       this.setGamesLvl(true);
@@ -116,6 +125,7 @@ class GamesController {
       this.countdownTimer = this.$interval(this.startTimer, 1000);
     } else {
       console.log('THIRD START');
+      this.videoPopupCheck = false;
       this.changeState = 'goaceit';
       // alert('THIRD START');
       this.setGamesLvl(false);
@@ -777,6 +787,25 @@ class GamesController {
         this.gameData[0] = 0;
       }
     }
+  }
+
+  startVideoPopup() {
+    this.showWindow = false;
+    this.BeforeVideoPopupCheck = false;
+    this.videoPopupCheck = true;
+    let seconds = 44;
+
+    this.countdownTimer = this.$interval(() => {
+      if (seconds > 30) { this.$document[0].getElementById('GameVideo').play(); }
+
+      if (seconds === 0) {
+        this.$interval.cancel(this.countdownTimer);
+        this.videoPopupCheck = false;
+        this.showWindow = true;
+      } else {
+        seconds--;
+      }
+    }, 1000);
   }
 }
 

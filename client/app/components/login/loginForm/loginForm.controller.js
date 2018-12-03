@@ -84,7 +84,7 @@ class LoginFormController {
               if (userData.videoPageFirst) {
                 this.$state.transitionTo(userData.lastPageOpen);
               } else {
-                this.$state.transitionTo('videoPage');
+                this.$state.transitionTo('games');
               }
 
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
@@ -104,13 +104,13 @@ class LoginFormController {
               }
             }
           }, (error) => {
-            this.$state.transitionTo('videoPage');
+            this.$state.transitionTo('games');
           });
           this.progressLinear.hideProgress();
         }, (error) => {
           this.progressLinear.hideProgress();
           this.notificationsService.showToast(error.message);
-          this.$state.transitionTo('videoPage');
+          this.$state.transitionTo('games');
         });
       });
     } else {

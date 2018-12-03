@@ -1,11 +1,22 @@
 <!-- <main-menu class="top-menu"></main-menu> -->
+<dialog-element-game
+show-dialog="$ctrl.BeforeVideoPopupCheck"
+is-disabled-input="false"
+return-value2="$ctrl.startVideoPopup()"
+header-title="Welcome to Aceit"
+button-text="PLAY"
+input-title="Your first step is to complete 5 games in 5 minutes. "
+input-title2='The Aceit algorithm will analyze your performance'
+input-title3='and provide your personal profile.'
+input-title4='Hit the "PLAY" button to start!'
+></dialog-element-game>
 
 <dialog-element-second
         show-window="$ctrl.showWindow"
         button-text="REPLAY"
         button-text2="SAVE & CLOSE"
         button-text3="SAVE & CLOSE"
-        return-value="$ctrl.stateChange('videoPage')"
+        return-value="$ctrl.startVideoPopup()"
         return-value2=""
         return-value3="$ctrl.closeModal(val)"
         input-title="I thInk I will succeed on"
@@ -87,3 +98,7 @@
         input-title5='Feel free to use these games'
         input-title6='to practice your routine.'
 ></dialog-element-game>
+
+<dialog-element-video 
+        ng-if="$ctrl.videoPopupCheck"
+></dialog-element-video>
