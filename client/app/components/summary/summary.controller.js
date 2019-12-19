@@ -3,7 +3,7 @@ const CONCENTRATION = 'concentration';
 const PHYSICAL = 'physical';
 
 class SummaryController {
-  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults, gamesService, $rootScope, $anchorScroll, $window) {
+  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults, gamesService, $rootScope) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
@@ -25,8 +25,6 @@ class SummaryController {
       concentration: '0',
     };
     this.$rootScope = $rootScope;
-    this.$anchorScroll = $anchorScroll;
-    this.$window = $window;
   }
 
   $onInit() {
@@ -54,7 +52,10 @@ class SummaryController {
 
     if (this.gameSummaryValue.muteMusic === String) { this.gameSummaryValue.muteMusic = ''; }
 
-    if (this.$rootScope.isScrollToTools) { this.scrollToTools('anchorPoint') }
+    if (this.$rootScope.isScrollToTools) { 
+      const tools = document.querySelector('required-cards');
+      this.scrollToPoint(tools);
+    }
     // this.progressLinear.showProgress();
     this.connection.saveData(true, 'summaryComplete');
     this._getUserData();
@@ -64,11 +65,11 @@ class SummaryController {
     this.$state.go(name);
   }
 
-  scrollToTools(point) {
-  this.$timeout(() => {
-    this.$rootScope.isScrollToTools = !this.$rootScope.isScrollToTools;
-    this.$anchorScroll(point);
-  })    
+  scrollToPoint(element) {
+    this.$timeout(() => {
+      this.$rootScope.isScrollToTools = false;
+      element.scrollIntoView({behavior: 'smooth'});
+    }, 300);
   }
 
   setTestParams() {
@@ -122,5 +123,5 @@ class SummaryController {
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.userSum.positive = 100; }
   }
 }
-SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'gamesService', '$rootScope', '$anchorScroll', '$window'];
+SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'gamesService', '$rootScope'];
 export default SummaryController;

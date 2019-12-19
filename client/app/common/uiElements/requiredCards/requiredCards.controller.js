@@ -1,5 +1,5 @@
 class requiredCardsController {
-  constructor(connection, $state, progressLinear, $timeout, gameScoreValue, estimationOfResults,$rootScope) {
+  constructor(connection, $state, progressLinear, $timeout, gameScoreValue, estimationOfResults) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
@@ -9,7 +9,6 @@ class requiredCardsController {
     this.physical = false;
     this.gameScoreValue = gameScoreValue;
     this.estimationOfResults = estimationOfResults;
-    this.$rootScope = $rootScope;
   }
 
   $onInit() {
@@ -19,7 +18,6 @@ class requiredCardsController {
     if (this.gameScoreValue.summary[0] > this.estimationOfResults.SuggestPoints['Low Confidence']) { this.positive = true; }
     if (this.gameScoreValue.summary[3] > this.estimationOfResults.SuggestPoints['Negative Thinking']) { this.positive = true; }
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.positive = true; }
-    console.log(this.$rootScope.isScrollToTools);
   }
   stateGo(name) {
     this.$state.go(name);
@@ -103,5 +101,5 @@ class requiredCardsController {
   // }
 }
 
-requiredCardsController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameScoreValue', 'estimationOfResults', '$rootScope'];
+requiredCardsController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameScoreValue', 'estimationOfResults'];
 export default requiredCardsController;

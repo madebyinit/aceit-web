@@ -43,12 +43,12 @@
   }
   .control-panel{
     background: url($cdnImage + 'myroutine.svg') no-repeat;
-    width: 650px;
-    height: 650px;
+    width: 630px;
+    height: 630px;
     padding-bottom: 50px;
     margin: 0 auto;
     position: relative;
-    background-size: 650px;
+    background-size: 630px;
     .text{
       color: white;
       font-size: 26px;
@@ -65,8 +65,8 @@
       @include title;
       color: $secondaryColor;
       position: absolute;
-      top: 282px;
-      left: 2px;
+      top: 268px;
+      left: 0;
       right: 0;
       margin: auto;
       font-size: 41px;
@@ -109,7 +109,7 @@
       .text{
         right: 70px;
         width: 100px;
-        top: 28px;
+        top: 19px;
       }
     }
     .step3 {

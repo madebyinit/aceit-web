@@ -1,9 +1,10 @@
 class ConcentrationController {
-  constructor(connection,$timeout,$state,$document) {
+  constructor(connection,$timeout,$state,$document, $rootScope) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
     this.$document = $document;
+    this.$rootScope = $rootScope;
   }
 
   $onInit(){
@@ -48,6 +49,7 @@ class ConcentrationController {
 
   goToSummary(){
     this.$state.go('summary');
+    this.$rootScope.isScrollToTools = true;
   }
 
   _saveStateComplete(){
@@ -68,5 +70,5 @@ class ConcentrationController {
   }
 }
 
-ConcentrationController.$inject = ['connection','$timeout','$state','$document'];
+ConcentrationController.$inject = ['connection','$timeout','$state','$document', '$rootScope'];
 export default ConcentrationController;
