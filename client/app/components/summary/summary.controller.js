@@ -3,7 +3,7 @@ const CONCENTRATION = 'concentration';
 const PHYSICAL = 'physical';
 
 class SummaryController {
-  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults, gamesService) {
+  constructor(connection, $state, progressLinear, $timeout, gameSummaryValue, gameScoreValue, estimationOfResults, gamesService, $rootScope, $anchorScroll, $window) {
     this.connection = connection;
     this.$state = $state;
     this.progressLinear = progressLinear;
@@ -24,6 +24,9 @@ class SummaryController {
       frustration: '0',
       concentration: '0',
     };
+    this.$rootScope = $rootScope;
+    this.$anchorScroll = $anchorScroll;
+    this.$window = $window;
   }
 
   $onInit() {
@@ -51,6 +54,7 @@ class SummaryController {
 
     if (this.gameSummaryValue.muteMusic === String) { this.gameSummaryValue.muteMusic = ''; }
 
+    if (this.$rootScope.isScrollToTools) { this.scrollToTools('anchorPoint') }
     // this.progressLinear.showProgress();
     this.connection.saveData(true, 'summaryComplete');
     this._getUserData();
@@ -58,6 +62,13 @@ class SummaryController {
 
   stateGo(name) {
     this.$state.go(name);
+  }
+
+  scrollToTools(point) {
+  this.$timeout(() => {
+    this.$rootScope.isScrollToTools = !this.$rootScope.isScrollToTools;
+    this.$anchorScroll(point);
+  })    
   }
 
   setTestParams() {
@@ -111,5 +122,5 @@ class SummaryController {
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.userSum.positive = 100; }
   }
 }
-SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'gamesService'];
+SummaryController.$inject = ['connection', '$state', 'progressLinear', '$timeout', 'gameSummaryValue', 'gameScoreValue', 'estimationOfResults', 'gamesService', '$rootScope', '$anchorScroll', '$window'];
 export default SummaryController;

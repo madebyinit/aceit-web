@@ -93,7 +93,7 @@
       height: 80px;
       position: absolute;
       left: -40px;
-      bottom: -20px;
+      bottom: -35px;
     }
     .left-arrow {
       position: absolute;
@@ -114,13 +114,13 @@
       top: 11px;
     }
     .check-note {
-      height: 30px;
-      width: 31px;
+      height: 22px;
+      width: 22px;
       background: url($cdnImage + 'icn-v.png') no-repeat;
       background-size: 100%;
       position: absolute;
       left: 15px;
-      bottom: 30px;
+      bottom: 25px;
     }
     &.ng-leave{
       animation: 2.0s stickyLeave ease;

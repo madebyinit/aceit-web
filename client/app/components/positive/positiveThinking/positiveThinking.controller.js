@@ -1,9 +1,12 @@
+import { TransitionHookScope } from "angular-ui-router";
+
 class PositiveThinkingController {
-  constructor(connection,$timeout,$state,$document) {
+  constructor(connection,$timeout,$state,$document, $rootScope) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
     this.$document = $document;
+    this.$rootScope = $rootScope;
   }
 
   $onInit(){
@@ -43,6 +46,7 @@ class PositiveThinkingController {
 
   goToSummary(){
     this.$state.go('summary');
+    this.$rootScope.isScrollToTools = true;
   }
 
   _saveStateComplete(){
@@ -57,5 +61,5 @@ class PositiveThinkingController {
   }
 }
 
-PositiveThinkingController.$inject = ['connection','$timeout','$state','$document'];
+PositiveThinkingController.$inject = ['connection','$timeout','$state','$document', '$rootScope'];
 export default PositiveThinkingController;
