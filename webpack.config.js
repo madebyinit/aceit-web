@@ -6,7 +6,7 @@ var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
-  entry: {},
+  entry: ["babel-polyfill"],
   module: {
     rules: [
       {
@@ -36,16 +36,13 @@ module.exports = {
         ],
         use: [
           {
-            loader: "ng-annotate-loader",
-            options: {
-              explicitOnly: false
-            }
+            loader: "ng-annotate-loader"
           },
           {
-            loader: "babel-loader",
-            options: {
-              presets: ["env"]
-            }
+            loader: "babel-loader"
+            // options: {
+            //   presets: ["env"]
+            // }
           }
         ]
       },
