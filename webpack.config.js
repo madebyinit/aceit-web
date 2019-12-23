@@ -6,9 +6,13 @@ var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
-  entry: ["babel-polyfill"],
+  entry: ["babel-polyfill", "./client/app/app.js"],
   module: {
     rules: [
+      // {
+      //   test: /\.json$/,
+      //   loader: "json-loader"
+      // },
       {
         test: /^raw.*$/,
         use: [

@@ -432,7 +432,7 @@ class GamesController {
       // this.helperService.SuggestedTools();
       // this.helperService.FeedbackChange();
       // this.seconds = this.estimationOfResults.GP.GSD;
-      // if (localStorage.getItem('Summary') == null) {
+      // if (localStorage.getItem("Summary") == null) {
       //   this.gameSummary = this.user.Summary;
       // }
       if (localStorage.getItem("gamePage") == null && this.user.admin) {
