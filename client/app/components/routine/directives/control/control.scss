@@ -43,12 +43,12 @@
   }
   .control-panel{
     background: url($cdnImage + 'myroutine.svg') no-repeat;
-    width: 700px;
-    height: 700px;
+    width: 630px;
+    height: 630px;
     padding-bottom: 50px;
-    margin: auto;
+    margin: 0 auto;
     position: relative;
-    background-size: 700px;
+    background-size: 630px;
     .text{
       color: white;
       font-size: 26px;
@@ -65,7 +65,7 @@
       @include title;
       color: $secondaryColor;
       position: absolute;
-      top: 310px;
+      top: 268px;
       left: 0;
       right: 0;
       margin: auto;
@@ -85,7 +85,7 @@
       .text {
         width: 95px;
         right: 80px;
-        top: 35px;
+        top: 32px;
       }
     }
     .step2 {
@@ -97,7 +97,7 @@
       .text{
         width: 100px;
         right: 25px;
-        top: 50px;
+        top: 28px;
       }
     }
     .step4 {
@@ -109,7 +109,7 @@
       .text{
         right: 70px;
         width: 100px;
-        top: 50px;
+        top: 19px;
       }
     }
     .step3 {
@@ -121,7 +121,7 @@
       margin: auto;
       bottom: 90px;
       .text{
-        top: 60px;
+        top: 65px;
         right: 90px;
         width: 120px;
       }

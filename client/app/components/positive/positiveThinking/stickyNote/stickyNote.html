@@ -12,7 +12,7 @@
         <input type="text" ng-model="$ctrl.negativeThoughts" placeholder="{{($ctrl.sticky.inputPlaceholder | translate)}}">
     </div>
     </div>
-    <md-button class="button-style save-and-close-button" ng-if="$ctrl.sticky.buttonText" ng-click="$ctrl.closeDialog()">{{($ctrl.sticky.buttonText | translate)}}</md-button>
+    <md-button class="button-style save-and-close-button" ng-if="$ctrl.sticky.buttonText" ng-disabled="!$ctrl.isStickeyAdded" ng-click="$ctrl.closeDialog()">{{($ctrl.sticky.buttonText | translate)}}</md-button>
     <div class="error-message" ng-if="$ctrl.errorMessage">{{::$ctrl.errorMessage}}</div>
   </div>
   <div class="body-styler" ng-style="{'z-index':$ctrl.completeSticky && '500'}">

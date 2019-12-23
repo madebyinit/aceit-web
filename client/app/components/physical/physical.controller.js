@@ -1,10 +1,11 @@
 import consts from '../routine/directives/consts.js';
 
 class PhysicalController {
-    constructor(connection,$timeout,$state) {
+    constructor(connection,$timeout,$state, $rootScope) {
         this.connection = connection;
         this.$timeout = $timeout;
         this.$state = $state;
+        this.$rootScope = $rootScope;
     }
 
     $onInit(){
@@ -26,6 +27,7 @@ class PhysicalController {
         }
         else {
             this.$state.go('summary');
+            this.$rootScope.isScrollToTools = true;
         }
     }
 
@@ -97,5 +99,5 @@ class PhysicalController {
     }
 }
 
-PhysicalController.$inject = ['connection','$timeout','$state'];
+PhysicalController.$inject = ['connection','$timeout','$state', '$rootScope'];
 export default PhysicalController;

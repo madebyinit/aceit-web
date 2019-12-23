@@ -11,6 +11,7 @@ class StickyNoteController {
     this.name = 'stickyNote';
     this.sticky = {title:'positive.sticky_note.track',body:'positive.sticky_note.negative'};
     this.stickyList = [];
+    this.isStickeyAdded = false;
   }
 
   $onInit(){
@@ -68,6 +69,7 @@ class StickyNoteController {
 
   addNegativeThoughts(){
     if(this.stickyList.length < MAX_NOTES){
+      this.isStickeyAdded = true;
       this.stickyList.push({stick:this.negativeThoughts,positive:false});
       this.connection.saveData(this.stickyList,STICKY_NOTES);
       this.negativeThoughts = '';
