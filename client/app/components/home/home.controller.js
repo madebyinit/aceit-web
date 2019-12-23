@@ -15,11 +15,6 @@ class HomeController {
     angular.element(document).ready(() => {
       this._scroll();
     });
-
-    if (localStorage.getItem('gamePage') !== null && localStorage.getItem('NameSet') == null) {
-      this.showWelcomeDialog = true;
-      localStorage.setItem('NameSet', 'true');
-    }
   }
 
   $onDestroy() {
@@ -30,8 +25,6 @@ class HomeController {
     this.connection.getData().then((res) => {
       this.$timeout(() => {
         this.user = res;
-        // this.user.uid
-        console.log(this.user.uid);
         this._userInit();
       }, 0);
     });

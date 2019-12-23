@@ -2,13 +2,16 @@
     <div class="close-dialog-game" ng-if="!$ctrl.hideExit" ng-click="$ctrl.showDialog = false"><img ng-src="{{$root.imageCdn}}close.png"></div>
     <div class="dialog-element-game-body">
         <div class="dialog-subheader-game"><img src="mazerace/go-logo2.png" alt=""></div>
-        <div class="dialog-header-game"><img src="mazerace/go-logo.jpg" alt=""></div>
+        <div class="dialog-header-game" ng-if="$ctrl.headerCheck"><img src="mazerace/go-logo.jpg" alt=""></div>
+        <div class="dialog-header-game" ng-if="!$ctrl.headerCheck"><img alt=""><strong>{{:: ($ctrl.headerTitle | translate)}}</strong></div>
         <div class="dialog-input-game">
             <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle | translate)}}</strong></div>
             <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle2 | translate)}}</strong></div>
             <br ng-if="!$ctrl.buttonCheck"> </br>
-            <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
-            <div ng-if="!$ctrl.buttonCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle4 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && $ctrl.headerCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && $ctrl.headerCheck" class="dialog-game-input-title">{{:: ($ctrl.inputTitle4 | translate)}}</div>
+            <div ng-if="!$ctrl.buttonCheck && !$ctrl.headerCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle3 | translate)}}</strong></div>
+            <div ng-if="!$ctrl.buttonCheck && !$ctrl.headerCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle4 | translate)}}</strong></div>
             <div ng-if="$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle5 | translate)}}</strong></div>
             <div ng-if="$ctrl.buttonCheck" class="dialog-game-input-title"><strong>{{:: ($ctrl.inputTitle6 | translate)}}</strong></div>
             <input ng-if="$ctrl.isDisabledInput" type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">

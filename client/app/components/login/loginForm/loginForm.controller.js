@@ -20,7 +20,7 @@ class LoginFormController {
       this.level = [];
       this.UPDI = {};
 
-      firebase.auth().signInWithEmailAndPassword('adminlogin', 'adminPass').then((res) => {
+      firebase.auth().signInWithEmailAndPassword('ariel@goaceit.com', 'Aceit1515').then((res) => {
         firebase.database().ref(res.uid).once('value').then((result) => {
           const resu = result.val();
           this.estimationOfResults = resu.estimationOfResults;
@@ -57,7 +57,9 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-
+              if (userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
+                localStorage.setItem('videoPageFirst', location.pathname);
+              }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
                 localStorage.setItem('gamePage', location.pathname);
               }
@@ -79,11 +81,14 @@ class LoginFormController {
                 level: this.level,
                 UPDI: this.UPDI,
               });
-              // console.log(this.orderOfGames);
-              this.$state.transitionTo('videoPage');
 
-              if (this.email.toLowerCase() !== 'adminLogin') {
+              this.$state.transitionTo('games');
+
+              if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
+              }
+              if (userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
+                localStorage.setItem('videoPageFirst', location.pathname);
               }
               if (userData.gamePage != 'undefined' && userData.gamePage != null) {
                 localStorage.setItem('gamePage', location.pathname);
@@ -94,20 +99,17 @@ class LoginFormController {
               if (userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
                 localStorage.setItem('gamePageSecond', location.pathname);
               }
-
             }
           }, (error) => {
-            this.$state.transitionTo('videoPage');
+            this.$state.transitionTo('games');
           });
           this.progressLinear.hideProgress();
         }, (error) => {
           this.progressLinear.hideProgress();
           this.notificationsService.showToast(error.message);
-          this.$state.transitionTo('videoPage');
+          this.$state.transitionTo('games');
         });
       });
-
-
     } else {
       this.validEmail = _.isEmpty(this.email) && 'Missing E-mail';
       this.validPassword = _.isEmpty(this.password) && 'Missing Password';

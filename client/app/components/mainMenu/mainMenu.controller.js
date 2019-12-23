@@ -37,6 +37,9 @@ class MainMenuController {
   }
 
   logout() {
+    if (!this.user.goaceitVisited) {
+      this.connection.saveData(window.location.pathname.slice(1), 'lastPageOpen');
+    }
     if (this.user.admin) {
       this.connection.saveData(false, 'goaceitVisited');
       this.connection.saveData(false, 'goaceitOn');
