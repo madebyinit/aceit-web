@@ -259,16 +259,16 @@ class GamesController {
       this.user = res;
       console.log(this.user);
       
-      this.helperService.gameSequence();
-      this.helperService.feedbackCounter();
-      this.helperService.Results();
-      this.helperService.feedbackSentences();
-      this.helperService.SuggestedTools();
-      this.helperService.FeedbackChange();
-      this.seconds = this.estimationOfResults.GP.GSD;
-      if (localStorage.getItem('Summary') == null) {
-        this.gameSummary = this.user.Summary;
-      }
+      // this.helperService.gameSequence();
+      // this.helperService.feedbackCounter();
+      // this.helperService.Results();
+      // this.helperService.feedbackSentences();
+      // this.helperService.SuggestedTools();
+      // this.helperService.FeedbackChange();
+      // this.seconds = this.estimationOfResults.GP.GSD;
+      // if (localStorage.getItem('Summary') == null) {
+      //   this.gameSummary = this.user.Summary;
+      // }
       if (localStorage.getItem('gamePage') == null && this.user.admin) {
         alert('FIRST START');
       } else if (localStorage.getItem('gamePageSecond') == null && this.user.admin) {
