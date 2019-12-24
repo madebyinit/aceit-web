@@ -9,7 +9,7 @@ import Common from "./common/common";
 import Components from "./components/components";
 import AppComponent from "./app.component";
 import runController from "./run.controller";
-import en_EN from "json-loader!./common/i18n/en_EN.json";
+import en_EN from "./common/i18n/en_EN.json";
 import "angularfire";
 import "normalize.css";
 import "angular-material/angular-material.scss";

@@ -5,14 +5,21 @@ var Copy = require("copy-webpack-plugin");
 var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
+  mode: "production",
   devtool: "source-map",
-  entry: ["babel-polyfill", "./client/app/app.js"],
+  entry: {},
   module: {
     rules: [
-      // {
-      //   test: /\.json$/,
-      //   loader: "json-loader"
-      // },
+      {
+        type: "javascript/auto",
+        test: /\.json$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "json-loader"
+          }
+        ]
+      },
       {
         test: /^raw.*$/,
         use: [
@@ -38,25 +45,11 @@ module.exports = {
           /patternmemory2/,
           /patternmemory2_e.htm/
         ],
-        use: [
-          {
-            loader: "ng-annotate-loader"
-          },
-          {
-            loader: "babel-loader"
-            // options: {
-            //   presets: ["env"]
-            // }
-          }
-        ]
+        use: ["ng-annotate-loader", "babel-loader"]
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "raw-loader"
-          }
-        ]
+        test: /\.(html)$/,
+        use: ["raw-loader"]
       },
       {
         test: /\.(scss|sass)$/,
@@ -83,22 +76,13 @@ module.exports = {
     // It also adds hash to all injected assets so we don't have problems
     // with cache purging during deployment.
     new HtmlWebpackPlugin({
-      template: "client/index.html",
+      template: "./client/index.html",
       inject: "body",
       hash: true
     }),
 
     // Automatically move all modules defined outside of application directory to vendor bundle.
     // If you are using more complicated project structure, consider to specify common chunks manually.
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      minChunks: function(module, count) {
-        return (
-          module.resource &&
-          module.resource.indexOf(path.resolve(__dirname, "client")) === -1
-        );
-      }
-    }),
     new Copy([{ from: "mazerace", to: "mazerace" }]),
     new Copy([{ from: "mousetrap", to: "mousetrap" }]),
     new Copy([{ from: "parkinglot", to: "parkinglot" }]),

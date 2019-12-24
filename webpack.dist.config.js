@@ -1,28 +1,29 @@
-const webpack = require('webpack');
-const path = require('path');
-const config = require('./webpack.config');
+const webpack = require("webpack");
+const path = require("path");
+const config = require("./webpack.config");
 
 config.output = {
-  filename: '[name].bundle.js',
+  filename: "[name].bundle.js",
   // publicPath: 'http://app.aceitapp.net/',
   // publicPath: 'https://www.aceit-app.com/',
-  publicPath: 'https://aceit.qarea.org/',
-  path: path.resolve(__dirname, 'dist'),
+  publicPath: "https://aceit.qarea.org/",
+  path: path.resolve(__dirname, "dist")
 };
 
-config.plugins = config.plugins.concat([
+//        DEPRECATED
+// config.plugins = config.plugins.concat([
 
-  // Reduces bundles total size
-  new webpack.optimize.UglifyJsPlugin({
-    mangle: {
+//   // Reduces bundles total size
+//   new webpack.optimize.UglifyJsPlugin({
+//     mangle: {
 
-      // You can specify all variables that should not be mangled.
-      // For example if your vendor dependency doesn't use modules
-      // and relies on global variables. Most of angular modules relies on
-      // angular global variable, so we should keep it unchanged
-      except: ['$super', '$', 'exports', 'require', 'angular']
-    },
-  }),
-]);
+//       // You can specify all variables that should not be mangled.
+//       // For example if your vendor dependency doesn't use modules
+//       // and relies on global variables. Most of angular modules relies on
+//       // angular global variable, so we should keep it unchanged
+//       except: ['$super', '$', 'exports', 'require', 'angular']
+//     },
+//   }),
+// ]);
 
 module.exports = config;
