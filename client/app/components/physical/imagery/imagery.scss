@@ -3,24 +3,24 @@
 .imagery {
   width: 90%;
   margin: auto;
-  .imagery-title{
+  .imagery-title {
     color: white;
     text-align: center;
     margin: 20px 0;
     font-size: 18px;
   }
-  .imagery-tool{
+  .imagery-tool {
     height: 150px;
     border-bottom: 1px solid white;
     padding: 40px 0;
     color: white;
     position: relative;
-    .puppy-text{
+    .puppy-text {
       float: right;
-      width: 500px!important;
-      .deep-breaths-text{
+      width: 500px !important;
+      .deep-breaths-text {
         left: -100px;
-        bottom: 20px!important;
+        bottom: 20px !important;
       }
     }
     .tool-text {
@@ -39,18 +39,18 @@
         bottom: 10px;
       }
     }
-    .smell-img{
+    .smell-img {
       right: 0;
-      background: url($cdnImage + 'img-cookie.png') no-repeat 100% 0;
+      background: url($cdnImage+"img-cookie.png") no-repeat 100% 0;
     }
-    .paradise-img{
+    .paradise-img {
       right: 0;
-      background: url($cdnImage + 'img-holiday2.png') no-repeat 100% 0;
+      background: url($cdnImage+"img-holiday2.png") no-repeat 100% 0;
     }
-    .puppy-img{
+    .puppy-img {
       left: 0;
       z-index: 7;
-      background: url($cdnImage + 'img-puppy.png') no-repeat 0 0;
+      background: url($cdnImage+"img-puppy.png") no-repeat 0 0;
     }
     .tool-img {
       width: 150px;
@@ -64,11 +64,11 @@
       background-size: 820px;
       cursor: pointer;
       &:hover {
-        width: 100%!important;
-        height: 100%!important;
-        border-radius: 0!important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
         top: 0;
-        .hover-me-text{
+        .hover-me-text {
           display: none;
         }
       }
@@ -81,16 +81,20 @@
       }
     }
   }
-  .smell{
+  .smell {
     border-bottom: none;
-    .close-your-eyes-text{
-      width: 550px!important;
+    .close-your-eyes-text {
+      width: 550px !important;
     }
   }
-  .last-section{
+  .last-section {
     text-align: center;
-    .choose-a-safe{
+    .choose-a-safe {
       color: $borderColor;
     }
+  }
+  .pencil-icon {
+    width: 15px !important;
+    transform: none !important;
   }
 }

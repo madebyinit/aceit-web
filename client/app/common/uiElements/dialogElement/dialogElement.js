@@ -1,24 +1,24 @@
-import template from './dialogElement.html';
-import controller from './dialogElement.controller';
-import './dialogElement.scss';
+import template from "./dialogElement.html";
+import controller from "./dialogElement.controller";
+import "./dialogElement.scss";
 
 const dialogElementComponent = {
-  restrict: 'E',
+  restrict: "E",
   bindings: {
-    showDialog: '=?',
-    headerTitle: '@?',
-    buttonText: '@?',
-    inputPlaceholder: '@?',
-    inputTitle: '@?',
-    inputTitle2: '@?',
-    inputTitle3: '@?',
-    hideExit: '<?',
-    isDisabledInput: '<?',
-    returnValue: '&?',
-    bindValue: '<?',
+    showDialog: "=?",
+    headerTitle: "@?",
+    buttonText: "@?",
+    inputPlaceholder: "@?",
+    inputTitle: "@?",
+    inputTitle2: "@?",
+    inputTitle3: "@?",
+    hideExit: "<?",
+    isDisabledInput: "<?",
+    returnValue: "&?",
+    bindValue: "<?"
   },
   template,
-  controller,
+  controller
 };
 
 export default dialogElementComponent;

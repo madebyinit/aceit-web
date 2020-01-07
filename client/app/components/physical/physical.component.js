@@ -1,9 +1,9 @@
-import template from './physical.html';
-import controller from './physical.controller';
-import './physical.scss';
+import template from "./physical.html";
+import controller from "./physical.controller";
+import "./physical.scss";
 
 let physicalComponent = {
-  restrict: 'E',
+  restrict: "E",
   bindings: {},
   template,
   controller

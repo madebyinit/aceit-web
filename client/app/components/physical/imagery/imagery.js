@@ -1,14 +1,14 @@
-import template from './imagery.html';
-import controller from './imagery.controller';
-import './imagery.scss';
+import template from "./imagery.html";
+import controller from "./imagery.controller";
+import "./imagery.scss";
 
 let ImageryComponent = {
-  restrict: 'E',
+  restrict: "E",
   bindings: {
-    allStepsComplete:'=?',
-    physicalComplete:'=?',
-    goSummary: '=?',
-    showToolsDialog: '=?'
+    allStepsComplete: "=?",
+    physicalComplete: "=?",
+    goSummary: "=?",
+    showToolsDialog: "=?"
   },
   template,
   controller

@@ -5,7 +5,7 @@ var Copy = require("copy-webpack-plugin");
 var BowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   devtool: "source-map",
   entry: {},
   module: {

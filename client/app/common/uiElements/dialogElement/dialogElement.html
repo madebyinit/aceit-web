@@ -1,13 +1,34 @@
 <div class="dialog-element" ng-if="$ctrl.showDialog">
-    <div class="close-dialog" ng-if="!$ctrl.hideExit" ng-click="$ctrl.showDialog = false"><img ng-src="{{$root.imageCdn}}close.png"></div>
-    <div class="dialog-element-body">
-        <div class="dialog-header">{{:: ($ctrl.headerTitle | translate)}}</div>
-        <div class="dialog-input">
-            <div class="dialog-input-title">{{:: ($ctrl.inputTitle | translate)}}</div>
-            <div class="dialog-input-title">{{:: ($ctrl.inputTitle2 | translate)}}</div>
-            <div class="dialog-input-title">{{:: ($ctrl.inputTitle3 | translate)}}</div>
-            <input ng-if="$ctrl.isDisabledInput" type="text" ng-model="$ctrl.bindValue" placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}">
-        </div>
-        <md-button class="button-style save-and-close-button" ng-click="$ctrl.returnValueFn($ctrl.bindValue)">{{:: ($ctrl.buttonText | translate)}}</md-button>
+  <div
+    class="close-dialog"
+    ng-if="!$ctrl.hideExit"
+    ng-click="$ctrl.showDialog = false"
+  >
+    <img ng-src="{{$root.imageCdn}}close.png" />
+  </div>
+  <div class="dialog-element-body">
+    <div class="dialog-header">{{:: ($ctrl.headerTitle | translate)}}</div>
+    <div class="dialog-input">
+      <div class="dialog-input-title">
+        {{:: ($ctrl.inputTitle | translate)}}
+      </div>
+      <div class="dialog-input-title">
+        {{:: ($ctrl.inputTitle2 | translate)}}
+      </div>
+      <div class="dialog-input-title">
+        {{:: ($ctrl.inputTitle3 | translate)}}
+      </div>
+      <input
+        ng-if="$ctrl.isDisabledInput"
+        type="text"
+        ng-model="$ctrl.bindValue"
+        placeholder="{{:: ($ctrl.inputPlaceholder | translate)}}"
+      />
     </div>
+    <md-button
+      class="button-style save-and-close-button"
+      ng-click="$ctrl.returnValueFn($ctrl.bindValue)"
+      >{{:: ($ctrl.buttonText | translate)}}</md-button
+    >
+  </div>
 </div>
