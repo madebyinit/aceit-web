@@ -1,11 +1,11 @@
 @import "../../common";
 
-.dialog-element{
+.dialog-element {
   position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.41);
-  top:0;
+  top: 0;
   left: 0;
   z-index: 500;
   .dialog-element-body {
@@ -21,19 +21,21 @@
     z-index: 600;
     text-align: center;
     overflow: hidden;
-    background: white url($cdnImage + 'bg-pattern.png');
+    background: white url($cdnImage+"bg-pattern.png");
   }
-  &.ng-enter{
+  &.ng-enter {
     animation: 0.3s fadein ease;
-    .dialog-element-body, .close-dialog{
+    .dialog-element-body,
+    .close-dialog {
       animation-delay: 2s;
       animation: 0.3s growUp ease;
     }
   }
-  &.ng-leave{
-    animation: 0.3s fadeOut ease;
-    .dialog-element-body, .close-dialog{
-      animation: 0.3s growDown ease;
+  &.ng-leave {
+    animation: 0.3s fadeOut ease forwards;
+    .dialog-element-body,
+    .close-dialog {
+      animation: 0.3s growDown ease forwards;
     }
   }
   .dialog-header {
@@ -44,7 +46,7 @@
     color: $secondaryColor;
     font-size: 23px;
   }
-  .save-and-close-button{
+  .save-and-close-button {
     padding: 25px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
@@ -61,7 +63,7 @@
     margin: auto;
     border-radius: 50%;
     text-align: center;
-    img{
+    img {
       vertical-align: -webkit-baseline-middle;
       width: 15px;
     }
@@ -79,18 +81,18 @@
       border: 1px solid #c5c5c5;
       text-align: center;
       color: $secondaryColor;
-      transition: all 0.3s ease;
+      transition: all 5.3s ease;
       &::-webkit-input-placeholder {
         color: #c5c5c5;
       }
-      &:focus{
+      &:focus {
         border-color: $primaryColor;
       }
     }
   }
 }
 
-dialog-element{
+dialog-element {
   display: block;
 }
 
