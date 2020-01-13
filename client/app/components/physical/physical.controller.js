@@ -25,7 +25,6 @@ class PhysicalController {
     if (this.allStepsComplete && !this.physicalComplete) {
       this.showToolsDialog = true;
     } else {
-      console.log("works");
       this.$state.go("summary");
       this.$rootScope.isScrollToTools = true;
     }
@@ -51,6 +50,7 @@ class PhysicalController {
     this.connection.saveData(tool, "physicalSelectedTool");
     this.showToolsDialog = false;
     this.$state.go("summary");
+    this.$rootScope.isScrollToTools = true;
   }
 
   _setToolsDialog() {

@@ -1,6 +1,6 @@
 @import "../../../../common/common";
 
-.control{
+.control {
   position: relative;
   margin-top: 80px;
   .big-title {
@@ -10,18 +10,18 @@
     margin: auto;
     left: 0;
     right: 0;
-    &>img {
+    & > img {
       width: 600px;
     }
   }
-  .suggested{
+  .suggested {
     width: 145px;
     height: 135px;
     position: absolute;
     bottom: 80px;
     left: -40px;
-    .suggested-icon{
-      background: url($cdnImage + 'icn-suggested.svg') no-repeat;
+    .suggested-icon {
+      background: url($cdnImage+"icn-suggested.svg") no-repeat;
       height: inherit;
       position: absolute;
       width: inherit;
@@ -38,25 +38,25 @@
       font-weight: bold;
     }
   }
-  .suggested:hover .suggested-icon{
+  .suggested:hover .suggested-icon {
     animation: spin 2s infinite linear;
   }
-  .control-panel{
-    background: url($cdnImage + 'myroutine.svg') no-repeat;
-    width: 630px;
-    height: 630px;
+  .control-panel {
+    background: url($cdnImage+"myroutine.svg") no-repeat;
+    width: 550px;
+    height: 550px;
     padding-bottom: 50px;
     margin: 0 auto;
     position: relative;
-    background-size: 630px;
-    .text{
+    background-size: 550px;
+    .text {
       color: white;
       font-size: 26px;
       position: absolute;
-      div:first-child{
+      div:first-child {
         font-weight: bold;
       }
-      img{
+      img {
         padding-left: 15px;
         width: 12px;
       }
@@ -65,7 +65,7 @@
       @include title;
       color: $secondaryColor;
       position: absolute;
-      top: 268px;
+      top: 230px;
       left: 0;
       right: 0;
       margin: auto;
@@ -81,7 +81,7 @@
       left: 30px;
       right: 0;
       margin: auto;
-      top: 30px;
+      top: 15px;
       .text {
         width: 95px;
         right: 80px;
@@ -91,10 +91,10 @@
     .step2 {
       width: 220px;
       height: 210px;
-      right: 25px;
+      right: 10px;
       position: absolute;
-      top: 250px;
-      .text{
+      top: 219px;
+      .text {
         width: 100px;
         right: 25px;
         top: 28px;
@@ -103,10 +103,10 @@
     .step4 {
       width: 220px;
       height: 210px;
-      left: 30px;
+      left: 10px;
       position: absolute;
-      top: 250px;
-      .text{
+      top: 219px;
+      .text {
         right: 70px;
         width: 100px;
         top: 19px;
@@ -116,11 +116,11 @@
       width: 300px;
       height: 180px;
       position: absolute;
-      left: 30px;
+      left: 88px;
       right: 0;
       margin: auto;
-      bottom: 90px;
-      .text{
+      bottom: 68px;
+      .text {
         top: 65px;
         right: 90px;
         width: 120px;
