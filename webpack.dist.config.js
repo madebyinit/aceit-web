@@ -5,8 +5,8 @@ const config = require("./webpack.config");
 config.output = {
   filename: "[name].bundle.js",
   // publicPath: 'http://app.aceitapp.net/',
-  // publicPath: 'https://www.aceit-app.com/',
-  publicPath: "https://aceit.qarea.org/",
+  publicPath: 'https://www.aceit-app.com/',
+  // publicPath: "https://aceit.qarea.org/",
   path: path.resolve(__dirname, "dist")
 };
 
