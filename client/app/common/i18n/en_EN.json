@@ -178,16 +178,16 @@
     "contact_us":"Contact Us",
     "questionnaire":"My Questionnaire",
     "summary":"My Summary",
-    "routines":"My Routines",
+    "routines":"My Routine",
     "concentration":"Concentration Tool",
     "physical":"Physical Tools",
     "positive":"Positive Thinking",
     "main":"Main",
-    "goaceit": "MONEY TIME",
+    "goaceit": "\"MONEY TIME\"",
     "logout":"Logout"
   },
   "routine":{
-    "go_ace_it": "MONEY TIME",
+    "go_ace_it": "\"MONEY TIME\"",
     "close_eyes":"Close your eyes",
     "deep_breath":"Take a deep breath",
     "choose":"Choose from",
@@ -195,7 +195,8 @@
     "next_question":"Move to next question",
     "power_word":"Enter power word",
     "lion":{
-      "works":"But this only works if you PRACTICE it. Be sure to use your routine on your practice tests.",
+      "works":"But this only works if you PRACTICE it.",
+      "works2":"In the next few weeks, we will be supporting you and providing short text messages for when and how to use these tools and your routine. We promise these messages will be short, fun and helpful.",
       "friend":"Make the lion your friend",
       "perform":"Stress is good and will help you perform at your best!",
       "perform1":"GET READY FOR MONEY TIME",
@@ -205,8 +206,10 @@
     "my_routine":"My Routine",
     "apply":"How does this apply to you?",
     "competition":"Let’s look at what professional athletes do to manage the stress of competition:",
+    "series":"A routine is a series of actions that is done in order to manage stress and feel in control.  A routine can help you:",
+    "freakout":"You cannot perform your routine and freak out at the same time!",
     "basketball":"",
-    "happens":"What often happens during a test is when we don’t know the answer to a question, \n it lowers our confidence. In fact research shows that if you don’t know the answer \n to a difficult question, you often miss the next two questions even if they are easy. \n You get so freaked out about the difficult question that your negative thinking kicks \n in and you lose your confidence. Below is your personal suggested routine based on the tools you have learned. You can choose from the options below or be creative!"
+    "happens":"What often happens during a test is when we don’t know the answer to a question, \n it lowers our confidence. In fact research shows that if you don’t know the answer \n to a difficult question, you often miss the next two questions even if they are easy. \n You get so freaked out about the difficult question that your negative thinking kicks \n in and you lose your confidence. Below is your personal suggested routine based on the tools you have learned. You can choose from the options below or tweak it as needed."
   },
   "mobile":{
     "sorry":"We’re Sorry",
