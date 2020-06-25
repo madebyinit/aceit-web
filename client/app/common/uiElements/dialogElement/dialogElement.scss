@@ -22,6 +22,12 @@
     text-align: center;
     overflow: hidden;
     background: white url($cdnImage+"bg-pattern.png");
+    @include sm {
+      width: 90%;
+      height: 90vw;
+      max-width: 500px;
+      max-height: 500px;
+    }
   }
   &.ng-enter {
     animation: 0.3s fadein ease;
@@ -45,11 +51,24 @@
     @include title;
     color: $secondaryColor;
     font-size: 23px;
+    @include sm {
+      height: 60px;
+      font-size: 14px;
+      line-height: 70px;
+    }
   }
   .save-and-close-button {
     padding: 25px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
+    @include sm {
+      min-width: 60px;
+      width: 60px;
+      min-height: 60px;
+      height: 60px;
+      padding: 10px;
+      font-size: 10px;
+    }
   }
   .close-dialog {
     width: 30px;
@@ -63,6 +82,10 @@
     margin: auto;
     border-radius: 50%;
     text-align: center;
+    @include sm {
+      right: 24px;
+      left: auto;
+    }
     img {
       vertical-align: -webkit-baseline-middle;
       width: 15px;
@@ -70,9 +93,15 @@
   }
   .dialog-input {
     padding: 100px 0 80px;
+    @include sm {
+      padding: 24px 0;
+    }
     .dialog-input-title {
       margin-bottom: 10px;
       color: $primaryColor;
+      @include sm {
+        font-size: 15px;
+      }
     }
     input {
       width: 300px;
@@ -82,6 +111,9 @@
       text-align: center;
       color: $secondaryColor;
       transition: all 5.3s ease;
+      @include sm {
+        width: 80%;
+      }
       &::-webkit-input-placeholder {
         color: #c5c5c5;
       }
