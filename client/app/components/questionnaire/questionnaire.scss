@@ -7,10 +7,18 @@
   top: 50px;
   color: $secondaryColor;
   text-align: center;
+  @include md {
+    width: 100%;
+    padding: 60px 24px 0;
+    box-sizing: border-box;
+  }
   .questionnaire-info{
     text-align: center;
     margin:auto;
     width: 80%;
+    @include md {
+      width: 100%;
+    }
     .title {
       @include title;
       color: $secondaryColor;
@@ -29,6 +37,11 @@
     .description{
       margin: 30px auto;
       width: 620px;
+      @include sm {
+        width: 100%;
+        font-size: 15px;
+        line-height: 20px;
+      }
     }
     .rememeber{
       font-weight: bold;
@@ -48,10 +61,19 @@
   min-height: 900px;
   height: 100vh;
   background:linear-gradient(to bottom, rgba(222, 210, 196, 0.5), rgba(132, 203, 214, 0.5)), url($cdnImage + 'q-bg.png');
+  @include sm {
+    
+  }
 }
 .make-space {
   margin-top: 185px;
   display: block;
+  @include md {
+    margin-top: 80px;
+  }
+  @include sm {
+    margin-top: 48px;
+  }
 }
 
 .small-q.ng-enter{

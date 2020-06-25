@@ -5,6 +5,13 @@
     background-color: #0e7086;
     margin: auto;
     border-radius: 70px;
+    @media only screen and (max-width: 768px) {
+      height: 24px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
   }
   .dot {
     width: 28px;
@@ -14,11 +21,22 @@
     border-radius: 50%;
     margin: 5px 29px;
     cursor: pointer;
+    @media only screen and (max-width: 768px) {
+      height: 14px;
+      width: 14px;
+      margin: 5px 0;
+    }
     &:first-child{
       margin: 4px 26px 4px 0;
+      @media only screen and (max-width: 768px) {
+        margin: 5px 0;
+      }
     }
     &:last-child{
       margin: 4px 0 4px 26px;
+      @media only screen and (max-width: 768px) {
+        margin: 5px 0;
+      }
     }
   }
   .range-element > .star-on:nth-child(1) {

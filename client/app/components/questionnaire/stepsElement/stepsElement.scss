@@ -13,6 +13,11 @@
     margin: 0 3%;
     vertical-align: middle;
     transition: all 0.25s ease;
+    @include sm {
+      width: 6px;
+      height: 6px;
+      margin: 0 5px;
+    }
   }
   .step-complete{
     background-color: $secondaryColor;
@@ -20,5 +25,9 @@
   .current-step{
     width: 25px;
     height: 25px;
+    @include sm {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
