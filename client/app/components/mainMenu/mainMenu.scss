@@ -71,6 +71,16 @@ z-index:0;
     }
   }
   .md-3-line{
+    @include md {
+      min-height: 50px;
+      height: 50px;
+    }
+    .md-button {
+      @include md {
+        height: 50px;
+        min-height: 50px;
+      }
+    }
     .md-list-item-inner{
       text-transform: uppercase!important;
       color: #0e7086;
@@ -79,24 +89,41 @@ z-index:0;
         width: 40px;
         margin-left: 10px;
         position: relative;
+        @include md {
+          width: 30px;
+        }
         img {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
           width: 40px;
+          @include md {
+            width: 25px;
+          }  
         }
         .questionnaire-icon {
           width: 30px!important;
           padding-left: 5px;
+          @include md {
+            padding-left: 0;
+            width: 25px !important;
+          }  
         }
         .summary-icon {
           width: 32px!important;
           padding-left: 5px;
+          @include md {
+            width: 25px!important;
+          }  
         }
       }
       span{
         font-family: 'Oswald', sans-serif;
         margin-left: 20px;
+        @include md {
+          margin-left: 10px;
+          font-size: 13px;
+        }
       }
     }
     .open-summary-list {
@@ -114,17 +141,27 @@ z-index:0;
   .close-menu {
     text-align: right;
     height: 65px;
+    @include md {
+      height: 40px;
+    }
     img{
       width: 35px;
       position: relative;
       right: 15px;
       top: 15px;
+      @include md {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
   .sub-menu{
     overflow: hidden;
     height: 360px;
     background-color: #c9e1e8;
+    @include md {
+      height: auto;
+    }
     &.ng-enter{
       animation: 0.65s sizeUp ease;
       .main-icon{
@@ -150,6 +187,14 @@ z-index:0;
     .md-list-item-inner{
       padding-left: 35px;
       font-size: 20px;
+      @include md {
+        padding-left: 10px;
+      }
+      img {
+        @include md {
+          padding-left: 0;
+        }
+      }
     }
   }
   .state-select{
