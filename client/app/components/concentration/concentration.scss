@@ -13,6 +13,13 @@
     height: auto;
     margin: auto;
     padding-top: 40px;
+    @include md {
+      width: 100%;
+    }
+    @include sm {
+      padding-top: 24px;
+      overflow-x: hidden;
+    }
     .concentration-title {
       @include title;
       color: white;
@@ -21,9 +28,17 @@
         width: 70px;
         vertical-align: middle;
         margin-right: 20px;
+        @include sm {
+          width: 50px;
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
       }
       span{
         vertical-align: middle;
+        @include sm {
+          display: block;
+        }
       }
     }
     .concentration-sub-title {
@@ -34,10 +49,25 @@
         @include title;
         color: #0e7086;
         font-size: 22px;
+        @include sm {
+          font-size: 18px;
+        }
+      }
+    }
+    iframe {
+      @include sm {
+        width: 100vw;
+        height: 76vw;
+        position: relative;
+        left: -14%;
+        overflow: hidden;
       }
     }
     .blurry {
       filter: blur(1.2px);
+      @include sm {
+        display: block;
+      }
     }
     .concentration-description {
       color: white;
@@ -45,7 +75,16 @@
       text-align: center;
       margin-top: 25px;
       white-space: pre;
-
+      @include md {
+        padding: 0 24px;
+        white-space: normal;
+      }
+      @include sm {
+        margin: 25px auto 0;
+        font-size: 15px;
+        line-height: 20px;
+        max-width: 480px;
+      }
     }
     .target {
       height: 70px;
@@ -66,6 +105,12 @@
       margin: auto;
       position: relative;
       border: 1px solid $lineColor;
+      @include md {
+        width: calc(100% - 24px);
+        height: 56vw;
+        max-width: 720px;
+        max-height: 410px;
+      }
       video{
         @include topCenter;
         width: 710px;
@@ -73,6 +118,12 @@
         left: 0;
         right: 0;
         margin: auto;
+        @include md {
+          height: auto;
+          width: calc(100% - 34px);
+          max-width: 710px;
+          max-height: 400px;
+        }
       }
     }
     .bottom-title {
@@ -98,6 +149,14 @@
       width: 80%;
       margin: auto;
       text-align:center;
+      @include md {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      @include sm {
+        font-size: 14px;
+      }
       &>div{
         display: inline-block;
       }
@@ -110,6 +169,9 @@
         width: 30px;
         background-size: 100%;
         transform: rotate(-90deg);
+        @include md{
+          transform: none;
+        }
       }
       .concentration-step1{
         padding-right: 5px;
@@ -124,6 +186,10 @@
       width: 100%;
       margin: auto;
       text-align:center;
+      @include sm {
+        font-size: 16px;
+        line-height: 20px;
+      }
       &>div{
         display: inline-block;
       }
