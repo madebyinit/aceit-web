@@ -14,6 +14,61 @@ $cdnImage: 'https://cdn.aceit-app.com/img/';
 @import url('https://fonts.googleapis.com/css?family=Oswald:700');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
+// Mixins
+// (1) Media Queries
+@mixin xl {
+   @media only screen and (max-width: 1800px) {
+       @content;
+   }
+}
+
+@mixin semi-xl {
+   @media only screen and (max-width: 1680px) {
+       @content;
+   }
+}
+
+@mixin semi-lg {
+   @media only screen and (max-width: 1480px) {
+       @content;
+   }
+}
+
+@mixin lg {
+   @media only screen and (max-width: 1200px) {
+       @content;
+   }
+}
+
+@mixin md {
+   @media only screen and (max-width: 990px) {
+       @content;
+   }
+}
+
+@mixin md-up {
+   @media only screen and (min-width: 991px) {
+       @content;
+   }
+}
+
+@mixin wp-sm {
+   @media only screen and (max-width: 782px) {
+       @content;
+   }
+}
+
+@mixin sm {
+   @media only screen and (max-width: 767px) {
+       @content;
+   }
+}
+
+@mixin xs {
+   @media only screen and (max-width: 350px) {
+       @content;
+   }
+}
 
 body {
    height: 100%;
