@@ -85,6 +85,12 @@ span {
    font-weight: bold;
    text-align: center;
    text-transform: uppercase;
+   @include md {
+      font-size: 28px;
+   }
+   @include sm {
+      font-size: 20px;
+   }
 }
 
 @mixin topCenter($position:absolute){
