@@ -49,6 +49,11 @@ dialog-element{
   border-radius: 3px;
   background: #000;
   padding-bottom: 50px;
+  @include md {
+    width: calc(100% - 64px);
+    margin: 0 auto;
+    max-width: 912px;
+  }
   br{
     display: none;
   }
@@ -57,6 +62,11 @@ dialog-element{
     margin-bottom: 25px;
     font-size: 80px;
     color: aqua;
+    img{
+      @include md {
+        max-width: 100%;
+      }
+    }
   }
   .dialog-game-input-title{
     margin: 10px 0;
@@ -64,6 +74,9 @@ dialog-element{
   div{
     color: #fff;
     font-size: 30px;
+    &,strong{
+      font-size: 18px;
+    }
   }
   .button-got{
     position: absolute;
@@ -80,6 +93,15 @@ dialog-element{
     color: #fff !important;
     background-color: #000 !important;
     box-shadow: white 2px 0px 0px 3px, white -1px -1px 0px 3px !important;
+    @include md {
+      margin: 0;
+      left: 24px;
+      width: 70px;
+      height: 70px;
+      min-width: 0;
+      font-size: 11px;
+      bottom: -40px;
+    }
   }
   .button-cool{
     position: absolute;
