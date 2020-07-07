@@ -7,12 +7,21 @@
   background-size: 100%;
   background-position-y: 20%;
   transition: background 0.3s ease;
+  @include md {
+    height: 100vh;
+    background-size: cover !important;
+  }
   .pink-elephant-container {
     max-width: 900px;
     margin: auto;
     padding-top: 50px;
     text-align: center;
     position: relative;
+    @include md {
+      height: 100%;
+      padding: 50px 20px;
+      box-sizing: border-box;
+    }
     .pink-button{
       background: linear-gradient(to bottom, #cc36c0, #f256e5)!important;
       color: white;
@@ -34,10 +43,19 @@
       left: 0;
       right: 0;
       top: 41vh;
+      @include md {
+        bottom: 10vh;
+        top: auto;
+        display: flex;
+        flex-direction: column;
+      }
       .obviously {
         color: white;
         margin-top: 280px;
         font-weight: bold;
+        @include md {
+          margin-top: auto;
+        }
       }
       .pink-button{
         margin-top: 20px;
@@ -52,4 +70,7 @@
   background: url($cdnImage + 'elephant-bg-pink.png') no-repeat !important;
   background-size: 100%!important;
   background-position-y: 20%!important;
+  @include md {
+    background-size: cover !important;
+  }
 }
