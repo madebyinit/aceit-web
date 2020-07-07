@@ -16,6 +16,10 @@
     .optional-cards-title {
       margin: 20px;
       font-size: 26px;
+      @include md {
+        font-size: 18px;
+        line-height: 24px;
+      }
     }
 
     .routine-button {
@@ -32,6 +36,10 @@
     margin-left: -20px;
     list-style-type: disc;
     text-align: left;
+    @include sm {
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
 }
 
@@ -56,12 +64,24 @@
   width: 900px;
   padding: 75px 100px 110px 50px;
   box-sizing: border-box;
+  @include md {
+    width: 100%;
+    height: 70vw;
+    margin-bottom: 90px;
+  }
+  @include sm {
+    padding: 8vw 12vw 8vw 8vw;
+    margin: 42px 0 62px;
+  }
   img {
     position: absolute;
     top: 0;
     left: 0;
     max-width: 900px;
     z-index: -1;
+    @include md {
+      width: 100%;
+    }
   }
   .summary-item-text {
     overflow: auto;
@@ -69,5 +89,17 @@
     color: #3c6b82;
     font-size: 22px;
     line-height: 28px;
+    strong {
+      @include sm {
+        display: block;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    ol {
+      @include sm {
+        margin: 0;
+      }
+    }
   }
 }
