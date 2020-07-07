@@ -8,6 +8,13 @@
     width: 900px;
     padding-top: 40px;
     margin: auto;
+    @include md {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
     .physical-title{
       @include title();
       color: white;
@@ -39,10 +46,18 @@
     .md-nav-item:first-of-type {
       margin-left: 0!important;
     }
+    .md-nav-item {
+      @include md {
+        width: 33.3%;
+      }
+    }
     .md-nav-bar{
       height: 68px;
       border-color: rgba(255, 255, 255, 0.12);
       border-width: 0 0 3px;
+      @include md {
+        height: auto;
+      }
     }
     .md-button.md-accent{
       color: rgba(255, 255, 255, 0.31);
@@ -50,6 +65,14 @@
       padding: 22px 65px;
       font-size: 22px;
       margin: 0;
+      @include md {
+        width: 100%;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 14px;
+        height: 100%;
+        white-space: normal;
+      }
     }
     .md-active {
       color: white!important;
@@ -100,6 +123,11 @@
     .summary-button-style{
       position: absolute;
       left: 100px;
+      @include md {
+        position: relative;
+        left: auto;
+        margin: 0 16px;
+      }
     }
     .next-step-button{
       background-image: linear-gradient(to top, #299eb8, #0e7086);

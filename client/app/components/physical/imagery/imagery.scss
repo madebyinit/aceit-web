@@ -15,12 +15,26 @@
     padding: 40px 0;
     color: white;
     position: relative;
+    @include md {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .puppy-text {
       float: right;
       width: 500px !important;
+      @include md {
+        width: 100% !important;
+        max-width: 500px !important;
+      }
       .deep-breaths-text {
         left: -100px;
         bottom: 20px !important;
+        @include md {
+          left: auto !important;
+          bottom: auto !important;
+        }
       }
     }
     .tool-text {
@@ -29,14 +43,28 @@
       height: 100%;
       vertical-align: top;
       position: relative;
+      @include md {
+        width: 100% !important;
+        max-width: 650px;
+      }
       .close-your-eyes-text {
         margin-top: 20px;
         width: 460px;
+        @include md {
+          width: 100% !important;
+          max-width: 460px;
+        }
       }
       .deep-breaths-text {
         position: absolute;
         right: 30px;
         bottom: 10px;
+        @include md {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          margin-top: 24px;
+        }
       }
     }
     .smell-img {
@@ -63,6 +91,13 @@
       top: 40px;
       background-size: 820px;
       cursor: pointer;
+      @include md {
+        width: 132px;
+        height: 132px;
+        position: relative;
+        top: auto;
+        order: 3;
+      }
       &:hover {
         width: 100% !important;
         height: 100% !important;

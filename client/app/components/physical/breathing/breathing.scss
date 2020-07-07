@@ -22,6 +22,9 @@
     margin-top: 50px;
     img{
       margin-bottom: 40px;
+      @include sm {
+        width: 100%;
+      }
     }
     p {
       margin: 0;

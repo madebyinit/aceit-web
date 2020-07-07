@@ -24,6 +24,7 @@ md-input-container{
         position:absolute;
   background-color: rgba(255, 255, 255, 0.18);
   background:none;
+  z-index: 999;
     }
 }
 .main-menu-style {
@@ -59,6 +60,7 @@ z-index:0;
 .side-main-menu{
   background-color: #eaf5f9;
   box-shadow: 5px 0 0 4px rgba(0, 0, 0, 0.09)!important;
+  z-index: 1002;
   md-content{
     background-color: #eaf5f9!important;
     margin: 0;

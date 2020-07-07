@@ -3,11 +3,18 @@
 .neck-and-shoulders{
   width: 90%;
   margin: auto;
+  @include md {
+    width: 100%;
+  }
   .neck-and-shoulders-section {
     height: 170px;
     color: white;
     border-bottom: 1px solid;
     padding: 40px 0;
+    @include md {
+      display: flex;
+      flex-direction: row;
+    }
     &:first-child{
       margin-top: 30px;
     }
@@ -23,10 +30,18 @@
       text-align: center;
       .shoulders-img{
         width: 320px;
+        @include md {
+          width: 100%;
+          max-width: 320px;
+        }
       }
       .neck-img{
         width: 220px;
         padding-top: 15px;
+        @include md {
+          width: 100%;
+          max-width: 320px;
+        }
       }
       .clock{
         margin-top: 20px;
