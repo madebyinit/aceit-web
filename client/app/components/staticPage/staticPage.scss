@@ -8,6 +8,11 @@
     margin: auto;
     padding-top: 40px;
     font-family: 'Oswald', sans-serif!important;
+    @include md {
+      width: 100%;
+      padding: 40px 32px;
+      box-sizing: border-box;
+    }
   }
   .title{
     font-family: "Oswald", sans-serif !important;
@@ -19,5 +24,12 @@
   }
   a{
     color: $primaryColor;
+  }
+  ol, ul {
+    li {
+      @include md {
+        margin-left: 0;
+      }
+    }
   }
 }
