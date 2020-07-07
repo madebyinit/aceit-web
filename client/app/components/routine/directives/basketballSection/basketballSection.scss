@@ -11,6 +11,10 @@
     margin: 30px auto;
     border: 1px solid $secondaryColor;
     position: relative;
+    @include md {
+      width: 100%;
+      height: calc(48vw + 32px);
+    }
     video{
       height: 387px;
       width: 687px;
@@ -18,6 +22,12 @@
       left:0;
       right: 0;
       margin: auto;
+      @include md {
+        width: calc(100% - 24px);
+        max-width: 687px;
+        height: 48vw;
+        max-height: 387px;
+      }
     }
   }
   .apply-line {

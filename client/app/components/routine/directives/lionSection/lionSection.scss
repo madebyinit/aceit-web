@@ -29,13 +29,27 @@
     height: 400px;
     margin: auto;
     border: 1px solid $secondaryColor;
+    @include md {
+      display: flex;
+      width: 100%;
+      height: calc(48vw + 10px);
+    }  
     video{
       width: 690px;
       height: 390px;
       position: relative;
       top:5px;
       left:5px;
-  }
+      @include md {
+        width: calc(100% - 24px);
+        max-width: 687px;
+        height: 48vw;
+        max-height: 387px;
+        margin: auto;
+        top: auto;
+        left: auto;
+      }  
+    }
   }
   .button-container{
       text-align: center;

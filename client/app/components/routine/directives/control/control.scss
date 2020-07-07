@@ -3,6 +3,11 @@
 .control {
   position: relative;
   margin-top: 80px;
+  @include sm {
+    max-width: 300px;
+    height: 265px;
+    margin: 80px auto 0;
+  }
   .big-title {
     text-align: center;
     position: absolute;
@@ -12,6 +17,10 @@
     right: 0;
     & > img {
       width: 600px;
+      @include md {
+        width: 100%;
+        max-width: 600px;
+      }
     }
   }
   .suggested {
@@ -20,6 +29,12 @@
     position: absolute;
     bottom: 80px;
     left: -40px;
+    @include md {
+      width: 82px;
+      height: 82px;
+      left: -3px;
+      bottom: 16px;
+    }
     .suggested-icon {
       background: url($cdnImage+"icn-suggested.svg") no-repeat;
       height: inherit;
@@ -36,6 +51,11 @@
       font-size: 15px;
       color: $secondaryColor;
       font-weight: bold;
+      @include md {
+        font-size: 9px;
+        max-width: 94px;
+        margin: auto;
+      }
     }
   }
   .suggested:hover .suggested-icon {
@@ -49,6 +69,11 @@
     margin: 0 auto;
     position: relative;
     background-size: 550px;
+    @include sm {
+      transform: scale(0.5);
+      top: -170px;
+      left: -128px;
+    }
     .text {
       color: white;
       font-size: 26px;

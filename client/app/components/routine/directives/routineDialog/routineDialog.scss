@@ -11,6 +11,12 @@
   margin: auto;
   border-radius: 50%;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  @include sm {
+    width: 280px;
+    height: 280px;
+    margin: auto;
+    top: -28px;
+  }
   .routine-dialog-container {
     @include topCenter;
     width: 400px;
@@ -21,6 +27,10 @@
     right: 0;
     margin: auto;
     overflow: hidden;
+    @include sm {
+      width: 250px;
+      height: 250px;
+    }  
     .input-section,
     .first-option,
     .second-option {
@@ -47,6 +57,10 @@
           color: $secondaryColor;
           transition: all 0.3s ease;
           margin-top: 10px;
+          @include sm {
+            width: 160px;
+            font-size: 14px;
+          }        
           &::-webkit-input-placeholder {
             color: #c5c5c5;
           }
@@ -111,6 +125,10 @@
     padding: 10px;
     border-radius: 50%;
     z-index: 99;
+    @include sm {
+      top: 0;
+      right: 0;
+    }
     img {
       width: inherit;
       height: inherit;
