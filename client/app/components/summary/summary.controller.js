@@ -93,6 +93,91 @@ class SummaryController {
     // this.progressLinear.showProgress();
     this.connection.saveData(true, "summaryComplete");
     this._getUserData();
+
+    // Layout and misc
+    this.addBreaks();
+    this.viewActions();
+    this.triggerModal();
+  }
+
+  viewActions() {
+
+    var triggers = document.querySelectorAll('.toggle-icon-descriptions'),
+        items = document.querySelectorAll('.summary-item');
+    
+    for(var i = 0; i < triggers.length; i++) {
+
+      triggers[i].addEventListener('click', function() {
+
+        for(var j = 0; j < items.length; j++) {
+          items[j].classList.toggle('description-visible');
+        }
+
+        this.classList.toggle('triggered');
+
+        if(this.classList.contains('triggered')) {
+          this.innerHTML = 'Hide all actions';
+        } else {
+          this.innerHTML = 'View all actions';
+        }
+      });
+    }
+  }
+
+  triggerModal() {
+
+    // Trigger on icon click
+    var triggers = document.querySelectorAll('.summary-item'),
+        modals = document.querySelectorAll('.summary-items--modal');
+
+    for(var i = 0; i < triggers.length; i++) {
+
+      triggers[i].addEventListener('click', function() {
+
+        var key = this.getAttribute('data-feedback');
+
+        for(var j = 0; j < modals.length; j++) {
+          
+          if(modals[j].getAttribute('data-feedback') !== key) {
+            modals[j].classList.remove('visible');
+          } else {
+            modals[j].classList.add('visible');
+          }
+        }
+      });
+    }
+
+    // Trigger on close click
+    var modal_triggers = document.querySelectorAll('.summary-items--modal_close');
+
+    for(var i = 0; i < modal_triggers.length; i++) {
+
+      modal_triggers[i].addEventListener('click', function() {
+        this.parentNode.parentNode.classList.remove('visible');
+      });
+    }
+  }
+
+  addBreaks() {
+    var items = document.querySelectorAll('.summary-items--list > .summary-item');
+
+    var el = document.createElement('li');
+    el.className = 'item-break';
+
+    for(var i = 0; i < items.length; i++) {
+
+        if(
+          (items.length == 4 && (i + 1) == 2) ||
+          (items.length == 7 && ((i + 1) == 3 || (i + 1) == 5)) ||
+          (items.length == 10 && ((i + 1) == 3 || (i + 1) == 6 || (i + 1) == 8))
+        ) {
+          this.insertAfter(el, items[i]);
+        }
+    }
+  }
+
+  insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 
   stateGo(name) {
