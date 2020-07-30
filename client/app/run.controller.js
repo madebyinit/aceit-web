@@ -29,12 +29,8 @@ class RunController {
   }
 
   _startApp(){
-    if(this._isMobileDevice()){
-      this.$state.go('mobile');
-    }else{
-      this.stateChangeService.appInit();
-      this.stateChangeService.stateChange();
-    }
+    this.stateChangeService.appInit();
+    this.stateChangeService.stateChange();
   }
 
   _isMobileDevice(){

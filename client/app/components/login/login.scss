@@ -11,6 +11,9 @@
     position: relative;
     top: 40%;
     transform: translateY(-40%);
+    @include md {
+      top: 50%;
+    }
   }
   .login-logo{
     background: url($cdnImage + 'signup-logo.png') no-repeat;
@@ -25,6 +28,14 @@
     flex-direction:column;
     justify-content:flex-end;
 
+    @include md {
+      position: relative;
+      top: 32px; right: auto; bottom: auto; left: auto;
+      width: 120px;
+      height: 60px;
+      z-index: 99;
+    }
+
     .login-logo-text{
         font-size:1.5vw;
         position:absolute;
@@ -32,6 +43,11 @@
         color:white;
         text-transform:uppercase;
         font-family:Source Sans Pro;
+
+        @include md {
+          left: -6px;
+          font-size: 8px;
+        }
     }
 }
 .login-gradient-cover {
@@ -61,7 +77,11 @@
       font-size: 52px;
       text-align: center;
       margin-bottom: 40px;
-
+      @include md {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 25px;
+      }  
     }
     .sign-up-button {
       width: 80%;
@@ -77,16 +97,15 @@
       font-family:Source Sans Pro;
       text-shadow: 1px 0 #ffffff;
       letter-spacing: 1px;
-}
-
-
-
-
     }
+  }
     .login-button {
       color: white;
       font-size: 17px;
       margin-top: 40px;
+      @include md {
+        font-size: 15px;
+      }
       a{
           text-decoration:none;
       }
@@ -105,6 +124,9 @@
     left: 5px;
     margin: 20px auto;
     font-family:Source Sans Pro;
+    @include md {
+      line-height: 20px;
+    }
     a{
         text-decoration:none;
     }
@@ -126,7 +148,9 @@
       bottom:5%;
       left:0;
       right:0;
-
+      @include md {
+        font-size: 14px;
+      }
   }
   .login-view{
     width: 25%;
@@ -137,6 +161,20 @@
     left: 25%;
     top: 50%;
     transform: translateY(-50%);
+
+    @include semi-lg {
+      width: 50%;
+      max-width: 400px;
+      left: 5%;
+    }
+
+    @include md {
+      width: 100%;
+      max-width: 100%;
+      left: 0;
+      right: 0;
+    }
+
       &.ng-leave{
         animation: 0.25s fadeout ease;
       }
@@ -149,6 +187,9 @@
   height: 45px;
   margin: auto auto 40px;
   position: relative;
+  @include md {
+    margin: auto auto 20px;
+  }
           &:after {
           position:absolute;
           height:20px;
@@ -182,6 +223,9 @@
     border-radius: 3px;
     position: relative;
     z-index: 6;
+    @include md {
+      margin-bottom: 0;
+    }
   .error-message {
     position: absolute;
     bottom: -25px;
