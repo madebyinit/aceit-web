@@ -6,11 +6,11 @@ $lineColor: #e3e4e4;
 $background-gradient-color-1: #f4ddc2;
 $background-gradient-color-2: #9dd7d5;
 
-$header-bar-height: 40px;
+$header-bar-height: 55px;
 
 // $cdnImage: 'https://aceit.qarea.org/img/';
-$cdnImage: 'https://cdn.aceit-app.com/img/';
-// $cdnImage: 'http://localhost:3000/img/';
+// $cdnImage: 'https://cdn.aceit-app.com/img/';
+$cdnImage: 'https://www.aceitapp-demo.com/img/';
 @import url('https://fonts.googleapis.com/css?family=Oswald:700');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
@@ -60,6 +60,12 @@ $cdnImage: 'https://cdn.aceit-app.com/img/';
 
 @mixin sm {
    @media only screen and (max-width: 767px) {
+       @content;
+   }
+}
+
+@mixin semi-xs {
+   @media only screen and (max-width: 450px) {
        @content;
    }
 }

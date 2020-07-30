@@ -11,10 +11,14 @@
     height: 100vh;
     background-size: cover !important;
   }
+  @include sm {
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
   .pink-elephant-container {
     max-width: 900px;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 120px;
     text-align: center;
     position: relative;
     @include md {

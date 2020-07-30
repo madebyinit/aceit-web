@@ -4,9 +4,12 @@
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4 60%);
   height: auto;
+  @include sm {
+    padding: 80px 0 0;
+  }
   .physical-content{
     width: 900px;
-    padding-top: 40px;
+    padding-top: 120px;
     margin: auto;
     @include md {
       width: 100%;
@@ -14,6 +17,9 @@
       margin: auto;
       padding: 40px 20px;
       box-sizing: border-box;
+    }
+    @include sm {
+      padding: 20px;
     }
     .physical-title{
       @include title();

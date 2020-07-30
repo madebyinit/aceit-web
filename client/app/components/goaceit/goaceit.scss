@@ -8,12 +8,18 @@ $goaceit-text-color: #0e7086;
         padding-top: 32px;
         box-sizing: border-box;
     }
+    @include sm {
+        padding-top: 20px;
+    }
     .goaceit-container {
         // width: 60%;
         width:1000px;
         margin:auto;
         @include md{
             width: 100%;
+        }
+        @include sm {
+            padding-top: 30px;
         }
     }
 }

@@ -4,6 +4,10 @@
   width: 100%;
   height: auto;
   background-image: linear-gradient(to bottom, #20aecd, #d295e8 50%);
+  @include sm {
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
   .positive-thinking-container{
     @include container;
     @include md {

@@ -19,16 +19,40 @@ md-input-container{
   width: 100%;
 }
 .menu-transparent {
-    .main-menu-style {
-
-        position:absolute;
-  background-color: rgba(255, 255, 255, 0.18);
-  background:none;
-  z-index: 999;
+  .main-menu-style {
+    position:absolute;
+    background-color: rgba(255, 255, 255, 0.18);
+    background:none;
+    z-index: 999;
+  }
+}
+.menu-dark {
+  .main-menu-style {
+    position:absolute;
+    background: rgba(0, 0, 0, 0.2) !important;
+    background:none;
+    z-index: 999;
+  }
+}
+.menu-transparent {
+  &.logo-dark {
+    .main-logo {
+      background: url($cdnImage + 'logo_new-dark.png') center center no-repeat;
+      background-size: 100%;
     }
+
+    .open-menu{
+      background: url($cdnImage + 'icn-menu-dark.png') center left no-repeat;
+      background-size: 50px;
+      @include md {
+        background-size: 40px;
+      }  
+    }
+  }
 }
 .main-menu-style {
-z-index:0;
+  padding: 0 80px;
+  z-index:0;
   height: $header-bar-height;
   width: 100%;
   // background-color: rgba(255, 255, 255, 0.18);
@@ -39,21 +63,36 @@ z-index:0;
   position: relative;
   // position: absolute;
   // z-index: 50;
+  box-sizing: border-box;
+  @include md {
+    padding: 0 30px;
+  }
   .main-logo{
-    background: url($cdnImage + 'logo_new.png') no-repeat;
-    width: 90px;
+    background: url($cdnImage + 'logo_new.png') center center no-repeat;
+    width: 118px;
     height: 47px;
-    right: 15px;
+    right: 80px;
     @include centering();
     background-size: 100%;
+    @include md {
+      width: 102px;
+      height: 32px;
+      right: 15px;
+    }
   }
   .open-menu{
     background: url($cdnImage + 'icn-menu.png') no-repeat;
-    width: 50px;
+    width: 38px;
     height: 30px;
-    background-size: 100%;
+    background-size: 50px;
     @include centering();
-    left: 10px;
+    left: 80px;
+    @include md {
+      width: 30px;
+      height: 25px;
+      background-size: 40px;
+      left: 15px;
+    }
   }
 }
 

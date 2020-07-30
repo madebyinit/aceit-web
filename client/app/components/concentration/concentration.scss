@@ -1,6 +1,9 @@
 @import "../../common/common";
 
 .concentration {
+  @include sm {
+    padding: 80px 0 0;
+  }
     p,
     div{
         font-size:inherit;
@@ -12,7 +15,7 @@
     width: 900px;
     height: auto;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 120px;
     @include md {
       width: 100%;
     }

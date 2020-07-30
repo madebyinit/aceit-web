@@ -4,28 +4,28 @@
 @mixin physical(){
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4 60%)!important;
   .card-icon{
-    background-image: url($cdnImage + 'physical-tool-icon-white.png')!important;
+    // background-image: url($cdnImage + 'physical-tool-icon-white.png')!important;
   }
   .card-title{
-    color: white;
+    color: #0e7086;
   }
 }
 @mixin positive(){
     background: linear-gradient(to bottom, #20aecd, #d295e8 60%)!important;
     .card-icon{
-      background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
+      // background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
     }
     .card-title{
-      color: white;
+      color: #0e7086;
     }
 }
 @mixin concentration(){
   background-image: linear-gradient(to bottom, #20aecd, #f6d796 60%)!important;
   .card-icon{
-    background-image: url($cdnImage + 'concentration-icon-white.png')!important;
+    // background-image: url($cdnImage + 'concentration-icon-white.png')!important;
   }
   .card-title{
-    color: white;
+    color: #0e7086;
   }
 }
 .required-cards {
@@ -126,8 +126,8 @@
     }
     .routine-button{
         margin-top:25px;
-      background: linear-gradient(to top, #299eb8, #0e7086 60%);
-      color:white;
+      background: #fff;
+      color:#0e7086;
     }
     .button-container {
       width: 100px;

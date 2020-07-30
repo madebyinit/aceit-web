@@ -9,6 +9,7 @@
     position: relative;
     @include sm {
       height: 60vw;
+      padding-top: 20px;
       min-height: 200px;
     }
     .home-header-image{

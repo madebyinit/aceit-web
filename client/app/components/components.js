@@ -16,7 +16,7 @@ import gamesModule from './games/games';
 import goaceitModule from './goaceit/goaceit';
 import algorithmModule from './algorithm/algorithm';
 import AlghorithmHeaderFilter from '../common/filter/alghorithmHeaderFilter';
-
+import progressBarModule from './progressBar/progressBar';
 
 // services
 import GamesService from '../services/games.service';
@@ -26,6 +26,7 @@ import TowerService from '../services/tower.service';
 import ParkingLotService from '../services/parkingLot.service';
 import HelperService from '../services/helper.service';
 import SkipService from '../services/skip.service';
+import { unset } from 'lodash';
 
 const componentModule = angular
   .module('app.components', [
@@ -45,6 +46,7 @@ const componentModule = angular
     gamesModule,
     goaceitModule,
     algorithmModule,
+    progressBarModule
   ])
 
   .value('orderOfGames', {
@@ -94,6 +96,24 @@ const componentModule = angular
     frustration: String,
     concentration: String,
     muteMusic: String,
+  })
+
+  .filter('firstSentence', function() {
+    return function(str) {
+        return str.split('. ')[0] + '.';
+    };
+  })
+
+  .filter('restSentence', function() {
+    return function(str) {
+        var arr = str.split('. ');
+
+        if(arr[1] && arr[1].length > 0) {
+          return arr.slice(1).join('. ');
+        }
+
+        return arr.join('. ');
+    };
   })
 
   .filter('AlghorithmHeaderFilter', AlghorithmHeaderFilter)
