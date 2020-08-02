@@ -1,7 +1,7 @@
 @import "../../common/common";
 $goaceit-text-color: #0e7086;
 .goaceit {
-    height: 100%;
+    height: auto;
     color: $goaceit-text-color;
     background: linear-gradient(to top, $background-gradient-color-1, $background-gradient-color-2 80%);
     @include md{

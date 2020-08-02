@@ -17,6 +17,7 @@ import goaceitModule from './goaceit/goaceit';
 import algorithmModule from './algorithm/algorithm';
 import AlghorithmHeaderFilter from '../common/filter/alghorithmHeaderFilter';
 import progressBarModule from './progressBar/progressBar';
+import footerModule from './footer/footer';
 
 // services
 import GamesService from '../services/games.service';
@@ -46,7 +47,8 @@ const componentModule = angular
     gamesModule,
     goaceitModule,
     algorithmModule,
-    progressBarModule
+    progressBarModule,
+    footerModule
   ])
 
   .value('orderOfGames', {

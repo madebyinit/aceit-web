@@ -1,5 +1,4 @@
 @import "../../../common/common";
-
 .imagery {
   width: 90%;
   margin: auto;
@@ -97,8 +96,13 @@
         position: relative;
         top: auto;
         order: 3;
+        &:active {
+          .click-me-text {
+            display: none;
+          }
+        }
       }
-      &:hover {
+      &:not(.mobile):hover {
         width: 100% !important;
         height: 100% !important;
         border-radius: 0 !important;
@@ -107,7 +111,7 @@
           display: none;
         }
       }
-      .hover-me-text {
+      .hover-me-text, .click-me-text {
         position: absolute;
         bottom: 20px;
         right: 40px;
@@ -131,5 +135,69 @@
   .pencil-icon {
     width: 15px !important;
     transform: none !important;
+  }
+  &--modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s all;
+    z-index: 999;
+    &:not(.visible) {
+      opacity: 0;
+      visibility: hidden;
+    }
+    &_close {
+      display: block;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      background: url($cdnImage + 'summary-modal-close.svg') center center no-repeat;
+      cursor: pointer;
+    }
+    &_inner {
+      position: relative;
+      width: 100%;
+      height: 60%;
+      padding: 40px 30px 25px 30px;
+      max-width: 650px;
+      border: 7px solid #fff;
+      box-sizing: border-box;
+      @include sm {
+        max-width: calc(100% - 40px);
+      }
+      &[data-type="puppy"] {
+        background: url($cdnImage+"/img-puppy.png") center left/300% no-repeat #FFF;
+      }
+      &[data-type="smell"] {
+        background: url($cdnImage+"img-cookie.png") center center/400% no-repeat #FFF;
+      }
+      &[data-type="paradise"] {
+        background: url($cdnImage+"img-holiday2.png") center right no-repeat #fff;
+        background-size: 206% 99%;
+      }
+    }
+    .summary-item {
+      &--icon {
+        position: absolute;
+        margin: 0;
+        top: -58px;
+        left: calc(50% - 50px);
+        background: linear-gradient(90deg, rgb(247, 222, 210) 0%, rgb(244, 224, 207) 100%);
+        box-shadow: none;
+        border: none;
+        @include sm {
+          width: 90px;
+          height: 90px;
+        }
+      }
+    }
   }
 }

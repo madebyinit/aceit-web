@@ -1,5 +1,4 @@
 @import "../../../common/common";
-
 .neck-and-shoulders{
   width: 90%;
   margin: auto;
@@ -12,10 +11,14 @@
     border-bottom: 1px solid;
     padding: 40px 0;
     @include md {
+      height: 220px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
     }
     &:first-child{
+      @include md {
+        margin-top: 0;
+      }
       margin-top: 30px;
     }
     .neck-and-shoulders-text {
@@ -23,10 +26,17 @@
       width: 50%;
       vertical-align: top;
       @include topCenter(relative);
+      @include md {
+        width: 100%;
+        top: 0;
+      }
     }
     .neck-and-shoulders-img {
       display: inline-block;
       width: 49%;
+      @include md {
+        width: 100%;
+      }
       text-align: center;
       .shoulders-img{
         width: 320px;

@@ -15,12 +15,11 @@
     @include md{
         height: auto;
         margin-bottom: 0;
-        padding-bottom: 10px;
     }
     .header-invisible {
         visibility:hidden;
     }
-    margin: 0 30px 30px 30px;
+    margin: 0 30px 200px 30px;
     position: relative;
     @mixin add-bottom-shadow() {
         &:after {
@@ -91,7 +90,7 @@
     }
     .drawer-button-wrapper {
         @include md{
-            height: 500px;
+            height: 650px;
         }
         @mixin drawer-icon($icon-file-name, $direction:left) {
             cursor:pointer;
@@ -156,6 +155,25 @@
             .biodot-icon {
                 @include drawer-icon( left);
                 background-image: url(/mazerace/icn_stress.png);
+                &:before {
+                    @include md {
+                        font-size: 14px;
+                        top: -17px;    
+                    }
+                }
+                &.close-drawer {
+                    z-index: 5;
+                }
+            }
+
+        }
+        .mind-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .mind-icon {
+                @include drawer-icon( left);
+                background-image: url(/mazerace/icn_mind.png);
                 &:before {
                     @include md {
                         font-size: 14px;
@@ -239,12 +257,12 @@
         width: 100%;
         max-width: 800px;
         height: 700px;
-        top: 150px;
+        top: 300px;
         margin: auto;
         left: 0;
         right: 0;
         @include md {
-            margin: 0 -20px;
+            margin: 10px -20px;
             width: calc(100% + 40px);
         }
         .drawer-wrapper-inner {
@@ -254,9 +272,6 @@
             height: 800px;
             overflow-y: hidden;
             position: relative;
-            // display:flex;
-            // justify-content:center;
-            // margin-left:50px;
 
             .drawer {
 
@@ -273,8 +288,8 @@
                 line-height: 1.2em;
                 @include md{
                     width: 80%;
-                    height: auto;
                 }
+
                 h1 {
                     text-align: center;
                     text-transform: uppercase;
@@ -566,6 +581,68 @@
 
                             }
 
+                            &.inactive {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                &.mind-drawer {
+                    -ms-transform: rotateZ(2deg); /* IE 9 */
+                    -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
+                    transform: rotateZ(2deg);
+                    z-index: 30;
+                    margin-top: 40px;
+                    margin-left: 40px;
+                    @include md{
+                        margin-left: 0;
+                    }
+                    
+                    .second-title {
+                        margin-top: 50px;
+                    }
+
+                    .tabs {
+                        margin-top: 30px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        border-bottom: 2px solid #bdd1d5;
+
+                        @include md {
+                            margin-top: 20px;
+                        }
+                        .tab {
+                            width: 19.5%;
+                            background-color: #bdd1d5;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            clip-path: polygon(91% 0, 100% 50%, 90% 100%, 0 100%, 7% 49%, 0 0);
+
+                            &:first-child {
+                                clip-path: polygon(91% 0, 100% 50%, 90% 100%, 0 100%, 0 48%, 0 0);
+                            }
+                            border-bottom: 2px solid #0e7086;
+
+                            &.inactive {
+                                background: none;
+                                color: #bdd1d5;
+                                border: 0px solid;
+                            }
+                            .icon {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 100%;
+                                background-color: #fff;
+                            }
+                        }
+                    }
+
+                    .tab-content {
+                        .container {
+                            display: flex;
                             &.inactive {
                                 display: none;
                             }

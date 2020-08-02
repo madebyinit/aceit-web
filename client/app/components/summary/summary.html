@@ -1,8 +1,6 @@
 <main-menu class="menu-dark"></main-menu>
-
 <div class="home-page summary">
   <progress-bar step="4"></progress-bar>
-
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     
@@ -10,119 +8,27 @@
       <div class="summary-item-text">
         <strong>{{::$ctrl.user.name}}, this is your personal profile showing how you perform under pressure</strong>
         <figure>Click on the icons below to read more</figure>
-
-        <a href="#" class="toggle-icon-descriptions">View all actions</a>
-
+        <a href="#" class="toggle-icon-descriptions" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
         <ul class="summary-items--list">
-            <li class="summary-item" ng-repeat="(key, values) in $ctrl.estimationOfResults.FeedbackPosition | filter:query as items" ng-if="$ctrl.gameSummaryValue[values] != '' " data-feedback="{{values}}">
+            <li class="summary-item" ng-repeat="(key, values) in $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " ng-class="{'description-visible' : $ctrl.iconDescriptionToggled }" ng-click="$ctrl.openModal(values)" data-feedback="{{values}}">
               <figure class="summary-item--icon"></figure>
               <strong>{{$ctrl.gameSummaryValue[values]|firstSentence}}</strong>
               <span>{{$ctrl.gameSummaryValue[values]|restSentence}}</span>
             </li>
         </ul>
-
         <div class="summary-items--modal-container">
-          <div class="summary-items--modal" ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " data-feedback="{{values}}">
-            <span class="summary-items--modal_close"></span>
-            <figure class="summary-items--modal-icon"></figure>
-            <strong>{{$ctrl.gameSummaryValue[values]|firstSentence}}</strong>
-            <span>{{$ctrl.gameSummaryValue[values]|restSentence}}</span>
+          <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " class="summary-items--modal" ng-class="{'visible' : $ctrl.openedModal == values }" data-feedback="{{values}}">
+            <div class="summary-items--modal_inner">
+              <span class="summary-items--modal_close" ng-click="$ctrl.closeModal()"></span>
+              <figure class="summary-item--icon"></figure>
+              <strong>{{$ctrl.gameSummaryValue[values]|firstSentence}}</strong>
+              <span>{{$ctrl.gameSummaryValue[values]|restSentence}}</span>
+            </div>
           </div>
         </div>
-
-        <!-- <ul class="summary-items--list">
-          <li data-feedback="slowStarter" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong> You may get overwhelmed when beginning the test.</strong>
-            <span> Try to get focused and into your zone before the test starts by using your routine.</span>
-          </li>
-          <li data-feedback="impulsivity" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>Sometimes you begin a task, get confused and then read the instructions.</strong>
-            <span>Be sure to read and understand the instructions first.</span>
-          </li>
-          <li data-feedback="panic" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>You have a tendency to stress out when faced with a question that  is unfamiliar to you.</strong>
-            <span>You have a tendency to stress out when faced with a question that  is unfamiliar to you. </span>
-          </li>
-          <li data-feedback="negativeThinking" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>Your inner voice may be too self-critical and pessimistic which will prevent you from trusting your ability to perform.</strong>
-            <span>You may skip questions even though you know the answers. </span>
-          </li>
-          <li data-feedback="lowConfidence" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>You may start questioning yourself and losing confidence if you don’t succeed.</strong>
-            <span>It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.</span>
-          </li>
-          <li data-feedback="perfectionism" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong> You are committed to carefully and accurately find solutions to difficult questions however, you may be spending too much time on a specific question..</strong>
-            <span> You are committed to carefully and accurately find solutions to difficult questions however, you may be spending too much time on a specific question.</span>
-          </li>
-          <li data-feedback="badTimeManagement" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>You need to make a plan ahead of time on how long you can spend on each question (or section) and then adjust according to how you’re doing.</strong>
-            <span>You always need to be aware of the time and to pace yourself. </span>
-          </li>
-          <li data-feedback="badTimeManagement" class="summary-item">
-            <figure class="summary-item--icon"></figure>
-            <strong>You need to make a plan ahead of time on how long you can spend on each question (or section) and then adjust according to how you’re doing.</strong>
-            <span>You always need to be aware of the time and to pace yourself. </span>
-          </li>
-      </ul>
-
-      <div class="summary-items--modal-container">
-        <div data-feedback="slowStarter" class="summary-items--modal">
-          <div class="summary-items--modal_inner">
-            <span class="summary-items--modal_close"></span>
-            <figure class="summary-item--icon"></figure>
-            <strong> You may get overwhelmed when beginning the test.</strong>
-            <span> Try to get focused and into your zone before the test starts by using your routine.</span>  
-          </div>
-        </div>
-        <div data-feedback="impulsivity" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>Sometimes you begin a task, get confused and then read the instructions.</strong>
-          <span>Be sure to read and understand the instructions first.</span>
-        </div>
-        <div data-feedback="panic" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>You have a tendency to stress out when faced with a question that  is unfamiliar to you.</strong>
-          <span>You have a tendency to stress out when faced with a question that  is unfamiliar to you. </span>
-        </div>
-        <div data-feedback="negativeThinking" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>Your inner voice may be too self-critical and pessimistic which will prevent you from trusting your ability to perform.</strong>
-          <span>You may skip questions even though you know the answers. </span>
-        </div>
-        <div data-feedback="lowConfidence" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>You may start questioning yourself and losing confidence if you don’t succeed.</strong>
-          <span>It’s important for you to stop, do your routine and then start the next question anew. Refocusing your attention is crucial in order to stay positive. Spend some extra time on the Positive Thinking tool in the app.</span>
-        </div>
-        <div data-feedback="perfectionism" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong> You are committed to carefully and accurately find solutions to difficult questions however, you may be spending too much time on a specific question..</strong>
-          <span> You are committed to carefully and accurately find solutions to difficult questions however, you may be spending too much time on a specific question.</span>
-        </div>
-        <div data-feedback="badTimeManagement" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>You need to make a plan ahead of time on how long you can spend on each question (or section) and then adjust according to how you’re doing.</strong>
-          <span>You always need to be aware of the time and to pace yourself. </span>
-        </div>
-        <div data-feedback="concentration" class="summary-items--modal">
-          <figure class="summary-item--icon"></figure>
-          <strong>It may be hard for you to be totally focused during the test.</strong>
-          <span>Use the concentration tools to bring your mind back. Check out the stress and recovery section.</span>
-        </div>
-    </div> -->
-
-        <a href="#" class="toggle-icon-descriptions">View all actions</a>
+        <a href="#" class="toggle-icon-descriptions" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
       </div>
     </div>
-
     <div ng-if="$ctrl.user.admin">
         <input placeholder="slowStarter" ng-model="$ctrl.testSummary.slowStarter" ></input>
         <input placeholder="impulsivity" ng-model="$ctrl.testSummary.impulsivity"></input>
@@ -136,12 +42,9 @@
         </br>
         <button ng-click="$ctrl.setTestParams()">set params</button>
     </div>
-
     <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
     <div class="sub-title jordan" ng-if="$ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 6 && $ctrl.userSum.concentration < 10">{{:: 'summary.jordan' | translate}}</div>
-
     <required-cards></required-cards>
-
     <div class="button-container">
       <md-tooltip
         class="tooltip-style"
@@ -151,7 +54,6 @@
       >
         {{::'summary.routine' | translate}}
       </md-tooltip>
-
       <md-button
         class="button-style routine-button"
         ng-click="ctrl.stateGo('routine')"
@@ -162,5 +64,6 @@
     </div>
     <div class="optional-cards-title" ng-if="$ctrl.userSum.physical < 10 || $ctrl.userSum.positive < 10 || $ctrl.userSum.concentration < 10">{{:: 'summary.optional' | translate}}</div>
     <optional-cards></optional-cards>
-      </div>
+    </div>
+    <footer></footer>
 </div>

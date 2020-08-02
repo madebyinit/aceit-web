@@ -1,6 +1,5 @@
 @import "../../../../common/common";
 @import url('https://fonts.googleapis.com/css?family=Kalam:400,700');
-
 .sticky-note{
   overflow: scroll;
   .close-dialog{
@@ -8,6 +7,11 @@
   }
   .dialog-header{
     line-height:125px;
+    @include sm {
+      line-height:100px;
+      height: 80px;
+      font-size: 18px;
+    }
   }
   .positive-sticky-notes{
     width: 190px;
@@ -153,31 +157,53 @@
           top: 100px;
           left: -300px;
           transform: rotate(-5deg);
+          @include sm {
+            top: -97px;
+            left: 90px;
+            transform: rotate(10deg);
+          }
         }
         &:nth-child(2) {
           bottom: 0;
           right: -230px;
           transform: rotate(5deg);
+          @include sm {
+            bottom: -121px;
+            left: 62px;
+            transform: rotate(-5deg);
+          }
         }
         &:nth-child(3) {
           bottom: -180px;
           left: -80px;
           transform: rotate(-3deg);
+          @include sm {
+            display: none;
+          }
         }
         &:nth-child(4) {
           left: -330px;
           bottom: -30px;
           transform: rotate(7deg);
+          @include sm {
+            display: none;
+          }
         }
         &:nth-child(5) {
           right: -290px;
           top: 20px;
           transform: rotate(-5deg);
+          @include sm {
+            display: none;
+          }
         }
         &:nth-child(6) {
           right: -40px;
           bottom: -210px;
           transform: rotate(2deg);
+          @include sm {
+            display: none;
+          }
         }
       }
     }
@@ -187,6 +213,11 @@
     margin: 20px auto 10px;
     font-size: 18px;
     color: $secondaryColor;
+    @include sm {
+      width: 85%;
+      margin: 10px auto 0;
+      font-size: 15px;
+    }
   }
   .positive-note{
     .text{
@@ -215,6 +246,10 @@
           &:focus{
             border-color: $primaryColor;
           }
+          @include sm {
+            width: 200px;
+            margin-right: 27px;
+          }
         }
         .arrow-down{
           height: 55px;
@@ -222,6 +257,10 @@
           background: url($cdnImage + 'arrow-blue.png') no-repeat;
           background-size: 80%;
           margin: auto;
+          @include sm {
+            height: 36px;
+            width: 15px;
+          }
         }
         &.ng-enter{
           animation: 0.5s fadein ease;
@@ -232,10 +271,17 @@
         width: 35px;
         right: 53px;
         top: 57px;
+        @include sm {
+          right: 37px;
+          top: 38px;
+        }
       }
     }
     .save-and-close-button{
       margin-top: 30px;
+      @include sm {
+        margin-top: 10px;
+      }
       &.ng-enter{
         animation: 0.5s fadein ease;
       }
@@ -251,7 +297,6 @@
     }
   }
 }
-
 @keyframes errorEnter {
   from {
     opacity: 0;
@@ -262,7 +307,6 @@
     transform: translateY(0);
   }
 }
-
 @keyframes errorLeave {
   from {
     opacity: 1;
@@ -273,7 +317,6 @@
     transform: translateY(-20px);
   }
 }
-
 @keyframes stickyEnter {
   from {
     transform: scale(0);
@@ -284,7 +327,6 @@
     filter: blur(0);
   }
 }
-
 @keyframes stickyLeave {
   from {
     transform: rotateY(0) scale(1);

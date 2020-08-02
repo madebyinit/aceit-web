@@ -23,6 +23,7 @@
     }
     .physical-title{
       @include title();
+      font-size: 28px !important;
       color: white;
       margin: 30px auto;
       img{

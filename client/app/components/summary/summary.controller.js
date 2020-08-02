@@ -1,7 +1,6 @@
 const POSITIVE = "positive";
 const CONCENTRATION = "concentration";
 const PHYSICAL = "physical";
-
 class SummaryController {
   constructor(
     connection,
@@ -35,57 +34,46 @@ class SummaryController {
       concentration: "0"
     };
     this.$rootScope = $rootScope;
+    this.iconDescriptionToggled = false;
+    this.openedModal = null;
   }
-
   $onInit() {
     if (this.gameSummaryValue.selfAssessment === String) {
       this.gameSummaryValue.selfAssessment = "";
     }
-
     if (this.gameSummaryValue.gamesSuccessfullyCompleted === String) {
       this.gameSummaryValue.gamesSuccessfullyCompleted = "";
     }
-
     if (this.gameSummaryValue.slowStarter === String) {
       this.gameSummaryValue.slowStarter = "";
     }
-
     if (this.gameSummaryValue.impulsivity === String) {
       this.gameSummaryValue.impulsivity = "";
     }
-
     if (this.gameSummaryValue.panic === String) {
       this.gameSummaryValue.panic = "";
     }
-
     if (this.gameSummaryValue.negativeThinking === String) {
       this.gameSummaryValue.negativeThinking = "";
     }
-
     if (this.gameSummaryValue.lowConfidence === String) {
       this.gameSummaryValue.lowConfidence = "";
     }
-
     if (this.gameSummaryValue.perfectionism === String) {
       this.gameSummaryValue.perfectionism = "";
     }
-
     if (this.gameSummaryValue.badTimeManagement === String) {
       this.gameSummaryValue.badTimeManagement = "";
     }
-
     if (this.gameSummaryValue.frustration === String) {
       this.gameSummaryValue.frustration = "";
     }
-
     if (this.gameSummaryValue.concentration === String) {
       this.gameSummaryValue.concentration = "";
     }
-
     if (this.gameSummaryValue.muteMusic === String) {
       this.gameSummaryValue.muteMusic = "";
     }
-
     if (this.$rootScope.isScrollToTools) {
       const tools = document.querySelector("required-cards");
       this.scrollToPoint(tools);
@@ -93,79 +81,20 @@ class SummaryController {
     // this.progressLinear.showProgress();
     this.connection.saveData(true, "summaryComplete");
     this._getUserData();
-
     // Layout and misc
     this.addBreaks();
-    this.viewActions();
-    this.triggerModal();
   }
-
-  viewActions() {
-
-    var triggers = document.querySelectorAll('.toggle-icon-descriptions'),
-        items = document.querySelectorAll('.summary-item');
-    
-    for(var i = 0; i < triggers.length; i++) {
-
-      triggers[i].addEventListener('click', function() {
-
-        for(var j = 0; j < items.length; j++) {
-          items[j].classList.toggle('description-visible');
-        }
-
-        this.classList.toggle('triggered');
-
-        if(this.classList.contains('triggered')) {
-          this.innerHTML = 'Hide all actions';
-        } else {
-          this.innerHTML = 'View all actions';
-        }
-      });
-    }
+  openModal(v) { 
+    this.openedModal = v;
   }
-
-  triggerModal() {
-
-    // Trigger on icon click
-    var triggers = document.querySelectorAll('.summary-item'),
-        modals = document.querySelectorAll('.summary-items--modal');
-
-    for(var i = 0; i < triggers.length; i++) {
-
-      triggers[i].addEventListener('click', function() {
-
-        var key = this.getAttribute('data-feedback');
-
-        for(var j = 0; j < modals.length; j++) {
-          
-          if(modals[j].getAttribute('data-feedback') !== key) {
-            modals[j].classList.remove('visible');
-          } else {
-            modals[j].classList.add('visible');
-          }
-        }
-      });
-    }
-
-    // Trigger on close click
-    var modal_triggers = document.querySelectorAll('.summary-items--modal_close');
-
-    for(var i = 0; i < modal_triggers.length; i++) {
-
-      modal_triggers[i].addEventListener('click', function() {
-        this.parentNode.parentNode.classList.remove('visible');
-      });
-    }
+  closeModal() {
+    this.openedModal = null;
   }
-
   addBreaks() {
     var items = document.querySelectorAll('.summary-items--list > .summary-item');
-
     var el = document.createElement('li');
     el.className = 'item-break';
-
     for(var i = 0; i < items.length; i++) {
-
         if(
           (items.length == 4 && (i + 1) == 2) ||
           (items.length == 7 && ((i + 1) == 3 || (i + 1) == 5)) ||
@@ -175,22 +104,21 @@ class SummaryController {
         }
     }
   }
-
   insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
-
+  toggleIconDescriptions() {
+    this.iconDescriptionToggled = !this.iconDescriptionToggled;
+  }
   stateGo(name) {
     this.$state.go(name);
   }
-
   scrollToPoint(element) {
     this.$timeout(() => {
       this.$rootScope.isScrollToTools = false;
       element.scrollIntoView({ behavior: "smooth" });
     }, 300);
   }
-
   setTestParams() {
     this.testSummary = {
       slowStarter: parseInt(this.testSummary.slowStarter, 10),
@@ -203,7 +131,6 @@ class SummaryController {
       frustration: parseInt(this.testSummary.frustration, 10),
       concentration: parseInt(this.testSummary.concentration, 10)
     };
-
     this.gamesService.gameStatistic(
       this.testSummary.lowConfidence,
       this.testSummary.badTimeManagement,
@@ -216,7 +143,6 @@ class SummaryController {
       this.testSummary.frustration
     );
   }
-
   _getUserData() {
     this.connection.getData().then(
       res => {
@@ -241,7 +167,6 @@ class SummaryController {
       }
     );
   }
-
   sumUserQuestionnaire() {
     _.forEach(_.get(this.user, "questionnaire"), value => {
       this.userSum[value.category] += value.answer;

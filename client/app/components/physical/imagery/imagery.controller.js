@@ -1,15 +1,21 @@
 class ImageryController {
-  constructor(connection, $timeout, $state, $rootScope) {
+  constructor(connection, $timeout, $state, $rootScope, $window) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
     this.$rootScope = $rootScope;
+    this.isMobile = ($window.innerWidth < 480);
+    this.openedModal = null;
   }
-
   $onInit() {
     this._getWord();
   }
-
+  closeModal() {
+    this.openedModal = null;
+  }
+  openModal(v) {
+    this.openedModal = v;
+  }
   _getWord() {
     this.connection.getData().then(res => {
       if (_.get(res, "imagery")) {
@@ -19,13 +25,6 @@ class ImageryController {
       }
     });
   }
-
-  // goSummary(){
-  //     debugger;
-  //       this.showToolsDialog = true;
-  //   this.$state.go('summary');
-  // }
-
   saveWord(val) {
     this.imageryWord = val;
     this.connection.saveData(val, "imagery").then(
@@ -41,6 +40,5 @@ class ImageryController {
     );
   }
 }
-
-ImageryController.$inject = ["connection", "$timeout", "$state", "$rootScope"];
+ImageryController.$inject = ["connection", "$timeout", "$state", "$rootScope", "$window"];
 export default ImageryController;
