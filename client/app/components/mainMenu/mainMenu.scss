@@ -1,7 +1,7 @@
 @import "../../common/common";
 
-$menu-gradient-color-1: #389cd7;
-$menu-gradient-color-2: #36bad7;
+$menu-gradient-color-1: #0c6aa6;
+$menu-gradient-color-2: #0a94b2;
 
 @mixin centering(){
   position: absolute;
@@ -37,7 +37,7 @@ md-input-container{
 .menu-transparent {
   &.logo-dark {
     .main-logo {
-      background: url($cdnImage + 'logo_new-dark.png') center center no-repeat;
+      background: url($cdnImage + 'logo-black.png') center center no-repeat;
       background-size: 100%;
     }
 
@@ -68,7 +68,7 @@ md-input-container{
     padding: 0 30px;
   }
   .main-logo{
-    background: url($cdnImage + 'logo_new.png') center center no-repeat;
+    background: url($cdnImage + 'logo-white.png') center center no-repeat;
     width: 118px;
     height: 47px;
     right: 80px;

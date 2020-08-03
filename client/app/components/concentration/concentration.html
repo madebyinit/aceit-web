@@ -1,6 +1,6 @@
 <main-menu class="menu-dark"></main-menu>
 <div class="concentration">
-  <progress-bar step="4"></progress-bar>
+  <progress-bar step="4" class="light"></progress-bar>
 
   <div class="concentration-content">
     <div class="concentration-title">
@@ -24,9 +24,9 @@
     />
     <div class="line-var"></div>
     <div class="concentration-video">
-      <video id="concentration-video-id" controls>
+      <video id="concentration-video-id" controls preload="metadata">
         <source
-          ng-src="{{::$root.videoCdn}}concentration.mp4"
+          ng-src="{{::$root.videoCdn}}concentration.mp4#t=0.1"
           type="video/mp4"
         />
       </video>
@@ -101,7 +101,6 @@
       </md-button>
     </div>
   </div>
-  <footer></footer>
 </div>
 
 <dialog-element

@@ -12,8 +12,8 @@
     </div> -->
     <div class="lion-title">{{:: 'routine.lion.friend'|translate}}</div>
     <div class="lion-section-video">
-        <video id="lol-lion" controls>
-            <source ng-src="{{::$root.videoCdn}}lion_lol.mp4" type="video/mp4">
+        <video id="lol-lion" controls preload="metadata">
+            <source ng-src="{{::$root.videoCdn}}lion_lol.mp4#t=0.1" type="video/mp4">
         </video>
     </div>
     <div class="lion-title lion-title-end">{{:: 'routine.lion.perform'|translate}}</div>

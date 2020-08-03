@@ -1,6 +1,6 @@
 <main-menu class="menu-dark"></main-menu>
 <div class="home-page summary">
-  <progress-bar step="4"></progress-bar>
+  <progress-bar step="4" class="light white-font"></progress-bar>
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     
@@ -65,5 +65,5 @@
     <div class="optional-cards-title" ng-if="$ctrl.userSum.physical < 10 || $ctrl.userSum.positive < 10 || $ctrl.userSum.concentration < 10">{{:: 'summary.optional' | translate}}</div>
     <optional-cards></optional-cards>
     </div>
-    <footer></footer>
+    <div class="website-maintenance"><a href="https://omnisdigitalagency.com/" target="_blank">Website maintenance</a></div>
 </div>

@@ -151,10 +151,9 @@
     }
   }
   .lion-section{
-    height: 100vh;
-    min-height: 840px;
+    height: auto;
     width: 100%;
-    background: url($cdnImage + 'jungle-bg@2x.png') no-repeat fixed 100% 100%;
+    background: url($cdnImage + 'jungle-bg@2x.png') no-repeat 100% 100%;
     @include md {
       padding: 42px 24px;
       height: auto;

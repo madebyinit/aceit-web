@@ -9,6 +9,7 @@
   padding-bottom:30px;
   @include sm {
     padding-top: 70px;
+    background:url($cdnImage + 'bg-pattern.png'), url($cdnImage + 'bg-routine.png') center no-repeat;
   }
   progress-bar {
     .progress-bar-items {

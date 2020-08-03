@@ -61,6 +61,17 @@
       line-height: 16px;
     }
   }
+  .website-maintenance {
+    a, a:hover, a:active {
+      color: #fff;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+  }
 }
 
 @keyframes cardEnter {
@@ -118,7 +129,7 @@
       color: #0e7086;
 
       @include sm {
-        font-size: 15px;
+        font-size: 14px;
       }
     }
 
@@ -313,7 +324,7 @@
       align-items: center;
       justify-content: center;
 
-      height: 78px;
+      min-height: 78px;
       max-width: 245px;
       margin: 20px auto 0;
       padding: 0 12px;

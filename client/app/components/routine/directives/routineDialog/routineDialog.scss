@@ -12,8 +12,8 @@
   border-radius: 50%;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   @include sm {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     margin: auto;
     top: -28px;
   }
@@ -28,8 +28,8 @@
     margin: auto;
     overflow: hidden;
     @include sm {
-      width: 250px;
-      height: 250px;
+      width: 270px;
+      height: 270px;
     }  
     .input-section,
     .first-option,
@@ -40,7 +40,7 @@
     }
     .input-section {
       width: 100%;
-      height: 35%;
+      height: 45%;
       .form-section {
         text-align: center;
         padding-top: 40px;
@@ -103,7 +103,7 @@
       }
     }
     .first-divider {
-      top: 32.5%;
+      top: 45.5%;
     }
     .second-divider {
       bottom: 32.5%;

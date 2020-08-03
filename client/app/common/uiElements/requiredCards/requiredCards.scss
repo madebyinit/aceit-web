@@ -1,6 +1,7 @@
 @import "../../common";
 @mixin physical(){
-  background-image: linear-gradient(to bottom, #20aecd, #f9bfc4 60%)!important;
+  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(249, 191, 196, 1) 60%);
+  background-color: #fff;
   .card-icon{
     // background-image: url($cdnImage + 'physical-tool-icon-white.png')!important;
   }
@@ -9,7 +10,8 @@
   }
 }
 @mixin positive(){
-    background: linear-gradient(to bottom, #20aecd, #d295e8 60%)!important;
+  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(210, 149, 232, 1) 60%);
+  background-color: #fff;
     .card-icon{
       // background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
     }
@@ -18,7 +20,8 @@
     }
 }
 @mixin concentration(){
-  background-image: linear-gradient(to bottom, #20aecd, #f6d796 60%)!important;
+  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(246, 215, 150, 1) 60%);
+  background-color: #fff;
   .card-icon{
     // background-image: url($cdnImage + 'concentration-icon-white.png')!important;
   }
@@ -65,7 +68,8 @@
         color: $secondaryColor;
         margin-bottom: 20px;
         @include sm {
-          margin: 0px 0 29px 0;
+          margin: 0px 0 30px 10px;
+          text-align: left;
           width: 50%;
         }
       }
@@ -73,7 +77,7 @@
         @include sm {
           position: absolute;
           text-align: center;
-          margin: 100px 0px 0px 100px;
+          margin: 2.5em 5.5em;
         }
       }
       .card-button{
@@ -114,7 +118,8 @@
       @include concentration;
     }
     .physical-card{
-      background: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(249, 191, 196, 0.44) 60%);
+      background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(249, 191, 196, 0.44) 60%);
+      background-color: #fff;
       .card-icon{
         background-image: url($cdnImage + 'physical-icon-blue.png');
       }
@@ -123,7 +128,8 @@
       }
     }
     .positive-card{
-      background: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(210, 149, 232, 0.44) 60%);
+      background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(210, 149, 232, 0.44) 60%);
+      background-color: #fff;
       .card-icon{
         background-image: url($cdnImage + 'positive-thinking-icon-blue.png');
       }
@@ -133,6 +139,7 @@
     }
     .concentration-card{
       background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(246, 215, 150, 0.44) 60%);
+      background-color: #fff;
       .card-icon{
         background-image: url($cdnImage + 'concentration-icon-blue.png');
       }

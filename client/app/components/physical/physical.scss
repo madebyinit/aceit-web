@@ -38,12 +38,13 @@
     .physical-sub-title{
       .main{
         @include title();
-        font-size: 24px;
+        font-size: 24px !important;
         color: $secondaryColor;
       }
       .second{
+        margin-top: 20px;
         @include title();
-        font-size: 17px;
+        font-size: 17px !important;
         color: $secondaryColor;
       }
     }

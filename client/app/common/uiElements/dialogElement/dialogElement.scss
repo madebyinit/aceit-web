@@ -82,6 +82,7 @@
     margin: auto;
     border-radius: 50%;
     text-align: center;
+    z-index: 999;
     @include sm {
       right: 24px;
       left: auto;

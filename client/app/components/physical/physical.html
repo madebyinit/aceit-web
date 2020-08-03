@@ -1,7 +1,7 @@
 <main-menu class="menu-dark"></main-menu>
 
 <div class="physical">
-  <progress-bar step="4"></progress-bar>
+  <progress-bar step="4" class="light"></progress-bar>
 
   <div class="physical-content">
     <div class="physical-title"><img ng-src="{{::$root.imageCdn}}physical-tool-icon-white.png"><span>{{::'physical.physical_tools' | translate}}</span></div>
@@ -39,7 +39,6 @@
       </md-button>
     </div>
   </div>
-  <footer></footer>
 </div>
 <tools-dialog
         ng-if="$ctrl.showToolsDialog"

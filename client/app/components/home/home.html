@@ -1,7 +1,7 @@
 <main-menu></main-menu>
 <div class="home-page" id="home-page-id">
   <div class="home-header">
-    <progress-bar step="1"></progress-bar>
+    <progress-bar step="1" class="light"></progress-bar>
     <div class="home-header-image"></div>
   </div>
   <div class="mid-section">
@@ -11,8 +11,8 @@
     <a href="#first-video"><div class="arrow-down"></div></a>
     <div class="flow-line"></div>
     <div class="video-box">
-      <video id="video0" controls >
-        <source ng-src="{{::$root.videoCdn}}the-big-test.mp4" type="video/mp4">
+      <video id="video0" controls preload="metadata">
+        <source ng-src="{{::$root.videoCdn}}the-big-test.mp4#t=0.1" type="video/mp4">
       </video>
     </div>
     <div class="flow-line"></div>
@@ -53,8 +53,8 @@
     <div class="section-style" ng-class="{'remove-transform':$ctrl.showLionVideo}">
       <div class="title">{{::'home.stress_come_from' | translate}}</div>
       <div class="video-box lion-video" ng-class="{'lion-video-big':$ctrl.showLionVideo}">
-        <video class="lion-video" id="video1" >
-          <source src="{{::$root.videoCdn}}lion_vid.mp4" type="video/mp4">
+        <video class="lion-video" id="video1" preload="metadata">
+          <source src="{{::$root.videoCdn}}lion_vid.mp4#t=0.1" type="video/mp4">
         </video>
       </div>
       <p>{{::'home.suddenly_find_yourself' | translate}}</p>
@@ -80,7 +80,6 @@
       <md-button class="lets-start">{{::'home.lets_do_it' | translate}}</md-button>
     </a>
   </div>
-  <footer></footer>
 </div>
 <dialog-element
         show-dialog="$ctrl.showWelcomeDialog"
