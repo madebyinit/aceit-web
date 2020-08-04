@@ -174,7 +174,7 @@
         max-width: calc(100% - 40px);
       }
       &[data-type="puppy"] {
-        background: url($cdnImage+"/img-puppy.png") center left/300% no-repeat #FFF;
+        background: url($cdnImage+"img-puppy.png") center left/300% no-repeat #FFF;
       }
       &[data-type="smell"] {
         background: url($cdnImage+"img-cookie.png") center center/400% no-repeat #FFF;

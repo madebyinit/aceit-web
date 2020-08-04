@@ -7,8 +7,7 @@ progress-bar {
   @include sm {
     display: flex;
     flex-direction: row;
-    overflow-y: hidden;
-    overflow-x: auto;
+    overflow: hidden;
   }
   &[step="1"],
   &[step="2"],

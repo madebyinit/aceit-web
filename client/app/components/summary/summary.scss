@@ -64,7 +64,8 @@
   .website-maintenance {
     a, a:hover, a:active {
       color: #fff;
-      font-size: 14px;
+      font-size: 12px;
+      font-family: 'Rotobo', sans-serif;
       text-decoration: underline;
     }
     padding: 20px 0;
@@ -327,7 +328,7 @@
       min-height: 78px;
       max-width: 245px;
       margin: 20px auto 0;
-      padding: 0 12px;
+      padding: 12px 12px;
       box-sizing: border-box;
 
       font-size: 16px;

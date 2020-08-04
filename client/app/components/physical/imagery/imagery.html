@@ -15,8 +15,8 @@
     <div class="tool-img mobile paradise-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('paradise')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
-    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'paradise' }">
-      <div class="imagery--modal_inner" data-type="paradise">
+    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'paradise' }" ng-click="$ctrl.closeModal()">
+      <div class="imagery--modal_inner" data-type="paradise" ng-click="$event.stopPropagation()">
         <span class="imagery--modal_close" ng-click="$ctrl.closeModal()"></span>
       </div>
     </div>
@@ -28,8 +28,8 @@
     <div class="tool-img mobile puppy-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('puppy')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
-    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'puppy' }">
-      <div class="imagery--modal_inner" data-type="puppy">
+    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'puppy' }" ng-click="$ctrl.closeModal()">
+      <div class="imagery--modal_inner" data-type="puppy" ng-click="$event.stopPropagation()">
         <span class="imagery--modal_close" ng-click="$ctrl.closeModal()"></span>
       </div>
     </div>
@@ -55,8 +55,8 @@
     <div class="tool-img mobile smell-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('smell')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
-    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'smell' }">
-      <div class="imagery--modal_inner" data-type="smell">
+    <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'smell' }" ng-click="$ctrl.closeModal()">
+      <div class="imagery--modal_inner" data-type="smell" ng-click="$event.stopPropagation()">
         <span class="imagery--modal_close" ng-click="$ctrl.closeModal()"></span>
       </div>
     </div>

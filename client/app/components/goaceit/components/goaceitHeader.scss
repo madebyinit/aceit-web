@@ -89,7 +89,7 @@
   }
   .drawer-button-wrapper {
     @include md {
-      height: 650px;
+      height: 630px;
     }
     @mixin drawer-icon($icon-file-name, $direction: left) {
       cursor: pointer;
@@ -715,6 +715,10 @@
                 background: none;
                 color: #bdd1d5;
                 border: 0px solid;
+
+                .icon {
+                  opacity: 0.6;
+                }
               }
               .icon {
                 @include sm {

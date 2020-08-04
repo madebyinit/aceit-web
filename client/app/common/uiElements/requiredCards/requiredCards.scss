@@ -1,181 +1,207 @@
 @import "../../common";
-@mixin physical(){
-  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(249, 191, 196, 1) 60%);
+@mixin physical() {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(32, 174, 205, 1),
+    rgba(249, 191, 196, 1) 60%
+  );
   background-color: #fff;
-  .card-icon{
+  .card-icon {
     // background-image: url($cdnImage + 'physical-tool-icon-white.png')!important;
   }
-  .card-title{
+  .card-title {
     color: #0e7086;
   }
 }
-@mixin positive(){
-  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(210, 149, 232, 1) 60%);
+@mixin positive() {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(32, 174, 205, 1),
+    rgba(210, 149, 232, 1) 60%
+  );
   background-color: #fff;
-    .card-icon{
-      // background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
-    }
-    .card-title{
-      color: #0e7086;
-    }
+  .card-icon {
+    // background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
+  }
+  .card-title {
+    color: #0e7086;
+  }
 }
-@mixin concentration(){
-  background-image: linear-gradient(to bottom, rgba(32, 174, 205, 1), rgba(246, 215, 150, 1) 60%);
+@mixin concentration() {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(32, 174, 205, 1),
+    rgba(246, 215, 150, 1) 60%
+  );
   background-color: #fff;
-  .card-icon{
+  .card-icon {
     // background-image: url($cdnImage + 'concentration-icon-white.png')!important;
   }
-  .card-title{
+  .card-title {
     color: #0e7086;
   }
 }
 .required-cards {
-    text-align: center;
-    .summary-card {
-      height: 295px;
-      width: 220px;
-      border: 2px solid white;
-      border-radius: 3px;
-      box-shadow: 0 0 3.5px 0 rgba(0, 0, 0, 0.4);
-      display: inline-block;
-      margin: 0 20px 20px 20px;
-      cursor: pointer;
-      vertical-align: top;
-      transition: all 0.3s ease-out;
+  text-align: center;
+  .summary-card {
+    height: 295px;
+    width: 220px;
+    border: 2px solid white;
+    border-radius: 3px;
+    box-shadow: 0 0 3.5px 0 rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    margin: 0 20px 20px 20px;
+    cursor: pointer;
+    vertical-align: top;
+    transition: all 0.3s ease-out;
+    @include sm {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      height: 118px;
+      width: 245px;
+    }
+    .card-icon {
+      width: 75px;
+      height: 90px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin: 20px auto;
       @include sm {
-        display: inline-flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        height: 118px;
-        width: 245px;
-      }
-      .card-icon{
-        width: 75px;
-        height: 90px;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        margin: 20px auto;
-        @include sm {
-          width: 68px;
-          height: 85px;
-          margin: 0px 0px 0px 24px;
-        }
-      }
-      .card-title{
-        @include title;
-        font-size: 20px;
-        color: $secondaryColor;
-        margin-bottom: 20px;
-        @include sm {
-          margin: 0px 0 30px 10px;
-          text-align: left;
-          width: 50%;
-        }
-      }
-      .button-section {
-        @include sm {
-          position: absolute;
-          text-align: center;
-          margin: 2.5em 5.5em;
-        }
-      }
-      .card-button{
-        background-color: white;
-        color: $secondaryColor;
-        width: 85px;
+        width: 68px;
         height: 85px;
+        margin: 0px 0px 0px 24px;
       }
-      .my-imagery{
-        width: 85px;
-        height: 85px;
-        font-size: 12px;
+    }
+    .card-title {
+      @include title;
+      font-size: 20px;
+      color: $secondaryColor;
+      margin-bottom: 20px;
+      @include sm {
+        margin: 0px 0 30px 10px;
+        text-align: left;
+        width: 50%;
+      }
+    }
+    .button-section {
+      @include sm {
+        position: absolute;
+        text-align: center;
+        left: 85px;
+        top: 70px
+      }
+    }
+    .card-button {
+      background-color: white;
+      color: $secondaryColor;
+      width: 85px;
+      height: 85px;
+    }
+    .my-imagery {
+      width: 85px;
+      height: 85px;
+      font-size: 12px;
+      @include sm {
+        min-width: 110px;
+        min-height: 20px;
+        max-height: 20px;
+        border-radius: 50px !important;
+        background: #fff !important;
+        color: #0e7086 !important;
+      }
+      .imagery-word-bind {
         @include sm {
-          min-width: 110px;
-          min-height: 20px;
-          max-height: 20px;
-          border-radius: 50px!important;
-          background: #fff!important;
-          color:#0e7086!important;
-        }
-        .imagery-word-bind {
-          @include sm {
-            font-size: 12px;
-          }
-        }
-      }
-      &:hover{
-        transform: translateY(-10px);
-      }
-    }
-    .physical-done{
-      @include physical;
-    }
-    .positive-done{
-      @include positive;
-    }
-    .concentration-done{
-      @include concentration;
-    }
-    .physical-card{
-      background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(249, 191, 196, 0.44) 60%);
-      background-color: #fff;
-      .card-icon{
-        background-image: url($cdnImage + 'physical-icon-blue.png');
-      }
-      &:hover{
-        @include physical;
-      }
-    }
-    .positive-card{
-      background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(210, 149, 232, 0.44) 60%);
-      background-color: #fff;
-      .card-icon{
-        background-image: url($cdnImage + 'positive-thinking-icon-blue.png');
-      }
-      &:hover{
-        @include positive;
-      }
-    }
-    .concentration-card{
-      background-image: linear-gradient(to bottom, rgba(32, 174, 205, 0.44), rgba(246, 215, 150, 0.44) 60%);
-      background-color: #fff;
-      .card-icon{
-        background-image: url($cdnImage + 'concentration-icon-blue.png');
-      }
-      &:hover{
-        @include concentration;
-      }
-    }
-    .required-cards{
-      text-align: center;
-      margin-bottom: 40px;
-      &>:nth-child(1){
-        &.ng-enter{
-          animation: 0.35s cardEnter ease;
-        }
-      }
-      &>:nth-child(2){
-        &.ng-enter{
-          animation: 0.65s cardEnter ease;
-        }
-      }
-      &>:nth-child(3){
-        &.ng-enter{
-          animation: 0.95s cardEnter ease;
+          font-size: 12px;
         }
       }
     }
-    .routine-button{
-        margin-top:25px;
-      background: #fff;
-      color:#0e7086;
-    }
-    .button-container {
-      width: 100px;
-      margin: auto;
+    &:hover {
+      transform: translateY(-10px);
     }
   }
+  .physical-done {
+    @include physical;
+  }
+  .positive-done {
+    @include positive;
+  }
+  .concentration-done {
+    @include concentration;
+  }
+  .physical-card {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(32, 174, 205, 0.44),
+      rgba(249, 191, 196, 0.44) 60%
+    );
+    background-color: #fff;
+    .card-icon {
+      background-image: url($cdnImage + "physical-icon-blue.png");
+    }
+    &:hover {
+      @include physical;
+    }
+  }
+  .positive-card {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(32, 174, 205, 0.44),
+      rgba(210, 149, 232, 0.44) 60%
+    );
+    background-color: #fff;
+    .card-icon {
+      background-image: url($cdnImage + "positive-thinking-icon-blue.png");
+    }
+    &:hover {
+      @include positive;
+    }
+  }
+  .concentration-card {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(32, 174, 205, 0.44),
+      rgba(246, 215, 150, 0.44) 60%
+    );
+    background-color: #fff;
+    .card-icon {
+      background-image: url($cdnImage + "concentration-icon-blue.png");
+    }
+    &:hover {
+      @include concentration;
+    }
+  }
+  .required-cards {
+    text-align: center;
+    margin-bottom: 40px;
+    & > :nth-child(1) {
+      &.ng-enter {
+        animation: 0.35s cardEnter ease;
+      }
+    }
+    & > :nth-child(2) {
+      &.ng-enter {
+        animation: 0.65s cardEnter ease;
+      }
+    }
+    & > :nth-child(3) {
+      &.ng-enter {
+        animation: 0.95s cardEnter ease;
+      }
+    }
+  }
+  .routine-button {
+    margin-top: 25px;
+    background: #fff;
+    color: #0e7086;
+  }
+  .button-container {
+    width: 100px;
+    margin: auto;
+  }
+}
 @keyframes cardEnter {
   from {
     opacity: 0;

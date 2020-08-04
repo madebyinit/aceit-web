@@ -49,7 +49,7 @@
             </div>
             <md-divider ng-if="$ctrl.openSummary && $ctrl.showFullSummary"></md-divider>
             <md-list-item class="md-3-line" ng-if="$ctrl.user.routineComplete" ng-class="{'state-select':$ctrl.$state.current.name === 'routine'}" ng-click="$ctrl.stateChange('routine')">
-                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn-my-routines-menu.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
+                <div class="menu-icon"><img ng-src="{{::$root.imageCdn}}icn_my_routines.svg"></div><span>{{::'main_menu.routines' | translate}}</span>
             </md-list-item>
             <md-divider ng-if="$ctrl.user.goaceitOn"></md-divider>
             <md-list-item class="md-3-line" ng-if="$ctrl.user.goaceitOn" ng-class="{'state-select':$ctrl.$state.current.name === 'goaceit'}" ng-click="$ctrl.stateChange('goaceit')">

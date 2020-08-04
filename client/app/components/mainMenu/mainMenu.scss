@@ -27,6 +27,11 @@ md-input-container{
   }
 }
 .menu-dark {
+  &.darker {
+    .main-menu-style {
+      background: rgba(0, 0, 0, 0.5) !important;
+    }
+  }
   .main-menu-style {
     position:absolute;
     background: rgba(0, 0, 0, 0.2) !important;
