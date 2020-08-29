@@ -1,10 +1,10 @@
 class ImageryController {
-  constructor(connection, $timeout, $state, $rootScope, $window) {
+  constructor(connection, $timeout, $state, $rootScope) {
     this.connection = connection;
     this.$timeout = $timeout;
     this.$state = $state;
     this.$rootScope = $rootScope;
-    this.isMobile = ($window.innerWidth < 480);
+    this.isMobile = $rootScope.isMobile;
     this.openedModal = null;
   }
   $onInit() {
@@ -40,5 +40,5 @@ class ImageryController {
     );
   }
 }
-ImageryController.$inject = ["connection", "$timeout", "$state", "$rootScope", "$window"];
+ImageryController.$inject = ["connection", "$timeout", "$state", "$rootScope"];
 export default ImageryController;

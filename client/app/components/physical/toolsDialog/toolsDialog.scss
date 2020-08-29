@@ -1,108 +1,111 @@
 @import "../../../common/common";
 
 .toolsDialog {
-    // Overriding dialogElement scss
-    .dialog-element {
-        .dialog-input {
-            height:100%;
-            padding: 20px;
-        .first-divider {
-            top: 43%;
+  // Overriding dialogElement scss
+  .dialog-element {
+    .dialog-input {
+      height: 100%;
+      padding: 20px;
+      .first-divider {
+        top: 43%;
+        @include semi-xs {
+          top: 45%;
         }
-        .second-divider {
-            top: 59%;
+      }
+      .second-divider {
+        top: 59%;
+        @include semi-xs {
+          top: 61%;
         }
-
-        }
+      }
+    }
     .tools-dialog-options {
-        width: 100%;
-        height: 70%;
-        .save-and-close-button {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-        .form-section {
-            text-align: center;
-            padding-top: 40px;
-            .dialog-input-title {
-                font-size: 17px;
-                color: $secondaryColor;
-            }
-            input {
-                width: 220px;
-                height: 35px;
-                border-radius: 3px;
-                border: 1px solid #c5c5c5;
-                text-align: center;
-                color: $secondaryColor;
-                transition: all 0.3s ease;
-                margin-top: 10px;
-                &::-webkit-input-placeholder {
-                    color: #c5c5c5;
-                }
-                &:focus{
-                    border-color: $primaryColor;
-                }
-            }
-        }
-        .text-bind{
-            // padding-bottom: 65px;
-        }
-        
-    }
-}
-    .first-option,
-    .second-option,
-    .third-option{
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        height:22%;
-        &.selected-option,
-        &:hover {
-            background-color: rgba(119, 226, 247, 0.32);
-        }
+      width: 100%;
+      height: 70%;
+      @include semi-xs {
+        margin-top: -15px;
+      }
 
-        width: 100%;
-    }
-    
-    .or-divider {
-        text-align: center;
+      .save-and-close-button {
         position: absolute;
+        bottom: 15px;
         left: 0;
         right: 0;
         margin: auto;
-        &>div{
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .or{
-            color: $secondaryColor;
-            text-transform: uppercase;
-            margin: 0 20px;
-        }
-        .line {
-            height: 1px;
-            width: 80px;
-            background-color: #c5c5c5;
-        }
-    }
-    .first-divider{
-        top: 32.5%;
-    }
-    .second-divider{
-        bottom: 32.5%;
-    }
-    .text-bind{
+      }
+      .form-section {
         text-align: center;
-        // padding-top: 45px;
-        font-size: 20px;
-        color: $secondaryColor;
+        padding-top: 40px;
+        .dialog-input-title {
+          font-size: 17px;
+          color: $secondaryColor;
+        }
+        input {
+          width: 220px;
+          height: 35px;
+          border-radius: 3px;
+          border: 1px solid #c5c5c5;
+          text-align: center;
+          color: $secondaryColor;
+          transition: all 0.3s ease;
+          margin-top: 10px;
+          &::-webkit-input-placeholder {
+            color: #c5c5c5;
+          }
+          &:focus {
+            border-color: $primaryColor;
+          }
+        }
+      }
     }
-.close-routine-dialog {
+  }
+  .first-option,
+  .second-option,
+  .third-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 22%;
+    &.selected-option,
+    &:hover {
+      background-color: rgba(119, 226, 247, 0.32);
+    }
+    width: 100%;
+  }
+
+  .or-divider {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    & > div {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .or {
+      color: $secondaryColor;
+      text-transform: uppercase;
+      margin: 0 20px;
+    }
+    .line {
+      height: 1px;
+      width: 80px;
+      background-color: #c5c5c5;
+    }
+  }
+  .first-divider {
+    top: 32.5%;
+  }
+  .second-divider {
+    bottom: 32.5%;
+  }
+  .text-bind {
+    text-align: center;
+    font-size: 18px;
+    color: $secondaryColor;
+  }
+  .close-routine-dialog {
     width: 20px;
     height: 20px;
     position: absolute;
@@ -113,8 +116,8 @@
     border-radius: 50%;
     z-index: 99;
     img {
-        width: inherit;
-        height: inherit;
+      width: inherit;
+      height: inherit;
     }
-}
+  }
 }

@@ -62,6 +62,9 @@ dialog-element{
     margin-bottom: 25px;
     font-size: 80px;
     color: aqua;
+    @include md {
+      font-size: 56px;
+    }
     img{
       @include md {
         max-width: 100%;
@@ -74,8 +77,8 @@ dialog-element{
   div{
     color: #fff;
     font-size: 30px;
-    &,strong{
-      font-size: 18px;
+    @include md {
+      font-size: 20px;
     }
   }
   .button-got{

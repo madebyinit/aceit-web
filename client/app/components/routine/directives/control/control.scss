@@ -7,6 +7,9 @@
     max-width: 300px;
     height: 265px;
     margin: 80px auto 0;
+    display: grid;
+    align-content: space-around;
+    justify-content: center;
   }
   .big-title {
     text-align: center;
@@ -24,23 +27,23 @@
     }
   }
   .suggested {
-    width: 145px;
-    height: 135px;
+    width: 169px;
+    height: 148px;
     position: absolute;
     bottom: 80px;
     left: -40px;
     @include md {
-      width: 82px;
-      height: 82px;
-      left: -3px;
-      bottom: 16px;
+      width: 85px;
+      height: 75px;
+      left: -7%;
+      bottom: -2vh;
     }
     .suggested-icon {
       background: url($cdnImage+"icn-suggested.svg") no-repeat;
       height: inherit;
       position: absolute;
       width: inherit;
-      background-size: 100%;
+      background-size: cover;
     }
     .button-text {
       text-align: center;
@@ -48,7 +51,7 @@
       top: 50%;
       transform: translateY(-50%);
       text-transform: uppercase;
-      font-size: 15px;
+      font-size: 19px;
       color: $secondaryColor;
       font-weight: bold;
       @include md {
@@ -71,8 +74,6 @@
     background-size: 550px;
     @include sm {
       transform: scale(0.5);
-      top: -170px;
-      left: -128px;
     }
     .text {
       color: white;
@@ -98,6 +99,10 @@
       width: 160px;
       line-height: 41px;
       text-align: center;
+
+      @include md {
+        font-size: 40px;;
+      }
     }
     .step1 {
       width: 300px;
@@ -154,11 +159,6 @@
   }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

@@ -22,7 +22,7 @@
     padding-top: 120px;
     text-align: center;
     position: relative;
-    @include md {
+    @include semi-xs {
       padding: 20px 20px;
       box-sizing: border-box;
     }
@@ -46,9 +46,12 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 41vh;
+      top: 27vh;
       @include md {
-        top: 170px;
+        top: 47vh;
+      }
+      @include semi-xs {
+        top: 180px;
         display: flex;
         flex-direction: column;
       }

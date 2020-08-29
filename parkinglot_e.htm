@@ -4,13 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>The Parking Lot</title>
 <style type="text/css">
-	body {
-		overflow:  hidden;
-	}
-   </style>
+	html, body { width:100%; height:100%; margin:0px }
+</style>
 </head>
 <body>
-<div id="holder"></div>
+<div id="holder" style="width:100%;height:100%"></div>
 <script src="parkinglot/js/parkinglot.js"></script>
 <script>
 // var lvl = 2; 
@@ -58,8 +56,13 @@ function endGame(){
 
 	nogic.uninitialize();
 
-	const wrapper = document.getElementById('tets').parentNode;
+	const wrapper = document.getElementById('holder').childNodes[0];
 	wrapper.parentNode.removeChild(wrapper);
+	x = undefined;
+	y = undefined;
+	z = undefined;
+	w = undefined;
+	q = undefined;
 }
 </script>
 <!-- <a href="javascript:getGameResult()">Get Game Result</a> -->

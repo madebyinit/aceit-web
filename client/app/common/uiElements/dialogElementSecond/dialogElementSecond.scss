@@ -22,18 +22,33 @@
     text-align: center;
     overflow: hidden;
     background: #fff;
+    @include semi-xs {
+      width: 320px;
+      height: 320px;
+    }
   }
   .dialog-window-header {
     height: 150px;
     background-color: #eaf8fb;
     line-height: 125px;
     font-size: 23px;
+    @include semi-xs {
+      height: 110px;
+    }
   }
   .save-and-close-button{
     padding: 25px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
     margin: 0;
+    
+    @include semi-xs {
+      margin: unset;
+      padding: 10px;
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+    }
   }
 
   .save-and-close-button-hide{
@@ -44,6 +59,12 @@
     width: 80px;
     height: 80px;
     min-width: 80px;
+
+    @include semi-xs {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
+    }
   }
 
   .save-and-close-button-header{
@@ -58,6 +79,11 @@
       display: block;
       margin: 5px auto 0;
     }
+    @include semi-xs {
+      margin: 0;
+      width: 70px;
+      height: 70px;
+    }
   }
 
   .dialog-window-input {
@@ -66,6 +92,12 @@
       margin-bottom: 0;
       color: #0e7086;
       font-size: 28px;
+      @include semi-xs {
+        font-size: 22px;
+      }
+    }
+    @include semi-xs {
+      padding: 5px 0 0;
     }
   }
 }
@@ -81,6 +113,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 5px;
+    @include semi-xs {
+      width: 280px;
+    }
   }
   .dot-game {
     width: 28px;

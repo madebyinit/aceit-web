@@ -16,6 +16,7 @@
     height: 300px;
     margin: auto;
     top: -28px;
+    left: -11px;
   }
   .routine-dialog-container {
     @include topCenter;
@@ -125,9 +126,29 @@
     padding: 10px;
     border-radius: 50%;
     z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .close-image {
+      background: url($cdnImage+"x.png"), transparent;
+      background-size: cover;
+      background-position: center;
+      width: inherit;
+      height: inherit;
+    }
     @include sm {
-      top: 0;
+      width: 10px;
+      height: 10px;
+      top: -45px;
       right: 0;
+      border: 2px solid black;
+      .close-image {
+        background: url($cdnImage+"x_black.png"), transparent;
+        background-size: cover;
+        background-position: center;
+        width: inherit;
+        height: inherit;
+      }
     }
     img {
       width: inherit;

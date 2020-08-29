@@ -58,11 +58,11 @@
       }
     }
     iframe {
-      @include sm {
+      @include md {
         width: 100vw;
         height: 76vw;
         position: relative;
-        left: -14%;
+        left: -10vw;
         overflow: hidden;
       }
     }

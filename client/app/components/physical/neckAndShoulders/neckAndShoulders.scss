@@ -9,7 +9,7 @@
     height: 170px;
     color: white;
     border-bottom: 1px solid;
-    padding: 40px 0;
+    padding: 70px 0;
     @include md {
       height: 220px;
       display: flex;
@@ -42,7 +42,7 @@
         width: 320px;
         @include md {
           width: 100%;
-          max-width: 320px;
+          max-width: 460px;
         }
       }
       .neck-img{

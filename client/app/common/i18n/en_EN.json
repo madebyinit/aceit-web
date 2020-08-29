@@ -69,7 +69,7 @@
     "imagery":"Imagery",
     "physical_tools":"Physical Tools",
     "help_you_relax":"These are the tools that will help you relax and feel in control",
-    "works_for_everyone":"Not every tool works for everyone - so try them and choose what works for you"
+    "works_for_everyone":"Not every tool works for everyone - \n so try them and choose what works for you"
   },
   "tools": {
         "select_tools": "Select Your Tools",
@@ -163,7 +163,7 @@
     }
   },
   "summary":{
-    "focus":"We suggest you focus on",
+    "focus":"Now it's time to train your brain and manage the stress! \n These are the tools we recommend for you:",
     "my_summary":"My Summary",
     "jordan":"Michael Jordan, is it you? We see you don’t have any stress issues. That’s great! BUT with a few tips you can make your performance even better!",
     "my_routine":"My routine",

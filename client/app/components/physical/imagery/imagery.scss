@@ -4,7 +4,7 @@
   margin: auto;
   .imagery-title {
     color: white;
-    text-align: center;
+    text-align: left;
     margin: 20px 0;
     font-size: 18px;
   }
@@ -14,11 +14,12 @@
     padding: 40px 0;
     color: white;
     position: relative;
-    @include md {
+    @include semi-xs {
       height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 0 40px 0;
     }
     .puppy-text {
       float: right;
@@ -44,7 +45,7 @@
       position: relative;
       @include md {
         width: 100% !important;
-        max-width: 650px;
+        max-width: 500px;
       }
       .close-your-eyes-text {
         margin-top: 20px;
@@ -91,9 +92,8 @@
       background-size: 820px;
       cursor: pointer;
       @include md {
-        width: 132px;
-        height: 132px;
-        position: relative;
+        width: 152px;
+        height: 152px;
         top: auto;
         order: 3;
         &:active {
@@ -102,6 +102,11 @@
           }
         }
       }
+      @include semi-xs {
+        position: relative;
+        margin-top: 15px;
+      }
+      
       &:not(.mobile):hover {
         width: 100% !important;
         height: 100% !important;
@@ -167,11 +172,11 @@
       width: 100%;
       height: 60%;
       padding: 40px 30px 25px 30px;
-      max-width: 650px;
       border: 7px solid #fff;
       box-sizing: border-box;
-      @include sm {
-        max-width: calc(100% - 40px);
+      @include md {
+        width: 100%;
+        height: 100%;
       }
       &[data-type="puppy"] {
         background: url($cdnImage+"img-puppy.png") center left/300% no-repeat #FFF;

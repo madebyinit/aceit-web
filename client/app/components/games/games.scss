@@ -83,7 +83,7 @@ iframe{
           @include md {
             height: 56px;
             width: 56px;
-            font-size: 14px;
+            font-size: 12px;
             min-width: 0;
             padding-top: 16px;
           }
@@ -99,18 +99,25 @@ iframe{
         }
       }
       .btn-wrap-2{
+        display: flex;
+        gap: 8px;
+        flex-flow: row;
         button{
           &.retry{
             padding: 30px 0 0 0;
             img{
               position: static;
               display: block;
-              margin: 10px auto 0;
-              width: 22px;
+              width: 20px;
             }
-          }
-          &:nth-child(2){
-            margin: 0 0 0 40px;
+            @include md {
+              padding: 14px 0 0 0;
+              img{
+                position: static;
+                display: block;
+                width: 14px;
+              }
+            }
           }
         }
       }

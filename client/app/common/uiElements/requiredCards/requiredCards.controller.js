@@ -20,6 +20,7 @@ class requiredCardsController {
     if (this.gameScoreValue.summary[7] > this.estimationOfResults.SuggestPoints.Panic) { this.positive = true; }
   }
   stateGo(name) {
+    window.scrollTo(0, 0);
     this.$state.go(name);
   }
   _getUserData() {

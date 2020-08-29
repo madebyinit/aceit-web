@@ -60,14 +60,8 @@ md-input-container{
   z-index:0;
   height: $header-bar-height;
   width: 100%;
-  // background-color: rgba(255, 255, 255, 0.18);
-    background: -webkit-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
-    background: -o-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
-    background: -moz-linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
-    background: linear-gradient($menu-gradient-color-1, $menu-gradient-color-2 80%);
+  background-color: #208acd;
   position: relative;
-  // position: absolute;
-  // z-index: 50;
   box-sizing: border-box;
   @include md {
     padding: 0 30px;

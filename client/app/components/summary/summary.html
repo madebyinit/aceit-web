@@ -1,6 +1,6 @@
 <main-menu class="menu-dark"></main-menu>
 <div class="home-page summary">
-  <progress-bar step="4" class="light white-font"></progress-bar>
+  <progress-bar step="3" class="light white-font"></progress-bar>
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     
@@ -16,6 +16,7 @@
               <span>{{$ctrl.gameSummaryValue[values]|restSentence}}</span>
             </li>
         </ul>
+        <a href="#" class="toggle-icon-descriptions" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
         <div class="summary-items--modal-container">
           <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " class="summary-items--modal" ng-class="{'visible' : $ctrl.openedModal == values }" data-feedback="{{values}}">
             <div class="summary-items--modal_inner">
@@ -41,7 +42,7 @@
         </br>
         <button ng-click="$ctrl.setTestParams()">set params</button>
     </div>
-    <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{::$ctrl.user.name}}, {{:: 'summary.focus' | translate}}</div>
+    <div class="sub-title" ng-if="!($ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 10 && $ctrl.userSum.concentration < 10)">{{:: 'summary.focus' | translate}}</div>
     <div class="sub-title jordan" ng-if="$ctrl.userSum.physical < 10 && $ctrl.userSum.positive < 6 && $ctrl.userSum.concentration < 10">{{:: 'summary.jordan' | translate}}</div>
     <required-cards></required-cards>
     <div class="button-container">
