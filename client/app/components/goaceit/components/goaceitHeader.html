@@ -8,13 +8,12 @@
     </div>
     <div class="header-text" ng-class="{'header-invisible' : !$ctrl.user}">
         <div ng-if="!$ctrl.user.goaceitVisited" >
-            <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the journey and you’re ready to
+            <div class="header-text-pushdown">So {{::$ctrl.user.name}}, now you’ve finished the first part of the journey. You’re ready to
                 manage the stress and reach your peak performance. While you’re
-                studying and doing practice tests, it’s important to use your tools and
-                master a routine you feel comfortable with so it becomes automatic.
-                Go back to the games, use your routine and see if you improve.</div>
+                studying and doing practice tests, it’s crucial to use your tools and
+                master your routine and we will be texting you on how to do this.</div>
             <span>
-                If you are having negative thoughts, go back to the </span><strong>positive thinking page</strong><span> and rethink them.</span>
+              <strong>  Check out these additional tools to help you fall asleep, maintain focus while you study, and tips for the day of the test.<strong></span>
         </div>
         <div ng-if="$ctrl.user.goaceitVisited" ng-show="$ctrl.user.goaceitVisited">
             <div class="header-text-pushdown">
@@ -24,7 +23,11 @@
             </div>
             <strong>
                 While you’re studying and doing practice tests, remember to use your
-                routine until it becomes automatic. Go back to the games, use your routine and see if you improve.
+                routine until it becomes automatic. We will continue texting you - these messages will help you while you study and to perform better on the test.
+            </strong>
+            <br></br>
+            <strong>
+                Check out these additional tools to help you fall asleep, maintain focus while you study, and tips for the day of the test.
             </strong>
         </div>
     </div>

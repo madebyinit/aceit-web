@@ -1,4 +1,22 @@
 @import "../../../../common/common";
+.series{
+  margin-top: 30px;
+  margin-bottom: 1px;
+  text-align: left;
+  color: $secondaryColor;
+  font-size: 16px;
+  ul {
+    margin-top: 1px;
+    margin-bottom: 10px;
+        width: 300px;
+        display: inline-block;
+        text-align: left;
+        li {
+            font-size: 17px;
+            margin-top: 2px;
+        }
+    }
+}
 
 .basketball-section{
   margin-top: 30px;
