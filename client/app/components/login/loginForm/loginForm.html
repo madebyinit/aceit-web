@@ -1,5 +1,8 @@
 <div class="authentication-form login-form">
     <div class="form-container">
+        <div class="login-logo-inner">
+            <span class="login-logo-text" >perform at your best</span>
+        </div>
         <div class="form-title">{{::('login.login' | translate)}}</div>
         <form ng-keyup="$event.keyCode == 13 && $ctrl.login()">
             <div class="input-style email-wrapper">
@@ -13,6 +16,7 @@
             <md-button class="sign-up-button" ng-click="$ctrl.login()">{{::('login.jump_right_in' | translate)}}</md-button>
             <div class="forgot-password-title">Forgot your password? Don't panic we can help you, <a ui-sref="loginView.forgotPassword"><span>{{::('login.click_here' | translate)}}</span></a></div>
         </form>
+        <div class="check-website-title-inner">For more info check out <a href="https://www.goaceit.com"><span>{{::('login.our_website' | translate)}}</span></a></div>
     </div>
-            <div class="check-website-title">For more info check out <a href="https://www.goaceit.com"><span>{{::('login.our_website' | translate)}}</span></a></div>
+    <div class="check-website-title">For more info check out <a href="https://www.goaceit.com"><span>{{::('login.our_website' | translate)}}</span></a></div>
 </div>

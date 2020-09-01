@@ -29,8 +29,11 @@
       font-size: 34px;
       color: white;
       margin: 30px auto;
-      @include sm {
+      @include md {
         font-size: 30px;
+      }
+      @include sm {
+        font-size: 27px;
       }
       img{
         width: 70px;

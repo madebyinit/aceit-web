@@ -3,15 +3,38 @@
 .sticky-note{
   overflow-x: hidden;
   overflow-y: scroll;
+
   .close-dialog{
     z-index: 999999;
   }
+
+  .dialog-element-body {
+    @include md {
+      width: 460px;
+      height: 460px;
+    }
+    @include semi-xs {
+      width: 350px;
+      height: 350px;
+    }
+    @include xs {
+      width: 260px;
+      height: 260px;
+    }
+  }
   .dialog-header{
     line-height:125px;
-    @include sm {
+    @include md {
+      font-size: 25px;
+    }
+
+    @include semi-xs {
       line-height:100px;
       height: 80px;
       font-size: 18px;
+    }
+    @include xs {
+      font-size: 15px;
     }
   }
   .positive-sticky-notes{
@@ -103,11 +126,35 @@
     .left-arrow {
       position: absolute;
       left: 150px;
+
+      @include md {
+        position: absolute;
+        left: 183px;
+        transform: rotate(9deg) rotateX(180deg);
+        top: 86px;
+      }
+      @include semi-xs {
+        left: 120px;
+        transform: rotate(23deg) rotateX(180deg);
+        top: 163px;
+        width: 141px;
+      }
     }
     .right-arrow {
       left: -200px;
       top: -30px;
       position: absolute;
+      @include md {
+        left: -222px;
+        top: -20px;
+        transform: rotate(-20deg);
+      }
+      @include semi-xs {
+        left: -112px;
+        top: -31px;
+        transform: rotate(-2deg);
+        width: 130px;
+      }
     }
     .trash {
       width: 15px;
@@ -134,10 +181,39 @@
   .left-note {
     left: -300px;
     top: 100px;
+    @include md {
+      left: -74px;
+      top: -99px;
+    }
+    @include semi-xs {
+      left: 24px;
+      top: -85px;
+      transform: scale(0.8);
+    }
+    @include xs {
+      left: 2px;
+      top: -21px;
+      transform: scale(0.6);
+    }
   }
   .right-note {
     right: -230px;
     bottom: 0;
+
+    @include md {
+      right: -119px;
+      bottom: -116px;
+    }
+    @include semi-xs {
+      right: 95px;
+      bottom: -95px;
+      transform: scale(0.8);
+    }
+    @include xs {
+      right: 154px;
+      bottom: -25px;
+      transform: scale(0.6);
+    }
   }
   .body-styler {
     width: 500px;
@@ -155,55 +231,118 @@
         }
       .default-sticky-notes{
         &:nth-child(1) {
-          top: 100px;
+          top: 50px;
           left: -300px;
           transform: rotate(-5deg);
-          @include sm {
-            top: -97px;
-            left: 90px;
-            transform: rotate(10deg);
+          @include md {
+            top: -145px;
+            left: -105px;
+          }
+          @include semi-xs {
+            top: -93px;
+            left: -26px;
+            transform: rotate(-5deg) scale(0.6);
+          }
+          @include xs {
+            top: -34px;
+            left: -45px;
+            transform: rotate(-11deg) scale(0.5);
           }
         }
         &:nth-child(2) {
           bottom: 0;
           right: -230px;
           transform: rotate(5deg);
-          @include sm {
-            bottom: -121px;
-            left: 62px;
-            transform: rotate(-5deg);
+
+          @include md {
+            bottom: -138px;
+            right: -97px;
+          }
+          @include semi-xs {
+            top: 362px;
+            left: -31px;
+            transform: rotate(-4deg) scale(0.6);
+          }
+          @include xs {
+            top: 314px;
+            left: -33px;
+            transform: rotate(-12deg) scale(0.5);
           }
         }
         &:nth-child(3) {
           bottom: -180px;
           left: -80px;
           transform: rotate(-3deg);
-          @include sm {
-            display: none;
+          @include md {
+            bottom: -140px;
+            left: -104px;
+          }
+          @include semi-xs {
+            top: -148px;
+            left: 117px;
+            transform: rotate(-3deg) scale(0.6);
+          }
+          @include xs {
+            top: -78px;
+            left: 53px;
+            transform: rotate(-8deg) scale(0.5);
           }
         }
         &:nth-child(4) {
           left: -330px;
           bottom: -30px;
           transform: rotate(7deg);
-          @include sm {
-            display: none;
+          @include md {
+            left: 400px;
+            top: -210px;
+          }
+          @include semi-xs {
+            top: 380px;
+            left: 106px;
+            transform: rotate(4deg) scale(0.6);
+          }
+          @include xs {
+            top: 336px;
+            left: 78px;
+            transform: rotate(7deg) scale(0.5);
           }
         }
         &:nth-child(5) {
           right: -290px;
           top: 20px;
           transform: rotate(-5deg);
-          @include sm {
-            display: none;
+          @include md {
+            right: 185px;
+            top: -254px;
+          }
+          @include semi-xs {
+            top: 388px;
+            left: 234px;
+            transform: rotate(5deg) scale(0.6);
+          }
+          @include xs {
+            top: 336px;
+            left: 69px;
+            transform: rotate(-2deg) scale(0.5);
           }
         }
         &:nth-child(6) {
           right: -40px;
           bottom: -210px;
           transform: rotate(2deg);
-          @include sm {
-            display: none;
+          @include md {
+            right: 170px;
+            bottom: -210px;
+          }
+          @include semi-xs {
+            top: -118px;
+            left: 249px;
+            transform: rotate(10deg) scale(0.6);
+          }
+          @include xs {
+            top: -43px;
+            left: 161px;
+            transform: rotate(-4deg) scale(0.5);
           }
         }
       }
@@ -218,6 +357,9 @@
       width: 85%;
       margin: 10px auto 0;
       font-size: 15px;
+    }
+    @include xs {
+      font-size: 10px;
     }
   }
   .positive-note{
@@ -252,6 +394,10 @@
             width: 200px;
             margin-right: 27px;
           }
+          @include xs {
+            width: 150px;
+            height: 25px;
+          }
         }
         .arrow-down{
           height: 55px;
@@ -273,16 +419,39 @@
         width: 35px;
         right: 53px;
         top: 57px;
+        @include md {
+          right: 34px;
+        }
         @include sm {
           right: 37px;
           top: 38px;
+        }
+        @include xs {
+          width: 24px;
         }
       }
     }
     .save-and-close-button{
       margin-top: 30px;
-      @include sm {
+      @include md {
+        width: 90px;
+        height: 90px;
+        line-height: 12px;
+        margin-top: 15px;
+      }
+      @include semi-xs {
         margin-top: 10px;
+        width: 60px;
+        height: 60px;
+      }
+      @include xs {
+        margin-top: 9px;
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        min-height: 45px;
+        font-size: 9px;
+        line-height: 8px !important;
       }
       &.ng-enter{
         animation: 0.5s fadein ease;

@@ -72,7 +72,7 @@
     </div>
     <div class="drawer-wrapper">
         <div class="drawer-wrapper-inner">
-            <div class="focus-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
+            <div class="focus-drawer drawer" drawer="focus" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('focus')">
                 <h1>Stress &amp; Recovery</h1>
                 <p>
@@ -93,7 +93,7 @@
                     </video>
                 </div>
             </div>
-            <div class="biodot-drawer drawer" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
+            <div class="biodot-drawer drawer" drawer="biodot" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
                 <br/>
                 <br/>
@@ -136,7 +136,7 @@
                 <p>It is important to use the ACEIT dot or square when you take practice tests so you can become aware of when you are not in your zone. Then you must use your routine in order to once again reach your peak performance.</p>
                 <p>Everyone is different and you have to find what works  for you.</p> -->
             </div>
-            <div class="sleep-drawer drawer " ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
+            <div class="sleep-drawer drawer" drawer="sleep" ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('sleep')">
                 <h1>Sleep</h1>
                 <p>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mind-drawer drawer " ng-class="{'open-drawer': $ctrl.openDrawers['mind']}">
+            <div class="mind-drawer drawer" drawer="mind" ng-class="{'open-drawer': $ctrl.openDrawers['mind']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('mind')">
                 <h1>MINDFULNESS</h1>
                 <p>

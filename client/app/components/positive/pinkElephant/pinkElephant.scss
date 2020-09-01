@@ -18,6 +18,9 @@
     box-sizing: border-box;
     background-position-x: 45%;
   }
+  @include semi-xs {
+    background-size: 280% !important;
+  }
 
   .pink-elephant-container {
     max-width: 900px;
@@ -59,6 +62,11 @@
         display: flex;
         flex-direction: column;
       }
+      @include xs {
+        top: 176px;
+        display: flex;
+        flex-direction: column;
+      }
       .obviously {
         color: white;
         margin-top: 280px;
@@ -75,6 +83,9 @@
       }
     }
   }
+  .clear {
+   height: 1px; 
+  }
 }
 .pink-elephant-bg{
   background: url($cdnImage + 'elephant-bg-pink.png') no-repeat !important;
@@ -85,5 +96,8 @@
   }
   @include sm {
     background-position-x: 45% !important;
+  }
+  @include semi-xs {
+    background-size: 280% !important;
   }
 }

@@ -305,7 +305,7 @@
           font-size: 14px;
           line-height: 1.9;
           color: darken(#0e7086, 10%);
-          @include md {
+          @include semi-xs {
             font-size: 12px;
           }
         }
@@ -326,9 +326,6 @@
         &.open-drawer {
           // Upon clicking:
           top: 0;
-          // @include sm {
-          //   top: calc(750px - 120vh) !important;
-          // }
         }
 
         &.focus-drawer {
@@ -337,6 +334,12 @@
           transform: rotateZ(2deg);
           z-index: 30;
 
+          p {
+            @include semi-xs {
+              font-size: 11px;
+            }
+          }
+          
           .video-container {
             width: 100%;
             text-align: center;
@@ -428,6 +431,16 @@
         }
 
         &.sleep-drawer {
+
+          &.open-drawer {
+            @include md {
+              top: 90px;
+            }
+            @include semi-xs {
+              top: -35px;
+            }
+          }
+
           -ms-transform: rotateZ(2deg); /* IE 9 */
           -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
           transform: rotateZ(2deg);
@@ -479,6 +492,9 @@
               p {
                 width: 350px;
                 display: inline-block;
+                @include semi-xs {
+                  font-size: 11px;
+                }
               }
 
               .icon {
@@ -582,6 +598,16 @@
         }
 
         &.mind-drawer {
+
+          &.open-drawer {
+            @include md {
+              top: 90px;
+            }
+            @include sm {
+              top: 0;
+            }
+          }
+
           -ms-transform: rotateZ(2deg); /* IE 9 */
           -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
           transform: rotateZ(2deg);

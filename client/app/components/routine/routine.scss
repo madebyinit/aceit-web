@@ -13,33 +13,7 @@
     background-position: 40%;
     background-size: cover;
   }
-  progress-bar {
-    .progress-bar-items {
 
-      li {
-
-        &:before,
-        &:after {
-          background-color: #007087;
-        }
-
-        span {
-          border-color: #007087 !important;
-        }
-
-        strong {
-          color: #007087;
-        }
-
-        &:not(:last-of-type) {
-          
-          span {
-            background-color: #007087 !important;
-          }
-        }
-      }
-    }
-  }
   .routine-container{
     width: 900px;
     padding-top: 40px;

@@ -12,11 +12,11 @@
     top: 40%;
     transform: translateY(-40%);
     @include md {
-      top: 50%;
+      top: 40%;
     }
   }
   .login-logo{
-    background: url($cdnImage + 'signup-logo.png') no-repeat;
+    background: url($cdnImage + 'signin-logo.png') no-repeat;
     width: 25vw;
     height: 12vw;
     background-size: contain;
@@ -29,11 +29,7 @@
     justify-content:flex-end;
 
     @include md {
-      position: relative;
-      top: 32px; right: auto; bottom: auto; left: auto;
-      width: 120px;
-      height: 60px;
-      z-index: 99;
+      display: none;
     }
 
     .login-logo-text{
@@ -49,7 +45,40 @@
           font-size: 8px;
         }
     }
-}
+  }
+
+  .login-logo-inner {
+    @include md-up {
+      display: none;
+    }
+
+    background: url($cdnImage + 'signin-logo.png') no-repeat;
+    width: 44vw;
+    height: 22vw;
+    background-size: contain;
+    margin: auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    @include semi-xs {
+      height: 110px;
+    }
+
+    .login-logo-text{
+        font-size: 2.5vw;
+        position:absolute;
+        bottom: 0;
+        color:white;
+        text-transform:uppercase;
+        font-family:Source Sans Pro;
+        top: 25%;
+
+        @include semi-xs {
+          top: 15%;
+        }
+    }
+  }
 .login-gradient-cover {
     height: 100%;
     width: 100%;
@@ -148,10 +177,38 @@
       bottom:5%;
       left:0;
       right:0;
+      
       @include md {
-        font-size: 14px;
+        display: none;
       }
+
+      // @include md {
+      //   font-size: 14px;
+      //   position: relative;
+      //   bottom: -30px;
+      //   position: relative; 
+      //   bottom: unset;
+      //   top: unset;
+      //   left: unset;
+      //   right: unset;
+      // }
   }
+  .check-website-title-inner {
+    a {
+        text-decoration:none;
+    }
+  color: $secondaryColor;
+    font-weight:bold;
+    font-family:Source Sans Pro;
+      font-size: 14px;
+      position: relative;
+      bottom: -30px;
+      position: relative; 
+
+      @include md-up {
+        display: none;
+      }
+}
   .login-view{
     width: 25%;
     height: 100%;

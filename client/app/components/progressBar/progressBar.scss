@@ -13,7 +13,8 @@ progress-bar {
     }
   }
   &[step="4"],
-  &[step="5"] {
+  &[step="5"],
+  &[step="6"] {
     @include semi-xs {
       flex-direction: row-reverse;
       justify-content: flex-start;
@@ -68,7 +69,7 @@ progress-bar {
     }
     li {
       position: relative;
-      width: 20%;
+      width: calc(100% / 6);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -209,7 +210,7 @@ progress-bar {
           background-color: #48bd91;
         }
       }
-      li:nth-last-of-type(-n + 3) {
+      li:nth-last-of-type(-n + 4) {
         &:before,
         &:after {
           opacity: 0.7;
@@ -255,7 +256,7 @@ progress-bar {
           background-color: #48bd91;
         }
       }
-      li:nth-last-of-type(-n + 3) {
+      li:nth-last-of-type(-n + 4) {
         &:before,
         &:after {
           opacity: 0.7;
@@ -304,7 +305,7 @@ progress-bar {
           opacity: 0.7;
         }
       }
-      li:nth-last-of-type(-n + 2) {
+      li:nth-last-of-type(-n + 3) {
         &:before,
         &:after {
           opacity: 0.7;
@@ -350,7 +351,7 @@ progress-bar {
           opacity: 0.7;
         }
       }
-      li:nth-last-of-type(-n + 2) {
+      li:nth-last-of-type(-n + 3) {
         &:before,
         &:after {
           opacity: 0.7;
@@ -399,13 +400,13 @@ progress-bar {
           opacity: 0.7;
         }
       }
-      li:last-of-type {
-        span {
-          border: 2px solid #fff;
-          opacity: 0.7;
-        }
+      li:nth-last-of-type(-n + 2) {
         &:before,
         &:after {
+          opacity: 0.7;
+        }
+        span {
+          border: 2px solid #fff;
           opacity: 0.7;
         }
       }
@@ -445,6 +446,101 @@ progress-bar {
           opacity: 0.7;
         }
       }
+      li:nth-last-of-type(-n + 2) {
+        &:before,
+        &:after {
+          opacity: 0.7;
+        }
+        span {
+          color: #007087;
+          border: 2px solid #007087;
+          background-color: transparent;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  &[step="5"] {
+    &.light {
+      li:nth-of-type(-n + 4) {
+        span {
+          background-color: #005161;
+        }
+        &:before,
+        &:after {
+          content: "";
+          display: block;
+          height: 2px;
+          position: absolute;
+          top: 18px;
+          background-color: #005161;
+          z-index: 1;
+        }
+      }
+      li:nth-of-type(5) {
+        span {
+          border: 2px solid #fff;
+          background-color: #48bd91;
+        }
+        &:before {
+          content: "";
+          display: block;
+          height: 2px;
+          position: absolute;
+          top: 18px;
+          background-color: #005161;
+          z-index: 1;
+        }
+        &:after {
+          opacity: 0.7;
+        }
+      }
+      li:last-of-type {
+        span {
+          border: 2px solid #fff;
+          opacity: 0.7;
+        }
+        &:before,
+        &:after {
+          opacity: 0.7;
+        }
+      }
+    }
+    &.dark {
+      li:nth-of-type(-n + 4) {
+        span {
+          background-color: #005161;
+        }
+        &:before,
+        &:after {
+          content: "";
+          display: block;
+          height: 2px;
+          position: absolute;
+          top: 18px;
+          background-color: #005161;
+          z-index: 1;
+        }
+      }
+      li:nth-of-type(5) {
+        span {
+          color: #fff;
+          border: 2px solid #005161;
+          background-color: #48bd91;
+        }
+        &:before {
+          content: "";
+          display: block;
+          height: 2px;
+          position: absolute;
+          top: 18px;
+          background-color: #005161;
+          z-index: 1;
+        }
+        &:after {
+          opacity: 0.7;
+        }
+      }
       li:last-of-type {
         span {
           color: #007087;
@@ -459,7 +555,7 @@ progress-bar {
       }
     }
   }
-  &[step="5"] {
+  &[step="6"] {
     &.light {
       li:not(:last-of-type) {
         span {
