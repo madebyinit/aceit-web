@@ -4,8 +4,9 @@ $goaceit-text-color: #0e7086;
     height: auto;
     color: $goaceit-text-color;
     background: linear-gradient(to top, $background-gradient-color-1, $background-gradient-color-2 80%);
+    padding-top: 40px;
+
     @include md{
-        padding-top: 32px;
         box-sizing: border-box;
     }
     @include sm {
@@ -14,8 +15,11 @@ $goaceit-text-color: #0e7086;
     .goaceit-container {
         width:1000px;
         margin:auto;
+        padding-top: 60px;
+
         @include md{
             width: 100%;
+            padding-top: 50px;
         }
         @include sm {
             padding-top: 30px;

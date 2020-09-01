@@ -4,14 +4,21 @@
 .summary {
   height: 100%;
   background: url($cdnImage + 'bg-pattern.png'), linear-gradient(0deg, rgba(110,37,73,1) 0%, rgba(20,125,186,1) 100%);
+  padding-top: 100px;
+
   @include sm {
     padding: 80px 0 0;
   }
   .summary-mid-section {
     max-width: 900px;
     margin: 0 auto;
-    padding: 120px 0 30px;
+    padding: 90px 0 30px;
     text-align: center;
+
+    @include md {
+      padding: 60px 24px 30px;
+    }
+
     @include sm {
       padding: 50px 24px 30px;
     }

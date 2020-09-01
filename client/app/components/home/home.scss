@@ -7,6 +7,12 @@
     height: 50vh;
     background-image: linear-gradient(to top, #20aecd, #208acd);
     position: relative;
+    padding-top: 45px;
+
+    @include md {
+      height: 35vh;
+    }
+
     @include sm {
       height: 60vw;
       padding-top: 20px;

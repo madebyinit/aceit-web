@@ -4,18 +4,21 @@
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f9bfc4 60%);
   height: auto;
+  padding-top: 100px;
+
   @include sm {
     padding: 80px 0 0;
   }
+
   .physical-content{
     width: 900px;
-    padding-top: 120px;
+    padding-top: 60px;
     margin: auto;
     @include md {
       width: 100%;
       max-width: 900px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 30px 20px;
       box-sizing: border-box;
     }
     @include sm {

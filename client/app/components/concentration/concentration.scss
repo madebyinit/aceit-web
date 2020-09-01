@@ -11,13 +11,16 @@
   min-height: 1000px;
   width: 100%;
   background-image: linear-gradient(to bottom, #20aecd, #f6d796 60%);
+  padding-top: 100px;
+
   .concentration-content {
     width: 900px;
     height: auto;
     margin: auto;
-    padding-top: 120px;
+    padding-top: 90px;
     @include md {
       width: 100%;
+      padding-top: 60px;
     }
     @include sm {
       padding-top: 24px;

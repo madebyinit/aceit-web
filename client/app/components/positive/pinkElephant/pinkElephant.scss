@@ -7,6 +7,8 @@
   background-size: 100%;
   background-position-y: 20%;
   transition: background 0.3s ease;
+  padding-top: 100px;
+
   @include md {
     height: 100vh;
     background-size: cover !important;
@@ -16,10 +18,11 @@
     box-sizing: border-box;
     background-position-x: 45%;
   }
+
   .pink-elephant-container {
     max-width: 900px;
     margin: auto;
-    padding-top: 120px;
+    padding-top: 80px;
     text-align: center;
     position: relative;
     @include semi-xs {
@@ -46,12 +49,13 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 27vh;
+      top: 16vh;
+
       @include md {
         top: 47vh;
       }
       @include semi-xs {
-        top: 180px;
+        top: 230px;
         display: flex;
         flex-direction: column;
       }
