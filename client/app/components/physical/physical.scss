@@ -85,6 +85,7 @@
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       width: 100%;
+      text-align: center;
       
       @include md {
         width: 100%;
@@ -94,7 +95,7 @@
         height: 100%;
         white-space: normal;
         &:hover {
-          background-color: unset;
+          background-color: rgba(255, 255, 255, 0.25);
         }
       }
     }

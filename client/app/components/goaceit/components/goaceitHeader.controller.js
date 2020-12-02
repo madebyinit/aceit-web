@@ -9,36 +9,31 @@ class GoaceitHeaderController {
         this.openDrawers = {
             focus: false,
             biodot: false,
-            sleep: false
+            sleep: false,
+            mind: false,
         };
         this.activeTabIndex = 0;
         this.activeMindTabIndex = 0;
         this.audioPlaying = false;
     }
-    scrollTo(element, to, duration) {
-        let start = element.scrollTop,
-            change = to - start,
-            currentTime = 0,
-            increment = 20;
-        let easeInOutQuad = function (t, b, c, d) {
-            t /= d/2;
-            if (t < 1) return c/2*t*t + b;
-            t--;
-            return -c/2 * (t*(t-2) - 1) + b;
-        };
-        let animateScroll = function(){
-            currentTime += increment;
-            let val = easeInOutQuad(currentTime, start, change, duration);
-            element.scrollTop = val;
-            if(currentTime < duration) {
-                setTimeout(animateScroll, increment);
-            }
-        };
-        animateScroll();
+
+    scrollTo(drawer) {
+        setTimeout(function() {
+            const element = document.getElementById(drawer);
+            const y = element.getBoundingClientRect().top + window.scrollY;
+            window.scroll({
+            top: y,
+            behavior: 'smooth'
+            });
+        }, 300, drawer);
     }
+   
     toggleDrawer(drawer) {
-        window.scrollTo(0, 200);
+        const alreadyOpen = this.openDrawers[drawer];
         this.openDrawers[drawer] = !this.openDrawers[drawer];
+        if (!alreadyOpen) {
+            this.scrollTo(drawer);
+        }
     }
     toggleTab() {
         this.activeTabIndex = 1 - this.activeTabIndex;

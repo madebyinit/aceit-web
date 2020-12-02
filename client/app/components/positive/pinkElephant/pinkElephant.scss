@@ -4,8 +4,9 @@
   width: 100%;
   height: 100vh;
   background: url($cdnImage + 'elephant-bg.png') no-repeat;
-  background-size: 100%;
+  //background-size: 100%;
   background-position-y: 20%;
+  background-position-x: 50%;
   transition: background 0.3s ease;
   padding-top: 100px;
 
@@ -15,7 +16,6 @@
   }
   @include sm {
     padding-top: 80px;
-    box-sizing: border-box;
     background-position-x: 45%;
   }
   @include semi-xs {
@@ -28,6 +28,11 @@
     padding-top: 80px;
     text-align: center;
     position: relative;
+
+    @include md-up {
+      padding-top: 60px;
+    }
+
     @include semi-xs {
       padding: 20px 20px;
       box-sizing: border-box;
@@ -49,21 +54,19 @@
       }
     }
     .second-part {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 16vh;
+      margin-top: 16vh;
 
-      @include md {
-        top: 47vh;
+      @include md-up {
+        margin-top: 16vh;
       }
+
       @include semi-xs {
-        top: 230px;
+        margin-top: 200px;
         display: flex;
         flex-direction: column;
       }
-      @include xs {
-        top: 176px;
+      @include xs-down {
+        margin-top: 135px;
         display: flex;
         flex-direction: column;
       }
@@ -89,8 +92,9 @@
 }
 .pink-elephant-bg{
   background: url($cdnImage + 'elephant-bg-pink.png') no-repeat !important;
-  background-size: 100%!important;
-  background-position-y: 20%!important;
+  background-position-y: 20% !important;
+  background-position-x: 50% !important;
+  height: 100vh;
   @include md {
     background-size: cover !important;
   }

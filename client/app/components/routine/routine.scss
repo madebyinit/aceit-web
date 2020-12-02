@@ -33,6 +33,10 @@
       }
       span{
         @include title;
+
+        @include sm {
+          font-size: 30px !important;
+       }
         color:$secondaryColor;
         vertical-align: middle;
       }

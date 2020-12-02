@@ -234,19 +234,19 @@
           top: 50px;
           left: -300px;
           transform: rotate(-5deg);
-          @include md {
+          @include lg {
             top: -145px;
             left: -105px;
           }
           @include semi-xs {
-            top: -93px;
-            left: -26px;
-            transform: rotate(-5deg) scale(0.6);
+            top: -13%;
+            left: -6%;
+            transform: rotate(-5deg) scale(0.5);
           }
           @include xs {
-            top: -34px;
-            left: -45px;
-            transform: rotate(-11deg) scale(0.5);
+            top: -8%;
+            left: -9%;
+            transform: rotate(-11deg) scale(0.4);
           }
         }
         &:nth-child(2) {
@@ -254,95 +254,95 @@
           right: -230px;
           transform: rotate(5deg);
 
-          @include md {
+          @include lg {
             bottom: -138px;
             right: -97px;
           }
           @include semi-xs {
-            top: 362px;
-            left: -31px;
-            transform: rotate(-4deg) scale(0.6);
+            top: 75%;
+            left: -6%;
+            transform: rotate(-4deg) scale(0.5);
           }
           @include xs {
-            top: 314px;
-            left: -33px;
-            transform: rotate(-12deg) scale(0.5);
+            top: 61%;
+            left: -8%;
+            transform: rotate(-12deg) scale(0.4);
           }
         }
         &:nth-child(3) {
           bottom: -180px;
           left: -80px;
           transform: rotate(-3deg);
-          @include md {
+          @include lg {
             bottom: -140px;
             left: -104px;
           }
           @include semi-xs {
-            top: -148px;
-            left: 117px;
-            transform: rotate(-3deg) scale(0.6);
+            top: -24%;
+            left: 18%;
+            transform: rotate(-3deg) scale(0.5);
           }
           @include xs {
-            top: -78px;
-            left: 53px;
-            transform: rotate(-8deg) scale(0.5);
+            top: -16%;
+            left: 12%;
+            transform: rotate(-8deg) scale(0.4);
           }
         }
         &:nth-child(4) {
           left: -330px;
           bottom: -30px;
           transform: rotate(7deg);
-          @include md {
+          @include lg {
             left: 400px;
             top: -210px;
           }
           @include semi-xs {
-            top: 380px;
-            left: 106px;
-            transform: rotate(4deg) scale(0.6);
+            top: 79%;
+            left: 17%;
+            transform: rotate(4deg) scale(0.5);
           }
           @include xs {
-            top: 336px;
-            left: 78px;
-            transform: rotate(7deg) scale(0.5);
+            top: 66%;
+            left: 12%;
+            transform: rotate(7deg) scale(0.4);
           }
         }
         &:nth-child(5) {
           right: -290px;
           top: 20px;
           transform: rotate(-5deg);
-          @include md {
+          @include lg {
             right: 185px;
             top: -254px;
           }
           @include semi-xs {
-            top: 388px;
-            left: 234px;
-            transform: rotate(5deg) scale(0.6);
+            top: 73%;
+            left: 44%;
+            transform: rotate(5deg) scale(0.5);
           }
           @include xs {
-            top: 336px;
-            left: 69px;
-            transform: rotate(-2deg) scale(0.5);
+            top: 65%;
+            left: 34%;
+            transform: rotate(-2deg) scale(0.4);
           }
         }
         &:nth-child(6) {
           right: -40px;
           bottom: -210px;
           transform: rotate(2deg);
-          @include md {
+          @include lg {
             right: 170px;
             bottom: -210px;
           }
           @include semi-xs {
-            top: -118px;
-            left: 249px;
-            transform: rotate(10deg) scale(0.6);
+            top: -21%;
+            left: 42%;
+            transform: rotate(10deg) scale(0.5);
           }
           @include xs {
-            top: -43px;
-            left: 161px;
-            transform: rotate(-4deg) scale(0.5);
+            top: -13%;
+            left: 33%;
+            transform: rotate(-4deg) scale(0.4);
           }
         }
       }

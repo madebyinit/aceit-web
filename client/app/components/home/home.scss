@@ -9,12 +9,8 @@
     position: relative;
     padding-top: 45px;
 
-    @include md {
-      height: 35vh;
-    }
-
     @include sm {
-      height: 60vw;
+      height: 50vw;
       padding-top: 20px;
       min-height: 200px;
     }
@@ -150,6 +146,7 @@
         }
       }
       .tool{
+        min-width: 20%;
         img{
           width: 100px;
           @include sm {

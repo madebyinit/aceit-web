@@ -1,8 +1,8 @@
 <div class="required-cards">
   <div
-    class="summary-card physical-card"
+    class="summary-card"
     ng-click="ctrl.stateGo('physical')"
-    ng-class="{'physical-done':ctrl.user.physicalComplete}"
+    ng-class="{'physical-done':ctrl.user.physicalComplete, 'physical-card': !ctrl.user.physicalComplete}"
     ng-if="ctrl.userSum.physical >= 10 || ctrl.physical === true"
   >
     <div class="card-icon"></div>
@@ -25,9 +25,9 @@
     </div>
   </div>
   <div
-    class="summary-card concentration-card"
+    class="summary-card"
     ng-click="ctrl.stateGo('concentration')"
-    ng-class="{'concentration-done':ctrl.user.concentrationComplete}"
+    ng-class="{'concentration-done':ctrl.user.concentrationComplete, 'concentration-card': !ctrl.user.concentrationComplete}"
     ng-if="ctrl.userSum.concentration >= 10 || ctrl.concentration === true"
   >
     <div class="card-icon"></div>
@@ -52,9 +52,9 @@
     </div>
   </div>
   <div
-    class="summary-card positive-card"
+    class="summary-card"
     ng-click="ctrl.stateGo('positive')"
-    ng-class="{'positive-done':ctrl.user.positiveComplete}"
+    ng-class="{'positive-done':ctrl.user.positiveComplete, 'positive-card': !ctrl.user.positiveComplete}"
     ng-if="ctrl.userSum.positive >= 6 || ctrl.positive === true"
   >
     <div class="card-icon"></div>

@@ -68,6 +68,8 @@ class GamesController {
     this.mouseButtonChecker = 0;
     this.videoPopupCheck = true;
     this.BeforeVideoPopupCheck = true;
+    this.docIsHidden = "hidden";
+    this.bgAudio = this.$document[0].getElementById("backgroundMusic");
   }
 
   $onInit() {
@@ -89,17 +91,17 @@ class GamesController {
       GP: {},
       muteMusic: 0,
       gamesSuccessfullyCompleted: 0,
-      selfAssessment: 0
+      selfAssessment: 0,
     };
 
     this.gamesService.setgamesSuccessfullyCompleted(0);
     this.gamesService.setSelfassestment(10);
 
-    this.$scope.$on("$locationChangeStart", event => {
+    this.$scope.$on("$locationChangeStart", (event) => {
       event.preventDefault();
     });
 
-    window.onkeydown = function() {
+    window.onkeydown = function () {
       if (event.ctrlKey) {
         if (event.preventDefault) {
           event.preventDefault();
@@ -136,8 +138,7 @@ class GamesController {
       this.changeState = "goaceit";
       // alert('SECOND START');
       this.setGamesLvl(true);
-      const audio = this.$document[0].getElementById("backgroundMusic");
-      audio.play();
+      this.initializedSound();
       this.firstStart = true;
       this.showWindow = false;
       this.countdownTimer = this.$interval(this.startTimer, 1000);
@@ -147,8 +148,7 @@ class GamesController {
       this.changeState = "goaceit";
       // alert('THIRD START');
       this.setGamesLvl(false);
-      const audio = this.$document[0].getElementById("backgroundMusic");
-      audio.play();
+      this.initializedSound();
       this.firstStart = true;
       this.showWindow = false;
       this.countdownTimer = this.$interval(this.startTimer, 1000);
@@ -156,6 +156,37 @@ class GamesController {
     const gameStart = localStorage.getItem("gameStart");
 
     this.gameNumber = 1;
+  }
+
+  initializedSound() {
+    var visibilityChange;
+    if (typeof this.$document[0].hidden !== "undefined") {
+      this.docIsHidden = "hidden";
+      visibilityChange = "visibilitychange";
+    } else if (typeof this.$document[0].msHidden !== "undefined") {
+      this.docIsHidden = "msHidden";
+      visibilityChange = "msvisibilitychange";
+    } else if (typeof this.$document[0].webkitHidden !== "undefined") {
+      this.docIsHidden = "webkitHidden";
+      visibilityChange = "webkitvisibilitychange";
+    }
+
+    this.$document[0].addEventListener(
+      visibilityChange,
+      this.handleVisibilityChange(this),
+      false
+    );
+    this.bgAudio.play();
+  }
+
+  handleVisibilityChange(t) {
+    return function () {
+      if (t.$document[0][t.docIsHidden]) {
+        t.bgAudio.pause();
+      } else {
+        t.bgAudio.play();
+      }
+    };
   }
 
   startTimer() {
@@ -421,9 +452,8 @@ class GamesController {
   }
 
   getUserData() {
-    this.connection.getData().then(res => {
+    this.connection.getData().then((res) => {
       this.user = res;
-      console.log(this.user);
 
       // this.helperService.gameSequence();
       // this.helperService.feedbackCounter();
@@ -476,7 +506,7 @@ class GamesController {
   _userInit() {
     if (this.user && this.user.name) {
       this.userTitle = this.$translate.instant("home.you_getting_ready", {
-        user: this.user.name
+        user: this.user.name,
       });
       this.$scope.$apply();
     }
@@ -1283,6 +1313,6 @@ GamesController.$inject = [
   "gameScoreValue",
   "orderOfGames",
   "helperService",
-  "estimationOfResults"
+  "estimationOfResults",
 ];
 export default GamesController;

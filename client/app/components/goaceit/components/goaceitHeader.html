@@ -2,8 +2,8 @@
     <div class="header-logo">
         <div class="header-lion"></div>
         <div ng-class="{'header-invisible' : !$ctrl.user}">
-            <img src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
-            <img src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
+            <img ng-src="{{::$root.imageCdn}}you-rock.png" ng-if="!$ctrl.user.goaceitVisited" class="header-you-rock" />
+            <img ng-src="{{::$root.imageCdn}}welcome-back.png" ng-if="$ctrl.user.goaceitVisited" class="header-welcome-back" />
         </div>
     </div>
     <div class="header-text" ng-class="{'header-invisible' : !$ctrl.user}">
@@ -75,7 +75,7 @@
     </div>
     <div class="drawer-wrapper">
         <div class="drawer-wrapper-inner">
-            <div class="focus-drawer drawer" drawer="focus" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
+            <div class="focus-drawer drawer" id="focus" drawer="focus" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('focus')">
                 <h1>Stress &amp; Recovery</h1>
                 <p>
@@ -96,12 +96,8 @@
                     </video>
                 </div>
             </div>
-            <div class="biodot-drawer drawer" drawer="biodot" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
+            <div class="biodot-drawer drawer" id="biodot" drawer="biodot" ng-class="{'open-drawer': $ctrl.openDrawers['biodot']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('biodot')">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
                 <h1>THE NIGHT BEFORE THE EXAM</h1>
                 <p>
                     It’s important to come to the test refreshed and focused.
@@ -112,8 +108,6 @@
                         you have – whether related to the test or not. 
                         This will empty your head of “noise” and allow you to relax and fall asleep. 
                 </p>
-                <br/>
-                <br/>
                 <h1>THE DAY OF THE EXAM</h1>
                 <div class="video-container">
                     <video controls preload="metadata">
@@ -139,7 +133,7 @@
                 <p>It is important to use the ACEIT dot or square when you take practice tests so you can become aware of when you are not in your zone. Then you must use your routine in order to once again reach your peak performance.</p>
                 <p>Everyone is different and you have to find what works  for you.</p> -->
             </div>
-            <div class="sleep-drawer drawer" drawer="sleep" ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
+            <div class="sleep-drawer drawer" id="sleep" drawer="sleep" ng-class="{'open-drawer': $ctrl.openDrawers['sleep']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('sleep')">
                 <h1>Sleep</h1>
                 <p>
@@ -177,12 +171,12 @@
                             <div id="play-audio" ng-click="$ctrl.toggleAudio()">
                                 <div class="controller play" ng-class="{'pause': $ctrl.audioPlaying, 'play': !$ctrl.audioPlaying} "></div>
                             </div>
-                            <a id="download-audio" href="{{::$root.videoCdn}}sleep.mp3" download></a>
+                            <a id="download-audio" href="{{::$root.videoCdn}}sleep.mp3" download target="_blank"></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="mind-drawer drawer" drawer="mind" ng-class="{'open-drawer': $ctrl.openDrawers['mind']}">
+            <div class="mind-drawer drawer" id="mind" drawer="mind" ng-class="{'open-drawer': $ctrl.openDrawers['mind']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('mind')">
                 <h1>MINDFULNESS</h1>
                 <p>
@@ -216,27 +210,27 @@
                 <div class="tab-content">
                     <div class="container" ng-class="{'inactive' : $ctrl.activeMindTabIndex != 0}">
                         <p>
-                            Look around you and bring your attention to 5 things that you can see. Pick something that you don’t normally notice, like a laptop or a small crack in the ceiling. Say them out loud.
+                            Look around you and bring your attention to <a class="number-highlight">5</a> things that you can see. Pick something that you don’t normally notice, like a laptop or a small crack in the ceiling. Say them out loud.
                         </p>
                     </div>
                     <div class="container" ng-class="{'inactive' : $ctrl.activeMindTabIndex != 1}">
                         <p>
-                            Bring awareness to 4 things that you are currently feeling, like the texture of your pants, the chair you’re sitting on, or the heat of the cell phone. Say them out loud.
+                            Bring awareness to <a class="number-highlight">4</a> things that you are currently feeling, like the texture of your pants, the chair you’re sitting on, or the heat of the cell phone. Say them out loud.
                         </p>
                     </div>
                     <div class="container" ng-class="{'inactive' : $ctrl.activeMindTabIndex != 2}">
                         <p>
-                            Take a moment to listen and say 3 things that you hear in the background. This can be the sound of the birds outside, the hum of the refrigerator, or the traffic from a nearby road.
+                            Take a moment to listen and say <a class="number-highlight">3</a> things that you hear in the background. This can be the sound of the birds outside, the hum of the refrigerator, or the traffic from a nearby road.
                         </p>
                     </div>
                     <div class="container" ng-class="{'inactive' : $ctrl.activeMindTabIndex != 3}">
                         <p>
-                            Bring your awareness to 2 smells that you usually filter out, whether they’re pleasant or unpleasant.  If you can’t smell anything at the moment, then name your 2 favorite smells. 
+                            Bring your awareness to <a class="number-highlight">2</a> smells that you usually filter out, whether they’re pleasant or unpleasant.  If you can’t smell anything at the moment, then name your 2 favorite smells. 
                         </p>
                     </div>
                     <div class="container" ng-class="{'inactive' : $ctrl.activeMindTabIndex != 4}">
                         <p>
-                            Focus on 1 thing that you can taste right now. You can take a sip of a drink, chew a piece of gum. If you can’t taste anything right now, then say your favorite thing to taste.
+                            Focus on <a class="number-highlight">1</a> thing that you can taste right now. You can take a sip of a drink, chew a piece of gum. If you can’t taste anything right now, then say your favorite thing to taste.
                         </p>
                     </div>
                 </div>

@@ -28,6 +28,9 @@ import HelperService from '../services/helper.service';
 import SkipService from '../services/skip.service';
 import { unset } from 'lodash';
 
+// const sentenceSplitRegex = /(\.\s)|(\.\s\n)/gm;
+// const restSentenceEndsWithDotRegex = new RegExp(/\.|\.\s|\.\s\n/);
+
 const componentModule = angular
   .module('app.components', [
     Home,
@@ -100,19 +103,26 @@ const componentModule = angular
 
   .filter('firstSentence', function() {
     return function(str) {
-        return str.split('. ')[0] + '.';
+        return str.split(';')[0];
     };
   })
 
   .filter('restSentence', function() {
     return function(str) {
-        var arr = str.split('. ');
-
-        if(arr[1] && arr[1].length > 0) {
-          return arr.slice(1).join('. ');
-        }
-
-        return arr.join('. ');
+        var arr = str.split(';');
+        const rest = arr.slice(1);
+        return rest.join('');
+        // const newSentence = rest.map((sen) => {
+        //   if (!sen || sen === undefined || sen.length === 0 || sen.length === 2){
+        //     return "";
+        //   } else {
+        //     if (restSentenceEndsWithDotRegex.test(sen)) {
+        //       return sen;
+        //     }
+        //     return `${sen}.`;
+        //   }
+        // });
+        // return newSentence.join('');
     };
   })
 

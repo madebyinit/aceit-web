@@ -11,7 +11,7 @@
     border-bottom: 1px solid;
     padding: 70px 0;
     @include md {
-      height: 220px;
+      height: 200px;
       display: flex;
       flex-direction: column;
     }
@@ -46,11 +46,11 @@
         }
       }
       .neck-img{
-        width: 220px;
+        width: 240px;
         padding-top: 15px;
-        @include md {
+        @include sm {
           width: 100%;
-          max-width: 320px;
+          max-width: 260px;
         }
       }
       .clock{

@@ -1,21 +1,30 @@
 @import "../../common/common";
 
-#main-game-wrapper>div{
+#main-game-wrapper > div {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.selected {  opacity: 0; display: flex; border:none;  width: 0.5px;}
-
-.other {  
-  opacity: 1; 
-  display: flex; 
-  border:none; 
+.clear {
+  height: 1px;
 }
 
-iframe{
-  border : none;
+.selected {
+  opacity: 0;
+  display: flex;
+  border: none;
+  width: 0.5px;
+}
+
+.other {
+  opacity: 1;
+  display: flex;
+  border: none;
+}
+
+iframe {
+  border: none;
   margin-right: -3px;
 
   @include md {
@@ -23,24 +32,55 @@ iframe{
   }
 }
 
-.game-wrap{
-  background: linear-gradient(to bottom, #000000 0%,#3d3d3d 100%);
-  // min-height: calc( 100vh - 40px );
-  // padding: 40px 0 0 0;
+.game-wrap {
+  background: linear-gradient(to bottom, #000000 0%, #3d3d3d 100%);
   height: 100vh;
-  .game-inner{
+  .portrait-overlay {
+    display: none;
+  }
+
+  @media screen and (orientation: portrait) and (max-width: 450px) {
+    .portrait-overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        color: #ffffff;
+        font-size: 25px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Roboto-Bold', sans-serif;
+      }
+      .tilt-img {
+        width: 60%;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .game-inner {
     display: flex;
     max-width: 1900px;
     padding: 0 100px;
     box-sizing: border-box;
-    margin:0 auto;
+    margin: 0 auto;
     overflow: hidden;
     flex-direction: column;
     height: 100vh;
     @include md {
       padding: 0 20px;
     }
-    .game-buttons{
+    .game-buttons {
       display: flex;
       justify-content: space-between;
       margin: 30px 0 0 0;
@@ -48,7 +88,7 @@ iframe{
       @include md {
         margin: 32px 0 0 0;
       }
-      button{
+      button {
         font-size: 20px;
         margin: 0;
         @include md {
@@ -58,7 +98,7 @@ iframe{
           font-size: 12px;
         }
       }
-      .btn-wrap-1{
+      .btn-wrap-1 {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -67,7 +107,7 @@ iframe{
         @include md {
           max-width: 100% !important;
         }
-        h2{
+        h2 {
           text-transform: uppercase;
           color: #fff;
           display: inline-block;
@@ -77,7 +117,7 @@ iframe{
             margin: auto;
           }
         }
-        button{
+        button {
           padding: 30px 0 0 0;
           min-width: 100px;
           @include md {
@@ -87,7 +127,7 @@ iframe{
             min-width: 0;
             padding-top: 16px;
           }
-          img{
+          img {
             position: static;
             display: block;
             margin: 10px auto 0;
@@ -98,21 +138,22 @@ iframe{
           }
         }
       }
-      .btn-wrap-2{
+      .btn-wrap-2 {
         display: flex;
         gap: 8px;
         flex-flow: row;
-        button{
-          &.retry{
+        button {
+          &.retry {
             padding: 30px 0 0 0;
-            img{
+            img {
               position: static;
               display: block;
               width: 20px;
             }
             @include md {
+              margin-right: 10px;
               padding: 14px 0 0 0;
-              img{
+              img {
                 position: static;
                 display: block;
                 width: 14px;
@@ -122,7 +163,7 @@ iframe{
         }
       }
 
-      .time-wrap{
+      .time-wrap {
         position: absolute;
         left: 50%;
         top: -19px;
@@ -141,25 +182,25 @@ iframe{
             margin-bottom: 9px;
           }
         }
-        &:before{
+        &:before {
           position: absolute;
           left: 40px;
           top: 100%;
           width: 9px;
           background: #fedb89;
           height: 30px;
-          content: '';
+          content: "";
         }
-        &:after{
+        &:after {
           position: absolute;
           right: 40px;
           top: 100%;
           width: 9px;
           background: #fedb89;
           height: 30px;
-          content: '';
+          content: "";
         }
-        h2{
+        h2 {
           color: #004264;
           border-bottom: 3px solid #004264;
           text-transform: uppercase;
@@ -169,7 +210,7 @@ iframe{
             font-size: 16px;
           }
         }
-        h3{
+        h3 {
           color: #004264;
           text-transform: uppercase;
           font-size: 70px;
@@ -179,7 +220,7 @@ iframe{
             font-size: 42px;
           }
         }
-        .lion{
+        .lion {
           position: absolute;
           left: -170px;
           top: -10px;
@@ -187,7 +228,7 @@ iframe{
             top: 24px !important;
             left: -60px !important;
           }
-          img{
+          img {
             width: 150px;
             @include md {
               width: 76px !important;
@@ -197,7 +238,7 @@ iframe{
       }
     }
   }
-  .main-game{
+  .main-game {
     margin: 30px 0;
     border-radius: 20px;
     border: 10px solid #ffdc83;
@@ -210,27 +251,126 @@ iframe{
       flex: 0;
       margin-top: 148px;
     }
-    canvas{
+    canvas {
       display: block;
-      position: absolute; 
-      left:0;
-      right:0;
-      top:0;
-      bottom:0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
     }
   }
-
-  
 }
 @media all and (max-width: 1500px) {
-  .game-wrap .game-inner .game-buttons .btn-wrap-1{
+  .game-wrap .game-inner .game-buttons .btn-wrap-1 {
     max-width: 240px;
   }
-  .game-wrap .game-inner .game-buttons .time-wrap .lion img{
+  .game-wrap .game-inner .game-buttons .time-wrap .lion img {
     width: 120px;
   }
   .game-wrap .game-inner .game-buttons .time-wrap .lion {
     left: -137px;
     top: 17px;
   }
+}
+
+@media screen and (orientation: landscape) and (max-height: 450px) {
+  .game-wrap {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+  }
+  
+  .game-wrap .game-inner {
+    margin: 0 0;
+    height: 100%;
+    padding: 0 0;
+
+    .game-buttons {
+      margin: 5px 10px 0 10px;
+
+      .btn-wrap-1 {
+        justify-content: unset;
+        h2 {
+          font-size: 26px;
+          margin-left: 15%;
+        }
+      }
+
+      .time-wrap {
+        background: #fff;
+        border-radius: 10px;
+        border: 3px solid #ffdc83;
+        padding: 0px 15px;
+
+        top: 0px !important;
+        left: 62%;
+
+        &::before {
+          left: 10px;
+          width: 5px;
+        }
+        &::after {
+          right: 13px;
+          width: 5px;
+        }
+
+        .lion {
+          top: 0px !important;
+          left: -72px !important;
+          img {
+            width: 63px !important;
+          }
+        }
+
+        .time {
+          margin-bottom: 4px;
+          margin-top: 4px;
+          h2 {
+            font-size: 11px;
+          }
+          h3 {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .game-wrap .main-game {
+    flex: unset;
+    margin: 5px 0 0 0;
+    height: 100%;
+    border: unset;
+    border-top: 5px solid #ffdc83;
+    border-radius: unset !important;
+
+    iframe {
+      height: 100% !important;
+      overflow: hidden;
+    }
+  }
+
+  .dialog-element-game {
+    .dialog-element-game-body {
+      height: calc(100% - 100px);
+
+      .dialog-header-game {
+        margin-bottom: -15px;
+      }
+    }
+  }
+
+  .dialog-element {
+    .dialog-element-body {
+      width: 40%;
+      height: 40vw;
+    }
+    .close-dialog {
+      right: 125px;
+      left: unset;
+    }
+  }
+
 }

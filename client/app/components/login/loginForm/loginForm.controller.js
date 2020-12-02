@@ -71,33 +71,43 @@ class LoginFormController {
               }
 
               this.$state.transitionTo('goaceit');
+
             } else {
               this.connection.saveData(this.gameSequence, 'gameSequence');
               this.connection.saveData(this.level, 'level');
               this.connection.saveData(this.UPDI, 'UPDI');
               this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
+              this.connection.saveData(false, 'processFinished');
+
               Object.assign(this.orderOfGames, {
                 gameSequence: this.gameSequence,
                 level: this.level,
                 UPDI: this.UPDI,
               });
 
-              this.$state.transitionTo('games');
-
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
               }
-              if (userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
+              if (userData.hasOwnProperty('videoPageFirst') && userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
                 localStorage.setItem('videoPageFirst', location.pathname);
               }
-              if (userData.gamePage != 'undefined' && userData.gamePage != null) {
+              if (userData.hasOwnProperty('gamePage') && userData.gamePage != 'undefined' && userData.gamePage != null) {
                 localStorage.setItem('gamePage', location.pathname);
               }
-              if (userData.Summary != 'undefined' && userData.Summary != null) {
+              if (userData.hasOwnProperty('Summary') && userData.Summary != 'undefined' && userData.Summary != null) {
                 localStorage.setItem('Summary', location.pathname);
               }
-              if (userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
+              if (userData.hasOwnProperty('gamePageSecond') && userData.gamePageSecond != 'undefined' && userData.gamePageSecond != null) {
                 localStorage.setItem('gamePageSecond', location.pathname);
+              }
+              if (userData.hasOwnProperty('lastPageOpen') && userData.lastPageOpen != 'undefined' && userData.lastPageOpen != null) {
+                try {
+                  this.$state.transitionTo(userData.lastPageOpen);  
+                } catch (err) {
+                  this.$state.transitionTo('games');
+                }   
+              } else {
+                this.$state.transitionTo('games');
               }
             }
           }, (error) => {

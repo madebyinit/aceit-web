@@ -5,6 +5,10 @@ progress-bar {
   overflow-x: scroll;
   overflow-y: hidden;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &[step="1"],
   &[step="2"],
   &[step="3"] {

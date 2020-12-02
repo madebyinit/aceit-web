@@ -85,10 +85,6 @@ class StateChangeService {
   }
 
   _saveLastState(data) {
-    // this.connection.getData().then((userData) => {
-    //   console.log(userData);
-    // });
-    console.log(_.get(data, 'router.globals.current.name'));
     localStorage.setItem('aceitState', _.get(data, 'router.globals.current.name'));
   }
 

@@ -56,6 +56,10 @@
     border-bottom: 2px solid $secondaryColor;
     padding: 10px;
     font-size: 26px;
+
+    @include sm {
+      margin: 25px 0;  
+    }    
   }
   .happens {
     padding-bottom: 20px;

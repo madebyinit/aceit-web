@@ -10,7 +10,6 @@ class GoaceitController {
     this.connection.getData().then((res) => {
       this.user = res;
       this.connection.saveData(true, 'goaceitVisited');
-      // this.user.goaceitVisited = false;
     });
   }
 }

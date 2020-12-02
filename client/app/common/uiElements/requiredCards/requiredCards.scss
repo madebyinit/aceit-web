@@ -1,13 +1,14 @@
 @import "../../common";
+
 @mixin physical() {
   background-image: linear-gradient(
     to bottom,
     rgba(32, 174, 205, 1),
-    rgba(249, 191, 196, 1) 60%
+    rgba(249, 191, 196, 1) 100%
   );
   background-color: #fff;
   .card-icon {
-    // background-image: url($cdnImage + 'physical-tool-icon-white.png')!important;
+    background-image: url($cdnImage + "physical-icon-blue.png");
   }
   .card-title {
     color: #0e7086;
@@ -17,11 +18,11 @@
   background-image: linear-gradient(
     to bottom,
     rgba(32, 174, 205, 1),
-    rgba(210, 149, 232, 1) 60%
+    rgba(210, 149, 232, 1) 100%
   );
   background-color: #fff;
   .card-icon {
-    // background-image: url($cdnImage + 'icn-positive-thinking.png')!important;
+    background-image: url($cdnImage + "positive-thinking-icon-blue.png");
   }
   .card-title {
     color: #0e7086;
@@ -31,19 +32,47 @@
   background-image: linear-gradient(
     to bottom,
     rgba(32, 174, 205, 1),
-    rgba(246, 215, 150, 1) 60%
+    rgba(246, 215, 150, 1) 100%
   );
   background-color: #fff;
   .card-icon {
-    // background-image: url($cdnImage + 'concentration-icon-white.png')!important;
+    background-image: url($cdnImage + "concentration-icon-blue.png");
   }
   .card-title {
     color: #0e7086;
   }
 }
+
+@mixin physical-done() {
+    @include physical;
+    background-image: linear-gradient(
+    to bottom,
+    rgba(32, 174, 205, 0.44),
+    rgba(249, 191, 196, 0.44) 60%
+  );
+}
+@mixin positive-done() {
+  @include positive;
+  background-image: linear-gradient(
+  to bottom,
+  rgba(32, 174, 205, 0.44),
+  rgba(210, 149, 232, 0.44) 60%
+);
+}
+@mixin concentration-done() {
+  @include concentration;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(32, 174, 205, 0.44),
+    rgba(246, 215, 150, 0.44) 60%
+  );
+}
+
+
 .required-cards {
   text-align: center;
   .summary-card {
+    padding: 10px;
     height: 295px;
     width: 220px;
     border: 2px solid white;
@@ -99,8 +128,8 @@
       @include semi-xs {
         position: absolute;
         text-align: center;
-        left: 85px;
-        top: 70px
+        left: 95px;
+        top: 85px
       }
     }
     .card-button {
@@ -108,37 +137,39 @@
       color: $secondaryColor;
       width: 85px;
       height: 85px;
+      font-size: 10px;
       @include semi-xs {
-        width: 140px;
+        width: 110px;
         min-width: 110px;
-        min-height: 20px;
-        max-height: 20px;
+        min-height: 25px;
+        max-height: 25px;
         border-radius: 50px !important;
         background: #fff !important;
         color: #0e7086 !important;
 
         position: absolute;
         text-align: center;
-        left: 85px;
-        top: 70px
+        left: 95px;
+        top: 85px
       }
     }
     .my-imagery {
       width: 85px;
       height: 85px;
-      font-size: 12px;
+      font-size: 10px;
       @include semi-xs {
-        width: 140px;
+        width: 110px;
         min-width: 110px;
-        min-height: 20px;
-        max-height: 20px;
+        min-height: 25px;
+        max-height: 25px;
         border-radius: 50px !important;
         background: #fff !important;
         color: #0e7086 !important;
+        left: 10px;
       }
       .imagery-word-bind {
         @include semi-xs {
-          font-size: 12px;
+          font-size: 10px;
         }
       }
     }
@@ -147,55 +178,23 @@
     }
   }
   .physical-done {
-    @include physical;
+    @include physical-done;
   }
   .positive-done {
-    @include positive;
+    @include positive-done;
   }
   .concentration-done {
-    @include concentration;
+    @include concentration-done;
   }
+
   .physical-card {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(32, 174, 205, 0.44),
-      rgba(249, 191, 196, 0.44) 60%
-    );
-    background-color: #fff;
-    .card-icon {
-      background-image: url($cdnImage + "physical-icon-blue.png");
-    }
-    &:hover {
-      @include physical;
-    }
+    @include physical;
   }
   .positive-card {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(32, 174, 205, 0.44),
-      rgba(210, 149, 232, 0.44) 60%
-    );
-    background-color: #fff;
-    .card-icon {
-      background-image: url($cdnImage + "positive-thinking-icon-blue.png");
-    }
-    &:hover {
-      @include positive;
-    }
+    @include positive;  
   }
   .concentration-card {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(32, 174, 205, 0.44),
-      rgba(246, 215, 150, 0.44) 60%
-    );
-    background-color: #fff;
-    .card-icon {
-      background-image: url($cdnImage + "concentration-icon-blue.png");
-    }
-    &:hover {
-      @include concentration;
-    }
+    @include concentration;
   }
   .required-cards {
     text-align: center;

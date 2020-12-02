@@ -56,7 +56,7 @@ md-input-container{
   }
 }
 .main-menu-style {
-  padding: 0 80px;
+  padding: 0 10px;
   z-index:0;
   height: $header-bar-height;
   width: 100%;
@@ -70,7 +70,7 @@ md-input-container{
     background: url($cdnImage + 'logo-white.png') center center no-repeat;
     width: 118px;
     height: 47px;
-    right: 80px;
+    right: 20px;
     @include centering();
     background-size: 100%;
     @include md {
@@ -85,7 +85,7 @@ md-input-container{
     height: 30px;
     background-size: 50px;
     @include centering();
-    left: 80px;
+    left: 20px;
     @include md {
       width: 30px;
       height: 25px;

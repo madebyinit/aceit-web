@@ -23,7 +23,11 @@ input-title4='Hit the "PLAY" button to start!'
         input-title2='games'
 ></dialog-element-second>
 
-<div class="game-wrap">
+<div class="game-wrap" id="game-wrap">
+  <div class="portrait-overlay">
+    <h1>Rotate screen to <br />enter game mode</h1>
+    <img ng-src="{{::$root.imageCdn}}tilt.svg" class="tilt-img"/>
+  </div>
   <div class="game-inner">
     <div class="game-buttons">
       <div class="btn-wrap-1">
@@ -54,15 +58,16 @@ input-title4='Hit the "PLAY" button to start!'
       </div>
     </div>
     <div  class="main-game" id="main-game-wrapper">
-      <iframe ng-class="{selected: $ctrl.showGame[0]}" id="parkinglot" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[0]}}"></iframe>
-      <iframe ng-class="{selected: $ctrl.showGame[1]}" id="tower" src="tower_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[1]}}" ></iframe>
-      <iframe ng-class="{selected: $ctrl.showGame[2]}" id="mousetrap" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[2]}}" ></iframe> 
-      <iframe ng-class="{selected: $ctrl.showGame[3]}" id="mazerace" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[3]}}" ></iframe>
-      <iframe ng-class="{selected: $ctrl.showGame[4]}" id="parkinglotLast" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[4]}}" ></iframe> 
-      <iframe ng-class="{selected: $ctrl.showGame[5]}" id="mousetrap1" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[5]}}" ></iframe> 
-      <iframe ng-class="{selected: $ctrl.showGame[6]}" id="mazerace1" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[6]}}" ></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[0]}" id="parkinglot" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[0]}}" scroll="no"></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[1]}" id="tower" src="tower_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[1]}}" scroll="no"></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[2]}" id="mousetrap" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[2]}}" scroll="no"></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[3]}" id="mazerace" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[3]}}" scroll="no"></iframe>
+      <iframe ng-class="{selected: $ctrl.showGame[4]}" id="parkinglotLast" src="parkinglot_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[4]}}" scroll="no"></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[5]}" id="mousetrap1" src="mousetrap_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[5]}}" scroll="no"></iframe> 
+      <iframe ng-class="{selected: $ctrl.showGame[6]}" id="mazerace1" src="mazerace_e.htm" sandbox="allow-same-origin allow-scripts allow-modals" width="{{$ctrl.widthGame[6]}}" scroll="no"></iframe>
     </div>
   </div>
+  <div class="clear"></div>
 </div> 
 <!-- <button ng-click="$ctrl.adminAdd()">Admin add</button> -->
 <dialog-element

@@ -251,13 +251,14 @@
     width: 100%;
     max-width: 800px;
     height: 700px;
-    top: 350px;
+    top: 410px;
     margin: auto;
     left: 0;
     right: 0;
+
     @include md {
-      margin: 10px -20px;
-      width: calc(100% + 40px);
+      top: 450px;
+      bottom: 0;
     }
     .drawer-wrapper-inner {
       @include add-bottom-shadow;
@@ -329,6 +330,7 @@
         }
 
         &.focus-drawer {
+
           -ms-transform: rotateZ(2deg); /* IE 9 */
           -webkit-transform: rotateZ(2deg); /* Chrome, Safari, Opera */
           transform: rotateZ(2deg);
@@ -344,19 +346,50 @@
             width: 100%;
             text-align: center;
             video {
-              width: 60%;
+
+              @include xl {
+                width: 60%;  
+              }
+              @include md {
+                width: 90%;  
+              }
+              
               box-shadow: 0 0 3px #888888;
               border: 4px solid white;
-              margin-top: 20px;
+              margin-top: 10px;
             }
           }
         }
 
         &.biodot-drawer {
+
+          &.open-drawer {
+            top: 0;
+            @include md {
+              top: 90px;
+            }
+
+            @include semi-xs {
+              top: 150px;
+            }
+          }
+
           -ms-transform: rotateZ(-1deg); /* IE 9 */
           -webkit-transform: rotateZ(-1deg); /* Chrome, Safari, Opera */
           transform: rotateZ(-1deg);
           z-index: 20;
+          
+          h1:first-of-type {
+            margin-top: 31px;
+            &:first-of-type {
+              @include semi-xs {
+                margin-top: 42px;
+              }
+            }
+            @include semi-xs {
+              margin-top: 15px;
+            }
+          }
 
           .hand {
             position: absolute;
@@ -372,10 +405,10 @@
             width: 100%;
             text-align: center;
             video {
-              width: 60%;
+              width: 90%;
               box-shadow: 0 0 3px #888888;
               border: 4px solid white;
-              margin-top: 20px;
+              margin-top: 10px;
             }
           }
 
@@ -604,7 +637,7 @@
               top: 90px;
             }
             @include sm {
-              top: 0;
+              top: 85px;
             }
           }
 
@@ -619,6 +652,9 @@
           }
 
           .second-title {
+            @include md {
+              margin-top: 25px;
+            }
             margin-top: 50px;
           }
 
@@ -780,6 +816,15 @@
           .tab-content {
             .container {
               display: flex;
+              p {
+                .number-highlight {
+                  color: #29a6cf;
+                  @include sm {
+                    font-size: 16px;
+                  }
+                  font-size: 25px;
+                }
+              }
               &.inactive {
                 display: none;
               }
