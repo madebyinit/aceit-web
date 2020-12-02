@@ -4,16 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Mouse Trap</title>
 <style type="text/css">
-	body {
-		overflow:  hidden;
-	}
+	html, body { width:100%; height:100%; margin:0px }
 </style>
 </head>
 <body>
-<div id="holder" ></div>
+<div id="holder" style="width:100%;height:100%"></div>
 <script src="mousetrap/js/mousetrap.js"></script>
 <script>
-var game = nogic3.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'false'});
+var game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'false'});
 
 function getGameResult() {
 	var result = game.sendMessage('getGameResult');
@@ -47,12 +45,12 @@ function gameEnded(duration, noOfMoves, instructionsClickCount, win, firstMoveTi
 }
 
 function startGame(){
-	game = nogic3.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
+	game = nogic.initialize(document.getElementById('holder'), {language:'en', skipInstructions:'true'});
 }
 
 function endGame(){
 
-nogic3.uninitialize();
+nogic.uninitialize();
 
 const wrapper = document.getElementById('tets').parentNode;
 wrapper.parentNode.removeChild(wrapper);

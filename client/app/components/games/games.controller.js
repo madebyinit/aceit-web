@@ -58,7 +58,7 @@ class GamesController {
     this.starCheck = true;
     this.classes = ["red", "green", "blue"];
     this.showGame = [false, true, true, true, true, true, true];
-    this.widthGame = ["100%", "0%", "0%", "0%", "0%", "0%", "0%"];
+    this.widthGame = ["100%", "100%", "100%", "100%", "100%", "100%", "100%"];
     this.gameData = [0, 0, 0, false, 0];
     this.checkInWichGame = true;
     this.Mashtab = {};
@@ -1237,6 +1237,10 @@ class GamesController {
   }
 
   reqinGame(name) {
+    if (name === undefined) {
+      this.gameData[0] = 0;
+      return;
+    }
     if (this.gameNumber < 6) {
       this.gameData[0] = this.$document[0].getElementById(name).contentWindow.x;
 
