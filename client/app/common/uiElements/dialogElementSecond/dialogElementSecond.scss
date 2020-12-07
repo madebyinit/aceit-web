@@ -1,11 +1,11 @@
 @import "../../common";
 
-.dialog-window{
+.dialog-window {
   position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.41);
-  top:0;
+  top: 0;
   left: 0;
   z-index: 500;
   .dialog-window-body {
@@ -27,6 +27,7 @@
       height: 320px;
     }
   }
+
   .dialog-window-header {
     height: 150px;
     background-color: #eaf8fb;
@@ -36,12 +37,12 @@
       height: 110px;
     }
   }
-  .save-and-close-button{
+  .save-and-close-button {
     padding: 25px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
     margin: 0;
-    
+
     @include semi-xs {
       margin: unset;
       padding: 10px;
@@ -51,7 +52,7 @@
     }
   }
 
-  .save-and-close-button-hide{
+  .save-and-close-button-hide {
     padding: 10px;
     background-image: linear-gradient(to top, #299eb8, #0e7086);
     color: white;
@@ -67,7 +68,7 @@
     }
   }
 
-  .save-and-close-button-header{
+  .save-and-close-button-header {
     margin: 35px 0;
     width: 80px;
     height: 80px;
@@ -75,7 +76,7 @@
     color: white;
     padding: 0;
     min-width: 0;
-    img{
+    img {
       display: block;
       margin: 5px auto 0;
     }
@@ -102,7 +103,7 @@
   }
 }
 
-.select-element{
+.select-element {
   .range-game-element {
     height: 39px;
     width: 300px;
@@ -130,24 +131,57 @@
     margin: 0;
   }
   .range-game-element > .star-on:nth-child(1) {
-    background-color:  #94dc8a!important;
+    background-color: #94dc8a !important;
     color: azure;
   }
   .range-game-element > .star-on:nth-child(2) {
-    background-color: #94dc8a!important;
+    background-color: #94dc8a !important;
     color: azure;
   }
   .range-game-element > .star-on:nth-child(3) {
-    background-color:  #94dc8a!important;
+    background-color: #94dc8a !important;
     color: azure;
   }
   .range-game-element > .star-on:nth-child(4) {
-    background-color:  #94dc8a!important;
+    background-color: #94dc8a !important;
     color: azure;
   }
   .range-game-element > .star-on:nth-child(5) {
-    background-color:  #94dc8a!important;
+    background-color: #94dc8a !important;
     color: azure;
   }
+}
 
+@media screen and (orientation: landscape) and (max-height: 450px) {
+  .dialog-window {
+    .dialog-window-body {
+      width: 320px;
+      height: 320px;
+      .dialog-window-header {
+        height: 100px;
+        .save-and-close-button-header {
+          margin: 0;
+          width: 65px;
+          height: 65px;
+        }
+      }
+      .dialog-window-input {
+        .dialog-window-input-title {
+          font-size: 22px;
+        }
+        .select-element {
+          .range-game-element {
+            width: 280px;
+          }
+        }
+      }
+      button {
+        padding: 10px;
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        margin: 0;
+      }
+    }
+  }
 }

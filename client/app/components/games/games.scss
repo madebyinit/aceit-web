@@ -37,6 +37,34 @@ iframe {
   }
 }
 
+#parkinglot {
+  z-index: 10;
+}
+
+#tower {
+  z-index: 9;
+}
+
+#mousetrap {
+  z-index: 8;
+}
+
+#mazerace {
+  z-index: 7;
+}
+
+#parkinglotLast {
+  z-index: 6;
+}
+
+#mousetrap1 {
+  z-index: 5;
+}
+
+#mazerace1 {
+  z-index: 4;
+}
+
 .game-wrap {
   background: linear-gradient(to bottom, #000000 0%, #3d3d3d 100%);
   height: 100vh;
@@ -57,6 +85,7 @@ iframe {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 80;
 
       h1 {
         color: #ffffff;

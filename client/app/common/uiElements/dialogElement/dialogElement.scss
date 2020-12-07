@@ -150,3 +150,13 @@ dialog-element {
     transform: translateY(-50%) scale(0);
   }
 }
+
+
+@media screen and (orientation: landscape) and (max-height: 450px) {
+  .dialog-element {
+    .dialog-element-body {
+      width: 50%;
+      height: 80vh;
+    }
+  }
+}
