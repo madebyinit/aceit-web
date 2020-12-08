@@ -455,6 +455,9 @@
       }
     }
     .error-message {
+      @include sm {
+        font-size: 10px;
+      }
       color: #bd1c1c;
       &.ng-enter {
         animation: 0.3s errorEnter ease;

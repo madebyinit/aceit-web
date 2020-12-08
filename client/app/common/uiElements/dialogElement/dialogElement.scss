@@ -157,6 +157,9 @@ dialog-element {
     .dialog-element-body {
       width: 50%;
       height: 80vh;
+      .dialog-input {
+        padding: 20px 0 40px;
+      }
     }
   }
 }
