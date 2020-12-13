@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   background: url($cdnImage + 'elephant-bg.png') no-repeat;
-  //background-size: 100%;
+  background-size: 100%;
   background-position-y: 20%;
   background-position-x: 50%;
   transition: background 0.3s ease;
@@ -94,6 +94,7 @@
   background: url($cdnImage + 'elephant-bg-pink.png') no-repeat !important;
   background-position-y: 20% !important;
   background-position-x: 50% !important;
+  background-size: 100%;
   height: 100vh;
   @include md {
     background-size: cover !important;

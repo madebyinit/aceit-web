@@ -1,9 +1,41 @@
 @import "../../../../common/common";
 @import url("https://fonts.googleapis.com/css?family=Kalam:400,700");
+
+.sticky-note::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.sticky-note::-webkit-scrollbar:vertical {
+    width: 6px;
+}
+
+.sticky-note::-webkit-scrollbar:horizontal {
+    height: 6px;
+}
+
+.sticky-note::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.sticky-note::-webkit-scrollbar-track {
+    border-radius: 10px;  
+    background-color: transparent; 
+}
+
 .sticky-note {
   overflow-x: hidden;
   overflow-y: scroll;
 
+  .dialog-element-inner {
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+  
   .close-dialog {
     z-index: 999999;
 
