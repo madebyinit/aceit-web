@@ -52,8 +52,8 @@ function endGame(){
 
 nogic.uninitialize();
 
-const wrapper = document.getElementById('tets').parentNode;
-wrapper.parentNode.removeChild(wrapper);
+const wrapper = document.getElementById('holder');
+wrapper.removeChild(wrapper.childNodes[0]);    
 
 	x = undefined;
 	y = undefined;

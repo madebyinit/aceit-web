@@ -156,6 +156,16 @@ class GamesController {
     const gameStart = localStorage.getItem("gameStart");
 
     this.gameNumber = 1;
+    this.$window.addEventListener('resize', this.handleWindowSizeChange(this));
+
+  }
+
+  handleWindowSizeChange(t) {
+    return function () {
+      let vh = t.$window.innerHeight * 0.01;
+      console.log(vh);
+      t.$document[0].documentElement.style.setProperty('--vh', `${vh}px`);
+    }
   }
 
   initializedSound() {
