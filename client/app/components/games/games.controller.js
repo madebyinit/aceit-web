@@ -162,6 +162,7 @@ class GamesController {
 
   handleWindowSizeChange(t) {
     return function () {
+      t.$window.scroll(0, 1);
       let vh = t.$window.innerHeight * 0.01;
       console.log(vh);
       t.$document[0].documentElement.style.setProperty('--vh', `${vh}px`);

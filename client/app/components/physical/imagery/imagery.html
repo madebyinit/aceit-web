@@ -9,10 +9,13 @@
         {{::'imagery.deep_breaths' | translate}} <span class="arrow">></span>
       </div>
     </div>
-    <div class="tool-img paradise-img" ng-if="!$ctrl.isMobile">
+    <div class="tool-img paradise-img" ng-if="!$ctrl.isMobile && !$ctrl.isTablet">
       <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
     </div>
-    <div class="tool-img mobile paradise-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('paradise')">
+    <div class="tool-img paradise-img" ng-if="$ctrl.isTablet">
+      <div class="hover-me-text">{{::'imagery.click_me' | translate}}</div>
+    </div>
+    <div class="tool-img mobile paradise-img" ng-if="$ctrl.isMobile && !$ctrl.isTablet" ng-click="$ctrl.openModal('paradise')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
     <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'paradise' }" ng-click="$ctrl.closeModal()">
@@ -22,10 +25,13 @@
     </div>
   </div>
   <div class="imagery-tool puppy">
-    <div class="tool-img puppy-img" ng-if="!$ctrl.isMobile">
+    <div class="tool-img puppy-img" ng-if="!$ctrl.isMobile && !$ctrl.isTablet">
       <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
     </div>
-    <div class="tool-img mobile puppy-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('puppy')">
+    <div class="tool-img puppy-img" ng-if="$ctrl.isTablet">
+      <div class="hover-me-text">{{::'imagery.click_me' | translate}}</div>
+    </div>
+    <div class="tool-img mobile puppy-img" ng-if="$ctrl.isMobile && !$ctrl.isTablet" ng-click="$ctrl.openModal('puppy')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
     <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'puppy' }" ng-click="$ctrl.closeModal()">
@@ -49,10 +55,13 @@
         {{::'imagery.deep_breaths' | translate}} >
       </div>
     </div>
-    <div class="tool-img smell-img" ng-if="!$ctrl.isMobile">
+    <div class="tool-img smell-img" ng-if="!$ctrl.isMobile && !$ctrl.isTablet">
       <div class="hover-me-text">{{::'imagery.hover_me' | translate}}</div>
     </div>
-    <div class="tool-img mobile smell-img" ng-if="$ctrl.isMobile" ng-click="$ctrl.openModal('smell')">
+    <div class="tool-img smell-img" ng-if="$ctrl.isTablet">
+      <div class="hover-me-text">{{::'imagery.click_me' | translate}}</div>
+    </div>
+    <div class="tool-img mobile smell-img" ng-if="$ctrl.isMobile && !$ctrl.isTablet" ng-click="$ctrl.openModal('smell')">
       <div class="click-me-text">{{::'imagery.click_me' | translate}}</div>
     </div>
     <div class="imagery--modal" ng-class="{'visible' : $ctrl.openedModal == 'smell' }" ng-click="$ctrl.closeModal()">

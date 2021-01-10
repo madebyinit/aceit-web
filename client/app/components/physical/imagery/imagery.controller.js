@@ -5,6 +5,7 @@ class ImageryController {
     this.$state = $state;
     this.$rootScope = $rootScope;
     this.isMobile = $rootScope.isMobile;
+    this.isTablet = $rootScope.isTablet;
     this.openedModal = null;
   }
   $onInit() {

@@ -257,21 +257,21 @@
     right: 0;
 
     @include md {
-      top: 450px;
+      top: 400px;
       bottom: 0;
     }
     .drawer-wrapper-inner {
       @include add-bottom-shadow;
       display: flex;
       justify-content: center;
-      height: 790px;
+      height: 820px;
       overflow-y: hidden;
       position: relative;
 
       .drawer {
-        height: 800px;
+        height: 850px;
         width: 600px;
-        top: 730px;
+        top: 765px;
         background-color: #e8e8e8;
         box-shadow: 0 0 7px #888888;
         border: 12px solid white;
