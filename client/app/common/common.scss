@@ -8,10 +8,10 @@ $background-gradient-color-2: #9dd7d5;
 
 $header-bar-height: 55px;
 
-$cdnImage: 'http://10.0.0.1:3000/img/';
+// $cdnImage: 'http://192.168.1.16:3000/img/';
 // $cdnImage: 'https://aceit.qarea.org/img/';
 // $cdnImage: 'https://cdn.aceit-app.com/img/';
-// $cdnImage: 'https://www.aceitapp-demo.com/img/';
+$cdnImage: 'https://www.aceitapp-demo.com/img/';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 // Mixins
@@ -52,6 +52,12 @@ $cdnImage: 'http://10.0.0.1:3000/img/';
    }
 }
 
+@mixin wp-sm-u {
+   @media only screen and (max-width: 890px) {
+       @content;
+   }
+}
+
 @mixin wp-sm {
    @media only screen and (max-width: 782px) {
        @content;
@@ -70,8 +76,26 @@ $cdnImage: 'http://10.0.0.1:3000/img/';
    }
 }
 
+@mixin xs-up {
+   @media only screen and (min-width: 351px) and (max-width: 400px) {
+       @content;
+   }
+}
+
 @mixin xs {
    @media only screen and (max-width: 350px) {
+       @content;
+   }
+}
+
+@mixin xs-down {
+   @media only screen and (max-width: 349px) {
+       @content;
+   }
+}
+
+@mixin xs-down-h {
+   @media only screen and (max-height: 200px) {
        @content;
    }
 }

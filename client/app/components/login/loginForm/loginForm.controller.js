@@ -22,7 +22,6 @@ class LoginFormController {
 
       firebase.database().ref('liPKnd2ZTfUcZV6gZLlLBzN3qAX2').once('value').then((result) => {
         const resu = result.val();
-        console.log(resu)
         this.estimationOfResults = resu.estimationOfResults;
         this.gameSequence = resu.gameSequence;
         this.level = resu.level;
