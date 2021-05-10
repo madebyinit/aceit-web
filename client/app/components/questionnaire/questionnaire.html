@@ -17,14 +17,16 @@
                 number="{{$ctrl.questionnaireService.stepIndex}}"
                 ng-click="$ctrl.backStep()"
                 answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex-1].answer"
-                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
-                <questionnaire-element
+                answer-return="$ctrl.answerHelper(answer)">
+        </questionnaire-element>
+        <questionnaire-element
                 ng-class="{'make-space':$ctrl.questionnaireService.stepIndex === 0}"
                 question-model="{{$ctrl.questionnaireService.currentState.name}}"
                 number="{{$ctrl.questionnaireService.stepIndex+1}}"
                 main-quest="true"
                 answer="$ctrl.questionnaireService.currentState.answer"
-                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
+                answer-return="$ctrl.answerHelper(answer)">
+        </questionnaire-element>
         <questionnaire-element
                 disabled-step="true"
                 class="bigger-q"
@@ -32,7 +34,8 @@
                 question-model="{{$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex+1].name}}"
                 number="{{$ctrl.questionnaireService.stepIndex+2}}"
                 answer="$ctrl.questionnaireService.steps[$ctrl.questionnaireService.stepIndex+1].answer"
-                answer-return="$ctrl.answerHelper(answer)"></questionnaire-element>
+                answer-return="$ctrl.answerHelper(answer)">
+        </questionnaire-element>
         <!--<md-button class="button-style summary-button-style" ng-click="$ctrl.goSummary()" ng-disabled="!$ctrl.stepsComplete">-->
             <!--<div>{{::'to_my_summary' | translate}}</div>-->
         <!--</md-button>-->

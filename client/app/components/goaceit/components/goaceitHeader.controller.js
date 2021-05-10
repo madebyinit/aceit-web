@@ -22,7 +22,7 @@ class GoaceitHeaderController {
             const element = document.getElementById(drawer);
             const y = element.getBoundingClientRect().top + window.scrollY;
             window.scroll({
-            top: y,
+            top: y - 100,
             behavior: 'smooth'
             });
         }, 300, drawer);

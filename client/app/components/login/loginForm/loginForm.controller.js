@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import { debug } from 'util';
 
 class LoginFormController {
   constructor($state, notificationsService, progressLinear, stateChangeService, connection, orderOfGames, helperService) {
@@ -27,21 +26,11 @@ class LoginFormController {
           this.gameSequence = resu.gameSequence;
           this.level = resu.level;
           this.UPDI = resu.UPDI;
-          // this.helperService.gameSequence();
-          // this.helperService.feedbackCounter();
-          // this.helperService.Results();
-          // this.helperService.feedbackSentences();
-          // this.helperService.SuggestedTools();
-          // this.helperService.FeedbackChange();
-          // this.connection.saveData(this.orderOfGames.gameSequence, 'gameSequence');
-          // this.connection.saveData(this.orderOfGames.level, 'level');
-          // this.connection.saveData(this.orderOfGames.UPDI, 'UPDI');
-          // this.connection.saveData(this.estimationOfResults, 'estimationOfResults');
 
           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((res) => {
           this.stateChangeService.saveUserData(res);
           this.connection.setUser();
-          this.connection.getData().then((userData) => {
+          this.connection.getData().then((userData) => {          
             if (userData && userData.goaceitVisited) {
               this.connection.saveData(this.gameSequence, 'gameSequence');
               this.connection.saveData(this.level, 'level');
@@ -83,6 +72,13 @@ class LoginFormController {
               if (this.email.toLowerCase() !== 'ariel@goaceit.com') {
                 this.connection.saveData(false, 'admin');
               }
+
+              if (!userData) {
+                this.$state.transitionTo('games');
+                this.progressLinear.hideProgress();
+                return;
+              }
+
               if (userData.hasOwnProperty('videoPageFirst') && userData.videoPageFirst != 'undefined' && userData.videoPageFirst != null) {
                 localStorage.setItem('videoPageFirst', location.pathname);
               }

@@ -108,17 +108,20 @@ class SummaryController {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
   toggleIconDescriptions() {
+    const link = document.getElementById("summary-items");
+    this.scrollToPoint(link, 1);
     this.iconDescriptionToggled = !this.iconDescriptionToggled;
   }
   stateGo(name) {
     this.$state.go(name);
   }
-  scrollToPoint(element) {
+  scrollToPoint(element, timeout = 300) {
     this.$timeout(() => {
       this.$rootScope.isScrollToTools = false;
       element.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+    }, timeout);
   }
+
   setTestParams() {
     this.testSummary = {
       slowStarter: parseInt(this.testSummary.slowStarter, 10),

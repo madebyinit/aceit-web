@@ -79,7 +79,7 @@
     }
   }
   .header-text {
-    min-height: 120px;
+    min-height: 190px;
     max-width: 800px;
     margin: auto;
     font-family: Source Sans Pro;
@@ -260,6 +260,14 @@
       top: 400px;
       bottom: 0;
     }
+
+    &.first {
+      @include sm {
+        top: 200px;
+        bottom: 0;
+      }
+    }
+
     .drawer-wrapper-inner {
       @include add-bottom-shadow;
       display: flex;

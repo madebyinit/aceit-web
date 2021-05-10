@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="drawer-wrapper">
+    <div class="drawer-wrapper" ng-class="{first: !$ctrl.user.goaceitVisited}">
         <div class="drawer-wrapper-inner">
             <div class="focus-drawer drawer" id="focus" drawer="focus" ng-class="{'open-drawer': $ctrl.openDrawers['focus']}">
                 <img class="close" src="{{::$root.imageCdn}}close.png" ng-click="$ctrl.toggleDrawer('focus')">

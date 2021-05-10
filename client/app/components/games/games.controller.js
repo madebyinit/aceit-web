@@ -70,6 +70,7 @@ class GamesController {
     this.BeforeVideoPopupCheck = true;
     this.docIsHidden = "hidden";
     this.bgAudio = this.$document[0].getElementById("backgroundMusic");
+    this.handleResize = this.handleWindowSizeChange.bind(this);
   }
 
   $onInit() {
@@ -156,17 +157,15 @@ class GamesController {
     const gameStart = localStorage.getItem("gameStart");
 
     this.gameNumber = 1;
-    this.$window.addEventListener('resize', this.handleWindowSizeChange(this));
+    this.$window.addEventListener('resize', this.handleResize);
 
   }
 
-  handleWindowSizeChange(t) {
-    return function () {
-      t.$window.scroll(0, 1);
-      let vh = t.$window.innerHeight * 0.01;
-      console.log(vh);
-      t.$document[0].documentElement.style.setProperty('--vh', `${vh}px`);
-    }
+  handleWindowSizeChange() {
+    this.$window.scroll(0, 1);
+    let vh = this.$window.innerHeight * 0.01;
+    console.log(vh);
+    this.$document[0].documentElement.style.setProperty('--vh', `${vh}px`);
   }
 
   initializedSound() {
@@ -182,22 +181,16 @@ class GamesController {
       visibilityChange = "webkitvisibilitychange";
     }
 
-    this.$document[0].addEventListener(
-      visibilityChange,
-      this.handleVisibilityChange(this),
-      false
-    );
+    this.$document[0].addEventListener(visibilityChange, this.handleVisibilityChange);
     this.bgAudio.play();
   }
 
-  handleVisibilityChange(t) {
-    return function () {
-      if (t.$document[0][t.docIsHidden]) {
-        t.bgAudio.pause();
-      } else {
-        t.bgAudio.play();
-      }
-    };
+  handleVisibilityChange() {
+    if (this.$document[0][this.docIsHidden]) {
+      this.bgAudio.pause();
+    } else {
+      this.bgAudio.play();
+    }
   }
 
   startTimer() {
@@ -1046,6 +1039,10 @@ class GamesController {
   }
 
   removeListeners() {
+    this.$window.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    this.$window.removeEventListener('msvisibilitychange', this.handleVisibilityChange);
+    this.$window.removeEventListener('webkitvisibilitychange', this.handleVisibilityChange);
+    this.$window.removeEventListener('resize', this.handleResize);
     this.$interval.cancel(this.countdownTimer);
     this.showWindow = false;
     this.soundChange();
@@ -1294,12 +1291,12 @@ class GamesController {
     this.BeforeVideoPopupCheck = false;
     this.videoPopupCheck = true;
     let seconds = 44;
+    if (seconds > 30) {
+      this.$document[0].getElementById("GameVideo").play();
+    }
+
 
     this.countdownTimer = this.$interval(() => {
-      if (seconds > 30) {
-        this.$document[0].getElementById("GameVideo").play();
-      }
-
       if (seconds === 0) {
         this.$interval.cancel(this.countdownTimer);
         this.videoPopupCheck = false;

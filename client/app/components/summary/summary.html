@@ -4,19 +4,19 @@
   <div class="summary-mid-section">
     <div class="title">{{:: 'summary.my_summary' | translate}}</div>
     
-    <div class="summary-items">
+    <div id="summary-items" class="summary-items">
       <div class="summary-item-text">
         <strong>{{::$ctrl.user.name}}, this is your personal profile showing how you perform under pressure</strong>
         <figure>Click on the icons below to read more</figure>
-        <a href="#" class="toggle-icon-descriptions" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
-        <ul class="summary-items--list">
+        <a href="#" class="toggle-icon-descriptions" id="toggle-icon-descriptions-top" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
+        <ul id="summary-items--list" class="summary-items--list">
             <li class="summary-item" ng-repeat="(key, values) in $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " ng-class="{'description-visible' : $ctrl.iconDescriptionToggled }" ng-click="$ctrl.openModal(values)" data-feedback="{{values}}">
               <figure class="summary-item--icon"></figure>
               <strong>{{$ctrl.gameSummaryValue[values]|firstSentence}}</strong>
               <span>{{$ctrl.gameSummaryValue[values]|restSentence}}</span>
             </li>
         </ul>
-        <a href="#" class="toggle-icon-descriptions" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
+        <a href="#" class="toggle-icon-descriptions" id="toggle-icon-descriptions-bottom" ng-click="$ctrl.toggleIconDescriptions()">{{$ctrl.iconDescriptionToggled ? "Hide all actions" : "View all actions"}}</a>
         <div class="summary-items--modal-container">
           <div ng-repeat="(key, values) in  $ctrl.estimationOfResults.FeedbackPosition" ng-if="$ctrl.gameSummaryValue[values] != '' " class="summary-items--modal" ng-class="{'visible' : $ctrl.openedModal == values }" data-feedback="{{values}}">
             <div class="summary-items--modal_inner">

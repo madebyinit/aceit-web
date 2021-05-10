@@ -1,9 +1,10 @@
 class QuestionnaireController {
-  constructor(questionnaireService,notificationsService,connection) {
+  constructor(questionnaireService,notificationsService,connection, $timeout) {
     this.questionnaireService = questionnaireService;
     this.notificationsService = notificationsService;
     this.connection = connection;
     this.steps = this.questionnaireService.steps;
+    this.$timeout = $timeout;
   }
 
   $onInit(){
@@ -21,11 +22,13 @@ class QuestionnaireController {
   }
 
   nextStep(){
-    if(this.questionnaireService.steps[this.questionnaireService.stepIndex].answer){
-      this.questionnaireService.nextStep();
-    }else{
-      this.notificationsService.showToast('Error Missing');
-    }
+    this.$timeout(() => {
+      if(this.questionnaireService.steps[this.questionnaireService.stepIndex].answer){
+        this.questionnaireService.nextStep();
+      }else{
+        this.notificationsService.showToast('Error Missing');
+      }
+    }, 500);
   }
 
   stepClick(step){
@@ -37,5 +40,5 @@ class QuestionnaireController {
   }
 }
 
-QuestionnaireController.$inject = ['questionnaireService','notificationsService','connection'];
+QuestionnaireController.$inject = ['questionnaireService','notificationsService','connection', '$timeout'];
 export default QuestionnaireController;

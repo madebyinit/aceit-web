@@ -6,8 +6,10 @@ config.output = {
   filename: "[name].bundle.js",
   // publicPath: 'http://app.aceitapp.net/',
   // publicPath: 'https://www.aceit-ccapp.com/',
-  publicPath: 'https://www.aceitapp-demo.com/',
+  // publicPath: 'https://www.aceitapp-demo.com/',
   // publicPath: "https://aceit.qarea.org/",
+  publicPath: "/",
+
   path: path.resolve(__dirname, "dist")
 };
 

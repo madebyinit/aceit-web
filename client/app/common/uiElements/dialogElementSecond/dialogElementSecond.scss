@@ -154,9 +154,16 @@
 
 @media screen and (orientation: landscape) and (max-height: 450px) {
   .dialog-window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: unset;
     .dialog-window-body {
       width: 320px;
       height: 320px;
+      position: relative;
+      top: unset;
+      transform: unset;
       .dialog-window-header {
         height: 100px;
         .save-and-close-button-header {

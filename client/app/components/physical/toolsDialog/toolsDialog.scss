@@ -17,10 +17,12 @@
       height: 100%;
       padding: 20px;
       .first-divider {
-        top: 17%;
+        height: 20px;
+        top: 19%;
       }
       .second-divider {
-        top: 39%;
+        height: 20px;
+        top: 20%;
       }
       .dialog-input-title {
         font-size: 18px;
@@ -49,7 +51,7 @@
         margin: auto;
         
         @include md {
-          bottom: 32px;
+          bottom: 16px;
         }
 
         @include xs {
@@ -60,6 +62,7 @@
           height: 45px;
           padding: 5px;
           font-size: 7px;
+          bottom: 16px;
         }
       }
       .form-section {
@@ -127,9 +130,11 @@
     }
   }
   .first-divider {
+    height: 20px;
     top: 32.5%;
   }
   .second-divider {
+    height: 20px;
     bottom: 32.5%;
   }
   .text-bind {
